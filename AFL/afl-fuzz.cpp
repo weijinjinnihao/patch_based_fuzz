@@ -311,6 +311,7 @@ EXP_ST u64 total_crashes,             /* Total number of crashes          */
            unique_tmouts,             /* Timeouts with unique signatures  */
            unique_hangs,              /* Hangs with unique signatures     */
            total_execs,               /* Total execve() calls             */
+           slowest_exec_ms,      /* Slowest testcase non hang in ms  */
            start_time,                /* Unix start time (ms)             */
            last_path_time,            /* Time for most recent path (ms)   */
            last_crash_time,           /* Time for most recent crash (ms)  */
@@ -1412,7 +1413,7 @@ void log_map_id(u32 i, u8 byte, const string& cur_seed_str){
    This function is called after every exec() on a fairly large buffer, so
    it needs to be fast. We do this in 32-bit and 64-bit flavors. */
 
-static inline u8 has_new_bits(u8* virgin_map) {
+static inline u8 has_new_bits(u8* virgin_map, const string cur_seed_str = "") {
 
   if (dump_library) {
     map_file_id++;
@@ -3005,14 +3006,7 @@ EXP_ST void init_forkserver(char** argv) {
 
   } else if (!mem_limit) {
 
-    SAYF("\n" cLRD "[-] " cRST "Hmm, looks like the target binary terminated "
-         "before we could complete a\n"
-         "    handshake with the injected code. Perhaps there is a horrible "
-         "bug in the\n"
-         "    fuzzer. Poke <lcamtuf@coredump.cx> for troubleshooting tips.\n");
-
-  } else {
-
+    SAYF(
         "\n" cLRD "[-] " cRST "Hmm, looks like the target binary terminated "
         "before we could complete a\n"
         "    handshake with the injected code. There are %s probable "
@@ -3026,21 +3020,25 @@ EXP_ST void init_forkserver(char** argv) {
         "      simple way to confirm the diagnosis may be:\n\n"
 
 #ifdef RLIMIT_AS
-         "      ( ulimit -Sv $[%llu << 10]; /path/to/fuzzed_app )\n\n"
+        "      ( ulimit -Sv $[%llu << 10]; /path/to/fuzzed_app )\n\n"
 #else
-         "      ( ulimit -Sd $[%llu << 10]; /path/to/fuzzed_app )\n\n"
+        "      ( ulimit -Sd $[%llu << 10]; /path/to/fuzzed_app )\n\n"
 #endif /* ^RLIMIT_AS */
 
-         "      Tip: you can use http://jwilk.net/software/recidivm to quickly\n"
-         "      estimate the required amount of virtual memory for the binary.\n\n"
+        "      Tip: you can use http://jwilk.net/software/recidivm to quickly\n"
+        "      estimate the required amount of virtual memory for the "
+        "binary.\n\n"
 
-         "    - Less likely, there is a horrible bug in the fuzzer. If other options\n"
-         "      fail, poke <lcamtuf@coredump.cx> for troubleshooting tips.\n",
-         getenv(DEFER_ENV_VAR) ? "three" : "two",
-         getenv(DEFER_ENV_VAR) ?
-         "    - You are using deferred forkserver, but __AFL_INIT() is never\n"
-         "      reached before the program terminates.\n\n" : "",
-         DMS(mem_limit << 20, mem_limit - 1);
+        "    - Less likely, there is a horrible bug in the fuzzer. If other "
+        "options\n"
+        "      fail, poke <lcamtuf@coredump.cx> for troubleshooting tips.\n",
+        getenv(DEFER_ENV_VAR) ? "three" : "two",
+        getenv(DEFER_ENV_VAR)
+            ? "    - You are using deferred forkserver, but __AFL_INIT() is "
+              "never\n"
+              "      reached before the program terminates.\n\n"
+            : "",
+        DMS(mem_limit << 20), mem_limit - 1);
 
   }
 
@@ -5556,6 +5554,7 @@ static void find_timeout(void) {
 static void write_stats_file(double bitmap_cvg, double stability, double eps) {
 
   static double last_bcvg, last_stab, last_eps;
+  static struct rusage usage;
 
   u8* fn = alloc_printf("%s/fuzzer_stats", out_dir);
   s32 fd;
@@ -5828,6 +5827,8 @@ dir_cleanup_failed:
    is not currently running, and if the last run time isn't too great. */
 
 static void maybe_delete_out_dir(void) {
+
+  pid_t pid = getpid();
 
   FILE* f;
   u8 *fn = alloc_printf("%s/fuzzer_stats", out_dir);
@@ -7346,142 +7347,142 @@ void update_distance(struct queue_entry* q) {
     q->distance = (double)distance / q->critical_bbs[0];
 }
 
-bool sniff_mask(char** argv, struct queue_entry* q, u8* in_buf, u8** cb_mask_ptr, u8** eff_map_ptr, u32* eff_cnt) {
-  s32 len = q->len;
-  u8* cb_mask;
-  u8* conformance_mask;
-  u8 hit_flag = 0;
-  if (!need_sniff(q)) {
-    if (!explore_status) {
-      cb_mask = alloc_cb_mask(len+1);
-      q->cb_mask = alloc_cb_mask(len+1);
-      *cb_mask_ptr = cb_mask;
-    } else {
-      conformance_mask = alloc_cb_mask(len+1);
-      q->conformance_mask = alloc_cb_mask(len+1);
-      *cb_mask_ptr = conformance_mask;
-    }
-    DEBUG("Skip sniff\n");
-    return false;
-  }
-  DEBUG("Do sniff\n");
-  DEBUG("Sniff length: %d\n",len);
+// bool sniff_mask(char** argv, struct queue_entry* q, u8* in_buf, u8** cb_mask_ptr, u8** eff_map_ptr, u32* eff_cnt) {
+//   s32 len = q->len;
+//   u8* cb_mask;
+//   u8* conformance_mask;
+//   u8 hit_flag = 0;
+//   if (!need_sniff(q)) {
+//     if (!explore_status) {
+//       cb_mask = alloc_cb_mask(len+1);
+//       q->cb_mask = alloc_cb_mask(len+1);
+//       *cb_mask_ptr = cb_mask;
+//     } else {
+//       conformance_mask = alloc_cb_mask(len+1);
+//       q->conformance_mask = alloc_cb_mask(len+1);
+//       *cb_mask_ptr = conformance_mask;
+//     }
+//     DEBUG("Skip sniff\n");
+//     return false;
+//   }
+//   DEBUG("Do sniff\n");
+//   DEBUG("Sniff length: %d\n",len);
 
-  u32 modify_count = 0;
-  u32 insert_count = 0;
-  u32 delete_count = 0;
-  cb_mask = ck_alloc(len+1);
-  conformance_mask = ck_alloc(len+1);
-  u8* out_buf = ck_alloc_nozero(len); 
-  memcpy(out_buf, in_buf, len);
+//   u32 modify_count = 0;
+//   u32 insert_count = 0;
+//   u32 delete_count = 0;
+//   cb_mask = ck_alloc(len+1);
+//   conformance_mask = ck_alloc(len+1);
+//   u8* out_buf = ck_alloc_nozero(len); 
+//   memcpy(out_buf, in_buf, len);
 
-    /* Effector map setup. These macros calculate:
+//     /* Effector map setup. These macros calculate:
 
-     EFF_APOS      - position of a particular file offset in the map.
-     EFF_ALEN      - length of a map with a particular number of bytes.
-     EFF_SPAN_ALEN - map span for a sequence of bytes.
+//      EFF_APOS      - position of a particular file offset in the map.
+//      EFF_ALEN      - length of a map with a particular number of bytes.
+//      EFF_SPAN_ALEN - map span for a sequence of bytes.
 
-   */
+//    */
 
-  #define EFF_APOS(_p)          ((_p) >> EFF_MAP_SCALE2)
-  #define EFF_REM(_x)           ((_x) & ((1 << EFF_MAP_SCALE2) - 1))
-  #define EFF_ALEN(_l)          (EFF_APOS(_l) + !!EFF_REM(_l))
-  #define EFF_SPAN_ALEN(_p, _l) (EFF_APOS((_p) + (_l) - 1) - EFF_APOS(_p) + 1)
+//   #define EFF_APOS(_p)          ((_p) >> EFF_MAP_SCALE2)
+//   #define EFF_REM(_x)           ((_x) & ((1 << EFF_MAP_SCALE2) - 1))
+//   #define EFF_ALEN(_l)          (EFF_APOS(_l) + !!EFF_REM(_l))
+//   #define EFF_SPAN_ALEN(_p, _l) (EFF_APOS((_p) + (_l) - 1) - EFF_APOS(_p) + 1)
 
-  u8* eff_map;
-  eff_map    = ck_alloc(EFF_ALEN(len));
-  eff_map[0] = 1;
+//   u8* eff_map;
+//   eff_map    = ck_alloc(EFF_ALEN(len));
+//   eff_map[0] = 1;
 
-  if (EFF_APOS(len - 1) != 0) {
-    eff_map[EFF_APOS(len - 1)] = 1;
-    (*eff_cnt)++;
-  }
+//   if (EFF_APOS(len - 1) != 0) {
+//     eff_map[EFF_APOS(len - 1)] = 1;
+//     (*eff_cnt)++;
+//   }
 
-  stage_name = "cbflip8";
-  stage_short = "cbflip8";
-  stage_max   = len;
+//   stage_name = "cbflip8";
+//   stage_short = "cbflip8";
+//   stage_max   = len;
 
 
-  for (stage_cur = 0; stage_cur < stage_max; stage_cur++) {
-    out_buf[stage_cur] ^= 0xFF;
+//   for (stage_cur = 0; stage_cur < stage_max; stage_cur++) {
+//     out_buf[stage_cur] ^= 0xFF;
 
-    if (common_fuzz_stuff(argv, (char*)out_buf, len)) break;
+//     if (common_fuzz_stuff(argv, (char*)out_buf, len)) break;
 
-    if ((hit_flag = hit_critical(q)) != 0) {
-      modify_count++;
-      if ((hit_flag & 1) == 1)
-        cb_mask[stage_cur] = 1;
+//     if ((hit_flag = hit_critical(q)) != 0) {
+//       modify_count++;
+//       if ((hit_flag & 1) == 1)
+//         cb_mask[stage_cur] = 1;
 
-      if ((hit_flag & 2) == 2) {
-        conformance_mask[stage_cur] = 1;
-      }
-    }
+//       if ((hit_flag & 2) == 2) {
+//         conformance_mask[stage_cur] = 1;
+//       }
+//     }
 
-    if (!eff_map[EFF_APOS(stage_cur)]) {
+//     if (!eff_map[EFF_APOS(stage_cur)]) {
 
-      u32 cksum;
+//       u32 cksum;
 
-      /* If in dumb mode or if the file is very short, just flag everything
-         without wasting time on checksums. */
+//       /* If in dumb mode or if the file is very short, just flag everything
+//          without wasting time on checksums. */
 
-      if (!dumb_mode && len >= EFF_MIN_LEN)
-        cksum = hash32(trace_bits, MAP_SIZE, HASH_CONST);
-      else
-        cksum = ~queue_cur->exec_cksum;
+//       if (!dumb_mode && len >= EFF_MIN_LEN)
+//         cksum = hash32(trace_bits, MAP_SIZE, HASH_CONST);
+//       else
+//         cksum = ~queue_cur->exec_cksum;
 
-      if (cksum != queue_cur->exec_cksum) {
-        eff_map[EFF_APOS(stage_cur)] = 1;
-        (*eff_cnt)++;
-      }
-    }
+//       if (cksum != queue_cur->exec_cksum) {
+//         eff_map[EFF_APOS(stage_cur)] = 1;
+//         (*eff_cnt)++;
+//       }
+//     }
 
-    *eff_map_ptr = eff_map;
-    out_buf[stage_cur] ^= 0xFF;
-  }
+//     *eff_map_ptr = eff_map;
+//     out_buf[stage_cur] ^= 0xFF;
+//   }
 
-  stage_name = "cbrem8";
-  stage_short = "cbrem8";
-  u8* tmp_buf = ck_alloc(len+1);
-  for (stage_cur = 1; stage_cur < len; stage_cur++) {
-    stage_cur_byte = stage_cur;
+//   stage_name = "cbrem8";
+//   stage_short = "cbrem8";
+//   u8* tmp_buf = ck_alloc(len+1);
+//   for (stage_cur = 1; stage_cur < len; stage_cur++) {
+//     stage_cur_byte = stage_cur;
 
-    memcpy(tmp_buf, out_buf, stage_cur);
+//     memcpy(tmp_buf, out_buf, stage_cur);
     
-    memcpy(tmp_buf + stage_cur, out_buf + 1 + stage_cur, len - stage_cur - 1);
+//     memcpy(tmp_buf + stage_cur, out_buf + 1 + stage_cur, len - stage_cur - 1);
 
-    if (common_fuzz_stuff(argv, (char*)tmp_buf, len - 1)) break;
+//     if (common_fuzz_stuff(argv, (char*)tmp_buf, len - 1)) break;
 
-    if ((hit_flag = hit_critical(q)) != 0) {
-      delete_count++;
-      if ((hit_flag & 1) == 1)
-        cb_mask[stage_cur] += 2;
+//     if ((hit_flag = hit_critical(q)) != 0) {
+//       delete_count++;
+//       if ((hit_flag & 1) == 1)
+//         cb_mask[stage_cur] += 2;
 
-      if ((hit_flag & 2) == 2)
-        conformance_mask[stage_cur] += 2;
-    }
-  }
+//       if ((hit_flag & 2) == 2)
+//         conformance_mask[stage_cur] += 2;
+//     }
+//   }
 
-  stage_name = "rbadd8";
-  stage_short = "rbadd8";
-  for (stage_cur = 0; stage_cur <= len; stage_cur++) {
-    stage_cur_byte = stage_cur;
+//   stage_name = "rbadd8";
+//   stage_short = "rbadd8";
+//   for (stage_cur = 0; stage_cur <= len; stage_cur++) {
+//     stage_cur_byte = stage_cur;
 
-    memcpy(tmp_buf, out_buf, stage_cur);
-    tmp_buf[stage_cur] = UR(256);
+//     memcpy(tmp_buf, out_buf, stage_cur);
+//     tmp_buf[stage_cur] = UR(256);
 
-    memcpy(tmp_buf + stage_cur + 1, out_buf + stage_cur, len - stage_cur);
+//     memcpy(tmp_buf + stage_cur + 1, out_buf + stage_cur, len - stage_cur);
 
-    if (common_fuzz_stuff(argv, (char*)tmp_buf, len + 1)) break;
+//     if (common_fuzz_stuff(argv, (char*)tmp_buf, len + 1)) break;
 
-    if ((hit_flag = hit_critical(q)) != 0) {
-      insert_count++;
-      if ((hit_flag & 1) == 1)
-        cb_mask[stage_cur] += 4;
+//     if ((hit_flag = hit_critical(q)) != 0) {
+//       insert_count++;
+//       if ((hit_flag & 1) == 1)
+//         cb_mask[stage_cur] += 4;
 
-      if ((hit_flag & 2) == 2)
-        conformance_mask[stage_cur] += 4;
-    }
-  }
+//       if ((hit_flag & 2) == 2)
+//         conformance_mask[stage_cur] += 4;
+//     }
+//   }
 
 //   static bool hit_direct_mapping(struct queue_entry* q,u8 value) {
 //   u32 i;
@@ -7497,7 +7498,7 @@ bool sniff_mask(char** argv, struct queue_entry* q, u8* in_buf, u8** cb_mask_ptr
 //   return false;
 // }
 
-  u32 i;
+  // u32 i;
   //mutate direct mapping
   // stage_name = "mapping";
   // stage_short = "mapping";
@@ -7539,54 +7540,54 @@ bool sniff_mask(char** argv, struct queue_entry* q, u8* in_buf, u8** cb_mask_ptr
   //   }
   // }
 
-  update_distance(q);
+//   update_distance(q);
 
-  q->cb_mask = ck_alloc(len + 1);
-  memcpy (q->cb_mask, cb_mask, len + 1);
+//   q->cb_mask = ck_alloc(len + 1);
+//   memcpy (q->cb_mask, cb_mask, len + 1);
 
-  q->conformance_mask = ck_alloc(len + 1);
-  memcpy (q->conformance_mask, conformance_mask, len + 1);
+//   q->conformance_mask = ck_alloc(len + 1);
+//   memcpy (q->conformance_mask, conformance_mask, len + 1);
 
-  ck_free(tmp_buf);
-  ck_free(out_buf);
+//   ck_free(tmp_buf);
+//   ck_free(out_buf);
 
-  DEBUG("%d bytes can be modefied\n",modify_count);
-  DEBUG("%d bytes can be deleted\n",delete_count);
-  DEBUG("%d bytes can be inserted\n",insert_count);
+//   DEBUG("%d bytes can be modefied\n",modify_count);
+//   DEBUG("%d bytes can be deleted\n",delete_count);
+//   DEBUG("%d bytes can be inserted\n",insert_count);
 
-  //fprintf(distance_score_log, "%f %f\n", q->distance, q->distance_cb);
-  fprintf(mutation_log,"--------------------------------------\n");
-  for (i = 0; i < q->critical_bbs[0]; i++) {
-    fprintf(mutation_log,"%d ",q->critical_bbs[i+1]);
-  }
-   fprintf(mutation_log,"\n");
-  // for (i = 0; i < q->critical_bbs[0]; i++) {
-  //   fprintf(mutation_log,"%lld ",q->critical_vals[i+1]);
-  // }
-  //  fprintf(mutation_log,"\n");
-  if (!explore_status) {
-    for (i=0;i<len;i++) {
-      fprintf(mutation_log,"%d ",cb_mask[i]);
-    }
-  }
-  else {
-    for (i=0;i<len;i++) {
-      fprintf(mutation_log,"%d ",conformance_mask[i]);
-    }
-  }
-  fprintf(mutation_log,"\n--------------------------------------\n");
+//   //fprintf(distance_score_log, "%f %f\n", q->distance, q->distance_cb);
+//   fprintf(mutation_log,"--------------------------------------\n");
+//   for (i = 0; i < q->critical_bbs[0]; i++) {
+//     fprintf(mutation_log,"%d ",q->critical_bbs[i+1]);
+//   }
+//    fprintf(mutation_log,"\n");
+//   // for (i = 0; i < q->critical_bbs[0]; i++) {
+//   //   fprintf(mutation_log,"%lld ",q->critical_vals[i+1]);
+//   // }
+//   //  fprintf(mutation_log,"\n");
+//   if (!explore_status) {
+//     for (i=0;i<len;i++) {
+//       fprintf(mutation_log,"%d ",cb_mask[i]);
+//     }
+//   }
+//   else {
+//     for (i=0;i<len;i++) {
+//       fprintf(mutation_log,"%d ",conformance_mask[i]);
+//     }
+//   }
+//   fprintf(mutation_log,"\n--------------------------------------\n");
 
-  if (!explore_status) {
-    *cb_mask_ptr = cb_mask;
-    ck_free(conformance_mask);
-  }
-  else {
-    *cb_mask_ptr = conformance_mask;
-    ck_free(cb_mask);
-  }
+//   if (!explore_status) {
+//     *cb_mask_ptr = cb_mask;
+//     ck_free(conformance_mask);
+//   }
+//   else {
+//     *cb_mask_ptr = conformance_mask;
+//     ck_free(cb_mask);
+//   }
 
-  return true;
-}
+//   return true;
+// }
 
 
 static u32 get_random_modifiable_posn(u32 num_to_modify, u8 mod_type, u32 map_len, u8* branch_mask, u32 * position_map){
