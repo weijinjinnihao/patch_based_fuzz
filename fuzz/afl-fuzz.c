@@ -5131,7 +5131,7 @@ static u8 save_if_interesting(char **argv, string &query_str, const ALL_COMP_RES
       return keeping;
     }
 
-    /* If disable_coverage_feedback == 3, always go through save_if_interesting. */
+    /* If disable_coverage_feedback == 3, always go through save_if_interesting. ....*/
 
     char *tmp_name = stage_name;
     //[modify] add
@@ -8163,7 +8163,7 @@ static void sync_fuzzers(char** argv) {
         if (mem == MAP_FAILED) PFATAL("Unable to mmap '%s'", path);
 
         /* See what happens. We rely on save_if_interesting() to catch major
-           errors and save the test case. */
+           errors and save the test case. ..*/
 
         write_to_testcase(mem, st.st_size);
 
