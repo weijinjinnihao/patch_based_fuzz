@@ -224,9 +224,15 @@ void IR::update_right(IR *new_right) {
 }
 
 void IR::drop() {
-
-  if (this->op_)
+  if (this->op_){
+    // 释放内存后,将指针设置为NULL
     delete this->op_;
+    this->op_ = NULL;
+  }
+  // 使用智能指针释放this也不行
+  //std::unique_ptr<IR> ir_ptr(this);
+  //ir_ptr.reset(); 
+  // delete this 后，由于其它一些变量 引用了对象，再同过其它变量访问地址时，就会导致 use after free 错误
   delete this;
 }
 

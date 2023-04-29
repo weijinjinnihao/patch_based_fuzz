@@ -7807,12 +7807,16 @@ static u8 fuzz_one(char **argv) {
   IR* cur_ir_root;
   cur_ir_root = ir_set.back();
   ir_set.clear();
+  
 
   p_oracle->init_ir_wrapper(cur_ir_root);
+  // 判断对象是否被释放
   if (p_oracle->is_remove_oracle_select_stmt_at_start())
     {p_oracle->remove_oracle_select_stmts_from_ir(cur_ir_root);}
   if (p_oracle->is_remove_oracle_normal_stmt_at_start())
     {p_oracle->remove_oracle_normal_stmts_from_ir(cur_ir_root);}
+  
+  
 
   /*
   ** (Optional)
@@ -9486,7 +9490,7 @@ static void load_map_id() {
   return;
 }
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv) {
   p_oracle = nullptr;
   g_mutator.set_use_cri_val(false);
 

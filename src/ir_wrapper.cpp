@@ -20,12 +20,15 @@ bool IRWrapper::is_exist_ir_node_in_stmt_with_type(IRTYPE ir_type, bool is_subqu
 }
 
 bool IRWrapper::is_exist_ir_node_in_stmt_with_type(IR* cur_stmt, IRTYPE ir_type, bool is_subquery) {
-    vector<IR*> matching_IR_vec = this->get_ir_node_in_stmt_with_type(cur_stmt, ir_type, is_subquery);
-    if (matching_IR_vec.size() == 0){
-        return false;
-    } else {
-        return true;
-    }
+    
+        vector<IR*> matching_IR_vec = this->get_ir_node_in_stmt_with_type(cur_stmt, ir_type, is_subquery);
+        if (matching_IR_vec.size() == 0){
+            return false;
+        } else {
+            return true;
+        }
+    
+    
 }
 
 
@@ -38,9 +41,10 @@ vector<IR*> IRWrapper::get_ir_node_in_stmt_with_type(IR* cur_stmt,
     std::vector<IR*> ir_vec_matching_type;
     IR* cur_IR = cur_stmt; 
     // Begin iterating. 
-    while (!is_finished_search) {
+    while (!is_finished_search && cur_IR != nullptr) {
         ir_vec_iter.push_back(cur_IR);
-        if (cur_IR->type_ == ir_type) {
+        // 如果 cur_IR 已经被释放了,会导致cur_IR->type_ use after free,这样修该后还是报错
+        if (cur_IR != nullptr && cur_IR->type_ == ir_type) {
             ir_vec_matching_type.push_back(cur_IR);
         }
 
@@ -59,7 +63,9 @@ vector<IR*> IRWrapper::get_ir_node_in_stmt_with_type(IR* cur_stmt,
             }
             continue;
         }
-    }
+        }
+        
+    
 
     if (is_ignore_subquery) {
         return ir_vec_matching_type;
