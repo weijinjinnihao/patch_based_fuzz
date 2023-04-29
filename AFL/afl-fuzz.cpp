@@ -5554,9 +5554,8 @@ static void find_timeout(void) {
 static void write_stats_file(double bitmap_cvg, double stability, double eps) {
 
   static double last_bcvg, last_stab, last_eps;
-  static struct rusage usage;
 
-  u8* fn = alloc_printf("%s/fuzzer_stats", out_dir);
+  u8* fn = static_cast<u8*>(alloc_printf("%s/fuzzer_stats", out_dir));
   s32 fd;
   FILE* f;
 
@@ -5611,42 +5610,26 @@ static void write_stats_file(double bitmap_cvg, double stability, double eps) {
              "afl_version       : " VERSION "\n"
              "target_mode       : %s%s%s%s%s%s%s\n"
              "command_line      : %s\n",
-             queue_cycle ? (queue_cycle - 1) : 0, total_execs, eps, queued_paths,
-             queued_favored, queued_discovered, queued_imported, max_depth,
-             current_entry, pending_favored, pending_not_fuzzed, queued_variable,
-             stability, bitmap_cvg, unique_crashes, unique_hangs,
-             last_path_time / 1000, last_crash_time / 1000, last_hang_time / 1000,
-             total_execs - last_crash_execs, exec_tmout, use_banner,
+             start_time / 1000, get_cur_time() / 1000, getpid(),
+             queue_cycle ? (queue_cycle - 1) : 0, total_execs, eps,
+             queued_paths, queued_favored, queued_discovered, queued_imported,
+             max_depth, current_entry, pending_favored, pending_not_fuzzed,
+             queued_variable, stability, bitmap_cvg, unique_crashes,
+             unique_hangs, last_path_time / 1000, last_crash_time / 1000,
+             last_hang_time / 1000, total_execs - last_crash_execs,
+             exec_tmout, use_banner,
              qemu_mode ? "qemu " : "", dumb_mode ? " dumb " : "",
              no_forkserver ? "no_forksrv " : "", crash_mode ? "crash " : "",
-             persistent_mode ? "persistent " : "",
-             deferred_mode ? "deferred " : "",
+             persistent_mode ? "persistent " : "", deferred_mode ? "deferred " : "",
              (qemu_mode || dumb_mode || no_forkserver || crash_mode ||
-             persistent_mode || deferred_mode)
-                 ? ""
-                 : "default",
-             orig_cmdline, slowest_exec_ms);
-  /* ignore errors */
-
-  /* Get rss value from the children
-     We must have killed the forkserver process and called waitpid
-     before calling getrusage */
-  if (getrusage(RUSAGE_CHILDREN, &usage)) {
-    WARNF("getrusage failed");
-  } else if (usage.ru_maxrss == 0) {
-    fprintf(f, "peak_rss_mb       : not available while afl is running\n");
-  } else {
-#ifdef __APPLE__
-    fprintf(f, "peak_rss_mb       : %zu\n", usage.ru_maxrss >> 20);
-#else
-    fprintf(f, "peak_rss_mb       : %zu\n", usage.ru_maxrss >> 10);
-#endif /* ^__APPLE__ */
-  }
+              persistent_mode || deferred_mode) ? "" : "default",
+             orig_cmdline);
+             /* ignore errors */
 
   fclose(f);
 
-
 }
+
 
 
 /* Update the plot file if there is a reason to. */
