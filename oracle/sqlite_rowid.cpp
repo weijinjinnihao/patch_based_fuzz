@@ -28,6 +28,7 @@ void SQL_ROWID::get_v_valid_type(const string &cmd_str,
       }
       if ( !(v_cur_stmt_ir.back()->left_ != NULL && v_cur_stmt_ir.back()->left_->left_ != NULL) ) {
         v_cur_stmt_ir.back()->deep_drop();
+        v_cur_stmt_ir.back() = nullptr;
         continue;
       }
 
@@ -35,6 +36,7 @@ void SQL_ROWID::get_v_valid_type(const string &cmd_str,
       v_valid_type.push_back(get_stmt_ROWID_type(cur_stmt_ir));
 
       v_cur_stmt_ir.back()->deep_drop();
+      v_cur_stmt_ir.back() = nullptr;
 
     } else {
       // cerr << "Error: For the current begin_idx, we cannot find the end_idx. \n\n\n";
@@ -257,6 +259,7 @@ IR* SQL_ROWID::pre_fix_transform_normal_stmt(IR* cur_stmt) {
   if(!is_exist_WITHOUT_ROWID && !ir_wrapper.add_without_rowid_to_stmt(cur_stmt)) {
     cerr << "Error: add_without_rowid_to_stmt failed. Func: SQL_ROWID::pre_fix_transform_normal_stmt. \n";
     cur_stmt->deep_drop();
+    cur_stmt = nullptr;
     return nullptr;
   }
 
@@ -286,6 +289,7 @@ IR* SQL_ROWID::pre_fix_transform_normal_stmt(IR* cur_stmt) {
   vector<IR*> opt_column_constraintlist_vec = ir_wrapper.get_ir_node_in_stmt_with_type(cur_stmt, kOptColumnConstraintlist, false);
   if (opt_column_constraintlist_vec.size() == 0) {
     cur_stmt->deep_drop();
+    cur_stmt = nullptr;
     return nullptr;
   }
   IR* chosen_opt_column_constraintlist = opt_column_constraintlist_vec[get_rand_int(opt_column_constraintlist_vec.size())];
@@ -302,6 +306,7 @@ IR* SQL_ROWID::pre_fix_transform_normal_stmt(IR* cur_stmt) {
 
   cur_stmt->swap_node(chosen_opt_column_constraintlist, new_opt_column_constraint_list);
   chosen_opt_column_constraintlist->deep_drop();
+  chosen_opt_column_constraintlist = nullptr;
 
   return cur_stmt;
 }
@@ -312,6 +317,7 @@ vector<IR*> SQL_ROWID::post_fix_transform_normal_stmt(IR* cur_stmt, unsigned mul
   if(!ir_wrapper.remove_without_rowid_to_stmt(cur_stmt)) {
     cerr << "Error: remove_without_rowid_to_stmt failed. Func: SQL_ROWID::post_fix_transform_normal_stmt. \n";
     cur_stmt->deep_drop();
+    cur_stmt = nullptr;
     vector<IR*> tmp; return tmp;
   }
   /* Do we want to remove PRIMARY KEY constraints to the column too? */

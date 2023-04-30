@@ -143,6 +143,7 @@ vector<IR*> SQL_NOREC::post_fix_transform_select_stmt(IR* cur_stmt, unsigned mul
     /* If the current opt_over_clause_ir has been removed from the tree by previous iterations, swap_node() will fail. */
     if (!cur_stmt->swap_node(opt_over_clause_ir, new_opt_over_clause_ir)) { 
       new_opt_over_clause_ir->deep_drop();
+      new_opt_over_clause_ir = nullptr;
       // cerr << "Error: swap_node failure. Seems to be expected. In func: SQL_NOREC::post_fix_transform_select_stmt(). \n";
       continue;
     }
@@ -151,6 +152,7 @@ vector<IR*> SQL_NOREC::post_fix_transform_select_stmt(IR* cur_stmt, unsigned mul
   }
   for (auto ori_opt_over_clause_ir : ori_opt_over_clause_vec) {
     ori_opt_over_clause_ir->deep_drop();
+    ori_opt_over_clause_ir = nullptr;
   }
 
 
@@ -166,7 +168,9 @@ vector<IR*> SQL_NOREC::post_fix_transform_select_stmt(IR* cur_stmt, unsigned mul
   if (!cur_stmt->swap_node(opt_where_clause, new_opt_where)) {
     cerr << "\n\n\n\nError: Swap node failed in SQL_NOREC::post_fix_transform_select_stmt. \n ";
     trans_IR_vec[0]->deep_drop();
+    trans_IR_vec[0] = nullptr;
     cur_stmt->deep_drop();
+    cur_stmt = nullptr;
     vector<IR*> tmp;
     return tmp;
   }
@@ -174,6 +178,7 @@ vector<IR*> SQL_NOREC::post_fix_transform_select_stmt(IR* cur_stmt, unsigned mul
   IR* expr_in_where_copy = expr_in_where->deep_copy();
   expr_in_where_copy->parent_ = nullptr;
   opt_where_clause->deep_drop(); // expr_in_where won't be affected. 
+  opt_where_clause = nullptr;
 
   /* Take care of SELECT statement. */
   IR* first_result_column = ir_wrapper.get_result_column_in_select_clause_in_select_stmt(cur_stmt, 0);
@@ -181,7 +186,9 @@ vector<IR*> SQL_NOREC::post_fix_transform_select_stmt(IR* cur_stmt, unsigned mul
     ofstream output;
     cerr << "\n\n\n\nError: Failed to retrive first_result_column\n ";
     trans_IR_vec[0]->deep_drop();
+    trans_IR_vec[0] = nullptr;
     cur_stmt->deep_drop();
+    cur_stmt =nullptr;
     vector<IR*> tmp;
     return tmp;
   } 
@@ -191,21 +198,25 @@ vector<IR*> SQL_NOREC::post_fix_transform_select_stmt(IR* cur_stmt, unsigned mul
     cerr << "\n\n\n\nError: Cannot find cur_select_expr from the ir_root. Logical error in code. \n \
     In func: SQL_NOREC::post_fix_transform_select_stmt. Return empty vector. \n";
     trans_IR_vec[0]->deep_drop();
+    trans_IR_vec[0] = nullptr;
     cur_stmt->deep_drop();
+    cur_stmt =nullptr;
     vector<IR*> tmp;
     return tmp;
   }
 
   cur_stmt->swap_node(select_ori_expr, expr_in_where_copy);
   select_ori_expr->deep_drop();
-
+  select_ori_expr = nullptr;
   // Add cast and COUNT functions. 
   IR* cur_select_expr = expr_in_where_copy;
   cur_select_expr = this->ir_wrapper.add_cast_expr(cur_select_expr, string("BOOL"));
   if (cur_select_expr == nullptr) {
     cerr << "Error: ir_wrapper>add_cast_expr() failed. Func: SQL_NOREC::post_fix_transform_select_stmt(). Return empty vector. \n";
     trans_IR_vec[0]->deep_drop();
+    trans_IR_vec[0] = nullptr;
     cur_stmt->deep_drop();
+    cur_stmt = nullptr;
     vector<IR*> tmp;
     return tmp;
   }
@@ -215,7 +226,9 @@ vector<IR*> SQL_NOREC::post_fix_transform_select_stmt(IR* cur_stmt, unsigned mul
   if (cur_select_expr == nullptr) {
     cerr << "Error: ir_wrapper>add_binary_op() failed. Func: SQL_NOREC::post_fix_transform_select_stmt(). Return empty vector. \n";
     trans_IR_vec[0]->deep_drop();
+    trans_IR_vec[0] = nullptr;
     cur_stmt->deep_drop();
+    cur_stmt = nullptr;
     vector<IR*> tmp;
     return tmp;
   }
@@ -223,7 +236,9 @@ vector<IR*> SQL_NOREC::post_fix_transform_select_stmt(IR* cur_stmt, unsigned mul
   if (cur_select_expr == nullptr) {
     cerr << "Error: ir_wrapper>add_func() failed. Func: SQL_NOREC::post_fix_transform_select_stmt(). Return empty vector. \n";
     trans_IR_vec[0]->deep_drop();
+    trans_IR_vec[0] = nullptr;
     cur_stmt->deep_drop();
+    cur_stmt = nullptr;
     vector<IR*> tmp;
     return tmp;
   }

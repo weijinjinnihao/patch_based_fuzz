@@ -128,6 +128,7 @@ vector<string *> Mutator::mutate_all(vector<IR *> &v_ir_collector, u64& total_mu
         unsigned tmp_hash = hash(tmp);
         if (res_hash.find(tmp_hash) != res_hash.end()) {
           mutated_ir->deep_drop();
+          mutated_ir=nullptr;
           // cerr << "Aboard old_ir because tmp_hash being saved before. "
           //      << "In func: Mutator::mutate_all(); \n";
           continue;
@@ -140,6 +141,7 @@ vector<string *> Mutator::mutate_all(vector<IR *> &v_ir_collector, u64& total_mu
         res.push_back(new_str);
 
         mutated_ir->deep_drop();
+        mutated_ir=nullptr;
 
       }
 
@@ -151,6 +153,7 @@ vector<string *> Mutator::mutate_all(vector<IR *> &v_ir_collector, u64& total_mu
 
         if (!root->swap_node(old_ir, new_ir)) {
           new_ir->deep_drop();
+          new_ir=nullptr;
           // total_mutate_gen_failed++;
           continue;
         }
@@ -158,6 +161,7 @@ vector<string *> Mutator::mutate_all(vector<IR *> &v_ir_collector, u64& total_mu
         if (!check_node_num(root, 300)) {
           root->swap_node(new_ir, old_ir);
           new_ir->deep_drop();
+          new_ir=nullptr;
           // total_mutate_gen_failed++;
           continue;
         }
@@ -167,6 +171,7 @@ vector<string *> Mutator::mutate_all(vector<IR *> &v_ir_collector, u64& total_mu
         if (res_hash.find(tmp_hash) != res_hash.end()) {
           root->swap_node(new_ir, old_ir);
           new_ir->deep_drop();
+          new_ir=nullptr;
           // total_mutate_gen_failed++;
           continue;
         }
@@ -177,6 +182,7 @@ vector<string *> Mutator::mutate_all(vector<IR *> &v_ir_collector, u64& total_mu
 
         root->swap_node(new_ir, old_ir);
         new_ir->deep_drop();
+        new_ir=nullptr;
       }
     }
   }
@@ -231,6 +237,7 @@ void Mutator::init(string f_testcase, string f_common_string, string pragma) {
 
     string strip_sql = extract_struct(v_ir.back());
     v_ir.back()->deep_drop();
+    v_ir.back() = nullptr;
     v_ir.clear();
 
     v_ir = parse_query_str_get_ir_set(strip_sql);
@@ -243,6 +250,7 @@ void Mutator::init(string f_testcase, string f_common_string, string pragma) {
 
     add_all_to_library(v_ir.back());
     v_ir.back()->deep_drop();
+    v_ir.back() = nullptr;
   }
 
   // init utils::m_tables
@@ -348,24 +356,28 @@ vector<IR *> Mutator::mutate_stmtlist(IR *root) {
     new_stmt_ir = get_from_libary_with_type(kStatement);
     if (new_stmt_ir == nullptr || new_stmt_ir->left_ == nullptr) {
       cur_root->deep_drop();
+      cur_root=nullptr;
       return res_vec;
     }
     if (new_stmt_ir->left_->type_ == kSelectStatement) {
       new_stmt_ir->deep_drop();
-      new_stmt_ir = NULL;
+      new_stmt_ir = nullptr;
     }
     continue;
   }
 
   IR* new_stmt_ir_tmp = new_stmt_ir->left_->deep_copy();  // kStatement -> specific_stmt_type
   new_stmt_ir->deep_drop();
+  new_stmt_ir = nullptr;
   new_stmt_ir = new_stmt_ir_tmp;
 
   // cerr << "Replacing rep_old_ir: " << rep_old_ir->to_string() << " to: " << new_stmt_ir->to_string() << ". \n\n\n";
 
   if(!p_oracle->ir_wrapper.replace_stmt_and_free(rep_old_ir, new_stmt_ir)){
     new_stmt_ir->deep_drop();
+    new_stmt_ir = nullptr;
     cur_root->deep_drop();
+    cur_root = nullptr;
     return res_vec;
   }
   res_vec.push_back(cur_root);
@@ -382,23 +394,27 @@ vector<IR *> Mutator::mutate_stmtlist(IR *root) {
     new_stmt_ir = get_from_libary_with_type(kStatement);
     if (new_stmt_ir == nullptr || new_stmt_ir->left_ == nullptr) {
       cur_root->deep_drop();
+      cur_root=nullptr;
       return res_vec;
     }
     if (new_stmt_ir->left_->type_ == kSelectStatement) {
       new_stmt_ir->deep_drop();
-      new_stmt_ir = NULL;
+      new_stmt_ir = nullptr;
     }
     continue;
   }
   new_stmt_ir_tmp = new_stmt_ir->left_->deep_copy();  // kStatement -> specific_stmt_type
   new_stmt_ir->deep_drop();
+  new_stmt_ir=nullptr;
   new_stmt_ir = new_stmt_ir_tmp;
 
   // cerr << "Inserting stmt: " << new_stmt_ir->to_string() << "\n\n\n";
 
   if(!p_oracle->ir_wrapper.append_stmt_after_idx(new_stmt_ir, insert_pos)) {
     new_stmt_ir->deep_drop();
+    new_stmt_ir=nullptr;
     cur_root->deep_drop();
+    cur_root=nullptr;
     return res_vec;
   }
   res_vec.push_back(cur_root);
@@ -437,6 +453,7 @@ vector<IR *> Mutator::mutate_selectcorelist(IR* ir_root, IR *old_ir) {
   IR* new_selectcore_ir = get_from_libary_with_type(kSelectCore);
   if (new_selectcore_ir == nullptr) {
     cur_root->deep_drop();
+    cur_root=nullptr;
     return res_vec;
   }
   string set_oper = "";
@@ -459,6 +476,7 @@ vector<IR *> Mutator::mutate_selectcorelist(IR* ir_root, IR *old_ir) {
   new_selectcore_ir = get_from_libary_with_type(kSelectCore);
   if (new_selectcore_ir == nullptr) {
     cur_root->deep_drop();
+    cur_root=nullptr;
     return res_vec;
   }
   set_oper = "";
@@ -804,6 +822,7 @@ string Mutator::remove_node_from_tree_by_index(string oracle_query,
       root->detach_node(node);
       result = root->to_string();
       root->deep_drop();
+      root=nullptr;
       return result;
     }
     current_index++;
@@ -965,22 +984,35 @@ IR *Mutator::strategy_delete(IR *cur) {
 
   DOLEFT
   res = cur->deep_copy();
-  if (res->left_ != NULL)
+  if (res->left_ != NULL){
     res->left_->deep_drop();
+    res->left_=nullptr;
+  }
+    
+    
   res->update_left(NULL);
 
   DORIGHT
   res = cur->deep_copy();
-  if (res->right_ != NULL)
+  if (res->right_ != NULL){
     res->right_->deep_drop();
+    res->right_=nullptr;
+  }
+    
   res->update_right(NULL);
 
   DOBOTH
   res = cur->deep_copy();
-  if (res->left_ != NULL)
+  if (res->left_ != NULL){
     res->left_->deep_drop();
-  if (res->right_ != NULL)
+    res->left_=nullptr;
+  }
+    
+  if (res->right_ != NULL){
     res->right_->deep_drop();
+    res->right_=nullptr;
+  }
+    
   res->update_left(NULL);
   res->update_right(NULL);
 
@@ -1032,6 +1064,7 @@ IR *Mutator::strategy_replace(IR *cur) {
   res = cur->deep_copy();
   if (res->left_ == NULL){
     res->deep_drop();
+    res = nullptr;
     return NULL;
   }
 
@@ -1043,16 +1076,21 @@ IR *Mutator::strategy_replace(IR *cur) {
     }
   } else { // new_node == NULL
     res->deep_drop();
+    res=nullptr;
     return NULL;
   }
-  if (res->left_ != NULL)
+  if (res->left_ != NULL){
     res->left_->deep_drop();
+    res->left_=nullptr;
+  }
+    
   res->update_left(new_node);
 
   DORIGHT
   res = cur->deep_copy();
   if (res->right_ == NULL) {
     res->deep_drop();
+    res = nullptr;
     return NULL;
   }
 
@@ -1063,16 +1101,21 @@ IR *Mutator::strategy_replace(IR *cur) {
     }
   } else { // new_node == NULL
     res->deep_drop();
+    res = nullptr;
     return NULL;
   }
-  if (res->right_ != NULL)
+  if (res->right_ != NULL){
     res->right_->deep_drop();
+    res->right_=nullptr;
+  }
+    
   res->update_right(new_node);
 
   DOBOTH
   res = cur->deep_copy();
   if (res->left_ == NULL || res->right_ == NULL) {
     res->deep_drop();
+    res = nullptr;
     return NULL;
   }
 
@@ -1086,8 +1129,10 @@ IR *Mutator::strategy_replace(IR *cur) {
   } else { // new_left == NULL
     if (new_right != NULL) {
       new_right->deep_drop();
+      new_right=nullptr;
     }
     res->deep_drop();
+    res = nullptr;
     return NULL;
   }
 
@@ -1098,15 +1143,23 @@ IR *Mutator::strategy_replace(IR *cur) {
   } else { // new_right == NULL
     if (new_left != NULL) {
       new_left->deep_drop();
+      new_left = nullptr;
     }
     res->deep_drop();
+    res = nullptr;
     return NULL;
   }
 
-  if (res->left_)
+  if (res->left_){
     res->left_->deep_drop();
-  if (res->right_)
+    res->left_=nullptr;
+  }
+    
+  if (res->right_){
     res->right_->deep_drop();
+    res->right_=nullptr;
+  }
+    
   res->update_left(new_left);
   res->update_right(new_right);
 
@@ -1155,6 +1208,7 @@ IR *Mutator::get_from_libary_with_type(IRTYPE type_) {
     if (matched_ir_node != NULL) {
       if (matched_ir_node->type_ != type_) {
         current_ir_root->deep_drop();
+        current_ir_root=nullptr;
         // cerr << "Error: with_type_ Column type mismatched!!!" << "\n\n\n";
         return NULL;
       }
@@ -1164,6 +1218,7 @@ IR *Mutator::get_from_libary_with_type(IRTYPE type_) {
     }
 
     current_ir_root->deep_drop();
+    current_ir_root=nullptr;
 
     if (return_matched_ir_node != NULL) {
       // cerr << "\n\n\nSuccessfuly with_type: with string: " << return_matched_ir_node->to_string() << endl;
@@ -1207,6 +1262,7 @@ IR *Mutator::get_from_libary_with_left_type(IRTYPE type_) {
     if (matched_ir_node != NULL) {
       if (matched_ir_node->left_->type_ != type_) {
         current_ir_root->deep_drop();
+        current_ir_root=nullptr;
         // cerr << "Error: Column type mismatched!!!" << "\n\n\n";
         return NULL;
       }
@@ -1217,6 +1273,7 @@ IR *Mutator::get_from_libary_with_left_type(IRTYPE type_) {
     }
 
     current_ir_root->deep_drop();
+    current_ir_root=nullptr;
 
     if (return_matched_ir_node != NULL) {
       // cerr << "Retunning ir_type: " << get_string_by_ir_type(type_) << " with node: " << return_matched_ir_node->to_string() << "\n\n\n";
@@ -1260,6 +1317,7 @@ IR *Mutator::get_from_libary_with_right_type(IRTYPE type_) {
     if (matched_ir_node != NULL) {
       if (matched_ir_node->right_->type_ != type_) {
         current_ir_root->deep_drop();
+        current_ir_root=nullptr;
         // cerr << "Error: Column type mismatched!!!" << "\n\n\n";
         return NULL;
       }
@@ -1270,6 +1328,7 @@ IR *Mutator::get_from_libary_with_right_type(IRTYPE type_) {
     }
 
     current_ir_root->deep_drop();
+    current_ir_root=nullptr;
 
     if (return_matched_ir_node != NULL) {
       // cerr << "Retunning ir_type: " << get_string_by_ir_type(type_) << " with node: " << return_matched_ir_node->to_string() << "\n\n\n";
@@ -1392,6 +1451,7 @@ void Mutator::add_all_to_library(string whole_query_str,
     }
 
     root->deep_drop();
+    root=nullptr;
   }
 }
 
@@ -2737,6 +2797,7 @@ string Mutator::extract_struct(string query) {
     IR *root = original_ir_tree[original_ir_tree.size() - 1];
     res = extract_struct(root);
     root->deep_drop();
+    root=nullptr;
   }
 
   return res;

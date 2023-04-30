@@ -4532,6 +4532,7 @@ static void perform_dry_run(char** argv) {
     vector<IR *> ir_tree = g_mutator.parse_query_str_get_ir_set(query_str);
     if (ir_tree.size() != 0) {
       ir_tree.back()->deep_drop();
+      ir_tree.back() = nullptr;
       res = calibrate_case(argv, q, use_mem, 0, 1);
     } else {
       cout << "Query seed: '" << use_mem << " is not passing the parser!"
@@ -5146,6 +5147,7 @@ static u8 save_if_interesting(char **argv, string &query_str, const ALL_COMP_RES
           all_comp_res
           );
       ir_tree.back()->deep_drop();
+      ir_tree.back() = nullptr;
     } else {
       // cerr << "query_str parse failed: " << query_str << endl;
       return keeping; // keep = 0, meaning nothing added to the queue.
@@ -7856,6 +7858,7 @@ static u8 fuzz_one(char **argv) {
   if (mutated_tree.size() < 1) {
     total_mutate_all_failed++;
     ir_set.back()->deep_drop();
+    ir_set.back() = nullptr;
     // cerr << "The generated mutated_tree.size() is 0, going to abandon_entry(). \n\n\n";
     goto abandon_entry;
   }
@@ -7871,6 +7874,7 @@ static u8 fuzz_one(char **argv) {
   // cerr << "After mutate_all, the original ir_set is: " << ir_set.back()->to_string() << "\n\n\n";
 
   ir_set.back()->deep_drop();
+  ir_set.back() = nullptr;
   show_stats();
   stage_max = mutated_tree.size();
   stage_cur = 0;
@@ -7966,12 +7970,14 @@ static u8 fuzz_one(char **argv) {
     /* Clean up allocated resource. */
     for (int i = 0; i < all_pre_trans_vec.size(); i++){
       all_pre_trans_vec[i]->deep_drop();
+      all_pre_trans_vec[i]=nullptr;
     }
 
     for (int i = 0; i < all_post_trans_vec_all_runs.size(); i++){
       for (int j = 0; j < all_post_trans_vec_all_runs[i].size(); j++){
         for (int k = 0; k < all_post_trans_vec_all_runs[i][j].size(); k++){
           all_post_trans_vec_all_runs[i][j][k]->deep_drop();
+          all_post_trans_vec_all_runs[i][j][k]=nullptr;
         }
       }
     }
@@ -7980,6 +7986,7 @@ static u8 fuzz_one(char **argv) {
     
     if (cur_ir_tree.size() > 0){
       cur_ir_tree.back()->deep_drop();
+      cur_ir_tree.back()=nullptr;
     }
 
     if (stop_soon) {
@@ -8025,6 +8032,7 @@ abandon_entry:
 
   for (IR* ori_valid : ori_valid_stmts) {
     ori_valid->deep_drop();
+    ori_valid=nullptr;
   }
   ori_valid_stmts.clear();
 

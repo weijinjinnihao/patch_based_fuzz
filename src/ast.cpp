@@ -230,20 +230,26 @@ void IR::drop() {
     this->op_ = NULL;
   }
   // 使用智能指针释放this也不行
-  //std::unique_ptr<IR> ir_ptr(this);
-  //ir_ptr.reset(); 
+  // std::unique_ptr<IR> ir_ptr(this);
+  // ir_ptr.reset(); 
   // delete this 后，由于其它一些变量 引用了对象，再同过其它变量访问地址时，就会导致 use after free 错误
   delete this;
 }
 
 void IR::deep_drop() {
 
-  if (this->left_)
+  if (this->left_){
     this->left_->deep_drop();
+    // 将指针设置为nullptr
+    this->left_ = nullptr;
+  }
+    
 
-  if (this->right_)
+  if (this->right_){
     this->right_->deep_drop();
-
+    this->right_ = nullptr;
+  }
+  
   this->drop();
 }
 

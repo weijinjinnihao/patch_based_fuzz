@@ -30,6 +30,7 @@ void SQL_LIKELY::get_v_valid_type(
       }
       if ( !(v_cur_stmt_ir.back()->left_ != NULL && v_cur_stmt_ir.back()->left_->left_ != NULL) ) {
         v_cur_stmt_ir.back()->deep_drop();
+        v_cur_stmt_ir.back() = nullptr;
         continue;
       }
 
@@ -37,6 +38,7 @@ void SQL_LIKELY::get_v_valid_type(
       v_valid_type.push_back(get_stmt_LIKELY_type(cur_stmt_ir));
 
       v_cur_stmt_ir.back()->deep_drop();
+      v_cur_stmt_ir.back() = nullptr;
 
     } else {
       // cerr << "Error: For the current begin_idx, we cannot find the end_idx. \n\n\n";
@@ -213,7 +215,9 @@ vector<IR*> SQL_LIKELY::post_fix_transform_select_stmt(IR* cur_stmt, unsigned mu
   if (cur_where_expr == nullptr) {
     cerr << "Error: ir_wrapper>add_func() failed. Func: SQL_LIKELY::post_fix_transform_select_stmt(). Return empty vector. \n";
     trans_IR_vec[0]->deep_drop();
+    trans_IR_vec[0] = nullptr;
     cur_stmt->deep_drop();
+    cur_stmt = nullptr;
     vector<IR*> tmp;
     return tmp;
   }
@@ -228,7 +232,9 @@ vector<IR*> SQL_LIKELY::post_fix_transform_select_stmt(IR* cur_stmt, unsigned mu
   if (cur_where_expr == nullptr) {
     cerr << "Error: ir_wrapper>add_func() failed. Func: SQL_LIKELY::post_fix_transform_select_stmt(). Return empty vector. \n";
     trans_IR_vec[0]->deep_drop();
+    trans_IR_vec[0] = nullptr;
     cur_stmt->deep_drop();
+    cur_stmt = nullptr;
     vector<IR*> tmp;
     return tmp;
   }

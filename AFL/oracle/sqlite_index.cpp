@@ -29,6 +29,7 @@ void SQL_INDEX::get_v_valid_type(const string &cmd_str,
       }
       if ( !(v_cur_stmt_ir.back()->left_ != NULL && v_cur_stmt_ir.back()->left_->left_ != NULL) ) {
         v_cur_stmt_ir.back()->deep_drop();
+        v_cur_stmt_ir.back() =  nullptr;
         continue;
       }
 
@@ -36,6 +37,7 @@ void SQL_INDEX::get_v_valid_type(const string &cmd_str,
       v_valid_type.push_back(get_stmt_INDEX_type(cur_stmt_ir));
 
       v_cur_stmt_ir.back()->deep_drop();
+      v_cur_stmt_ir.back() =  nullptr;
 
     } else {
       // cerr << "Error: For the current begin_idx, we cannot find the end_idx. \n\n\n";
@@ -199,6 +201,7 @@ IR* SQL_INDEX::pre_fix_transform_normal_stmt(IR* cur_stmt) {
   }
   return cur_stmt;
   cur_stmt->deep_drop();
+  cur_stmt = nullptr;
   return nullptr;
 }
 
@@ -231,10 +234,12 @@ IR* SQL_INDEX::get_random_append_stmts_ir() {
   if (stmt_list_vec.size() == 0) {
     cerr << "FATAL ERROR: SQL_INDEX::get_random_append_stmts_ir() getting stmt failed. \n"; 
     cur_root->deep_drop();
+    cur_root = nullptr;
     return nullptr;
   }
   IR* first_stmt = stmt_list_vec[0]->deep_copy();
   cur_root->deep_drop();
+  cur_root = nullptr;
   return first_stmt;
 }
 

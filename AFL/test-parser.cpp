@@ -58,6 +58,7 @@ IR* test_parse(string &query) {
   if (tostring.size() <= 0) {
     cerr << RED << "\n\n\ntostring failed" << DEF << "\n\n\n";
     root->deep_drop();
+    root = nullptr;
     return NULL;
   }
   cout << "\n\n\ntostring: >" << tostring << "<" << "\n\n\n";
@@ -66,12 +67,14 @@ IR* test_parse(string &query) {
   if (structure.size() <= 0) {
     cerr << RED << "extract failed" << DEF << "\n\n\n";
     root->deep_drop();
+    root = nullptr;
     return NULL;
   }
   cout << "structur: >" << structure << "<" << "\n\n\n";
 
   IR* cur_root = root->deep_copy();
   root->deep_drop();
+  root = nullptr;
   v_ir.clear();
 
   return cur_root;
@@ -104,6 +107,7 @@ bool try_validate(IR* cur_root) {
   if (validity.size() <= 0) {
     cerr << RED << "validate failed" << DEF << endl;
     cur_root->deep_drop();
+    cur_root = nullptr;
     return false;
   }
   vector<string> validity_vec = string_splitter(validity, ';');

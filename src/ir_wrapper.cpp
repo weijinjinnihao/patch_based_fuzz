@@ -41,12 +41,14 @@ vector<IR*> IRWrapper::get_ir_node_in_stmt_with_type(IR* cur_stmt,
     std::vector<IR*> ir_vec_matching_type;
     IR* cur_IR = cur_stmt; 
     // Begin iterating. 
-    while (!is_finished_search && cur_IR != nullptr) {
-        ir_vec_iter.push_back(cur_IR);
-        // 如果 cur_IR 已经被释放了,会导致cur_IR->type_ use after free,这样修该后还是报错
-        if (cur_IR != nullptr && cur_IR->type_ == ir_type) {
-            ir_vec_matching_type.push_back(cur_IR);
+    while (!is_finished_search) {
+        if (cur_IR != nullptr) {
+            ir_vec_iter.push_back(cur_IR);
+            if (cur_IR != nullptr && cur_IR->type_ == ir_type) {
+                ir_vec_matching_type.push_back(cur_IR);
+            }
         }
+        
 
         if (cur_IR->left_ != nullptr){
             cur_IR = cur_IR->left_;
@@ -63,7 +65,7 @@ vector<IR*> IRWrapper::get_ir_node_in_stmt_with_type(IR* cur_stmt,
             }
             continue;
         }
-        }
+    }
         
     
 
@@ -258,7 +260,6 @@ vector<IR*> IRWrapper::get_stmtlist_IR_vec(){
     while (true){ // Iterate from the last kstatementlist to the first. 
         stmt_list_v_rev.push_back(stmt_IR_p);
         if (stmt_IR_p->right_ == nullptr || stmt_IR_p->left_ == nullptr) break; // This is the first kstatementlist. 
-
         stmt_IR_p = stmt_IR_p -> left_; // Lead to the previous kstatementlist. 
     }
 
@@ -284,6 +285,7 @@ bool IRWrapper::append_stmt_after_idx(string app_str, int idx, Mutator& g_mutato
     IR* app_IR_node = app_IR_vec.back()->left_->left_->left_;  // Program -> kStatementlist -> kStatement -> kSpecificStmt 
     app_IR_node = app_IR_node->deep_copy();
     app_IR_vec.back()->deep_drop();
+    app_IR_vec.back() = nullptr;
     app_IR_vec.clear();
 
     return this->append_stmt_after_idx(app_IR_node, idx);
@@ -299,6 +301,7 @@ bool IRWrapper::append_stmt_at_end(string app_str, Mutator& g_mutator) {
     IR* app_IR_node = app_IR_vec.back()->left_->left_->left_;  // Program -> Statementlist -> Statement -> kSpecificStmt
     app_IR_node = app_IR_node->deep_copy();
     app_IR_vec.back()->deep_drop();
+    app_IR_vec.back() = nullptr;
     app_IR_vec.clear();
 
     return this->append_stmt_after_idx(app_IR_node, stmt_list_v.size()-1);
@@ -323,6 +326,7 @@ bool IRWrapper::append_stmt_after_idx(IR* app_IR_node, int idx) { // Please prov
 
         if (!ir_root->swap_node(insert_pos_ir, new_res)){ // swap_node only rewrite the parent of insert_pos_ir, it will not affect     insert_pos_ir. 
             new_res->deep_drop();
+            new_res = nullptr;
             // FATAL("Error: Swap node failure? In function: IRWrapper::append_stmt_after_idx. \n");
             std::cerr << "Error: Swap node failure? In function: IRWrapper::append_stmt_after_idx. idx = " << idx << "\n";
             return false;
@@ -339,14 +343,16 @@ bool IRWrapper::append_stmt_after_idx(IR* app_IR_node, int idx) { // Please prov
 
         if (!ir_root->swap_node(insert_before_pos_ir, second_res)) {
             second_res->deep_drop();
+            second_res = nullptr;
             starting_res->deep_drop();
+            starting_res = nullptr;
             std::cerr << "Error: Swap node failure? In function: IRWrapper::append_stmt_after_idx. idx = 0; \n";
             return false;
         }
 
         starting_res->update_left(app_IR_node);
         insert_before_pos_ir->deep_drop(); // We already deep_copied it. We use the new one, free the original. 
-
+        insert_before_pos_ir = nullptr;
         return true;
         
     }
@@ -385,10 +391,12 @@ bool IRWrapper::remove_stmt_at_idx_and_free(unsigned idx){
         if (!this->ir_root->swap_node(next_stmt, new_next_stmt)){
             cerr << "Error: swap_node failure. idx: " << idx << ". In function: IRWrapper::remove_stmt_at_idx_and_free(); \n";
             new_next_stmt->deep_drop();
+            new_next_stmt = nullptr;
             return false;
         }
         next_stmt->deep_drop(); // next_stmt->deep_drop() will lead to rov_stmt, because next_stmt->left_ is rov_stmt. 
         // rov_stmt->deep_drop();
+        next_stmt = nullptr;
 
     } else { 
         IR* prev_stmt = stmt_list_v[idx-1];
@@ -398,6 +406,7 @@ bool IRWrapper::remove_stmt_at_idx_and_free(unsigned idx){
         }
         rov_stmt->left_ = nullptr; // Cut the connection between rov_stmt and prev_stmt, prevent accidentally deep_drop for prev_stmt. 
         rov_stmt->deep_drop();
+        rov_stmt = nullptr;
     }
 
     return true;
@@ -447,6 +456,7 @@ bool IRWrapper::append_components_at_ir(IR* parent_node, IR* app_node, bool is_l
             IR* old_node = parent_node->left_;
             parent_node->detach_node(old_node);
             old_node->deep_drop();
+            old_node = nullptr;
         }
         parent_node->update_left(app_node);
         return true;
@@ -459,6 +469,7 @@ bool IRWrapper::append_components_at_ir(IR* parent_node, IR* app_node, bool is_l
             IR* old_node = parent_node->right_;
             parent_node->detach_node(old_node);
             old_node->deep_drop();
+            old_node=nullptr;
         }
         parent_node->update_right(app_node);
         return true;
@@ -470,6 +481,7 @@ bool IRWrapper::remove_components_at_ir(IR* rov_ir) {
         IR* parent_node = rov_ir->get_parent();
         parent_node->detach_node(rov_ir);
         rov_ir->deep_drop();
+        rov_ir =nullptr;
         return true;
     }
     cerr << "Error: rov_ir or rov_ir->parent_ are nullptr. Function IRWrapper::remove_components_at_ir() \n";
@@ -578,12 +590,14 @@ IR* IRWrapper::add_cast_expr(IR* ori_expr, string column_type_str) {
 
     if (!ir_root->swap_node(ori_expr, res)) {
         res->deep_drop();
+        res = nullptr;
         // FATAL("Error: Swap node failure? In function: IRWrapper::append_stmt_after_idx. \n");
         std::cerr << "Error: Swap node failure? In function: IRWrapper::add_cast_expr. \n";
         return nullptr;
     }
 
     ori_expr->deep_drop();
+    ori_expr =nullptr;
     return res;
 
 }
@@ -610,12 +624,14 @@ IR* IRWrapper::add_func(IR* ori_expr, string func_name_str) {
 
     if (!ir_root->swap_node(ori_expr, new_expr_ir)) {
         new_expr_ir->deep_drop();
+        new_expr_ir=nullptr;
         // FATAL("Error: Swap node failure? In function: IRWrapper::append_stmt_after_idx. \n");
         std::cerr << "Error: Swap node failure? In function: IRWrapper::add_func. \n";
         return nullptr;
     }
 
     ori_expr->deep_drop();
+    ori_expr=nullptr;
     return new_expr_ir;
 
 }
@@ -632,14 +648,16 @@ IR* IRWrapper::add_binary_op(IR* ori_expr, IR* left_stmt_expr, IR*
 
     if (!ir_root->swap_node(ori_expr, new_expr_ir)) {
         new_expr_ir->deep_drop();
+        new_expr_ir=nullptr;
         // FATAL("Error: Swap node failure? In function: IRWrapper::append_stmt_after_idx. \n");
         std::cerr << "Error: Swap node failure? In function: IRWrapper::add_binary_op. \n";
         return nullptr;
     }
 
     ori_expr->deep_drop();
-    if (is_free_left) {left_stmt_expr->deep_drop();}
-    if (is_free_right) {right_stmt_expr->deep_drop();}
+    ori_expr=nullptr;
+    if (is_free_left) {left_stmt_expr->deep_drop();left_stmt_expr=nullptr;}
+    if (is_free_right) {right_stmt_expr->deep_drop();right_stmt_expr=nullptr;}
     return new_expr_ir;
 
 }
@@ -803,13 +821,15 @@ bool IRWrapper::combine_stmt_in_selectcore(IR* left_stmt, IR* right_stmt, string
 
     if(!cur_stmt->swap_node(cur_selectcorelist, new_selectcorelist)){
         new_selectcorelist->deep_drop();
+        new_selectcorelist=nullptr;
         cerr << "Error: Swap node failure; in Func: IRWrapper::combine_stmt_in_selectcore(IR* left_stmt, IR* right_stmt, string set_operator_str, bool is_free_left, bool is_free_right)" << endl;
         return false;
     }
     cur_selectcorelist->deep_drop();
+    cur_selectcorelist=nullptr;
 
-    if (is_free_left) {left_stmt->deep_drop();}
-    if (is_free_right) {right_stmt->deep_drop();}
+    if (is_free_left) {left_stmt->deep_drop();left_stmt=nullptr;}
+    if (is_free_right) {right_stmt->deep_drop();right_stmt=nullptr;}
     
     return true;
 }
@@ -906,6 +926,7 @@ bool IRWrapper::append_selectcore_clause_after_idx(IR* cur_stmt, IR* app_ir, str
 
         if (!cur_stmt->swap_node(app_pos_ir, new_selectcorelist)) {
             new_selectcorelist->deep_drop();
+            new_selectcorelist=nullptr;
             std::cerr << "IRWrapper::append_selectcore_clause_after_idx. idx = " << idx << "\n";
             return false;
         }
@@ -922,6 +943,7 @@ bool IRWrapper::append_selectcore_clause_after_idx(IR* cur_stmt, IR* app_ir, str
 
         if (!cur_stmt->swap_node(app_pos_ir, second_res)) {
             second_res->deep_drop();
+            second_res=nullptr;
             std::cerr << "IRWrapper::append_selectcore_clause_after_idx. idx = " << idx << "\n";
             return false;
         }
@@ -952,10 +974,12 @@ bool IRWrapper::remove_selectcore_clause_at_idx_and_free(IR* cur_stmt, int idx) 
         IR* next_selectcorelist_ir = selectcore_vec[1]->parent_; // kSelectCore -> kSelectCoreList
         if (!cur_stmt->swap_node(next_selectcorelist_ir, next_selectcore_ir)) {
             next_selectcore_ir->deep_drop();
+            next_selectcore_ir=nullptr;
             cerr << "swap_node failed: Func: IRWrapper::remove_selectcore_clause_at_idx_and_free(); \n";
             return false;
         }
         next_selectcorelist_ir->deep_drop(); // Remove the kSelectCore for the first statement, and the kSelectCorelist for the second statment. 
+        next_selectcorelist_ir=nullptr;
         return true;
     } else {
         IR* prev_selectcore_ir;
@@ -965,11 +989,13 @@ bool IRWrapper::remove_selectcore_clause_at_idx_and_free(IR* cur_stmt, int idx) 
 
         if (!cur_stmt->swap_node(rov_selectcore_ir, prev_selectcore_ir)) {
             prev_selectcore_ir->deep_drop();
+            prev_selectcore_ir = nullptr;
             cerr << "swap_node failed: Func: IRWrapper::remove_selectcore_clause_at_idx_and_free(); \n";
             return false;
         }
 
         rov_selectcore_ir->deep_drop(); // Remove all the child nodes. Including the original prev_selectcore_ir. 
+        rov_selectcore_ir=nullptr;
         return true;
     }
 }

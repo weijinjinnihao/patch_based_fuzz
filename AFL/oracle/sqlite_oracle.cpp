@@ -57,6 +57,7 @@ IR* SQL_ORACLE::get_random_mutated_valid_stmt() {
     if (ir_tree.back()->left_ == nullptr || ir_tree.back()->left_->left_ == nullptr || ir_tree.back()->left_->left_->left_ == nullptr)
       {
         ir_tree.back()->deep_drop();
+        ir_tree.back() = nullptr;
         continue;
       }
     // kProgram -> kStatementList -> kStatement -> specific_statement_type_
@@ -65,6 +66,7 @@ IR* SQL_ORACLE::get_random_mutated_valid_stmt() {
     if (!this->is_oracle_select_stmt(cur_ir_stmt))
       {
         ir_tree.back() -> deep_drop();
+        ir_tree.back() = nullptr;
         continue;
       }
 
@@ -75,6 +77,7 @@ IR* SQL_ORACLE::get_random_mutated_valid_stmt() {
       this->ir_wrapper.set_ir_root(root);
       IR* returned_stmt_ir = ir_wrapper.get_stmt_ir_vec()[0]->deep_copy();
       root->deep_drop();
+      root = nullptr;
       return returned_stmt_ir;
     }
 
@@ -86,6 +89,7 @@ IR* SQL_ORACLE::get_random_mutated_valid_stmt() {
       this->ir_wrapper.set_ir_root(root);
       IR* returned_stmt_ir = ir_wrapper.get_stmt_ir_vec()[0]->deep_copy();
       root->deep_drop();
+      root = nullptr;
       return returned_stmt_ir;
     }
 
@@ -141,6 +145,7 @@ IR* SQL_ORACLE::get_random_mutated_valid_stmt() {
 
       if (!root->swap_node(mutate_ir_node, new_mutated_ir_node)) {
         new_mutated_ir_node->deep_drop();
+        new_mutated_ir_node = nullptr;
         continue;
       }
 
@@ -152,6 +157,7 @@ IR* SQL_ORACLE::get_random_mutated_valid_stmt() {
 
       root->swap_node(new_mutated_ir_node, mutate_ir_node);
       new_mutated_ir_node->deep_drop();
+      new_mutated_ir_node = nullptr;
 
       if (new_valid_select_str == ori_valid_select) {
         continue;
@@ -172,6 +178,7 @@ IR* SQL_ORACLE::get_random_mutated_valid_stmt() {
       IR* new_ir_verified_stmt = new_ir_verified.back()->left_->left_->left_; 
       if (is_oracle_select_stmt(new_ir_verified_stmt) && new_valid_select_struct != ori_valid_select_struct) {
         root->deep_drop();
+        root = nullptr;
         is_success = true;
 
         if (use_temp)
@@ -180,10 +187,12 @@ IR* SQL_ORACLE::get_random_mutated_valid_stmt() {
         this->ir_wrapper.set_ir_root(new_ir_verified.back());
         IR* returned_stmt_ir = ir_wrapper.get_stmt_ir_vec()[0]->deep_copy();
         new_ir_verified.back()->deep_drop();
+        new_ir_verified.back() = nullptr;
         return returned_stmt_ir;
       }
       else {
         new_ir_verified.back()->deep_drop();
+        new_ir_verified.back() = nullptr;
         total_oracle_rand_valid_failed++;
         // cerr << "Error:  In function SQL_ORACLE::get_random_mutated_valid_stmt(), the mutated string has the same structure as ori. "
             //  << new_valid_select_struct << "\n\n\n";
@@ -198,7 +207,7 @@ IR* SQL_ORACLE::get_random_mutated_valid_stmt() {
      * again.
      */
     root->deep_drop();
-    root = NULL;
+    root = nullptr;
   }
   FATAL("Unexpected code execution in '%s'", "SQL_ORACLE::get_random_mutated_valid_stmt()");
   return nullptr;
@@ -265,12 +274,14 @@ bool SQL_ORACLE::is_oracle_select_stmt_str(const string &query) {
   IR *cur_root = ir_set.back();
   if (!(cur_root->left_ != NULL && cur_root->left_->left_ != NULL)) {
     cur_root->deep_drop();
+    cur_root = nullptr;
     return false;
   }
 
   IR *cur_stmt = cur_root->left_->left_;
   bool res = is_oracle_select_stmt(cur_stmt);
   cur_root->deep_drop();
+  cur_root = nullptr;
   return res;
 };
 

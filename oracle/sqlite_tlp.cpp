@@ -311,6 +311,7 @@ void SQL_TLP::get_v_valid_type(const string &cmd_str,
       }
       if ( !(v_cur_stmt_ir.back()->left_ != NULL && v_cur_stmt_ir.back()->left_->left_ != NULL) ) {
         v_cur_stmt_ir.back()->deep_drop();
+        v_cur_stmt_ir.back() = nullptr;
         continue;
       }
 
@@ -318,6 +319,7 @@ void SQL_TLP::get_v_valid_type(const string &cmd_str,
       v_valid_type.push_back(get_stmt_TLP_type(cur_stmt_ir));
 
       v_cur_stmt_ir.back()->deep_drop();
+      v_cur_stmt_ir.back() = nullptr;
 
     } else {
       // cerr << "Error: For the current begin_idx, we cannot find the end_idx. \n\n\n";
@@ -427,11 +429,13 @@ IR* SQL_TLP::transform_aggr(IR* cur_stmt, bool is_UNION_ALL, VALID_STMT_TYPE_TLP
   vector<IR*> v_aggr_func_ir = ir_wrapper.get_ir_node_in_stmt_with_type(cur_stmt, kFunctionName, false);
   if (v_aggr_func_ir.size() == 0) {
     cur_stmt->deep_drop();
+    cur_stmt=nullptr;
     // cerr << "Debug: Cannot find kFunctionName. \n\n\n";
     return NULL;
   }
   if (v_aggr_func_ir[0]->left_ == NULL) {
     cur_stmt->deep_drop();
+    cur_stmt=nullptr;
     // cerr << "Debug: Cannot find kFunctionName -> left_. \n\n\n";
     return NULL;
   }
@@ -448,11 +452,13 @@ IR* SQL_TLP::transform_aggr(IR* cur_stmt, bool is_UNION_ALL, VALID_STMT_TYPE_TLP
     IR* ori_opt_column_ir = result_column_ir->right_;
     cur_stmt->swap_node(ori_opt_column_ir, res);
     ori_opt_column_ir->deep_drop();
+    ori_opt_column_ir=nullptr;
   } else if (tlp_type == VALID_STMT_TYPE_TLP::AGGR_AVG) {
 
     vector<IR*> v_result_column_list = ir_wrapper.get_result_column_list_in_select_clause(cur_stmt);
     if (v_result_column_list.size() == 0) {
       cur_stmt->deep_drop();
+      cur_stmt=nullptr;
       // cerr << "Debug: Cannot find result_column_list. \n\n\n";
       return NULL;
     }
@@ -478,6 +484,7 @@ IR* SQL_TLP::transform_aggr(IR* cur_stmt, bool is_UNION_ALL, VALID_STMT_TYPE_TLP
     )) {
       // cerr << "Debug Logical Error: The found ori_result_column_list: " << ori_result_column_list->to_string() << " does not have kFunctionName. \n\n\n";
       cur_stmt->deep_drop();
+      cur_stmt = nullptr;
       return NULL;
     }
     IR* ori_result_column_expr_ = ori_result_column_list->left_ ->left_;
@@ -502,18 +509,21 @@ IR* SQL_TLP::transform_aggr(IR* cur_stmt, bool is_UNION_ALL, VALID_STMT_TYPE_TLP
     /* replace the original result_column_list */
     cur_stmt->swap_node(ori_result_column_list, new_result_column_list);
     ori_result_column_list->deep_drop();
+    ori_result_column_list=nullptr;
 
     is_avg_aggr = true;
 
   } else {
     // cerr << "Debug Logic Error: Not aggr type. \n\n\n";
     cur_stmt->deep_drop();
+    cur_stmt=nullptr;
     return NULL;
   }
 
   IR* cur_stmt_inner = transform_non_aggr(cur_stmt, is_UNION_ALL, tlp_type);
   /* Finished generating inner stmt. Deep drop. */
   cur_stmt->deep_drop();
+  cur_stmt=nullptr;
 
   /* Fill in SELECT AGGR(aggr) from (inner stmt) */
   IR* cur_stmt_outer;
@@ -533,6 +543,7 @@ IR* SQL_TLP::transform_aggr(IR* cur_stmt, bool is_UNION_ALL, VALID_STMT_TYPE_TLP
 
   cur_stmt_outer->swap_node(ori_outer_expr, cur_stmt_inner);
   ori_outer_expr->deep_drop();
+  ori_outer_expr=nullptr;
 
   return cur_stmt_outer;
 }
@@ -600,6 +611,7 @@ vector<IR*> SQL_TLP::post_fix_transform_select_stmt(IR* cur_stmt, unsigned multi
       IR* where_expr_rov = cur_opt_where->left_;
       ori_ir_root->detach_node(where_expr_rov);
       where_expr_rov->deep_drop();
+      where_expr_rov=nullptr;
     }
   }
   trans_IR_vec.push_back(ori_ir_root);
@@ -608,6 +620,7 @@ vector<IR*> SQL_TLP::post_fix_transform_select_stmt(IR* cur_stmt, unsigned multi
   if (cur_stmt_TLP_type == VALID_STMT_TYPE_TLP::TLP_UNKNOWN) {
     // cerr << "Debug: for cur_stmt: " << cur_stmt->to_string() << ". TLP_UNKNOWN type. \n\n\n";
     ori_ir_root->deep_drop();
+    ori_ir_root=nullptr;
     trans_IR_vec.clear();
     return trans_IR_vec;
   }
@@ -622,6 +635,7 @@ vector<IR*> SQL_TLP::post_fix_transform_select_stmt(IR* cur_stmt, unsigned multi
       // IR* transformed_stmt = transform_aggr(cur_stmt, true, cur_stmt_TLP_type);
       // trans_IR_vec.push_back(transformed_stmt);
       ori_ir_root->deep_drop();
+      ori_ir_root=nullptr;
       trans_IR_vec.clear();
       return trans_IR_vec;
     }
@@ -664,6 +678,7 @@ vector<IR*> SQL_TLP::post_fix_transform_select_stmt(IR* cur_stmt, unsigned multi
     default:
       // cerr << "Debug: for cur_stmt: " << cur_stmt->to_string() << ". TLP_UNKNOWN type. \n\n\n";
       ori_ir_root->deep_drop();
+      ori_ir_root=nullptr;
       trans_IR_vec.clear();
       return trans_IR_vec;
   }
@@ -673,6 +688,7 @@ vector<IR*> SQL_TLP::post_fix_transform_select_stmt(IR* cur_stmt, unsigned multi
   else {
     // cerr << "Debug: for cur_stmt: " << cur_stmt->to_string() << ". Failed to transform. \n\n\n";
     ori_ir_root->deep_drop();
+    ori_ir_root=nullptr;
     trans_IR_vec.clear();
     return trans_IR_vec;
   }
