@@ -1,0 +1,312 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 333; 
+CREATE INDEX i6 ON v0 ( c3 ); 
+CREATE INDEX i7 ON v0 ( c2 ); 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14 INTEGER PRIMARY KEY, c15 ); 
+ALTER TABLE v8 DROP COLUMN c9; 
+ALTER TABLE v8 DROP COLUMN c10; 
+CREATE INDEX i16 ON v4 ( c3 ); 
+CREATE TABLE v17 ( c18, c19 TEXT, c20 REAL, PRIMARY KEY ( c18, c20 ), UNIQUE ( c18 ) ); 
+CREATE TABLE v21 ( c22, c23, c24, c25 REAL, c26, c27, c28, c29, c30, c31, c32, c33, c34, FOREIGN KEY ( c26, c26, c32, c32, c33, c34, c26, c28, c32, c34, c25, c31 ) REFERENCES t4 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE INDEX i35 ON v8 ( c10 ); 
+CREATE INDEX i36 ON v17 ( c19 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a37, v0 AS a38 NATURAL JOIN v8 AS a39 ORDER BY 333; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 GROUP BY y ( a40.c1 ) ORDER BY 333; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c3, count ( ( NOT ( a41.c1 IS NULL ) ) AND ( NOT ( a41.c3 IS NULL ) ) ) FROM v0 AS a41 ORDER BY 333; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a42.c19 ) FROM v17 AS a42 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 NATURAL JOIN v12 AS a44 ORDER BY 333; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v45 AS ( SELECT c13 FROM v45 AS a47 WHERE c2 LIKE 'v0' ORDER BY 333 ) SELECT * FROM v45 AS a46 ORDER BY 333; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a48.c10, count ( ( NOT ( a48.c9 IS NULL ) ) AND ( NOT ( a48.c11 IS NULL ) ) ) FROM v8 AS a48 ORDER BY 333; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a49 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 WHERE a50.c1 = a50.c3 > 18446744073709551488 ORDER BY 333; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a51 ORDER BY 333; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: cannot drop PRIMARY KEY column: "c9"
+Parse error near line 9: views may not be indexed
+Runtime error near line 12: error in index i6 after drop column: no such column: c3
+Parse error near line 13: no such column: c10
+  CREATE INDEX i35 ON v8 ( c10 ); 
+             error here ---^
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a42.c19 ) FROM v17 AS a42 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: circular reference: v45
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a48.c10
+  SELECT a48.c10, count ( ( NOT ( a48.c9 IS NULL ) ) AND ( NOT ( a48.c11 IS NULL
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 333; 
+; 
+; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14 INTEGER PRIMARY KEY, c15 ); 
+ALTER TABLE v8 DROP COLUMN c9; 
+ALTER TABLE v8 DROP COLUMN c10; 
+; 
+CREATE TABLE v17 ( c18, c19 TEXT, c20 REAL, PRIMARY KEY ( c18, c20 ), UNIQUE ( c18 ) ); 
+CREATE TABLE v21 ( c22, c23, c24, c25 REAL, c26, c27, c28, c29, c30, c31, c32, c33, c34, FOREIGN KEY ( c26, c26, c32, c32, c33, c34, c26, c28, c32, c34, c25, c31 ) REFERENCES t4 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a37, v0 AS a38 NATURAL JOIN v8 AS a39 ORDER BY 333; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 GROUP BY y ( a40.c1 ) ORDER BY 333; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c3, count ( ( NOT ( a41.c1 IS NULL ) ) AND ( NOT ( a41.c3 IS NULL ) ) ) FROM v0 AS a41 ORDER BY 333; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a42.c19 ) FROM v17 AS a42 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 NATURAL JOIN v12 AS a44 ORDER BY 333; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v45 AS ( SELECT c13 FROM v45 AS a47 WHERE c2 LIKE 'v0' ORDER BY 333 ) SELECT * FROM v45 AS a46 ORDER BY 333; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a48.c10, count ( ( NOT ( a48.c9 IS NULL ) ) AND ( NOT ( a48.c11 IS NULL ) ) ) FROM v8 AS a48 ORDER BY 333; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a49 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 WHERE a50.c1 = a50.c3 > 18446744073709551488 ORDER BY 333; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a51 ORDER BY 333; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: cannot drop PRIMARY KEY column: "c9"
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a41.c3
+  SELECT a41.c3, count ( ( NOT ( a41.c1 IS NULL ) ) AND ( NOT ( a41.c3 IS NULL )
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a42.c19 ) FROM v17 AS a42 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: circular reference: v45
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a48.c10
+  SELECT a48.c10, count ( ( NOT ( a48.c9 IS NULL ) ) AND ( NOT ( a48.c11 IS NULL
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a50.c3
+  SELECT * FROM v0 AS a50 WHERE a50.c1 = a50.c3 > 18446744073709551488 ORDER BY 
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such column: a41.c3
+  SELECT a41.c3, count ( ( NOT ( a41.c1 IS NULL ) ) AND ( NOT ( a41.c3 IS NULL )
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a42.c19 ) FROM v17 AS a42 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a42.c19 ) FROM v17 AS a42 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: circular reference: v45
+ 
+INT: 0 
+Str: 
+Parse error near line 31: circular reference: v45
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such column: a48.c10
+  SELECT a48.c10, count ( ( NOT ( a48.c9 IS NULL ) ) AND ( NOT ( a48.c11 IS NULL
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 34: no such column: a48.c10
+  SELECT a48.c10, count ( ( NOT ( a48.c9 IS NULL ) ) AND ( NOT ( a48.c11 IS NULL
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no such column: a50.c3
+  SELECT * FROM v0 AS a50 WHERE a50.c1 = a50.c3 > 18446744073709551488 ORDER BY 
+                           error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

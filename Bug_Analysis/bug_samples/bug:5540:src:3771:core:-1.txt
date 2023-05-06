@@ -1,0 +1,274 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10 INT UNIQUE ON CONFLICT IGNORE, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25 INTEGER UNIQUE ON CONFLICT FAIL, c26, PRIMARY KEY ( c17 ), CHECK( c5 != c6 ), CHECK( c2 != c6 ) ) WITHOUT ROWID; 
+CREATE INDEX i27 ON v0 ( c6 ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c19 = c17 || c14 WHERE c9 = c25 || c9; END; 
+CREATE TABLE v28 ( c29 REFERENCES t1 DEFAULT NULL, c30 ); 
+CREATE TABLE v31 ( c32, c33, c34, c35, PRIMARY KEY ( c34, c32 ) ) WITHOUT ROWID; 
+CREATE INDEX i36 ON v28 ( c30 ); 
+INSERT INTO v31 VALUES ( 4294967295, 4294967295, 4294967295, 4294967295 ); 
+CREATE INDEX i37 ON v28 ( c29 ); 
+ALTER TABLE v28 DROP COLUMN c30; 
+CREATE INDEX i38 ON v28 ( c29 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a39 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40, v31 AS a41 NATURAL JOIN v0 AS a42 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v28 AS a43 NATURAL JOIN v28 AS a44 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v45 ( c47 ) AS ( WITH v48 AS ( WITH v48 AS ( SELECT 9223372036854775807 y ORDER BY 100 ) SELECT avg ( c47 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 4294967295 ) SELECT 4294967295 ORDER BY 4294967295 ) SELECT quote ( c47 ), c47 = c47, '2-two' FROM v45 AS a46 GROUP BY c47, abs ( c47 ) HAVING count ( * ) >= 18446744073709551488 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49 ORDER BY 18446744073709551615 IN ( SELECT * FROM v31 AS a50 ORDER BY 4294967295 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a51.c30 || a51.c29 ) FROM v28 AS a51 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a52 GROUP BY count ( ( NOT ( a52.c19 IS NULL ) ) AND ( NOT ( a52.c16 IS NULL ) ) ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a53, v0 AS a54 NATURAL JOIN v0 AS a55 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a56.c17 FROM v0 AS a56 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: error in index i36 after drop column: no such column: c30
+BEGIN VERI 0
+4294967295|4294967295|4294967295|4294967295
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 30
+  S a40, v31 AS a41 NATURAL JOIN v0 AS a42 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: sub-select returns 4 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no tables specified
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10 INT UNIQUE ON CONFLICT IGNORE, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25 INTEGER UNIQUE ON CONFLICT FAIL, c26, PRIMARY KEY ( c17 ), CHECK( c5 != c6 ), CHECK( c2 != c6 ) ) WITHOUT ROWID; 
+; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c19 = c17 || c14 WHERE c9 = c25 || c9; END; 
+CREATE TABLE v28 ( c29 REFERENCES t1 DEFAULT NULL, c30 ); 
+CREATE TABLE v31 ( c32, c33, c34, c35, PRIMARY KEY ( c34, c32 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v31 VALUES ( 4294967295, 4294967295, 4294967295, 4294967295 ); 
+; 
+ALTER TABLE v28 DROP COLUMN c30; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a39 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40, v31 AS a41 NATURAL JOIN v0 AS a42 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v28 AS a43 NATURAL JOIN v28 AS a44 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v45 ( c47 ) AS ( WITH v48 AS ( WITH v48 AS ( SELECT 9223372036854775807 y ORDER BY 100 ) SELECT avg ( c47 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 4294967295 ) SELECT 4294967295 ORDER BY 4294967295 ) SELECT quote ( c47 ), c47 = c47, '2-two' FROM v45 AS a46 GROUP BY c47, abs ( c47 ) HAVING count ( * ) >= 18446744073709551488 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49 ORDER BY 18446744073709551615 IN ( SELECT * FROM v31 AS a50 ORDER BY 4294967295 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a51.c30 || a51.c29 ) FROM v28 AS a51 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a52 GROUP BY count ( ( NOT ( a52.c19 IS NULL ) ) AND ( NOT ( a52.c16 IS NULL ) ) ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a53, v0 AS a54 NATURAL JOIN v0 AS a55 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a56.c17 FROM v0 AS a56 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+4294967295|4294967295|4294967295|4294967295
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 30
+  S a40, v31 AS a41 NATURAL JOIN v0 AS a42 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: sub-select returns 4 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a51.c30
+  SELECT max ( a51.c30 || a51.c29 ) FROM v28 AS a51 ORDER BY 4294967295; 
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+4294967295|4294967295|4294967295|4294967295
+ 
+INT: 0 
+Str: 
+4294967295|4294967295|4294967295|4294967295
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 30
+  S a40, v31 AS a41 NATURAL JOIN v0 AS a42 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 30
+  S a40, v31 AS a41 NATURAL JOIN v0 AS a42 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: sub-select returns 4 columns - expected 1
+ 
+INT: 0 
+Str: 
+Parse error near line 24: sub-select returns 4 columns - expected 1
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+Parse error near line 30: no such column: a51.c30
+  SELECT max ( a51.c30 || a51.c29 ) FROM v28 AS a51 ORDER BY 4294967295; 
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+Str: 
+Parse error near line 33: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

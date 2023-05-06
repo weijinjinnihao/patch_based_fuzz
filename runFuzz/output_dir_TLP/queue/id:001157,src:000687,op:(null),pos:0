@@ -1,0 +1,17 @@
+CREATE TABLE v0 ( c1 UNIQUE ON CONFLICT REPLACE, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c1, c2 ); 
+CREATE INDEX i5 ON v0 ( c3 COLLATE nocase, c2 COLLATE nocase ); 
+SELECT quote ( a6.c1 ), quote ( a6.c2 ), 'd' FROM v0 AS a6 GROUP BY a6.c2, abs ( a6.c3 ) ORDER BY 1; 
+VALUES ( 'x', '40000 400 1 1', 'v0' ) ORDER BY 1; 
+INSERT INTO v0 VALUES ( 'x', 'v0', 'v0' ); 
+INSERT INTO v0 VALUES ( 'v1', 'v0', 'x' ); 
+INSERT INTO v0 VALUES ( 'hill', 'x', 'v1' ); 
+SELECT SUM ( a7.c1 ) FROM v0 AS a7 ORDER BY a7.c3, a7.c3; 
+SELECT a9.c2 FROM v0 AS a8, v0 AS a9 ORDER BY 8; 
+SELECT SUM ( a11.c2 ) FROM v0 AS a11 ORDER BY + a11.c1; 
+SELECT MIN ( a12.c1 ) FROM v0 AS a12 ORDER BY 8; 
+SELECT AVG ( a13.c1 ) FROM v0 AS a13 ORDER BY 1; 
+SELECT a14.c3 FROM v0 AS a14 ORDER BY 8; 
+SELECT MIN ( a15.c2 ) FROM v0 AS a15 ORDER BY 8; 
+SELECT ( a16.c3 ) FROM v0 AS a16 ORDER BY 8; 
+SELECT AVG ( a17.c1 ) FROM v0 AS a17, v0 AS a18 ORDER BY 8; 

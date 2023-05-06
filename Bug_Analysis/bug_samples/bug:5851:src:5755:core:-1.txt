@@ -1,0 +1,316 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE INDEX i3 ON v0 ( c2 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE TABLE v5 ( c6, c7, c8, c9, c10, c11, c12 REFERENCES t1 DEFAULT NULL, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25 INTEGER PRIMARY KEY, c26 ); 
+CREATE TABLE v27 ( c28, c29 INTEGER UNIQUE ON CONFLICT FAIL, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42 UNIQUE ON CONFLICT FAIL, c43, c44, c45, c46, c47, c48 INTEGER DEFAULT - 18446744073709551615, c49, c50, c51, c52 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v53 USING rtree ( c54, c55, c56, c57, c58, c59, c60, c61, c62 ); 
+CREATE INDEX i63 ON v27 ( c34 ); 
+CREATE TABLE v64 ( c65, c66, c67, c68, c69, c70, c71, c72, c73, c74, c75, c76, c77, c78, c79, c80, c81 TEXT UNIQUE NOT NULL ); 
+INSERT INTO v64 VALUES ( 18446744073709551615, 'v1' ), ( 18446744073709551488, 'v0' ), ( 18446744073709551615, 'aaabbb' ); 
+CREATE TABLE v82 ( c83 DEFAULT x'ABCD' DEFAULT 18446744073709551615, c84 NOT NULL DEFAULT 18446744073709551615, c85 NOT NULL ON CONFLICT REPLACE DEFAULT 0, c86 NOT NULL ON CONFLICT IGNORE DEFAULT 18446744073709551615, c87 NOT NULL ON CONFLICT ABORT DEFAULT 18446744073709551615 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v27 BEGIN DELETE FROM v53; END; 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i88 ON v82 ( c85 ); 
+CREATE INDEX i89 ON v5 ( c7 ); 
+UPDATE v82 SET c84 = 'two' WHERE c87 = 18446744073709551615; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v82 AS a90 ORDER BY count ( * ) >= 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 AS ( WITH v64 AS ( SELECT 18446744073709551615 y ORDER BY 0 ) SELECT avg ( v64.c66 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 10 ) SELECT - 9223372036854775807 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v64 ( c92 ) AS ( SELECT 'v1' ORDER BY 9223372036854775807 ) SELECT * FROM v64 AS a91 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v82 AS a93, v0 AS a94 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a95.c83 ) FROM v82 AS a95 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a96 ORDER BY ( ( a96.c2 + 0 ) % 18446744073709551615 ) < 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a97.c86, count ( a97.c87 ) FROM v82 AS a97 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a98.c46, count ( a98.c51 ) FROM v27 AS a98 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a99 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v82 AS a100 WHERE a100.c84 IS 18446744073709551615 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: table v64 has 17 columns but 2 values were supplied
+Runtime error near line 12: error in index i3 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 17: misuse of aggregate: count()
+  SELECT * FROM v82 AS a90 ORDER BY count ( * ) >= 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+-9223372036854775807
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 1
+  2036854775807 ) SELECT * FROM v64 AS a91 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+  7.c86, count ( a97.c87 ) FROM v82 AS a97 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: 1st ORDER BY term out of range - should be between 1 and 5
+  0 WHERE a100.c84 IS 18446744073709551615 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+; 
+; 
+CREATE TABLE v5 ( c6, c7, c8, c9, c10, c11, c12 REFERENCES t1 DEFAULT NULL, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25 INTEGER PRIMARY KEY, c26 ); 
+CREATE TABLE v27 ( c28, c29 INTEGER UNIQUE ON CONFLICT FAIL, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42 UNIQUE ON CONFLICT FAIL, c43, c44, c45, c46, c47, c48 INTEGER DEFAULT - 18446744073709551615, c49, c50, c51, c52 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v53 USING rtree ( c54, c55, c56, c57, c58, c59, c60, c61, c62 ); 
+; 
+CREATE TABLE v64 ( c65, c66, c67, c68, c69, c70, c71, c72, c73, c74, c75, c76, c77, c78, c79, c80, c81 TEXT UNIQUE NOT NULL ); 
+INSERT INTO v64 VALUES ( 18446744073709551615, 'v1' ), ( 18446744073709551488, 'v0' ), ( 18446744073709551615, 'aaabbb' ); 
+CREATE TABLE v82 ( c83 DEFAULT x'ABCD' DEFAULT 18446744073709551615, c84 NOT NULL DEFAULT 18446744073709551615, c85 NOT NULL ON CONFLICT REPLACE DEFAULT 0, c86 NOT NULL ON CONFLICT IGNORE DEFAULT 18446744073709551615, c87 NOT NULL ON CONFLICT ABORT DEFAULT 18446744073709551615 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v27 BEGIN DELETE FROM v53; END; 
+ALTER TABLE v0 DROP c2; 
+; 
+; 
+UPDATE v82 SET c84 = 'two' WHERE c87 = 18446744073709551615; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v82 AS a90 ORDER BY count ( * ) >= 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 AS ( WITH v64 AS ( SELECT 18446744073709551615 y ORDER BY 0 ) SELECT avg ( v64.c66 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 10 ) SELECT - 9223372036854775807 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v64 ( c92 ) AS ( SELECT 'v1' ORDER BY 9223372036854775807 ) SELECT * FROM v64 AS a91 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v82 AS a93, v0 AS a94 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a95.c83 ) FROM v82 AS a95 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a96 ORDER BY ( ( a96.c2 + 0 ) % 18446744073709551615 ) < 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a97.c86, count ( a97.c87 ) FROM v82 AS a97 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a98.c46, count ( a98.c51 ) FROM v27 AS a98 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a99 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v82 AS a100 WHERE a100.c84 IS 18446744073709551615 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: table v64 has 17 columns but 2 values were supplied
+BEGIN VERI 0
+Parse error near line 17: misuse of aggregate: count()
+  SELECT * FROM v82 AS a90 ORDER BY count ( * ) >= 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+-9223372036854775807
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 1
+  2036854775807 ) SELECT * FROM v64 AS a91 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a96.c2
+  SELECT * FROM v0 AS a96 ORDER BY ( ( a96.c2 + 0 ) % 18446744073709551615 ) < 1
+                         error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+  7.c86, count ( a97.c87 ) FROM v82 AS a97 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: 1st ORDER BY term out of range - should be between 1 and 5
+  0 WHERE a100.c84 IS 18446744073709551615 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: misuse of aggregate: count()
+  SELECT * FROM v82 AS a90 ORDER BY count ( * ) >= 0; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 17: misuse of aggregate: count()
+  SELECT * FROM v82 AS a90 ORDER BY count ( * ) >= 0; 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+-9223372036854775807
+ 
+INT: 0 
+Str: 
+-9223372036854775807
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 1
+  2036854775807 ) SELECT * FROM v64 AS a91 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 1
+  2036854775807 ) SELECT * FROM v64 AS a91 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 32: no such column: a96.c2
+  SELECT * FROM v0 AS a96 ORDER BY ( ( a96.c2 + 0 ) % 18446744073709551615 ) < 1
+                         error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+  7.c86, count ( a97.c87 ) FROM v82 AS a97 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+  7.c86, count ( a97.c87 ) FROM v82 AS a97 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: 1st ORDER BY term out of range - should be between 1 and 5
+  0 WHERE a100.c84 IS 18446744073709551615 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 44: 1st ORDER BY term out of range - should be between 1 and 5
+  0 WHERE a100.c84 IS 18446744073709551615 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

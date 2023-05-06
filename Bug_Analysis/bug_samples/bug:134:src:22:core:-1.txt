@@ -1,0 +1,368 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c4 > 0 ), c4 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 0, 0, 0, 10 ), ( 18446744073709551488, 10, 10, 10 ); 
+CREATE TABLE v6 ( c7, c8, c9, c10, CHECK( c8 > 255 ) ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a12.c4, a12.c1 FROM v6 AS a11 RIGHT JOIN v0 AS a12 ON a11.c8 = a11.c7 WHERE a12.c3 = + a12.c1 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 0, 0, 10, 0 ), ( 0, 10, 10, 18446744073709551488 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+CREATE INDEX i13 ON v6 ( c9 ); 
+INSERT INTO v0 VALUES ( 10, 18446744073709551488, 0, 0 ); 
+CREATE INDEX i14 ON v6 ( c8 ); 
+CREATE INDEX i15 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( 0, 18446744073709551488, 0, 0 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i16 ON v6 ( c8 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a17.c1 ) FROM v0 AS a17 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c4 = + a18.c8, a18.c9 FROM v6 AS a18 LEFT JOIN v0 AS a19 ON a19.c1 = a19.c4 GROUP BY y ( a19.c4 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a20 ORDER BY max ( a20.c9 + a20.c8 * 0 ) + 18446744073709551488, min ( a20.c9, avg ( a20.c9 ) ) + 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 GROUP BY a21.c3, abs ( a21.c2 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c9, sum ( a22.c7 ) FROM v6 AS a22 GROUP BY a22.c9 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c10 FROM v6 AS a23 ORDER BY a23.c7 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a24, v0 AS a25 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+10|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 9: near "ORDER": syntax error
+  , 0, 10, 0 ), ( 0, 10, 10, 18446744073709551488 ) ORDER BY 1; 
+                                      error here ---^
+END VERI 0
+Runtime error near line 12: CHECK constraint failed: c4 > 0 (19)
+Runtime error near line 15: CHECK constraint failed: c4 > 0 (19)
+Runtime error near line 16: error in index i15 after drop column: no such column: c2
+BEGIN VERI 0
+2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such function: y
+  8 LEFT JOIN v0 AS a19 ON a19.c1 = a19.c4 GROUP BY y ( a19.c4 ) ORDER BY 184467
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: misuse of aggregate: avg()
+  20.c8 * 0 ) + 18446744073709551488, min ( a20.c9, avg ( a20.c9 ) ) + 922337203
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+0|0|0|10
+1.84467440737096e+19|10|10|10
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+BEGIN VERI 0
+0|0|0|10
+1.84467440737096e+19|10|10|10
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v0 AS a27 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+0|0|0|10
+1.84467440737096e+19|10|10|10
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c4 > 0 ), c4 ); 
+; 
+INSERT INTO v0 VALUES ( 0, 0, 0, 10 ), ( 18446744073709551488, 10, 10, 10 ); 
+CREATE TABLE v6 ( c7, c8, c9, c10, CHECK( c8 > 255 ) ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a12.c4, a12.c1 FROM v6 AS a11 RIGHT JOIN v0 AS a12 ON a11.c8 = a11.c7 WHERE a12.c3 = + a12.c1 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 0, 0, 10, 0 ), ( 0, 10, 10, 18446744073709551488 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+; 
+INSERT INTO v0 VALUES ( 10, 18446744073709551488, 0, 0 ); 
+; 
+; 
+INSERT INTO v0 VALUES ( 0, 18446744073709551488, 0, 0 ); 
+ALTER TABLE v0 DROP c2; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a17.c1 ) FROM v0 AS a17 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c4 = + a18.c8, a18.c9 FROM v6 AS a18 LEFT JOIN v0 AS a19 ON a19.c1 = a19.c4 GROUP BY y ( a19.c4 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a20 ORDER BY max ( a20.c9 + a20.c8 * 0 ) + 18446744073709551488, min ( a20.c9, avg ( a20.c9 ) ) + 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 GROUP BY a21.c3, abs ( a21.c2 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c9, sum ( a22.c7 ) FROM v6 AS a22 GROUP BY a22.c9 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c10 FROM v6 AS a23 ORDER BY a23.c7 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a24, v0 AS a25 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+10|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 9: near "ORDER": syntax error
+  , 0, 10, 0 ), ( 0, 10, 10, 18446744073709551488 ) ORDER BY 1; 
+                                      error here ---^
+END VERI 0
+Runtime error near line 12: CHECK constraint failed: c4 > 0 (19)
+Runtime error near line 15: CHECK constraint failed: c4 > 0 (19)
+BEGIN VERI 0
+2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such function: y
+  8 LEFT JOIN v0 AS a19 ON a19.c1 = a19.c4 GROUP BY y ( a19.c4 ) ORDER BY 184467
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: misuse of aggregate: avg()
+  20.c8 * 0 ) + 18446744073709551488, min ( a20.c9, avg ( a20.c9 ) ) + 922337203
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a21.c2
+  SELECT * FROM v0 AS a21 GROUP BY a21.c3, abs ( a21.c2 ) ORDER BY 1844674407156
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+0|0|10
+1.84467440737096e+19|10|10
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a27 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+0|0|10
+1.84467440737096e+19|10|10
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+10|0
+ 
+INT: 0 
+Str: 
+10|0
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 52225936
+Str: 
+Parse error near line 9: near "ORDER": syntax error
+  , 0, 10, 0 ), ( 0, 10, 10, 18446744073709551488 ) ORDER BY 1; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 9: near "ORDER": syntax error
+  , 0, 10, 0 ), ( 0, 10, 10, 18446744073709551488 ) ORDER BY 1; 
+                                      error here ---^
+ 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+2
+ 
+INT: 0 
+Str: 
+2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such function: y
+  8 LEFT JOIN v0 AS a19 ON a19.c1 = a19.c4 GROUP BY y ( a19.c4 ) ORDER BY 184467
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 22: no such function: y
+  8 LEFT JOIN v0 AS a19 ON a19.c1 = a19.c4 GROUP BY y ( a19.c4 ) ORDER BY 184467
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: misuse of aggregate: avg()
+  20.c8 * 0 ) + 18446744073709551488, min ( a20.c9, avg ( a20.c9 ) ) + 922337203
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 25: misuse of aggregate: avg()
+  20.c8 * 0 ) + 18446744073709551488, min ( a20.c9, avg ( a20.c9 ) ) + 922337203
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+0|0|0|10
+1.84467440737096e+19|10|10|10
+ 
+INT: 1 
+Str: 
+Parse error near line 28: no such column: a21.c2
+  SELECT * FROM v0 AS a21 GROUP BY a21.c3, abs ( a21.c2 ) ORDER BY 1844674407156
+                                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+0|0|0|10
+1.84467440737096e+19|10|10|10
+ 
+INT: 1 
+Str: 
+0|0|10
+1.84467440737096e+19|10|10
+ 
+INT: 1 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v0 AS a27 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a27 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 11 
+RESULT FLAGS: 1
+Str: 
+0|0|0|10
+1.84467440737096e+19|10|10|10
+ 
+INT: 1 
+Str: 
+0|0|10
+1.84467440737096e+19|10|10
+ 
+INT: 1 
+Compare_result_int: 
+0
+
+
+

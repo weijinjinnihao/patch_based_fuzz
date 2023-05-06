@@ -1,0 +1,290 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE TABLE v5 ( c6 CHECK( c7 != 18446744073709518848 ), c7, c8 CHECK( c9 > 127 ), c9 ); 
+CREATE INDEX i10 ON v5 ( c7 ) WHERE NOT NULL >= 18446744073709551488; 
+CREATE INDEX i11 ON v5 ( c6 ); 
+CREATE TABLE v12 ( c13 INTEGER PRIMARY KEY, c14, c15 UNIQUE ); 
+CREATE TABLE v16 ( c17, c18 INTEGER PRIMARY KEY, c19 ); 
+CREATE INDEX i20 ON v0 ( c1 ); 
+ALTER TABLE v5 DROP COLUMN c6; 
+ALTER TABLE v12 DROP COLUMN c15; 
+CREATE VIRTUAL TABLE v21 USING fts5 ( c22, c23 ); 
+CREATE INDEX i24 ON v0 ( c2 ); 
+ALTER TABLE v21 DROP COLUMN c23; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a25 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY ( ( a26.c2 + - 18446744073709551488 ) % 18446744073709551488 ) != 18446744073709518848 + 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT + c7 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a27 WHERE ( a27.c19 = 18446744073709518848 OR a27.c17 = 18446744073709518848 ) AND a27.c18 IN ( SELECT ( SELECT min ( a29.c23 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 18446744071562067968 ) FROM v0 AS a28, v21 AS a29 ORDER BY a27.c18 = a29.c23 || a28.c1 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c14, count ( a30.c15 ) FROM v12 AS a30 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a31.c7 ) FROM v5 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 GROUP BY a32.c1 HAVING a32.c1 > a32.c2 % 18446744071562067968 >= 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a33 WHERE a33.c9 || a33.c9 IN v5 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a34 ORDER BY 'v1'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c9, count ( a35.c6 ) FROM v5 AS a35 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: error in index i11 after drop column: no such column: c6
+Parse error near line 10: cannot drop UNIQUE column: "c15"
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: no such table: v21
+BEGIN VERI 0
+Parse error near line 15: no such table: v21
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: c7
+  SELECT + c7 ORDER BY 18446744073709551488; 
+           ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v21
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: sub-select returns 4 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE TABLE v5 ( c6 CHECK( c7 != 18446744073709518848 ), c7, c8 CHECK( c9 > 127 ), c9 ); 
+; 
+; 
+CREATE TABLE v12 ( c13 INTEGER PRIMARY KEY, c14, c15 UNIQUE ); 
+CREATE TABLE v16 ( c17, c18 INTEGER PRIMARY KEY, c19 ); 
+; 
+ALTER TABLE v5 DROP COLUMN c6; 
+ALTER TABLE v12 DROP COLUMN c15; 
+CREATE VIRTUAL TABLE v21 USING fts5 ( c22, c23 ); 
+; 
+ALTER TABLE v21 DROP COLUMN c23; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a25 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY ( ( a26.c2 + - 18446744073709551488 ) % 18446744073709551488 ) != 18446744073709518848 + 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT + c7 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a27 WHERE ( a27.c19 = 18446744073709518848 OR a27.c17 = 18446744073709518848 ) AND a27.c18 IN ( SELECT ( SELECT min ( a29.c23 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 18446744071562067968 ) FROM v0 AS a28, v21 AS a29 ORDER BY a27.c18 = a29.c23 || a28.c1 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c14, count ( a30.c15 ) FROM v12 AS a30 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a31.c7 ) FROM v5 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 GROUP BY a32.c1 HAVING a32.c1 > a32.c2 % 18446744071562067968 >= 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a33 WHERE a33.c9 || a33.c9 IN v5 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a34 ORDER BY 'v1'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c9, count ( a35.c6 ) FROM v5 AS a35 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: cannot drop UNIQUE column: "c15"
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: no such table: v21
+BEGIN VERI 0
+Parse error near line 15: no such table: v21
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: c7
+  SELECT + c7 ORDER BY 18446744073709551488; 
+           ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v21
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: sub-select returns 3 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a35.c6
+  SELECT a35.c9, count ( a35.c6 ) FROM v5 AS a35 ORDER BY 18446744073709551488; 
+                         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such table: v21
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such table: v21
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such column: c7
+  SELECT + c7 ORDER BY 18446744073709551488; 
+           ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 21: no such column: c7
+  SELECT + c7 ORDER BY 18446744073709551488; 
+           ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v21
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v21
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: sub-select returns 4 columns - expected 1
+ 
+INT: 0 
+Str: 
+Parse error near line 36: sub-select returns 3 columns - expected 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such column: a35.c6
+  SELECT a35.c9, count ( a35.c6 ) FROM v5 AS a35 ORDER BY 18446744073709551488; 
+                         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,327 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 PRIMARY KEY ON CONFLICT ABORT, c2, c3 AS( c2 + c1 - c2 ) UNIQUE ON CONFLICT FAIL, c4 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 16; 
+CREATE INDEX i7 ON v5 ( c1 ); 
+CREATE INDEX i8 ON v5 ( c3 ); 
+CREATE INDEX i9 ON v0 ( c4 ); 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12, c13 UNIQUE ); 
+CREATE TABLE v14 ( c15, c16, c17 ); 
+CREATE INDEX i18 ON v0 ( c3 ); 
+ALTER TABLE v14 DROP COLUMN c16; 
+ALTER TABLE v5 DROP COLUMN c4; 
+CREATE VIRTUAL TABLE v19 USING fts5 ( c20, c21 ); 
+CREATE INDEX i22 ON v19 ( c21 ); 
+ALTER TABLE v0 DROP COLUMN c4; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c16, count ( ( NOT ( a23.c16 IS NULL ) ) AND ( NOT ( a23.c17 IS NULL ) ) ), count ( ( hex ( 16 ) ) % 16 AND ( NOT ( a23.c17 IS NULL ) ) ) FROM v14 AS a23 LEFT JOIN v10 AS a24 ON a23.c17 = a23.c16 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a25.c3 || a25.c4 ) FROM v5 AS a25 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c11 FROM v10 AS a26 WHERE ( 'v0', a26.c11 > 8, 'v0' ) < 18446744073709551615 + a26.c13 - a26.c11 NOT IN ( 'x', 'x', 'v1' ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY ( ( a27.c4 + 0 ) % 18446744073709551615 ) < 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c12, count ( a28.c11 ) FROM v10 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v14 AS ( WITH v31 AS ( SELECT 0 y ORDER BY 18446744073709551615 ) SELECT avg ( a30.c13 ) FROM ( SELECT * ORDER BY 8 ) AS y ORDER BY 16 ) SELECT * FROM v0 AS a29 JOIN v10 AS a30 USING ( a30.c12 ) WHERE max ( v14.c17 ) = ( a30.c12 ) AND a30.c13 = 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 16, 10, 2147483647, 18446744073709551615 ), ( 0, 18446744073709551615, 0, 16 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a32 ORDER BY a32.c13; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 ORDER BY 18446744073709551488 IN ( SELECT * FROM v14 AS a34 ORDER BY 0 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c11, a36.c21 FROM v19 AS a35 RIGHT JOIN v19 AS a36 ON a36.c4 = a35.c20 != 127 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: views may not be indexed
+Parse error near line 4: views may not be indexed
+Parse error near line 10: cannot drop column from view "v5"
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: no such table: main.v19
+Runtime error near line 13: error in index i9 after drop column: no such column: c4
+BEGIN VERI 0
+Parse error near line 15: no such column: a23.c16
+  SELECT a23.c16, count ( ( NOT ( a23.c16 IS NULL ) ) AND ( NOT ( a23.c17 IS NUL
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: row value misused
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  8.c12, count ( a28.c11 ) FROM v10 AS a28 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: near ".": syntax error
+  ELECT * FROM v0 AS a29 JOIN v10 AS a30 USING ( a30.c12 ) WHERE max ( v14.c17 )
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: near "ORDER": syntax error
+  73709551615 ), ( 0, 18446744073709551615, 0, 16 ) ORDER BY 1844674407370955161
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+  3709551488 IN ( SELECT * FROM v14 AS a34 ORDER BY 0 ); 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v19
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 PRIMARY KEY ON CONFLICT ABORT, c2, c3 AS( c2 + c1 - c2 ) UNIQUE ON CONFLICT FAIL, c4 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 16; 
+; 
+; 
+; 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12, c13 UNIQUE ); 
+CREATE TABLE v14 ( c15, c16, c17 ); 
+; 
+ALTER TABLE v14 DROP COLUMN c16; 
+ALTER TABLE v5 DROP COLUMN c4; 
+CREATE VIRTUAL TABLE v19 USING fts5 ( c20, c21 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c4; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c16, count ( ( NOT ( a23.c16 IS NULL ) ) AND ( NOT ( a23.c17 IS NULL ) ) ), count ( ( hex ( 16 ) ) % 16 AND ( NOT ( a23.c17 IS NULL ) ) ) FROM v14 AS a23 LEFT JOIN v10 AS a24 ON a23.c17 = a23.c16 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a25.c3 || a25.c4 ) FROM v5 AS a25 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c11 FROM v10 AS a26 WHERE ( 'v0', a26.c11 > 8, 'v0' ) < 18446744073709551615 + a26.c13 - a26.c11 NOT IN ( 'x', 'x', 'v1' ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY ( ( a27.c4 + 0 ) % 18446744073709551615 ) < 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c12, count ( a28.c11 ) FROM v10 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v14 AS ( WITH v31 AS ( SELECT 0 y ORDER BY 18446744073709551615 ) SELECT avg ( a30.c13 ) FROM ( SELECT * ORDER BY 8 ) AS y ORDER BY 16 ) SELECT * FROM v0 AS a29 JOIN v10 AS a30 USING ( a30.c12 ) WHERE max ( v14.c17 ) = ( a30.c12 ) AND a30.c13 = 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 16, 10, 2147483647, 18446744073709551615 ), ( 0, 18446744073709551615, 0, 16 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a32 ORDER BY a32.c13; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 ORDER BY 18446744073709551488 IN ( SELECT * FROM v14 AS a34 ORDER BY 0 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c11, a36.c21 FROM v19 AS a35 RIGHT JOIN v19 AS a36 ON a36.c4 = a35.c20 != 127 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: cannot drop column from view "v5"
+Runtime error near line 11: no such module: fts5
+BEGIN VERI 0
+Parse error near line 15: no such column: a23.c16
+  SELECT a23.c16, count ( ( NOT ( a23.c16 IS NULL ) ) AND ( NOT ( a23.c17 IS NUL
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: row value misused
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a27.c4
+  SELECT * FROM v0 AS a27 ORDER BY ( ( a27.c4 + 0 ) % 18446744073709551615 ) < 1
+                         error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  8.c12, count ( a28.c11 ) FROM v10 AS a28 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: near ".": syntax error
+  ELECT * FROM v0 AS a29 JOIN v10 AS a30 USING ( a30.c12 ) WHERE max ( v14.c17 )
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: near "ORDER": syntax error
+  73709551615 ), ( 0, 18446744073709551615, 0, 16 ) ORDER BY 1844674407370955161
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+  3709551488 IN ( SELECT * FROM v14 AS a34 ORDER BY 0 ); 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v19
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such column: a23.c16
+  SELECT a23.c16, count ( ( NOT ( a23.c16 IS NULL ) ) AND ( NOT ( a23.c17 IS NUL
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 15: no such column: a23.c16
+  SELECT a23.c16, count ( ( NOT ( a23.c16 IS NULL ) ) AND ( NOT ( a23.c17 IS NUL
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 21: row value misused
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 24: no such column: a27.c4
+  SELECT * FROM v0 AS a27 ORDER BY ( ( a27.c4 + 0 ) % 18446744073709551615 ) < 1
+                         error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  8.c12, count ( a28.c11 ) FROM v10 AS a28 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  8.c12, count ( a28.c11 ) FROM v10 AS a28 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: near ".": syntax error
+  ELECT * FROM v0 AS a29 JOIN v10 AS a30 USING ( a30.c12 ) WHERE max ( v14.c17 )
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: near ".": syntax error
+  ELECT * FROM v0 AS a29 JOIN v10 AS a30 USING ( a30.c12 ) WHERE max ( v14.c17 )
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 55140976
+Str: 
+Parse error near line 33: near "ORDER": syntax error
+  73709551615 ), ( 0, 18446744073709551615, 0, 16 ) ORDER BY 1844674407370955161
+                                      error here ---^
+ 
+Str: 
+Parse error near line 33: near "ORDER": syntax error
+  73709551615 ), ( 0, 18446744073709551615, 0, 16 ) ORDER BY 1844674407370955161
+                                      error here ---^
+ 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+  3709551488 IN ( SELECT * FROM v14 AS a34 ORDER BY 0 ); 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+  3709551488 IN ( SELECT * FROM v14 AS a34 ORDER BY 0 ); 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such table: v19
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such table: v19
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

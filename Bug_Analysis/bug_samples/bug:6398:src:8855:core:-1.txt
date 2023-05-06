@@ -1,0 +1,273 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2, c2 ) ) WITHOUT ROWID; 
+ATTACH 'v1' AS sqlite_master; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE TABLE v5 ( c6, c7 CHECK( 4294967295 ), c8, c9, CHECK( c7 > 4294967295 ) ); 
+CREATE INDEX i10 ON v5 ( c9 ); 
+ALTER TABLE v0 DROP c2; 
+ALTER TABLE v5 DROP c9; 
+CREATE INDEX i11 ON v0 ( c1 ); 
+CREATE VIEW v12 AS SELECT * FROM ( v5 AS a13 ), ( v5 AS a14, v5 AS a15 NATURAL JOIN v0 AS a16 ), ( v5 AS a17 ), ( v5 AS a18 ) WHERE c9 = c8 + 18446744073709551615 AND c3 = c8 + 18446744073709551615 AND c9 = c7 + 18446744073709551615 ORDER BY 18446744073709551615; 
+CREATE INDEX i19 ON v12 ( c1 ); 
+CREATE TABLE v20 ( c21, c22, c23 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i24 ON v5 ( c9 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 18446744073709551615 IS NOT 4294967295 ) OR NOT ( 18446744073709551488 IS 18446744073709551615 OR ( a25.c3 = 18446744073709551615 ) ) ) IS 18446744073709551488 FROM v0 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26, v0 AS a27 NATURAL JOIN v5 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c6, max ( a29.c6 || a30.c6 ), count ( a29.c6 ) FROM v5 AS a29 LEFT JOIN v5 AS a30 ON a29.c9 = a29.c6 WHERE a29.c6 > 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a31 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c8, count ( a32.c2 ) FROM v12 AS a32 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a33 ORDER BY - hex ( 9223372036854775807 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c8, x'68617265' FROM v12 AS a34 LEFT JOIN v12 AS a35 ON a35.c2 = a34.c2 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a36, v0 AS a37 NATURAL JOIN v20 AS a38 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: cannot drop PRIMARY KEY column: "c2"
+Runtime error near line 7: error in index i10 after drop column: no such column: c9
+Parse error near line 10: views may not be indexed
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+   a30 ON a29.c9 = a29.c6 WHERE a29.c6 > 0 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: ambiguous column name: main.v5.c6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: ambiguous column name: main.v5.c6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 10
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2, c2 ) ) WITHOUT ROWID; 
+ATTACH 'v1' AS sqlite_master; 
+; 
+CREATE TABLE v5 ( c6, c7 CHECK( 4294967295 ), c8, c9, CHECK( c7 > 4294967295 ) ); 
+; 
+ALTER TABLE v0 DROP c2; 
+ALTER TABLE v5 DROP c9; 
+; 
+CREATE VIEW v12 AS SELECT * FROM ( v5 AS a13 ), ( v5 AS a14, v5 AS a15 NATURAL JOIN v0 AS a16 ), ( v5 AS a17 ), ( v5 AS a18 ) WHERE c9 = c8 + 18446744073709551615 AND c3 = c8 + 18446744073709551615 AND c9 = c7 + 18446744073709551615 ORDER BY 18446744073709551615; 
+; 
+CREATE TABLE v20 ( c21, c22, c23 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 18446744073709551615 IS NOT 4294967295 ) OR NOT ( 18446744073709551488 IS 18446744073709551615 OR ( a25.c3 = 18446744073709551615 ) ) ) IS 18446744073709551488 FROM v0 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26, v0 AS a27 NATURAL JOIN v5 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c6, max ( a29.c6 || a30.c6 ), count ( a29.c6 ) FROM v5 AS a29 LEFT JOIN v5 AS a30 ON a29.c9 = a29.c6 WHERE a29.c6 > 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a31 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c8, count ( a32.c2 ) FROM v12 AS a32 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a33 ORDER BY - hex ( 9223372036854775807 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c8, x'68617265' FROM v12 AS a34 LEFT JOIN v12 AS a35 ON a35.c2 = a34.c2 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a36, v0 AS a37 NATURAL JOIN v20 AS a38 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: cannot drop PRIMARY KEY column: "c2"
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such column: a29.c9
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: ambiguous column name: main.v5.c6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: ambiguous column name: main.v5.c6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+   a30 ON a29.c9 = a29.c6 WHERE a29.c6 > 0 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: no such column: a29.c9
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: ambiguous column name: main.v5.c6
+ 
+INT: 0 
+Str: 
+Parse error near line 26: ambiguous column name: main.v5.c6
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: ambiguous column name: main.v5.c6
+ 
+INT: 0 
+Str: 
+Parse error near line 35: ambiguous column name: main.v5.c6
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 10
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 9
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

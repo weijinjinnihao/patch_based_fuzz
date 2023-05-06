@@ -1,0 +1,296 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER CHECK( c1 != 11 ), c3 ); 
+CREATE VIEW v4 AS SELECT c2 COLLATE hex FROM v0 AS a5 ORDER BY 11; 
+CREATE VIEW v6 AS WITH v0 ( c8 ) AS ( WITH v0 AS ( SELECT ( SELECT c8 ORDER BY 9223372036854775807 ) FROM v4 AS a9 GROUP BY c1 ORDER BY 11 ) SELECT 9223372036854775807 ORDER BY 11 ) SELECT * FROM v0 AS a7 ORDER BY 18446744071562067968; 
+CREATE INDEX i10 ON v6 ( y ); 
+CREATE TABLE v11 ( c12 INTEGER PRIMARY KEY, c13, c14 UNIQUE ); 
+CREATE TABLE v15 ( c16, c17, c18 ); 
+CREATE INDEX i19 ON v15 ( c17 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+ALTER TABLE v11 DROP COLUMN c14; 
+CREATE INDEX i20 ON v6 ( y ); 
+CREATE INDEX i21 ON v0 ( c1 ); 
+CREATE INDEX i22 ON v11 ( c13 ); 
+CREATE VIRTUAL TABLE v23 USING fts5 ( c24, c25 ); 
+ALTER TABLE v11 DROP COLUMN c13; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a26 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c16, a28.c16 IS NOT NULL, count ( ( NOT ( a28.c18 IS NULL ) ) AND ( NOT ( a27.c25 IS NULL ) ) ) FROM v23 AS a27 LEFT JOIN v15 AS a28 ON a27.c24 = a27.c25 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a29 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a30, v23 AS a31 NATURAL JOIN v0 AS a32 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a33 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a34 WHERE count ( * ) >= 18446744073709551488 = 'v0' != a34.c3 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a36 WHERE count ( * ) >= 2147483647 = 'x' != a36.c18 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a37 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT sum ( ( SELECT 9223372036854775807 FROM ( SELECT 9223372036854775807 WHERE a38.c13 IS NULL ORDER BY 9223372036854775807 ) AS y WHERE 9223372036854775807 ORDER BY 8 ) ) FROM v11 AS a38 ORDER BY a38.c13, a38.c13; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: views may not be indexed
+Parse error near line 9: cannot drop UNIQUE column: "c14"
+Parse error near line 10: views may not be indexed
+Runtime error near line 13: no such module: fts5
+Runtime error near line 14: error in index i22 after drop column: no such column: c13
+BEGIN VERI 0
+Parse error near line 16: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: misuse of aggregate function count()
+  SELECT * FROM v15 AS a36 WHERE count ( * ) >= 2147483647 = 'x' != a36.c18 ORDE
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER CHECK( c1 != 11 ), c3 ); 
+CREATE VIEW v4 AS SELECT c2 COLLATE hex FROM v0 AS a5 ORDER BY 11; 
+CREATE VIEW v6 AS WITH v0 ( c8 ) AS ( WITH v0 AS ( SELECT ( SELECT c8 ORDER BY 9223372036854775807 ) FROM v4 AS a9 GROUP BY c1 ORDER BY 11 ) SELECT 9223372036854775807 ORDER BY 11 ) SELECT * FROM v0 AS a7 ORDER BY 18446744071562067968; 
+; 
+CREATE TABLE v11 ( c12 INTEGER PRIMARY KEY, c13, c14 UNIQUE ); 
+CREATE TABLE v15 ( c16, c17, c18 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c3; 
+ALTER TABLE v11 DROP COLUMN c14; 
+; 
+; 
+; 
+CREATE VIRTUAL TABLE v23 USING fts5 ( c24, c25 ); 
+ALTER TABLE v11 DROP COLUMN c13; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a26 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c16, a28.c16 IS NOT NULL, count ( ( NOT ( a28.c18 IS NULL ) ) AND ( NOT ( a27.c25 IS NULL ) ) ) FROM v23 AS a27 LEFT JOIN v15 AS a28 ON a27.c24 = a27.c25 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a29 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a30, v23 AS a31 NATURAL JOIN v0 AS a32 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a33 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a34 WHERE count ( * ) >= 18446744073709551488 = 'v0' != a34.c3 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a36 WHERE count ( * ) >= 2147483647 = 'x' != a36.c18 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a37 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT sum ( ( SELECT 9223372036854775807 FROM ( SELECT 9223372036854775807 WHERE a38.c13 IS NULL ORDER BY 9223372036854775807 ) AS y WHERE 9223372036854775807 ORDER BY 8 ) ) FROM v11 AS a38 ORDER BY a38.c13, a38.c13; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: cannot drop UNIQUE column: "c14"
+Runtime error near line 13: no such module: fts5
+BEGIN VERI 0
+Parse error near line 16: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: misuse of aggregate function count()
+  SELECT * FROM v15 AS a36 WHERE count ( * ) >= 2147483647 = 'x' != a36.c18 ORDE
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such column: a38.c13
+  854775807 FROM ( SELECT 9223372036854775807 WHERE a38.c13 IS NULL ORDER BY 922
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such table: v23
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such table: v23
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such table: v23
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such table: v23
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no such table: v23
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such table: v23
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such table: v23
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such table: v23
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: misuse of aggregate function count()
+  SELECT * FROM v15 AS a36 WHERE count ( * ) >= 2147483647 = 'x' != a36.c18 ORDE
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: misuse of aggregate function count()
+  SELECT * FROM v15 AS a36 WHERE count ( * ) >= 2147483647 = 'x' != a36.c18 ORDE
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 43: no such column: a38.c13
+  854775807 FROM ( SELECT 9223372036854775807 WHERE a38.c13 IS NULL ORDER BY 922
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

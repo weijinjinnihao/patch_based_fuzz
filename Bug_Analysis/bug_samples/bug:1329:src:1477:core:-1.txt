@@ -1,0 +1,295 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE TABLE v5 ( c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33 UNIQUE ); 
+CREATE TABLE v34 ( c35 INTEGER PRIMARY KEY, c36, c37 UNIQUE ); 
+CREATE TABLE v38 ( c39, c40, c41 ); 
+ALTER TABLE v34 DROP COLUMN c35; 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE INDEX i42 ON v0 ( c3 ); 
+CREATE INDEX i43 ON v34 ( c36 ); 
+CREATE VIRTUAL TABLE v44 USING fts5 ( c45, c46 ); 
+CREATE INDEX i47 ON v38 ( c40 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i48 ON v44 ( c45 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v38 AS a49, v0 AS a50 NATURAL JOIN v5 AS a51 ORDER BY 101; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 101; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( a52.c46 + 101 ) % 4294967295 ) != 18446744073709551488 FROM v44 AS a52 ORDER BY 101; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 ( c55 ) AS ( SELECT 4294967295 ORDER BY 101 ) SELECT c55, x'68617265' FROM v34 AS a53 LEFT JOIN v34 AS a54 ON c55 = a54.c35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a56.c2 IS NULL ) ) AND ( NOT ( a56.c3 IS NULL ) ) ) FROM v0 AS a56 ORDER BY 101; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v38 AS a57 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a59.c35, a59.c35 FROM v44 AS a58 JOIN v34 AS a59 ON a58.c37 = a58.c45 WHERE a58.c37 IN ( 18446744073709551488, 4294967295, 0 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a60.c13 || a60.c20 ) FROM v5 AS a60 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a61 WHERE a61.c3 = CASE WHEN a61.c2 != 'v1' THEN 101 ELSE 4294967295 END > 100 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a62 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: cannot drop PRIMARY KEY column: "c35"
+Runtime error near line 7: error in index i4 after drop column: no such column: c3
+Runtime error near line 10: no such module: fts5
+Parse error near line 13: no such table: main.v44
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 33
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v44
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: c55
+  55 ) AS ( SELECT 4294967295 ORDER BY 101 ) SELECT c55, x'68617265' FROM v34 AS
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v44
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE TABLE v5 ( c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33 UNIQUE ); 
+CREATE TABLE v34 ( c35 INTEGER PRIMARY KEY, c36, c37 UNIQUE ); 
+CREATE TABLE v38 ( c39, c40, c41 ); 
+ALTER TABLE v34 DROP COLUMN c35; 
+ALTER TABLE v0 DROP COLUMN c3; 
+; 
+; 
+CREATE VIRTUAL TABLE v44 USING fts5 ( c45, c46 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v38 AS a49, v0 AS a50 NATURAL JOIN v5 AS a51 ORDER BY 101; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 101; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( a52.c46 + 101 ) % 4294967295 ) != 18446744073709551488 FROM v44 AS a52 ORDER BY 101; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 ( c55 ) AS ( SELECT 4294967295 ORDER BY 101 ) SELECT c55, x'68617265' FROM v34 AS a53 LEFT JOIN v34 AS a54 ON c55 = a54.c35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a56.c2 IS NULL ) ) AND ( NOT ( a56.c3 IS NULL ) ) ) FROM v0 AS a56 ORDER BY 101; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v38 AS a57 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a59.c35, a59.c35 FROM v44 AS a58 JOIN v34 AS a59 ON a58.c37 = a58.c45 WHERE a58.c37 IN ( 18446744073709551488, 4294967295, 0 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a60.c13 || a60.c20 ) FROM v5 AS a60 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a61 WHERE a61.c3 = CASE WHEN a61.c2 != 'v1' THEN 101 ELSE 4294967295 END > 100 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a62 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: cannot drop PRIMARY KEY column: "c35"
+Runtime error near line 10: no such module: fts5
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 32
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v44
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: c55
+  55 ) AS ( SELECT 4294967295 ORDER BY 101 ) SELECT c55, x'68617265' FROM v34 AS
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a56.c3
+  CT count ( ( NOT ( a56.c2 IS NULL ) ) AND ( NOT ( a56.c3 IS NULL ) ) ) FROM v0
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v44
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a61.c3
+  SELECT * FROM v0 AS a61 WHERE a61.c3 = CASE WHEN a61.c2 != 'v1' THEN 101 ELSE 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 33
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 32
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such table: v44
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no such table: v44
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such column: c55
+  55 ) AS ( SELECT 4294967295 ORDER BY 101 ) SELECT c55, x'68617265' FROM v34 AS
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: no such column: c55
+  55 ) AS ( SELECT 4294967295 ORDER BY 101 ) SELECT c55, x'68617265' FROM v34 AS
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such column: a56.c3
+  CT count ( ( NOT ( a56.c2 IS NULL ) ) AND ( NOT ( a56.c3 IS NULL ) ) ) FROM v0
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such table: v44
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such table: v44
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+
+ 
+INT: -1 
+Str: 
+
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 39: no such column: a61.c3
+  SELECT * FROM v0 AS a61 WHERE a61.c3 = CASE WHEN a61.c2 != 'v1' THEN 101 ELSE 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

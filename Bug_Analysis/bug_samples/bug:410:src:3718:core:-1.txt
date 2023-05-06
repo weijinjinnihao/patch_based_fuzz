@@ -1,0 +1,288 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c1 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 18446744073709551615, 4294967295 ), ( 18446744073709551488, 2147483647, 18446744073709551615 ); 
+CREATE INDEX i6 ON v0 ( c1 ); 
+CREATE INDEX i7 ON v0 ( c2 NOT NULL ); 
+ALTER TABLE v0 DROP c2; 
+ALTER TABLE v0 DROP c2; 
+CREATE TABLE v8 ( c9, c10, c11 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i12 ON v8 ( c11 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a13.c2, max ( a13.c1 || a13.c1 ), count ( a14.c3 ) FROM v0 AS a13 LEFT JOIN v0 AS a14 ON a13.c3 = a14.c3 WHERE a14.c3 > 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15, v8 AS a16 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17, v0 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 WHERE ( a20.c2 = 127 OR a20.c2 = 18446744073709551615 ) AND a20.c1 IN ( SELECT a20.c1 FROM ( SELECT a20.c1 FROM v8 AS a21, v8 AS a22 ORDER BY 4294967295 ) AS y WHERE a20.c1 = 16 ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY a23.c3 COLLATE nocase; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c1 FROM v0 AS a24 WHERE 18446744071562067968 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551615, 4294967295 ), ( 8, 18446744073709551488 ), ( 0, 18446744073709551615 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY + a26.c1; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 4: UNIQUE constraint failed: v0.c1 (19)
+Runtime error near line 7: error in index i7 after drop column: no such column: c2
+Runtime error near line 8: error in index i7 after drop column: no such column: c2
+BEGIN VERI 0
+||0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v0 AS a15, v8 AS a16 ORDER BY 2147483647; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: near "ORDER": syntax error
+  446744073709551488 ), ( 0, 18446744073709551615 ) ORDER BY 1844674407370955148
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c1 ) ) WITHOUT ROWID; 
+; 
+; 
+INSERT INTO v0 VALUES ( 18446744073709551615, 18446744073709551615, 4294967295 ), ( 18446744073709551488, 2147483647, 18446744073709551615 ); 
+; 
+; 
+ALTER TABLE v0 DROP c2; 
+ALTER TABLE v0 DROP c2; 
+CREATE TABLE v8 ( c9, c10, c11 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a13.c2, max ( a13.c1 || a13.c1 ), count ( a14.c3 ) FROM v0 AS a13 LEFT JOIN v0 AS a14 ON a13.c3 = a14.c3 WHERE a14.c3 > 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15, v8 AS a16 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17, v0 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 WHERE ( a20.c2 = 127 OR a20.c2 = 18446744073709551615 ) AND a20.c1 IN ( SELECT a20.c1 FROM ( SELECT a20.c1 FROM v8 AS a21, v8 AS a22 ORDER BY 4294967295 ) AS y WHERE a20.c1 = 16 ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY a23.c3 COLLATE nocase; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c1 FROM v0 AS a24 WHERE 18446744071562067968 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551615, 4294967295 ), ( 8, 18446744073709551488 ), ( 0, 18446744073709551615 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY + a26.c1; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 4: UNIQUE constraint failed: v0.c1 (19)
+Parse error near line 8: no such column: "c2"
+  ALTER TABLE v0 DROP c2; 
+                      ^--- error here
+BEGIN VERI 0
+Parse error near line 12: no such column: a13.c2
+  SELECT a13.c2, max ( a13.c1 || a13.c1 ), count ( a14.c3 ) FROM v0 AS a13 LEFT 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 5
+  SELECT * FROM v0 AS a15, v8 AS a16 ORDER BY 2147483647; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: a20.c2
+  SELECT * FROM v0 AS a20 WHERE ( a20.c2 = 127 OR a20.c2 = 18446744073709551615 
+                    error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: near "ORDER": syntax error
+  446744073709551488 ), ( 0, 18446744073709551615 ) ORDER BY 1844674407370955148
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+||0
+ 
+INT: 0 
+Str: 
+Parse error near line 12: no such column: a13.c2
+  SELECT a13.c2, max ( a13.c1 || a13.c1 ), count ( a14.c3 ) FROM v0 AS a13 LEFT 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v0 AS a15, v8 AS a16 ORDER BY 2147483647; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 5
+  SELECT * FROM v0 AS a15, v8 AS a16 ORDER BY 2147483647; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 21: no such column: a20.c2
+  SELECT * FROM v0 AS a20 WHERE ( a20.c2 = 127 OR a20.c2 = 18446744073709551615 
+                    error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 47643088
+Str: 
+Parse error near line 36: near "ORDER": syntax error
+  446744073709551488 ), ( 0, 18446744073709551615 ) ORDER BY 1844674407370955148
+                                      error here ---^
+ 
+Str: 
+Parse error near line 36: near "ORDER": syntax error
+  446744073709551488 ), ( 0, 18446744073709551615 ) ORDER BY 1844674407370955148
+                                      error here ---^
+ 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,294 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10 INT UNIQUE ON CONFLICT IGNORE, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25 INTEGER UNIQUE ON CONFLICT FAIL, c26, PRIMARY KEY ( c5 ), CHECK( c1 != c8 ), CHECK( c24 != c6 ) ) WITHOUT ROWID; 
+CREATE INDEX i27 ON v0 ( c1 ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c14 = c7 || c9 WHERE c1 = c18 || c6; END; 
+CREATE INDEX i28 ON v0 ( c24 ); 
+CREATE TABLE v29 ( c30, c31, c32, c33, PRIMARY KEY ( c32, c32 ) ) WITHOUT ROWID; 
+CREATE INDEX i34 ON v29 ( c33 ); 
+INSERT INTO v29 VALUES ( 3000, 3000, 18446744073709551488, 3000 ); 
+CREATE INDEX i35 ON v29 ( c30 ); 
+ALTER TABLE v29 DROP COLUMN c33; 
+CREATE INDEX i36 ON v29 ( c30 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a38, v0 AS a39 NATURAL JOIN v29 AS a40 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a41 NATURAL JOIN v29 AS a42 ORDER BY 3000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v43 ( c45 ) AS ( WITH v46 AS ( WITH v46 AS ( SELECT 3000 y ORDER BY 3000 ) SELECT avg ( c45 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709518848 ) SELECT 18446744073709551488 ORDER BY 3000 ) SELECT quote ( c45 ), c45 = c45, 'v0' FROM v43 AS a44 GROUP BY c45, abs ( c45 ) HAVING count ( * ) >= 3000 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a47 ORDER BY 3000 IN ( SELECT * FROM v29 AS a48 ORDER BY 18446744073709551488 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a49.c24 || a49.c6 ) FROM v0 AS a49 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 GROUP BY count ( ( NOT ( a50.c10 IS NULL ) ) AND ( NOT ( a50.c26 IS NULL ) ) ) ORDER BY 3000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a51, v29 AS a52 NATURAL JOIN v0 AS a53 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a54.c33 FROM v29 AS a54 ORDER BY 487; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: error in index i34 after drop column: no such column: c33
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 26
+  SELECT * FROM v0 AS a37 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: sub-select returns 4 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no tables specified
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 26
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 34
+  S a51, v29 AS a52 NATURAL JOIN v0 AS a53 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10 INT UNIQUE ON CONFLICT IGNORE, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25 INTEGER UNIQUE ON CONFLICT FAIL, c26, PRIMARY KEY ( c5 ), CHECK( c1 != c8 ), CHECK( c24 != c6 ) ) WITHOUT ROWID; 
+; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c14 = c7 || c9 WHERE c1 = c18 || c6; END; 
+; 
+CREATE TABLE v29 ( c30, c31, c32, c33, PRIMARY KEY ( c32, c32 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v29 VALUES ( 3000, 3000, 18446744073709551488, 3000 ); 
+; 
+ALTER TABLE v29 DROP COLUMN c33; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a38, v0 AS a39 NATURAL JOIN v29 AS a40 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a41 NATURAL JOIN v29 AS a42 ORDER BY 3000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v43 ( c45 ) AS ( WITH v46 AS ( WITH v46 AS ( SELECT 3000 y ORDER BY 3000 ) SELECT avg ( c45 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709518848 ) SELECT 18446744073709551488 ORDER BY 3000 ) SELECT quote ( c45 ), c45 = c45, 'v0' FROM v43 AS a44 GROUP BY c45, abs ( c45 ) HAVING count ( * ) >= 3000 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a47 ORDER BY 3000 IN ( SELECT * FROM v29 AS a48 ORDER BY 18446744073709551488 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a49.c24 || a49.c6 ) FROM v0 AS a49 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 GROUP BY count ( ( NOT ( a50.c10 IS NULL ) ) AND ( NOT ( a50.c26 IS NULL ) ) ) ORDER BY 3000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a51, v29 AS a52 NATURAL JOIN v0 AS a53 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a54.c33 FROM v29 AS a54 ORDER BY 487; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 26
+  SELECT * FROM v0 AS a37 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: sub-select returns 3 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no tables specified
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 26
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 32
+  S a51, v29 AS a52 NATURAL JOIN v0 AS a53 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a54.c33
+  SELECT a54.c33 FROM v29 AS a54 ORDER BY 487; 
+         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 26
+  SELECT * FROM v0 AS a37 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 26
+  SELECT * FROM v0 AS a37 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: sub-select returns 4 columns - expected 1
+ 
+INT: 0 
+Str: 
+Parse error near line 24: sub-select returns 3 columns - expected 1
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+
+ 
+INT: -1 
+Str: 
+
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 26
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 26
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 34
+  S a51, v29 AS a52 NATURAL JOIN v0 AS a53 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 32
+  S a51, v29 AS a52 NATURAL JOIN v0 AS a53 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such column: a54.c33
+  SELECT a54.c33 FROM v29 AS a54 ORDER BY 487; 
+         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

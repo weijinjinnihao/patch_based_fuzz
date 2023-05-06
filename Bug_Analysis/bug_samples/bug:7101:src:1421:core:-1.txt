@@ -1,0 +1,309 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709551615; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+CREATE INDEX i10 ON v6 ( c8 ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+CREATE INDEX i15 ON v6 ( c7 ); 
+CREATE INDEX i16 ON v0 ( c3 ); 
+CREATE TABLE v17 ( c18 REAL DEFAULT 18446744073709551615, c19 TEXT, c20 BLOB, CHECK( coalesce ( c18, c19 ) ) ); 
+ALTER TABLE v11 DROP COLUMN c12; 
+CREATE INDEX i21 ON v17 ( c19 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE INDEX i22 ON v11 ( c12 ); 
+ALTER TABLE v17 ADD COLUMN c23 UNIQUE; 
+CREATE VIRTUAL TABLE v24 USING fts5 ( c25, c26 ); 
+ALTER TABLE v4 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c1, max ( a27.c1 || a27.c3 ) FROM v4 AS a27 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a28, v0 AS a29 NATURAL JOIN v11 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a31.c18 || a31.c19 ) FROM v17 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v24 AS a32 WHERE a32.c1 || a32.c1 IN v24 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c18, a34.c18 FROM v0 AS a33 LEFT JOIN v17 AS a34 ON x'b2b2b2' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 AS ( WITH v35 AS ( SELECT 16 y ORDER BY 18446744073709551615 ) SELECT avg ( c7 ) FROM ( SELECT * ORDER BY 18446744073709551615 ) AS y ORDER BY 18446744073709551615 ) SELECT c1 = + c1, c3 FROM v35 AS a36 LEFT JOIN v35 AS a37 ON c23 = c8 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c8, count ( a38.c7 ) FROM v6 AS a38 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a39, v6 AS a40 NATURAL JOIN v11 AS a41 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a42 NATURAL JOIN v11 AS a43 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 11: error in index i16 after drop column: no such column: c3
+Parse error near line 12: no such column: c12
+  CREATE INDEX i22 ON v11 ( c12 ); 
+              error here ---^
+Parse error near line 13: Cannot add a UNIQUE column
+Runtime error near line 14: no such module: fts5
+Parse error near line 15: cannot drop column from view "v4"
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  AS a33 LEFT JOIN v17 AS a34 ON x'b2b2b2' ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 8
+  S a39, v6 AS a40 NATURAL JOIN v11 AS a41 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709551615; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+; 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+; 
+; 
+CREATE TABLE v17 ( c18 REAL DEFAULT 18446744073709551615, c19 TEXT, c20 BLOB, CHECK( coalesce ( c18, c19 ) ) ); 
+ALTER TABLE v11 DROP COLUMN c12; 
+; 
+ALTER TABLE v0 DROP COLUMN c3; 
+; 
+ALTER TABLE v17 ADD COLUMN c23 UNIQUE; 
+CREATE VIRTUAL TABLE v24 USING fts5 ( c25, c26 ); 
+ALTER TABLE v4 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c1, max ( a27.c1 || a27.c3 ) FROM v4 AS a27 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a28, v0 AS a29 NATURAL JOIN v11 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a31.c18 || a31.c19 ) FROM v17 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v24 AS a32 WHERE a32.c1 || a32.c1 IN v24 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c18, a34.c18 FROM v0 AS a33 LEFT JOIN v17 AS a34 ON x'b2b2b2' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 AS ( WITH v35 AS ( SELECT 16 y ORDER BY 18446744073709551615 ) SELECT avg ( c7 ) FROM ( SELECT * ORDER BY 18446744073709551615 ) AS y ORDER BY 18446744073709551615 ) SELECT c1 = + c1, c3 FROM v35 AS a36 LEFT JOIN v35 AS a37 ON c23 = c8 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c8, count ( a38.c7 ) FROM v6 AS a38 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a39, v6 AS a40 NATURAL JOIN v11 AS a41 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a42 NATURAL JOIN v11 AS a43 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 13: Cannot add a UNIQUE column
+Runtime error near line 14: no such module: fts5
+Parse error near line 15: cannot drop column from view "v4"
+BEGIN VERI 0
+Parse error near line 17: no such column: a27.c3
+  SELECT a27.c1, max ( a27.c1 || a27.c3 ) FROM v4 AS a27 ORDER BY 18446744073709
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  AS a33 LEFT JOIN v17 AS a34 ON x'b2b2b2' ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 7
+  S a39, v6 AS a40 NATURAL JOIN v11 AS a41 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no such column: a27.c3
+  SELECT a27.c1, max ( a27.c1 || a27.c3 ) FROM v4 AS a27 ORDER BY 18446744073709
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+
+ 
+INT: -1 
+Str: 
+
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no such table: v24
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such table: v24
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  AS a33 LEFT JOIN v17 AS a34 ON x'b2b2b2' ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  AS a33 LEFT JOIN v17 AS a34 ON x'b2b2b2' ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 35: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 8
+  S a39, v6 AS a40 NATURAL JOIN v11 AS a41 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 7
+  S a39, v6 AS a40 NATURAL JOIN v11 AS a41 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

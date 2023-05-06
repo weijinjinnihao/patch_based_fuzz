@@ -1,0 +1,312 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 255; 
+CREATE INDEX i6 ON v0 ( c3 ); 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c10, c9, c10, c10 ), c10 UNIQUE ); 
+CREATE INDEX i11 ON v7 ( c8 ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE INDEX i16 ON v0 ( c3 ); 
+CREATE VIRTUAL TABLE v17 USING fts5 ( c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29 ); 
+ALTER TABLE v7 DROP COLUMN c9; 
+CREATE INDEX i30 ON v7 ( c8 ); 
+CREATE INDEX i31 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a32 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v4 ( c34 ) AS ( SELECT * ORDER BY 255 ) SELECT * FROM v17 AS a33 WHERE ( a33.c26 = 0 OR v4.c34 = 0 ) AND v4.c1 IN ( SELECT a33.c19 FROM ( SELECT v4.c27 FROM v7 AS a35 ORDER BY 255 ) AS y WHERE a33.c1 = 0 ORDER BY 0 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a37 GROUP BY a37.c13 HAVING automatic_index ( * ) >= 255 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a38 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a39 NATURAL JOIN v4 AS a40 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41 WHERE a41.c3 = a41.c2 NOT NULL ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 ORDER BY 18446744073709518848 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v43 ( c45 ) AS ( SELECT c45 + ( SELECT max ( c45 ) FROM v43 AS a49 ORDER BY 0 ), c45 + ( SELECT c45 FROM v43 AS a48 ORDER BY 255 ), c45 + ( SELECT max ( c45 ) FROM v43 AS a47 ORDER BY 0 ) FROM v43 AS a46 ORDER BY 0 ) SELECT * FROM v43 AS a44 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a50 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: foreign key on c9 should reference only one column of table t1
+   TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c10, c9, c10, c10 ), c1
+                                      error here ---^
+Parse error near line 5: no such table: main.v7
+Runtime error near line 7: error in index i6 after drop column: no such column: c3
+Runtime error near line 8: error in index i6 after drop column: no such column: c3
+Runtime error near line 10: no such module: fts5
+Parse error near line 11: no such table: v7
+Parse error near line 12: no such table: main.v7
+BEGIN VERI 0
+Parse error near line 15: no such table: v7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such function: automatic_index
+  SELECT * FROM v12 AS a37 GROUP BY a37.c13 HAVING automatic_index ( * ) >= 255 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: circular reference: v43
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v7
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 255; 
+; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c10, c9, c10, c10 ), c10 UNIQUE ); 
+; 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+ALTER TABLE v0 DROP COLUMN c3; 
+; 
+CREATE VIRTUAL TABLE v17 USING fts5 ( c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29 ); 
+ALTER TABLE v7 DROP COLUMN c9; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a32 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v4 ( c34 ) AS ( SELECT * ORDER BY 255 ) SELECT * FROM v17 AS a33 WHERE ( a33.c26 = 0 OR v4.c34 = 0 ) AND v4.c1 IN ( SELECT a33.c19 FROM ( SELECT v4.c27 FROM v7 AS a35 ORDER BY 255 ) AS y WHERE a33.c1 = 0 ORDER BY 0 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a37 GROUP BY a37.c13 HAVING automatic_index ( * ) >= 255 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a38 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a39 NATURAL JOIN v4 AS a40 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41 WHERE a41.c3 = a41.c2 NOT NULL ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 ORDER BY 18446744073709518848 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v43 ( c45 ) AS ( SELECT c45 + ( SELECT max ( c45 ) FROM v43 AS a49 ORDER BY 0 ), c45 + ( SELECT c45 FROM v43 AS a48 ORDER BY 255 ), c45 + ( SELECT max ( c45 ) FROM v43 AS a47 ORDER BY 0 ) FROM v43 AS a46 ORDER BY 0 ) SELECT * FROM v43 AS a44 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a50 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: foreign key on c9 should reference only one column of table t1
+   TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c10, c9, c10, c10 ), c1
+                                      error here ---^
+Parse error near line 8: no such column: "c3"
+  ALTER TABLE v0 DROP COLUMN c3; 
+               error here ---^
+Runtime error near line 10: no such module: fts5
+Parse error near line 11: no such table: v7
+BEGIN VERI 0
+Parse error near line 15: no such table: v7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such function: automatic_index
+  SELECT * FROM v12 AS a37 GROUP BY a37.c13 HAVING automatic_index ( * ) >= 255 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a41.c3
+  SELECT * FROM v0 AS a41 WHERE a41.c3 = a41.c2 NOT NULL ORDER BY 255; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: circular reference: v43
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v7
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such table: v7
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such table: v7
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such function: automatic_index
+  SELECT * FROM v12 AS a37 GROUP BY a37.c13 HAVING automatic_index ( * ) >= 255 
+                                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: no such function: automatic_index
+  SELECT * FROM v12 AS a37 GROUP BY a37.c13 HAVING automatic_index ( * ) >= 255 
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such table: v7
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such table: v7
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such table: v7
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no such table: v7
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such column: a41.c3
+  SELECT * FROM v0 AS a41 WHERE a41.c3 = a41.c2 NOT NULL ORDER BY 255; 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such collation sequence: hex
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such collation sequence: hex
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: circular reference: v43
+ 
+INT: 0 
+Str: 
+Parse error near line 39: circular reference: v43
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such table: v7
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such table: v7
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

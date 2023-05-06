@@ -1,0 +1,385 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( x'616263', 'mad', 'v1' ); 
+INSERT INTO v0 VALUES ( 127, 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( NULL, 'v1', 'DEF' ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( 'a__', 'Al', 'XX' ); 
+INSERT INTO v0 VALUES ( x'616263', 'x', 'v0' ); 
+CREATE TABLE v6 ( c7, c8, c9 COLLATE NOCASE ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v10 AS ( SELECT hex ( ) y ORDER BY 127 ) SELECT * FROM v10 AS a11 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+CREATE INDEX i12 ON v6 ( c7 ); 
+INSERT INTO v6 VALUES ( 'def', 'v', 'v1' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'hill', '3' ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 'v1', 'v1' ); 
+CREATE INDEX i13 ON v0 ( c1 ); 
+INSERT INTO v6 VALUES ( - 127, '1.10', 'v1' ); 
+CREATE TABLE v14 ( c15, c16 REAL, c17 COLLATE NOCASE ); 
+CREATE INDEX i18 ON v0 ( c2 ); 
+INSERT INTO v6 SELECT * FROM v6 AS a19 ORDER BY 9223372036854775807; 
+INSERT INTO v6 SELECT * FROM v14 AS a20 ORDER BY 18446744073709551615; 
+INSERT INTO v6 SELECT * FROM v0 AS a21 ORDER BY 127; 
+INSERT INTO v6 SELECT * FROM v0 AS a22 ORDER BY 18446744073709551488; 
+INSERT INTO v6 SELECT * FROM v14 AS a23 ORDER BY 18446744073709551615; 
+INSERT INTO v14 SELECT * FROM v14 AS a24 ORDER BY 127; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c2, max ( a25.c1 || a25.c3 ) FROM v0 AS a25 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v26 ( c28 ) AS ( WITH v29 ( c30, c31, c32, c33, c34, c35 ) AS ( SELECT 127 y ORDER BY 127 ) SELECT 127 ORDER BY 0 ) SELECT * FROM v26 AS a27 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a36, v0 AS a37 NATURAL JOIN v14 AS a38 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c9, count ( * ), avg ( a39.c7 ), max ( a39.c9 + a39.c9 * 4294967295 ) FROM v6 AS a39 GROUP BY y ( a39.c9 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a40.c3, a41.c7 FROM v0 AS a40 LEFT JOIN v6 AS a41 ON a40.c1 = a41.c9 GROUP BY a40.c3 HAVING count ( * ) >= 100 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a42 WHERE a42.c9 = - 127 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 'v1', max ( c7 || c7 ), 16 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a43.c1 ) OVER ( ORDER BY 4294967295 ) ORDER BY 18446744073709551615 ) FROM v0 AS a43, v6 AS a44 NATURAL JOIN v6 AS a45 GROUP BY a44.c8 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a46 WHERE a46.c17 = a46.c15 NOT NULL ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 11: wrong number of arguments to function hex()
+  WITH v10 AS ( SELECT hex ( ) y ORDER BY 127 ) SELECT * FROM v10 AS a11 ORDER B
+                       ^--- error here
+END VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  ( SELECT 127 y ORDER BY 127 ) SELECT 127 ORDER BY 0 ) SELECT * FROM v26 AS a27
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such function: y
+  9 + a39.c9 * 4294967295 ) FROM v6 AS a39 GROUP BY y ( a39.c9 ) ORDER BY 429496
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+  ROUP BY a40.c3 HAVING count ( * ) >= 100 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 46: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 49: near "ORDER": syntax error
+  VALUES ( 'v1', max ( c7 || c7 ), 16 ) ORDER BY 127; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+
+
+
+
+
+
+
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( x'616263', 'mad', 'v1' ); 
+INSERT INTO v0 VALUES ( 127, 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( NULL, 'v1', 'DEF' ); 
+; 
+; 
+INSERT INTO v0 VALUES ( 'a__', 'Al', 'XX' ); 
+INSERT INTO v0 VALUES ( x'616263', 'x', 'v0' ); 
+CREATE TABLE v6 ( c7, c8, c9 COLLATE NOCASE ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v10 AS ( SELECT hex ( ) y ORDER BY 127 ) SELECT * FROM v10 AS a11 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+; 
+INSERT INTO v6 VALUES ( 'def', 'v', 'v1' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'hill', '3' ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 'v1', 'v1' ); 
+; 
+INSERT INTO v6 VALUES ( - 127, '1.10', 'v1' ); 
+CREATE TABLE v14 ( c15, c16 REAL, c17 COLLATE NOCASE ); 
+; 
+INSERT INTO v6 SELECT * FROM v6 AS a19 ORDER BY 9223372036854775807; 
+INSERT INTO v6 SELECT * FROM v14 AS a20 ORDER BY 18446744073709551615; 
+INSERT INTO v6 SELECT * FROM v0 AS a21 ORDER BY 127; 
+INSERT INTO v6 SELECT * FROM v0 AS a22 ORDER BY 18446744073709551488; 
+INSERT INTO v6 SELECT * FROM v14 AS a23 ORDER BY 18446744073709551615; 
+INSERT INTO v14 SELECT * FROM v14 AS a24 ORDER BY 127; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c2, max ( a25.c1 || a25.c3 ) FROM v0 AS a25 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v26 ( c28 ) AS ( WITH v29 ( c30, c31, c32, c33, c34, c35 ) AS ( SELECT 127 y ORDER BY 127 ) SELECT 127 ORDER BY 0 ) SELECT * FROM v26 AS a27 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a36, v0 AS a37 NATURAL JOIN v14 AS a38 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c9, count ( * ), avg ( a39.c7 ), max ( a39.c9 + a39.c9 * 4294967295 ) FROM v6 AS a39 GROUP BY y ( a39.c9 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a40.c3, a41.c7 FROM v0 AS a40 LEFT JOIN v6 AS a41 ON a40.c1 = a41.c9 GROUP BY a40.c3 HAVING count ( * ) >= 100 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a42 WHERE a42.c9 = - 127 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 'v1', max ( c7 || c7 ), 16 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a43.c1 ) OVER ( ORDER BY 4294967295 ) ORDER BY 18446744073709551615 ) FROM v0 AS a43, v6 AS a44 NATURAL JOIN v6 AS a45 GROUP BY a44.c8 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a46 WHERE a46.c17 = a46.c15 NOT NULL ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 11: wrong number of arguments to function hex()
+  WITH v10 AS ( SELECT hex ( ) y ORDER BY 127 ) SELECT * FROM v10 AS a11 ORDER B
+                       ^--- error here
+END VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  ( SELECT 127 y ORDER BY 127 ) SELECT 127 ORDER BY 0 ) SELECT * FROM v26 AS a27
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such function: y
+  9 + a39.c9 * 4294967295 ) FROM v6 AS a39 GROUP BY y ( a39.c9 ) ORDER BY 429496
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+  ROUP BY a40.c3 HAVING count ( * ) >= 100 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 46: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 49: near "ORDER": syntax error
+  VALUES ( 'v1', max ( c7 || c7 ), 16 ) ORDER BY 127; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+abc
+abc
+abc
+abc
+abc
+abc
+abc
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 11: wrong number of arguments to function hex()
+  WITH v10 AS ( SELECT hex ( ) y ORDER BY 127 ) SELECT * FROM v10 AS a11 ORDER B
+                       ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 11: wrong number of arguments to function hex()
+  WITH v10 AS ( SELECT hex ( ) y ORDER BY 127 ) SELECT * FROM v10 AS a11 ORDER B
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  ( SELECT 127 y ORDER BY 127 ) SELECT 127 ORDER BY 0 ) SELECT * FROM v26 AS a27
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  ( SELECT 127 y ORDER BY 127 ) SELECT 127 ORDER BY 0 ) SELECT * FROM v26 AS a27
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such function: y
+  9 + a39.c9 * 4294967295 ) FROM v6 AS a39 GROUP BY y ( a39.c9 ) ORDER BY 429496
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: no such function: y
+  9 + a39.c9 * 4294967295 ) FROM v6 AS a39 GROUP BY y ( a39.c9 ) ORDER BY 429496
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+  ROUP BY a40.c3 HAVING count ( * ) >= 100 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+  ROUP BY a40.c3 HAVING count ( * ) >= 100 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 46: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 46: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 65327728
+Str: 
+Parse error near line 49: near "ORDER": syntax error
+  VALUES ( 'v1', max ( c7 || c7 ), 16 ) ORDER BY 127; 
+                          error here ---^
+ 
+Str: 
+Parse error near line 49: near "ORDER": syntax error
+  VALUES ( 'v1', max ( c7 || c7 ), 16 ) ORDER BY 127; 
+                          error here ---^
+ 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+
+
+
+
+
+
+
+ 
+INT: -1 
+Str: 
+abc
+abc
+abc
+abc
+abc
+abc
+abc
+ 
+INT: 6 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

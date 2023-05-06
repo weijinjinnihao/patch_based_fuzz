@@ -1,0 +1,302 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2, c2 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE INDEX i6 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( 127, 127, 127 ), ( 127, 127, 127 ); 
+CREATE INDEX i7 ON v0 ( c1 ); 
+ALTER TABLE v0 DROP c1; 
+INSERT INTO v0 SELECT c3 + 127, c3 + 127 FROM v0 AS a8 ORDER BY 127; 
+CREATE INDEX i9 ON v0 ( c1 ); 
+CREATE TABLE v10 ( c11, c12, c13 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a14.c2 ) FROM v0 AS a14 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 127 ORDER BY 10 ) AS y, v10 AS a16 ON a16.c13 = a16.c12 || a16.c12 OR 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v10 AS ( SELECT * FROM v0 AS a18 ORDER BY a17.c12, a18.c2 ) SELECT a17.c12, max ( a17.c13 || a17.c13 ) FROM v10 AS a17 WHERE ( a17.c13 || a17.c11 || a17.c12 ) != 'x' GROUP BY a17.c12 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c21, c22, c23, c24, c25, c26 ) AS ( SELECT 18446744071562067968 y ORDER BY 127 ) SELECT ( ( 127 IS NOT 127 ) OR NOT ( 127 IS 127 OR ( a20.c12 = 255 ) ) ) FROM v0 AS a20 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a27, v0 AS a28 NATURAL JOIN v0 AS a29 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a30.c1 ), count ( a30.c3 ) FROM v0 AS a30 GROUP BY y ( a30.c12, a30.c1, a30.c1, a30.c3, a30.c12, a30.c2, a30.c12, a30.c2, a30.c1, a30.c1, a30.c2, a30.c1, a30.c1, a30.c3, a30.c12, a30.c2, a30.c1 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 GROUP BY a31.c2, abs ( a31.c21 ) HAVING CASE WHEN a31.c21 != 'v1' THEN 127 ELSE 127 END > 10 >= 9223372036854775807 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: UNIQUE constraint failed: v0.c2 (19)
+Runtime error near line 7: error in index i7 after drop column: no such column: c1
+Parse error near line 8: 1st ORDER BY term out of range - should be between 1 and 2
+BEGIN VERI 0
+Parse error near line 12: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a17.c12
+  WITH v10 AS ( SELECT * FROM v0 AS a18 ORDER BY a17.c12, a18.c2 ) SELECT a17.c1
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: table v0 has 1 values for 6 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a31.c21
+  GROUP BY a31.c2, abs ( a31.c21 ) HAVING CASE WHEN a31.c21 != 'v1' THEN 127 ELS
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2, c2 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+INSERT INTO v0 VALUES ( 127, 127, 127 ), ( 127, 127, 127 ); 
+; 
+ALTER TABLE v0 DROP c1; 
+INSERT INTO v0 SELECT c3 + 127, c3 + 127 FROM v0 AS a8 ORDER BY 127; 
+; 
+CREATE TABLE v10 ( c11, c12, c13 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a14.c2 ) FROM v0 AS a14 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 127 ORDER BY 10 ) AS y, v10 AS a16 ON a16.c13 = a16.c12 || a16.c12 OR 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v10 AS ( SELECT * FROM v0 AS a18 ORDER BY a17.c12, a18.c2 ) SELECT a17.c12, max ( a17.c13 || a17.c13 ) FROM v10 AS a17 WHERE ( a17.c13 || a17.c11 || a17.c12 ) != 'x' GROUP BY a17.c12 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c21, c22, c23, c24, c25, c26 ) AS ( SELECT 18446744071562067968 y ORDER BY 127 ) SELECT ( ( 127 IS NOT 127 ) OR NOT ( 127 IS 127 OR ( a20.c12 = 255 ) ) ) FROM v0 AS a20 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a27, v0 AS a28 NATURAL JOIN v0 AS a29 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a30.c1 ), count ( a30.c3 ) FROM v0 AS a30 GROUP BY y ( a30.c12, a30.c1, a30.c1, a30.c3, a30.c12, a30.c2, a30.c12, a30.c2, a30.c1, a30.c1, a30.c2, a30.c1, a30.c1, a30.c3, a30.c12, a30.c2, a30.c1 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 GROUP BY a31.c2, abs ( a31.c21 ) HAVING CASE WHEN a31.c21 != 'v1' THEN 127 ELSE 127 END > 10 >= 9223372036854775807 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: UNIQUE constraint failed: v0.c2 (19)
+Parse error near line 8: 1st ORDER BY term out of range - should be between 1 and 2
+BEGIN VERI 0
+Parse error near line 12: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a17.c12
+  WITH v10 AS ( SELECT * FROM v0 AS a18 ORDER BY a17.c12, a18.c2 ) SELECT a17.c1
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: table v0 has 1 values for 6 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a30.c1
+  SELECT count ( a30.c1 ), count ( a30.c3 ) FROM v0 AS a30 GROUP BY y ( a30.c12,
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a31.c21
+  GROUP BY a31.c2, abs ( a31.c21 ) HAVING CASE WHEN a31.c21 != 'v1' THEN 127 ELS
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 12: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such column: a17.c12
+  WITH v10 AS ( SELECT * FROM v0 AS a18 ORDER BY a17.c12, a18.c2 ) SELECT a17.c1
+                                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: no such column: a17.c12
+  WITH v10 AS ( SELECT * FROM v0 AS a18 ORDER BY a17.c12, a18.c2 ) SELECT a17.c1
+                                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: table v0 has 1 values for 6 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 30: table v0 has 1 values for 6 columns
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such column: a30.c1
+  SELECT count ( a30.c1 ), count ( a30.c3 ) FROM v0 AS a30 GROUP BY y ( a30.c12,
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such column: a31.c21
+  GROUP BY a31.c2, abs ( a31.c21 ) HAVING CASE WHEN a31.c21 != 'v1' THEN 127 ELS
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: no such column: a31.c21
+  GROUP BY a31.c2, abs ( a31.c21 ) HAVING CASE WHEN a31.c21 != 'v1' THEN 127 ELS
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

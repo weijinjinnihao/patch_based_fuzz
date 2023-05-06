@@ -1,0 +1,316 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c3 > 8 ), c4 ); 
+INSERT INTO v0 VALUES ( 0, 8, 8, 0 ), ( 8, 8, 127, 8 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+CREATE INDEX i6 ON v0 ( c3 ); 
+CREATE TABLE v7 ( c8, c9, c10, c11, CHECK( c10 > 8 ) ); 
+INSERT INTO v7 VALUES ( 0, 18446744073709551615, 0, 8 ), ( 8, 8, 8, 8 ); 
+CREATE INDEX i12 ON v7 ( c8 ); 
+CREATE INDEX i13 ON v0 ( c3 ); 
+CREATE INDEX i14 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( 18446744071562067968, 18446744073709551615, 8, 8 ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v15 AS ( SELECT * FROM v15 AS a17 ORDER BY c3, c8 ) SELECT c9, max ( c1 || c1 ) FROM v15 AS a16 WHERE ( c4 || c8 || c4 ) != 'x' GROUP BY c2 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+ALTER TABLE v7 DROP c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18, v7 AS a19 NATURAL JOIN v7 AS a20 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c11, count ( a21.c11 ) FROM v7 AS a21 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 ORDER BY ( 0, count ( * ) ) != 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 8 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a24.c11 || a24.c8 ) FROM v7 AS a24 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25, v0 AS a26 NATURAL JOIN v7 AS a27 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 AS ( SELECT 8 y ORDER BY 127 ) SELECT ( SELECT min ( a28.c11 ) OVER ( ORDER BY 8 ) ORDER BY 8 ) FROM v7 AS a28, v0 AS a29 GROUP BY a28.c11 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 ORDER BY ( a30.c3 + - 0 ) % 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c9 FROM v7 AS a31 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a32.c3 ) FROM v0 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: CHECK constraint failed: c3 > 8 (19)
+Runtime error near line 6: CHECK constraint failed: c10 > 8 (19)
+Runtime error near line 10: CHECK constraint failed: c3 > 8 (19)
+BEGIN VERI 0
+Parse error near line 12: circular reference: v15
+END VERI 0
+Runtime error near line 14: error in index i12 after drop column: no such column: c8
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: row value misused
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 12
+  AS a25, v0 AS a26 NATURAL JOIN v7 AS a27 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c3 > 8 ), c4 ); 
+INSERT INTO v0 VALUES ( 0, 8, 8, 0 ), ( 8, 8, 127, 8 ); 
+; 
+; 
+CREATE TABLE v7 ( c8, c9, c10, c11, CHECK( c10 > 8 ) ); 
+INSERT INTO v7 VALUES ( 0, 18446744073709551615, 0, 8 ), ( 8, 8, 8, 8 ); 
+; 
+; 
+; 
+INSERT INTO v0 VALUES ( 18446744071562067968, 18446744073709551615, 8, 8 ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v15 AS ( SELECT * FROM v15 AS a17 ORDER BY c3, c8 ) SELECT c9, max ( c1 || c1 ) FROM v15 AS a16 WHERE ( c4 || c8 || c4 ) != 'x' GROUP BY c2 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+ALTER TABLE v7 DROP c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18, v7 AS a19 NATURAL JOIN v7 AS a20 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c11, count ( a21.c11 ) FROM v7 AS a21 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 ORDER BY ( 0, count ( * ) ) != 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 8 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a24.c11 || a24.c8 ) FROM v7 AS a24 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25, v0 AS a26 NATURAL JOIN v7 AS a27 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 AS ( SELECT 8 y ORDER BY 127 ) SELECT ( SELECT min ( a28.c11 ) OVER ( ORDER BY 8 ) ORDER BY 8 ) FROM v7 AS a28, v0 AS a29 GROUP BY a28.c11 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 ORDER BY ( a30.c3 + - 0 ) % 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c9 FROM v7 AS a31 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a32.c3 ) FROM v0 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: CHECK constraint failed: c3 > 8 (19)
+Runtime error near line 6: CHECK constraint failed: c10 > 8 (19)
+Runtime error near line 10: CHECK constraint failed: c3 > 8 (19)
+BEGIN VERI 0
+Parse error near line 12: circular reference: v15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: row value misused
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a24.c8
+  SELECT max ( a24.c11 || a24.c8 ) FROM v7 AS a24 ORDER BY 127; 
+                          ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 11
+  AS a25, v0 AS a26 NATURAL JOIN v7 AS a27 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: circular reference: v15
+ 
+INT: 0 
+Str: 
+Parse error near line 12: circular reference: v15
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 22: row value misused
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such column: a24.c8
+  SELECT max ( a24.c11 || a24.c8 ) FROM v7 AS a24 ORDER BY 127; 
+                          ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 12
+  AS a25, v0 AS a26 NATURAL JOIN v7 AS a27 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 11
+  AS a25, v0 AS a26 NATURAL JOIN v7 AS a27 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,306 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c4 > 0 ), c4 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE INDEX i6 ON v0 ( c4 ); 
+INSERT INTO v0 VALUES ( 0, 0, 0, 0 ), ( 0, 0, 18446744073709518848, 127 ); 
+CREATE INDEX i7 ON v0 ( c1 ); 
+CREATE INDEX i8 ON v0 ( c4 ); 
+CREATE TABLE v9 ( c10, c11 DEFAULT 't1', c12, c13, CHECK( abs ( c13 ) >= 0 ) ); 
+INSERT INTO v9 VALUES ( 0, 0, 18446744073709551615, 0 ), ( 18446744071562067968, 18446744073709518848, 18446744071562067968, 127 ); 
+INSERT INTO v0 VALUES ( 127, 0, 127, 18446744073709551488 ); 
+INSERT INTO v0 VALUES ( 18446744071562067968, 0, 18446744073709551615, 0 ); 
+CREATE INDEX i14 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT sum ( a16.c1 ) FROM v0 AS a16 WHERE a16.c3 = 'x' ORDER BY 0 ) FROM v9 AS a15 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c12 = + a18.c10, a18.c13 FROM v9 AS a17 LEFT JOIN v9 AS a18 ON a17.c11 = a17.c10 GROUP BY y ( a18.c10 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a19, v9 AS a20 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT *, 'v0' FROM v0 AS a21, v0 AS a22 WHERE a21.c2 = 0 AND a21.c2 = 127 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c13 COLLATE binary ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c1 FROM v0 AS a24 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a25 WHERE a25.c10 > 18446744073709518848 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 4: CHECK constraint failed: c4 > 0 (19)
+Runtime error near line 10: CHECK constraint failed: c4 > 0 (19)
+Runtime error near line 12: error in index i7 after drop column: no such column: c1
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+  6.c1 ) FROM v0 AS a16 WHERE a16.c3 = 'x' ORDER BY 0 ) FROM v9 AS a15 ORDER BY 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 8
+  SELECT * FROM v9 AS a19, v9 AS a20 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: c13
+  SELECT c13 COLLATE binary ORDER BY 18446744071562067968; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c4 > 0 ), c4 ); 
+; 
+; 
+INSERT INTO v0 VALUES ( 0, 0, 0, 0 ), ( 0, 0, 18446744073709518848, 127 ); 
+; 
+; 
+CREATE TABLE v9 ( c10, c11 DEFAULT 't1', c12, c13, CHECK( abs ( c13 ) >= 0 ) ); 
+INSERT INTO v9 VALUES ( 0, 0, 18446744073709551615, 0 ), ( 18446744071562067968, 18446744073709518848, 18446744071562067968, 127 ); 
+INSERT INTO v0 VALUES ( 127, 0, 127, 18446744073709551488 ); 
+INSERT INTO v0 VALUES ( 18446744071562067968, 0, 18446744073709551615, 0 ); 
+; 
+ALTER TABLE v0 DROP c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT sum ( a16.c1 ) FROM v0 AS a16 WHERE a16.c3 = 'x' ORDER BY 0 ) FROM v9 AS a15 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c12 = + a18.c10, a18.c13 FROM v9 AS a17 LEFT JOIN v9 AS a18 ON a17.c11 = a17.c10 GROUP BY y ( a18.c10 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a19, v9 AS a20 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT *, 'v0' FROM v0 AS a21, v0 AS a22 WHERE a21.c2 = 0 AND a21.c2 = 127 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c13 COLLATE binary ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c1 FROM v0 AS a24 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a25 WHERE a25.c10 > 18446744073709518848 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 4: CHECK constraint failed: c4 > 0 (19)
+Runtime error near line 10: CHECK constraint failed: c4 > 0 (19)
+BEGIN VERI 0
+Parse error near line 14: no such column: a16.c1
+  SELECT ( SELECT sum ( a16.c1 ) FROM v0 AS a16 WHERE a16.c3 = 'x' ORDER BY 0 ) 
+                        ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 8
+  SELECT * FROM v9 AS a19, v9 AS a20 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: c13
+  SELECT c13 COLLATE binary ORDER BY 18446744071562067968; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a24.c1
+  SELECT a24.c1 FROM v0 AS a24 ORDER BY 127; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+  6.c1 ) FROM v0 AS a16 WHERE a16.c3 = 'x' ORDER BY 0 ) FROM v9 AS a15 ORDER BY 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 14: no such column: a16.c1
+  SELECT ( SELECT sum ( a16.c1 ) FROM v0 AS a16 WHERE a16.c3 = 'x' ORDER BY 0 ) 
+                        ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 8
+  SELECT * FROM v9 AS a19, v9 AS a20 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 8
+  SELECT * FROM v9 AS a19, v9 AS a20 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such column: c13
+  SELECT c13 COLLATE binary ORDER BY 18446744071562067968; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 32: no such column: c13
+  SELECT c13 COLLATE binary ORDER BY 18446744071562067968; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 38: no such column: a24.c1
+  SELECT a24.c1 FROM v0 AS a24 ORDER BY 127; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

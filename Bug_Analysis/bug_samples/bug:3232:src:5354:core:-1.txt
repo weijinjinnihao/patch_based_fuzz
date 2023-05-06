@@ -1,0 +1,617 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( x'616263', 'v0', 'GHI' ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 'v0', 'v1' ); 
+INSERT INTO v0 VALUES ( 'x', count ( ), 'v1' ); 
+INSERT INTO v0 VALUES ( 'v1', 'v1', 't-first' ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( x'616263', 'v1', 'v1' ); 
+CREATE TABLE v5 ( c6, c7, c8 COLLATE NOCASE ); 
+CREATE INDEX i9 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( NULL, 'anx', 'ghi' ); 
+INSERT INTO v5 VALUES ( 'v1', 'v0', 'v1' ); 
+INSERT INTO v5 VALUES ( x'68617265', 'x', 'V345FMP' ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 'v0', 'x' ); 
+ALTER TABLE v0 DROP c2; 
+INSERT INTO v0 VALUES ( - 18446744073709551488, 'v1', 'v1' ); 
+CREATE INDEX i10 ON v5 ( c8 ); 
+CREATE TABLE v11 ( c12, c13, c14 COLLATE NOCASE ); 
+INSERT INTO v0 SELECT * FROM v5 AS a15 ORDER BY 18446744073709551488; 
+INSERT INTO v5 SELECT * FROM v11 AS a16 ORDER BY 0; 
+CREATE INDEX i17 ON v11 ( c14 ); 
+INSERT INTO v5 SELECT * FROM v11 AS a18 ORDER BY 127; 
+INSERT INTO v11 SELECT * FROM v5 AS a19 ORDER BY 18446744073709551488; 
+INSERT INTO v0 SELECT * FROM v0 AS a20 ORDER BY 18446744073709518848; 
+INSERT INTO v0 SELECT * FROM v5 AS a21 ORDER BY 18446744073709551488; 
+CREATE INDEX i22 ON v5 ( c8 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c13, a24.c13 FROM v0 AS a23 RIGHT JOIN v11 AS a24 ON a24.c12 = a24.c14 GROUP BY a23.c3 HAVING count ( * ) >= 10 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c1, a25.c2 FROM v0 AS a25 RIGHT JOIN v0 AS a26 ON a25.c2 = a26.c2 WHERE a25.c1 != a26.c1 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27, v11 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a29, v0 AS a30 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a33.c12 ) FROM v11 AS a33 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a34 ORDER BY ( 18446744073709551488, count ( * ) ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: misuse of aggregate function count()
+  INSERT INTO v0 VALUES ( 'x', count ( ), 'v1' ); 
+                 error here ---^
+Runtime error near line 14: error in index i4 after drop column: no such column: c2
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v5 SELECT * FROM v11 AS a16 ORDER BY 0; 
+                                     error here ---^
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  GROUP BY a23.c3 HAVING count ( * ) >= 10 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+abc|v0
+abc|v0
+abc|v0
+abc|v0
+abc|v0
+abc|v0
+abc|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+v1|v1
+v1|v1
+v1|v1
+v1|v1
+abc|v1
+abc|v1
+abc|v1
+abc|v1
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+-1.84467440737096e+19|v1
+-1.84467440737096e+19|v1
+-1.84467440737096e+19|v1
+-1.84467440737096e+19|v1
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+abc|v0
+abc|v0
+abc|v0
+abc|v0
+abc|v0
+abc|v0
+abc|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+v1|v1
+v1|v1
+v1|v1
+v1|v1
+abc|v1
+abc|v1
+abc|v1
+abc|v1
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+-1.84467440737096e+19|v1
+-1.84467440737096e+19|v1
+-1.84467440737096e+19|v1
+-1.84467440737096e+19|v1
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+END VERI 0
+BEGIN VERI 0
+abc|v0|GHI|v1|v0|v1
+abc|v0|GHI|hare|x|V345FMP
+1.84467440737096e+19|v0|v1|v1|v0|v1
+1.84467440737096e+19|v0|v1|hare|x|V345FMP
+v1|v1|t-first|v1|v0|v1
+v1|v1|t-first|hare|x|V345FMP
+abc|v1|v1|v1|v0|v1
+abc|v1|v1|hare|x|V345FMP
+|anx|ghi|v1|v0|v1
+|anx|ghi|hare|x|V345FMP
+1.84467440737096e+19|v0|x|v1|v0|v1
+1.84467440737096e+19|v0|x|hare|x|V345FMP
+-1.84467440737096e+19|v1|v1|v1|v0|v1
+-1.84467440737096e+19|v1|v1|hare|x|V345FMP
+v1|v0|v1|v1|v0|v1
+v1|v0|v1|hare|x|V345FMP
+hare|x|V345FMP|v1|v0|v1
+hare|x|V345FMP|hare|x|V345FMP
+abc|v0|GHI|v1|v0|v1
+abc|v0|GHI|hare|x|V345FMP
+1.84467440737096e+19|v0|v1|v1|v0|v1
+1.84467440737096e+19|v0|v1|hare|x|V345FMP
+v1|v1|t-first|v1|v0|v1
+v1|v1|t-first|hare|x|V345FMP
+abc|v1|v1|v1|v0|v1
+abc|v1|v1|hare|x|V345FMP
+|anx|ghi|v1|v0|v1
+|anx|ghi|hare|x|V345FMP
+1.84467440737096e+19|v0|x|v1|v0|v1
+1.84467440737096e+19|v0|x|hare|x|V345FMP
+-1.84467440737096e+19|v1|v1|v1|v0|v1
+-1.84467440737096e+19|v1|v1|hare|x|V345FMP
+v1|v0|v1|v1|v0|v1
+v1|v0|v1|hare|x|V345FMP
+hare|x|V345FMP|v1|v0|v1
+hare|x|V345FMP|hare|x|V345FMP
+v1|v0|v1|v1|v0|v1
+v1|v0|v1|hare|x|V345FMP
+hare|x|V345FMP|v1|v0|v1
+hare|x|V345FMP|hare|x|V345FMP
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+BEGIN VERI 0
+v1|v0|v1
+hare|x|V345FMP
+END VERI 0
+BEGIN VERI 0
+v1|v0|v1
+hare|x|V345FMP
+END VERI 0
+BEGIN VERI 0
+Parse error near line 51: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 54: row value misused
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( x'616263', 'v0', 'GHI' ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 'v0', 'v1' ); 
+INSERT INTO v0 VALUES ( 'x', count ( ), 'v1' ); 
+INSERT INTO v0 VALUES ( 'v1', 'v1', 't-first' ); 
+; 
+INSERT INTO v0 VALUES ( x'616263', 'v1', 'v1' ); 
+CREATE TABLE v5 ( c6, c7, c8 COLLATE NOCASE ); 
+; 
+INSERT INTO v0 VALUES ( NULL, 'anx', 'ghi' ); 
+INSERT INTO v5 VALUES ( 'v1', 'v0', 'v1' ); 
+INSERT INTO v5 VALUES ( x'68617265', 'x', 'V345FMP' ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 'v0', 'x' ); 
+ALTER TABLE v0 DROP c2; 
+INSERT INTO v0 VALUES ( - 18446744073709551488, 'v1', 'v1' ); 
+; 
+CREATE TABLE v11 ( c12, c13, c14 COLLATE NOCASE ); 
+INSERT INTO v0 SELECT * FROM v5 AS a15 ORDER BY 18446744073709551488; 
+INSERT INTO v5 SELECT * FROM v11 AS a16 ORDER BY 0; 
+; 
+INSERT INTO v5 SELECT * FROM v11 AS a18 ORDER BY 127; 
+INSERT INTO v11 SELECT * FROM v5 AS a19 ORDER BY 18446744073709551488; 
+INSERT INTO v0 SELECT * FROM v0 AS a20 ORDER BY 18446744073709518848; 
+INSERT INTO v0 SELECT * FROM v5 AS a21 ORDER BY 18446744073709551488; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c13, a24.c13 FROM v0 AS a23 RIGHT JOIN v11 AS a24 ON a24.c12 = a24.c14 GROUP BY a23.c3 HAVING count ( * ) >= 10 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c1, a25.c2 FROM v0 AS a25 RIGHT JOIN v0 AS a26 ON a25.c2 = a26.c2 WHERE a25.c1 != a26.c1 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27, v11 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a29, v0 AS a30 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a33.c12 ) FROM v11 AS a33 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a34 ORDER BY ( 18446744073709551488, count ( * ) ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: misuse of aggregate function count()
+  INSERT INTO v0 VALUES ( 'x', count ( ), 'v1' ); 
+                 error here ---^
+Parse error near line 15: table v0 has 2 columns but 3 values were supplied
+Parse error near line 18: table v0 has 2 columns but 3 values were supplied
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v5 SELECT * FROM v11 AS a16 ORDER BY 0; 
+                                     error here ---^
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 24: table v0 has 2 columns but 3 values were supplied
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  GROUP BY a23.c3 HAVING count ( * ) >= 10 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a25.c2
+  SELECT a25.c1, a25.c2 FROM v0 AS a25 RIGHT JOIN v0 AS a26 ON a25.c2 = a26.c2 W
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+abc|GHI|v1|v0|v1
+abc|GHI|hare|x|V345FMP
+1.84467440737096e+19|v1|v1|v0|v1
+1.84467440737096e+19|v1|hare|x|V345FMP
+v1|t-first|v1|v0|v1
+v1|t-first|hare|x|V345FMP
+abc|v1|v1|v0|v1
+abc|v1|hare|x|V345FMP
+|ghi|v1|v0|v1
+|ghi|hare|x|V345FMP
+1.84467440737096e+19|x|v1|v0|v1
+1.84467440737096e+19|x|hare|x|V345FMP
+abc|GHI|v1|v0|v1
+abc|GHI|hare|x|V345FMP
+1.84467440737096e+19|v1|v1|v0|v1
+1.84467440737096e+19|v1|hare|x|V345FMP
+v1|t-first|v1|v0|v1
+v1|t-first|hare|x|V345FMP
+abc|v1|v1|v0|v1
+abc|v1|hare|x|V345FMP
+|ghi|v1|v0|v1
+|ghi|hare|x|V345FMP
+1.84467440737096e+19|x|v1|v0|v1
+1.84467440737096e+19|x|hare|x|V345FMP
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+BEGIN VERI 0
+v1|v0|v1
+hare|x|V345FMP
+END VERI 0
+BEGIN VERI 0
+v1|v0|v1
+hare|x|V345FMP
+END VERI 0
+BEGIN VERI 0
+Parse error near line 51: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 54: row value misused
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  GROUP BY a23.c3 HAVING count ( * ) >= 10 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  GROUP BY a23.c3 HAVING count ( * ) >= 10 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: -1
+Str: 
+abc|v0
+abc|v0
+abc|v0
+abc|v0
+abc|v0
+abc|v0
+abc|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+v1|v1
+v1|v1
+v1|v1
+v1|v1
+abc|v1
+abc|v1
+abc|v1
+abc|v1
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+-1.84467440737096e+19|v1
+-1.84467440737096e+19|v1
+-1.84467440737096e+19|v1
+-1.84467440737096e+19|v1
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+abc|v0
+abc|v0
+abc|v0
+abc|v0
+abc|v0
+abc|v0
+abc|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+v1|v1
+v1|v1
+v1|v1
+v1|v1
+abc|v1
+abc|v1
+abc|v1
+abc|v1
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+1.84467440737096e+19|v0
+-1.84467440737096e+19|v1
+-1.84467440737096e+19|v1
+-1.84467440737096e+19|v1
+-1.84467440737096e+19|v1
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+v1|v0
+ 
+Str: 
+Parse error near line 30: no such column: a25.c2
+  SELECT a25.c1, a25.c2 FROM v0 AS a25 RIGHT JOIN v0 AS a26 ON a25.c2 = a26.c2 W
+                 ^--- error here
+ 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+abc|v0|GHI|v1|v0|v1
+abc|v0|GHI|hare|x|V345FMP
+1.84467440737096e+19|v0|v1|v1|v0|v1
+1.84467440737096e+19|v0|v1|hare|x|V345FMP
+v1|v1|t-first|v1|v0|v1
+v1|v1|t-first|hare|x|V345FMP
+abc|v1|v1|v1|v0|v1
+abc|v1|v1|hare|x|V345FMP
+|anx|ghi|v1|v0|v1
+|anx|ghi|hare|x|V345FMP
+1.84467440737096e+19|v0|x|v1|v0|v1
+1.84467440737096e+19|v0|x|hare|x|V345FMP
+-1.84467440737096e+19|v1|v1|v1|v0|v1
+-1.84467440737096e+19|v1|v1|hare|x|V345FMP
+v1|v0|v1|v1|v0|v1
+v1|v0|v1|hare|x|V345FMP
+hare|x|V345FMP|v1|v0|v1
+hare|x|V345FMP|hare|x|V345FMP
+abc|v0|GHI|v1|v0|v1
+abc|v0|GHI|hare|x|V345FMP
+1.84467440737096e+19|v0|v1|v1|v0|v1
+1.84467440737096e+19|v0|v1|hare|x|V345FMP
+v1|v1|t-first|v1|v0|v1
+v1|v1|t-first|hare|x|V345FMP
+abc|v1|v1|v1|v0|v1
+abc|v1|v1|hare|x|V345FMP
+|anx|ghi|v1|v0|v1
+|anx|ghi|hare|x|V345FMP
+1.84467440737096e+19|v0|x|v1|v0|v1
+1.84467440737096e+19|v0|x|hare|x|V345FMP
+-1.84467440737096e+19|v1|v1|v1|v0|v1
+-1.84467440737096e+19|v1|v1|hare|x|V345FMP
+v1|v0|v1|v1|v0|v1
+v1|v0|v1|hare|x|V345FMP
+hare|x|V345FMP|v1|v0|v1
+hare|x|V345FMP|hare|x|V345FMP
+v1|v0|v1|v1|v0|v1
+v1|v0|v1|hare|x|V345FMP
+hare|x|V345FMP|v1|v0|v1
+hare|x|V345FMP|hare|x|V345FMP
+ 
+INT: 39 
+Str: 
+abc|GHI|v1|v0|v1
+abc|GHI|hare|x|V345FMP
+1.84467440737096e+19|v1|v1|v0|v1
+1.84467440737096e+19|v1|hare|x|V345FMP
+v1|t-first|v1|v0|v1
+v1|t-first|hare|x|V345FMP
+abc|v1|v1|v0|v1
+abc|v1|hare|x|V345FMP
+|ghi|v1|v0|v1
+|ghi|hare|x|V345FMP
+1.84467440737096e+19|x|v1|v0|v1
+1.84467440737096e+19|x|hare|x|V345FMP
+abc|GHI|v1|v0|v1
+abc|GHI|hare|x|V345FMP
+1.84467440737096e+19|v1|v1|v0|v1
+1.84467440737096e+19|v1|hare|x|V345FMP
+v1|t-first|v1|v0|v1
+v1|t-first|hare|x|V345FMP
+abc|v1|v1|v0|v1
+abc|v1|hare|x|V345FMP
+|ghi|v1|v0|v1
+|ghi|hare|x|V345FMP
+1.84467440737096e+19|x|v1|v0|v1
+1.84467440737096e+19|x|hare|x|V345FMP
+ 
+INT: 23 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+v1|v0|v1
+hare|x|V345FMP
+ 
+INT: 1 
+Str: 
+v1|v0|v1
+hare|x|V345FMP
+ 
+INT: 1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+v1|v0|v1
+hare|x|V345FMP
+ 
+INT: 1 
+Str: 
+v1|v0|v1
+hare|x|V345FMP
+ 
+INT: 1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 51: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 51: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 54: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 54: row value misused
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

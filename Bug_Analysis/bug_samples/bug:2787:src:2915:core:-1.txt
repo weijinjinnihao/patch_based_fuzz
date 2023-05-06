@@ -1,0 +1,346 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INT, c2 INT ); 
+CREATE INDEX i3 ON v0 ( c1 ); 
+BEGIN; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( 100, 18446744073709551488 ); 
+ALTER TABLE v0 ADD COLUMN c6 CHECK( x'b1' ); 
+INSERT INTO v0 VALUES ( 100, 0 ); 
+CREATE INDEX i7 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 100, 0 ); 
+CREATE TABLE v8 ( c9 INT UNIQUE ); 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 100, 100 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+CREATE INDEX i10 ON v8 ( c9 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a11.c9 IS NULL ) ) AND ( NOT ( a11.c9 IS NULL ) ) ) FROM v8 AS a11 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a12 ORDER BY ( ( hex ( 100 ) ) % 0 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c14, c15, c16, c17, c18, c19 ) AS ( SELECT 18446744073709551615 y ORDER BY 0 ) SELECT * FROM v8 AS a13 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c1, a20.c15 FROM v8 AS a20 JOIN v0 AS a21 ON a21.c2 = hex ( ) GROUP BY a21.c9 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a22.c6 || a22.c1 ) FROM v0 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a23 ORDER BY - x'68617265'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c9, count ( a25.c2 ) FROM v8 AS a25 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a26 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: CHECK constraint failed
+Parse error near line 8: table v0 has 3 columns but 2 values were supplied
+BEGIN VERI 0
+Parse error near line 13: near "ORDER": syntax error
+  VALUES ( 100, 100 ) ORDER BY 1; 
+                      ^--- error here
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+100|1.84467440737096e+19
+100|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a20.c15
+  SELECT a21.c1, a20.c15 FROM v8 AS a20 JOIN v0 AS a21 ON a21.c2 = hex ( ) GROUP
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a22.c6
+  SELECT max ( a22.c6 || a22.c1 ) FROM v0 AS a22 ORDER BY 18446744073709551615; 
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM v8 AS a24 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a25.c2
+  SELECT a25.c9, count ( a25.c2 ) FROM v8 AS a25 ORDER BY 18446744073709551488; 
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INT, c2 INT ); 
+; 
+BEGIN; 
+; 
+; 
+INSERT INTO v0 VALUES ( 100, 18446744073709551488 ); 
+ALTER TABLE v0 ADD COLUMN c6 CHECK( x'b1' ); 
+INSERT INTO v0 VALUES ( 100, 0 ); 
+; 
+INSERT INTO v0 VALUES ( 100, 0 ); 
+CREATE TABLE v8 ( c9 INT UNIQUE ); 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 100, 100 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a11.c9 IS NULL ) ) AND ( NOT ( a11.c9 IS NULL ) ) ) FROM v8 AS a11 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a12 ORDER BY ( ( hex ( 100 ) ) % 0 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c14, c15, c16, c17, c18, c19 ) AS ( SELECT 18446744073709551615 y ORDER BY 0 ) SELECT * FROM v8 AS a13 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c1, a20.c15 FROM v8 AS a20 JOIN v0 AS a21 ON a21.c2 = hex ( ) GROUP BY a21.c9 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a22.c6 || a22.c1 ) FROM v0 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a23 ORDER BY - x'68617265'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c9, count ( a25.c2 ) FROM v8 AS a25 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a26 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: CHECK constraint failed
+Parse error near line 8: table v0 has 3 columns but 2 values were supplied
+Parse error near line 10: table v0 has 3 columns but 2 values were supplied
+BEGIN VERI 0
+Parse error near line 13: near "ORDER": syntax error
+  VALUES ( 100, 100 ) ORDER BY 1; 
+                      ^--- error here
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+100|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a20.c15
+  SELECT a21.c1, a20.c15 FROM v8 AS a20 JOIN v0 AS a21 ON a21.c2 = hex ( ) GROUP
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a22.c6
+  SELECT max ( a22.c6 || a22.c1 ) FROM v0 AS a22 ORDER BY 18446744073709551615; 
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM v8 AS a24 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a25.c2
+  SELECT a25.c9, count ( a25.c2 ) FROM v8 AS a25 ORDER BY 18446744073709551488; 
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 61190464
+Str: 
+Parse error near line 13: near "ORDER": syntax error
+  VALUES ( 100, 100 ) ORDER BY 1; 
+                      ^--- error here
+ 
+Str: 
+Parse error near line 13: near "ORDER": syntax error
+  VALUES ( 100, 100 ) ORDER BY 1; 
+                      ^--- error here
+ 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+100|1.84467440737096e+19
+100|0
+ 
+INT: 1 
+Str: 
+100|1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: no such column: a20.c15
+  SELECT a21.c1, a20.c15 FROM v8 AS a20 JOIN v0 AS a21 ON a21.c2 = hex ( ) GROUP
+                 ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 29: no such column: a20.c15
+  SELECT a21.c1, a20.c15 FROM v8 AS a20 JOIN v0 AS a21 ON a21.c2 = hex ( ) GROUP
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such column: a22.c6
+  SELECT max ( a22.c6 || a22.c1 ) FROM v0 AS a22 ORDER BY 18446744073709551615; 
+               ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 32: no such column: a22.c6
+  SELECT max ( a22.c6 || a22.c1 ) FROM v0 AS a22 ORDER BY 18446744073709551615; 
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM v8 AS a24 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM v8 AS a24 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no such column: a25.c2
+  SELECT a25.c9, count ( a25.c2 ) FROM v8 AS a25 ORDER BY 18446744073709551488; 
+                         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 41: no such column: a25.c2
+  SELECT a25.c9, count ( a25.c2 ) FROM v8 AS a25 ORDER BY 18446744073709551488; 
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 44: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

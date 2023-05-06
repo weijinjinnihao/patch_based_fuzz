@@ -1,0 +1,311 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE VIEW v5 AS SELECT c1 COLLATE hex FROM v0 AS a6 ORDER BY 18446744073709551615; 
+CREATE VIEW v7 AS WITH v8 ( c10 ) AS ( WITH v11 AS ( SELECT ( SELECT min ( c2 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 127 ) FROM v11 AS a12 GROUP BY c10 ORDER BY 77 ) SELECT 127 ORDER BY 18446744073709551615 ) SELECT * FROM v8 AS a9 ORDER BY 127; 
+CREATE INDEX i13 ON v5 ( c2 ); 
+CREATE TABLE v14 ( c15 INTEGER PRIMARY KEY, c16, c17 UNIQUE ); 
+CREATE TABLE v18 ( c19, c20, c21 ); 
+CREATE INDEX i22 ON v0 ( c2 ); 
+ALTER TABLE v14 DROP COLUMN c15; 
+ALTER TABLE v14 DROP COLUMN c17; 
+CREATE VIRTUAL TABLE v23 USING fts5 ( c24, c25 ); 
+CREATE INDEX i26 ON v14 ( c17 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE INDEX i27 ON v14 ( c17 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a28 GROUP BY a28.c25 HAVING count ( * ) >= 77 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a29, v0 AS a30 NATURAL JOIN v14 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a32.c25 ) FROM v23 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a33 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a34, v5 AS a35 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c2 FROM v5 AS a36 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.c2 FROM v5 AS a37 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c2 FROM v5 AS a38 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a39 GROUP BY a39.c20 HAVING a39.c21 > a39.c21 % 18446744073709551615 >= 127 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 GROUP BY a40.c1, abs ( a40.c1 ) HAVING CASE WHEN a40.c3 != 'v0' THEN 0 ELSE 18446744073709551488 END > 18446744073709551615 >= 100 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: views may not be indexed
+Parse error near line 9: cannot drop PRIMARY KEY column: "c15"
+Parse error near line 10: cannot drop UNIQUE column: "c17"
+Runtime error near line 11: no such module: fts5
+Runtime error near line 13: error in index i4 after drop column: no such column: c3
+BEGIN VERI 0
+Parse error near line 16: no such table: v23
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a36.c2
+  SELECT a36.c2 FROM v5 AS a36 ORDER BY 0; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a37.c2
+  SELECT a37.c2 FROM v5 AS a37 ORDER BY 127; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a38.c2
+  SELECT a38.c2 FROM v5 AS a38 ORDER BY 0; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT c1 COLLATE hex FROM v0 AS a6 ORDER BY 18446744073709551615; 
+CREATE VIEW v7 AS WITH v8 ( c10 ) AS ( WITH v11 AS ( SELECT ( SELECT min ( c2 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 127 ) FROM v11 AS a12 GROUP BY c10 ORDER BY 77 ) SELECT 127 ORDER BY 18446744073709551615 ) SELECT * FROM v8 AS a9 ORDER BY 127; 
+; 
+CREATE TABLE v14 ( c15 INTEGER PRIMARY KEY, c16, c17 UNIQUE ); 
+CREATE TABLE v18 ( c19, c20, c21 ); 
+; 
+ALTER TABLE v14 DROP COLUMN c15; 
+ALTER TABLE v14 DROP COLUMN c17; 
+CREATE VIRTUAL TABLE v23 USING fts5 ( c24, c25 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c3; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a28 GROUP BY a28.c25 HAVING count ( * ) >= 77 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a29, v0 AS a30 NATURAL JOIN v14 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a32.c25 ) FROM v23 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a33 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a34, v5 AS a35 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c2 FROM v5 AS a36 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.c2 FROM v5 AS a37 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c2 FROM v5 AS a38 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a39 GROUP BY a39.c20 HAVING a39.c21 > a39.c21 % 18446744073709551615 >= 127 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 GROUP BY a40.c1, abs ( a40.c1 ) HAVING CASE WHEN a40.c3 != 'v0' THEN 0 ELSE 18446744073709551488 END > 18446744073709551615 >= 100 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: cannot drop PRIMARY KEY column: "c15"
+Parse error near line 10: cannot drop UNIQUE column: "c17"
+Runtime error near line 11: no such module: fts5
+BEGIN VERI 0
+Parse error near line 16: no such table: v23
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a36.c2
+  SELECT a36.c2 FROM v5 AS a36 ORDER BY 0; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a37.c2
+  SELECT a37.c2 FROM v5 AS a37 ORDER BY 127; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a38.c2
+  SELECT a38.c2 FROM v5 AS a38 ORDER BY 0; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such column: a40.c3
+   GROUP BY a40.c1, abs ( a40.c1 ) HAVING CASE WHEN a40.c3 != 'v0' THEN 0 ELSE 1
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such table: v23
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such table: v23
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such table: v23
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such table: v23
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no such collation sequence: hex
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such collation sequence: hex
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no such column: a36.c2
+  SELECT a36.c2 FROM v5 AS a36 ORDER BY 0; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 31: no such column: a36.c2
+  SELECT a36.c2 FROM v5 AS a36 ORDER BY 0; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such column: a37.c2
+  SELECT a37.c2 FROM v5 AS a37 ORDER BY 127; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 34: no such column: a37.c2
+  SELECT a37.c2 FROM v5 AS a37 ORDER BY 127; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such column: a38.c2
+  SELECT a38.c2 FROM v5 AS a38 ORDER BY 0; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 37: no such column: a38.c2
+  SELECT a38.c2 FROM v5 AS a38 ORDER BY 0; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 43: no such column: a40.c3
+   GROUP BY a40.c1, abs ( a40.c1 ) HAVING CASE WHEN a40.c3 != 'v0' THEN 0 ELSE 1
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,276 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1 ), CHECK( c2 != c2 ), CHECK( c3 != c3 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN SELECT c3 FROM v0 AS a4 WHERE 10 ORDER BY 10; END; 
+CREATE TABLE v5 ( c6, c7, c8, c9, PRIMARY KEY ( c7, c6 ) ) WITHOUT ROWID; 
+CREATE INDEX i10 ON v0 ( c1 ); 
+INSERT INTO v5 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709551615, 18446744073709551615 ); 
+CREATE TABLE IF NOT EXISTS v11 ( c12 INTEGER PRIMARY KEY ON CONFLICT REPLACE, c13 UNIQUE ON CONFLICT IGNORE, c14 UNIQUE ON CONFLICT FAIL ) WITHOUT ROWID; 
+CREATE INDEX i15 ON v0 ( c1 ); 
+CREATE INDEX i16 ON v5 ( c8 ); 
+CREATE INDEX i17 ON v0 ( c3 ); 
+ALTER TABLE v5 DROP COLUMN c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a18.c1 ) FROM v0 AS a18 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 16 < a19.c13 FROM v11 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20, v0 AS a21 NATURAL JOIN v11 AS a22 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a23 ORDER BY ( ( a23.c6 + 18446744073709551615 ) % 18446744073709551615 ) == 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c7, a25.c9, a25.c8 FROM v5 AS a25 WHERE a25.c6 >= 'mad' ORDER BY a25.c7; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c12, a27.c13, a28.c14 FROM v11 AS a26, v11 AS a27 NATURAL JOIN v11 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 ORDER BY 'v1'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a30.c12 || a30.c12 ) FROM v11 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c1, count ( a31.c3 ) FROM v0 AS a31 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: error in index i16 after drop column: no such column: c8
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 9
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a24 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1 ), CHECK( c2 != c2 ), CHECK( c3 != c3 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN SELECT c3 FROM v0 AS a4 WHERE 10 ORDER BY 10; END; 
+CREATE TABLE v5 ( c6, c7, c8, c9, PRIMARY KEY ( c7, c6 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v5 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709551615, 18446744073709551615 ); 
+CREATE TABLE IF NOT EXISTS v11 ( c12 INTEGER PRIMARY KEY ON CONFLICT REPLACE, c13 UNIQUE ON CONFLICT IGNORE, c14 UNIQUE ON CONFLICT FAIL ) WITHOUT ROWID; 
+; 
+; 
+; 
+ALTER TABLE v5 DROP COLUMN c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a18.c1 ) FROM v0 AS a18 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 16 < a19.c13 FROM v11 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20, v0 AS a21 NATURAL JOIN v11 AS a22 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a23 ORDER BY ( ( a23.c6 + 18446744073709551615 ) % 18446744073709551615 ) == 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c7, a25.c9, a25.c8 FROM v5 AS a25 WHERE a25.c6 >= 'mad' ORDER BY a25.c7; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c12, a27.c13, a28.c14 FROM v11 AS a26, v11 AS a27 NATURAL JOIN v11 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 ORDER BY 'v1'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a30.c12 || a30.c12 ) FROM v11 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c1, count ( a31.c3 ) FROM v0 AS a31 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 9
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a24 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a25.c8
+  SELECT a25.c7, a25.c9, a25.c8 FROM v5 AS a25 WHERE a25.c6 >= 'mad' ORDER BY a2
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 9
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 9
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a24 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a24 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 27: no such column: a25.c8
+  SELECT a25.c7, a25.c9, a25.c8 FROM v5 AS a25 WHERE a25.c6 >= 'mad' ORDER BY a2
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+
+ 
+INT: -1 
+Str: 
+
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

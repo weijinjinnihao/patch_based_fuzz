@@ -1,0 +1,298 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE INDEX i6 ON v0 ( c2 ); 
+CREATE VIEW v7 AS SELECT * FROM v0 AS a8 ORDER BY 8; 
+CREATE INDEX i9 ON v0 ( c1 ); 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12, c13 UNIQUE ON CONFLICT FAIL ); 
+CREATE INDEX i14 ON v0 ( c3 ); 
+CREATE TABLE v15 ( c16, c17, c18 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+ALTER TABLE v15 DROP COLUMN c16; 
+CREATE VIEW v19 AS SELECT * FROM v0 AS a20 ORDER BY c1; 
+ALTER TABLE v19 DROP COLUMN y; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a21 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c18, sum ( NULL, NULL ) AS y FROM v15 AS a22 GROUP BY a22.c16 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a23.c13 ) OVER ( ORDER BY 8 ) ORDER BY 8 ) FROM v10 AS a23 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a24 WHERE a24.y = a24.y || a24.y ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( 8, count ( * ) ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c13, a26.c1 FROM v10 AS a25 RIGHT JOIN v0 AS a26 ON a27.c1, v0 AS a27 WHERE a25.c11 = 8 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a28, v10 AS a29 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 AS ( SELECT 8 y ORDER BY 255 ) SELECT c3 % 18446744071562067968, c18 / 0, c13, printf ( 'anx', c16 ) FROM v30 AS a31 ORDER BY ( y || c13 || c13 ) != '40000 400 1 1'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: error in index i9 after drop column: no such column: c1
+Parse error near line 13: cannot drop column from view "v19"
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: wrong number of arguments to function sum()
+  SELECT a22.c18, sum ( NULL, NULL ) AS y FROM v15 AS a22 GROUP BY a22.c16 ORDER
+                  ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a24.y
+  SELECT * FROM v19 AS a24 WHERE a24.y = a24.y || a24.y ORDER BY 8; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+; 
+; 
+CREATE VIEW v7 AS SELECT * FROM v0 AS a8 ORDER BY 8; 
+; 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12, c13 UNIQUE ON CONFLICT FAIL ); 
+; 
+CREATE TABLE v15 ( c16, c17, c18 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+ALTER TABLE v15 DROP COLUMN c16; 
+CREATE VIEW v19 AS SELECT * FROM v0 AS a20 ORDER BY c1; 
+ALTER TABLE v19 DROP COLUMN y; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a21 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c18, sum ( NULL, NULL ) AS y FROM v15 AS a22 GROUP BY a22.c16 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a23.c13 ) OVER ( ORDER BY 8 ) ORDER BY 8 ) FROM v10 AS a23 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a24 WHERE a24.y = a24.y || a24.y ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( 8, count ( * ) ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c13, a26.c1 FROM v10 AS a25 RIGHT JOIN v0 AS a26 ON a27.c1, v0 AS a27 WHERE a25.c11 = 8 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a28, v10 AS a29 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 AS ( SELECT 8 y ORDER BY 255 ) SELECT c3 % 18446744071562067968, c18 / 0, c13, printf ( 'anx', c16 ) FROM v30 AS a31 ORDER BY ( y || c13 || c13 ) != '40000 400 1 1'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 13: cannot drop column from view "v19"
+BEGIN VERI 0
+Parse error near line 15: no such column: c1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: wrong number of arguments to function sum()
+  SELECT a22.c18, sum ( NULL, NULL ) AS y FROM v15 AS a22 GROUP BY a22.c16 ORDER
+                  ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: c1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a26.c1
+  SELECT a25.c13, a26.c1 FROM v10 AS a25 RIGHT JOIN v0 AS a26 ON a27.c1, v0 AS a
+                  ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such column: c1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: wrong number of arguments to function sum()
+  SELECT a22.c18, sum ( NULL, NULL ) AS y FROM v15 AS a22 GROUP BY a22.c16 ORDER
+                  ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 18: wrong number of arguments to function sum()
+  SELECT a22.c18, sum ( NULL, NULL ) AS y FROM v15 AS a22 GROUP BY a22.c16 ORDER
+                  ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 27: no such column: a24.y
+  SELECT * FROM v19 AS a24 WHERE a24.y = a24.y || a24.y ORDER BY 8; 
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: no such column: c1
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such column: a26.c1
+  SELECT a25.c13, a26.c1 FROM v10 AS a25 RIGHT JOIN v0 AS a26 ON a27.c1, v0 AS a
+                  ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,286 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, PRIMARY KEY ( c1 ), CHECK( c2 != c2 ), CHECK( c2 != c3 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c1 = c1 || c3 WHERE c3 = c1 || c3; END; 
+CREATE TABLE v4 ( c5, c6, c7, c8, PRIMARY KEY ( c5, c5 ) ) WITHOUT ROWID; 
+CREATE INDEX i9 ON v4 ( c6 ); 
+CREATE INDEX i10 ON v4 ( c8 ); 
+INSERT INTO v0 VALUES ( 18446744071562067968, 18446744071562067968, 18446744071562067968, 18446744073709551488 ); 
+CREATE INDEX i11 ON v0 ( c1 ); 
+ALTER TABLE v4 DROP COLUMN c8; 
+CREATE INDEX i12 ON v4 ( c7 ); 
+CREATE TABLE v13 ( c14 REAL PRIMARY KEY, c15 INTEGER NOT NULL REFERENCES album, c16 INTEGER NOT NULL, c17 TEXT, UNIQUE ( c15, c14 ) ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a20, v4 AS a21 NATURAL JOIN v13 AS a22 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a23 ORDER BY abs ( a23.c8 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a25 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a26 WHERE a26.c15 = 18446744071562067968 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a27 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744071562067968 GROUP BY c3 HAVING automatic_index ( * ) >= 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: table v0 has 3 columns but 4 values were supplied
+Runtime error near line 8: error in index i10 after drop column: no such column: c8
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 3
+   * FROM v0 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v4 AS a24 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such function: automatic_index
+  SELECT 18446744071562067968 GROUP BY c3 HAVING automatic_index ( * ) >= 0 ORDE
+                                   error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, PRIMARY KEY ( c1 ), CHECK( c2 != c2 ), CHECK( c2 != c3 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c1 = c1 || c3 WHERE c3 = c1 || c3; END; 
+CREATE TABLE v4 ( c5, c6, c7, c8, PRIMARY KEY ( c5, c5 ) ) WITHOUT ROWID; 
+; 
+; 
+INSERT INTO v0 VALUES ( 18446744071562067968, 18446744071562067968, 18446744071562067968, 18446744073709551488 ); 
+; 
+ALTER TABLE v4 DROP COLUMN c8; 
+; 
+CREATE TABLE v13 ( c14 REAL PRIMARY KEY, c15 INTEGER NOT NULL REFERENCES album, c16 INTEGER NOT NULL, c17 TEXT, UNIQUE ( c15, c14 ) ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a20, v4 AS a21 NATURAL JOIN v13 AS a22 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a23 ORDER BY abs ( a23.c8 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a25 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a26 WHERE a26.c15 = 18446744071562067968 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a27 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744071562067968 GROUP BY c3 HAVING automatic_index ( * ) >= 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: table v0 has 3 columns but 4 values were supplied
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 3
+   * FROM v0 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: a23.c8
+  SELECT * FROM v4 AS a23 ORDER BY abs ( a23.c8 ); 
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v4 AS a24 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such function: automatic_index
+  SELECT 18446744071562067968 GROUP BY c3 HAVING automatic_index ( * ) >= 0 ORDE
+                                   error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 3
+   * FROM v0 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 3
+   * FROM v0 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 18: no such column: a23.c8
+  SELECT * FROM v4 AS a23 ORDER BY abs ( a23.c8 ); 
+                           error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v4 AS a24 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v4 AS a24 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such function: automatic_index
+  SELECT 18446744071562067968 GROUP BY c3 HAVING automatic_index ( * ) >= 0 ORDE
+                                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: no such function: automatic_index
+  SELECT 18446744071562067968 GROUP BY c3 HAVING automatic_index ( * ) >= 0 ORDE
+                                   error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

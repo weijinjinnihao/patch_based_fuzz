@@ -1,0 +1,300 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 TEXT, c2 INTEGER, c3 INT, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 TEXT DEFAULT - 127, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42 PRIMARY KEY, CHECK( ( ( c26 + 18446744071562067968 ) % 127 ) != 2147483647 ) ) WITHOUT ROWID; 
+CREATE TABLE v43 ( c44, c45, c46, c47 REFERENCES p1 ( c47 ) ); 
+CREATE INDEX i48 ON v0 ( c18 ); 
+CREATE INDEX i49 ON v43 ( c46 ); 
+ALTER TABLE v43 DROP c46; 
+CREATE INDEX i50 ON v0 ( c42 ); 
+CREATE INDEX i51 ON v0 ( c4 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a52.c31, a52.c28, a52.c24 FROM v0 AS a52 ORDER BY a52.c15, a52.c33, a52.c35; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a54.c46, a53.c45 FROM v43 AS a53 LEFT JOIN v43 AS a54 ON a53.c44 = a53.c47 y ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a55, v43 AS a56 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a57.c44 || a57.c44 ) FROM v43 AS a57 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a58.c23, count ( a58.c29 ) FROM v0 AS a58 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a59, v43 AS a60 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a61 NATURAL JOIN v0 AS a62 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a63.c45 || a63.c46 ) FROM v43 AS a63 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a65.c40 = + a65.c35, a64.c46 FROM v43 AS a64 LEFT JOIN v0 AS a65 ON a64.c44 = a64.c45 GROUP BY y ( a65.c23 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: error in index i49 after drop column: no such column: c46
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 12: near "y": syntax error
+   AS a53 LEFT JOIN v43 AS a54 ON a53.c44 = a53.c47 y ORDER BY 18446744071562067
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 46
+  SELECT * FROM v0 AS a55, v43 AS a56 ORDER BY 2147483647; 
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+  x ( a57.c44 || a57.c44 ) FROM v43 AS a57 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 46
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+  x ( a63.c45 || a63.c46 ) FROM v43 AS a63 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 TEXT, c2 INTEGER, c3 INT, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 TEXT DEFAULT - 127, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42 PRIMARY KEY, CHECK( ( ( c26 + 18446744071562067968 ) % 127 ) != 2147483647 ) ) WITHOUT ROWID; 
+CREATE TABLE v43 ( c44, c45, c46, c47 REFERENCES p1 ( c47 ) ); 
+; 
+; 
+ALTER TABLE v43 DROP c46; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a52.c31, a52.c28, a52.c24 FROM v0 AS a52 ORDER BY a52.c15, a52.c33, a52.c35; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a54.c46, a53.c45 FROM v43 AS a53 LEFT JOIN v43 AS a54 ON a53.c44 = a53.c47 y ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a55, v43 AS a56 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a57.c44 || a57.c44 ) FROM v43 AS a57 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a58.c23, count ( a58.c29 ) FROM v0 AS a58 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a59, v43 AS a60 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a61 NATURAL JOIN v0 AS a62 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a63.c45 || a63.c46 ) FROM v43 AS a63 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a65.c40 = + a65.c35, a64.c46 FROM v43 AS a64 LEFT JOIN v0 AS a65 ON a64.c44 = a64.c45 GROUP BY y ( a65.c23 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 12: near "y": syntax error
+   AS a53 LEFT JOIN v43 AS a54 ON a53.c44 = a53.c47 y ORDER BY 18446744071562067
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 45
+  SELECT * FROM v0 AS a55, v43 AS a56 ORDER BY 2147483647; 
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+  x ( a57.c44 || a57.c44 ) FROM v43 AS a57 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 45
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a63.c46
+  SELECT max ( a63.c45 || a63.c46 ) FROM v43 AS a63 ORDER BY 2147483647; 
+                          ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a64.c46
+  SELECT a65.c40 = + a65.c35, a64.c46 FROM v43 AS a64 LEFT JOIN v0 AS a65 ON a64
+                error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: near "y": syntax error
+   AS a53 LEFT JOIN v43 AS a54 ON a53.c44 = a53.c47 y ORDER BY 18446744071562067
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 12: near "y": syntax error
+   AS a53 LEFT JOIN v43 AS a54 ON a53.c44 = a53.c47 y ORDER BY 18446744071562067
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 46
+  SELECT * FROM v0 AS a55, v43 AS a56 ORDER BY 2147483647; 
+                                 error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 45
+  SELECT * FROM v0 AS a55, v43 AS a56 ORDER BY 2147483647; 
+                                 error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+  x ( a57.c44 || a57.c44 ) FROM v43 AS a57 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+  x ( a57.c44 || a57.c44 ) FROM v43 AS a57 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 46
+ 
+INT: 0 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 45
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+  x ( a63.c45 || a63.c46 ) FROM v43 AS a63 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: no such column: a63.c46
+  SELECT max ( a63.c45 || a63.c46 ) FROM v43 AS a63 ORDER BY 2147483647; 
+                          ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such column: a64.c46
+  SELECT a65.c40 = + a65.c35, a64.c46 FROM v43 AS a64 LEFT JOIN v0 AS a65 ON a64
+                error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

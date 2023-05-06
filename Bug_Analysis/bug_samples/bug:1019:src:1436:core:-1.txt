@@ -1,0 +1,319 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 TEXT ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 4294967295; 
+CREATE INDEX i7 ON v5 ( c1 ); 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE INDEX i12 ON v5 ( c2 ); 
+CREATE TABLE v13 ( c14, c15, c16 ); 
+ALTER TABLE v13 DROP COLUMN c16; 
+CREATE INDEX i17 ON v5 ( c2 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+ALTER TABLE v13 DROP COLUMN c16; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 ORDER BY ( a21.c3 + 18446744073709551488 ) % count ( a21.c1 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 ORDER BY 9223372036854775807 - ( a22.c3 + a22.c1 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a23 GROUP BY y ( a23.c3 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a24, v5 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c27 ) AS ( SELECT 'x' ORDER BY 4294967295 ) SELECT * FROM v0 AS a26 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a28 GROUP BY a28.c15, abs ( a28.c16 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c10 + 4294967295, a29.c10 + 9223372036854775807 FROM v8 AS a29 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c2 FROM v0 AS a31 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a32 ORDER BY abs ( a32.c16 ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: views may not be indexed
+Parse error near line 6: views may not be indexed
+Parse error near line 9: views may not be indexed
+Runtime error near line 10: error in index i4 after drop column: no such column: c1
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: no such column: "c16"
+  ALTER TABLE v13 DROP COLUMN c16; 
+                error here ---^
+BEGIN VERI 0
+Parse error near line 14: misuse of aggregate: count()
+   a21 ORDER BY ( a21.c3 + 18446744073709551488 ) % count ( a21.c1 ); 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v18
+END VERI 0
+BEGIN VERI 0
+x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a28.c16
+  SELECT * FROM v13 AS a28 GROUP BY a28.c15, abs ( a28.c16 ) ORDER BY 4294967295
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v5 AS a30 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a32.c16
+  SELECT * FROM v13 AS a32 ORDER BY abs ( a32.c16 ); 
+                            error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 TEXT ); 
+; 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 4294967295; 
+; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+; 
+CREATE TABLE v13 ( c14, c15, c16 ); 
+ALTER TABLE v13 DROP COLUMN c16; 
+; 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+ALTER TABLE v13 DROP COLUMN c16; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 ORDER BY ( a21.c3 + 18446744073709551488 ) % count ( a21.c1 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 ORDER BY 9223372036854775807 - ( a22.c3 + a22.c1 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a23 GROUP BY y ( a23.c3 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a24, v5 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c27 ) AS ( SELECT 'x' ORDER BY 4294967295 ) SELECT * FROM v0 AS a26 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a28 GROUP BY a28.c15, abs ( a28.c16 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c10 + 4294967295, a29.c10 + 9223372036854775807 FROM v8 AS a29 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c2 FROM v0 AS a31 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a32 ORDER BY abs ( a32.c16 ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: no such column: "c16"
+  ALTER TABLE v13 DROP COLUMN c16; 
+                error here ---^
+BEGIN VERI 0
+Parse error near line 14: no such column: a21.c1
+  ER BY ( a21.c3 + 18446744073709551488 ) % count ( a21.c1 ); 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a22.c1
+   AS a22 ORDER BY 9223372036854775807 - ( a22.c3 + a22.c1 ); 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v18
+END VERI 0
+BEGIN VERI 0
+x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a28.c16
+  SELECT * FROM v13 AS a28 GROUP BY a28.c15, abs ( a28.c16 ) ORDER BY 4294967295
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v5 AS a30 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a32.c16
+  SELECT * FROM v13 AS a32 ORDER BY abs ( a32.c16 ); 
+                            error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: misuse of aggregate: count()
+   a21 ORDER BY ( a21.c3 + 18446744073709551488 ) % count ( a21.c1 ); 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 14: no such column: a21.c1
+  ER BY ( a21.c3 + 18446744073709551488 ) % count ( a21.c1 ); 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 17: no such column: a22.c1
+   AS a22 ORDER BY 9223372036854775807 - ( a22.c3 + a22.c1 ); 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+x
+ 
+INT: 0 
+Str: 
+x
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: no such column: a28.c16
+  SELECT * FROM v13 AS a28 GROUP BY a28.c15, abs ( a28.c16 ) ORDER BY 4294967295
+                                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: no such column: a28.c16
+  SELECT * FROM v13 AS a28 GROUP BY a28.c15, abs ( a28.c16 ) ORDER BY 4294967295
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v5 AS a30 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v5 AS a30 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no such column: a32.c16
+  SELECT * FROM v13 AS a32 ORDER BY abs ( a32.c16 ); 
+                            error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: no such column: a32.c16
+  SELECT * FROM v13 AS a32 ORDER BY abs ( a32.c16 ); 
+                            error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

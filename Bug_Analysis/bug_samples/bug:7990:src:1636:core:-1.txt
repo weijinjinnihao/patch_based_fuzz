@@ -1,0 +1,306 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c4 > 127 ), c4 ); 
+INSERT INTO v0 VALUES ( 127, 127, 127, 333 ), ( 127, 127, 127, 18446744071562067968 ); 
+CREATE TABLE v5 ( c6, c7 INTEGER UNIQUE ON CONFLICT FAIL, c8, c9, c10, c11, c12, c13, c14, c15 INTEGER COLLATE NOCASE, c16, c17, c18, c19, c20 UNIQUE ON CONFLICT FAIL, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30 REAL DEFAULT x'616263', c31, c32, c33, c34, c35, c36 TEXT, c37, PRIMARY KEY ( c31, c11 ), UNIQUE ( c24 ) ) WITHOUT ROWID; 
+CREATE INDEX i38 ON v5 ( c20 ); 
+CREATE INDEX i39 ON v0 ( c3 ); 
+CREATE TABLE v40 ( c41, c42, c43, c44, CHECK( c41 > 18446744073709551488 ) ); 
+INSERT INTO v0 VALUES ( 127, 127, 127, 127 ), ( 127, 127, 18446744071562067968, 127 ); 
+CREATE INDEX i45 ON v40 ( c42 ); 
+INSERT INTO v5 VALUES ( 18446744073709551488, 127, 18446744073709551488, 127 ); 
+CREATE INDEX i46 ON v40 ( c42 ); 
+CREATE INDEX i47 ON v40 ( c43 ); 
+INSERT INTO v40 VALUES ( x'616263', 18446744073709551488 ); 
+ALTER TABLE v40 DROP c43; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48, v5 AS a49 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a50, v40 AS a51 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a52, v40 AS a53 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a54 WHERE ( ( a54.c9 + 100 ) % count ( a54.c12 ) ) != 18446744073709551488 = 127 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v55 ( c57 ) AS ( WITH v58 ( c59 ) AS ( WITH v60 ( c61 ) AS ( WITH v62 ( c63 ) AS ( WITH v55 ( c64, c65, c66, c67, c68, c69 ) AS ( SELECT 127 y ORDER BY ( ( c64 + 18446744073709551488 ) % 18446744073709518848 ) < 18446744073709551488 ) SELECT 18446744073709551488 ORDER BY 18446744073709551488 ) SELECT 0 ORDER BY 333 ) SELECT 127 ORDER BY 18446744073709551488 ) SELECT 18446744073709551488 ORDER BY 18446744073709551488 ) SELECT * FROM v55 AS a56 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 18446744071562067968 AS y FROM v5 AS a71 ORDER BY 10 ) AS y LEFT JOIN v0 AS a70 ON a70.c4 IS NULL ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a72.c43 || a72.c42 ) FROM v40 AS a72 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v73 ( c75 ) AS ( WITH v73 AS ( SELECT ( SELECT min ( c75 ) OVER ( ORDER BY 127 IN v73 ) ORDER BY 18446744071562067968 ) FROM v73 AS a76 NATURAL JOIN v73 AS a77 GROUP BY c75 ORDER BY 4294967295 ) SELECT 18446744073709551488 ORDER BY 18446744073709551488 ) SELECT * FROM v73 AS a74 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v78 ( c80 ) AS ( SELECT 127 ORDER BY 127 ) SELECT * FROM v78 AS a79 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a81 WHERE a81.c3 = a81.c2 % 18446744073709551488 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: CHECK constraint failed: c4 > 127 (19)
+Parse error near line 9: table v5 has 32 columns but 4 values were supplied
+Parse error near line 12: table v40 has 4 columns but 2 values were supplied
+Runtime error near line 13: error in index i47 after drop column: no such column: c43
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 36
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: misuse of aggregate function count()
+  ELECT * FROM v5 AS a54 WHERE ( ( a54.c9 + 100 ) % count ( a54.c12 ) ) != 18446
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  4073709551488 ) SELECT * FROM v55 AS a56 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+127|127|127|333
+127|127|127|1.84467440715621e+19
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c4 > 127 ), c4 ); 
+INSERT INTO v0 VALUES ( 127, 127, 127, 333 ), ( 127, 127, 127, 18446744071562067968 ); 
+CREATE TABLE v5 ( c6, c7 INTEGER UNIQUE ON CONFLICT FAIL, c8, c9, c10, c11, c12, c13, c14, c15 INTEGER COLLATE NOCASE, c16, c17, c18, c19, c20 UNIQUE ON CONFLICT FAIL, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30 REAL DEFAULT x'616263', c31, c32, c33, c34, c35, c36 TEXT, c37, PRIMARY KEY ( c31, c11 ), UNIQUE ( c24 ) ) WITHOUT ROWID; 
+; 
+; 
+CREATE TABLE v40 ( c41, c42, c43, c44, CHECK( c41 > 18446744073709551488 ) ); 
+INSERT INTO v0 VALUES ( 127, 127, 127, 127 ), ( 127, 127, 18446744071562067968, 127 ); 
+; 
+INSERT INTO v5 VALUES ( 18446744073709551488, 127, 18446744073709551488, 127 ); 
+; 
+; 
+INSERT INTO v40 VALUES ( x'616263', 18446744073709551488 ); 
+ALTER TABLE v40 DROP c43; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48, v5 AS a49 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a50, v40 AS a51 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a52, v40 AS a53 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a54 WHERE ( ( a54.c9 + 100 ) % count ( a54.c12 ) ) != 18446744073709551488 = 127 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v55 ( c57 ) AS ( WITH v58 ( c59 ) AS ( WITH v60 ( c61 ) AS ( WITH v62 ( c63 ) AS ( WITH v55 ( c64, c65, c66, c67, c68, c69 ) AS ( SELECT 127 y ORDER BY ( ( c64 + 18446744073709551488 ) % 18446744073709518848 ) < 18446744073709551488 ) SELECT 18446744073709551488 ORDER BY 18446744073709551488 ) SELECT 0 ORDER BY 333 ) SELECT 127 ORDER BY 18446744073709551488 ) SELECT 18446744073709551488 ORDER BY 18446744073709551488 ) SELECT * FROM v55 AS a56 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 18446744071562067968 AS y FROM v5 AS a71 ORDER BY 10 ) AS y LEFT JOIN v0 AS a70 ON a70.c4 IS NULL ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a72.c43 || a72.c42 ) FROM v40 AS a72 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v73 ( c75 ) AS ( WITH v73 AS ( SELECT ( SELECT min ( c75 ) OVER ( ORDER BY 127 IN v73 ) ORDER BY 18446744071562067968 ) FROM v73 AS a76 NATURAL JOIN v73 AS a77 GROUP BY c75 ORDER BY 4294967295 ) SELECT 18446744073709551488 ORDER BY 18446744073709551488 ) SELECT * FROM v73 AS a74 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v78 ( c80 ) AS ( SELECT 127 ORDER BY 127 ) SELECT * FROM v78 AS a79 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a81 WHERE a81.c3 = a81.c2 % 18446744073709551488 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: CHECK constraint failed: c4 > 127 (19)
+Parse error near line 9: table v5 has 32 columns but 4 values were supplied
+Parse error near line 12: table v40 has 4 columns but 2 values were supplied
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 35
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: misuse of aggregate function count()
+  ELECT * FROM v5 AS a54 WHERE ( ( a54.c9 + 100 ) % count ( a54.c12 ) ) != 18446
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  4073709551488 ) SELECT * FROM v55 AS a56 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a72.c43
+  SELECT max ( a72.c43 || a72.c42 ) FROM v40 AS a72 ORDER BY 1844674407370955148
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+127|127|127|333
+127|127|127|1.84467440715621e+19
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 36
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 35
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: misuse of aggregate function count()
+  ELECT * FROM v5 AS a54 WHERE ( ( a54.c9 + 100 ) % count ( a54.c12 ) ) != 18446
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: misuse of aggregate function count()
+  ELECT * FROM v5 AS a54 WHERE ( ( a54.c9 + 100 ) % count ( a54.c12 ) ) != 18446
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  4073709551488 ) SELECT * FROM v55 AS a56 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  4073709551488 ) SELECT * FROM v55 AS a56 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+Parse error near line 33: no such column: a72.c43
+  SELECT max ( a72.c43 || a72.c42 ) FROM v40 AS a72 ORDER BY 1844674407370955148
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+127|127|127|333
+127|127|127|1.84467440715621e+19
+ 
+INT: 1 
+Str: 
+127|127|127|333
+127|127|127|1.84467440715621e+19
+ 
+INT: 1 
+Compare_result_int: 
+0
+
+
+

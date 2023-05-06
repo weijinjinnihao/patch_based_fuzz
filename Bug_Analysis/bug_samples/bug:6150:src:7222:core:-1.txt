@@ -1,0 +1,299 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, CHECK( ( ( 8, ( c2 + 8 ), c3 != 'XX' ) % 0 ) != 8 ), CHECK( c2 != c1 ), CHECK( c1 != c3 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c3 = c1 || c3 WHERE c1 = c1 || c1; END; 
+CREATE TABLE v5 ( c6 REFERENCES t1 DEFAULT 56.000000 DEFAULT 8, c7 INTEGER PRIMARY KEY, c8 BLOB, FOREIGN KEY ( c8 ) REFERENCES t2 ); 
+CREATE TABLE v9 ( c10, c11, c12, c13, PRIMARY KEY ( c11, c13 ) ) WITHOUT ROWID; 
+CREATE INDEX i14 ON v9 ( c11 ); 
+INSERT INTO v0 VALUES ( 8, 255, 255, 255 ); 
+CREATE INDEX i15 ON v5 ( c7 ); 
+CREATE INDEX i16 ON v9 ( c10 ); 
+ALTER TABLE v9 DROP COLUMN c10; 
+CREATE INDEX i17 ON v9 ( c11 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 NATURAL JOIN v9 AS a19 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a20.c11 IS NULL ) ) AND ( NOT ( a20.c10 IS NULL ) ) ) FROM v9 AS a20 ORDER BY 56.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c8 FROM v5 AS a21 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c1, max ( a22.c2 || a22.c2 ) FROM v0 AS a22 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v23 AS ( SELECT * FROM v23 AS a25 ORDER BY c11, c8 ) SELECT * FROM v23 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 NATURAL JOIN v5 AS a27 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( 0, count ( * ) ) ORDER BY - 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a29.c1 IS NULL ) ) AND ( NOT ( a29.c1 IS NULL ) ) ) FROM v0 AS a29 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 GROUP BY a30.c2 HAVING NULL ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: PRIMARY KEY missing on table v0
+Parse error near line 2: no such table: main.v0
+Parse error near line 3: no such table: v0
+Parse error near line 7: no such table: v0
+Runtime error near line 10: error in index i16 after drop column: no such column: c10
+BEGIN VERI 0
+Parse error near line 13: no such table: v0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: circular reference: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: row value misused
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v5 AS a28 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, CHECK( ( ( 8, ( c2 + 8 ), c3 != 'XX' ) % 0 ) != 8 ), CHECK( c2 != c1 ), CHECK( c1 != c3 ) ) WITHOUT ROWID; 
+; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c3 = c1 || c3 WHERE c1 = c1 || c1; END; 
+CREATE TABLE v5 ( c6 REFERENCES t1 DEFAULT 56.000000 DEFAULT 8, c7 INTEGER PRIMARY KEY, c8 BLOB, FOREIGN KEY ( c8 ) REFERENCES t2 ); 
+CREATE TABLE v9 ( c10, c11, c12, c13, PRIMARY KEY ( c11, c13 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v0 VALUES ( 8, 255, 255, 255 ); 
+; 
+; 
+ALTER TABLE v9 DROP COLUMN c10; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 NATURAL JOIN v9 AS a19 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a20.c11 IS NULL ) ) AND ( NOT ( a20.c10 IS NULL ) ) ) FROM v9 AS a20 ORDER BY 56.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c8 FROM v5 AS a21 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c1, max ( a22.c2 || a22.c2 ) FROM v0 AS a22 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v23 AS ( SELECT * FROM v23 AS a25 ORDER BY c11, c8 ) SELECT * FROM v23 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 NATURAL JOIN v5 AS a27 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( 0, count ( * ) ) ORDER BY - 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a29.c1 IS NULL ) ) AND ( NOT ( a29.c1 IS NULL ) ) ) FROM v0 AS a29 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 GROUP BY a30.c2 HAVING NULL ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: PRIMARY KEY missing on table v0
+Parse error near line 3: no such table: v0
+Parse error near line 7: no such table: v0
+BEGIN VERI 0
+Parse error near line 13: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: a20.c10
+  T count ( ( NOT ( a20.c11 IS NULL ) ) AND ( NOT ( a20.c10 IS NULL ) ) ) FROM v
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: circular reference: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: row value misused
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v5 AS a28 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 13: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+0
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such column: a20.c10
+  T count ( ( NOT ( a20.c11 IS NULL ) ) AND ( NOT ( a20.c10 IS NULL ) ) ) FROM v
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: circular reference: v23
+ 
+INT: 0 
+Str: 
+Parse error near line 25: circular reference: v23
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 31: row value misused
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v5 AS a28 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v5 AS a28 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no such table: v0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

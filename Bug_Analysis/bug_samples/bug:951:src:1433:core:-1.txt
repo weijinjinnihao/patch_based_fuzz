@@ -1,0 +1,283 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 UNIQUE ON CONFLICT FAIL, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709518848; 
+CREATE INDEX i6 ON v4 ( c2 ); 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9, c10 UNIQUE ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+CREATE INDEX i15 ON v11 ( c12 ); 
+ALTER TABLE v7 DROP COLUMN c10; 
+CREATE INDEX i16 ON v4 ( c1 ); 
+ALTER TABLE v11 DROP COLUMN c12; 
+CREATE INDEX i17 ON v4 ( c1 ); 
+CREATE INDEX i18 ON v7 ( c10 ); 
+CREATE TABLE v19 ( c20, c21 INTEGER UNIQUE ON CONFLICT FAIL, c22, c23, c24, c25, c26, c27, c28 REFERENCES t1 DEFAULT NULL, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46, c47, c48, c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59 INTEGER PRIMARY KEY, c60 ); 
+ALTER TABLE v4 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a61.c12 || a61.c14 ) FROM v11 AS a61 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v62 ( c64 ) AS ( SELECT max ( c64 || c64 ) ORDER BY 18446744073709518848 ) SELECT * FROM v62 AS a63 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 18446744073709518848 ORDER BY 18446744073709518848 ) AS y, v0 AS a65 ON likely ( 0 OR 0 ) OR 18446744073709518848 GROUP BY a65.c3 HAVING count ( * ) >= 18446744073709518848 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a66.c10, count ( ( NOT ( a66.c9 IS NULL ) ) AND ( NOT ( a66.c10 IS NULL ) ) ) FROM v7 AS a66 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a67 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a68, v0 AS a69 NATURAL JOIN v0 AS a70 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a71 GROUP BY a71.c57, abs ( a71.c37 ) HAVING count ( * ) >= 8 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a72 ORDER BY x'616263'; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: views may not be indexed
+Parse error near line 7: cannot drop UNIQUE column: "c10"
+Parse error near line 8: views may not be indexed
+Runtime error near line 9: error in index i15 after drop column: no such column: c12
+Parse error near line 10: views may not be indexed
+Parse error near line 13: cannot drop column from view "v4"
+BEGIN VERI 0
+Parse error near line 15: no tables specified
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: c64
+  WITH RECURSIVE v62 ( c64 ) AS ( SELECT max ( c64 || c64 ) ORDER BY 18446744073
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 UNIQUE ON CONFLICT FAIL, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709518848; 
+; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9, c10 UNIQUE ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+; 
+ALTER TABLE v7 DROP COLUMN c10; 
+; 
+ALTER TABLE v11 DROP COLUMN c12; 
+; 
+; 
+CREATE TABLE v19 ( c20, c21 INTEGER UNIQUE ON CONFLICT FAIL, c22, c23, c24, c25, c26, c27, c28 REFERENCES t1 DEFAULT NULL, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46, c47, c48, c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59 INTEGER PRIMARY KEY, c60 ); 
+ALTER TABLE v4 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a61.c12 || a61.c14 ) FROM v11 AS a61 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v62 ( c64 ) AS ( SELECT max ( c64 || c64 ) ORDER BY 18446744073709518848 ) SELECT * FROM v62 AS a63 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 18446744073709518848 ORDER BY 18446744073709518848 ) AS y, v0 AS a65 ON likely ( 0 OR 0 ) OR 18446744073709518848 GROUP BY a65.c3 HAVING count ( * ) >= 18446744073709518848 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a66.c10, count ( ( NOT ( a66.c9 IS NULL ) ) AND ( NOT ( a66.c10 IS NULL ) ) ) FROM v7 AS a66 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a67 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a68, v0 AS a69 NATURAL JOIN v0 AS a70 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a71 GROUP BY a71.c57, abs ( a71.c37 ) HAVING count ( * ) >= 8 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a72 ORDER BY x'616263'; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: cannot drop UNIQUE column: "c10"
+Parse error near line 13: cannot drop column from view "v4"
+BEGIN VERI 0
+Parse error near line 15: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: a61.c12
+  SELECT max ( a61.c12 || a61.c14 ) FROM v11 AS a61 ORDER BY 1844674407370951884
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: c64
+  WITH RECURSIVE v62 ( c64 ) AS ( SELECT max ( c64 || c64 ) ORDER BY 18446744073
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+Parse error near line 18: no such column: a61.c12
+  SELECT max ( a61.c12 || a61.c14 ) FROM v11 AS a61 ORDER BY 1844674407370951884
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such column: c64
+  WITH RECURSIVE v62 ( c64 ) AS ( SELECT max ( c64 || c64 ) ORDER BY 18446744073
+                                 error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: no such column: c64
+  WITH RECURSIVE v62 ( c64 ) AS ( SELECT max ( c64 || c64 ) ORDER BY 18446744073
+                                 error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,274 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE VIEW v5 AS SELECT c1, count ( * ), avg ( c1 ), max ( c1 + x'616263' == 18446744073709551488 ) FROM v0 AS a6 GROUP BY c3 ORDER BY 18446744073709551488; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9, c10 UNIQUE ); 
+CREATE INDEX i11 ON v0 ( c2 ); 
+CREATE INDEX i12 ON v7 ( c8 ); 
+CREATE TABLE v13 ( c14, c15, c16 ); 
+CREATE INDEX i17 ON v0 ( c1 ); 
+ALTER TABLE v13 DROP COLUMN c15; 
+ALTER TABLE v5 DROP COLUMN c3; 
+CREATE INDEX i18 ON v7 ( c8 ); 
+CREATE VIRTUAL TABLE v19 USING fts5 ( c20, c21 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a22 NATURAL JOIN v5 AS a23 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 WHERE a25.c3 = 'v0' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a26 GROUP BY 18446744073709551488 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c3, sum ( ) AS y FROM v19 AS a27 ORDER BY a27.c21 COLLATE NOCASE; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 WHERE a28.c2 = CASE WHEN a28.c1 != 'x' THEN 18446744073709551488 ELSE 10 END > 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a29 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c3, count ( ( NOT ( a30.c3 IS NULL ) ) AND ( NOT ( a30.c20 IS NULL ) ) ) FROM v19 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a32 NATURAL JOIN v0 AS a33 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: cannot drop column from view "v5"
+Runtime error near line 12: no such module: fts5
+Runtime error near line 13: error in index i4 after drop column: no such column: c2
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v19
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v19
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT c1, count ( * ), avg ( c1 ), max ( c1 + x'616263' == 18446744073709551488 ) FROM v0 AS a6 GROUP BY c3 ORDER BY 18446744073709551488; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9, c10 UNIQUE ); 
+; 
+; 
+CREATE TABLE v13 ( c14, c15, c16 ); 
+; 
+ALTER TABLE v13 DROP COLUMN c15; 
+ALTER TABLE v5 DROP COLUMN c3; 
+; 
+CREATE VIRTUAL TABLE v19 USING fts5 ( c20, c21 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a22 NATURAL JOIN v5 AS a23 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 WHERE a25.c3 = 'v0' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a26 GROUP BY 18446744073709551488 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c3, sum ( ) AS y FROM v19 AS a27 ORDER BY a27.c21 COLLATE NOCASE; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 WHERE a28.c2 = CASE WHEN a28.c1 != 'x' THEN 18446744073709551488 ELSE 10 END > 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a29 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c3, count ( ( NOT ( a30.c3 IS NULL ) ) AND ( NOT ( a30.c20 IS NULL ) ) ) FROM v19 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a32 NATURAL JOIN v0 AS a33 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: cannot drop column from view "v5"
+Runtime error near line 12: no such module: fts5
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a28.c2
+  SELECT * FROM v0 AS a28 WHERE a28.c2 = CASE WHEN a28.c1 != 'x' THEN 1844674407
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v19
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such table: v19
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such table: v19
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 30: no such column: a28.c2
+  SELECT * FROM v0 AS a28 WHERE a28.c2 = CASE WHEN a28.c1 != 'x' THEN 1844674407
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such table: v19
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such table: v19
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v19
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v19
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such table: v19
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such table: v19
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such table: v19
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such table: v19
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

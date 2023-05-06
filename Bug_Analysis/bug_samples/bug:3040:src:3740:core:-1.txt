@@ -1,0 +1,276 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31 PRIMARY KEY, CHECK( ( ( c11 + 18446744073709551488 ) % 2147483647 ) != 0 ) ) WITHOUT ROWID; 
+CREATE INDEX i32 ON v0 ( c27 ); 
+CREATE INDEX i33 ON v0 ( c7 ); 
+CREATE INDEX i34 ON v0 ( c31 ); 
+CREATE INDEX i35 ON v0 ( c6 ); 
+ALTER TABLE v0 DROP c27; 
+CREATE INDEX i36 ON v0 ( c1 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 2147483647 ORDER BY 255 ) AS y, ( SELECT 9223372036854775807 ORDER BY 2147483647 ) AS y ON likely ( 2147483647 OR 255 ) IS 18446744073709551615 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 GROUP BY a37.c15 HAVING automatic_index ( * ) >= 255 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c24, a38.c2 FROM v0 AS a38 RIGHT JOIN v0 AS a39 ON a38.c30, v0 AS a40 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c5, sum ( a41.c27 ) AS y FROM v0 AS a41 GROUP BY a41.c15 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 ORDER BY + a42.c3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v44 ( c46 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v44 AS a45 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a47.c17 FROM v0 AS a47 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49, v0 AS a50 NATURAL JOIN v0 AS a51 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: error in index i32 after drop column: no such column: c27
+BEGIN VERI 0
+Parse error near line 9: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 12: no such function: automatic_index
+  SELECT * FROM v0 AS a37 GROUP BY a37.c15 HAVING automatic_index ( * ) >= 255 O
+                                    error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 31
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH RECURSIVE v44 ( c46 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v44 AS a45
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31 PRIMARY KEY, CHECK( ( ( c11 + 18446744073709551488 ) % 2147483647 ) != 0 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c27; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 2147483647 ORDER BY 255 ) AS y, ( SELECT 9223372036854775807 ORDER BY 2147483647 ) AS y ON likely ( 2147483647 OR 255 ) IS 18446744073709551615 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 GROUP BY a37.c15 HAVING automatic_index ( * ) >= 255 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c24, a38.c2 FROM v0 AS a38 RIGHT JOIN v0 AS a39 ON a38.c30, v0 AS a40 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c5, sum ( a41.c27 ) AS y FROM v0 AS a41 GROUP BY a41.c15 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 ORDER BY + a42.c3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v44 ( c46 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v44 AS a45 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a47.c17 FROM v0 AS a47 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49, v0 AS a50 NATURAL JOIN v0 AS a51 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 9: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 12: no such function: automatic_index
+  SELECT * FROM v0 AS a37 GROUP BY a37.c15 HAVING automatic_index ( * ) >= 255 O
+                                    error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: a41.c27
+  SELECT a41.c5, sum ( a41.c27 ) AS y FROM v0 AS a41 GROUP BY a41.c15 ORDER BY 1
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 30
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH RECURSIVE v44 ( c46 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v44 AS a45
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 9: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 9: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: no such function: automatic_index
+  SELECT * FROM v0 AS a37 GROUP BY a37.c15 HAVING automatic_index ( * ) >= 255 O
+                                    error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 12: no such function: automatic_index
+  SELECT * FROM v0 AS a37 GROUP BY a37.c15 HAVING automatic_index ( * ) >= 255 O
+                                    error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such column: a41.c27
+  SELECT a41.c5, sum ( a41.c27 ) AS y FROM v0 AS a41 GROUP BY a41.c15 ORDER BY 1
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 31
+ 
+INT: 0 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 30
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH RECURSIVE v44 ( c46 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v44 AS a45
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH RECURSIVE v44 ( c46 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v44 AS a45
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

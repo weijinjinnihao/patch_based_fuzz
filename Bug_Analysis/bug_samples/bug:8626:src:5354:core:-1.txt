@@ -1,0 +1,774 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( x'616263', 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( 18446744073709518848, 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( 'v0', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT 'v0' != c3 ) ), 'x' ); 
+INSERT INTO v0 VALUES ( 'v0', 'v1', 'one' ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( x'616263', 'XX', 'x' ); 
+CREATE TABLE v6 ( c7, c8, c9 COLLATE NOCASE ); 
+CREATE INDEX i10 ON v6 ( c7 ); 
+INSERT INTO v0 VALUES ( NULL, 'v0', 'count.test cases for NOT INDEXED' ); 
+INSERT INTO v6 VALUES ( 'v0', 'v0', 'x' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'xyz', 'v0' ); 
+INSERT INTO v6 VALUES ( 18446744073709518848, 'wvu', 'C' ); 
+ALTER TABLE v6 DROP c7; 
+CREATE INDEX i11 ON v6 ( c8 ); 
+INSERT INTO v6 VALUES ( - 18446744073709518848, '4', 'v1' ); 
+CREATE TABLE v12 ( c13, c14, c15 COLLATE NOCASE ); 
+INSERT INTO v6 SELECT * FROM v6 AS a16 ORDER BY 18446744073709518848; 
+CREATE INDEX i17 ON v12 ( c15 ); 
+INSERT INTO v6 SELECT * FROM v0 AS a18 ORDER BY 18446744073709518848; 
+INSERT INTO v12 SELECT * FROM v0 AS a19 ORDER BY 18446744073709518848; 
+INSERT INTO v12 SELECT * FROM v0 AS a20 ORDER BY 18446744073709518848; 
+INSERT INTO v6 SELECT * FROM v0 AS a21 ORDER BY 0; 
+INSERT INTO v12 SELECT * FROM v12 AS a22 ORDER BY 16; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c3, count ( ( NOT ( a23.c3 IS NULL ) ) AND ( NOT ( a23.c1 IS NULL ) ) ) FROM v0 AS a23 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v24 AS ( SELECT 18446744073709551615 y ORDER BY 0 ) SELECT * FROM v24 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c14, count ( ( NOT ( a26.c15 IS NULL ) ) AND ( NOT ( a26.c13 IS NULL ) ) ) FROM v12 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a27 NATURAL JOIN v6 AS a28 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c9 FROM v6 AS a29 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30, v0 AS a31 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c1 FROM v0 AS a32 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: misuse of aggregate function count()
+  INSERT INTO v0 VALUES ( 'v0', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT 'v0' !=
+                  error here ---^
+Runtime error near line 15: error in index i10 after drop column: no such column: c7
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v6 SELECT * FROM v0 AS a21 ORDER BY 0; 
+                                    error here ---^
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+BEGIN VERI 0
+v0|6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+  H v24 AS ( SELECT 18446744073709551615 y ORDER BY 0 ) SELECT * FROM v24 AS a25
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+x|12
+END VERI 0
+BEGIN VERI 0
+abc|x|v0|v0|v0|x
+abc|x|v0|1.84467440737095e+19|wvu|C
+abc|x|v0|-1.84467440737095e+19|4|v1
+abc|x|v0|v0|v0|x
+abc|x|v0|1.84467440737095e+19|wvu|C
+abc|x|v0|-1.84467440737095e+19|4|v1
+abc|x|v0|abc|x|v0
+abc|x|v0|1.84467440737095e+19|x|v0
+abc|x|v0|v0|v1|one
+abc|x|v0|abc|XX|x
+abc|x|v0||v0|count.test cases for NOT INDEXED
+abc|x|v0|hare|xyz|v0
+1.84467440737095e+19|x|v0|v0|v0|x
+1.84467440737095e+19|x|v0|1.84467440737095e+19|wvu|C
+1.84467440737095e+19|x|v0|-1.84467440737095e+19|4|v1
+1.84467440737095e+19|x|v0|v0|v0|x
+1.84467440737095e+19|x|v0|1.84467440737095e+19|wvu|C
+1.84467440737095e+19|x|v0|-1.84467440737095e+19|4|v1
+1.84467440737095e+19|x|v0|abc|x|v0
+1.84467440737095e+19|x|v0|1.84467440737095e+19|x|v0
+1.84467440737095e+19|x|v0|v0|v1|one
+1.84467440737095e+19|x|v0|abc|XX|x
+1.84467440737095e+19|x|v0||v0|count.test cases for NOT INDEXED
+1.84467440737095e+19|x|v0|hare|xyz|v0
+v0|v1|one|v0|v0|x
+v0|v1|one|1.84467440737095e+19|wvu|C
+v0|v1|one|-1.84467440737095e+19|4|v1
+v0|v1|one|v0|v0|x
+v0|v1|one|1.84467440737095e+19|wvu|C
+v0|v1|one|-1.84467440737095e+19|4|v1
+v0|v1|one|abc|x|v0
+v0|v1|one|1.84467440737095e+19|x|v0
+v0|v1|one|v0|v1|one
+v0|v1|one|abc|XX|x
+v0|v1|one||v0|count.test cases for NOT INDEXED
+v0|v1|one|hare|xyz|v0
+abc|XX|x|v0|v0|x
+abc|XX|x|1.84467440737095e+19|wvu|C
+abc|XX|x|-1.84467440737095e+19|4|v1
+abc|XX|x|v0|v0|x
+abc|XX|x|1.84467440737095e+19|wvu|C
+abc|XX|x|-1.84467440737095e+19|4|v1
+abc|XX|x|abc|x|v0
+abc|XX|x|1.84467440737095e+19|x|v0
+abc|XX|x|v0|v1|one
+abc|XX|x|abc|XX|x
+abc|XX|x||v0|count.test cases for NOT INDEXED
+abc|XX|x|hare|xyz|v0
+|v0|count.test cases for NOT INDEXED|v0|v0|x
+|v0|count.test cases for NOT INDEXED|1.84467440737095e+19|wvu|C
+|v0|count.test cases for NOT INDEXED|-1.84467440737095e+19|4|v1
+|v0|count.test cases for NOT INDEXED|v0|v0|x
+|v0|count.test cases for NOT INDEXED|1.84467440737095e+19|wvu|C
+|v0|count.test cases for NOT INDEXED|-1.84467440737095e+19|4|v1
+|v0|count.test cases for NOT INDEXED|abc|x|v0
+|v0|count.test cases for NOT INDEXED|1.84467440737095e+19|x|v0
+|v0|count.test cases for NOT INDEXED|v0|v1|one
+|v0|count.test cases for NOT INDEXED|abc|XX|x
+|v0|count.test cases for NOT INDEXED||v0|count.test cases for NOT INDEXED
+|v0|count.test cases for NOT INDEXED|hare|xyz|v0
+hare|xyz|v0|v0|v0|x
+hare|xyz|v0|1.84467440737095e+19|wvu|C
+hare|xyz|v0|-1.84467440737095e+19|4|v1
+hare|xyz|v0|v0|v0|x
+hare|xyz|v0|1.84467440737095e+19|wvu|C
+hare|xyz|v0|-1.84467440737095e+19|4|v1
+hare|xyz|v0|abc|x|v0
+hare|xyz|v0|1.84467440737095e+19|x|v0
+hare|xyz|v0|v0|v1|one
+hare|xyz|v0|abc|XX|x
+hare|xyz|v0||v0|count.test cases for NOT INDEXED
+hare|xyz|v0|hare|xyz|v0
+abc|x|v0|v0|v0|x
+abc|x|v0|1.84467440737095e+19|wvu|C
+abc|x|v0|-1.84467440737095e+19|4|v1
+abc|x|v0|v0|v0|x
+abc|x|v0|1.84467440737095e+19|wvu|C
+abc|x|v0|-1.84467440737095e+19|4|v1
+abc|x|v0|abc|x|v0
+abc|x|v0|1.84467440737095e+19|x|v0
+abc|x|v0|v0|v1|one
+abc|x|v0|abc|XX|x
+abc|x|v0||v0|count.test cases for NOT INDEXED
+abc|x|v0|hare|xyz|v0
+1.84467440737095e+19|x|v0|v0|v0|x
+1.84467440737095e+19|x|v0|1.84467440737095e+19|wvu|C
+1.84467440737095e+19|x|v0|-1.84467440737095e+19|4|v1
+1.84467440737095e+19|x|v0|v0|v0|x
+1.84467440737095e+19|x|v0|1.84467440737095e+19|wvu|C
+1.84467440737095e+19|x|v0|-1.84467440737095e+19|4|v1
+1.84467440737095e+19|x|v0|abc|x|v0
+1.84467440737095e+19|x|v0|1.84467440737095e+19|x|v0
+1.84467440737095e+19|x|v0|v0|v1|one
+1.84467440737095e+19|x|v0|abc|XX|x
+1.84467440737095e+19|x|v0||v0|count.test cases for NOT INDEXED
+1.84467440737095e+19|x|v0|hare|xyz|v0
+v0|v1|one|v0|v0|x
+v0|v1|one|1.84467440737095e+19|wvu|C
+v0|v1|one|-1.84467440737095e+19|4|v1
+v0|v1|one|v0|v0|x
+v0|v1|one|1.84467440737095e+19|wvu|C
+v0|v1|one|-1.84467440737095e+19|4|v1
+v0|v1|one|abc|x|v0
+v0|v1|one|1.84467440737095e+19|x|v0
+v0|v1|one|v0|v1|one
+v0|v1|one|abc|XX|x
+v0|v1|one||v0|count.test cases for NOT INDEXED
+v0|v1|one|hare|xyz|v0
+abc|XX|x|v0|v0|x
+abc|XX|x|1.84467440737095e+19|wvu|C
+abc|XX|x|-1.84467440737095e+19|4|v1
+abc|XX|x|v0|v0|x
+abc|XX|x|1.84467440737095e+19|wvu|C
+abc|XX|x|-1.84467440737095e+19|4|v1
+abc|XX|x|abc|x|v0
+abc|XX|x|1.84467440737095e+19|x|v0
+abc|XX|x|v0|v1|one
+abc|XX|x|abc|XX|x
+abc|XX|x||v0|count.test cases for NOT INDEXED
+abc|XX|x|hare|xyz|v0
+|v0|count.test cases for NOT INDEXED|v0|v0|x
+|v0|count.test cases for NOT INDEXED|1.84467440737095e+19|wvu|C
+|v0|count.test cases for NOT INDEXED|-1.84467440737095e+19|4|v1
+|v0|count.test cases for NOT INDEXED|v0|v0|x
+|v0|count.test cases for NOT INDEXED|1.84467440737095e+19|wvu|C
+|v0|count.test cases for NOT INDEXED|-1.84467440737095e+19|4|v1
+|v0|count.test cases for NOT INDEXED|abc|x|v0
+|v0|count.test cases for NOT INDEXED|1.84467440737095e+19|x|v0
+|v0|count.test cases for NOT INDEXED|v0|v1|one
+|v0|count.test cases for NOT INDEXED|abc|XX|x
+|v0|count.test cases for NOT INDEXED||v0|count.test cases for NOT INDEXED
+|v0|count.test cases for NOT INDEXED|hare|xyz|v0
+hare|xyz|v0|v0|v0|x
+hare|xyz|v0|1.84467440737095e+19|wvu|C
+hare|xyz|v0|-1.84467440737095e+19|4|v1
+hare|xyz|v0|v0|v0|x
+hare|xyz|v0|1.84467440737095e+19|wvu|C
+hare|xyz|v0|-1.84467440737095e+19|4|v1
+hare|xyz|v0|abc|x|v0
+hare|xyz|v0|1.84467440737095e+19|x|v0
+hare|xyz|v0|v0|v1|one
+hare|xyz|v0|abc|XX|x
+hare|xyz|v0||v0|count.test cases for NOT INDEXED
+hare|xyz|v0|hare|xyz|v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+BEGIN VERI 0
+x
+C
+v1
+x
+C
+v1
+v0
+v0
+one
+x
+count.test cases for NOT INDEXED
+v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 48: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v0 AS a30, v0 AS a31 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+
+1.84467440737095e+19
+v0
+abc
+abc
+hare
+END VERI 0
+BEGIN VERI 0
+Parse error near line 54: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a33 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+; 
+INSERT INTO v0 VALUES ( x'616263', 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( 18446744073709518848, 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( 'v0', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT 'v0' != c3 ) ), 'x' ); 
+INSERT INTO v0 VALUES ( 'v0', 'v1', 'one' ); 
+; 
+INSERT INTO v0 VALUES ( x'616263', 'XX', 'x' ); 
+CREATE TABLE v6 ( c7, c8, c9 COLLATE NOCASE ); 
+; 
+INSERT INTO v0 VALUES ( NULL, 'v0', 'count.test cases for NOT INDEXED' ); 
+INSERT INTO v6 VALUES ( 'v0', 'v0', 'x' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'xyz', 'v0' ); 
+INSERT INTO v6 VALUES ( 18446744073709518848, 'wvu', 'C' ); 
+ALTER TABLE v6 DROP c7; 
+; 
+INSERT INTO v6 VALUES ( - 18446744073709518848, '4', 'v1' ); 
+CREATE TABLE v12 ( c13, c14, c15 COLLATE NOCASE ); 
+INSERT INTO v6 SELECT * FROM v6 AS a16 ORDER BY 18446744073709518848; 
+; 
+INSERT INTO v6 SELECT * FROM v0 AS a18 ORDER BY 18446744073709518848; 
+INSERT INTO v12 SELECT * FROM v0 AS a19 ORDER BY 18446744073709518848; 
+INSERT INTO v12 SELECT * FROM v0 AS a20 ORDER BY 18446744073709518848; 
+INSERT INTO v6 SELECT * FROM v0 AS a21 ORDER BY 0; 
+INSERT INTO v12 SELECT * FROM v12 AS a22 ORDER BY 16; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c3, count ( ( NOT ( a23.c3 IS NULL ) ) AND ( NOT ( a23.c1 IS NULL ) ) ) FROM v0 AS a23 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v24 AS ( SELECT 18446744073709551615 y ORDER BY 0 ) SELECT * FROM v24 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c14, count ( ( NOT ( a26.c15 IS NULL ) ) AND ( NOT ( a26.c13 IS NULL ) ) ) FROM v12 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a27 NATURAL JOIN v6 AS a28 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c9 FROM v6 AS a29 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30, v0 AS a31 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c1 FROM v0 AS a32 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: misuse of aggregate function count()
+  INSERT INTO v0 VALUES ( 'v0', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT 'v0' !=
+                  error here ---^
+Parse error near line 17: table v6 has 2 columns but 3 values were supplied
+Parse error near line 21: table v6 has 2 columns but 3 values were supplied
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v6 SELECT * FROM v0 AS a21 ORDER BY 0; 
+                                    error here ---^
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+BEGIN VERI 0
+v0|6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+  H v24 AS ( SELECT 18446744073709551615 y ORDER BY 0 ) SELECT * FROM v24 AS a25
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+x|12
+END VERI 0
+BEGIN VERI 0
+abc|x|v0|v0|x
+abc|x|v0|wvu|C
+abc|x|v0|v0|x
+abc|x|v0|wvu|C
+1.84467440737095e+19|x|v0|v0|x
+1.84467440737095e+19|x|v0|wvu|C
+1.84467440737095e+19|x|v0|v0|x
+1.84467440737095e+19|x|v0|wvu|C
+v0|v1|one|v0|x
+v0|v1|one|wvu|C
+v0|v1|one|v0|x
+v0|v1|one|wvu|C
+abc|XX|x|v0|x
+abc|XX|x|wvu|C
+abc|XX|x|v0|x
+abc|XX|x|wvu|C
+|v0|count.test cases for NOT INDEXED|v0|x
+|v0|count.test cases for NOT INDEXED|wvu|C
+|v0|count.test cases for NOT INDEXED|v0|x
+|v0|count.test cases for NOT INDEXED|wvu|C
+hare|xyz|v0|v0|x
+hare|xyz|v0|wvu|C
+hare|xyz|v0|v0|x
+hare|xyz|v0|wvu|C
+abc|x|v0|v0|x
+abc|x|v0|wvu|C
+abc|x|v0|v0|x
+abc|x|v0|wvu|C
+1.84467440737095e+19|x|v0|v0|x
+1.84467440737095e+19|x|v0|wvu|C
+1.84467440737095e+19|x|v0|v0|x
+1.84467440737095e+19|x|v0|wvu|C
+v0|v1|one|v0|x
+v0|v1|one|wvu|C
+v0|v1|one|v0|x
+v0|v1|one|wvu|C
+abc|XX|x|v0|x
+abc|XX|x|wvu|C
+abc|XX|x|v0|x
+abc|XX|x|wvu|C
+|v0|count.test cases for NOT INDEXED|v0|x
+|v0|count.test cases for NOT INDEXED|wvu|C
+|v0|count.test cases for NOT INDEXED|v0|x
+|v0|count.test cases for NOT INDEXED|wvu|C
+hare|xyz|v0|v0|x
+hare|xyz|v0|wvu|C
+hare|xyz|v0|v0|x
+hare|xyz|v0|wvu|C
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+BEGIN VERI 0
+x
+C
+x
+C
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 48: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v0 AS a30, v0 AS a31 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+abc
+1.84467440737095e+19
+v0
+abc
+
+hare
+END VERI 0
+BEGIN VERI 0
+Parse error near line 54: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a33 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+v0|6
+ 
+INT: 0 
+Str: 
+v0|6
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+  H v24 AS ( SELECT 18446744073709551615 y ORDER BY 0 ) SELECT * FROM v24 AS a25
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+  H v24 AS ( SELECT 18446744073709551615 y ORDER BY 0 ) SELECT * FROM v24 AS a25
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+x|12
+ 
+INT: 0 
+Str: 
+x|12
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: -1
+Str: 
+abc|x|v0|v0|v0|x
+abc|x|v0|1.84467440737095e+19|wvu|C
+abc|x|v0|-1.84467440737095e+19|4|v1
+abc|x|v0|v0|v0|x
+abc|x|v0|1.84467440737095e+19|wvu|C
+abc|x|v0|-1.84467440737095e+19|4|v1
+abc|x|v0|abc|x|v0
+abc|x|v0|1.84467440737095e+19|x|v0
+abc|x|v0|v0|v1|one
+abc|x|v0|abc|XX|x
+abc|x|v0||v0|count.test cases for NOT INDEXED
+abc|x|v0|hare|xyz|v0
+1.84467440737095e+19|x|v0|v0|v0|x
+1.84467440737095e+19|x|v0|1.84467440737095e+19|wvu|C
+1.84467440737095e+19|x|v0|-1.84467440737095e+19|4|v1
+1.84467440737095e+19|x|v0|v0|v0|x
+1.84467440737095e+19|x|v0|1.84467440737095e+19|wvu|C
+1.84467440737095e+19|x|v0|-1.84467440737095e+19|4|v1
+1.84467440737095e+19|x|v0|abc|x|v0
+1.84467440737095e+19|x|v0|1.84467440737095e+19|x|v0
+1.84467440737095e+19|x|v0|v0|v1|one
+1.84467440737095e+19|x|v0|abc|XX|x
+1.84467440737095e+19|x|v0||v0|count.test cases for NOT INDEXED
+1.84467440737095e+19|x|v0|hare|xyz|v0
+v0|v1|one|v0|v0|x
+v0|v1|one|1.84467440737095e+19|wvu|C
+v0|v1|one|-1.84467440737095e+19|4|v1
+v0|v1|one|v0|v0|x
+v0|v1|one|1.84467440737095e+19|wvu|C
+v0|v1|one|-1.84467440737095e+19|4|v1
+v0|v1|one|abc|x|v0
+v0|v1|one|1.84467440737095e+19|x|v0
+v0|v1|one|v0|v1|one
+v0|v1|one|abc|XX|x
+v0|v1|one||v0|count.test cases for NOT INDEXED
+v0|v1|one|hare|xyz|v0
+abc|XX|x|v0|v0|x
+abc|XX|x|1.84467440737095e+19|wvu|C
+abc|XX|x|-1.84467440737095e+19|4|v1
+abc|XX|x|v0|v0|x
+abc|XX|x|1.84467440737095e+19|wvu|C
+abc|XX|x|-1.84467440737095e+19|4|v1
+abc|XX|x|abc|x|v0
+abc|XX|x|1.84467440737095e+19|x|v0
+abc|XX|x|v0|v1|one
+abc|XX|x|abc|XX|x
+abc|XX|x||v0|count.test cases for NOT INDEXED
+abc|XX|x|hare|xyz|v0
+|v0|count.test cases for NOT INDEXED|v0|v0|x
+|v0|count.test cases for NOT INDEXED|1.84467440737095e+19|wvu|C
+|v0|count.test cases for NOT INDEXED|-1.84467440737095e+19|4|v1
+|v0|count.test cases for NOT INDEXED|v0|v0|x
+|v0|count.test cases for NOT INDEXED|1.84467440737095e+19|wvu|C
+|v0|count.test cases for NOT INDEXED|-1.84467440737095e+19|4|v1
+|v0|count.test cases for NOT INDEXED|abc|x|v0
+|v0|count.test cases for NOT INDEXED|1.84467440737095e+19|x|v0
+|v0|count.test cases for NOT INDEXED|v0|v1|one
+|v0|count.test cases for NOT INDEXED|abc|XX|x
+|v0|count.test cases for NOT INDEXED||v0|count.test cases for NOT INDEXED
+|v0|count.test cases for NOT INDEXED|hare|xyz|v0
+hare|xyz|v0|v0|v0|x
+hare|xyz|v0|1.84467440737095e+19|wvu|C
+hare|xyz|v0|-1.84467440737095e+19|4|v1
+hare|xyz|v0|v0|v0|x
+hare|xyz|v0|1.84467440737095e+19|wvu|C
+hare|xyz|v0|-1.84467440737095e+19|4|v1
+hare|xyz|v0|abc|x|v0
+hare|xyz|v0|1.84467440737095e+19|x|v0
+hare|xyz|v0|v0|v1|one
+hare|xyz|v0|abc|XX|x
+hare|xyz|v0||v0|count.test cases for NOT INDEXED
+hare|xyz|v0|hare|xyz|v0
+abc|x|v0|v0|v0|x
+abc|x|v0|1.84467440737095e+19|wvu|C
+abc|x|v0|-1.84467440737095e+19|4|v1
+abc|x|v0|v0|v0|x
+abc|x|v0|1.84467440737095e+19|wvu|C
+abc|x|v0|-1.84467440737095e+19|4|v1
+abc|x|v0|abc|x|v0
+abc|x|v0|1.84467440737095e+19|x|v0
+abc|x|v0|v0|v1|one
+abc|x|v0|abc|XX|x
+abc|x|v0||v0|count.test cases for NOT INDEXED
+abc|x|v0|hare|xyz|v0
+1.84467440737095e+19|x|v0|v0|v0|x
+1.84467440737095e+19|x|v0|1.84467440737095e+19|wvu|C
+1.84467440737095e+19|x|v0|-1.84467440737095e+19|4|v1
+1.84467440737095e+19|x|v0|v0|v0|x
+1.84467440737095e+19|x|v0|1.84467440737095e+19|wvu|C
+1.84467440737095e+19|x|v0|-1.84467440737095e+19|4|v1
+1.84467440737095e+19|x|v0|abc|x|v0
+1.84467440737095e+19|x|v0|1.84467440737095e+19|x|v0
+1.84467440737095e+19|x|v0|v0|v1|one
+1.84467440737095e+19|x|v0|abc|XX|x
+1.84467440737095e+19|x|v0||v0|count.test cases for NOT INDEXED
+1.84467440737095e+19|x|v0|hare|xyz|v0
+v0|v1|one|v0|v0|x
+v0|v1|one|1.84467440737095e+19|wvu|C
+v0|v1|one|-1.84467440737095e+19|4|v1
+v0|v1|one|v0|v0|x
+v0|v1|one|1.84467440737095e+19|wvu|C
+v0|v1|one|-1.84467440737095e+19|4|v1
+v0|v1|one|abc|x|v0
+v0|v1|one|1.84467440737095e+19|x|v0
+v0|v1|one|v0|v1|one
+v0|v1|one|abc|XX|x
+v0|v1|one||v0|count.test cases for NOT INDEXED
+v0|v1|one|hare|xyz|v0
+abc|XX|x|v0|v0|x
+abc|XX|x|1.84467440737095e+19|wvu|C
+abc|XX|x|-1.84467440737095e+19|4|v1
+abc|XX|x|v0|v0|x
+abc|XX|x|1.84467440737095e+19|wvu|C
+abc|XX|x|-1.84467440737095e+19|4|v1
+abc|XX|x|abc|x|v0
+abc|XX|x|1.84467440737095e+19|x|v0
+abc|XX|x|v0|v1|one
+abc|XX|x|abc|XX|x
+abc|XX|x||v0|count.test cases for NOT INDEXED
+abc|XX|x|hare|xyz|v0
+|v0|count.test cases for NOT INDEXED|v0|v0|x
+|v0|count.test cases for NOT INDEXED|1.84467440737095e+19|wvu|C
+|v0|count.test cases for NOT INDEXED|-1.84467440737095e+19|4|v1
+|v0|count.test cases for NOT INDEXED|v0|v0|x
+|v0|count.test cases for NOT INDEXED|1.84467440737095e+19|wvu|C
+|v0|count.test cases for NOT INDEXED|-1.84467440737095e+19|4|v1
+|v0|count.test cases for NOT INDEXED|abc|x|v0
+|v0|count.test cases for NOT INDEXED|1.84467440737095e+19|x|v0
+|v0|count.test cases for NOT INDEXED|v0|v1|one
+|v0|count.test cases for NOT INDEXED|abc|XX|x
+|v0|count.test cases for NOT INDEXED||v0|count.test cases for NOT INDEXED
+|v0|count.test cases for NOT INDEXED|hare|xyz|v0
+hare|xyz|v0|v0|v0|x
+hare|xyz|v0|1.84467440737095e+19|wvu|C
+hare|xyz|v0|-1.84467440737095e+19|4|v1
+hare|xyz|v0|v0|v0|x
+hare|xyz|v0|1.84467440737095e+19|wvu|C
+hare|xyz|v0|-1.84467440737095e+19|4|v1
+hare|xyz|v0|abc|x|v0
+hare|xyz|v0|1.84467440737095e+19|x|v0
+hare|xyz|v0|v0|v1|one
+hare|xyz|v0|abc|XX|x
+hare|xyz|v0||v0|count.test cases for NOT INDEXED
+hare|xyz|v0|hare|xyz|v0
+ 
+Str: 
+abc|x|v0|v0|x
+abc|x|v0|wvu|C
+abc|x|v0|v0|x
+abc|x|v0|wvu|C
+1.84467440737095e+19|x|v0|v0|x
+1.84467440737095e+19|x|v0|wvu|C
+1.84467440737095e+19|x|v0|v0|x
+1.84467440737095e+19|x|v0|wvu|C
+v0|v1|one|v0|x
+v0|v1|one|wvu|C
+v0|v1|one|v0|x
+v0|v1|one|wvu|C
+abc|XX|x|v0|x
+abc|XX|x|wvu|C
+abc|XX|x|v0|x
+abc|XX|x|wvu|C
+|v0|count.test cases for NOT INDEXED|v0|x
+|v0|count.test cases for NOT INDEXED|wvu|C
+|v0|count.test cases for NOT INDEXED|v0|x
+|v0|count.test cases for NOT INDEXED|wvu|C
+hare|xyz|v0|v0|x
+hare|xyz|v0|wvu|C
+hare|xyz|v0|v0|x
+hare|xyz|v0|wvu|C
+abc|x|v0|v0|x
+abc|x|v0|wvu|C
+abc|x|v0|v0|x
+abc|x|v0|wvu|C
+1.84467440737095e+19|x|v0|v0|x
+1.84467440737095e+19|x|v0|wvu|C
+1.84467440737095e+19|x|v0|v0|x
+1.84467440737095e+19|x|v0|wvu|C
+v0|v1|one|v0|x
+v0|v1|one|wvu|C
+v0|v1|one|v0|x
+v0|v1|one|wvu|C
+abc|XX|x|v0|x
+abc|XX|x|wvu|C
+abc|XX|x|v0|x
+abc|XX|x|wvu|C
+|v0|count.test cases for NOT INDEXED|v0|x
+|v0|count.test cases for NOT INDEXED|wvu|C
+|v0|count.test cases for NOT INDEXED|v0|x
+|v0|count.test cases for NOT INDEXED|wvu|C
+hare|xyz|v0|v0|x
+hare|xyz|v0|wvu|C
+hare|xyz|v0|v0|x
+hare|xyz|v0|wvu|C
+ 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+x
+C
+v1
+x
+C
+v1
+v0
+v0
+one
+x
+count.test cases for NOT INDEXED
+v0
+ 
+INT: 11 
+Str: 
+x
+C
+x
+C
+ 
+INT: 3 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 45: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 45: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 48: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v0 AS a30, v0 AS a31 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 48: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v0 AS a30, v0 AS a31 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+
+1.84467440737095e+19
+v0
+abc
+abc
+hare
+ 
+INT: 4 
+Str: 
+abc
+1.84467440737095e+19
+v0
+abc
+
+hare
+ 
+INT: 4 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 54: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a33 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 54: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a33 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

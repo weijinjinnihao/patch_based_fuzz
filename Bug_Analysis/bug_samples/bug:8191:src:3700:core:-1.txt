@@ -1,0 +1,296 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE TABLE v5 ( c6 CHECK( c8 != 100 ), c7, c8 CHECK( c7 > 100 ), c9 ); 
+CREATE INDEX i10 ON v0 ( c2 ); 
+CREATE INDEX i11 ON v0 ( c3 ); 
+CREATE TABLE v12 ( c13 INTEGER PRIMARY KEY, c14, c15 UNIQUE ); 
+CREATE TABLE v16 ( c17 TEXT NOT NULL, c18 TEXT NOT NULL, c19 TEXT, PRIMARY KEY ( c17, c17, c19, c18, c18, c17, c18, c18, c17, c17 ), CONSTRAINT y UNIQUE ( c18, c19, c19, c19, c19 ) ); 
+CREATE INDEX i20 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v12 DROP COLUMN c13; 
+CREATE VIRTUAL TABLE v21 USING fts5 ( c22, c23 ); 
+CREATE INDEX i24 ON v12 ( c15 ); 
+ALTER TABLE v12 DROP COLUMN c15; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a25 ORDER BY 31; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY ( ( a26.c2 + - 100 ) % 100 ) != 31 + 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT + c1 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a27 WHERE ( a27.c7 = 18446744073709551615 OR a27.c7 = 16 ) AND a27.c7 IN ( SELECT ( SELECT min ( a29.c14 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 100 ) FROM v5 AS a28, v12 AS a29 ORDER BY a27.c9 = a28.c8 || a29.c14 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c18, count ( a30.c18 ) FROM v16 AS a30 ORDER BY 31; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a31.c19 ) FROM v16 AS a31 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 GROUP BY a32.c3 HAVING a32.c1 > a32.c1 % 16 >= 100 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a33 WHERE a33.c23 || a33.c22 IN v21 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a34 ORDER BY 'v1'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c1, count ( a35.c1 ) FROM v0 AS a35 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: error in index i10 after drop column: no such column: c2
+Parse error near line 10: cannot drop PRIMARY KEY column: "c13"
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: cannot drop UNIQUE column: "c15"
+BEGIN VERI 0
+Parse error near line 15: no such table: v21
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: c1
+  SELECT + c1 ORDER BY 255; 
+           ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v21
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE TABLE v5 ( c6 CHECK( c8 != 100 ), c7, c8 CHECK( c7 > 100 ), c9 ); 
+; 
+; 
+CREATE TABLE v12 ( c13 INTEGER PRIMARY KEY, c14, c15 UNIQUE ); 
+CREATE TABLE v16 ( c17 TEXT NOT NULL, c18 TEXT NOT NULL, c19 TEXT, PRIMARY KEY ( c17, c17, c19, c18, c18, c17, c18, c18, c17, c17 ), CONSTRAINT y UNIQUE ( c18, c19, c19, c19, c19 ) ); 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v12 DROP COLUMN c13; 
+CREATE VIRTUAL TABLE v21 USING fts5 ( c22, c23 ); 
+; 
+ALTER TABLE v12 DROP COLUMN c15; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a25 ORDER BY 31; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY ( ( a26.c2 + - 100 ) % 100 ) != 31 + 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT + c1 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a27 WHERE ( a27.c7 = 18446744073709551615 OR a27.c7 = 16 ) AND a27.c7 IN ( SELECT ( SELECT min ( a29.c14 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 100 ) FROM v5 AS a28, v12 AS a29 ORDER BY a27.c9 = a28.c8 || a29.c14 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c18, count ( a30.c18 ) FROM v16 AS a30 ORDER BY 31; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a31.c19 ) FROM v16 AS a31 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 GROUP BY a32.c3 HAVING a32.c1 > a32.c1 % 16 >= 100 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a33 WHERE a33.c23 || a33.c22 IN v21 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a34 ORDER BY 'v1'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c1, count ( a35.c1 ) FROM v0 AS a35 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: cannot drop PRIMARY KEY column: "c13"
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: cannot drop UNIQUE column: "c15"
+BEGIN VERI 0
+Parse error near line 15: no such table: v21
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: a26.c2
+  SELECT * FROM v0 AS a26 ORDER BY ( ( a26.c2 + - 100 ) % 100 ) != 31 + 16; 
+                         error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: c1
+  SELECT + c1 ORDER BY 255; 
+           ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v21
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such table: v21
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such table: v21
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 18: no such column: a26.c2
+  SELECT * FROM v0 AS a26 ORDER BY ( ( a26.c2 + - 100 ) % 100 ) != 31 + 16; 
+                         error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such column: c1
+  SELECT + c1 ORDER BY 255; 
+           ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 21: no such column: c1
+  SELECT + c1 ORDER BY 255; 
+           ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v21
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v21
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

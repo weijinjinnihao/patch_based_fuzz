@@ -1,0 +1,344 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE TABLE v4 ( c5, c6, c7, CHECK( c7 > 0 ) ); 
+CREATE INDEX i8 ON v4 ( c6 ); 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c12 > 0 ) ); 
+INSERT INTO v9 VALUES ( 0, 0, 0 ); 
+CREATE INDEX i13 ON v9 ( c10 ); 
+INSERT INTO v0 VALUES ( 0, 127, 0 ); 
+CREATE INDEX i14 ON v9 ( c11 ); 
+INSERT INTO v9 VALUES ( 127, 127, 0 ); 
+ALTER TABLE v9 DROP COLUMN c11; 
+CREATE INDEX i15 ON v4 ( c7 ); 
+CREATE INDEX i16 ON v4 ( c7 ); 
+CREATE TABLE v17 ( c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41 PRIMARY KEY, c42 BLOB, CHECK( coalesce ( c29, c25 ) ) ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT 0 - ( c11 + c12 ) WHERE CASE WHEN c10 != 'x' THEN 2147483647 ELSE 100 END > 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c10, max ( a43.c10 || a43.c11 ) FROM v9 AS a43 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c1 FROM v0 AS a44 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a45.c30 FROM v17 AS a45 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a46.c11, a47.c6 FROM v9 AS a46, v4 AS a47 ON a47.c5 = a46.c12 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c49 ) AS ( SELECT c49 + ( SELECT max ( c49 ) FROM v0 AS a53 ORDER BY 0 ), c49 + ( SELECT a52.c6 FROM v4 AS a52 ORDER BY 127 ), a50.c20 + ( SELECT max ( a51.c11 ) FROM v9 AS a51 ORDER BY 0 ) FROM v17 AS a50 ORDER BY 127 ) SELECT ( SELECT min ( a50.c22 ) OVER ( ORDER BY 0 ) ORDER BY 4294967295 ) FROM v17 AS a48 GROUP BY v0.c3 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a54.c12 || a54.c10 ) FROM v9 AS a54 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a55 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT hex ( ) y ORDER BY 2147483647 ) SELECT a57.c1, a57.c3 FROM v4 AS a56 RIGHT JOIN v0 AS a57 ON a57.c1 = a57.c3 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a58.c10, sum ( a58.c11 ) FROM v9 AS a58 GROUP BY a58.c11 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c12 > 0 (19)
+Runtime error near line 9: CHECK constraint failed: c12 > 0 (19)
+Runtime error near line 10: error in index i14 after drop column: no such column: c11
+BEGIN VERI 0
+Parse error near line 15: no such column: c11
+  SELECT 0 - ( c11 + c12 ) WHERE CASE WHEN c10 != 'x' THEN 2147483647 ELSE 100 E
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+  ax ( a43.c10 || a43.c11 ) FROM v9 AS a43 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a44.c1 FROM v0 AS a44 ORDER BY 0; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a45.c30 FROM v17 AS a45 ORDER BY 0; 
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  v9 AS a46, v4 AS a47 ON a47.c5 = a46.c12 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a50.c22
+  M v17 AS a50 ORDER BY 127 ) SELECT ( SELECT min ( a50.c22 ) OVER ( ORDER BY 0 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: wrong number of arguments to function hex()
+  WITH v0 AS ( SELECT hex ( ) y ORDER BY 2147483647 ) SELECT a57.c1, a57.c3 FROM
+                      ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE TABLE v4 ( c5, c6, c7, CHECK( c7 > 0 ) ); 
+; 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c12 > 0 ) ); 
+INSERT INTO v9 VALUES ( 0, 0, 0 ); 
+; 
+INSERT INTO v0 VALUES ( 0, 127, 0 ); 
+; 
+INSERT INTO v9 VALUES ( 127, 127, 0 ); 
+ALTER TABLE v9 DROP COLUMN c11; 
+; 
+; 
+CREATE TABLE v17 ( c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41 PRIMARY KEY, c42 BLOB, CHECK( coalesce ( c29, c25 ) ) ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT 0 - ( c11 + c12 ) WHERE CASE WHEN c10 != 'x' THEN 2147483647 ELSE 100 END > 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c10, max ( a43.c10 || a43.c11 ) FROM v9 AS a43 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c1 FROM v0 AS a44 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a45.c30 FROM v17 AS a45 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a46.c11, a47.c6 FROM v9 AS a46, v4 AS a47 ON a47.c5 = a46.c12 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c49 ) AS ( SELECT c49 + ( SELECT max ( c49 ) FROM v0 AS a53 ORDER BY 0 ), c49 + ( SELECT a52.c6 FROM v4 AS a52 ORDER BY 127 ), a50.c20 + ( SELECT max ( a51.c11 ) FROM v9 AS a51 ORDER BY 0 ) FROM v17 AS a50 ORDER BY 127 ) SELECT ( SELECT min ( a50.c22 ) OVER ( ORDER BY 0 ) ORDER BY 4294967295 ) FROM v17 AS a48 GROUP BY v0.c3 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a54.c12 || a54.c10 ) FROM v9 AS a54 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a55 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT hex ( ) y ORDER BY 2147483647 ) SELECT a57.c1, a57.c3 FROM v4 AS a56 RIGHT JOIN v0 AS a57 ON a57.c1 = a57.c3 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a58.c10, sum ( a58.c11 ) FROM v9 AS a58 GROUP BY a58.c11 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c12 > 0 (19)
+Runtime error near line 9: CHECK constraint failed: c12 > 0 (19)
+BEGIN VERI 0
+Parse error near line 15: no such column: c11
+  SELECT 0 - ( c11 + c12 ) WHERE CASE WHEN c10 != 'x' THEN 2147483647 ELSE 100 E
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: a43.c11
+  SELECT a43.c10, max ( a43.c10 || a43.c11 ) FROM v9 AS a43 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a44.c1 FROM v0 AS a44 ORDER BY 0; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a45.c30 FROM v17 AS a45 ORDER BY 0; 
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a46.c11
+  SELECT a46.c11, a47.c6 FROM v9 AS a46, v4 AS a47 ON a47.c5 = a46.c12 ORDER BY 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a50.c22
+  M v17 AS a50 ORDER BY 127 ) SELECT ( SELECT min ( a50.c22 ) OVER ( ORDER BY 0 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: wrong number of arguments to function hex()
+  WITH v0 AS ( SELECT hex ( ) y ORDER BY 2147483647 ) SELECT a57.c1, a57.c3 FROM
+                      ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a58.c11
+  SELECT a58.c10, sum ( a58.c11 ) FROM v9 AS a58 GROUP BY a58.c11 ORDER BY 127; 
+                        ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such column: c11
+  SELECT 0 - ( c11 + c12 ) WHERE CASE WHEN c10 != 'x' THEN 2147483647 ELSE 100 E
+               ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 15: no such column: c11
+  SELECT 0 - ( c11 + c12 ) WHERE CASE WHEN c10 != 'x' THEN 2147483647 ELSE 100 E
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+  ax ( a43.c10 || a43.c11 ) FROM v9 AS a43 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 18: no such column: a43.c11
+  SELECT a43.c10, max ( a43.c10 || a43.c11 ) FROM v9 AS a43 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a44.c1 FROM v0 AS a44 ORDER BY 0; 
+                          error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a44.c1 FROM v0 AS a44 ORDER BY 0; 
+                          error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a45.c30 FROM v17 AS a45 ORDER BY 0; 
+                            error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a45.c30 FROM v17 AS a45 ORDER BY 0; 
+                            error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  v9 AS a46, v4 AS a47 ON a47.c5 = a46.c12 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: no such column: a46.c11
+  SELECT a46.c11, a47.c6 FROM v9 AS a46, v4 AS a47 ON a47.c5 = a46.c12 ORDER BY 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such column: a50.c22
+  M v17 AS a50 ORDER BY 127 ) SELECT ( SELECT min ( a50.c22 ) OVER ( ORDER BY 0 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: no such column: a50.c22
+  M v17 AS a50 ORDER BY 127 ) SELECT ( SELECT min ( a50.c22 ) OVER ( ORDER BY 0 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: wrong number of arguments to function hex()
+  WITH v0 AS ( SELECT hex ( ) y ORDER BY 2147483647 ) SELECT a57.c1, a57.c3 FROM
+                      ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 39: wrong number of arguments to function hex()
+  WITH v0 AS ( SELECT hex ( ) y ORDER BY 2147483647 ) SELECT a57.c1, a57.c3 FROM
+                      ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such column: a58.c11
+  SELECT a58.c10, sum ( a58.c11 ) FROM v9 AS a58 GROUP BY a58.c11 ORDER BY 127; 
+                        ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

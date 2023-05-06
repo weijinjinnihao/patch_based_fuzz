@@ -1,0 +1,254 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 TEXT REFERENCES t1 DEFAULT NULL, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26 REFERENCES t1 DEFAULT 16, c27, c28, c29 PRIMARY KEY, CHECK( ( ( c3 + 16 ) % 18446744073709551615 ) != 18446744073709551615 ) ) WITHOUT ROWID; 
+CREATE INDEX i30 ON v0 ( c15 ); 
+CREATE INDEX i31 ON v0 ( c21 ); 
+CREATE INDEX i32 ON v0 ( c10 ); 
+CREATE INDEX i33 ON v0 ( c25 ); 
+CREATE INDEX i34 ON v0 ( c18 ); 
+ALTER TABLE v0 DROP c25; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35, v0 AS a36 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 NATURAL JOIN v0 AS a38 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a40.c26 FROM ( SELECT a41.c16, max ( a41.c15 ) AS y FROM v0 AS a41 WHERE a41.c8 >= 16 GROUP BY a40.c23 ORDER BY 16 ) AS y LEFT JOIN v0 AS a40 WHERE a40.c4 = a40.c28 AND a40.c8 = a40.c16 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a42.c5, count ( a42.c26 ) FROM v0 AS a42 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 GROUP BY a43.c26 HAVING a43.c25 > a43.c18 % 16 >= 16 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c17 FROM v0 AS a44 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a45 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a46.c20 FROM v0 AS a46 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a47, v0 AS a48 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i33 after drop column: no such column: c25
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 TEXT REFERENCES t1 DEFAULT NULL, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26 REFERENCES t1 DEFAULT 16, c27, c28, c29 PRIMARY KEY, CHECK( ( ( c3 + 16 ) % 18446744073709551615 ) != 18446744073709551615 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c25; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35, v0 AS a36 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 NATURAL JOIN v0 AS a38 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a40.c26 FROM ( SELECT a41.c16, max ( a41.c15 ) AS y FROM v0 AS a41 WHERE a41.c8 >= 16 GROUP BY a40.c23 ORDER BY 16 ) AS y LEFT JOIN v0 AS a40 WHERE a40.c4 = a40.c28 AND a40.c8 = a40.c16 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a42.c5, count ( a42.c26 ) FROM v0 AS a42 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 GROUP BY a43.c26 HAVING a43.c25 > a43.c18 % 16 >= 16 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c17 FROM v0 AS a44 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a45 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a46.c20 FROM v0 AS a46 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a47, v0 AS a48 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a43.c25
+  SELECT * FROM v0 AS a43 GROUP BY a43.c26 HAVING a43.c25 > a43.c18 % 16 >= 16 O
+                                    error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 24: no such column: a43.c25
+  SELECT * FROM v0 AS a43 GROUP BY a43.c26 HAVING a43.c25 > a43.c18 % 16 >= 16 O
+                                    error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

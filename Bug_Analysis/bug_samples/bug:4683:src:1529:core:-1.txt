@@ -1,0 +1,284 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 PRIMARY KEY NOT NULL, c2 NOT NULL ); 
+CREATE INDEX i3 ON v0 ( c2 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE TABLE v5 ( c6, c7, c8 REFERENCES p1 ( c8 ) ); 
+CREATE TABLE v9 ( c10, c11, c12, c13 REFERENCES p1 ( c12 ) ); 
+CREATE INDEX i14 ON v0 ( c1 ); 
+CREATE INDEX i15 ON v9 ( ( c10 + 18446744073709551488 ) > 18446744073709551488 ); 
+CREATE INDEX i16 ON v0 ( c2 ); 
+ALTER TABLE v5 DROP COLUMN c6; 
+ALTER TABLE v0 DROP COLUMN c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a18.c2 IS NULL ) ) AND ( NOT ( a18.c1 IS NULL ) ) ) FROM v0 AS a18 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a19 GROUP BY x'616263', 'v1', a19.c8 = + a19.c6 HAVING count ( * ) >= 18446744073709551488 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT a21.c8 FROM v5 AS a21 WHERE v0.c2 NOT LIKE 'x' ORDER BY 18446744073709551488 ) SELECT * FROM v9 AS a20 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v22 ( c24 ) AS ( WITH v25 ( c26 ) AS ( WITH v27 ( c28 ) AS ( WITH v29 AS ( SELECT ( SELECT min ( c28 ) OVER ( ORDER BY 0 IN v27 ) ORDER BY 18446744073709551488 ) FROM v29 AS a30 GROUP BY c24 ORDER BY 18446744073709551488 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT 0 ORDER BY 16 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM v22 AS a23 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c12, max ( a31.c10 || a31.c12 ) FROM v9 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 WHERE a33.c1 > ( a33.c2 + - 18446744073709518848 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v9 AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a34 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: error in index i3 after drop column: no such column: c2
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: a19.c6
+  OM v5 AS a19 GROUP BY x'616263', 'v1', a19.c8 = + a19.c6 HAVING count ( * ) >=
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  RDER BY 16 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM v22 AS a23
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 PRIMARY KEY NOT NULL, c2 NOT NULL ); 
+; 
+; 
+CREATE TABLE v5 ( c6, c7, c8 REFERENCES p1 ( c8 ) ); 
+CREATE TABLE v9 ( c10, c11, c12, c13 REFERENCES p1 ( c12 ) ); 
+; 
+; 
+; 
+ALTER TABLE v5 DROP COLUMN c6; 
+ALTER TABLE v0 DROP COLUMN c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a18.c2 IS NULL ) ) AND ( NOT ( a18.c1 IS NULL ) ) ) FROM v0 AS a18 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a19 GROUP BY x'616263', 'v1', a19.c8 = + a19.c6 HAVING count ( * ) >= 18446744073709551488 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT a21.c8 FROM v5 AS a21 WHERE v0.c2 NOT LIKE 'x' ORDER BY 18446744073709551488 ) SELECT * FROM v9 AS a20 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v22 ( c24 ) AS ( WITH v25 ( c26 ) AS ( WITH v27 ( c28 ) AS ( WITH v29 AS ( SELECT ( SELECT min ( c28 ) OVER ( ORDER BY 0 IN v27 ) ORDER BY 18446744073709551488 ) FROM v29 AS a30 GROUP BY c24 ORDER BY 18446744073709551488 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT 0 ORDER BY 16 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM v22 AS a23 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c12, max ( a31.c10 || a31.c12 ) FROM v9 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 WHERE a33.c1 > ( a33.c2 + - 18446744073709518848 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v9 AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a34 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such column: a18.c2
+  SELECT count ( ( NOT ( a18.c2 IS NULL ) ) AND ( NOT ( a18.c1 IS NULL ) ) ) FRO
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: a19.c6
+  OM v5 AS a19 GROUP BY x'616263', 'v1', a19.c8 = + a19.c6 HAVING count ( * ) >=
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  RDER BY 16 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM v22 AS a23
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a33.c2
+  SELECT * FROM v0 AS a33 WHERE a33.c1 > ( a33.c2 + - 18446744073709518848 ) ORD
+                             error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+0
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such column: a18.c2
+  SELECT count ( ( NOT ( a18.c2 IS NULL ) ) AND ( NOT ( a18.c1 IS NULL ) ) ) FRO
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such column: a19.c6
+  OM v5 AS a19 GROUP BY x'616263', 'v1', a19.c8 = + a19.c6 HAVING count ( * ) >=
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: no such column: a19.c6
+  OM v5 AS a19 GROUP BY x'616263', 'v1', a19.c8 = + a19.c6 HAVING count ( * ) >=
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  RDER BY 16 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM v22 AS a23
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  RDER BY 16 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM v22 AS a23
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 36: no such column: a33.c2
+  SELECT * FROM v0 AS a33 WHERE a33.c1 > ( a33.c2 + - 18446744073709518848 ) ORD
+                             error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

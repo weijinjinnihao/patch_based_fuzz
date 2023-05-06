@@ -1,0 +1,326 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 TEXT, c2 INTEGER, c3 INT, c4, c5, PRIMARY KEY ( c5 ), CHECK( c1 != c5 ), CHECK( c3 != c3 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c2 = c2 || c5 WHERE c3 = c1 || c5; END; 
+CREATE INDEX i6 ON v0 ( c4 ); 
+CREATE INDEX i7 ON v0 ( c4 ); 
+CREATE TABLE v8 ( c9, c10, c11, c12, PRIMARY KEY ( c12, c9 ) ) WITHOUT ROWID; 
+CREATE INDEX i13 ON v8 ( c11 ); 
+CREATE INDEX i14 ON v8 ( c10 ); 
+INSERT INTO v8 VALUES ( 0, 0, 0, 0 ); 
+ALTER TABLE v8 DROP COLUMN c10; 
+CREATE INDEX i15 ON v0 ( c5 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a16 GROUP BY a16.c11 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c9, max ( a17.c12 || a17.c10 ) FROM v8 AS a17 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a18, v8 AS a19 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT quote ( a20.c3 ), quote ( a20.c1 ), 'v0' FROM v0 AS a20 GROUP BY NULL, 'x', 'v1', 0, abs ( a20.c5 ) HAVING count ( * ) >= 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c10, max ( a21.c11 || a21.c11 ) FROM v8 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v0 AS a23 NATURAL JOIN v8 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a25 ORDER BY a25.c10 COLLATE NOCASE, a25.c10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a26 WHERE a26.c10 = 0 ORDER BY 127 IN ( SELECT * FROM v8 AS a27 ORDER BY 0 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a28 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v29 AS ( SELECT c12 FROM v29 AS a31 WHERE c5 LIKE 'x' ORDER BY 100 ) SELECT * FROM v29 AS a30 WHERE ( c11 = 127 OR c11 = 18446744073709551488 ) AND c9 IN ( ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: error in index i14 after drop column: no such column: c10
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+  ax ( a17.c12 || a17.c10 ) FROM v8 AS a17 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 8
+  SELECT * FROM v8 AS a18, v8 AS a19 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+  , abs ( a20.c5 ) HAVING count ( * ) >= 0 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+0|00
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 14
+  AS a22, v0 AS a23 NATURAL JOIN v8 AS a24 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+0|0|0|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 4
+  RDER BY 127 IN ( SELECT * FROM v8 AS a27 ORDER BY 0 ); 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+0|0|0|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: circular reference: v29
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 TEXT, c2 INTEGER, c3 INT, c4, c5, PRIMARY KEY ( c5 ), CHECK( c1 != c5 ), CHECK( c3 != c3 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c2 = c2 || c5 WHERE c3 = c1 || c5; END; 
+; 
+; 
+CREATE TABLE v8 ( c9, c10, c11, c12, PRIMARY KEY ( c12, c9 ) ) WITHOUT ROWID; 
+; 
+; 
+INSERT INTO v8 VALUES ( 0, 0, 0, 0 ); 
+ALTER TABLE v8 DROP COLUMN c10; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a16 GROUP BY a16.c11 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c9, max ( a17.c12 || a17.c10 ) FROM v8 AS a17 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a18, v8 AS a19 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT quote ( a20.c3 ), quote ( a20.c1 ), 'v0' FROM v0 AS a20 GROUP BY NULL, 'x', 'v1', 0, abs ( a20.c5 ) HAVING count ( * ) >= 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c10, max ( a21.c11 || a21.c11 ) FROM v8 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v0 AS a23 NATURAL JOIN v8 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a25 ORDER BY a25.c10 COLLATE NOCASE, a25.c10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a26 WHERE a26.c10 = 0 ORDER BY 127 IN ( SELECT * FROM v8 AS a27 ORDER BY 0 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a28 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v29 AS ( SELECT c12 FROM v29 AS a31 WHERE c5 LIKE 'x' ORDER BY 100 ) SELECT * FROM v29 AS a30 WHERE ( c11 = 127 OR c11 = 18446744073709551488 ) AND c9 IN ( ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such column: a17.c10
+  SELECT a17.c9, max ( a17.c12 || a17.c10 ) FROM v8 AS a17 ORDER BY 0; 
+                    error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v8 AS a18, v8 AS a19 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+  , abs ( a20.c5 ) HAVING count ( * ) >= 0 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a21.c10
+  SELECT a21.c10, max ( a21.c11 || a21.c11 ) FROM v8 AS a21 ORDER BY 18446744073
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 13
+  AS a22, v0 AS a23 NATURAL JOIN v8 AS a24 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a25.c10
+  SELECT * FROM v8 AS a25 ORDER BY a25.c10 COLLATE NOCASE, a25.c10; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a26.c10
+  SELECT * FROM v8 AS a26 WHERE a26.c10 = 0 ORDER BY 127 IN ( SELECT * FROM v8 A
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+0|0|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: circular reference: v29
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+  ax ( a17.c12 || a17.c10 ) FROM v8 AS a17 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: no such column: a17.c10
+  SELECT a17.c9, max ( a17.c12 || a17.c10 ) FROM v8 AS a17 ORDER BY 0; 
+                    error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 8
+  SELECT * FROM v8 AS a18, v8 AS a19 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v8 AS a18, v8 AS a19 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+  , abs ( a20.c5 ) HAVING count ( * ) >= 0 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+  , abs ( a20.c5 ) HAVING count ( * ) >= 0 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+0|00
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such column: a21.c10
+  SELECT a21.c10, max ( a21.c11 || a21.c11 ) FROM v8 AS a21 ORDER BY 18446744073
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 14
+  AS a22, v0 AS a23 NATURAL JOIN v8 AS a24 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 13
+  AS a22, v0 AS a23 NATURAL JOIN v8 AS a24 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+0|0|0|0
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no such column: a25.c10
+  SELECT * FROM v8 AS a25 ORDER BY a25.c10 COLLATE NOCASE, a25.c10; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 4
+  RDER BY 127 IN ( SELECT * FROM v8 AS a27 ORDER BY 0 ); 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: no such column: a26.c10
+  SELECT * FROM v8 AS a26 WHERE a26.c10 = 0 ORDER BY 127 IN ( SELECT * FROM v8 A
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+0|0|0|0
+ 
+INT: 0 
+Str: 
+0|0|0
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: circular reference: v29
+ 
+INT: 0 
+Str: 
+Parse error near line 39: circular reference: v29
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,308 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c4 > 18446744073709551488 ), c4 BLOB ); 
+CREATE TABLE v5 ( c6, c7, c8, c9, CHECK( c7 > 8 ) ); 
+CREATE INDEX i10 ON v0 ( c3 ); 
+CREATE INDEX i11 ON v0 ( c1 ); 
+INSERT INTO v5 VALUES ( 8, 8, 18446744073709551488, 0 ), ( 4294967295, 8, 8, 8 ); 
+CREATE INDEX i12 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 18446744071562067968, 18446744073709551488, 8, 0 ); 
+CREATE INDEX i13 ON v5 ( c8 ); 
+CREATE INDEX i14 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709551488, 0, 18446744071562067968 ); 
+ALTER TABLE v5 DROP c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a15 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a16.c2, count ( * ), avg ( a16.c3 ), count ( a16.c4 ) FROM v0 AS a16 GROUP BY a16.c1 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a17.c9 IS NULL ) ) AND ( NOT ( a17.c8 IS NULL ) ) ) FROM v5 AS a17 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 GROUP BY x'616263', 'v0', a18.c3 = + a18.c4 HAVING count ( * ) >= 8 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c3, max ( a19.c2 || a19.c1 ) FROM v0 AS a19 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a20 GROUP BY a20.c9 HAVING automatic_index ( * ) >= 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a21 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a22.c8 ) FROM v5 AS a22 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a23 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a24 ORDER BY ( ( a24.c8 + 8 ) % 100 ) < 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c7 > 8 (19)
+Runtime error near line 7: CHECK constraint failed: c4 > 18446744073709551488 (19)
+Runtime error near line 10: CHECK constraint failed: c4 > 18446744073709551488 (19)
+Runtime error near line 11: error in index i13 after drop column: no such column: c8
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such function: automatic_index
+  SELECT * FROM v5 AS a20 GROUP BY a20.c9 HAVING automatic_index ( * ) >= 0 ORDE
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v5 AS a23 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c4 > 18446744073709551488 ), c4 BLOB ); 
+CREATE TABLE v5 ( c6, c7, c8, c9, CHECK( c7 > 8 ) ); 
+; 
+; 
+INSERT INTO v5 VALUES ( 8, 8, 18446744073709551488, 0 ), ( 4294967295, 8, 8, 8 ); 
+; 
+INSERT INTO v0 VALUES ( 18446744071562067968, 18446744073709551488, 8, 0 ); 
+; 
+; 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709551488, 0, 18446744071562067968 ); 
+ALTER TABLE v5 DROP c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a15 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a16.c2, count ( * ), avg ( a16.c3 ), count ( a16.c4 ) FROM v0 AS a16 GROUP BY a16.c1 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a17.c9 IS NULL ) ) AND ( NOT ( a17.c8 IS NULL ) ) ) FROM v5 AS a17 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 GROUP BY x'616263', 'v0', a18.c3 = + a18.c4 HAVING count ( * ) >= 8 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c3, max ( a19.c2 || a19.c1 ) FROM v0 AS a19 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a20 GROUP BY a20.c9 HAVING automatic_index ( * ) >= 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a21 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a22.c8 ) FROM v5 AS a22 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a23 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a24 ORDER BY ( ( a24.c8 + 8 ) % 100 ) < 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c7 > 8 (19)
+Runtime error near line 7: CHECK constraint failed: c4 > 18446744073709551488 (19)
+Runtime error near line 10: CHECK constraint failed: c4 > 18446744073709551488 (19)
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: a17.c8
+  CT count ( ( NOT ( a17.c9 IS NULL ) ) AND ( NOT ( a17.c8 IS NULL ) ) ) FROM v5
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such function: automatic_index
+  SELECT * FROM v5 AS a20 GROUP BY a20.c9 HAVING automatic_index ( * ) >= 0 ORDE
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a22.c8
+  SELECT count ( a22.c8 ) FROM v5 AS a22 ORDER BY 18446744073709551488; 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v5 AS a23 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a24.c8
+  SELECT * FROM v5 AS a24 ORDER BY ( ( a24.c8 + 8 ) % 100 ) < 184467440715620679
+                         error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such column: a17.c8
+  CT count ( ( NOT ( a17.c9 IS NULL ) ) AND ( NOT ( a17.c8 IS NULL ) ) ) FROM v5
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such function: automatic_index
+  SELECT * FROM v5 AS a20 GROUP BY a20.c9 HAVING automatic_index ( * ) >= 0 ORDE
+                                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 28: no such function: automatic_index
+  SELECT * FROM v5 AS a20 GROUP BY a20.c9 HAVING automatic_index ( * ) >= 0 ORDE
+                                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+0
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such column: a22.c8
+  SELECT count ( a22.c8 ) FROM v5 AS a22 ORDER BY 18446744073709551488; 
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v5 AS a23 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v5 AS a23 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 40: no such column: a24.c8
+  SELECT * FROM v5 AS a24 ORDER BY ( ( a24.c8 + 8 ) % 100 ) < 184467440715620679
+                         error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

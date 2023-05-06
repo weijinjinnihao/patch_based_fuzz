@@ -1,0 +1,316 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+CREATE INDEX i6 ON v0 ( c2 ); 
+CREATE INDEX i7 ON v0 ( c1 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a8 LEFT JOIN ( SELECT count ( * ) AS y, a10.c3 FROM ( v0 AS a9 INNER JOIN v0 AS a10 ON a9.c1 = a10.c3 ) AS y WHERE a8.c2 > 4294967295 GROUP BY a9.c1 ORDER BY 4294967295 ) AS y ON a8.c1 = a8.c3 y ORDER BY 1; 
+SELECT 'END VERI 0'; 
+CREATE TABLE v11 ( c12, c13, c14 CHECK( c12 > 4294967295 ) ); 
+INSERT INTO v11 VALUES ( 4294967295, 0, 4294967295 ); 
+CREATE INDEX i15 ON v0 ( c3 ); 
+INSERT OR REPLACE INTO v11 VALUES ( 2147483647, 0, 4294967295 ); 
+INSERT INTO v0 VALUES ( 4294967295, 4294967295, 0 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 ( c17 ) AS ( WITH v11 ( c18, c19, c20, c21, c22, c23 ) AS ( SELECT 4294967295 y ORDER BY 4294967295 ) SELECT 18446744073709551615 ORDER BY 4294967295 ) SELECT * FROM v11 AS a16 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v24 AS ( SELECT * FROM v24 AS a26 ORDER BY c1, c3 ) SELECT * FROM v24 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27, v0 AS a28 NATURAL JOIN v0 AS a29 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a30 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v31 ( c33 ) AS ( SELECT c33 + ( SELECT max ( c33 ) FROM v31 AS a37 ORDER BY 8 ), c33 + ( SELECT c33 FROM v31 AS a36 ORDER BY 8 ), c33 + ( SELECT max ( c33 ) FROM v31 AS a35 ORDER BY 18446744071562067968 ) FROM v31 AS a34 ORDER BY 16 ) SELECT * FROM v31 AS a32 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c12, count ( ( NOT ( a39.c1 IS NULL ) ) AND ( NOT ( a39.c1 IS NULL ) ) ), count ( ( x'68617265' ) AND ( NOT ( a39.c3 IS NULL ) ) ) FROM v11 AS a38 LEFT JOIN v0 AS a39 ON a38.c14 = a38.c12 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a40 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a41, v0 AS a42 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( c13 || c1 || c2 ) != 'Z' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 7: near "y": syntax error
+  a9.c1 ORDER BY 4294967295 ) AS y ON a8.c1 = a8.c3 y ORDER BY 1; 
+                                      error here ---^
+END VERI 0
+Runtime error near line 10: CHECK constraint failed: c12 > 4294967295 (19)
+Runtime error near line 12: CHECK constraint failed: c12 > 4294967295 (19)
+Runtime error near line 14: error in index i15 after drop column: no such column: c3
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: circular reference: v24
+END VERI 0
+BEGIN VERI 0
+4294967295|4294967295|0|4294967295|4294967295|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: circular reference: v31
+END VERI 0
+BEGIN VERI 0
+|0|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: c13
+  SELECT ( c13 || c1 || c2 ) != 'Z' ORDER BY 0; 
+           ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a8 LEFT JOIN ( SELECT count ( * ) AS y, a10.c3 FROM ( v0 AS a9 INNER JOIN v0 AS a10 ON a9.c1 = a10.c3 ) AS y WHERE a8.c2 > 4294967295 GROUP BY a9.c1 ORDER BY 4294967295 ) AS y ON a8.c1 = a8.c3 y ORDER BY 1; 
+SELECT 'END VERI 0'; 
+CREATE TABLE v11 ( c12, c13, c14 CHECK( c12 > 4294967295 ) ); 
+INSERT INTO v11 VALUES ( 4294967295, 0, 4294967295 ); 
+; 
+INSERT OR REPLACE INTO v11 VALUES ( 2147483647, 0, 4294967295 ); 
+INSERT INTO v0 VALUES ( 4294967295, 4294967295, 0 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 ( c17 ) AS ( WITH v11 ( c18, c19, c20, c21, c22, c23 ) AS ( SELECT 4294967295 y ORDER BY 4294967295 ) SELECT 18446744073709551615 ORDER BY 4294967295 ) SELECT * FROM v11 AS a16 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v24 AS ( SELECT * FROM v24 AS a26 ORDER BY c1, c3 ) SELECT * FROM v24 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27, v0 AS a28 NATURAL JOIN v0 AS a29 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a30 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v31 ( c33 ) AS ( SELECT c33 + ( SELECT max ( c33 ) FROM v31 AS a37 ORDER BY 8 ), c33 + ( SELECT c33 FROM v31 AS a36 ORDER BY 8 ), c33 + ( SELECT max ( c33 ) FROM v31 AS a35 ORDER BY 18446744071562067968 ) FROM v31 AS a34 ORDER BY 16 ) SELECT * FROM v31 AS a32 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c12, count ( ( NOT ( a39.c1 IS NULL ) ) AND ( NOT ( a39.c1 IS NULL ) ) ), count ( ( x'68617265' ) AND ( NOT ( a39.c3 IS NULL ) ) ) FROM v11 AS a38 LEFT JOIN v0 AS a39 ON a38.c14 = a38.c12 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a40 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a41, v0 AS a42 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( c13 || c1 || c2 ) != 'Z' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 7: near "y": syntax error
+  a9.c1 ORDER BY 4294967295 ) AS y ON a8.c1 = a8.c3 y ORDER BY 1; 
+                                      error here ---^
+END VERI 0
+Runtime error near line 10: CHECK constraint failed: c12 > 4294967295 (19)
+Runtime error near line 12: CHECK constraint failed: c12 > 4294967295 (19)
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: circular reference: v24
+END VERI 0
+BEGIN VERI 0
+4294967295|4294967295|4294967295|4294967295
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: circular reference: v31
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a39.c3
+  S NULL ) ) ), count ( ( x'68617265' ) AND ( NOT ( a39.c3 IS NULL ) ) ) FROM v1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: c13
+  SELECT ( c13 || c1 || c2 ) != 'Z' ORDER BY 0; 
+           ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 7: near "y": syntax error
+  a9.c1 ORDER BY 4294967295 ) AS y ON a8.c1 = a8.c3 y ORDER BY 1; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 7: near "y": syntax error
+  a9.c1 ORDER BY 4294967295 ) AS y ON a8.c1 = a8.c3 y ORDER BY 1; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: circular reference: v24
+ 
+INT: 0 
+Str: 
+Parse error near line 19: circular reference: v24
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+4294967295|4294967295|0|4294967295|4294967295|0
+ 
+INT: 0 
+Str: 
+4294967295|4294967295|4294967295|4294967295
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: circular reference: v31
+ 
+INT: 0 
+Str: 
+Parse error near line 28: circular reference: v31
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+|0|0
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no such column: a39.c3
+  S NULL ) ) ), count ( ( x'68617265' ) AND ( NOT ( a39.c3 IS NULL ) ) ) FROM v1
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such column: c13
+  SELECT ( c13 || c1 || c2 ) != 'Z' ORDER BY 0; 
+           ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 40: no such column: c13
+  SELECT ( c13 || c1 || c2 ) != 'Z' ORDER BY 0; 
+           ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 43: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

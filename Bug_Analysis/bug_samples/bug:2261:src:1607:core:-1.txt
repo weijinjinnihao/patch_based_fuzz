@@ -1,0 +1,286 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 ); 
+CREATE INDEX i28 ON v0 ( c8 ); 
+CREATE INDEX i29 ON v0 ( c27 ); 
+CREATE INDEX i30 ON v0 ( c16 ); 
+INSERT INTO v0 VALUES ( 255 ), ( 255 ); 
+CREATE TABLE v31 ( c32, c33, c34, c35, CHECK( c32 > 4294967295 ) ); 
+CREATE INDEX i36 ON v31 ( c34 ); 
+INSERT INTO v31 VALUES ( 18446744073709551615, 4294967295, 255, 255 ), ( 4294967295, 18446744073709551615, 4294967295, 4294967295 ); 
+INSERT INTO v31 VALUES ( 0, 18446744071562067968, 18446744073709551615, 18446744073709551488 ); 
+INSERT INTO v31 VALUES ( 4294967295, 255, 255, 0 ); 
+ALTER TABLE v0 DROP c16; 
+CREATE INDEX i37 ON v0 ( c9 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( c33 || c24 || c33 ) != 'x' WHERE c33 IS NOT NULL >= 255 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a38 GROUP BY a38.c32 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a39, v31 AS a40 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a41.c9 ) FROM v0 AS a41 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 ORDER BY ( ( a43.c11 + 10 ) % 255 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c16, count ( ( NOT ( a44.c23 IS NULL ) ) AND ( NOT ( a45.c33 IS NULL ) ) ) FROM v0 AS a44 LEFT JOIN v31 AS a45 ON a45.c34 = a45.c35 WHERE a45.c32 != 255 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c47 ) AS ( SELECT a48.c21 + ( SELECT max ( c47 ) FROM v31 AS a51 ORDER BY 4294967295 ), a46.c14 + ( SELECT a50.c32 FROM v31 AS a50 ORDER BY 255 ), a46.c2 + ( SELECT max ( c47 ) FROM v31 AS a49 ORDER BY 10 ) FROM v0 AS a48 ORDER BY 10 ) SELECT * FROM v0 AS a46 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a52 ORDER BY a52.c32 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a53 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: table v0 has 27 columns but 1 values were supplied
+Runtime error near line 8: CHECK constraint failed: c32 > 4294967295 (19)
+Runtime error near line 9: CHECK constraint failed: c32 > 4294967295 (19)
+Runtime error near line 10: CHECK constraint failed: c32 > 4294967295 (19)
+Runtime error near line 11: error in index i30 after drop column: no such column: c16
+BEGIN VERI 0
+Parse error near line 14: no such column: c33
+  SELECT ( c33 || c24 || c33 ) != 'x' WHERE c33 IS NOT NULL >= 255 ORDER BY 1844
+           ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 ); 
+; 
+; 
+; 
+INSERT INTO v0 VALUES ( 255 ), ( 255 ); 
+CREATE TABLE v31 ( c32, c33, c34, c35, CHECK( c32 > 4294967295 ) ); 
+; 
+INSERT INTO v31 VALUES ( 18446744073709551615, 4294967295, 255, 255 ), ( 4294967295, 18446744073709551615, 4294967295, 4294967295 ); 
+INSERT INTO v31 VALUES ( 0, 18446744071562067968, 18446744073709551615, 18446744073709551488 ); 
+INSERT INTO v31 VALUES ( 4294967295, 255, 255, 0 ); 
+ALTER TABLE v0 DROP c16; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( c33 || c24 || c33 ) != 'x' WHERE c33 IS NOT NULL >= 255 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a38 GROUP BY a38.c32 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a39, v31 AS a40 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a41.c9 ) FROM v0 AS a41 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 ORDER BY ( ( a43.c11 + 10 ) % 255 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c16, count ( ( NOT ( a44.c23 IS NULL ) ) AND ( NOT ( a45.c33 IS NULL ) ) ) FROM v0 AS a44 LEFT JOIN v31 AS a45 ON a45.c34 = a45.c35 WHERE a45.c32 != 255 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c47 ) AS ( SELECT a48.c21 + ( SELECT max ( c47 ) FROM v31 AS a51 ORDER BY 4294967295 ), a46.c14 + ( SELECT a50.c32 FROM v31 AS a50 ORDER BY 255 ), a46.c2 + ( SELECT max ( c47 ) FROM v31 AS a49 ORDER BY 10 ) FROM v0 AS a48 ORDER BY 10 ) SELECT * FROM v0 AS a46 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a52 ORDER BY a52.c32 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a53 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: table v0 has 27 columns but 1 values were supplied
+Runtime error near line 8: CHECK constraint failed: c32 > 4294967295 (19)
+Runtime error near line 9: CHECK constraint failed: c32 > 4294967295 (19)
+Runtime error near line 10: CHECK constraint failed: c32 > 4294967295 (19)
+BEGIN VERI 0
+Parse error near line 14: no such column: c33
+  SELECT ( c33 || c24 || c33 ) != 'x' WHERE c33 IS NOT NULL >= 255 ORDER BY 1844
+           ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a44.c16
+  SELECT a44.c16, count ( ( NOT ( a44.c23 IS NULL ) ) AND ( NOT ( a45.c33 IS NUL
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no such column: c33
+  SELECT ( c33 || c24 || c33 ) != 'x' WHERE c33 IS NOT NULL >= 255 ORDER BY 1844
+           ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 14: no such column: c33
+  SELECT ( c33 || c24 || c33 ) != 'x' WHERE c33 IS NOT NULL >= 255 ORDER BY 1844
+           ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such column: a44.c16
+  SELECT a44.c16, count ( ( NOT ( a44.c23 IS NULL ) ) AND ( NOT ( a45.c33 IS NUL
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: circular reference: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 35: circular reference: v0
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

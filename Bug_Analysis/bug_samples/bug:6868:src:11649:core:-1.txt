@@ -1,0 +1,288 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4 UNIQUE, c5 UNIQUE ON CONFLICT IGNORE, c6 UNIQUE ON CONFLICT FAIL, c7 UNIQUE ON CONFLICT REPLACE DEFAULT 10, c8, c9 INTEGER UNIQUE ON CONFLICT FAIL, c10, c11, c12, c13, c14, c15, c16, c17, c18 TEXT UNIQUE ON CONFLICT FAIL DEFAULT 10, c19, c20, c21, c22, c23 REFERENCES t1, c24 DEFAULT 'eee' DEFAULT 10, PRIMARY KEY ( c20, c14 ) ) WITHOUT ROWID; 
+CREATE TABLE v25 ( c26, c27, c28, c29, c30, c31, c32 DEFAULT x'ABCD', c33, c34, c35, c36, c37, PRIMARY KEY ( c37, c34 ), UNIQUE ( c34 ) ); 
+ATTACH 'x' AS sqlite_master; 
+CREATE INDEX i38 ON v25 ( c26 ); 
+CREATE INDEX i39 ON v25 ( c35 ); 
+CREATE TABLE v40 ( c41, c42 TEXT, c43, PRIMARY KEY ( c41 ), CHECK( c41 != c43 ), CHECK( c43 != c43 ), UNIQUE ( c41 ) ); 
+CREATE INDEX i44 ON v40 ( c42 ); 
+CREATE TABLE v45 ( c46, c47 CHECK( 10 ), c48, c49, CHECK( c49 > 4294967295 ) ); 
+ALTER TABLE v40 DROP c42; 
+CREATE INDEX i50 ON v0 ( c17 ); 
+CREATE INDEX i51 ON v25 ( c37 ); 
+ALTER TABLE v25 DROP c27; 
+CREATE TABLE v52 ( c53, c54, c55 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v56 ( c60 ) AS ( SELECT max ( c60 || c60 ) ORDER BY 10 ) SELECT c60, max ( c60 || c60 ) FROM v56 AS a57, v56 AS a58 NATURAL JOIN v56 AS a59 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a61 WHERE ( hex ( 4294967295 ) ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v45 AS a62 WHERE ( a62.c46 || a62.c49 || a62.c47 ) != 'v1' ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a64.c41 IS NULL ) ) AND ( NOT ( a64.c41 IS NULL ) ) ), a63.c54 + 4294967295, count ( ( NOT ( a64.c43 IS NULL ) ) AND ( NOT ( a64.c43 IS NULL ) ) ) FROM v52 AS a63 LEFT JOIN v40 AS a64 ON a64.c43 = a63.c55 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a65.c49 ) FROM v45 AS a65 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v40 AS a66 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v45 AS a67 NATURAL JOIN v52 AS a68 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a69 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a70.c42 IS NULL ) ) AND ( NOT ( a70.c43 IS NULL ) ) ) FROM v40 AS a70 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: error in index i44 after drop column: no such column: c42
+BEGIN VERI 0
+Parse error near line 15: no such column: c60
+  WITH RECURSIVE v56 ( c60 ) AS ( SELECT max ( c60 || c60 ) ORDER BY 10 ) SELECT
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0||0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v40 AS a66 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4 UNIQUE, c5 UNIQUE ON CONFLICT IGNORE, c6 UNIQUE ON CONFLICT FAIL, c7 UNIQUE ON CONFLICT REPLACE DEFAULT 10, c8, c9 INTEGER UNIQUE ON CONFLICT FAIL, c10, c11, c12, c13, c14, c15, c16, c17, c18 TEXT UNIQUE ON CONFLICT FAIL DEFAULT 10, c19, c20, c21, c22, c23 REFERENCES t1, c24 DEFAULT 'eee' DEFAULT 10, PRIMARY KEY ( c20, c14 ) ) WITHOUT ROWID; 
+CREATE TABLE v25 ( c26, c27, c28, c29, c30, c31, c32 DEFAULT x'ABCD', c33, c34, c35, c36, c37, PRIMARY KEY ( c37, c34 ), UNIQUE ( c34 ) ); 
+ATTACH 'x' AS sqlite_master; 
+; 
+; 
+CREATE TABLE v40 ( c41, c42 TEXT, c43, PRIMARY KEY ( c41 ), CHECK( c41 != c43 ), CHECK( c43 != c43 ), UNIQUE ( c41 ) ); 
+; 
+CREATE TABLE v45 ( c46, c47 CHECK( 10 ), c48, c49, CHECK( c49 > 4294967295 ) ); 
+ALTER TABLE v40 DROP c42; 
+; 
+; 
+ALTER TABLE v25 DROP c27; 
+CREATE TABLE v52 ( c53, c54, c55 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v56 ( c60 ) AS ( SELECT max ( c60 || c60 ) ORDER BY 10 ) SELECT c60, max ( c60 || c60 ) FROM v56 AS a57, v56 AS a58 NATURAL JOIN v56 AS a59 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a61 WHERE ( hex ( 4294967295 ) ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v45 AS a62 WHERE ( a62.c46 || a62.c49 || a62.c47 ) != 'v1' ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a64.c41 IS NULL ) ) AND ( NOT ( a64.c41 IS NULL ) ) ), a63.c54 + 4294967295, count ( ( NOT ( a64.c43 IS NULL ) ) AND ( NOT ( a64.c43 IS NULL ) ) ) FROM v52 AS a63 LEFT JOIN v40 AS a64 ON a64.c43 = a63.c55 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a65.c49 ) FROM v45 AS a65 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v40 AS a66 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v45 AS a67 NATURAL JOIN v52 AS a68 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a69 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a70.c42 IS NULL ) ) AND ( NOT ( a70.c43 IS NULL ) ) ) FROM v40 AS a70 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 15: no such column: c60
+  WITH RECURSIVE v56 ( c60 ) AS ( SELECT max ( c60 || c60 ) ORDER BY 10 ) SELECT
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0||0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v40 AS a66 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a70.c42
+  SELECT count ( ( NOT ( a70.c42 IS NULL ) ) AND ( NOT ( a70.c43 IS NULL ) ) ) F
+                         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such column: c60
+  WITH RECURSIVE v56 ( c60 ) AS ( SELECT max ( c60 || c60 ) ORDER BY 10 ) SELECT
+                                 error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: no such column: c60
+  WITH RECURSIVE v56 ( c60 ) AS ( SELECT max ( c60 || c60 ) ORDER BY 10 ) SELECT
+                                 error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+0||0
+ 
+INT: 0 
+Str: 
+0||0
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v40 AS a66 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v40 AS a66 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such column: a70.c42
+  SELECT count ( ( NOT ( a70.c42 IS NULL ) ) AND ( NOT ( a70.c43 IS NULL ) ) ) F
+                         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

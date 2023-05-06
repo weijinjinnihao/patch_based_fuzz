@@ -1,0 +1,333 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE INDEX i3 ON v0 ( c1 ); 
+CREATE VIRTUAL TABLE v4 USING rtree ( c5, c6, c7 ); 
+INSERT INTO v4 VALUES ( 127, 'xyz' ), ( 127, 127, hex ( 127 ) ), ( 127, 'v1' ); 
+CREATE INDEX i8 ON v4 ( c1 ); 
+ALTER TABLE v4 DROP COLUMN c5; 
+CREATE INDEX i9 ON v0 ( c2 ); 
+BEGIN; 
+INSERT INTO v0 VALUES ( 18446744073709551488, 127, 18446744073709551615 ), ( 127, 127, 127 ), ( 18446744073709551488, 127, 127 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v4 BEGIN DELETE FROM v4 WHERE c1 = c2; END; 
+ALTER TABLE v0 ADD COLUMN c10 TEXT CHECK( c37 ( ( ( ( c1 + 0 ) % 18446744073709551488 ) == 127 ) % 18446744073709551488 ) != 127 ) DEFAULT 127; 
+UPDATE v0 SET c1 = 'x' FROM v4 AS a11, v0 AS a12 WHERE c10 = 127; 
+CREATE INDEX i13 ON v0 ( c10 ); 
+CREATE INDEX i14 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a16.c1 = + a15.c1, a15.c10 FROM v0 AS a15 LEFT JOIN v0 AS a16 ON a15.c1 = a16.c2 WHERE a15.c10 = a15.c2 GROUP BY y ( a16.c10, a16.c1, a15.c2, a15.c10, a16.c1, a16.c1, a16.c2, a16.c1, a16.c10, a15.c1, a15.c1, a16.c10, a16.c10, a16.c2, a15.c10, a15.c2, a16.c10 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17, v0 AS a18 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 16 IN ( SELECT * FROM v4 AS a19 ORDER BY 127 ) ORDER BY 187; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 WHERE a20.c1 != 127 ORDER BY 187; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a21 WHERE a21.c6 % 9223372036854775807 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c22 ) AS ( SELECT * ORDER BY 127 ) VALUES ( 127 ), ( 127 ), ( 18446744073709551615 ), ( 127 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a23, v0 AS a24 NATURAL JOIN v4 AS a25 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a26 WHERE ( a26.c5 = 127 OR a26.c5 = 255 ) AND a26.c7 IN ( SELECT a26.c6 FROM ( SELECT a26.c6 FROM v0 AS a27 ORDER BY 0 ) AS y WHERE a26.c7 = 127 ORDER BY 127 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a28 WHERE ( a28.c6 = 127 OR a28.c6 = 187 ) AND a28.c1 IN ( SELECT count ( ( NOT ( a28.c6 IS NULL ) ) AND ( NOT ( a28.c5 IS NULL ) ) ) FROM ( SELECT *, 'x' FROM v4 AS a29 LEFT JOIN v4 AS a30 ON a29.c7 = 255 AND 127 ORDER BY 0 ) AS y WHERE a28.c6 = 100 ORDER BY 127 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: all VALUES must have the same number of terms
+Parse error near line 5: virtual tables may not be indexed
+Parse error near line 6: cannot drop column from virtual table "v4"
+Parse error near line 9: table v0 has 2 columns but 3 values were supplied
+Parse error near line 10: cannot create triggers on virtual tables
+Runtime error near line 11: unknown function: c37()
+Parse error near line 12: unknown function: c37()
+   c1 = 'x' FROM v4 AS a11, v0 AS a12 WHERE c10 = 127; 
+                                      error here ---^
+Runtime error near line 13: no such column: c10
+BEGIN VERI 0
+Parse error near line 16: no such column: a15.c10
+  SELECT a16.c1 = + a15.c1, a15.c10 FROM v0 AS a15 LEFT JOIN v0 AS a16 ON a15.c1
+              error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+  S a21 WHERE a21.c6 % 9223372036854775807 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: near "ORDER": syntax error
+  127 ), ( 127 ), ( 18446744073709551615 ), ( 127 ) ORDER BY 127; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+  6.c6 FROM ( SELECT a26.c6 FROM v0 AS a27 ORDER BY 0 ) AS y WHERE a26.c7 = 127 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 7
+  T JOIN v4 AS a30 ON a29.c7 = 255 AND 127 ORDER BY 0 ) AS y WHERE a28.c6 = 100 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+; 
+CREATE VIRTUAL TABLE v4 USING rtree ( c5, c6, c7 ); 
+INSERT INTO v4 VALUES ( 127, 'xyz' ), ( 127, 127, hex ( 127 ) ), ( 127, 'v1' ); 
+; 
+ALTER TABLE v4 DROP COLUMN c5; 
+; 
+BEGIN; 
+INSERT INTO v0 VALUES ( 18446744073709551488, 127, 18446744073709551615 ), ( 127, 127, 127 ), ( 18446744073709551488, 127, 127 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v4 BEGIN DELETE FROM v4 WHERE c1 = c2; END; 
+ALTER TABLE v0 ADD COLUMN c10 TEXT CHECK( c37 ( ( ( ( c1 + 0 ) % 18446744073709551488 ) == 127 ) % 18446744073709551488 ) != 127 ) DEFAULT 127; 
+UPDATE v0 SET c1 = 'x' FROM v4 AS a11, v0 AS a12 WHERE c10 = 127; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a16.c1 = + a15.c1, a15.c10 FROM v0 AS a15 LEFT JOIN v0 AS a16 ON a15.c1 = a16.c2 WHERE a15.c10 = a15.c2 GROUP BY y ( a16.c10, a16.c1, a15.c2, a15.c10, a16.c1, a16.c1, a16.c2, a16.c1, a16.c10, a15.c1, a15.c1, a16.c10, a16.c10, a16.c2, a15.c10, a15.c2, a16.c10 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17, v0 AS a18 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 16 IN ( SELECT * FROM v4 AS a19 ORDER BY 127 ) ORDER BY 187; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 WHERE a20.c1 != 127 ORDER BY 187; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a21 WHERE a21.c6 % 9223372036854775807 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c22 ) AS ( SELECT * ORDER BY 127 ) VALUES ( 127 ), ( 127 ), ( 18446744073709551615 ), ( 127 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a23, v0 AS a24 NATURAL JOIN v4 AS a25 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a26 WHERE ( a26.c5 = 127 OR a26.c5 = 255 ) AND a26.c7 IN ( SELECT a26.c6 FROM ( SELECT a26.c6 FROM v0 AS a27 ORDER BY 0 ) AS y WHERE a26.c7 = 127 ORDER BY 127 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a28 WHERE ( a28.c6 = 127 OR a28.c6 = 187 ) AND a28.c1 IN ( SELECT count ( ( NOT ( a28.c6 IS NULL ) ) AND ( NOT ( a28.c5 IS NULL ) ) ) FROM ( SELECT *, 'x' FROM v4 AS a29 LEFT JOIN v4 AS a30 ON a29.c7 = 255 AND 127 ORDER BY 0 ) AS y WHERE a28.c6 = 100 ORDER BY 127 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: all VALUES must have the same number of terms
+Parse error near line 6: cannot drop column from virtual table "v4"
+Parse error near line 9: table v0 has 2 columns but 3 values were supplied
+Parse error near line 10: cannot create triggers on virtual tables
+Runtime error near line 11: unknown function: c37()
+Parse error near line 12: unknown function: c37()
+   c1 = 'x' FROM v4 AS a11, v0 AS a12 WHERE c10 = 127; 
+                                      error here ---^
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+  S a21 WHERE a21.c6 % 9223372036854775807 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: near "ORDER": syntax error
+  127 ), ( 127 ), ( 18446744073709551615 ), ( 127 ) ORDER BY 127; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+  6.c6 FROM ( SELECT a26.c6 FROM v0 AS a27 ORDER BY 0 ) AS y WHERE a26.c7 = 127 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 7
+  T JOIN v4 AS a30 ON a29.c7 = 255 AND 127 ORDER BY 0 ) AS y WHERE a28.c6 = 100 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 16: no such column: a15.c10
+  SELECT a16.c1 = + a15.c1, a15.c10 FROM v0 AS a15 LEFT JOIN v0 AS a16 ON a15.c1
+              error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+  S a21 WHERE a21.c6 % 9223372036854775807 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+  S a21 WHERE a21.c6 % 9223372036854775807 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 22409776
+Str: 
+Parse error near line 31: near "ORDER": syntax error
+  127 ), ( 127 ), ( 18446744073709551615 ), ( 127 ) ORDER BY 127; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 31: near "ORDER": syntax error
+  127 ), ( 127 ), ( 18446744073709551615 ), ( 127 ) ORDER BY 127; 
+                                      error here ---^
+ 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+  6.c6 FROM ( SELECT a26.c6 FROM v0 AS a27 ORDER BY 0 ) AS y WHERE a26.c7 = 127 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+  6.c6 FROM ( SELECT a26.c6 FROM v0 AS a27 ORDER BY 0 ) AS y WHERE a26.c7 = 127 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 7
+  T JOIN v4 AS a30 ON a29.c7 = 255 AND 127 ORDER BY 0 ) AS y WHERE a28.c6 = 100 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 7
+  T JOIN v4 AS a30 ON a29.c7 = 255 AND 127 ORDER BY 0 ) AS y WHERE a28.c6 = 100 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

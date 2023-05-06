@@ -1,0 +1,300 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER COLLATE NOCASE DEFAULT 10, c2 CHECK( c2 > 10 ), c3 ); 
+INSERT INTO v0 VALUES ( 10, 10, 127, 127 ), ( 10, 10, 10, 10 ) ON CONFLICT DO UPDATE SET c3 = c3, c3 = c2, c1 = y ( c2 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+CREATE TABLE v6 ( c7, c8, c9, c10, CHECK( c9 > 18446744073709551488 ) ); 
+INSERT INTO v6 VALUES ( 10, 2147483647, 10, 10 ), ( 10, 16, 10, 10 ); 
+INSERT INTO v0 VALUES ( 2147483647, 18446744073709551488, 10, 2147483647 ); 
+CREATE INDEX i11 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709551488, 18446744073709551488, 18446744073709551488 ); 
+CREATE INDEX i12 ON v0 ( c3 ); 
+CREATE INDEX i13 ON v6 ( c8 ); 
+ALTER TABLE v0 DROP c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a14 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a15 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a17 NATURAL JOIN v6 AS a18 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v19 AS ( SELECT hex ( ) y ORDER BY 18446744073709551615 ) SELECT *, 'v1' FROM v19 AS a20, v19 AS a21 WHERE c3 = 16 AND c1 = 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c9 FROM v6 AS a22 GROUP BY 18446744073709551488 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 GROUP BY a23.c2 HAVING automatic_index ( * ) >= 18446744073709551488 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c8 + ( SELECT max ( a26.c1 ) FROM v6 AS a27 ORDER BY 0 ), a24.c7 + ( SELECT max ( a24.c7 || a24.c9 ) FROM v0 AS a26 ORDER BY 0 ), a24.c8 + ( SELECT max ( a24.c9 ) FROM v6 AS a25 ORDER BY 0 ) FROM v6 AS a24 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c3 FROM v0 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: table v0 has 3 columns but 4 values were supplied
+Runtime error near line 6: CHECK constraint failed: c9 > 18446744073709551488 (19)
+Parse error near line 7: table v0 has 3 columns but 4 values were supplied
+Parse error near line 9: table v0 has 3 columns but 4 values were supplied
+Runtime error near line 12: error in index i12 after drop column: no such column: c3
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: wrong number of arguments to function hex()
+  WITH v19 AS ( SELECT hex ( ) y ORDER BY 18446744073709551615 ) SELECT *, 'v1' 
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such function: automatic_index
+  SELECT * FROM v0 AS a23 GROUP BY a23.c2 HAVING automatic_index ( * ) >= 184467
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a26.c1
+  SELECT a24.c8 + ( SELECT max ( a26.c1 ) FROM v6 AS a27 ORDER BY 0 ), a24.c7 + 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER COLLATE NOCASE DEFAULT 10, c2 CHECK( c2 > 10 ), c3 ); 
+INSERT INTO v0 VALUES ( 10, 10, 127, 127 ), ( 10, 10, 10, 10 ) ON CONFLICT DO UPDATE SET c3 = c3, c3 = c2, c1 = y ( c2 ); 
+; 
+; 
+CREATE TABLE v6 ( c7, c8, c9, c10, CHECK( c9 > 18446744073709551488 ) ); 
+INSERT INTO v6 VALUES ( 10, 2147483647, 10, 10 ), ( 10, 16, 10, 10 ); 
+INSERT INTO v0 VALUES ( 2147483647, 18446744073709551488, 10, 2147483647 ); 
+; 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709551488, 18446744073709551488, 18446744073709551488 ); 
+; 
+; 
+ALTER TABLE v0 DROP c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a14 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a15 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a17 NATURAL JOIN v6 AS a18 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v19 AS ( SELECT hex ( ) y ORDER BY 18446744073709551615 ) SELECT *, 'v1' FROM v19 AS a20, v19 AS a21 WHERE c3 = 16 AND c1 = 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c9 FROM v6 AS a22 GROUP BY 18446744073709551488 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 GROUP BY a23.c2 HAVING automatic_index ( * ) >= 18446744073709551488 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c8 + ( SELECT max ( a26.c1 ) FROM v6 AS a27 ORDER BY 0 ), a24.c7 + ( SELECT max ( a24.c7 || a24.c9 ) FROM v0 AS a26 ORDER BY 0 ), a24.c8 + ( SELECT max ( a24.c9 ) FROM v6 AS a25 ORDER BY 0 ) FROM v6 AS a24 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c3 FROM v0 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: table v0 has 3 columns but 4 values were supplied
+Runtime error near line 6: CHECK constraint failed: c9 > 18446744073709551488 (19)
+Parse error near line 7: table v0 has 3 columns but 4 values were supplied
+Parse error near line 9: table v0 has 3 columns but 4 values were supplied
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: wrong number of arguments to function hex()
+  WITH v19 AS ( SELECT hex ( ) y ORDER BY 18446744073709551615 ) SELECT *, 'v1' 
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such function: automatic_index
+  SELECT * FROM v0 AS a23 GROUP BY a23.c2 HAVING automatic_index ( * ) >= 184467
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a26.c1
+  SELECT a24.c8 + ( SELECT max ( a26.c1 ) FROM v6 AS a27 ORDER BY 0 ), a24.c7 + 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a28.c3
+  SELECT a28.c3 FROM v0 AS a28 ORDER BY 18446744073709551488; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: wrong number of arguments to function hex()
+  WITH v19 AS ( SELECT hex ( ) y ORDER BY 18446744073709551615 ) SELECT *, 'v1' 
+                       ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 26: wrong number of arguments to function hex()
+  WITH v19 AS ( SELECT hex ( ) y ORDER BY 18446744073709551615 ) SELECT *, 'v1' 
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such function: automatic_index
+  SELECT * FROM v0 AS a23 GROUP BY a23.c2 HAVING automatic_index ( * ) >= 184467
+                                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: no such function: automatic_index
+  SELECT * FROM v0 AS a23 GROUP BY a23.c2 HAVING automatic_index ( * ) >= 184467
+                                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no such column: a26.c1
+  SELECT a24.c8 + ( SELECT max ( a26.c1 ) FROM v6 AS a27 ORDER BY 0 ), a24.c7 + 
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: no such column: a26.c1
+  SELECT a24.c8 + ( SELECT max ( a26.c1 ) FROM v6 AS a27 ORDER BY 0 ), a24.c7 + 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 38: no such column: a28.c3
+  SELECT a28.c3 FROM v0 AS a28 ORDER BY 18446744073709551488; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

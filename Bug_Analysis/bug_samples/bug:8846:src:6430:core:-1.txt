@@ -1,0 +1,309 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 WHERE c2 = 127 ORDER BY 127; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9, c10 UNIQUE ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE INDEX i15 ON v5 ( c2 ); 
+CREATE INDEX i16 ON v7 ( c10 ); 
+CREATE VIRTUAL TABLE v17 USING fts5 ( c18, c19 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c13 FROM v11 AS a20 WHERE 100 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+CREATE INDEX i21 ON v7 ( c8 ); 
+ALTER TABLE v11 DROP COLUMN c13; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a23 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v24 AS ( SELECT * FROM v24 AS a26 CROSS JOIN v24 AS a27 ON ( c14 = c2 ) WHERE c2 IN ( SELECT c19 FROM v24 AS a28 WHERE c8 IN ( SELECT c19 FROM ( SELECT c2 FROM v24 AS a29 ORDER BY 127 ) AS y WHERE c14 = 0 ORDER BY ( 2147483647, ( * ) ) ) ORDER BY 127 ) ORDER BY 0 ) SELECT * FROM v24 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a30.c2 || a30.c1 ) FROM v0 AS a30 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 NATURAL JOIN v17 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c13, max ( a33.c14 || a33.c19 ) FROM v17 AS a33 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a34 WHERE a34.c12 > 127 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a35 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36, v5 AS a37 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a38.c8 ) OVER ( ORDER BY 18446744073709551615 IN v0 ) ORDER BY 10 ) FROM v7 AS a38 NATURAL JOIN v0 AS a39 GROUP BY a38.c8 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: error in index i4 after drop column: no such column: c1
+Parse error near line 8: views may not be indexed
+Runtime error near line 10: no such module: fts5
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such table: v17
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: near "*": syntax error
+  127 ) AS y WHERE c14 = 0 ORDER BY ( 2147483647, ( * ) ) ) ORDER BY 127 ) ORDER
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such table: v17
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 WHERE c2 = 127 ORDER BY 127; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9, c10 UNIQUE ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+ALTER TABLE v0 DROP COLUMN c3; 
+; 
+; 
+CREATE VIRTUAL TABLE v17 USING fts5 ( c18, c19 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c13 FROM v11 AS a20 WHERE 100 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+; 
+ALTER TABLE v11 DROP COLUMN c13; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a23 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v24 AS ( SELECT * FROM v24 AS a26 CROSS JOIN v24 AS a27 ON ( c14 = c2 ) WHERE c2 IN ( SELECT c19 FROM v24 AS a28 WHERE c8 IN ( SELECT c19 FROM ( SELECT c2 FROM v24 AS a29 ORDER BY 127 ) AS y WHERE c14 = 0 ORDER BY ( 2147483647, ( * ) ) ) ORDER BY 127 ) ORDER BY 0 ) SELECT * FROM v24 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a30.c2 || a30.c1 ) FROM v0 AS a30 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 NATURAL JOIN v17 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c13, max ( a33.c14 || a33.c19 ) FROM v17 AS a33 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a34 WHERE a34.c12 > 127 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a35 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36, v5 AS a37 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a38.c8 ) OVER ( ORDER BY 18446744073709551615 IN v0 ) ORDER BY 10 ) FROM v7 AS a38 NATURAL JOIN v0 AS a39 GROUP BY a38.c8 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: no such module: fts5
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such table: v17
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: near "*": syntax error
+  127 ) AS y WHERE c14 = 0 ORDER BY ( 2147483647, ( * ) ) ) ORDER BY 127 ) ORDER
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: a30.c1
+  SELECT max ( a30.c2 || a30.c1 ) FROM v0 AS a30 ORDER BY 127; 
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such table: v17
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: near "*": syntax error
+  127 ) AS y WHERE c14 = 0 ORDER BY ( 2147483647, ( * ) ) ) ORDER BY 127 ) ORDER
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 23: near "*": syntax error
+  127 ) AS y WHERE c14 = 0 ORDER BY ( 2147483647, ( * ) ) ) ORDER BY 127 ) ORDER
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such column: a30.c1
+  SELECT max ( a30.c2 || a30.c1 ) FROM v0 AS a30 ORDER BY 127; 
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 29: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 44: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

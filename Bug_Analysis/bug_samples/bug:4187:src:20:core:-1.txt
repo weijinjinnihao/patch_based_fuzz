@@ -1,0 +1,294 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2, c2 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 18446744071562067968, 18446744071562067968, 18446744071562067968 ), ( 18446744071562067968, 18446744071562067968, 10 ); 
+ALTER TABLE v0 DROP c3; 
+CREATE INDEX i6 ON v0 ( c2 ); 
+CREATE INDEX i7 ON v0 ( c1 ); 
+CREATE TABLE v8 ( c9, c10, c11 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i12 ON v8 ( c10 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a13.c2, max ( a13.c3 || a13.c2 ) FROM v0 AS a13 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v8 ( c14 ) AS ( SELECT * ORDER BY 18446744071562067968 ) SELECT avg ( v8.c11 ) FROM ( SELECT * FROM v8 AS a15 RIGHT JOIN v8 AS a16 ON a16.c10 ORDER BY 18446744071562067968 ) AS y ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a17 ORDER BY a17.c10 || a17.c10 || a17.c11; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a18 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v8 ( c20 ) AS ( WITH v0 ( c21 ) AS ( WITH v0 ( c22, c23, c24, c25, c26, c27 ) AS ( SELECT 18446744071562067968 y ORDER BY 18446744071562067968 ) SELECT 18446744071562067968 ORDER BY 0 ) SELECT 18446744071562067968 ORDER BY 18446744071562067968 ) SELECT * FROM v8 AS a19 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a28 GROUP BY a28.c10, a28.c21 < y ( a28.c10 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c1, a30.c11 FROM v0 AS a29 LEFT JOIN v8 AS a30 ON x'b1' = a30.c9 GROUP BY a29.c23, a29.c3 < a30.c9 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 NATURAL JOIN v8 AS a32 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c10 FROM v0 AS a33 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 4: UNIQUE constraint failed: v0.c2 (19)
+Runtime error near line 5: error in index i4 after drop column: no such column: c3
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a28.c21
+  SELECT * FROM v8 AS a28 GROUP BY a28.c10, a28.c21 < y ( a28.c10 ) ORDER BY 184
+                              error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a29.c23
+  29 LEFT JOIN v8 AS a30 ON x'b1' = a30.c9 GROUP BY a29.c23, a29.c3 < a30.c9 ORD
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a33.c10
+  SELECT a33.c10 FROM v0 AS a33 ORDER BY 18446744071562067968; 
+         ^--- error here
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2, c2 ) ) WITHOUT ROWID; 
+; 
+; 
+INSERT INTO v0 VALUES ( 18446744071562067968, 18446744071562067968, 18446744071562067968 ), ( 18446744071562067968, 18446744071562067968, 10 ); 
+ALTER TABLE v0 DROP c3; 
+; 
+; 
+CREATE TABLE v8 ( c9, c10, c11 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a13.c2, max ( a13.c3 || a13.c2 ) FROM v0 AS a13 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v8 ( c14 ) AS ( SELECT * ORDER BY 18446744071562067968 ) SELECT avg ( v8.c11 ) FROM ( SELECT * FROM v8 AS a15 RIGHT JOIN v8 AS a16 ON a16.c10 ORDER BY 18446744071562067968 ) AS y ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a17 ORDER BY a17.c10 || a17.c10 || a17.c11; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a18 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v8 ( c20 ) AS ( WITH v0 ( c21 ) AS ( WITH v0 ( c22, c23, c24, c25, c26, c27 ) AS ( SELECT 18446744071562067968 y ORDER BY 18446744071562067968 ) SELECT 18446744071562067968 ORDER BY 0 ) SELECT 18446744071562067968 ORDER BY 18446744071562067968 ) SELECT * FROM v8 AS a19 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a28 GROUP BY a28.c10, a28.c21 < y ( a28.c10 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c1, a30.c11 FROM v0 AS a29 LEFT JOIN v8 AS a30 ON x'b1' = a30.c9 GROUP BY a29.c23, a29.c3 < a30.c9 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 NATURAL JOIN v8 AS a32 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c10 FROM v0 AS a33 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 4: UNIQUE constraint failed: v0.c2 (19)
+BEGIN VERI 0
+Parse error near line 11: no such column: a13.c3
+  SELECT a13.c2, max ( a13.c3 || a13.c2 ) FROM v0 AS a13 ORDER BY 18446744073709
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a28.c21
+  SELECT * FROM v8 AS a28 GROUP BY a28.c10, a28.c21 < y ( a28.c10 ) ORDER BY 184
+                              error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a29.c23
+  29 LEFT JOIN v8 AS a30 ON x'b1' = a30.c9 GROUP BY a29.c23, a29.c3 < a30.c9 ORD
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a33.c10
+  SELECT a33.c10 FROM v0 AS a33 ORDER BY 18446744071562067968; 
+         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 11: no such column: a13.c3
+  SELECT a13.c2, max ( a13.c3 || a13.c2 ) FROM v0 AS a13 ORDER BY 18446744073709
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 14: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: no such column: a28.c21
+  SELECT * FROM v8 AS a28 GROUP BY a28.c10, a28.c21 < y ( a28.c10 ) ORDER BY 184
+                              error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: no such column: a28.c21
+  SELECT * FROM v8 AS a28 GROUP BY a28.c10, a28.c21 < y ( a28.c10 ) ORDER BY 184
+                              error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such column: a29.c23
+  29 LEFT JOIN v8 AS a30 ON x'b1' = a30.c9 GROUP BY a29.c23, a29.c3 < a30.c9 ORD
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: no such column: a29.c23
+  29 LEFT JOIN v8 AS a30 ON x'b1' = a30.c9 GROUP BY a29.c23, a29.c3 < a30.c9 ORD
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no such column: a33.c10
+  SELECT a33.c10 FROM v0 AS a33 ORDER BY 18446744071562067968; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 38: no such column: a33.c10
+  SELECT a33.c10 FROM v0 AS a33 ORDER BY 18446744071562067968; 
+         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

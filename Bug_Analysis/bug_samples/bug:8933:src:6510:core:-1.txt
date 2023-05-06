@@ -1,0 +1,314 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER COLLATE NOCASE DEFAULT 18446744073709551615, c2, c3 DEFAULT 18446744073709551615 DEFAULT 18446744073709551615, PRIMARY KEY ( c3 ), CHECK( c2 != c1 ), CHECK( c2 != c1 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c1 = x'68617265' WHERE c3 = c3 || c3; END; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE TABLE v6 ( c7, c8, c9, c10, PRIMARY KEY ( c7, c10 ) ) WITHOUT ROWID; 
+CREATE INDEX i11 ON v6 ( c8 ); 
+CREATE INDEX i12 ON v0 ( c3 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a13.c10 + a13.c10 FROM v6 AS a13 v0 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709518848, 18446744073709551615, 10, 10 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+ALTER TABLE v6 DROP COLUMN c8; 
+CREATE INDEX i14 ON v6 ( c8 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a15 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a16 NATURAL JOIN v6 AS a17 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 ORDER BY a18.c1 COLLATE nocase; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a20, v0 AS a21 WHERE a21.c1 = a20.c10 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT quote ( a23.c9 ), quote ( a23.c8 ), 'jim' FROM v6 AS a23 WHERE ( CASE WHEN a23.c9 != 'c2' THEN 18446744073709551615 ELSE 18446744073709551615 END ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c1, a25.c1 FROM v0 AS a24 RIGHT JOIN v0 AS a25 ON a25.c2 = a24.c3 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a26 WHERE ( CASE WHEN a26.c8 != 'x' THEN 18446744073709551615 ELSE 255 END ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 9: near "v0": syntax error
+  SELECT a13.c10 + a13.c10 FROM v6 AS a13 v0 ORDER BY 1; 
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 12: near "ORDER": syntax error
+  46744073709518848, 18446744073709551615, 10, 10 ) ORDER BY 1; 
+                                      error here ---^
+END VERI 0
+Runtime error near line 14: error in index i11 after drop column: no such column: c8
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER COLLATE NOCASE DEFAULT 18446744073709551615, c2, c3 DEFAULT 18446744073709551615 DEFAULT 18446744073709551615, PRIMARY KEY ( c3 ), CHECK( c2 != c1 ), CHECK( c2 != c1 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c1 = x'68617265' WHERE c3 = c3 || c3; END; 
+; 
+; 
+CREATE TABLE v6 ( c7, c8, c9, c10, PRIMARY KEY ( c7, c10 ) ) WITHOUT ROWID; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a13.c10 + a13.c10 FROM v6 AS a13 v0 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709518848, 18446744073709551615, 10, 10 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+ALTER TABLE v6 DROP COLUMN c8; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a15 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a16 NATURAL JOIN v6 AS a17 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 ORDER BY a18.c1 COLLATE nocase; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a20, v0 AS a21 WHERE a21.c1 = a20.c10 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT quote ( a23.c9 ), quote ( a23.c8 ), 'jim' FROM v6 AS a23 WHERE ( CASE WHEN a23.c9 != 'c2' THEN 18446744073709551615 ELSE 18446744073709551615 END ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c1, a25.c1 FROM v0 AS a24 RIGHT JOIN v0 AS a25 ON a25.c2 = a24.c3 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a26 WHERE ( CASE WHEN a26.c8 != 'x' THEN 18446744073709551615 ELSE 255 END ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 9: near "v0": syntax error
+  SELECT a13.c10 + a13.c10 FROM v6 AS a13 v0 ORDER BY 1; 
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 12: near "ORDER": syntax error
+  46744073709518848, 18446744073709551615, 10, 10 ) ORDER BY 1; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a23.c8
+  SELECT quote ( a23.c9 ), quote ( a23.c8 ), 'jim' FROM v6 AS a23 WHERE ( CASE W
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no such column: a26.c8
+  SELECT * FROM v6 AS a26 WHERE ( CASE WHEN a26.c8 != 'x' THEN 18446744073709551
+                              error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 9: near "v0": syntax error
+  SELECT a13.c10 + a13.c10 FROM v6 AS a13 v0 ORDER BY 1; 
+                            error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 9: near "v0": syntax error
+  SELECT a13.c10 + a13.c10 FROM v6 AS a13 v0 ORDER BY 1; 
+                            error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 2443264
+Str: 
+Parse error near line 12: near "ORDER": syntax error
+  46744073709518848, 18446744073709551615, 10, 10 ) ORDER BY 1; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 12: near "ORDER": syntax error
+  46744073709518848, 18446744073709551615, 10, 10 ) ORDER BY 1; 
+                                      error here ---^
+ 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 38: no such column: a23.c8
+  SELECT quote ( a23.c9 ), quote ( a23.c8 ), 'jim' FROM v6 AS a23 WHERE ( CASE W
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 11 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 44: no such column: a26.c8
+  SELECT * FROM v6 AS a26 WHERE ( CASE WHEN a26.c8 != 'x' THEN 18446744073709551
+                              error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

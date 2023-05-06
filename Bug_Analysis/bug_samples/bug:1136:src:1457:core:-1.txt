@@ -1,0 +1,289 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE VIEW v6 ( c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24 ) AS SELECT * FROM v0 AS a25 ORDER BY 18446744073709551488; 
+CREATE INDEX i26 ON v0 ( c1 ); 
+CREATE INDEX i27 ON v0 ( c2 ); 
+CREATE INDEX i28 ON v6 ( c1 ); 
+CREATE TABLE v29 ( c30 BLOB PRIMARY KEY, c31, c32 UNIQUE ); 
+CREATE TABLE v33 ( c34, c35, c36 ); 
+ALTER TABLE v6 DROP COLUMN c11; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE VIRTUAL TABLE v37 USING fts5 ( c38, c39 ); 
+ALTER TABLE v29 DROP COLUMN c32; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v37 AS a40 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a41, v33 AS a42 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 GROUP BY a43.c2, a43.c3 < a43.c3 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a45.c30 IS NULL ) ) AND ( NOT ( a45.c32 IS NULL ) ) ), a44.c9 FROM v6 AS a44 RIGHT JOIN v29 AS a45 ON a45.c30 = a44.c7 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a46 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a47.c35 || a47.c34 ) FROM v33 AS a47 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a48.c3, max ( a48.c3 || a48.c3 ) FROM v0 AS a48 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a49.c32, count ( ( NOT ( a49.c30 IS NULL ) ) AND ( NOT ( a49.c30 IS NULL ) ) ) FROM v29 AS a49 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a51.c32, a51.c30 FROM v6 AS a50, v29 AS a51 WHERE a51.c30 = 'v0' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a52.c2 IS NULL ) ) AND ( NOT ( a52.c1 IS NULL ) ) ) FROM v0 AS a52 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: views may not be indexed
+Parse error near line 10: cannot drop column from view "v6"
+Runtime error near line 11: error in index i4 after drop column: no such column: c2
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: cannot drop UNIQUE column: "c32"
+BEGIN VERI 0
+Parse error near line 15: no such table: v37
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: expected 18 columns for 'v6' but got 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: expected 18 columns for 'v6' but got 3
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+; 
+CREATE VIEW v6 ( c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24 ) AS SELECT * FROM v0 AS a25 ORDER BY 18446744073709551488; 
+; 
+; 
+; 
+CREATE TABLE v29 ( c30 BLOB PRIMARY KEY, c31, c32 UNIQUE ); 
+CREATE TABLE v33 ( c34, c35, c36 ); 
+ALTER TABLE v6 DROP COLUMN c11; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE VIRTUAL TABLE v37 USING fts5 ( c38, c39 ); 
+ALTER TABLE v29 DROP COLUMN c32; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v37 AS a40 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a41, v33 AS a42 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 GROUP BY a43.c2, a43.c3 < a43.c3 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a45.c30 IS NULL ) ) AND ( NOT ( a45.c32 IS NULL ) ) ), a44.c9 FROM v6 AS a44 RIGHT JOIN v29 AS a45 ON a45.c30 = a44.c7 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a46 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a47.c35 || a47.c34 ) FROM v33 AS a47 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a48.c3, max ( a48.c3 || a48.c3 ) FROM v0 AS a48 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a49.c32, count ( ( NOT ( a49.c30 IS NULL ) ) AND ( NOT ( a49.c30 IS NULL ) ) ) FROM v29 AS a49 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a51.c32, a51.c30 FROM v6 AS a50, v29 AS a51 WHERE a51.c30 = 'v0' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a52.c2 IS NULL ) ) AND ( NOT ( a52.c1 IS NULL ) ) ) FROM v0 AS a52 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: cannot drop column from view "v6"
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: cannot drop UNIQUE column: "c32"
+BEGIN VERI 0
+Parse error near line 15: no such table: v37
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: a43.c2
+  SELECT * FROM v0 AS a43 GROUP BY a43.c2, a43.c3 < a43.c3 ORDER BY 184467440737
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: expected 18 columns for 'v6' but got 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: expected 18 columns for 'v6' but got 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a52.c2
+  SELECT count ( ( NOT ( a52.c2 IS NULL ) ) AND ( NOT ( a52.c1 IS NULL ) ) ) FRO
+                         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such table: v37
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such table: v37
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 21: no such column: a43.c2
+  SELECT * FROM v0 AS a43 GROUP BY a43.c2, a43.c3 < a43.c3 ORDER BY 184467440737
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: expected 18 columns for 'v6' but got 3
+ 
+INT: 0 
+Str: 
+Parse error near line 24: expected 18 columns for 'v6' but got 2
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+
+ 
+INT: -1 
+Str: 
+
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: expected 18 columns for 'v6' but got 3
+ 
+INT: 0 
+Str: 
+Parse error near line 39: expected 18 columns for 'v6' but got 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+0
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such column: a52.c2
+  SELECT count ( ( NOT ( a52.c2 IS NULL ) ) AND ( NOT ( a52.c1 IS NULL ) ) ) FRO
+                         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

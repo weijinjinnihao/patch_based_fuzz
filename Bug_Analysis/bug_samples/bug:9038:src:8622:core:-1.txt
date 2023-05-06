@@ -1,0 +1,297 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38 PRIMARY KEY, CHECK( ( ( c26 + ( CASE WHEN c35 != 'x' THEN 18446744073709551488 ELSE 18446744073709551488 END ) ) % 4294967295 ) != 255 ) ) WITHOUT ROWID; 
+CREATE INDEX i39 ON v0 ( c36 ); 
+CREATE TABLE v40 ( c41 AS( c60 + c54 - c51 ) CHECK( c57 BETWEEN c59 AND c55 ), c42, c43, c44, c45, c46, c47, c48, c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62, c63, c64, c65 TEXT, c66, PRIMARY KEY ( c65, c49 ), UNIQUE ( c59 ) ); 
+CREATE INDEX i67 ON v40 ( c48 ); 
+CREATE INDEX i68 ON v40 ( c64 ); 
+CREATE TABLE v69 AS SELECT * FROM v0 AS a70, v0 AS a71 ORDER BY 255; 
+ALTER TABLE v0 DROP c36; 
+CREATE INDEX i72 ON v40 ( c48 ); 
+CREATE INDEX i73 ON v69 ( c48 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a74 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v69 AS a75 ORDER BY c65 COLLATE NOCASE; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v69 AS a76 NATURAL JOIN v40 AS a77 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v40 AS a78 JOIN v40 AS a79 USING ( a79.c41 ) WHERE max ( a78.c50 ) = ( a79.c65 ) AND a79.c60 = 18446744073709551488 ORDER BY ( 18446744073709518848, count ( * ) ) != 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v40 AS a80 NATURAL JOIN v0 AS a81 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a82 GROUP BY a82.c34, a82.c36 < a82.c31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v40 AS a83 ORDER BY max ( a83.c64 + a83.c42 * 18446744073709551488 ) + 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a84 NATURAL JOIN v0 AS a85 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v86 ( c88 ) AS ( WITH v86 ( c89 ) AS ( WITH v90 ( c91 ) AS ( WITH v92 ( c93 ) AS ( WITH v90 ( c94, c95, c96, c97, c98, c99 ) AS ( SELECT 18446744073709551488 y ORDER BY ( ( c96 + 18446744073709551488 ) % 2147483647 ) < 18446744073709551488 ) SELECT 0 ORDER BY 18446744073709551488 ) SELECT 18446744073709551488 ORDER BY 18446744073709551615 ) SELECT 18446744073709518848 ORDER BY 18446744073709518848 ) SELECT 0 ORDER BY 18446744073709551488 ) SELECT * FROM v86 AS a87 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: 1st ORDER BY term out of range - should be between 1 and 76
+Runtime error near line 7: error in index i39 after drop column: no such column: c36
+Parse error near line 9: no such table: main.v69
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: no such table: v69
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such table: v69
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: near ".": syntax error
+  LECT * FROM v40 AS a78 JOIN v40 AS a79 USING ( a79.c41 ) WHERE max ( a78.c50 )
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 64
+  * FROM v40 AS a80 NATURAL JOIN v0 AS a81 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: misuse of aggregate: max()
+  SELECT * FROM v40 AS a83 ORDER BY max ( a83.c64 + a83.c42 * 184467440737095514
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38 PRIMARY KEY, CHECK( ( ( c26 + ( CASE WHEN c35 != 'x' THEN 18446744073709551488 ELSE 18446744073709551488 END ) ) % 4294967295 ) != 255 ) ) WITHOUT ROWID; 
+; 
+CREATE TABLE v40 ( c41 AS( c60 + c54 - c51 ) CHECK( c57 BETWEEN c59 AND c55 ), c42, c43, c44, c45, c46, c47, c48, c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62, c63, c64, c65 TEXT, c66, PRIMARY KEY ( c65, c49 ), UNIQUE ( c59 ) ); 
+; 
+; 
+CREATE TABLE v69 AS SELECT * FROM v0 AS a70, v0 AS a71 ORDER BY 255; 
+ALTER TABLE v0 DROP c36; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a74 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v69 AS a75 ORDER BY c65 COLLATE NOCASE; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v69 AS a76 NATURAL JOIN v40 AS a77 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v40 AS a78 JOIN v40 AS a79 USING ( a79.c41 ) WHERE max ( a78.c50 ) = ( a79.c65 ) AND a79.c60 = 18446744073709551488 ORDER BY ( 18446744073709518848, count ( * ) ) != 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v40 AS a80 NATURAL JOIN v0 AS a81 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a82 GROUP BY a82.c34, a82.c36 < a82.c31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v40 AS a83 ORDER BY max ( a83.c64 + a83.c42 * 18446744073709551488 ) + 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a84 NATURAL JOIN v0 AS a85 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v86 ( c88 ) AS ( WITH v86 ( c89 ) AS ( WITH v90 ( c91 ) AS ( WITH v92 ( c93 ) AS ( WITH v90 ( c94, c95, c96, c97, c98, c99 ) AS ( SELECT 18446744073709551488 y ORDER BY ( ( c96 + 18446744073709551488 ) % 2147483647 ) < 18446744073709551488 ) SELECT 0 ORDER BY 18446744073709551488 ) SELECT 18446744073709551488 ORDER BY 18446744073709551615 ) SELECT 18446744073709518848 ORDER BY 18446744073709518848 ) SELECT 0 ORDER BY 18446744073709551488 ) SELECT * FROM v86 AS a87 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: 1st ORDER BY term out of range - should be between 1 and 76
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: no such table: v69
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such table: v69
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: near ".": syntax error
+  LECT * FROM v40 AS a78 JOIN v40 AS a79 USING ( a79.c41 ) WHERE max ( a78.c50 )
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 63
+  * FROM v40 AS a80 NATURAL JOIN v0 AS a81 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a82.c36
+  SELECT * FROM v0 AS a82 GROUP BY a82.c34, a82.c36 < a82.c31 ORDER BY 184467440
+                              error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: misuse of aggregate: max()
+  SELECT * FROM v40 AS a83 ORDER BY max ( a83.c64 + a83.c42 * 184467440737095514
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no such table: v69
+ 
+INT: 0 
+Str: 
+Parse error near line 14: no such table: v69
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no such table: v69
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no such table: v69
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: near ".": syntax error
+  LECT * FROM v40 AS a78 JOIN v40 AS a79 USING ( a79.c41 ) WHERE max ( a78.c50 )
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 23: near ".": syntax error
+  LECT * FROM v40 AS a78 JOIN v40 AS a79 USING ( a79.c41 ) WHERE max ( a78.c50 )
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 64
+  * FROM v40 AS a80 NATURAL JOIN v0 AS a81 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 63
+  * FROM v40 AS a80 NATURAL JOIN v0 AS a81 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 29: no such column: a82.c36
+  SELECT * FROM v0 AS a82 GROUP BY a82.c34, a82.c36 < a82.c31 ORDER BY 184467440
+                              error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: misuse of aggregate: max()
+  SELECT * FROM v40 AS a83 ORDER BY max ( a83.c64 + a83.c42 * 184467440737095514
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: misuse of aggregate: max()
+  SELECT * FROM v40 AS a83 ORDER BY max ( a83.c64 + a83.c42 * 184467440737095514
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

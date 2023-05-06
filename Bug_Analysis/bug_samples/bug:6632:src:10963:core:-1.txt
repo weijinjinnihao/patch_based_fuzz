@@ -1,0 +1,338 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4, c5 REAL, c6 COLLATE NOCASE ); 
+CREATE VIRTUAL TABLE v7 USING rtree ( c8, c9, c10 ); 
+INSERT INTO v3 VALUES ( 18446744073709551615, 'I' ), ( 18446744073709551615, 18446744073709551615, hex ( 18446744071562067968 ) ), ( 0, 'bbb' ); 
+CREATE INDEX i11 ON v0 ( c2 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i12 ON v3 ( c4 ); 
+BEGIN; 
+INSERT INTO v0 VALUES ( 18446744073709518848, 18446744073709551488, 18446744073709551615 ), ( 18446744071562067968, 127, 0 ), ( 18446744073709551488, 18446744073709551615, 10 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v0 BEGIN DELETE FROM v0 WHERE c6 = c6; END; 
+ALTER TABLE v3 ADD COLUMN c13 TEXT CHECK( c37 ( ( ( ( c6 + 127 ) % 2147483647 ) == 18446744073709551615 ) % 18446744073709551488 ) != 18446744073709551615 ) DEFAULT 0; 
+UPDATE v3 SET c4 = 'v1' WHERE c5 = 18446744073709551488; 
+CREATE INDEX i14 ON v3 ( c5 ); 
+CREATE INDEX i15 ON v0 ( c1 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a16.c4 = + a16.c4, a17.c4 FROM v3 AS a16 LEFT JOIN v3 AS a17 ON a17.c5 = a17.c13 WHERE a17.c13 = a16.c13 GROUP BY y ( a16.c13, a16.c6, a17.c4, a17.c5, a16.c4, a17.c5, a17.c4, a17.c13, a17.c4, a16.c13, a17.c13, a17.c4, a16.c4, a17.c6, a16.c13, a16.c13, a17.c4 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a18, v3 AS a19 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709551615 IN ( SELECT * FROM v0 AS a20 ORDER BY 18446744071562067968 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 WHERE a21.c2 != 9223372036854775807 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a22 WHERE a22.c13 % 2147483647 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c23 ) AS ( SELECT * ORDER BY 18446744073709551615 ) VALUES ( 18446744073709551615 ), ( 127 ), ( 0 ), ( 18446744073709551488 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24, v3 AS a25 NATURAL JOIN v3 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a27 WHERE ( a27.c9 = 2147483647 OR a27.c10 = 127 ) AND a27.c5 IN ( SELECT a27.c2 FROM ( SELECT a27.c4 FROM v3 AS a28 ORDER BY 18446744073709518848 ) AS y WHERE a27.c2 = 18446744073709551615 ORDER BY 18446744073709551488 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a29 WHERE ( a29.c10 = 2147483647 OR a29.c5 = 9223372036854775807 ) AND a29.c5 IN ( SELECT count ( ( NOT ( a29.c10 IS NULL ) ) AND ( NOT ( a29.c9 IS NULL ) ) ) FROM ( SELECT *, 'x' FROM v0 AS a30 LEFT JOIN v3 AS a31 ON a30.c2 = 1.300000 AND 0 ORDER BY 18446744073709551615 ) AS y WHERE a29.c9 = 255 ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: all VALUES must have the same number of terms
+Runtime error near line 6: error in index i11 after drop column: no such column: c2
+Parse error near line 9: table v0 has 2 columns but 3 values were supplied
+Runtime error near line 11: unknown function: c37()
+BEGIN VERI 0
+Parse error near line 16: no such column: a17.c13
+  a16 LEFT JOIN v3 AS a17 ON a17.c5 = a17.c13 WHERE a17.c13 = a16.c13 GROUP BY y
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v3 AS a18, v3 AS a19 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a22.c13
+  SELECT * FROM v3 AS a22 WHERE a22.c13 % 2147483647 ORDER BY 184467440737095516
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: near "ORDER": syntax error
+  51615 ), ( 127 ), ( 0 ), ( 18446744073709551488 ) ORDER BY 8; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a27.c4
+  127 ) AND a27.c5 IN ( SELECT a27.c2 FROM ( SELECT a27.c4 FROM v3 AS a28 ORDER 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such column: a29.c5
+   * FROM v7 AS a29 WHERE ( a29.c10 = 2147483647 OR a29.c5 = 9223372036854775807
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4, c5 REAL, c6 COLLATE NOCASE ); 
+CREATE VIRTUAL TABLE v7 USING rtree ( c8, c9, c10 ); 
+INSERT INTO v3 VALUES ( 18446744073709551615, 'I' ), ( 18446744073709551615, 18446744073709551615, hex ( 18446744071562067968 ) ), ( 0, 'bbb' ); 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+BEGIN; 
+INSERT INTO v0 VALUES ( 18446744073709518848, 18446744073709551488, 18446744073709551615 ), ( 18446744071562067968, 127, 0 ), ( 18446744073709551488, 18446744073709551615, 10 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v0 BEGIN DELETE FROM v0 WHERE c6 = c6; END; 
+ALTER TABLE v3 ADD COLUMN c13 TEXT CHECK( c37 ( ( ( ( c6 + 127 ) % 2147483647 ) == 18446744073709551615 ) % 18446744073709551488 ) != 18446744073709551615 ) DEFAULT 0; 
+UPDATE v3 SET c4 = 'v1' WHERE c5 = 18446744073709551488; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a16.c4 = + a16.c4, a17.c4 FROM v3 AS a16 LEFT JOIN v3 AS a17 ON a17.c5 = a17.c13 WHERE a17.c13 = a16.c13 GROUP BY y ( a16.c13, a16.c6, a17.c4, a17.c5, a16.c4, a17.c5, a17.c4, a17.c13, a17.c4, a16.c13, a17.c13, a17.c4, a16.c4, a17.c6, a16.c13, a16.c13, a17.c4 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a18, v3 AS a19 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709551615 IN ( SELECT * FROM v0 AS a20 ORDER BY 18446744071562067968 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 WHERE a21.c2 != 9223372036854775807 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a22 WHERE a22.c13 % 2147483647 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c23 ) AS ( SELECT * ORDER BY 18446744073709551615 ) VALUES ( 18446744073709551615 ), ( 127 ), ( 0 ), ( 18446744073709551488 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24, v3 AS a25 NATURAL JOIN v3 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a27 WHERE ( a27.c9 = 2147483647 OR a27.c10 = 127 ) AND a27.c5 IN ( SELECT a27.c2 FROM ( SELECT a27.c4 FROM v3 AS a28 ORDER BY 18446744073709518848 ) AS y WHERE a27.c2 = 18446744073709551615 ORDER BY 18446744073709551488 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a29 WHERE ( a29.c10 = 2147483647 OR a29.c5 = 9223372036854775807 ) AND a29.c5 IN ( SELECT count ( ( NOT ( a29.c10 IS NULL ) ) AND ( NOT ( a29.c9 IS NULL ) ) ) FROM ( SELECT *, 'x' FROM v0 AS a30 LEFT JOIN v3 AS a31 ON a30.c2 = 1.300000 AND 0 ORDER BY 18446744073709551615 ) AS y WHERE a29.c9 = 255 ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: all VALUES must have the same number of terms
+Parse error near line 9: table v0 has 1 columns but 3 values were supplied
+Runtime error near line 11: unknown function: c37()
+BEGIN VERI 0
+Parse error near line 16: no such column: a17.c13
+  a16 LEFT JOIN v3 AS a17 ON a17.c5 = a17.c13 WHERE a17.c13 = a16.c13 GROUP BY y
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v3 AS a18, v3 AS a19 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: a21.c2
+  SELECT * FROM v0 AS a21 WHERE a21.c2 != 9223372036854775807 ORDER BY 127; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a22.c13
+  SELECT * FROM v3 AS a22 WHERE a22.c13 % 2147483647 ORDER BY 184467440737095516
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: near "ORDER": syntax error
+  51615 ), ( 127 ), ( 0 ), ( 18446744073709551488 ) ORDER BY 8; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a27.c4
+  127 ) AND a27.c5 IN ( SELECT a27.c2 FROM ( SELECT a27.c4 FROM v3 AS a28 ORDER 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such column: a29.c5
+   * FROM v7 AS a29 WHERE ( a29.c10 = 2147483647 OR a29.c5 = 9223372036854775807
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such column: a17.c13
+  a16 LEFT JOIN v3 AS a17 ON a17.c5 = a17.c13 WHERE a17.c13 = a16.c13 GROUP BY y
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: no such column: a17.c13
+  a16 LEFT JOIN v3 AS a17 ON a17.c5 = a17.c13 WHERE a17.c13 = a16.c13 GROUP BY y
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v3 AS a18, v3 AS a19 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v3 AS a18, v3 AS a19 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such column: a21.c2
+  SELECT * FROM v0 AS a21 WHERE a21.c2 != 9223372036854775807 ORDER BY 127; 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such column: a22.c13
+  SELECT * FROM v3 AS a22 WHERE a22.c13 % 2147483647 ORDER BY 184467440737095516
+                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 28: no such column: a22.c13
+  SELECT * FROM v3 AS a22 WHERE a22.c13 % 2147483647 ORDER BY 184467440737095516
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 54862576
+Str: 
+Parse error near line 31: near "ORDER": syntax error
+  51615 ), ( 127 ), ( 0 ), ( 18446744073709551488 ) ORDER BY 8; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 31: near "ORDER": syntax error
+  51615 ), ( 127 ), ( 0 ), ( 18446744073709551488 ) ORDER BY 8; 
+                                      error here ---^
+ 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such column: a27.c4
+  127 ) AND a27.c5 IN ( SELECT a27.c2 FROM ( SELECT a27.c4 FROM v3 AS a28 ORDER 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 40: no such column: a27.c4
+  127 ) AND a27.c5 IN ( SELECT a27.c2 FROM ( SELECT a27.c4 FROM v3 AS a28 ORDER 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: no such column: a29.c5
+   * FROM v7 AS a29 WHERE ( a29.c10 = 2147483647 OR a29.c5 = 9223372036854775807
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 43: no such column: a29.c5
+   * FROM v7 AS a29 WHERE ( a29.c10 = 2147483647 OR a29.c5 = 9223372036854775807
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

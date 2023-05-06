@@ -1,0 +1,317 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE VIEW v5 AS SELECT count ( ( NOT ( c2 IS NULL ) ) AND ( NOT ( c2 IS NULL ) ) ) FROM v0 AS a6 ORDER BY 10; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c8, c10, c10, c10 ), c10 UNIQUE ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+CREATE INDEX i15 ON v5 ( y ); 
+ALTER TABLE v7 DROP COLUMN c9; 
+CREATE INDEX i16 ON v11 ( c13 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE VIRTUAL TABLE v17 USING fts5 ( c18, c19 ); 
+CREATE INDEX i20 ON v5 ( y ); 
+CREATE INDEX i21 ON v7 ( c10 ); 
+ALTER TABLE v11 DROP COLUMN c13; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a22.c8 || a22.c8 ) FROM v7 AS a22 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c12 FROM v11 AS a23 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 10 COLLATE binary, 10 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v25 AS ( SELECT hex ( ) y ORDER BY 100 ) SELECT * FROM v25 AS a26 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a27 GROUP BY a27.c14, abs ( a27.c14 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c1, a29.c2 FROM v0 AS a28 RIGHT JOIN v0 AS a29 ON a29.c3 = a28.c1 WHERE a29.c1 = + y ( a29.c2 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a30 ORDER BY a30.c13 COLLATE NOCASE, a30.c13; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a31.c9 IS NULL ) ) AND ( NOT ( a31.c10 IS NULL ) ) ) FROM v7 AS a31 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a32, v11 AS a33 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: foreign key on c9 should reference only one column of table t1
+   TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c8, c10, c10, c10 ), c1
+                                      error here ---^
+Parse error near line 6: views may not be indexed
+Parse error near line 7: no such table: v7
+Runtime error near line 9: error in view v5 after drop column: no such column: c2
+Runtime error near line 10: no such module: fts5
+Parse error near line 11: views may not be indexed
+Parse error near line 12: no such table: main.v7
+Runtime error near line 13: error in index i16 after drop column: no such column: c13
+BEGIN VERI 0
+Parse error near line 15: no such table: v7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: wrong number of arguments to function hex()
+  WITH v25 AS ( SELECT hex ( ) y ORDER BY 100 ) SELECT * FROM v25 AS a26 ORDER B
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such function: y
+  OIN v0 AS a29 ON a29.c3 = a28.c1 WHERE a29.c1 = + y ( a29.c2 ) ORDER BY 10; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT count ( ( NOT ( c2 IS NULL ) ) AND ( NOT ( c2 IS NULL ) ) ) FROM v0 AS a6 ORDER BY 10; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c8, c10, c10, c10 ), c10 UNIQUE ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+; 
+ALTER TABLE v7 DROP COLUMN c9; 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE VIRTUAL TABLE v17 USING fts5 ( c18, c19 ); 
+; 
+; 
+ALTER TABLE v11 DROP COLUMN c13; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a22.c8 || a22.c8 ) FROM v7 AS a22 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c12 FROM v11 AS a23 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 10 COLLATE binary, 10 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v25 AS ( SELECT hex ( ) y ORDER BY 100 ) SELECT * FROM v25 AS a26 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a27 GROUP BY a27.c14, abs ( a27.c14 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c1, a29.c2 FROM v0 AS a28 RIGHT JOIN v0 AS a29 ON a29.c3 = a28.c1 WHERE a29.c1 = + y ( a29.c2 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a30 ORDER BY a30.c13 COLLATE NOCASE, a30.c13; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a31.c9 IS NULL ) ) AND ( NOT ( a31.c10 IS NULL ) ) ) FROM v7 AS a31 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a32, v11 AS a33 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: foreign key on c9 should reference only one column of table t1
+   TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c8, c10, c10, c10 ), c1
+                                      error here ---^
+Parse error near line 7: no such table: v7
+Runtime error near line 9: error in view v5 after drop column: no such column: c2
+Runtime error near line 10: no such module: fts5
+BEGIN VERI 0
+Parse error near line 15: no such table: v7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: wrong number of arguments to function hex()
+  WITH v25 AS ( SELECT hex ( ) y ORDER BY 100 ) SELECT * FROM v25 AS a26 ORDER B
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such function: y
+  OIN v0 AS a29 ON a29.c3 = a28.c1 WHERE a29.c1 = + y ( a29.c2 ) ORDER BY 10; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a30.c13
+  SELECT * FROM v11 AS a30 ORDER BY a30.c13 COLLATE NOCASE, a30.c13; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such table: v7
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such table: v7
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: wrong number of arguments to function hex()
+  WITH v25 AS ( SELECT hex ( ) y ORDER BY 100 ) SELECT * FROM v25 AS a26 ORDER B
+                       ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 27: wrong number of arguments to function hex()
+  WITH v25 AS ( SELECT hex ( ) y ORDER BY 100 ) SELECT * FROM v25 AS a26 ORDER B
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such function: y
+  OIN v0 AS a29 ON a29.c3 = a28.c1 WHERE a29.c1 = + y ( a29.c2 ) ORDER BY 10; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: no such function: y
+  OIN v0 AS a29 ON a29.c3 = a28.c1 WHERE a29.c1 = + y ( a29.c2 ) ORDER BY 10; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 36: no such column: a30.c13
+  SELECT * FROM v11 AS a30 ORDER BY a30.c13 COLLATE NOCASE, a30.c13; 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such table: v7
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such table: v7
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

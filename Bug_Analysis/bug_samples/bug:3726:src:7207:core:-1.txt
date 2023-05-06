@@ -1,0 +1,308 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+CREATE INDEX i6 ON v0 ( c2 ); 
+CREATE INDEX i7 ON v0 ( c3 ); 
+CREATE VIEW v8 AS SELECT c3 COLLATE hex FROM v0 AS a9 ORDER BY 18446744071562067968; 
+CREATE VIEW v10 AS SELECT * FROM v0 AS a11 ORDER BY 18446744071562067968; 
+CREATE TABLE v12 ( c13 INTEGER PRIMARY KEY, c14, c15 UNIQUE ); 
+CREATE TABLE v16 ( c17, c18, c19 ); 
+ALTER TABLE v12 DROP c15; 
+ALTER TABLE v8 DROP COLUMN c1; 
+CREATE TABLE v20 ( c21 REFERENCES t1 DEFAULT NULL, c22, c23, c24, c25, c26, c27 INTEGER PRIMARY KEY, c28 AS( c27 + c22 - c23 ) REFERENCES t0, c29 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i30 ON v16 ( c18 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a31 WHERE c19 = + c17 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a32, v8 AS a33 NATURAL JOIN v16 AS a34 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744071562067968 FROM v10 AS a35 WHERE ( c1 IS 0 ) BETWEEN ( ( ( c13 + - 18446744071562067968 ) % 2147483647 ) != 10 + 18446744071562067968 ) % 100 AND ( 10, count ( * ) ) != 10 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 WHERE a36.c2 = a36.c3 % 18446744071562067968 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.c3, count ( a37.c3 ) FROM v0 AS a37 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a38 GROUP BY y ( c1 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c15, max ( a39.c14 || a39.c15 ) FROM v12 AS a39 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a40 GROUP BY a40.c23, a40.c29 < a40.c25 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41 WHERE ( a41.c3 || a41.c3 || a41.c1 ) != 'v1' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a42 NATURAL JOIN v10 AS a43 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: cannot drop UNIQUE column: "c15"
+Parse error near line 11: cannot drop column from view "v8"
+Runtime error near line 13: error in index i6 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 16: no such column: c19
+  SELECT * FROM v10 AS a31 WHERE c19 = + c17 ORDER BY 18446744071562067968; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: row value misused
+  LECT 18446744071562067968 FROM v10 AS a35 WHERE ( c1 IS 0 ) BETWEEN ( ( ( c13 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 3
+  E ( a41.c3 || a41.c3 || a41.c1 ) != 'v1' ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+; 
+; 
+; 
+CREATE VIEW v8 AS SELECT c3 COLLATE hex FROM v0 AS a9 ORDER BY 18446744071562067968; 
+CREATE VIEW v10 AS SELECT * FROM v0 AS a11 ORDER BY 18446744071562067968; 
+CREATE TABLE v12 ( c13 INTEGER PRIMARY KEY, c14, c15 UNIQUE ); 
+CREATE TABLE v16 ( c17, c18, c19 ); 
+ALTER TABLE v12 DROP c15; 
+ALTER TABLE v8 DROP COLUMN c1; 
+CREATE TABLE v20 ( c21 REFERENCES t1 DEFAULT NULL, c22, c23, c24, c25, c26, c27 INTEGER PRIMARY KEY, c28 AS( c27 + c22 - c23 ) REFERENCES t0, c29 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a31 WHERE c19 = + c17 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a32, v8 AS a33 NATURAL JOIN v16 AS a34 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744071562067968 FROM v10 AS a35 WHERE ( c1 IS 0 ) BETWEEN ( ( ( c13 + - 18446744071562067968 ) % 2147483647 ) != 10 + 18446744071562067968 ) % 100 AND ( 10, count ( * ) ) != 10 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 WHERE a36.c2 = a36.c3 % 18446744071562067968 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.c3, count ( a37.c3 ) FROM v0 AS a37 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a38 GROUP BY y ( c1 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c15, max ( a39.c14 || a39.c15 ) FROM v12 AS a39 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a40 GROUP BY a40.c23, a40.c29 < a40.c25 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41 WHERE ( a41.c3 || a41.c3 || a41.c1 ) != 'v1' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a42 NATURAL JOIN v10 AS a43 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: cannot drop UNIQUE column: "c15"
+Parse error near line 11: cannot drop column from view "v8"
+BEGIN VERI 0
+Parse error near line 16: no such column: c19
+  SELECT * FROM v10 AS a31 WHERE c19 = + c17 ORDER BY 18446744071562067968; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: row value misused
+  LECT 18446744071562067968 FROM v10 AS a35 WHERE ( c1 IS 0 ) BETWEEN ( ( ( c13 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: a36.c2
+  SELECT * FROM v0 AS a36 WHERE a36.c2 = a36.c3 % 18446744071562067968 ORDER BY 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+  E ( a41.c3 || a41.c3 || a41.c1 ) != 'v1' ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such column: c19
+  SELECT * FROM v10 AS a31 WHERE c19 = + c17 ORDER BY 18446744071562067968; 
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: no such column: c19
+  SELECT * FROM v10 AS a31 WHERE c19 = + c17 ORDER BY 18446744071562067968; 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such collation sequence: hex
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such collation sequence: hex
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: row value misused
+  LECT 18446744071562067968 FROM v10 AS a35 WHERE ( c1 IS 0 ) BETWEEN ( ( ( c13 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 22: row value misused
+  LECT 18446744071562067968 FROM v10 AS a35 WHERE ( c1 IS 0 ) BETWEEN ( ( ( c13 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 25: no such column: a36.c2
+  SELECT * FROM v0 AS a36 WHERE a36.c2 = a36.c3 % 18446744071562067968 ORDER BY 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 3
+  E ( a41.c3 || a41.c3 || a41.c1 ) != 'v1' ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+  E ( a41.c3 || a41.c3 || a41.c1 ) != 'v1' ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

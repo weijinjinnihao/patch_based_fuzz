@@ -1,0 +1,296 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE TABLE v4 ( c5 REFERENCES t1 DEFAULT NULL, c6, c7, c8, c9, c10, c11, c12, c13, c14 INTEGER UNIQUE ON CONFLICT FAIL, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, PRIMARY KEY ( c23, c10, c21, c10, c34, c25, c37 ) ) WITHOUT ROWID; 
+CREATE TABLE v39 ( c40 TEXT, c41 REAL, c42 INT, PRIMARY KEY ( c42 COLLATE nocase, c40 ) ) WITHOUT ROWID; 
+CREATE INDEX i43 ON v39 ( c41 ); 
+CREATE TABLE v44 ( c45, c46 INTEGER UNIQUE ON CONFLICT FAIL, c47, c48, c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62, c63, c64, c65, c66, c67, c68, c69, c70, c71 PRIMARY KEY, CHECK( ( ( c62 + 18446744073709551488 ) % 18446744073709551488 ) != 100 ) ) WITHOUT ROWID; 
+CREATE INDEX i72 ON v44 ( c70 ); 
+CREATE INDEX i73 ON v4 ( c24 ); 
+CREATE INDEX i74 ON v39 ( c42 ); 
+CREATE INDEX i75 ON v0 ( c1 ); 
+CREATE VIEW v76 AS SELECT count ( c10 ), c54 FROM v44 AS a77 LEFT JOIN v4 AS a78 ON c6 = y ( c54, c65, c13, c53, c33, c7, c18, c63, c47, c28, c66, c14, c53, c57, c32 ) ORDER BY 4294967295; 
+CREATE TABLE v79 ( c80, c81, c82, c83, c84, c85, c86, c87, c88, c89, c90, c91, c92, c93, c94, c95, c96, c97, c98, c99, c100, c101, c102, c103, c104, c105, c106, c107, c108, c109, c110, c111, c112, c113, c114, c115, c116, c117, c118 PRIMARY KEY, CHECK( ( ( c89 + 18446744073709551615 ) % 18446744073709551615 ) != 18446744073709551615 ) ) WITHOUT ROWID; 
+CREATE TABLE v119 ( c120, c121, c122 ); 
+ALTER TABLE v76 DROP COLUMN y; 
+ALTER TABLE v76 DROP COLUMN y; 
+CREATE VIRTUAL TABLE v123 USING fts5 ( c124, c125 ); 
+ALTER TABLE v39 DROP COLUMN c41; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v119 AS a126 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v44 AS a127 GROUP BY a127.c67 HAVING NULL ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a128.c1, count ( ( NOT ( a128.c2 IS NULL ) ) AND ( NOT ( a128.c1 IS NULL ) ) ) FROM v0 AS a128 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v39 AS a129 WHERE a129.c41 = a129.c40 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v39 AS a130 NATURAL JOIN v39 AS a131 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v76 ( c133 ) AS ( SELECT 've' ORDER BY 18446744073709551615 ) SELECT v76.y, count ( * ), avg ( a132.c37 ), max ( a132.c11 + c133 * 18446744073709551615 ) FROM v4 AS a132 ORDER BY 20; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v79 AS a134, v123 AS a135 NATURAL JOIN v39 AS a136 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v76 AS a137 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v119 AS a138 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v139 AS ( WITH RECURSIVE v139 ( c145 ) AS ( SELECT max ( c42 || c116 ) ORDER BY 0 ) SELECT * FROM ( v139 AS a140 ), ( v139 AS a141 ), ( v139 AS a142 ), ( v139 AS a143 NATURAL JOIN v139 AS a144 ) WHERE c57 = c41 + 18446744073709551615 AND c2 = 0 AND c86 = c1 + 9223372036854775807 ORDER BY 2147483647 ) VALUES ( x'68617265', 'v0', 'v0' ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 13: cannot drop column from view "v76"
+Parse error near line 14: cannot drop column from view "v76"
+Runtime error near line 15: no such module: fts5
+Runtime error near line 16: error in index i43 after drop column: no such column: c41
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: v76.y
+  ELECT 've' ORDER BY 18446744073709551615 ) SELECT v76.y, count ( * ), avg ( a1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v123
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such function: y
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: near "ORDER": syntax error
+  Y 2147483647 ) VALUES ( x'68617265', 'v0', 'v0' ) ORDER BY 1844674407370951884
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE TABLE v4 ( c5 REFERENCES t1 DEFAULT NULL, c6, c7, c8, c9, c10, c11, c12, c13, c14 INTEGER UNIQUE ON CONFLICT FAIL, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, PRIMARY KEY ( c23, c10, c21, c10, c34, c25, c37 ) ) WITHOUT ROWID; 
+CREATE TABLE v39 ( c40 TEXT, c41 REAL, c42 INT, PRIMARY KEY ( c42 COLLATE nocase, c40 ) ) WITHOUT ROWID; 
+; 
+CREATE TABLE v44 ( c45, c46 INTEGER UNIQUE ON CONFLICT FAIL, c47, c48, c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62, c63, c64, c65, c66, c67, c68, c69, c70, c71 PRIMARY KEY, CHECK( ( ( c62 + 18446744073709551488 ) % 18446744073709551488 ) != 100 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+CREATE VIEW v76 AS SELECT count ( c10 ), c54 FROM v44 AS a77 LEFT JOIN v4 AS a78 ON c6 = y ( c54, c65, c13, c53, c33, c7, c18, c63, c47, c28, c66, c14, c53, c57, c32 ) ORDER BY 4294967295; 
+CREATE TABLE v79 ( c80, c81, c82, c83, c84, c85, c86, c87, c88, c89, c90, c91, c92, c93, c94, c95, c96, c97, c98, c99, c100, c101, c102, c103, c104, c105, c106, c107, c108, c109, c110, c111, c112, c113, c114, c115, c116, c117, c118 PRIMARY KEY, CHECK( ( ( c89 + 18446744073709551615 ) % 18446744073709551615 ) != 18446744073709551615 ) ) WITHOUT ROWID; 
+CREATE TABLE v119 ( c120, c121, c122 ); 
+ALTER TABLE v76 DROP COLUMN y; 
+ALTER TABLE v76 DROP COLUMN y; 
+CREATE VIRTUAL TABLE v123 USING fts5 ( c124, c125 ); 
+ALTER TABLE v39 DROP COLUMN c41; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v119 AS a126 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v44 AS a127 GROUP BY a127.c67 HAVING NULL ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a128.c1, count ( ( NOT ( a128.c2 IS NULL ) ) AND ( NOT ( a128.c1 IS NULL ) ) ) FROM v0 AS a128 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v39 AS a129 WHERE a129.c41 = a129.c40 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v39 AS a130 NATURAL JOIN v39 AS a131 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v76 ( c133 ) AS ( SELECT 've' ORDER BY 18446744073709551615 ) SELECT v76.y, count ( * ), avg ( a132.c37 ), max ( a132.c11 + c133 * 18446744073709551615 ) FROM v4 AS a132 ORDER BY 20; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v79 AS a134, v123 AS a135 NATURAL JOIN v39 AS a136 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v76 AS a137 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v119 AS a138 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v139 AS ( WITH RECURSIVE v139 ( c145 ) AS ( SELECT max ( c42 || c116 ) ORDER BY 0 ) SELECT * FROM ( v139 AS a140 ), ( v139 AS a141 ), ( v139 AS a142 ), ( v139 AS a143 NATURAL JOIN v139 AS a144 ) WHERE c57 = c41 + 18446744073709551615 AND c2 = 0 AND c86 = c1 + 9223372036854775807 ORDER BY 2147483647 ) VALUES ( x'68617265', 'v0', 'v0' ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 13: cannot drop column from view "v76"
+Parse error near line 14: cannot drop column from view "v76"
+Runtime error near line 15: no such module: fts5
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a129.c41
+  SELECT * FROM v39 AS a129 WHERE a129.c41 = a129.c40 ORDER BY 18446744073709551
+                    error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: v76.y
+  ELECT 've' ORDER BY 18446744073709551615 ) SELECT v76.y, count ( * ), avg ( a1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v123
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such function: y
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: near "ORDER": syntax error
+  Y 2147483647 ) VALUES ( x'68617265', 'v0', 'v0' ) ORDER BY 1844674407370951884
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 27: no such column: a129.c41
+  SELECT * FROM v39 AS a129 WHERE a129.c41 = a129.c40 ORDER BY 18446744073709551
+                    error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such column: v76.y
+  ELECT 've' ORDER BY 18446744073709551615 ) SELECT v76.y, count ( * ), avg ( a1
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: no such column: v76.y
+  ELECT 've' ORDER BY 18446744073709551615 ) SELECT v76.y, count ( * ), avg ( a1
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v123
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v123
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such function: y
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such function: y
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 61400656
+Str: 
+Parse error near line 45: near "ORDER": syntax error
+  Y 2147483647 ) VALUES ( x'68617265', 'v0', 'v0' ) ORDER BY 1844674407370951884
+                                      error here ---^
+ 
+Str: 
+Parse error near line 45: near "ORDER": syntax error
+  Y 2147483647 ) VALUES ( x'68617265', 'v0', 'v0' ) ORDER BY 1844674407370951884
+                                      error here ---^
+ 
+Compare_result_int: 
+0
+
+
+

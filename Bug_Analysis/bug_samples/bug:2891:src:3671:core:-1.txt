@@ -1,0 +1,285 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 18446744073709551488; 
+CREATE INDEX i7 ON v5 ( c3 ); 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+CREATE INDEX i16 ON v0 ( c2 ); 
+CREATE TABLE v17 ( c18 AS( TYPEOF ( c19 ) ), c19 ); 
+ALTER TABLE v5 DROP COLUMN c2; 
+CREATE INDEX i20 ON v17 ( c18 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE VIRTUAL TABLE v21 USING fts5 ( c22, c23 ); 
+ALTER TABLE v5 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c23 COLLATE binary FROM v21 AS a24, v8 AS a25 NATURAL JOIN v21 AS a26 WHERE a26.c23 < a25.c9 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a27 GROUP BY a27.c19, a27.c18 < a27.c18 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28, v0 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c3, a32.c2 FROM v21 AS a31 RIGHT JOIN v5 AS a32 ON a32.c2 || a31.c23 || a32.c2 = a32.c3 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a33, v0 AS a34 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c23 FROM v21 AS a35 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a36 ORDER BY a36.c22, a36.c23, a36.c23; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.c19, count ( ( NOT ( a37.c19 IS NULL ) ) AND ( NOT ( a37.c18 IS NULL ) ) ) FROM v17 AS a37 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a38 ORDER BY 0 - ( a38.c2 + a38.c3 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a39.c18 IS NULL ) ) AND ( NOT ( a39.c19 IS NULL ) ) ) FROM v17 AS a39 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: views may not be indexed
+Parse error near line 9: cannot drop column from view "v5"
+Runtime error near line 11: error in index i16 after drop column: no such column: c2
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: cannot drop column from view "v5"
+BEGIN VERI 0
+Parse error near line 15: no such table: v21
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v21
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v21
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v21
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 18446744073709551488; 
+; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+; 
+CREATE TABLE v17 ( c18 AS( TYPEOF ( c19 ) ), c19 ); 
+ALTER TABLE v5 DROP COLUMN c2; 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE VIRTUAL TABLE v21 USING fts5 ( c22, c23 ); 
+ALTER TABLE v5 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c23 COLLATE binary FROM v21 AS a24, v8 AS a25 NATURAL JOIN v21 AS a26 WHERE a26.c23 < a25.c9 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a27 GROUP BY a27.c19, a27.c18 < a27.c18 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28, v0 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c3, a32.c2 FROM v21 AS a31 RIGHT JOIN v5 AS a32 ON a32.c2 || a31.c23 || a32.c2 = a32.c3 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a33, v0 AS a34 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c23 FROM v21 AS a35 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a36 ORDER BY a36.c22, a36.c23, a36.c23; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.c19, count ( ( NOT ( a37.c19 IS NULL ) ) AND ( NOT ( a37.c18 IS NULL ) ) ) FROM v17 AS a37 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a38 ORDER BY 0 - ( a38.c2 + a38.c3 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a39.c18 IS NULL ) ) AND ( NOT ( a39.c19 IS NULL ) ) ) FROM v17 AS a39 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: cannot drop column from view "v5"
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: cannot drop column from view "v5"
+BEGIN VERI 0
+Parse error near line 15: no such table: v21
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v21
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v21
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v21
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a38.c2
+  SELECT * FROM v5 AS a38 ORDER BY 0 - ( a38.c2 + a38.c3 ); 
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such table: v21
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such table: v21
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v21
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v21
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such table: v21
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no such table: v21
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such table: v21
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such table: v21
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 39: no such column: a38.c2
+  SELECT * FROM v5 AS a38 ORDER BY 0 - ( a38.c2 + a38.c3 ); 
+                           error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

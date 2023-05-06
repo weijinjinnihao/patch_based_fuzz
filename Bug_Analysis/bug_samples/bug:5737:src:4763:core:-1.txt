@@ -1,0 +1,266 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 UNIQUE, c2, c3 UNIQUE ON CONFLICT IGNORE, c4 DEFAULT NULL, c5 UNIQUE ON CONFLICT REPLACE DEFAULT 4294967295, c6, c7, c8, c9 COLLATE NOCASE, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 PRIMARY KEY, CHECK( ( ( c2 + 4294967295 ) % 4294967295 ) != 4294967295 ) ) WITHOUT ROWID; 
+CREATE INDEX i24 ON v0 ( c16 ); 
+CREATE INDEX i25 ON v0 ( c14 ); 
+CREATE INDEX i26 ON v0 ( c8 ); 
+CREATE INDEX i27 ON v0 ( c21 ); 
+CREATE INDEX i28 ON v0 ( c17 ); 
+ALTER TABLE v0 DROP c21; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 ORDER BY a29.c10, a29.c1, a29.c16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c14, count ( a30.c6 ) FROM v0 AS a30 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31, v0 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 GROUP BY a33.c2, abs ( a33.c19 ) HAVING count ( * ) >= 4294967295 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 ( c37 ) AS ( SELECT 4294967295 GROUP BY c37 HAVING automatic_index ( * ) >= 4294967295 ORDER BY 4294967295 ) SELECT * FROM v35 AS a36 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a38 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a39.c22 + a41.c21 * 4294967295 ) + 4294967295 FROM v0 AS a39, v0 AS a40 NATURAL JOIN v0 AS a41 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c8, max ( a42.c17 || a43.c16 ), count ( a43.c15 ) FROM v0 AS a42 LEFT JOIN v0 AS a43 ON a43.c22 = a42.c6 WHERE a43.c6 > 4294967295 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a45.c20, a45.c21 FROM v0 AS a44 NATURAL JOIN v0 AS a45 WHERE ( CASE WHEN a44.c7 != 'x' THEN 4294967295 ELSE 4294967295 END ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i27 after drop column: no such column: c21
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such function: automatic_index
+   c37 ) AS ( SELECT 4294967295 GROUP BY c37 HAVING automatic_index ( * ) >= 429
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+||0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 UNIQUE, c2, c3 UNIQUE ON CONFLICT IGNORE, c4 DEFAULT NULL, c5 UNIQUE ON CONFLICT REPLACE DEFAULT 4294967295, c6, c7, c8, c9 COLLATE NOCASE, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 PRIMARY KEY, CHECK( ( ( c2 + 4294967295 ) % 4294967295 ) != 4294967295 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c21; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 ORDER BY a29.c10, a29.c1, a29.c16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c14, count ( a30.c6 ) FROM v0 AS a30 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31, v0 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 GROUP BY a33.c2, abs ( a33.c19 ) HAVING count ( * ) >= 4294967295 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 ( c37 ) AS ( SELECT 4294967295 GROUP BY c37 HAVING automatic_index ( * ) >= 4294967295 ORDER BY 4294967295 ) SELECT * FROM v35 AS a36 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a38 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a39.c22 + a41.c21 * 4294967295 ) + 4294967295 FROM v0 AS a39, v0 AS a40 NATURAL JOIN v0 AS a41 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c8, max ( a42.c17 || a43.c16 ), count ( a43.c15 ) FROM v0 AS a42 LEFT JOIN v0 AS a43 ON a43.c22 = a42.c6 WHERE a43.c6 > 4294967295 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a45.c20, a45.c21 FROM v0 AS a44 NATURAL JOIN v0 AS a45 WHERE ( CASE WHEN a44.c7 != 'x' THEN 4294967295 ELSE 4294967295 END ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such function: automatic_index
+   c37 ) AS ( SELECT 4294967295 GROUP BY c37 HAVING automatic_index ( * ) >= 429
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a41.c21
+  SELECT max ( a39.c22 + a41.c21 * 4294967295 ) + 4294967295 FROM v0 AS a39, v0 
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+||0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a45.c21
+  SELECT a45.c20, a45.c21 FROM v0 AS a44 NATURAL JOIN v0 AS a45 WHERE ( CASE WHE
+                  ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such function: automatic_index
+   c37 ) AS ( SELECT 4294967295 GROUP BY c37 HAVING automatic_index ( * ) >= 429
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: no such function: automatic_index
+   c37 ) AS ( SELECT 4294967295 GROUP BY c37 HAVING automatic_index ( * ) >= 429
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+Parse error near line 30: no such column: a41.c21
+  SELECT max ( a39.c22 + a41.c21 * 4294967295 ) + 4294967295 FROM v0 AS a39, v0 
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+||0
+ 
+INT: 0 
+Str: 
+||0
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 36: no such column: a45.c21
+  SELECT a45.c20, a45.c21 FROM v0 AS a44 NATURAL JOIN v0 AS a45 WHERE ( CASE WHE
+                  ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

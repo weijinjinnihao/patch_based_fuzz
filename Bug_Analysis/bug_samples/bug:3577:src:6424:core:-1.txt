@@ -1,0 +1,327 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 DEFAULT 18446744073709551615 DEFAULT 18446744073709551615, c3 UNIQUE ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE VIEW v6 AS SELECT c3 * 255 + 18446744073709551615 AS y, count ( * ) AS y FROM v0 AS a7 GROUP BY c3 ORDER BY 18446744073709551615; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+CREATE INDEX i16 ON v8 ( c11 ); 
+ALTER TABLE v12 DROP COLUMN c14; 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i17 ON v6 ( c1 ); 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+ALTER TABLE v18 DROP COLUMN c19; 
+CREATE INDEX i21 ON v12 ( c13 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 WHERE a22.c2 = CASE WHEN a22.c3 != 'v1' THEN 18446744073709551615 ELSE 18446744073709551615 END > 255 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY a23.c1, a23.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c9, c1 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT * FROM v6 AS a25 ORDER BY a24.c14, a24.c14 ) SELECT a24.c13, max ( v0.c2 || v0.c2 ) FROM v12 AS a24 WHERE ( a24.c15 || v0.c3 || v0.c3 ) != 'v1' GROUP BY a24.c15 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a26 ORDER BY a26.c1 COLLATE NOCASE, a26.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c2, a28.c14 FROM v0 AS a27 RIGHT JOIN v12 AS a28 ON a28.c13 = a27.c3 WHERE a27.c2 IS 18446744073709551615 ORDER BY 'v0'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c9, max ( a30.c9 || a30.c11 ) FROM v8 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a31 WHERE a31.c20 = ( a31.c20 + 18446744073709551615 ) % count ( a31.c1 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a32, v12 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: error in index i4 after drop column: no such column: c1
+Parse error near line 10: views may not be indexed
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: no such table: v18
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: c9
+  SELECT c9, c1 ORDER BY 18446744073709551615; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: v0.c2
+  ORDER BY a24.c14, a24.c14 ) SELECT a24.c13, max ( v0.c2 || v0.c2 ) FROM v12 AS
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a26.c1
+  SELECT * FROM v6 AS a26 ORDER BY a26.c1 COLLATE NOCASE, a26.c1; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a28.c14
+  SELECT a27.c2, a28.c14 FROM v0 AS a27 RIGHT JOIN v12 AS a28 ON a28.c13 = a27.c
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v12 AS a29 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v18
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 DEFAULT 18446744073709551615 DEFAULT 18446744073709551615, c3 UNIQUE ); 
+; 
+; 
+CREATE VIEW v6 AS SELECT c3 * 255 + 18446744073709551615 AS y, count ( * ) AS y FROM v0 AS a7 GROUP BY c3 ORDER BY 18446744073709551615; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+; 
+ALTER TABLE v12 DROP COLUMN c14; 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+ALTER TABLE v18 DROP COLUMN c19; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 WHERE a22.c2 = CASE WHEN a22.c3 != 'v1' THEN 18446744073709551615 ELSE 18446744073709551615 END > 255 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY a23.c1, a23.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c9, c1 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT * FROM v6 AS a25 ORDER BY a24.c14, a24.c14 ) SELECT a24.c13, max ( v0.c2 || v0.c2 ) FROM v12 AS a24 WHERE ( a24.c15 || v0.c3 || v0.c3 ) != 'v1' GROUP BY a24.c15 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a26 ORDER BY a26.c1 COLLATE NOCASE, a26.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c2, a28.c14 FROM v0 AS a27 RIGHT JOIN v12 AS a28 ON a28.c13 = a27.c3 WHERE a27.c2 IS 18446744073709551615 ORDER BY 'v0'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c9, max ( a30.c9 || a30.c11 ) FROM v8 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a31 WHERE a31.c20 = ( a31.c20 + 18446744073709551615 ) % count ( a31.c1 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a32, v12 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: no such table: v18
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: a23.c1
+  SELECT * FROM v0 AS a23 ORDER BY a23.c1, a23.c1; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: c9
+  SELECT c9, c1 ORDER BY 18446744073709551615; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: v0.c2
+  ORDER BY a24.c14, a24.c14 ) SELECT a24.c13, max ( v0.c2 || v0.c2 ) FROM v12 AS
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a26.c1
+  SELECT * FROM v6 AS a26 ORDER BY a26.c1 COLLATE NOCASE, a26.c1; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a28.c14
+  SELECT a27.c2, a28.c14 FROM v0 AS a27 RIGHT JOIN v12 AS a28 ON a28.c13 = a27.c
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v12 AS a29 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v18
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 18: no such column: a23.c1
+  SELECT * FROM v0 AS a23 ORDER BY a23.c1, a23.c1; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such column: c9
+  SELECT c9, c1 ORDER BY 18446744073709551615; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 21: no such column: c9
+  SELECT c9, c1 ORDER BY 18446744073709551615; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such column: v0.c2
+  ORDER BY a24.c14, a24.c14 ) SELECT a24.c13, max ( v0.c2 || v0.c2 ) FROM v12 AS
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: no such column: v0.c2
+  ORDER BY a24.c14, a24.c14 ) SELECT a24.c13, max ( v0.c2 || v0.c2 ) FROM v12 AS
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such column: a26.c1
+  SELECT * FROM v6 AS a26 ORDER BY a26.c1 COLLATE NOCASE, a26.c1; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: no such column: a26.c1
+  SELECT * FROM v6 AS a26 ORDER BY a26.c1 COLLATE NOCASE, a26.c1; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such column: a28.c14
+  SELECT a27.c2, a28.c14 FROM v0 AS a27 RIGHT JOIN v12 AS a28 ON a28.c13 = a27.c
+                 ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 30: no such column: a28.c14
+  SELECT a27.c2, a28.c14 FROM v0 AS a27 RIGHT JOIN v12 AS a28 ON a28.c13 = a27.c
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v12 AS a29 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v12 AS a29 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such table: v18
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

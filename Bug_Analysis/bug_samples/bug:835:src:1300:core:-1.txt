@@ -1,0 +1,346 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10 INT UNIQUE ON CONFLICT IGNORE, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, FOREIGN KEY ( c7 ) REFERENCES t2 ); 
+CREATE TABLE v25 ( c26, c27, c28 ); 
+CREATE INDEX i29 ON v25 ( c27 ); 
+INSERT INTO v0 VALUES ( 0, 0, 0 ); 
+ALTER TABLE v25 DROP c27; 
+ALTER TABLE v25 RENAME COLUMN c26 TO c30; 
+CREATE TABLE v31 ( c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, FOREIGN KEY ( c32, c33, c41, c32, c40, c42, c33, c34, c34, c43, c36, c36 ) REFERENCES t4 ); 
+CREATE INDEX i45 ON v0 ( c24 ); 
+CREATE TABLE v46 ( c47, c48, c49 ); 
+INSERT INTO v31 VALUES ( 18446744073709551488, 0, 0 ); 
+CREATE INDEX i50 ON v25 ( c27 ); 
+CREATE INDEX i51 ON v0 ( c17 ); 
+CREATE INDEX i52 ON v31 ( c38 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a53.c41 ) FROM v31 AS a53 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 0 ORDER BY 0 ) AS y, v46 AS a54 ON likely ( 0 < 0 ) OR 18446744073709551488 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a55.c19 FROM v0 AS a55 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a56.c43, a56.c42 FROM v31 AS a56 LEFT JOIN v0 AS a57 ON a57.c24 = 'x' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a58.c35, count ( NOT NULL ), count ( ( NOT ( a58.c39 IS NULL ) ) AND ( NOT ( a59.c27 IS NULL ) ) ) FROM v31 AS a58 LEFT JOIN v25 AS a59 ON a59.c27 = a59.c30 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 0 IN ( SELECT a60.c37, a60.c36 FROM v31 AS a60 ORDER BY 0 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a61.c39, count ( ( NOT ( a61.c43 IS NULL ) ) AND ( NOT ( a61.c32 IS NULL ) ) ) FROM v31 AS a61 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a62, v25 AS a63 WHERE NOT min ( a62.c22, a63.c27 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v46 AS a64 ORDER BY a64.c48 + 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a65, v0 AS a66 NATURAL JOIN v46 AS a67 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: table v0 has 24 columns but 3 values were supplied
+Runtime error near line 5: error in index i29 after drop column: no such column: c27
+Parse error near line 10: table v31 has 13 columns but 3 values were supplied
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a53.c41 ) FROM v31 AS a53 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM ( SELECT 0 ORDER BY 0 ) AS y, v46 AS a54 ON likely ( 0 < 0 ) OR 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a55.c19 FROM v0 AS a55 ORDER BY 0; 
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+  a56 LEFT JOIN v0 AS a57 ON a57.c24 = 'x' ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+   SELECT a60.c37, a60.c36 FROM v31 AS a60 ORDER BY 0 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+   ( a61.c32 IS NULL ) ) ) FROM v31 AS a61 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 51
+  S a65, v0 AS a66 NATURAL JOIN v46 AS a67 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10 INT UNIQUE ON CONFLICT IGNORE, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, FOREIGN KEY ( c7 ) REFERENCES t2 ); 
+CREATE TABLE v25 ( c26, c27, c28 ); 
+; 
+INSERT INTO v0 VALUES ( 0, 0, 0 ); 
+ALTER TABLE v25 DROP c27; 
+ALTER TABLE v25 RENAME COLUMN c26 TO c30; 
+CREATE TABLE v31 ( c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, FOREIGN KEY ( c32, c33, c41, c32, c40, c42, c33, c34, c34, c43, c36, c36 ) REFERENCES t4 ); 
+; 
+CREATE TABLE v46 ( c47, c48, c49 ); 
+INSERT INTO v31 VALUES ( 18446744073709551488, 0, 0 ); 
+; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a53.c41 ) FROM v31 AS a53 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 0 ORDER BY 0 ) AS y, v46 AS a54 ON likely ( 0 < 0 ) OR 18446744073709551488 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a55.c19 FROM v0 AS a55 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a56.c43, a56.c42 FROM v31 AS a56 LEFT JOIN v0 AS a57 ON a57.c24 = 'x' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a58.c35, count ( NOT NULL ), count ( ( NOT ( a58.c39 IS NULL ) ) AND ( NOT ( a59.c27 IS NULL ) ) ) FROM v31 AS a58 LEFT JOIN v25 AS a59 ON a59.c27 = a59.c30 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 0 IN ( SELECT a60.c37, a60.c36 FROM v31 AS a60 ORDER BY 0 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a61.c39, count ( ( NOT ( a61.c43 IS NULL ) ) AND ( NOT ( a61.c32 IS NULL ) ) ) FROM v31 AS a61 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a62, v25 AS a63 WHERE NOT min ( a62.c22, a63.c27 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v46 AS a64 ORDER BY a64.c48 + 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a65, v0 AS a66 NATURAL JOIN v46 AS a67 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: table v0 has 24 columns but 3 values were supplied
+Parse error near line 10: table v31 has 13 columns but 3 values were supplied
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a53.c41 ) FROM v31 AS a53 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM ( SELECT 0 ORDER BY 0 ) AS y, v46 AS a54 ON likely ( 0 < 0 ) OR 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a55.c19 FROM v0 AS a55 ORDER BY 0; 
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+  a56 LEFT JOIN v0 AS a57 ON a57.c24 = 'x' ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a59.c27
+  , count ( ( NOT ( a58.c39 IS NULL ) ) AND ( NOT ( a59.c27 IS NULL ) ) ) FROM v
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+   SELECT a60.c37, a60.c36 FROM v31 AS a60 ORDER BY 0 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+   ( a61.c32 IS NULL ) ) ) FROM v31 AS a61 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a63.c27
+  OM v0 AS a62, v25 AS a63 WHERE NOT min ( a62.c22, a63.c27 ) ORDER BY 184467440
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 51
+  S a65, v0 AS a66 NATURAL JOIN v46 AS a67 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a53.c41 ) FROM v31 AS a53 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a53.c41 ) FROM v31 AS a53 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM ( SELECT 0 ORDER BY 0 ) AS y, v46 AS a54 ON likely ( 0 < 0 ) OR 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM ( SELECT 0 ORDER BY 0 ) AS y, v46 AS a54 ON likely ( 0 < 0 ) OR 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a55.c19 FROM v0 AS a55 ORDER BY 0; 
+                           error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a55.c19 FROM v0 AS a55 ORDER BY 0; 
+                           error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+  a56 LEFT JOIN v0 AS a57 ON a57.c24 = 'x' ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+  a56 LEFT JOIN v0 AS a57 ON a57.c24 = 'x' ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such column: a59.c27
+  , count ( ( NOT ( a58.c39 IS NULL ) ) AND ( NOT ( a59.c27 IS NULL ) ) ) FROM v
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+   SELECT a60.c37, a60.c36 FROM v31 AS a60 ORDER BY 0 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+   SELECT a60.c37, a60.c36 FROM v31 AS a60 ORDER BY 0 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+   ( a61.c32 IS NULL ) ) ) FROM v31 AS a61 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+   ( a61.c32 IS NULL ) ) ) FROM v31 AS a61 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 36: no such column: a63.c27
+  OM v0 AS a62, v25 AS a63 WHERE NOT min ( a62.c22, a63.c27 ) ORDER BY 184467440
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 51
+  S a65, v0 AS a66 NATURAL JOIN v46 AS a67 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 51
+  S a65, v0 AS a66 NATURAL JOIN v46 AS a67 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

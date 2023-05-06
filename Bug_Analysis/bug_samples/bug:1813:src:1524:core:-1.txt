@@ -1,0 +1,273 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 UNIQUE ); 
+CREATE TABLE v3 ( c4, c5, c6 REFERENCES p1 ( c4 ) ); 
+CREATE INDEX i7 ON v3 ( c6 ); 
+CREATE TABLE v8 ( c9, c10, c11, c12 REFERENCES p1 ( c10 ) ); 
+ALTER TABLE v3 DROP COLUMN c6; 
+CREATE VIEW v13 AS SELECT c1, c4 FROM v3 AS a14 LEFT JOIN v0 AS a15 ON c6 = c6 ORDER BY max ( c1 + c6 * 18446744073709518848 ) + 18446744073709518848, foreign_keys ( c2, avg ( c1 ) ) + 18446744073709518848; 
+ALTER TABLE v8 DROP COLUMN c12; 
+CREATE INDEX i16 ON v0 ( c2 ); 
+CREATE INDEX i17 ON v3 ( c6 ); 
+CREATE INDEX i18 ON v3 ( c4 ); 
+CREATE INDEX i19 ON v0 ( c1 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c4, count ( ( NOT ( a20.c4 IS NULL ) ) AND ( NOT ( a20.c5 IS NULL ) ) ), count ( ( hex ( 18446744073709518848 ) ) % 18446744073709518848 AND ( NOT ( a20.c6 IS NULL ) ) ) FROM v3 AS a20 LEFT JOIN v0 AS a21 ON a20.c5 = a21.c2 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v3 AS ( SELECT v3.c6 FROM v13 AS a23 WHERE a23.c11 LIKE 'maggy' ORDER BY 18446744073709518848 ) SELECT * FROM v13 AS a22 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a24 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a25 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY ( ( a26.c1 + - 18446744073709518848 ) % 18446744073709518848 ) != 18446744073709551488 + 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a27 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c13, max ( a28.c11 || a28.c11 ) FROM v13 AS a28 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT avg ( c11 ) FROM ( SELECT * FROM v3 AS a29 RIGHT JOIN v8 AS a30 ON a29.c4 ORDER BY 18446744073709518848 ) AS y WHERE ( c4 || c10 || c5 ) != 'v0' ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a31 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: error in index i7 after drop column: no such column: c6
+BEGIN VERI 0
+Parse error near line 13: no tables specified
+END VERI 0
+BEGIN VERI 0
+|0|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such function: foreign_keys
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such function: foreign_keys
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such function: foreign_keys
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 UNIQUE ); 
+CREATE TABLE v3 ( c4, c5, c6 REFERENCES p1 ( c4 ) ); 
+; 
+CREATE TABLE v8 ( c9, c10, c11, c12 REFERENCES p1 ( c10 ) ); 
+ALTER TABLE v3 DROP COLUMN c6; 
+CREATE VIEW v13 AS SELECT c1, c4 FROM v3 AS a14 LEFT JOIN v0 AS a15 ON c6 = c6 ORDER BY max ( c1 + c6 * 18446744073709518848 ) + 18446744073709518848, foreign_keys ( c2, avg ( c1 ) ) + 18446744073709518848; 
+ALTER TABLE v8 DROP COLUMN c12; 
+; 
+; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c4, count ( ( NOT ( a20.c4 IS NULL ) ) AND ( NOT ( a20.c5 IS NULL ) ) ), count ( ( hex ( 18446744073709518848 ) ) % 18446744073709518848 AND ( NOT ( a20.c6 IS NULL ) ) ) FROM v3 AS a20 LEFT JOIN v0 AS a21 ON a20.c5 = a21.c2 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v3 AS ( SELECT v3.c6 FROM v13 AS a23 WHERE a23.c11 LIKE 'maggy' ORDER BY 18446744073709518848 ) SELECT * FROM v13 AS a22 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a24 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a25 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY ( ( a26.c1 + - 18446744073709518848 ) % 18446744073709518848 ) != 18446744073709551488 + 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a27 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c13, max ( a28.c11 || a28.c11 ) FROM v13 AS a28 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT avg ( c11 ) FROM ( SELECT * FROM v3 AS a29 RIGHT JOIN v8 AS a30 ON a29.c4 ORDER BY 18446744073709518848 ) AS y WHERE ( c4 || c10 || c5 ) != 'v0' ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a31 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in view v13: no such column: c6
+BEGIN VERI 0
+Parse error near line 13: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: a20.c6
+  3709518848 ) ) % 18446744073709518848 AND ( NOT ( a20.c6 IS NULL ) ) ) FROM v3
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: c6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: c6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: c6
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 13: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+|0|0
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such column: a20.c6
+  3709518848 ) ) % 18446744073709518848 AND ( NOT ( a20.c6 IS NULL ) ) ) FROM v3
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such function: foreign_keys
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such column: c6
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no such function: foreign_keys
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no such column: c6
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such function: foreign_keys
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such column: c6
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+
+ 
+INT: -1 
+Str: 
+
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

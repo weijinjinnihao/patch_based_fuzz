@@ -1,0 +1,312 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 PRIMARY KEY NOT NULL, c2 NOT NULL ); 
+CREATE INDEX i3 ON v0 ( c1 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE TABLE v5 ( c6, c7, c8 REFERENCES p1 ( c7 ) ); 
+CREATE TABLE v9 ( c10, c11, c12, c13 REFERENCES p1 ( c10 ) ); 
+CREATE INDEX i14 ON v0 ( c2 ); 
+CREATE INDEX i15 ON v0 ( c2 ); 
+CREATE INDEX i16 ON v5 ( c8 ); 
+ALTER TABLE v5 DROP COLUMN c8; 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE VIRTUAL TABLE IF NOT EXISTS v17 USING rtree ( c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a30.c24 IS NULL ) ) AND ( NOT ( a30.c22 IS NULL ) ) ) FROM v17 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a31 GROUP BY x'616263', 'c', a31.c8 = + a31.c8 HAVING count ( * ) >= 0 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT a33.c8 FROM v17 AS a33 WHERE a32.c2 NOT LIKE 'v0' ORDER BY 0 ) SELECT * FROM v0 AS a32 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v34 ( c36 ) AS ( WITH v37 ( c38 ) AS ( WITH v39 ( c40 ) AS ( WITH v41 AS ( SELECT ( SELECT min ( c40 ) OVER ( ORDER BY 0 IN v37 ) ORDER BY 0 ) FROM v37 AS a42 GROUP BY c36 ORDER BY 100 ) SELECT 4294967295 ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 4294967295 ) SELECT 18446744073709551488 ORDER BY 255 ) SELECT * FROM v34 AS a35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c2, max ( a43.c2 || a43.c2 ) FROM v0 AS a43 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a44 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a45 WHERE a45.c18 > ( a45.c25 + - 100 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v17 AS ( SELECT 4294967295 y ORDER BY 0 ) SELECT * FROM v17 AS a46 ORDER BY 1.200000; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: error in index i16 after drop column: no such column: c8
+Parse error near line 10: cannot drop PRIMARY KEY column: "c1"
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v9 AS a29 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+   ( a30.c22 IS NULL ) ) ) FROM v17 AS a30 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: a33.c8
+  WITH v0 AS ( SELECT a33.c8 FROM v17 AS a33 WHERE a32.c2 NOT LIKE 'v0' ORDER BY
+                      ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v17 AS ( SELECT 4294967295 y ORDER BY 0 ) SELECT * FROM v17 AS a46 ORDER 
+                               error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 PRIMARY KEY NOT NULL, c2 NOT NULL ); 
+; 
+; 
+CREATE TABLE v5 ( c6, c7, c8 REFERENCES p1 ( c7 ) ); 
+CREATE TABLE v9 ( c10, c11, c12, c13 REFERENCES p1 ( c10 ) ); 
+; 
+; 
+; 
+ALTER TABLE v5 DROP COLUMN c8; 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE VIRTUAL TABLE IF NOT EXISTS v17 USING rtree ( c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a30.c24 IS NULL ) ) AND ( NOT ( a30.c22 IS NULL ) ) ) FROM v17 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a31 GROUP BY x'616263', 'c', a31.c8 = + a31.c8 HAVING count ( * ) >= 0 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT a33.c8 FROM v17 AS a33 WHERE a32.c2 NOT LIKE 'v0' ORDER BY 0 ) SELECT * FROM v0 AS a32 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v34 ( c36 ) AS ( WITH v37 ( c38 ) AS ( WITH v39 ( c40 ) AS ( WITH v41 AS ( SELECT ( SELECT min ( c40 ) OVER ( ORDER BY 0 IN v37 ) ORDER BY 0 ) FROM v37 AS a42 GROUP BY c36 ORDER BY 100 ) SELECT 4294967295 ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 4294967295 ) SELECT 18446744073709551488 ORDER BY 255 ) SELECT * FROM v34 AS a35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c2, max ( a43.c2 || a43.c2 ) FROM v0 AS a43 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a44 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a45 WHERE a45.c18 > ( a45.c25 + - 100 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v17 AS ( SELECT 4294967295 y ORDER BY 0 ) SELECT * FROM v17 AS a46 ORDER BY 1.200000; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: cannot drop PRIMARY KEY column: "c1"
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v9 AS a29 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+   ( a30.c22 IS NULL ) ) ) FROM v17 AS a30 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a31.c8
+  SELECT * FROM v5 AS a31 GROUP BY x'616263', 'c', a31.c8 = + a31.c8 HAVING coun
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: a33.c8
+  WITH v0 AS ( SELECT a33.c8 FROM v17 AS a33 WHERE a32.c2 NOT LIKE 'v0' ORDER BY
+                      ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v17 AS ( SELECT 4294967295 y ORDER BY 0 ) SELECT * FROM v17 AS a46 ORDER 
+                               error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v9 AS a29 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v9 AS a29 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+   ( a30.c22 IS NULL ) ) ) FROM v17 AS a30 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+   ( a30.c22 IS NULL ) ) ) FROM v17 AS a30 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 22: no such column: a31.c8
+  SELECT * FROM v5 AS a31 GROUP BY x'616263', 'c', a31.c8 = + a31.c8 HAVING coun
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no such column: a33.c8
+  WITH v0 AS ( SELECT a33.c8 FROM v17 AS a33 WHERE a32.c2 NOT LIKE 'v0' ORDER BY
+                      ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 25: no such column: a33.c8
+  WITH v0 AS ( SELECT a33.c8 FROM v17 AS a33 WHERE a32.c2 NOT LIKE 'v0' ORDER BY
+                      ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v17 AS ( SELECT 4294967295 y ORDER BY 0 ) SELECT * FROM v17 AS a46 ORDER 
+                               error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v17 AS ( SELECT 4294967295 y ORDER BY 0 ) SELECT * FROM v17 AS a46 ORDER 
+                               error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

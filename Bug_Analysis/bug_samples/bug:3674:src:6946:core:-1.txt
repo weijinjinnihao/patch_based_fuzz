@@ -1,0 +1,407 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 'xxx', 'v1' ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 'v1', 'x' ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( NULL, 'again', 'x' ); 
+INSERT INTO v0 VALUES ( 'x', 'goodbye', '%t2%' ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( x'616263', c2 || c1 || c3, 'v1' ); 
+CREATE TABLE v6 ( c7, c8, c9 COLLATE NOCASE ); 
+INSERT INTO v6 VALUES ( NULL, 'v1', 'v1' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'v0', 'v0' ); 
+CREATE INDEX i10 ON v6 ( c8 ); 
+CREATE INDEX i11 ON v6 ( c9 ); 
+INSERT INTO v6 VALUES ( 18446744073709551615, 'v0', 'v1' ); 
+INSERT INTO v6 VALUES ( - 18446744073709551615, 'v0', 'x' ); 
+CREATE INDEX i12 ON v6 ( c7 ); 
+CREATE TABLE v13 ( c14, c15, c16 COLLATE NOCASE ); 
+INSERT INTO v6 SELECT * FROM v6 AS a17 ORDER BY 18446744073709551615; 
+INSERT INTO v13 SELECT * FROM v13 AS a18 ORDER BY 18446744073709551615; 
+INSERT INTO v6 SELECT * FROM v0 AS a19 ORDER BY 9223372036854775807; 
+INSERT INTO v13 SELECT * FROM v0 AS a20 ORDER BY 18446744073709551615; 
+INSERT INTO v6 SELECT * FROM v6 AS a21, v13 AS a22 ORDER BY 18446744073709551488; 
+INSERT INTO v0 SELECT * FROM v6 AS a23 ORDER BY 18446744073709551615; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a24 ORDER BY + a24.c7; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT sum ( a25.c8 ) FROM v6 AS a26 WHERE a25.c8 = 'v1' ORDER BY 18446744073709551615 ) FROM v6 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 GROUP BY a27.c3, abs ( a27.c2 ) HAVING count ( * ) >= 9223372036854775807 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v6 AS ( SELECT hex ( ) y ORDER BY 127 ) SELECT * FROM v13 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c14, a30.c16 FROM v0 AS a29 RIGHT JOIN v13 AS a30 ON a29.c3 || a30.c15 || a29.c2 = a29.c3 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 NATURAL JOIN v6 AS a32 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c8, max ( a33.c9 || a33.c7 ) FROM v6 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a34 GROUP BY a34.c8, abs ( a34.c7 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: no such column: c2
+  INSERT INTO v0 VALUES ( x'616263', c2 || c1 || c3, 'v1' ); 
+                       error here ---^
+Parse error near line 22: table v6 has 3 columns but 6 values were supplied
+BEGIN VERI 0
+|v1|v1
+|v1|v1
+|again|x
+-1.84467440737096e+19|v0|x
+-1.84467440737096e+19|v0|x
+1.84467440737096e+19|v0|v1
+1.84467440737096e+19|v0|v1
+1.84467440737096e+19|xxx|v1
+1.84467440737096e+19|v1|x
+x|goodbye|%t2%
+hare|v0|v0
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|xxx|v1
+1.84467440737096e+19|v1|x
+|again|x
+x|goodbye|%t2%
+hare|v0|v0
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|v1
+1.84467440737096e+19|x
+|x
+x|%t2%
+hare|v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 46: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+v1|x1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+|again|x
+x|goodbye|%t2%
+hare|v0|v0
+1.84467440737096e+19|v0|v1
+|v1|v1
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|xxx|v1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 'xxx', 'v1' ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 'v1', 'x' ); 
+; 
+INSERT INTO v0 VALUES ( NULL, 'again', 'x' ); 
+INSERT INTO v0 VALUES ( 'x', 'goodbye', '%t2%' ); 
+; 
+INSERT INTO v0 VALUES ( x'616263', c2 || c1 || c3, 'v1' ); 
+CREATE TABLE v6 ( c7, c8, c9 COLLATE NOCASE ); 
+INSERT INTO v6 VALUES ( NULL, 'v1', 'v1' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'v0', 'v0' ); 
+; 
+; 
+INSERT INTO v6 VALUES ( 18446744073709551615, 'v0', 'v1' ); 
+INSERT INTO v6 VALUES ( - 18446744073709551615, 'v0', 'x' ); 
+; 
+CREATE TABLE v13 ( c14, c15, c16 COLLATE NOCASE ); 
+INSERT INTO v6 SELECT * FROM v6 AS a17 ORDER BY 18446744073709551615; 
+INSERT INTO v13 SELECT * FROM v13 AS a18 ORDER BY 18446744073709551615; 
+INSERT INTO v6 SELECT * FROM v0 AS a19 ORDER BY 9223372036854775807; 
+INSERT INTO v13 SELECT * FROM v0 AS a20 ORDER BY 18446744073709551615; 
+INSERT INTO v6 SELECT * FROM v6 AS a21, v13 AS a22 ORDER BY 18446744073709551488; 
+INSERT INTO v0 SELECT * FROM v6 AS a23 ORDER BY 18446744073709551615; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a24 ORDER BY + a24.c7; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT sum ( a25.c8 ) FROM v6 AS a26 WHERE a25.c8 = 'v1' ORDER BY 18446744073709551615 ) FROM v6 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 GROUP BY a27.c3, abs ( a27.c2 ) HAVING count ( * ) >= 9223372036854775807 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v6 AS ( SELECT hex ( ) y ORDER BY 127 ) SELECT * FROM v13 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c14, a30.c16 FROM v0 AS a29 RIGHT JOIN v13 AS a30 ON a29.c3 || a30.c15 || a29.c2 = a29.c3 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 NATURAL JOIN v6 AS a32 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c8, max ( a33.c9 || a33.c7 ) FROM v6 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a34 GROUP BY a34.c8, abs ( a34.c7 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: no such column: c2
+  INSERT INTO v0 VALUES ( x'616263', c2 || c1 || c3, 'v1' ); 
+                       error here ---^
+Parse error near line 22: table v6 has 3 columns but 6 values were supplied
+BEGIN VERI 0
+|v1|v1
+|v1|v1
+|again|x
+-1.84467440737096e+19|v0|x
+-1.84467440737096e+19|v0|x
+1.84467440737096e+19|v0|v1
+1.84467440737096e+19|v0|v1
+1.84467440737096e+19|xxx|v1
+1.84467440737096e+19|v1|x
+x|goodbye|%t2%
+hare|v0|v0
+END VERI 0
+BEGIN VERI 0
+0.0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|xxx|v1
+1.84467440737096e+19|v1|x
+|again|x
+x|goodbye|%t2%
+hare|v0|v0
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|v1
+1.84467440737096e+19|x
+|x
+x|%t2%
+hare|v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 46: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+v1|x1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+|again|x
+x|goodbye|%t2%
+hare|v0|v0
+1.84467440737096e+19|v0|v1
+|v1|v1
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|xxx|v1
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+|v1|v1
+|v1|v1
+|again|x
+-1.84467440737096e+19|v0|x
+-1.84467440737096e+19|v0|x
+1.84467440737096e+19|v0|v1
+1.84467440737096e+19|v0|v1
+1.84467440737096e+19|xxx|v1
+1.84467440737096e+19|v1|x
+x|goodbye|%t2%
+hare|v0|v0
+ 
+INT: 10 
+Str: 
+|v1|v1
+|v1|v1
+|again|x
+-1.84467440737096e+19|v0|x
+-1.84467440737096e+19|v0|x
+1.84467440737096e+19|v0|v1
+1.84467440737096e+19|v0|v1
+1.84467440737096e+19|xxx|v1
+1.84467440737096e+19|v1|x
+x|goodbye|%t2%
+hare|v0|v0
+ 
+INT: 10 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+0.0
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19|xxx|v1
+1.84467440737096e+19|v1|x
+|again|x
+x|goodbye|%t2%
+hare|v0|v0
+ 
+INT: 4 
+Str: 
+1.84467440737096e+19|xxx|v1
+1.84467440737096e+19|v1|x
+|again|x
+x|goodbye|%t2%
+hare|v0|v0
+ 
+INT: 4 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19|v1
+1.84467440737096e+19|x
+|x
+x|%t2%
+hare|v0
+ 
+INT: 4 
+Str: 
+1.84467440737096e+19|v1
+1.84467440737096e+19|x
+|x
+x|%t2%
+hare|v0
+ 
+INT: 4 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 43: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 46: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 46: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+v1|x1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+v1|x1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+|again|x
+x|goodbye|%t2%
+hare|v0|v0
+1.84467440737096e+19|v0|v1
+|v1|v1
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|xxx|v1
+ 
+INT: 6 
+Str: 
+|again|x
+x|goodbye|%t2%
+hare|v0|v0
+1.84467440737096e+19|v0|v1
+|v1|v1
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|xxx|v1
+ 
+INT: 6 
+Compare_result_int: 
+0
+
+
+

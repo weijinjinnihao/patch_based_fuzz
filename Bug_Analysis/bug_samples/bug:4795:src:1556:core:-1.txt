@@ -1,0 +1,302 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c3 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( 255, 255, 255 ), ( 255, 255, 255 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i6 ON v0 ( c2 ); 
+CREATE TABLE v7 ( c8, c9, c10 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i11 ON v0 ( c1 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 ( c14 ) AS ( SELECT a12.c14 + ( SELECT max ( a16.c14 ) FROM v7 AS a18 ORDER BY 255 ), a13.c8 + ( SELECT a15.c3 FROM v7 AS a17 ORDER BY 255 ), a12.c14 + ( SELECT max ( a12.c10 ) FROM v7 AS a16 ORDER BY 2147483647 ) FROM v0 AS a15 ORDER BY 255 ) SELECT a13.c10, count ( ( NOT ( a13.c9 IS NULL ) ) AND ( NOT ( a12.c8 IS NULL ) ) ), count ( ( NOT ( a12.c14 IS NULL ) ) AND ( NOT ( a12.c8 > NULL ) ) ) FROM v7 AS a12 LEFT JOIN v7 AS a13 ON a13.c14 = a12.c9 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 ORDER BY ( a19.c2 + - 0 ) % 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c2, a21.c2, a21.c3 FROM v0 AS a21 WHERE a21.c2 < y ( a21.c2 ) GROUP BY 255 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 AS ( SELECT ( SELECT min ( a22.c8 ) OVER ( ORDER BY 18446744073709518848 ) ORDER BY 0 ) FROM v7 AS a24 GROUP BY a23.c1 ORDER BY 8 ) SELECT * FROM v7 AS a22 NATURAL JOIN v0 AS a23 USING ( a23.c1 ) WHERE max ( a23.c2 ) = ( a22.c8 ) AND a22.c14 = 16 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a25 GROUP BY a25.c8 ORDER BY max ( + 255, 'v1', 'v1' ) + 255, min ( a25.c8, avg ( a25.c1 ) ) + NULL >= 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a27 ORDER BY ( a27.c8 || a27.c8 || a27.c9 ) != 'v0'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 ( c30 ) AS ( SELECT 0 GROUP BY a28.c9 HAVING automatic_index ( * ) >= 255 ORDER BY 8 ) SELECT a28.c10, a29.c8 FROM v7 AS a28 RIGHT JOIN v7 AS a29 ON a29.c9 = a28.c9 WHERE c30 > 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 4: UNIQUE constraint failed: v0.c1, v0.c3 (19)
+Runtime error near line 5: error in index i5 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 10: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: circular reference: v7
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such function: y
+  .c2, a21.c2, a21.c3 FROM v0 AS a21 WHERE a21.c2 < y ( a21.c2 ) GROUP BY 255 OR
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: near ".": syntax error
+   FROM v7 AS a22 NATURAL JOIN v0 AS a23 USING ( a23.c1 ) WHERE max ( a23.c2 ) =
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a25.c1
+   ( + 255, 'v1', 'v1' ) + 255, min ( a25.c8, avg ( a25.c1 ) ) + NULL >= 255; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such function: automatic_index
+  H v7 ( c30 ) AS ( SELECT 0 GROUP BY a28.c9 HAVING automatic_index ( * ) >= 255
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c3 ) ) WITHOUT ROWID; 
+; 
+; 
+INSERT INTO v0 VALUES ( 255, 255, 255 ), ( 255, 255, 255 ); 
+ALTER TABLE v0 DROP c2; 
+; 
+CREATE TABLE v7 ( c8, c9, c10 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 ( c14 ) AS ( SELECT a12.c14 + ( SELECT max ( a16.c14 ) FROM v7 AS a18 ORDER BY 255 ), a13.c8 + ( SELECT a15.c3 FROM v7 AS a17 ORDER BY 255 ), a12.c14 + ( SELECT max ( a12.c10 ) FROM v7 AS a16 ORDER BY 2147483647 ) FROM v0 AS a15 ORDER BY 255 ) SELECT a13.c10, count ( ( NOT ( a13.c9 IS NULL ) ) AND ( NOT ( a12.c8 IS NULL ) ) ), count ( ( NOT ( a12.c14 IS NULL ) ) AND ( NOT ( a12.c8 > NULL ) ) ) FROM v7 AS a12 LEFT JOIN v7 AS a13 ON a13.c14 = a12.c9 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 ORDER BY ( a19.c2 + - 0 ) % 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c2, a21.c2, a21.c3 FROM v0 AS a21 WHERE a21.c2 < y ( a21.c2 ) GROUP BY 255 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 AS ( SELECT ( SELECT min ( a22.c8 ) OVER ( ORDER BY 18446744073709518848 ) ORDER BY 0 ) FROM v7 AS a24 GROUP BY a23.c1 ORDER BY 8 ) SELECT * FROM v7 AS a22 NATURAL JOIN v0 AS a23 USING ( a23.c1 ) WHERE max ( a23.c2 ) = ( a22.c8 ) AND a22.c14 = 16 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a25 GROUP BY a25.c8 ORDER BY max ( + 255, 'v1', 'v1' ) + 255, min ( a25.c8, avg ( a25.c1 ) ) + NULL >= 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a27 ORDER BY ( a27.c8 || a27.c8 || a27.c9 ) != 'v0'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 ( c30 ) AS ( SELECT 0 GROUP BY a28.c9 HAVING automatic_index ( * ) >= 255 ORDER BY 8 ) SELECT a28.c10, a29.c8 FROM v7 AS a28 RIGHT JOIN v7 AS a29 ON a29.c9 = a28.c9 WHERE c30 > 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 4: UNIQUE constraint failed: v0.c1, v0.c3 (19)
+BEGIN VERI 0
+Parse error near line 10: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: circular reference: v7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: a19.c2
+  SELECT * FROM v0 AS a19 ORDER BY ( a19.c2 + - 0 ) % 255; 
+                       error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a21.c2
+  SELECT a21.c2, a21.c2, a21.c3 FROM v0 AS a21 WHERE a21.c2 < y ( a21.c2 ) GROUP
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: near ".": syntax error
+   FROM v7 AS a22 NATURAL JOIN v0 AS a23 USING ( a23.c1 ) WHERE max ( a23.c2 ) =
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a25.c1
+   ( + 255, 'v1', 'v1' ) + 255, min ( a25.c8, avg ( a25.c1 ) ) + NULL >= 255; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such function: automatic_index
+  H v7 ( c30 ) AS ( SELECT 0 GROUP BY a28.c9 HAVING automatic_index ( * ) >= 255
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 10: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 10: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: circular reference: v7
+ 
+INT: 0 
+Str: 
+Parse error near line 13: circular reference: v7
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 16: no such column: a19.c2
+  SELECT * FROM v0 AS a19 ORDER BY ( a19.c2 + - 0 ) % 255; 
+                       error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such function: y
+  .c2, a21.c2, a21.c3 FROM v0 AS a21 WHERE a21.c2 < y ( a21.c2 ) GROUP BY 255 OR
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 22: no such column: a21.c2
+  SELECT a21.c2, a21.c2, a21.c3 FROM v0 AS a21 WHERE a21.c2 < y ( a21.c2 ) GROUP
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: near ".": syntax error
+   FROM v7 AS a22 NATURAL JOIN v0 AS a23 USING ( a23.c1 ) WHERE max ( a23.c2 ) =
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 25: near ".": syntax error
+   FROM v7 AS a22 NATURAL JOIN v0 AS a23 USING ( a23.c1 ) WHERE max ( a23.c2 ) =
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such column: a25.c1
+   ( + 255, 'v1', 'v1' ) + 255, min ( a25.c8, avg ( a25.c1 ) ) + NULL >= 255; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 28: no such column: a25.c1
+   ( + 255, 'v1', 'v1' ) + 255, min ( a25.c8, avg ( a25.c1 ) ) + NULL >= 255; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such function: automatic_index
+  H v7 ( c30 ) AS ( SELECT 0 GROUP BY a28.c9 HAVING automatic_index ( * ) >= 255
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: no such function: automatic_index
+  H v7 ( c30 ) AS ( SELECT 0 GROUP BY a28.c9 HAVING automatic_index ( * ) >= 255
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

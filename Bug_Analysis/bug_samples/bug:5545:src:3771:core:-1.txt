@@ -1,0 +1,292 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10 INT UNIQUE ON CONFLICT IGNORE, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25 INTEGER UNIQUE ON CONFLICT FAIL, c26, PRIMARY KEY ( c20 ), CHECK( c18 != c16 ), CHECK( c11 != c21 ) ) WITHOUT ROWID; 
+CREATE INDEX i27 ON v0 ( c18 ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c2 = c12 || c4 WHERE c23 = c20 || c15; END; 
+CREATE INDEX i28 ON v0 ( c16 ); 
+CREATE TABLE v29 ( c30, c31, c32, c33, PRIMARY KEY ( c30, c31 ) ) WITHOUT ROWID; 
+CREATE INDEX i34 ON v29 ( c33 ); 
+INSERT INTO v29 VALUES ( 0, 18446744073709551488, 4294967295, 0 ); 
+CREATE INDEX i35 ON v29 ( c30 ); 
+ALTER TABLE v29 DROP COLUMN c33; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a36 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37, v29 AS a38 NATURAL JOIN v29 AS a39 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a40 NATURAL JOIN v29 AS a41 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v42 ( c44 ) AS ( WITH v45 AS ( WITH v45 AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551488 ) SELECT avg ( c44 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 0 ) SELECT 4294967295 ORDER BY 18446744073709551488 ) SELECT quote ( c44 ), c44 = c44, '' FROM v42 AS a43 GROUP BY c44, abs ( c44 ) HAVING count ( * ) >= 127 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a46 ORDER BY 127 IN ( SELECT * FROM v29 AS a47 ORDER BY 127 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a48.c31 || a48.c32 ) FROM v29 AS a48 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a49 GROUP BY count ( ( NOT ( a49.c30 IS NULL ) ) AND ( NOT ( a49.c33 IS NULL ) ) ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50, v0 AS a51 NATURAL JOIN v29 AS a52 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c14 FROM v0 AS a53 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: error in index i34 after drop column: no such column: c33
+BEGIN VERI 0
+0|1.84467440737096e+19|4294967295|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 30
+   a37, v29 AS a38 NATURAL JOIN v29 AS a39 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+0|1.84467440737096e+19|4294967295|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+  4, abs ( c44 ) HAVING count ( * ) >= 127 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no tables specified
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+194294967295
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 56
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10 INT UNIQUE ON CONFLICT IGNORE, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25 INTEGER UNIQUE ON CONFLICT FAIL, c26, PRIMARY KEY ( c20 ), CHECK( c18 != c16 ), CHECK( c11 != c21 ) ) WITHOUT ROWID; 
+; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c2 = c12 || c4 WHERE c23 = c20 || c15; END; 
+; 
+CREATE TABLE v29 ( c30, c31, c32, c33, PRIMARY KEY ( c30, c31 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v29 VALUES ( 0, 18446744073709551488, 4294967295, 0 ); 
+; 
+ALTER TABLE v29 DROP COLUMN c33; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a36 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37, v29 AS a38 NATURAL JOIN v29 AS a39 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a40 NATURAL JOIN v29 AS a41 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v42 ( c44 ) AS ( WITH v45 AS ( WITH v45 AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551488 ) SELECT avg ( c44 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 0 ) SELECT 4294967295 ORDER BY 18446744073709551488 ) SELECT quote ( c44 ), c44 = c44, '' FROM v42 AS a43 GROUP BY c44, abs ( c44 ) HAVING count ( * ) >= 127 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a46 ORDER BY 127 IN ( SELECT * FROM v29 AS a47 ORDER BY 127 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a48.c31 || a48.c32 ) FROM v29 AS a48 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a49 GROUP BY count ( ( NOT ( a49.c30 IS NULL ) ) AND ( NOT ( a49.c33 IS NULL ) ) ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50, v0 AS a51 NATURAL JOIN v29 AS a52 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c14 FROM v0 AS a53 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+0|1.84467440737096e+19|4294967295
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 29
+   a37, v29 AS a38 NATURAL JOIN v29 AS a39 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+0|1.84467440737096e+19|4294967295
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+  4, abs ( c44 ) HAVING count ( * ) >= 127 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no tables specified
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+194294967295
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a49.c33
+  Y count ( ( NOT ( a49.c30 IS NULL ) ) AND ( NOT ( a49.c33 IS NULL ) ) ) ORDER 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 55
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+0|1.84467440737096e+19|4294967295|0
+ 
+INT: 0 
+Str: 
+0|1.84467440737096e+19|4294967295
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 30
+   a37, v29 AS a38 NATURAL JOIN v29 AS a39 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 29
+   a37, v29 AS a38 NATURAL JOIN v29 AS a39 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+0|1.84467440737096e+19|4294967295|0
+ 
+INT: 0 
+Str: 
+0|1.84467440737096e+19|4294967295
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+  4, abs ( c44 ) HAVING count ( * ) >= 127 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+  4, abs ( c44 ) HAVING count ( * ) >= 127 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+194294967295
+ 
+INT: 0 
+Str: 
+1.84467440737096e+194294967295
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 32: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such column: a49.c33
+  Y count ( ( NOT ( a49.c30 IS NULL ) ) AND ( NOT ( a49.c33 IS NULL ) ) ) ORDER 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 56
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 55
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,1967 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 'a', 'v0' ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 'x', 'v1' ); 
+INSERT INTO v0 VALUES ( NULL, 'v0', 'c' ); 
+INSERT INTO v0 VALUES ( 'x', 'v0', 'v0' ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( x'616263', 'x', 'v1' ); 
+CREATE TABLE v6 ( c7 TEXT PRIMARY KEY ON CONFLICT REPLACE, c8, c9 COLLATE NOCASE ); 
+INSERT INTO v6 VALUES ( NULL, 'v1', 'x' ); 
+INSERT INTO v6 VALUES ( 'v1', 'x', 'fizzle' ); 
+INSERT INTO v6 VALUES ( x'68617265', 'b', 'v0' ); 
+INSERT INTO v6 VALUES ( 18446744073709551488, 'v1', '1.3' ); 
+INSERT INTO v0 VALUES ( - 18446744073709551488, 'x2', '$long' ); 
+CREATE INDEX i10 ON v0 ( c1 ); 
+CREATE TABLE v11 ( c12, c13, c14 COLLATE NOCASE ); 
+CREATE INDEX i15 ON v0 ( c3 ); 
+INSERT INTO v6 SELECT * FROM v6 AS a16 ORDER BY 18446744073709551488; 
+INSERT INTO v11 SELECT * FROM v6 AS a17 ORDER BY 18446744073709551488; 
+INSERT INTO v0 SELECT * FROM v6 AS a18 ORDER BY 18446744073709551488; 
+CREATE INDEX i19 ON v11 ( c13 ); 
+INSERT INTO v0 SELECT * FROM v0 AS a20 ORDER BY 0; 
+INSERT INTO v6 SELECT * FROM v11 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c1 FROM v0 AS a22 GROUP BY 18446744073709551488 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a23 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c14, count ( ( NOT ( a25.c14 IS NULL ) ) AND ( NOT ( a25.c14 IS NULL ) ) ) FROM v11 AS a25 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a26 GROUP BY a26.c8 HAVING count ( * ) >= 18446744073709551615 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c12, count ( a27.c14 ) FROM v11 AS a27 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a28.c3 || a28.c2 ) FROM v0 AS a28 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c3, count ( ( NOT ( a29.c8 IS NULL ) ) AND ( NOT ( a29.c7 IS NULL ) ) ), count ( ( NOT ( a29.c8 IS NULL ) ) AND ( NOT ( a30.c2 IS NULL ) ) ) FROM v6 AS a29 LEFT JOIN v0 AS a30 ON a29.c8 = a30.c2 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a31, v0 AS a32 NATURAL JOIN v11 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a34 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v0 SELECT * FROM v0 AS a20 ORDER BY 0; 
+                                    error here ---^
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+|v1|x
+|v1|x
+|v1|x
+|v1|x
+v1|x|fizzle
+hare|b|v0
+1.84467440737096e+19|v1|1.3
+END VERI 0
+BEGIN VERI 0
+|v1|x
+|v1|x
+|v1|x
+|v1|x
+v1|x|fizzle
+hare|b|v0
+1.84467440737096e+19|v1|1.3
+END VERI 0
+BEGIN VERI 0
+x|5
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 46: no tables specified
+END VERI 0
+BEGIN VERI 0
+1.3|19|19
+END VERI 0
+BEGIN VERI 0
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0|v1|x|fizzle
+|v1|x|1.84467440737096e+19|a|v0|hare|b|v0
+|v1|x|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1|v1|x|fizzle
+|v1|x|1.84467440737096e+19|x|v1|hare|b|v0
+|v1|x|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x||v0|c||v1|x
+|v1|x||v0|c||v1|x
+|v1|x||v0|c|v1|x|fizzle
+|v1|x||v0|c|hare|b|v0
+|v1|x||v0|c|1.84467440737096e+19|v1|1.3
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0|v1|x|fizzle
+|v1|x|x|v0|v0|hare|b|v0
+|v1|x|x|v0|v0|1.84467440737096e+19|v1|1.3
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1|v1|x|fizzle
+|v1|x|abc|x|v1|hare|b|v0
+|v1|x|abc|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+|v1|x|-1.84467440737096e+19|x2|$long|hare|b|v0
+|v1|x|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle|v1|x|fizzle
+|v1|x|v1|x|fizzle|hare|b|v0
+|v1|x|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0|v1|x|fizzle
+|v1|x|hare|b|v0|hare|b|v0
+|v1|x|hare|b|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+|v1|x|1.84467440737096e+19|v1|1.3|hare|b|v0
+|v1|x|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0|v1|x|fizzle
+|v1|x|1.84467440737096e+19|a|v0|hare|b|v0
+|v1|x|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1|v1|x|fizzle
+|v1|x|1.84467440737096e+19|x|v1|hare|b|v0
+|v1|x|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x||v0|c||v1|x
+|v1|x||v0|c||v1|x
+|v1|x||v0|c|v1|x|fizzle
+|v1|x||v0|c|hare|b|v0
+|v1|x||v0|c|1.84467440737096e+19|v1|1.3
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0|v1|x|fizzle
+|v1|x|x|v0|v0|hare|b|v0
+|v1|x|x|v0|v0|1.84467440737096e+19|v1|1.3
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1|v1|x|fizzle
+|v1|x|abc|x|v1|hare|b|v0
+|v1|x|abc|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+|v1|x|-1.84467440737096e+19|x2|$long|hare|b|v0
+|v1|x|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle|v1|x|fizzle
+|v1|x|v1|x|fizzle|hare|b|v0
+|v1|x|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0|v1|x|fizzle
+|v1|x|hare|b|v0|hare|b|v0
+|v1|x|hare|b|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+|v1|x|1.84467440737096e+19|v1|1.3|hare|b|v0
+|v1|x|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0|v1|x|fizzle
+|v1|x|1.84467440737096e+19|a|v0|hare|b|v0
+|v1|x|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1|v1|x|fizzle
+|v1|x|1.84467440737096e+19|x|v1|hare|b|v0
+|v1|x|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x||v0|c||v1|x
+|v1|x||v0|c||v1|x
+|v1|x||v0|c|v1|x|fizzle
+|v1|x||v0|c|hare|b|v0
+|v1|x||v0|c|1.84467440737096e+19|v1|1.3
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0|v1|x|fizzle
+|v1|x|x|v0|v0|hare|b|v0
+|v1|x|x|v0|v0|1.84467440737096e+19|v1|1.3
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1|v1|x|fizzle
+|v1|x|abc|x|v1|hare|b|v0
+|v1|x|abc|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+|v1|x|-1.84467440737096e+19|x2|$long|hare|b|v0
+|v1|x|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle|v1|x|fizzle
+|v1|x|v1|x|fizzle|hare|b|v0
+|v1|x|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0|v1|x|fizzle
+|v1|x|hare|b|v0|hare|b|v0
+|v1|x|hare|b|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+|v1|x|1.84467440737096e+19|v1|1.3|hare|b|v0
+|v1|x|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0|v1|x|fizzle
+|v1|x|1.84467440737096e+19|a|v0|hare|b|v0
+|v1|x|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1|v1|x|fizzle
+|v1|x|1.84467440737096e+19|x|v1|hare|b|v0
+|v1|x|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x||v0|c||v1|x
+|v1|x||v0|c||v1|x
+|v1|x||v0|c|v1|x|fizzle
+|v1|x||v0|c|hare|b|v0
+|v1|x||v0|c|1.84467440737096e+19|v1|1.3
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0|v1|x|fizzle
+|v1|x|x|v0|v0|hare|b|v0
+|v1|x|x|v0|v0|1.84467440737096e+19|v1|1.3
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1|v1|x|fizzle
+|v1|x|abc|x|v1|hare|b|v0
+|v1|x|abc|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+|v1|x|-1.84467440737096e+19|x2|$long|hare|b|v0
+|v1|x|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle|v1|x|fizzle
+|v1|x|v1|x|fizzle|hare|b|v0
+|v1|x|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0|v1|x|fizzle
+|v1|x|hare|b|v0|hare|b|v0
+|v1|x|hare|b|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+|v1|x|1.84467440737096e+19|v1|1.3|hare|b|v0
+|v1|x|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|1.84467440737096e+19|a|v0||v1|x
+v1|x|fizzle|1.84467440737096e+19|a|v0||v1|x
+v1|x|fizzle|1.84467440737096e+19|a|v0|v1|x|fizzle
+v1|x|fizzle|1.84467440737096e+19|a|v0|hare|b|v0
+v1|x|fizzle|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|1.84467440737096e+19|x|v1||v1|x
+v1|x|fizzle|1.84467440737096e+19|x|v1||v1|x
+v1|x|fizzle|1.84467440737096e+19|x|v1|v1|x|fizzle
+v1|x|fizzle|1.84467440737096e+19|x|v1|hare|b|v0
+v1|x|fizzle|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+v1|x|fizzle||v0|c||v1|x
+v1|x|fizzle||v0|c||v1|x
+v1|x|fizzle||v0|c|v1|x|fizzle
+v1|x|fizzle||v0|c|hare|b|v0
+v1|x|fizzle||v0|c|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|x|v0|v0||v1|x
+v1|x|fizzle|x|v0|v0||v1|x
+v1|x|fizzle|x|v0|v0|v1|x|fizzle
+v1|x|fizzle|x|v0|v0|hare|b|v0
+v1|x|fizzle|x|v0|v0|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|abc|x|v1||v1|x
+v1|x|fizzle|abc|x|v1||v1|x
+v1|x|fizzle|abc|x|v1|v1|x|fizzle
+v1|x|fizzle|abc|x|v1|hare|b|v0
+v1|x|fizzle|abc|x|v1|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|-1.84467440737096e+19|x2|$long||v1|x
+v1|x|fizzle|-1.84467440737096e+19|x2|$long||v1|x
+v1|x|fizzle|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+v1|x|fizzle|-1.84467440737096e+19|x2|$long|hare|b|v0
+v1|x|fizzle|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+v1|x|fizzle||v1|x||v1|x
+v1|x|fizzle||v1|x||v1|x
+v1|x|fizzle||v1|x|v1|x|fizzle
+v1|x|fizzle||v1|x|hare|b|v0
+v1|x|fizzle||v1|x|1.84467440737096e+19|v1|1.3
+v1|x|fizzle||v1|x||v1|x
+v1|x|fizzle||v1|x||v1|x
+v1|x|fizzle||v1|x|v1|x|fizzle
+v1|x|fizzle||v1|x|hare|b|v0
+v1|x|fizzle||v1|x|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|v1|x|fizzle||v1|x
+v1|x|fizzle|v1|x|fizzle||v1|x
+v1|x|fizzle|v1|x|fizzle|v1|x|fizzle
+v1|x|fizzle|v1|x|fizzle|hare|b|v0
+v1|x|fizzle|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|hare|b|v0||v1|x
+v1|x|fizzle|hare|b|v0||v1|x
+v1|x|fizzle|hare|b|v0|v1|x|fizzle
+v1|x|fizzle|hare|b|v0|hare|b|v0
+v1|x|fizzle|hare|b|v0|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|1.84467440737096e+19|v1|1.3||v1|x
+v1|x|fizzle|1.84467440737096e+19|v1|1.3||v1|x
+v1|x|fizzle|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+v1|x|fizzle|1.84467440737096e+19|v1|1.3|hare|b|v0
+v1|x|fizzle|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+hare|b|v0|1.84467440737096e+19|a|v0||v1|x
+hare|b|v0|1.84467440737096e+19|a|v0||v1|x
+hare|b|v0|1.84467440737096e+19|a|v0|v1|x|fizzle
+hare|b|v0|1.84467440737096e+19|a|v0|hare|b|v0
+hare|b|v0|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+hare|b|v0|1.84467440737096e+19|x|v1||v1|x
+hare|b|v0|1.84467440737096e+19|x|v1||v1|x
+hare|b|v0|1.84467440737096e+19|x|v1|v1|x|fizzle
+hare|b|v0|1.84467440737096e+19|x|v1|hare|b|v0
+hare|b|v0|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+hare|b|v0||v0|c||v1|x
+hare|b|v0||v0|c||v1|x
+hare|b|v0||v0|c|v1|x|fizzle
+hare|b|v0||v0|c|hare|b|v0
+hare|b|v0||v0|c|1.84467440737096e+19|v1|1.3
+hare|b|v0|x|v0|v0||v1|x
+hare|b|v0|x|v0|v0||v1|x
+hare|b|v0|x|v0|v0|v1|x|fizzle
+hare|b|v0|x|v0|v0|hare|b|v0
+hare|b|v0|x|v0|v0|1.84467440737096e+19|v1|1.3
+hare|b|v0|abc|x|v1||v1|x
+hare|b|v0|abc|x|v1||v1|x
+hare|b|v0|abc|x|v1|v1|x|fizzle
+hare|b|v0|abc|x|v1|hare|b|v0
+hare|b|v0|abc|x|v1|1.84467440737096e+19|v1|1.3
+hare|b|v0|-1.84467440737096e+19|x2|$long||v1|x
+hare|b|v0|-1.84467440737096e+19|x2|$long||v1|x
+hare|b|v0|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+hare|b|v0|-1.84467440737096e+19|x2|$long|hare|b|v0
+hare|b|v0|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+hare|b|v0||v1|x||v1|x
+hare|b|v0||v1|x||v1|x
+hare|b|v0||v1|x|v1|x|fizzle
+hare|b|v0||v1|x|hare|b|v0
+hare|b|v0||v1|x|1.84467440737096e+19|v1|1.3
+hare|b|v0||v1|x||v1|x
+hare|b|v0||v1|x||v1|x
+hare|b|v0||v1|x|v1|x|fizzle
+hare|b|v0||v1|x|hare|b|v0
+hare|b|v0||v1|x|1.84467440737096e+19|v1|1.3
+hare|b|v0|v1|x|fizzle||v1|x
+hare|b|v0|v1|x|fizzle||v1|x
+hare|b|v0|v1|x|fizzle|v1|x|fizzle
+hare|b|v0|v1|x|fizzle|hare|b|v0
+hare|b|v0|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+hare|b|v0|hare|b|v0||v1|x
+hare|b|v0|hare|b|v0||v1|x
+hare|b|v0|hare|b|v0|v1|x|fizzle
+hare|b|v0|hare|b|v0|hare|b|v0
+hare|b|v0|hare|b|v0|1.84467440737096e+19|v1|1.3
+hare|b|v0|1.84467440737096e+19|v1|1.3||v1|x
+hare|b|v0|1.84467440737096e+19|v1|1.3||v1|x
+hare|b|v0|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+hare|b|v0|1.84467440737096e+19|v1|1.3|hare|b|v0
+hare|b|v0|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0|hare|b|v0
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1|hare|b|v0
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3||v0|c||v1|x
+1.84467440737096e+19|v1|1.3||v0|c||v1|x
+1.84467440737096e+19|v1|1.3||v0|c|v1|x|fizzle
+1.84467440737096e+19|v1|1.3||v0|c|hare|b|v0
+1.84467440737096e+19|v1|1.3||v0|c|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|x|v0|v0||v1|x
+1.84467440737096e+19|v1|1.3|x|v0|v0||v1|x
+1.84467440737096e+19|v1|1.3|x|v0|v0|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|x|v0|v0|hare|b|v0
+1.84467440737096e+19|v1|1.3|x|v0|v0|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|abc|x|v1||v1|x
+1.84467440737096e+19|v1|1.3|abc|x|v1||v1|x
+1.84467440737096e+19|v1|1.3|abc|x|v1|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|abc|x|v1|hare|b|v0
+1.84467440737096e+19|v1|1.3|abc|x|v1|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long||v1|x
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long||v1|x
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long|hare|b|v0
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3||v1|x||v1|x
+1.84467440737096e+19|v1|1.3||v1|x||v1|x
+1.84467440737096e+19|v1|1.3||v1|x|v1|x|fizzle
+1.84467440737096e+19|v1|1.3||v1|x|hare|b|v0
+1.84467440737096e+19|v1|1.3||v1|x|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3||v1|x||v1|x
+1.84467440737096e+19|v1|1.3||v1|x||v1|x
+1.84467440737096e+19|v1|1.3||v1|x|v1|x|fizzle
+1.84467440737096e+19|v1|1.3||v1|x|hare|b|v0
+1.84467440737096e+19|v1|1.3||v1|x|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|v1|x|fizzle||v1|x
+1.84467440737096e+19|v1|1.3|v1|x|fizzle||v1|x
+1.84467440737096e+19|v1|1.3|v1|x|fizzle|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|v1|x|fizzle|hare|b|v0
+1.84467440737096e+19|v1|1.3|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|hare|b|v0||v1|x
+1.84467440737096e+19|v1|1.3|hare|b|v0||v1|x
+1.84467440737096e+19|v1|1.3|hare|b|v0|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|hare|b|v0|hare|b|v0
+1.84467440737096e+19|v1|1.3|hare|b|v0|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3|hare|b|v0
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 55: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v6 AS a34 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+|v1|x
+|v1|x
+|v1|x
+|v1|x
+v1|x|fizzle
+hare|b|v0
+1.84467440737096e+19|v1|1.3
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+; 
+INSERT INTO v0 VALUES ( 18446744073709551488, 'a', 'v0' ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 'x', 'v1' ); 
+INSERT INTO v0 VALUES ( NULL, 'v0', 'c' ); 
+INSERT INTO v0 VALUES ( 'x', 'v0', 'v0' ); 
+; 
+INSERT INTO v0 VALUES ( x'616263', 'x', 'v1' ); 
+CREATE TABLE v6 ( c7 TEXT PRIMARY KEY ON CONFLICT REPLACE, c8, c9 COLLATE NOCASE ); 
+INSERT INTO v6 VALUES ( NULL, 'v1', 'x' ); 
+INSERT INTO v6 VALUES ( 'v1', 'x', 'fizzle' ); 
+INSERT INTO v6 VALUES ( x'68617265', 'b', 'v0' ); 
+INSERT INTO v6 VALUES ( 18446744073709551488, 'v1', '1.3' ); 
+INSERT INTO v0 VALUES ( - 18446744073709551488, 'x2', '$long' ); 
+; 
+CREATE TABLE v11 ( c12, c13, c14 COLLATE NOCASE ); 
+; 
+INSERT INTO v6 SELECT * FROM v6 AS a16 ORDER BY 18446744073709551488; 
+INSERT INTO v11 SELECT * FROM v6 AS a17 ORDER BY 18446744073709551488; 
+INSERT INTO v0 SELECT * FROM v6 AS a18 ORDER BY 18446744073709551488; 
+; 
+INSERT INTO v0 SELECT * FROM v0 AS a20 ORDER BY 0; 
+INSERT INTO v6 SELECT * FROM v11 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c1 FROM v0 AS a22 GROUP BY 18446744073709551488 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a23 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c14, count ( ( NOT ( a25.c14 IS NULL ) ) AND ( NOT ( a25.c14 IS NULL ) ) ) FROM v11 AS a25 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a26 GROUP BY a26.c8 HAVING count ( * ) >= 18446744073709551615 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c12, count ( a27.c14 ) FROM v11 AS a27 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a28.c3 || a28.c2 ) FROM v0 AS a28 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c3, count ( ( NOT ( a29.c8 IS NULL ) ) AND ( NOT ( a29.c7 IS NULL ) ) ), count ( ( NOT ( a29.c8 IS NULL ) ) AND ( NOT ( a30.c2 IS NULL ) ) ) FROM v6 AS a29 LEFT JOIN v0 AS a30 ON a29.c8 = a30.c2 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a31, v0 AS a32 NATURAL JOIN v11 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a34 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v0 SELECT * FROM v0 AS a20 ORDER BY 0; 
+                                    error here ---^
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+|v1|x
+|v1|x
+|v1|x
+|v1|x
+v1|x|fizzle
+hare|b|v0
+1.84467440737096e+19|v1|1.3
+END VERI 0
+BEGIN VERI 0
+|v1|x
+|v1|x
+|v1|x
+|v1|x
+v1|x|fizzle
+hare|b|v0
+1.84467440737096e+19|v1|1.3
+END VERI 0
+BEGIN VERI 0
+x|5
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 46: no tables specified
+END VERI 0
+BEGIN VERI 0
+1.3|19|19
+END VERI 0
+BEGIN VERI 0
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0|v1|x|fizzle
+|v1|x|1.84467440737096e+19|a|v0|hare|b|v0
+|v1|x|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1|v1|x|fizzle
+|v1|x|1.84467440737096e+19|x|v1|hare|b|v0
+|v1|x|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x||v0|c||v1|x
+|v1|x||v0|c||v1|x
+|v1|x||v0|c|v1|x|fizzle
+|v1|x||v0|c|hare|b|v0
+|v1|x||v0|c|1.84467440737096e+19|v1|1.3
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0|v1|x|fizzle
+|v1|x|x|v0|v0|hare|b|v0
+|v1|x|x|v0|v0|1.84467440737096e+19|v1|1.3
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1|v1|x|fizzle
+|v1|x|abc|x|v1|hare|b|v0
+|v1|x|abc|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+|v1|x|-1.84467440737096e+19|x2|$long|hare|b|v0
+|v1|x|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle|v1|x|fizzle
+|v1|x|v1|x|fizzle|hare|b|v0
+|v1|x|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0|v1|x|fizzle
+|v1|x|hare|b|v0|hare|b|v0
+|v1|x|hare|b|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+|v1|x|1.84467440737096e+19|v1|1.3|hare|b|v0
+|v1|x|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0|v1|x|fizzle
+|v1|x|1.84467440737096e+19|a|v0|hare|b|v0
+|v1|x|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1|v1|x|fizzle
+|v1|x|1.84467440737096e+19|x|v1|hare|b|v0
+|v1|x|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x||v0|c||v1|x
+|v1|x||v0|c||v1|x
+|v1|x||v0|c|v1|x|fizzle
+|v1|x||v0|c|hare|b|v0
+|v1|x||v0|c|1.84467440737096e+19|v1|1.3
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0|v1|x|fizzle
+|v1|x|x|v0|v0|hare|b|v0
+|v1|x|x|v0|v0|1.84467440737096e+19|v1|1.3
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1|v1|x|fizzle
+|v1|x|abc|x|v1|hare|b|v0
+|v1|x|abc|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+|v1|x|-1.84467440737096e+19|x2|$long|hare|b|v0
+|v1|x|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle|v1|x|fizzle
+|v1|x|v1|x|fizzle|hare|b|v0
+|v1|x|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0|v1|x|fizzle
+|v1|x|hare|b|v0|hare|b|v0
+|v1|x|hare|b|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+|v1|x|1.84467440737096e+19|v1|1.3|hare|b|v0
+|v1|x|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0|v1|x|fizzle
+|v1|x|1.84467440737096e+19|a|v0|hare|b|v0
+|v1|x|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1|v1|x|fizzle
+|v1|x|1.84467440737096e+19|x|v1|hare|b|v0
+|v1|x|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x||v0|c||v1|x
+|v1|x||v0|c||v1|x
+|v1|x||v0|c|v1|x|fizzle
+|v1|x||v0|c|hare|b|v0
+|v1|x||v0|c|1.84467440737096e+19|v1|1.3
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0|v1|x|fizzle
+|v1|x|x|v0|v0|hare|b|v0
+|v1|x|x|v0|v0|1.84467440737096e+19|v1|1.3
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1|v1|x|fizzle
+|v1|x|abc|x|v1|hare|b|v0
+|v1|x|abc|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+|v1|x|-1.84467440737096e+19|x2|$long|hare|b|v0
+|v1|x|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle|v1|x|fizzle
+|v1|x|v1|x|fizzle|hare|b|v0
+|v1|x|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0|v1|x|fizzle
+|v1|x|hare|b|v0|hare|b|v0
+|v1|x|hare|b|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+|v1|x|1.84467440737096e+19|v1|1.3|hare|b|v0
+|v1|x|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0|v1|x|fizzle
+|v1|x|1.84467440737096e+19|a|v0|hare|b|v0
+|v1|x|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1|v1|x|fizzle
+|v1|x|1.84467440737096e+19|x|v1|hare|b|v0
+|v1|x|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x||v0|c||v1|x
+|v1|x||v0|c||v1|x
+|v1|x||v0|c|v1|x|fizzle
+|v1|x||v0|c|hare|b|v0
+|v1|x||v0|c|1.84467440737096e+19|v1|1.3
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0|v1|x|fizzle
+|v1|x|x|v0|v0|hare|b|v0
+|v1|x|x|v0|v0|1.84467440737096e+19|v1|1.3
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1|v1|x|fizzle
+|v1|x|abc|x|v1|hare|b|v0
+|v1|x|abc|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+|v1|x|-1.84467440737096e+19|x2|$long|hare|b|v0
+|v1|x|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle|v1|x|fizzle
+|v1|x|v1|x|fizzle|hare|b|v0
+|v1|x|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0|v1|x|fizzle
+|v1|x|hare|b|v0|hare|b|v0
+|v1|x|hare|b|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+|v1|x|1.84467440737096e+19|v1|1.3|hare|b|v0
+|v1|x|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|1.84467440737096e+19|a|v0||v1|x
+v1|x|fizzle|1.84467440737096e+19|a|v0||v1|x
+v1|x|fizzle|1.84467440737096e+19|a|v0|v1|x|fizzle
+v1|x|fizzle|1.84467440737096e+19|a|v0|hare|b|v0
+v1|x|fizzle|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|1.84467440737096e+19|x|v1||v1|x
+v1|x|fizzle|1.84467440737096e+19|x|v1||v1|x
+v1|x|fizzle|1.84467440737096e+19|x|v1|v1|x|fizzle
+v1|x|fizzle|1.84467440737096e+19|x|v1|hare|b|v0
+v1|x|fizzle|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+v1|x|fizzle||v0|c||v1|x
+v1|x|fizzle||v0|c||v1|x
+v1|x|fizzle||v0|c|v1|x|fizzle
+v1|x|fizzle||v0|c|hare|b|v0
+v1|x|fizzle||v0|c|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|x|v0|v0||v1|x
+v1|x|fizzle|x|v0|v0||v1|x
+v1|x|fizzle|x|v0|v0|v1|x|fizzle
+v1|x|fizzle|x|v0|v0|hare|b|v0
+v1|x|fizzle|x|v0|v0|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|abc|x|v1||v1|x
+v1|x|fizzle|abc|x|v1||v1|x
+v1|x|fizzle|abc|x|v1|v1|x|fizzle
+v1|x|fizzle|abc|x|v1|hare|b|v0
+v1|x|fizzle|abc|x|v1|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|-1.84467440737096e+19|x2|$long||v1|x
+v1|x|fizzle|-1.84467440737096e+19|x2|$long||v1|x
+v1|x|fizzle|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+v1|x|fizzle|-1.84467440737096e+19|x2|$long|hare|b|v0
+v1|x|fizzle|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+v1|x|fizzle||v1|x||v1|x
+v1|x|fizzle||v1|x||v1|x
+v1|x|fizzle||v1|x|v1|x|fizzle
+v1|x|fizzle||v1|x|hare|b|v0
+v1|x|fizzle||v1|x|1.84467440737096e+19|v1|1.3
+v1|x|fizzle||v1|x||v1|x
+v1|x|fizzle||v1|x||v1|x
+v1|x|fizzle||v1|x|v1|x|fizzle
+v1|x|fizzle||v1|x|hare|b|v0
+v1|x|fizzle||v1|x|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|v1|x|fizzle||v1|x
+v1|x|fizzle|v1|x|fizzle||v1|x
+v1|x|fizzle|v1|x|fizzle|v1|x|fizzle
+v1|x|fizzle|v1|x|fizzle|hare|b|v0
+v1|x|fizzle|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|hare|b|v0||v1|x
+v1|x|fizzle|hare|b|v0||v1|x
+v1|x|fizzle|hare|b|v0|v1|x|fizzle
+v1|x|fizzle|hare|b|v0|hare|b|v0
+v1|x|fizzle|hare|b|v0|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|1.84467440737096e+19|v1|1.3||v1|x
+v1|x|fizzle|1.84467440737096e+19|v1|1.3||v1|x
+v1|x|fizzle|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+v1|x|fizzle|1.84467440737096e+19|v1|1.3|hare|b|v0
+v1|x|fizzle|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+hare|b|v0|1.84467440737096e+19|a|v0||v1|x
+hare|b|v0|1.84467440737096e+19|a|v0||v1|x
+hare|b|v0|1.84467440737096e+19|a|v0|v1|x|fizzle
+hare|b|v0|1.84467440737096e+19|a|v0|hare|b|v0
+hare|b|v0|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+hare|b|v0|1.84467440737096e+19|x|v1||v1|x
+hare|b|v0|1.84467440737096e+19|x|v1||v1|x
+hare|b|v0|1.84467440737096e+19|x|v1|v1|x|fizzle
+hare|b|v0|1.84467440737096e+19|x|v1|hare|b|v0
+hare|b|v0|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+hare|b|v0||v0|c||v1|x
+hare|b|v0||v0|c||v1|x
+hare|b|v0||v0|c|v1|x|fizzle
+hare|b|v0||v0|c|hare|b|v0
+hare|b|v0||v0|c|1.84467440737096e+19|v1|1.3
+hare|b|v0|x|v0|v0||v1|x
+hare|b|v0|x|v0|v0||v1|x
+hare|b|v0|x|v0|v0|v1|x|fizzle
+hare|b|v0|x|v0|v0|hare|b|v0
+hare|b|v0|x|v0|v0|1.84467440737096e+19|v1|1.3
+hare|b|v0|abc|x|v1||v1|x
+hare|b|v0|abc|x|v1||v1|x
+hare|b|v0|abc|x|v1|v1|x|fizzle
+hare|b|v0|abc|x|v1|hare|b|v0
+hare|b|v0|abc|x|v1|1.84467440737096e+19|v1|1.3
+hare|b|v0|-1.84467440737096e+19|x2|$long||v1|x
+hare|b|v0|-1.84467440737096e+19|x2|$long||v1|x
+hare|b|v0|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+hare|b|v0|-1.84467440737096e+19|x2|$long|hare|b|v0
+hare|b|v0|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+hare|b|v0||v1|x||v1|x
+hare|b|v0||v1|x||v1|x
+hare|b|v0||v1|x|v1|x|fizzle
+hare|b|v0||v1|x|hare|b|v0
+hare|b|v0||v1|x|1.84467440737096e+19|v1|1.3
+hare|b|v0||v1|x||v1|x
+hare|b|v0||v1|x||v1|x
+hare|b|v0||v1|x|v1|x|fizzle
+hare|b|v0||v1|x|hare|b|v0
+hare|b|v0||v1|x|1.84467440737096e+19|v1|1.3
+hare|b|v0|v1|x|fizzle||v1|x
+hare|b|v0|v1|x|fizzle||v1|x
+hare|b|v0|v1|x|fizzle|v1|x|fizzle
+hare|b|v0|v1|x|fizzle|hare|b|v0
+hare|b|v0|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+hare|b|v0|hare|b|v0||v1|x
+hare|b|v0|hare|b|v0||v1|x
+hare|b|v0|hare|b|v0|v1|x|fizzle
+hare|b|v0|hare|b|v0|hare|b|v0
+hare|b|v0|hare|b|v0|1.84467440737096e+19|v1|1.3
+hare|b|v0|1.84467440737096e+19|v1|1.3||v1|x
+hare|b|v0|1.84467440737096e+19|v1|1.3||v1|x
+hare|b|v0|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+hare|b|v0|1.84467440737096e+19|v1|1.3|hare|b|v0
+hare|b|v0|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0|hare|b|v0
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1|hare|b|v0
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3||v0|c||v1|x
+1.84467440737096e+19|v1|1.3||v0|c||v1|x
+1.84467440737096e+19|v1|1.3||v0|c|v1|x|fizzle
+1.84467440737096e+19|v1|1.3||v0|c|hare|b|v0
+1.84467440737096e+19|v1|1.3||v0|c|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|x|v0|v0||v1|x
+1.84467440737096e+19|v1|1.3|x|v0|v0||v1|x
+1.84467440737096e+19|v1|1.3|x|v0|v0|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|x|v0|v0|hare|b|v0
+1.84467440737096e+19|v1|1.3|x|v0|v0|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|abc|x|v1||v1|x
+1.84467440737096e+19|v1|1.3|abc|x|v1||v1|x
+1.84467440737096e+19|v1|1.3|abc|x|v1|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|abc|x|v1|hare|b|v0
+1.84467440737096e+19|v1|1.3|abc|x|v1|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long||v1|x
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long||v1|x
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long|hare|b|v0
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3||v1|x||v1|x
+1.84467440737096e+19|v1|1.3||v1|x||v1|x
+1.84467440737096e+19|v1|1.3||v1|x|v1|x|fizzle
+1.84467440737096e+19|v1|1.3||v1|x|hare|b|v0
+1.84467440737096e+19|v1|1.3||v1|x|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3||v1|x||v1|x
+1.84467440737096e+19|v1|1.3||v1|x||v1|x
+1.84467440737096e+19|v1|1.3||v1|x|v1|x|fizzle
+1.84467440737096e+19|v1|1.3||v1|x|hare|b|v0
+1.84467440737096e+19|v1|1.3||v1|x|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|v1|x|fizzle||v1|x
+1.84467440737096e+19|v1|1.3|v1|x|fizzle||v1|x
+1.84467440737096e+19|v1|1.3|v1|x|fizzle|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|v1|x|fizzle|hare|b|v0
+1.84467440737096e+19|v1|1.3|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|hare|b|v0||v1|x
+1.84467440737096e+19|v1|1.3|hare|b|v0||v1|x
+1.84467440737096e+19|v1|1.3|hare|b|v0|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|hare|b|v0|hare|b|v0
+1.84467440737096e+19|v1|1.3|hare|b|v0|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3|hare|b|v0
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 55: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v6 AS a34 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+|v1|x
+|v1|x
+|v1|x
+|v1|x
+v1|x|fizzle
+hare|b|v0
+1.84467440737096e+19|v1|1.3
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+|v1|x
+|v1|x
+|v1|x
+|v1|x
+v1|x|fizzle
+hare|b|v0
+1.84467440737096e+19|v1|1.3
+ 
+INT: 6 
+Str: 
+|v1|x
+|v1|x
+|v1|x
+|v1|x
+v1|x|fizzle
+hare|b|v0
+1.84467440737096e+19|v1|1.3
+ 
+INT: 6 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+|v1|x
+|v1|x
+|v1|x
+|v1|x
+v1|x|fizzle
+hare|b|v0
+1.84467440737096e+19|v1|1.3
+ 
+INT: 6 
+Str: 
+|v1|x
+|v1|x
+|v1|x
+|v1|x
+v1|x|fizzle
+hare|b|v0
+1.84467440737096e+19|v1|1.3
+ 
+INT: 6 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+x|5
+ 
+INT: 0 
+Str: 
+x|5
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+|5
+ 
+INT: 0 
+Str: 
+|5
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 46: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 46: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+1.3|19|19
+ 
+INT: 0 
+Str: 
+1.3|19|19
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: -1
+Str: 
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0|v1|x|fizzle
+|v1|x|1.84467440737096e+19|a|v0|hare|b|v0
+|v1|x|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1|v1|x|fizzle
+|v1|x|1.84467440737096e+19|x|v1|hare|b|v0
+|v1|x|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x||v0|c||v1|x
+|v1|x||v0|c||v1|x
+|v1|x||v0|c|v1|x|fizzle
+|v1|x||v0|c|hare|b|v0
+|v1|x||v0|c|1.84467440737096e+19|v1|1.3
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0|v1|x|fizzle
+|v1|x|x|v0|v0|hare|b|v0
+|v1|x|x|v0|v0|1.84467440737096e+19|v1|1.3
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1|v1|x|fizzle
+|v1|x|abc|x|v1|hare|b|v0
+|v1|x|abc|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+|v1|x|-1.84467440737096e+19|x2|$long|hare|b|v0
+|v1|x|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle|v1|x|fizzle
+|v1|x|v1|x|fizzle|hare|b|v0
+|v1|x|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0|v1|x|fizzle
+|v1|x|hare|b|v0|hare|b|v0
+|v1|x|hare|b|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+|v1|x|1.84467440737096e+19|v1|1.3|hare|b|v0
+|v1|x|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0|v1|x|fizzle
+|v1|x|1.84467440737096e+19|a|v0|hare|b|v0
+|v1|x|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1|v1|x|fizzle
+|v1|x|1.84467440737096e+19|x|v1|hare|b|v0
+|v1|x|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x||v0|c||v1|x
+|v1|x||v0|c||v1|x
+|v1|x||v0|c|v1|x|fizzle
+|v1|x||v0|c|hare|b|v0
+|v1|x||v0|c|1.84467440737096e+19|v1|1.3
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0|v1|x|fizzle
+|v1|x|x|v0|v0|hare|b|v0
+|v1|x|x|v0|v0|1.84467440737096e+19|v1|1.3
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1|v1|x|fizzle
+|v1|x|abc|x|v1|hare|b|v0
+|v1|x|abc|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+|v1|x|-1.84467440737096e+19|x2|$long|hare|b|v0
+|v1|x|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle|v1|x|fizzle
+|v1|x|v1|x|fizzle|hare|b|v0
+|v1|x|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0|v1|x|fizzle
+|v1|x|hare|b|v0|hare|b|v0
+|v1|x|hare|b|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+|v1|x|1.84467440737096e+19|v1|1.3|hare|b|v0
+|v1|x|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0|v1|x|fizzle
+|v1|x|1.84467440737096e+19|a|v0|hare|b|v0
+|v1|x|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1|v1|x|fizzle
+|v1|x|1.84467440737096e+19|x|v1|hare|b|v0
+|v1|x|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x||v0|c||v1|x
+|v1|x||v0|c||v1|x
+|v1|x||v0|c|v1|x|fizzle
+|v1|x||v0|c|hare|b|v0
+|v1|x||v0|c|1.84467440737096e+19|v1|1.3
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0|v1|x|fizzle
+|v1|x|x|v0|v0|hare|b|v0
+|v1|x|x|v0|v0|1.84467440737096e+19|v1|1.3
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1|v1|x|fizzle
+|v1|x|abc|x|v1|hare|b|v0
+|v1|x|abc|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+|v1|x|-1.84467440737096e+19|x2|$long|hare|b|v0
+|v1|x|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle|v1|x|fizzle
+|v1|x|v1|x|fizzle|hare|b|v0
+|v1|x|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0|v1|x|fizzle
+|v1|x|hare|b|v0|hare|b|v0
+|v1|x|hare|b|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+|v1|x|1.84467440737096e+19|v1|1.3|hare|b|v0
+|v1|x|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0|v1|x|fizzle
+|v1|x|1.84467440737096e+19|a|v0|hare|b|v0
+|v1|x|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1|v1|x|fizzle
+|v1|x|1.84467440737096e+19|x|v1|hare|b|v0
+|v1|x|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x||v0|c||v1|x
+|v1|x||v0|c||v1|x
+|v1|x||v0|c|v1|x|fizzle
+|v1|x||v0|c|hare|b|v0
+|v1|x||v0|c|1.84467440737096e+19|v1|1.3
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0|v1|x|fizzle
+|v1|x|x|v0|v0|hare|b|v0
+|v1|x|x|v0|v0|1.84467440737096e+19|v1|1.3
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1|v1|x|fizzle
+|v1|x|abc|x|v1|hare|b|v0
+|v1|x|abc|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+|v1|x|-1.84467440737096e+19|x2|$long|hare|b|v0
+|v1|x|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle|v1|x|fizzle
+|v1|x|v1|x|fizzle|hare|b|v0
+|v1|x|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0|v1|x|fizzle
+|v1|x|hare|b|v0|hare|b|v0
+|v1|x|hare|b|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+|v1|x|1.84467440737096e+19|v1|1.3|hare|b|v0
+|v1|x|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|1.84467440737096e+19|a|v0||v1|x
+v1|x|fizzle|1.84467440737096e+19|a|v0||v1|x
+v1|x|fizzle|1.84467440737096e+19|a|v0|v1|x|fizzle
+v1|x|fizzle|1.84467440737096e+19|a|v0|hare|b|v0
+v1|x|fizzle|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|1.84467440737096e+19|x|v1||v1|x
+v1|x|fizzle|1.84467440737096e+19|x|v1||v1|x
+v1|x|fizzle|1.84467440737096e+19|x|v1|v1|x|fizzle
+v1|x|fizzle|1.84467440737096e+19|x|v1|hare|b|v0
+v1|x|fizzle|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+v1|x|fizzle||v0|c||v1|x
+v1|x|fizzle||v0|c||v1|x
+v1|x|fizzle||v0|c|v1|x|fizzle
+v1|x|fizzle||v0|c|hare|b|v0
+v1|x|fizzle||v0|c|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|x|v0|v0||v1|x
+v1|x|fizzle|x|v0|v0||v1|x
+v1|x|fizzle|x|v0|v0|v1|x|fizzle
+v1|x|fizzle|x|v0|v0|hare|b|v0
+v1|x|fizzle|x|v0|v0|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|abc|x|v1||v1|x
+v1|x|fizzle|abc|x|v1||v1|x
+v1|x|fizzle|abc|x|v1|v1|x|fizzle
+v1|x|fizzle|abc|x|v1|hare|b|v0
+v1|x|fizzle|abc|x|v1|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|-1.84467440737096e+19|x2|$long||v1|x
+v1|x|fizzle|-1.84467440737096e+19|x2|$long||v1|x
+v1|x|fizzle|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+v1|x|fizzle|-1.84467440737096e+19|x2|$long|hare|b|v0
+v1|x|fizzle|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+v1|x|fizzle||v1|x||v1|x
+v1|x|fizzle||v1|x||v1|x
+v1|x|fizzle||v1|x|v1|x|fizzle
+v1|x|fizzle||v1|x|hare|b|v0
+v1|x|fizzle||v1|x|1.84467440737096e+19|v1|1.3
+v1|x|fizzle||v1|x||v1|x
+v1|x|fizzle||v1|x||v1|x
+v1|x|fizzle||v1|x|v1|x|fizzle
+v1|x|fizzle||v1|x|hare|b|v0
+v1|x|fizzle||v1|x|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|v1|x|fizzle||v1|x
+v1|x|fizzle|v1|x|fizzle||v1|x
+v1|x|fizzle|v1|x|fizzle|v1|x|fizzle
+v1|x|fizzle|v1|x|fizzle|hare|b|v0
+v1|x|fizzle|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|hare|b|v0||v1|x
+v1|x|fizzle|hare|b|v0||v1|x
+v1|x|fizzle|hare|b|v0|v1|x|fizzle
+v1|x|fizzle|hare|b|v0|hare|b|v0
+v1|x|fizzle|hare|b|v0|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|1.84467440737096e+19|v1|1.3||v1|x
+v1|x|fizzle|1.84467440737096e+19|v1|1.3||v1|x
+v1|x|fizzle|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+v1|x|fizzle|1.84467440737096e+19|v1|1.3|hare|b|v0
+v1|x|fizzle|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+hare|b|v0|1.84467440737096e+19|a|v0||v1|x
+hare|b|v0|1.84467440737096e+19|a|v0||v1|x
+hare|b|v0|1.84467440737096e+19|a|v0|v1|x|fizzle
+hare|b|v0|1.84467440737096e+19|a|v0|hare|b|v0
+hare|b|v0|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+hare|b|v0|1.84467440737096e+19|x|v1||v1|x
+hare|b|v0|1.84467440737096e+19|x|v1||v1|x
+hare|b|v0|1.84467440737096e+19|x|v1|v1|x|fizzle
+hare|b|v0|1.84467440737096e+19|x|v1|hare|b|v0
+hare|b|v0|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+hare|b|v0||v0|c||v1|x
+hare|b|v0||v0|c||v1|x
+hare|b|v0||v0|c|v1|x|fizzle
+hare|b|v0||v0|c|hare|b|v0
+hare|b|v0||v0|c|1.84467440737096e+19|v1|1.3
+hare|b|v0|x|v0|v0||v1|x
+hare|b|v0|x|v0|v0||v1|x
+hare|b|v0|x|v0|v0|v1|x|fizzle
+hare|b|v0|x|v0|v0|hare|b|v0
+hare|b|v0|x|v0|v0|1.84467440737096e+19|v1|1.3
+hare|b|v0|abc|x|v1||v1|x
+hare|b|v0|abc|x|v1||v1|x
+hare|b|v0|abc|x|v1|v1|x|fizzle
+hare|b|v0|abc|x|v1|hare|b|v0
+hare|b|v0|abc|x|v1|1.84467440737096e+19|v1|1.3
+hare|b|v0|-1.84467440737096e+19|x2|$long||v1|x
+hare|b|v0|-1.84467440737096e+19|x2|$long||v1|x
+hare|b|v0|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+hare|b|v0|-1.84467440737096e+19|x2|$long|hare|b|v0
+hare|b|v0|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+hare|b|v0||v1|x||v1|x
+hare|b|v0||v1|x||v1|x
+hare|b|v0||v1|x|v1|x|fizzle
+hare|b|v0||v1|x|hare|b|v0
+hare|b|v0||v1|x|1.84467440737096e+19|v1|1.3
+hare|b|v0||v1|x||v1|x
+hare|b|v0||v1|x||v1|x
+hare|b|v0||v1|x|v1|x|fizzle
+hare|b|v0||v1|x|hare|b|v0
+hare|b|v0||v1|x|1.84467440737096e+19|v1|1.3
+hare|b|v0|v1|x|fizzle||v1|x
+hare|b|v0|v1|x|fizzle||v1|x
+hare|b|v0|v1|x|fizzle|v1|x|fizzle
+hare|b|v0|v1|x|fizzle|hare|b|v0
+hare|b|v0|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+hare|b|v0|hare|b|v0||v1|x
+hare|b|v0|hare|b|v0||v1|x
+hare|b|v0|hare|b|v0|v1|x|fizzle
+hare|b|v0|hare|b|v0|hare|b|v0
+hare|b|v0|hare|b|v0|1.84467440737096e+19|v1|1.3
+hare|b|v0|1.84467440737096e+19|v1|1.3||v1|x
+hare|b|v0|1.84467440737096e+19|v1|1.3||v1|x
+hare|b|v0|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+hare|b|v0|1.84467440737096e+19|v1|1.3|hare|b|v0
+hare|b|v0|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0|hare|b|v0
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1|hare|b|v0
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3||v0|c||v1|x
+1.84467440737096e+19|v1|1.3||v0|c||v1|x
+1.84467440737096e+19|v1|1.3||v0|c|v1|x|fizzle
+1.84467440737096e+19|v1|1.3||v0|c|hare|b|v0
+1.84467440737096e+19|v1|1.3||v0|c|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|x|v0|v0||v1|x
+1.84467440737096e+19|v1|1.3|x|v0|v0||v1|x
+1.84467440737096e+19|v1|1.3|x|v0|v0|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|x|v0|v0|hare|b|v0
+1.84467440737096e+19|v1|1.3|x|v0|v0|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|abc|x|v1||v1|x
+1.84467440737096e+19|v1|1.3|abc|x|v1||v1|x
+1.84467440737096e+19|v1|1.3|abc|x|v1|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|abc|x|v1|hare|b|v0
+1.84467440737096e+19|v1|1.3|abc|x|v1|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long||v1|x
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long||v1|x
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long|hare|b|v0
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3||v1|x||v1|x
+1.84467440737096e+19|v1|1.3||v1|x||v1|x
+1.84467440737096e+19|v1|1.3||v1|x|v1|x|fizzle
+1.84467440737096e+19|v1|1.3||v1|x|hare|b|v0
+1.84467440737096e+19|v1|1.3||v1|x|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3||v1|x||v1|x
+1.84467440737096e+19|v1|1.3||v1|x||v1|x
+1.84467440737096e+19|v1|1.3||v1|x|v1|x|fizzle
+1.84467440737096e+19|v1|1.3||v1|x|hare|b|v0
+1.84467440737096e+19|v1|1.3||v1|x|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|v1|x|fizzle||v1|x
+1.84467440737096e+19|v1|1.3|v1|x|fizzle||v1|x
+1.84467440737096e+19|v1|1.3|v1|x|fizzle|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|v1|x|fizzle|hare|b|v0
+1.84467440737096e+19|v1|1.3|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|hare|b|v0||v1|x
+1.84467440737096e+19|v1|1.3|hare|b|v0||v1|x
+1.84467440737096e+19|v1|1.3|hare|b|v0|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|hare|b|v0|hare|b|v0
+1.84467440737096e+19|v1|1.3|hare|b|v0|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3|hare|b|v0
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+ 
+Str: 
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0|v1|x|fizzle
+|v1|x|1.84467440737096e+19|a|v0|hare|b|v0
+|v1|x|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1|v1|x|fizzle
+|v1|x|1.84467440737096e+19|x|v1|hare|b|v0
+|v1|x|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x||v0|c||v1|x
+|v1|x||v0|c||v1|x
+|v1|x||v0|c|v1|x|fizzle
+|v1|x||v0|c|hare|b|v0
+|v1|x||v0|c|1.84467440737096e+19|v1|1.3
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0|v1|x|fizzle
+|v1|x|x|v0|v0|hare|b|v0
+|v1|x|x|v0|v0|1.84467440737096e+19|v1|1.3
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1|v1|x|fizzle
+|v1|x|abc|x|v1|hare|b|v0
+|v1|x|abc|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+|v1|x|-1.84467440737096e+19|x2|$long|hare|b|v0
+|v1|x|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle|v1|x|fizzle
+|v1|x|v1|x|fizzle|hare|b|v0
+|v1|x|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0|v1|x|fizzle
+|v1|x|hare|b|v0|hare|b|v0
+|v1|x|hare|b|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+|v1|x|1.84467440737096e+19|v1|1.3|hare|b|v0
+|v1|x|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0|v1|x|fizzle
+|v1|x|1.84467440737096e+19|a|v0|hare|b|v0
+|v1|x|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1|v1|x|fizzle
+|v1|x|1.84467440737096e+19|x|v1|hare|b|v0
+|v1|x|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x||v0|c||v1|x
+|v1|x||v0|c||v1|x
+|v1|x||v0|c|v1|x|fizzle
+|v1|x||v0|c|hare|b|v0
+|v1|x||v0|c|1.84467440737096e+19|v1|1.3
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0|v1|x|fizzle
+|v1|x|x|v0|v0|hare|b|v0
+|v1|x|x|v0|v0|1.84467440737096e+19|v1|1.3
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1|v1|x|fizzle
+|v1|x|abc|x|v1|hare|b|v0
+|v1|x|abc|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+|v1|x|-1.84467440737096e+19|x2|$long|hare|b|v0
+|v1|x|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle|v1|x|fizzle
+|v1|x|v1|x|fizzle|hare|b|v0
+|v1|x|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0|v1|x|fizzle
+|v1|x|hare|b|v0|hare|b|v0
+|v1|x|hare|b|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+|v1|x|1.84467440737096e+19|v1|1.3|hare|b|v0
+|v1|x|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0|v1|x|fizzle
+|v1|x|1.84467440737096e+19|a|v0|hare|b|v0
+|v1|x|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1|v1|x|fizzle
+|v1|x|1.84467440737096e+19|x|v1|hare|b|v0
+|v1|x|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x||v0|c||v1|x
+|v1|x||v0|c||v1|x
+|v1|x||v0|c|v1|x|fizzle
+|v1|x||v0|c|hare|b|v0
+|v1|x||v0|c|1.84467440737096e+19|v1|1.3
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0|v1|x|fizzle
+|v1|x|x|v0|v0|hare|b|v0
+|v1|x|x|v0|v0|1.84467440737096e+19|v1|1.3
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1|v1|x|fizzle
+|v1|x|abc|x|v1|hare|b|v0
+|v1|x|abc|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+|v1|x|-1.84467440737096e+19|x2|$long|hare|b|v0
+|v1|x|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle|v1|x|fizzle
+|v1|x|v1|x|fizzle|hare|b|v0
+|v1|x|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0|v1|x|fizzle
+|v1|x|hare|b|v0|hare|b|v0
+|v1|x|hare|b|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+|v1|x|1.84467440737096e+19|v1|1.3|hare|b|v0
+|v1|x|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0||v1|x
+|v1|x|1.84467440737096e+19|a|v0|v1|x|fizzle
+|v1|x|1.84467440737096e+19|a|v0|hare|b|v0
+|v1|x|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1||v1|x
+|v1|x|1.84467440737096e+19|x|v1|v1|x|fizzle
+|v1|x|1.84467440737096e+19|x|v1|hare|b|v0
+|v1|x|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x||v0|c||v1|x
+|v1|x||v0|c||v1|x
+|v1|x||v0|c|v1|x|fizzle
+|v1|x||v0|c|hare|b|v0
+|v1|x||v0|c|1.84467440737096e+19|v1|1.3
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0||v1|x
+|v1|x|x|v0|v0|v1|x|fizzle
+|v1|x|x|v0|v0|hare|b|v0
+|v1|x|x|v0|v0|1.84467440737096e+19|v1|1.3
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1||v1|x
+|v1|x|abc|x|v1|v1|x|fizzle
+|v1|x|abc|x|v1|hare|b|v0
+|v1|x|abc|x|v1|1.84467440737096e+19|v1|1.3
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long||v1|x
+|v1|x|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+|v1|x|-1.84467440737096e+19|x2|$long|hare|b|v0
+|v1|x|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x||v1|x||v1|x
+|v1|x||v1|x||v1|x
+|v1|x||v1|x|v1|x|fizzle
+|v1|x||v1|x|hare|b|v0
+|v1|x||v1|x|1.84467440737096e+19|v1|1.3
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle||v1|x
+|v1|x|v1|x|fizzle|v1|x|fizzle
+|v1|x|v1|x|fizzle|hare|b|v0
+|v1|x|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0||v1|x
+|v1|x|hare|b|v0|v1|x|fizzle
+|v1|x|hare|b|v0|hare|b|v0
+|v1|x|hare|b|v0|1.84467440737096e+19|v1|1.3
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3||v1|x
+|v1|x|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+|v1|x|1.84467440737096e+19|v1|1.3|hare|b|v0
+|v1|x|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|1.84467440737096e+19|a|v0||v1|x
+v1|x|fizzle|1.84467440737096e+19|a|v0||v1|x
+v1|x|fizzle|1.84467440737096e+19|a|v0|v1|x|fizzle
+v1|x|fizzle|1.84467440737096e+19|a|v0|hare|b|v0
+v1|x|fizzle|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|1.84467440737096e+19|x|v1||v1|x
+v1|x|fizzle|1.84467440737096e+19|x|v1||v1|x
+v1|x|fizzle|1.84467440737096e+19|x|v1|v1|x|fizzle
+v1|x|fizzle|1.84467440737096e+19|x|v1|hare|b|v0
+v1|x|fizzle|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+v1|x|fizzle||v0|c||v1|x
+v1|x|fizzle||v0|c||v1|x
+v1|x|fizzle||v0|c|v1|x|fizzle
+v1|x|fizzle||v0|c|hare|b|v0
+v1|x|fizzle||v0|c|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|x|v0|v0||v1|x
+v1|x|fizzle|x|v0|v0||v1|x
+v1|x|fizzle|x|v0|v0|v1|x|fizzle
+v1|x|fizzle|x|v0|v0|hare|b|v0
+v1|x|fizzle|x|v0|v0|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|abc|x|v1||v1|x
+v1|x|fizzle|abc|x|v1||v1|x
+v1|x|fizzle|abc|x|v1|v1|x|fizzle
+v1|x|fizzle|abc|x|v1|hare|b|v0
+v1|x|fizzle|abc|x|v1|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|-1.84467440737096e+19|x2|$long||v1|x
+v1|x|fizzle|-1.84467440737096e+19|x2|$long||v1|x
+v1|x|fizzle|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+v1|x|fizzle|-1.84467440737096e+19|x2|$long|hare|b|v0
+v1|x|fizzle|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+v1|x|fizzle||v1|x||v1|x
+v1|x|fizzle||v1|x||v1|x
+v1|x|fizzle||v1|x|v1|x|fizzle
+v1|x|fizzle||v1|x|hare|b|v0
+v1|x|fizzle||v1|x|1.84467440737096e+19|v1|1.3
+v1|x|fizzle||v1|x||v1|x
+v1|x|fizzle||v1|x||v1|x
+v1|x|fizzle||v1|x|v1|x|fizzle
+v1|x|fizzle||v1|x|hare|b|v0
+v1|x|fizzle||v1|x|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|v1|x|fizzle||v1|x
+v1|x|fizzle|v1|x|fizzle||v1|x
+v1|x|fizzle|v1|x|fizzle|v1|x|fizzle
+v1|x|fizzle|v1|x|fizzle|hare|b|v0
+v1|x|fizzle|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|hare|b|v0||v1|x
+v1|x|fizzle|hare|b|v0||v1|x
+v1|x|fizzle|hare|b|v0|v1|x|fizzle
+v1|x|fizzle|hare|b|v0|hare|b|v0
+v1|x|fizzle|hare|b|v0|1.84467440737096e+19|v1|1.3
+v1|x|fizzle|1.84467440737096e+19|v1|1.3||v1|x
+v1|x|fizzle|1.84467440737096e+19|v1|1.3||v1|x
+v1|x|fizzle|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+v1|x|fizzle|1.84467440737096e+19|v1|1.3|hare|b|v0
+v1|x|fizzle|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+hare|b|v0|1.84467440737096e+19|a|v0||v1|x
+hare|b|v0|1.84467440737096e+19|a|v0||v1|x
+hare|b|v0|1.84467440737096e+19|a|v0|v1|x|fizzle
+hare|b|v0|1.84467440737096e+19|a|v0|hare|b|v0
+hare|b|v0|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+hare|b|v0|1.84467440737096e+19|x|v1||v1|x
+hare|b|v0|1.84467440737096e+19|x|v1||v1|x
+hare|b|v0|1.84467440737096e+19|x|v1|v1|x|fizzle
+hare|b|v0|1.84467440737096e+19|x|v1|hare|b|v0
+hare|b|v0|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+hare|b|v0||v0|c||v1|x
+hare|b|v0||v0|c||v1|x
+hare|b|v0||v0|c|v1|x|fizzle
+hare|b|v0||v0|c|hare|b|v0
+hare|b|v0||v0|c|1.84467440737096e+19|v1|1.3
+hare|b|v0|x|v0|v0||v1|x
+hare|b|v0|x|v0|v0||v1|x
+hare|b|v0|x|v0|v0|v1|x|fizzle
+hare|b|v0|x|v0|v0|hare|b|v0
+hare|b|v0|x|v0|v0|1.84467440737096e+19|v1|1.3
+hare|b|v0|abc|x|v1||v1|x
+hare|b|v0|abc|x|v1||v1|x
+hare|b|v0|abc|x|v1|v1|x|fizzle
+hare|b|v0|abc|x|v1|hare|b|v0
+hare|b|v0|abc|x|v1|1.84467440737096e+19|v1|1.3
+hare|b|v0|-1.84467440737096e+19|x2|$long||v1|x
+hare|b|v0|-1.84467440737096e+19|x2|$long||v1|x
+hare|b|v0|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+hare|b|v0|-1.84467440737096e+19|x2|$long|hare|b|v0
+hare|b|v0|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+hare|b|v0||v1|x||v1|x
+hare|b|v0||v1|x||v1|x
+hare|b|v0||v1|x|v1|x|fizzle
+hare|b|v0||v1|x|hare|b|v0
+hare|b|v0||v1|x|1.84467440737096e+19|v1|1.3
+hare|b|v0||v1|x||v1|x
+hare|b|v0||v1|x||v1|x
+hare|b|v0||v1|x|v1|x|fizzle
+hare|b|v0||v1|x|hare|b|v0
+hare|b|v0||v1|x|1.84467440737096e+19|v1|1.3
+hare|b|v0|v1|x|fizzle||v1|x
+hare|b|v0|v1|x|fizzle||v1|x
+hare|b|v0|v1|x|fizzle|v1|x|fizzle
+hare|b|v0|v1|x|fizzle|hare|b|v0
+hare|b|v0|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+hare|b|v0|hare|b|v0||v1|x
+hare|b|v0|hare|b|v0||v1|x
+hare|b|v0|hare|b|v0|v1|x|fizzle
+hare|b|v0|hare|b|v0|hare|b|v0
+hare|b|v0|hare|b|v0|1.84467440737096e+19|v1|1.3
+hare|b|v0|1.84467440737096e+19|v1|1.3||v1|x
+hare|b|v0|1.84467440737096e+19|v1|1.3||v1|x
+hare|b|v0|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+hare|b|v0|1.84467440737096e+19|v1|1.3|hare|b|v0
+hare|b|v0|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0|hare|b|v0
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|a|v0|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1|hare|b|v0
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|x|v1|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3||v0|c||v1|x
+1.84467440737096e+19|v1|1.3||v0|c||v1|x
+1.84467440737096e+19|v1|1.3||v0|c|v1|x|fizzle
+1.84467440737096e+19|v1|1.3||v0|c|hare|b|v0
+1.84467440737096e+19|v1|1.3||v0|c|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|x|v0|v0||v1|x
+1.84467440737096e+19|v1|1.3|x|v0|v0||v1|x
+1.84467440737096e+19|v1|1.3|x|v0|v0|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|x|v0|v0|hare|b|v0
+1.84467440737096e+19|v1|1.3|x|v0|v0|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|abc|x|v1||v1|x
+1.84467440737096e+19|v1|1.3|abc|x|v1||v1|x
+1.84467440737096e+19|v1|1.3|abc|x|v1|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|abc|x|v1|hare|b|v0
+1.84467440737096e+19|v1|1.3|abc|x|v1|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long||v1|x
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long||v1|x
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long|hare|b|v0
+1.84467440737096e+19|v1|1.3|-1.84467440737096e+19|x2|$long|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3||v1|x||v1|x
+1.84467440737096e+19|v1|1.3||v1|x||v1|x
+1.84467440737096e+19|v1|1.3||v1|x|v1|x|fizzle
+1.84467440737096e+19|v1|1.3||v1|x|hare|b|v0
+1.84467440737096e+19|v1|1.3||v1|x|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3||v1|x||v1|x
+1.84467440737096e+19|v1|1.3||v1|x||v1|x
+1.84467440737096e+19|v1|1.3||v1|x|v1|x|fizzle
+1.84467440737096e+19|v1|1.3||v1|x|hare|b|v0
+1.84467440737096e+19|v1|1.3||v1|x|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|v1|x|fizzle||v1|x
+1.84467440737096e+19|v1|1.3|v1|x|fizzle||v1|x
+1.84467440737096e+19|v1|1.3|v1|x|fizzle|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|v1|x|fizzle|hare|b|v0
+1.84467440737096e+19|v1|1.3|v1|x|fizzle|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|hare|b|v0||v1|x
+1.84467440737096e+19|v1|1.3|hare|b|v0||v1|x
+1.84467440737096e+19|v1|1.3|hare|b|v0|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|hare|b|v0|hare|b|v0
+1.84467440737096e+19|v1|1.3|hare|b|v0|1.84467440737096e+19|v1|1.3
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3||v1|x
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3|v1|x|fizzle
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3|hare|b|v0
+1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3|1.84467440737096e+19|v1|1.3
+ 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 55: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v6 AS a34 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 55: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v6 AS a34 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 11 
+RESULT FLAGS: 1
+Str: 
+|v1|x
+|v1|x
+|v1|x
+|v1|x
+v1|x|fizzle
+hare|b|v0
+1.84467440737096e+19|v1|1.3
+ 
+INT: 6 
+Str: 
+|v1|x
+|v1|x
+|v1|x
+|v1|x
+v1|x|fizzle
+hare|b|v0
+1.84467440737096e+19|v1|1.3
+ 
+INT: 6 
+Compare_result_int: 
+0
+
+
+

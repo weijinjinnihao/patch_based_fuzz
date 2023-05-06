@@ -1,0 +1,321 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 STRING, c2 STRING, CONSTRAINT pk_q PRIMARY KEY ( c2 ) ); 
+CREATE INDEX i3 ON v0 ( c1 ); 
+BEGIN; 
+ALTER TABLE v0 ADD COLUMN c4 CHECK( ( 18446744073709551615, ( c2 + 0 ), c2 != 'x' ) % 18446744073709551615 ); 
+CREATE INDEX i5 ON v0 ( c4 ); 
+INSERT INTO v0 ( c1, c2 ) VALUES ( 'v1', 'v0' ); 
+INSERT INTO v0 ( c1, c4 ) VALUES ( 'v1', 'v0' ); 
+CREATE INDEX i6 ON v0 ( c2 ); 
+CREATE TABLE v7 ( c8 REFERENCES t1 DEFAULT NULL, c9, c10, c11, c12, c13, c14, c15, c16, c17 INTEGER UNIQUE ON CONFLICT FAIL, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, PRIMARY KEY ( c32, c31, c25, c38, c40, c15, c38 ) ) WITHOUT ROWID; 
+CREATE INDEX i42 ON v0 ( c1 ); 
+END; 
+DELETE FROM v0 WHERE c4 > 0; 
+CREATE INDEX i43 ON v7 ( c8 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c12 FROM v7 AS a44 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a45.c41 || a45.c17 ) FROM v7 AS a45 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a46.c4, a46.c2, count ( a46.c4 ) FROM v0 AS a46 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a47 ORDER BY - 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 NATURAL JOIN v7 AS a49 WHERE a49.c10 = 'v1' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a51 NATURAL JOIN v7 AS a52 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a53 GROUP BY a53.c29 HAVING a53.c21 > a53.c22 % 2147483647 >= 127 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 4: row value misused
+Runtime error near line 5: no such column: c4
+Parse error near line 7: table v0 has no column named c4
+Parse error near line 12: no such column: c4
+  DELETE FROM v0 WHERE c4 > 0; 
+                       ^--- error here
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a44.c12 FROM v7 AS a44 ORDER BY 2147483647; 
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a46.c4
+  SELECT a46.c4, a46.c2, count ( a46.c4 ) FROM v0 AS a46 ORDER BY 0; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+v1|v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 36
+  URAL JOIN v7 AS a49 WHERE a49.c10 = 'v1' ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a50 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 34
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 STRING, c2 STRING, CONSTRAINT pk_q PRIMARY KEY ( c2 ) ); 
+; 
+BEGIN; 
+ALTER TABLE v0 ADD COLUMN c4 CHECK( ( 18446744073709551615, ( c2 + 0 ), c2 != 'x' ) % 18446744073709551615 ); 
+; 
+INSERT INTO v0 ( c1, c2 ) VALUES ( 'v1', 'v0' ); 
+INSERT INTO v0 ( c1, c4 ) VALUES ( 'v1', 'v0' ); 
+; 
+CREATE TABLE v7 ( c8 REFERENCES t1 DEFAULT NULL, c9, c10, c11, c12, c13, c14, c15, c16, c17 INTEGER UNIQUE ON CONFLICT FAIL, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, PRIMARY KEY ( c32, c31, c25, c38, c40, c15, c38 ) ) WITHOUT ROWID; 
+; 
+END; 
+DELETE FROM v0 WHERE c4 > 0; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c12 FROM v7 AS a44 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a45.c41 || a45.c17 ) FROM v7 AS a45 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a46.c4, a46.c2, count ( a46.c4 ) FROM v0 AS a46 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a47 ORDER BY - 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 NATURAL JOIN v7 AS a49 WHERE a49.c10 = 'v1' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a51 NATURAL JOIN v7 AS a52 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a53 GROUP BY a53.c29 HAVING a53.c21 > a53.c22 % 2147483647 >= 127 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 4: row value misused
+Parse error near line 6: row value misused
+Parse error near line 7: row value misused
+Parse error near line 12: no such column: c4
+  DELETE FROM v0 WHERE c4 > 0; 
+                       ^--- error here
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a44.c12 FROM v7 AS a44 ORDER BY 2147483647; 
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a46.c4
+  SELECT a46.c4, a46.c2, count ( a46.c4 ) FROM v0 AS a46 ORDER BY 0; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 36
+  URAL JOIN v7 AS a49 WHERE a49.c10 = 'v1' ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a50 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 34
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a44.c12 FROM v7 AS a44 ORDER BY 2147483647; 
+                           error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a44.c12 FROM v7 AS a44 ORDER BY 2147483647; 
+                           error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such column: a46.c4
+  SELECT a46.c4, a46.c2, count ( a46.c4 ) FROM v0 AS a46 ORDER BY 0; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 27: no such column: a46.c4
+  SELECT a46.c4, a46.c2, count ( a46.c4 ) FROM v0 AS a46 ORDER BY 0; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+v1|v0
+ 
+INT: 0 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 36
+  URAL JOIN v7 AS a49 WHERE a49.c10 = 'v1' ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 36
+  URAL JOIN v7 AS a49 WHERE a49.c10 = 'v1' ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a50 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a50 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 34
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 34
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

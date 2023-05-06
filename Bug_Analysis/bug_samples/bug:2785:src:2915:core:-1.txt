@@ -1,0 +1,351 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INT, c2 INT ); 
+CREATE INDEX i3 ON v0 ( c1 ); 
+BEGIN; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 18446744071562067968, 18446744071562067968 ); 
+ALTER TABLE v0 ADD COLUMN c6 CHECK( x'b1' ); 
+INSERT INTO v0 VALUES ( 18446744071562067968, 0 ); 
+CREATE INDEX i7 ON v0 ( c6 ); 
+INSERT INTO v0 VALUES ( 18446744071562067968, 18446744071562067968 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 18446744071562067968 IS NOT 18446744071562067968 ) OR NOT ( 100 IS 18446744071562067968 OR ( a8.c1 = 0 ) ) ) IS 0 FROM v0 AS a8 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+CREATE INDEX i9 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a10.c2 IS NULL ) ) AND ( NOT ( a10.c2 IS NULL ) ) ) FROM v0 AS a10 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a11 ORDER BY ( ( hex ( 18446744071562067968 ) ) % 18446744071562067968 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c13, c14, c15, c16, c17, c18 ) AS ( SELECT 18446744073709551488 y ORDER BY 18446744071562067968 ) SELECT * FROM v0 AS a12 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c6, a19.c2 FROM v0 AS a19 JOIN v0 AS a20 ON a20.c6 = hex ( ) GROUP BY a19.c2 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a21.c16 || a21.c6 ) FROM v0 AS a21 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 ORDER BY - x'68617265'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c6, count ( a24.c16 ) FROM v0 AS a24 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: CHECK constraint failed
+Parse error near line 8: table v0 has 3 columns but 2 values were supplied
+Runtime error near line 9: no such column: c6
+BEGIN VERI 0
+0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+  OT ( a10.c2 IS NULL ) ) ) FROM v0 AS a10 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|1.84467440715621e+19
+1.84467440715621e+19|1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: table v0 has 1 values for 6 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a20.c6
+  SELECT a20.c6, a19.c2 FROM v0 AS a19 JOIN v0 AS a20 ON a20.c6 = hex ( ) GROUP 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a21.c16
+  SELECT max ( a21.c16 || a21.c6 ) FROM v0 AS a21 ORDER BY 18446744073709551615;
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|1.84467440715621e+19
+1.84467440715621e+19|1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|1.84467440715621e+19
+1.84467440715621e+19|1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a24.c6
+  SELECT a24.c6, count ( a24.c16 ) FROM v0 AS a24 ORDER BY 18446744071562067968;
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|1.84467440715621e+19
+1.84467440715621e+19|1.84467440715621e+19
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INT, c2 INT ); 
+; 
+BEGIN; 
+; 
+; 
+INSERT INTO v0 VALUES ( 18446744071562067968, 18446744071562067968 ); 
+ALTER TABLE v0 ADD COLUMN c6 CHECK( x'b1' ); 
+INSERT INTO v0 VALUES ( 18446744071562067968, 0 ); 
+; 
+INSERT INTO v0 VALUES ( 18446744071562067968, 18446744071562067968 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 18446744071562067968 IS NOT 18446744071562067968 ) OR NOT ( 100 IS 18446744071562067968 OR ( a8.c1 = 0 ) ) ) IS 0 FROM v0 AS a8 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a10.c2 IS NULL ) ) AND ( NOT ( a10.c2 IS NULL ) ) ) FROM v0 AS a10 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a11 ORDER BY ( ( hex ( 18446744071562067968 ) ) % 18446744071562067968 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c13, c14, c15, c16, c17, c18 ) AS ( SELECT 18446744073709551488 y ORDER BY 18446744071562067968 ) SELECT * FROM v0 AS a12 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c6, a19.c2 FROM v0 AS a19 JOIN v0 AS a20 ON a20.c6 = hex ( ) GROUP BY a19.c2 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a21.c16 || a21.c6 ) FROM v0 AS a21 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 ORDER BY - x'68617265'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c6, count ( a24.c16 ) FROM v0 AS a24 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: CHECK constraint failed
+Parse error near line 8: table v0 has 3 columns but 2 values were supplied
+Parse error near line 10: table v0 has 3 columns but 2 values were supplied
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+  OT ( a10.c2 IS NULL ) ) ) FROM v0 AS a10 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: table v0 has 1 values for 6 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a20.c6
+  SELECT a20.c6, a19.c2 FROM v0 AS a19 JOIN v0 AS a20 ON a20.c6 = hex ( ) GROUP 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a21.c16
+  SELECT max ( a21.c16 || a21.c6 ) FROM v0 AS a21 ORDER BY 18446744073709551615;
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a24.c6
+  SELECT a24.c6, count ( a24.c16 ) FROM v0 AS a24 ORDER BY 18446744071562067968;
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|1.84467440715621e+19
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+0
+0
+ 
+INT: 1 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+  OT ( a10.c2 IS NULL ) ) ) FROM v0 AS a10 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+  OT ( a10.c2 IS NULL ) ) ) FROM v0 AS a10 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+1.84467440715621e+19|1.84467440715621e+19
+1.84467440715621e+19|1.84467440715621e+19
+ 
+INT: 1 
+Str: 
+1.84467440715621e+19|1.84467440715621e+19
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: table v0 has 1 values for 6 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 25: table v0 has 1 values for 6 columns
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such column: a20.c6
+  SELECT a20.c6, a19.c2 FROM v0 AS a19 JOIN v0 AS a20 ON a20.c6 = hex ( ) GROUP 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 28: no such column: a20.c6
+  SELECT a20.c6, a19.c2 FROM v0 AS a19 JOIN v0 AS a20 ON a20.c6 = hex ( ) GROUP 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no such column: a21.c16
+  SELECT max ( a21.c16 || a21.c6 ) FROM v0 AS a21 ORDER BY 18446744073709551615;
+               ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 31: no such column: a21.c16
+  SELECT max ( a21.c16 || a21.c6 ) FROM v0 AS a21 ORDER BY 18446744073709551615;
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+1.84467440715621e+19|1.84467440715621e+19
+1.84467440715621e+19|1.84467440715621e+19
+ 
+INT: 1 
+Str: 
+1.84467440715621e+19|1.84467440715621e+19
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+1.84467440715621e+19|1.84467440715621e+19
+1.84467440715621e+19|1.84467440715621e+19
+ 
+INT: 1 
+Str: 
+1.84467440715621e+19|1.84467440715621e+19
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such column: a24.c6
+  SELECT a24.c6, count ( a24.c16 ) FROM v0 AS a24 ORDER BY 18446744071562067968;
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 40: no such column: a24.c6
+  SELECT a24.c6, count ( a24.c16 ) FROM v0 AS a24 ORDER BY 18446744071562067968;
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 10 
+RESULT FLAGS: 0
+Str: 
+1.84467440715621e+19|1.84467440715621e+19
+1.84467440715621e+19|1.84467440715621e+19
+ 
+INT: 1 
+Str: 
+1.84467440715621e+19|1.84467440715621e+19
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

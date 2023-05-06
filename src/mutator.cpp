@@ -202,8 +202,11 @@ vector<IR *> Mutator::parse_query_str_get_ir_set(const string &query_str) {
   } catch (...) {
     p_strip_sql->deep_delete();
 
-    for (auto ir : ir_set)
-      ir->drop();
+    for (auto ir : ir_set){
+      ir->deep_drop();
+      ir = nullptr;
+    }
+      
 
     ir_set.clear();
     return ir_set;

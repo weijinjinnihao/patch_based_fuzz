@@ -1,0 +1,298 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 PRIMARY KEY, CHECK( ( ( c3 + 0 ) % 0 ) != 18446744073709551615 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+CREATE INDEX i6 ON v0 ( c1 ); 
+CREATE INDEX i7 ON v0 ( c3 ); 
+CREATE TABLE v8 ( c9, c10 REAL PRIMARY KEY ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i11 ON v8 ( c9 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a12 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT typeof ( sum ( a13.c1 ) ) FROM v0 AS a13 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14, v8 AS a15 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a16.c2, a16.c1 FROM v0 AS a16 RIGHT JOIN v0 AS a17 ON hex ( 8 ) = a17.c1 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a19 ORDER BY a19.c10, a19.c9; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a20 GROUP BY y ( a20.c9 || 0 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a21 WHERE ( a21.c10 = 18446744073709551488 OR a21.c9 = 18446744073709551615 ) AND a21.c10 IN ( SELECT a21.c10 FROM ( SELECT a22.c3 FROM v0 AS a22 ORDER BY 0 ) AS y WHERE a21.c10 = 0 ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23, v8 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a25, v8 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i4 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 1
+  typeof ( sum ( a13.c1 ) ) FROM v0 AS a13 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such function: y
+  SELECT * FROM v8 AS a20 GROUP BY y ( a20.c9 || 0 ) ORDER BY 184467440737095514
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  .c10 FROM ( SELECT a22.c3 FROM v0 AS a22 ORDER BY 0 ) AS y WHERE a21.c10 = 0 O
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 5
+  SELECT * FROM v0 AS a23, v8 AS a24 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 PRIMARY KEY, CHECK( ( ( c3 + 0 ) % 0 ) != 18446744073709551615 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+CREATE TABLE v8 ( c9, c10 REAL PRIMARY KEY ); 
+ALTER TABLE v0 DROP c2; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a12 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT typeof ( sum ( a13.c1 ) ) FROM v0 AS a13 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14, v8 AS a15 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a16.c2, a16.c1 FROM v0 AS a16 RIGHT JOIN v0 AS a17 ON hex ( 8 ) = a17.c1 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a19 ORDER BY a19.c10, a19.c9; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a20 GROUP BY y ( a20.c9 || 0 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a21 WHERE ( a21.c10 = 18446744073709551488 OR a21.c9 = 18446744073709551615 ) AND a21.c10 IN ( SELECT a21.c10 FROM ( SELECT a22.c3 FROM v0 AS a22 ORDER BY 0 ) AS y WHERE a21.c10 = 0 ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23, v8 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a25, v8 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 1
+  typeof ( sum ( a13.c1 ) ) FROM v0 AS a13 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: a16.c2
+  SELECT a16.c2, a16.c1 FROM v0 AS a16 RIGHT JOIN v0 AS a17 ON hex ( 8 ) = a17.c
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such function: y
+  SELECT * FROM v8 AS a20 GROUP BY y ( a20.c9 || 0 ) ORDER BY 184467440737095514
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  .c10 FROM ( SELECT a22.c3 FROM v0 AS a22 ORDER BY 0 ) AS y WHERE a21.c10 = 0 O
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v0 AS a23, v8 AS a24 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 1
+  typeof ( sum ( a13.c1 ) ) FROM v0 AS a13 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 1
+  typeof ( sum ( a13.c1 ) ) FROM v0 AS a13 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such column: a16.c2
+  SELECT a16.c2, a16.c1 FROM v0 AS a16 RIGHT JOIN v0 AS a17 ON hex ( 8 ) = a17.c
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such function: y
+  SELECT * FROM v8 AS a20 GROUP BY y ( a20.c9 || 0 ) ORDER BY 184467440737095514
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 28: no such function: y
+  SELECT * FROM v8 AS a20 GROUP BY y ( a20.c9 || 0 ) ORDER BY 184467440737095514
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  .c10 FROM ( SELECT a22.c3 FROM v0 AS a22 ORDER BY 0 ) AS y WHERE a21.c10 = 0 O
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  .c10 FROM ( SELECT a22.c3 FROM v0 AS a22 ORDER BY 0 ) AS y WHERE a21.c10 = 0 O
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 5
+  SELECT * FROM v0 AS a23, v8 AS a24 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v0 AS a23, v8 AS a24 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

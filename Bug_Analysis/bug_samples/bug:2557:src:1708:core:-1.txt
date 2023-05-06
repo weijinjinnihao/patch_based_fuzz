@@ -1,0 +1,299 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( 18446744073709551488 = 'v0' ), CHECK( c2 != c2 ), CHECK( c2 != c1 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c3 = c3 || c1 WHERE c1 = c1 || c2; END; 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE TABLE v6 ( c7, c8, c9, c10, PRIMARY KEY ( c7, c8 ) ) WITHOUT ROWID; 
+INSERT INTO v6 VALUES ( 18446744073709551488, 18446744073709551615, 0, 18446744073709551488 ); 
+CREATE INDEX i11 ON v0 ( c2 ); 
+CREATE INDEX i12 ON v6 ( c9 ); 
+INSERT INTO v0 VALUES ( - 18446744073709551488, 'v0', 'zyx', 18446744073709551488 ); 
+CREATE INDEX i13 ON v6 ( c10 ); 
+ALTER TABLE v6 DROP COLUMN c10; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a14, v0 AS a15 NATURAL JOIN v0 AS a16 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a17 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a18.c1 IS NULL ) ) AND ( NOT ( a18.c2 IS NULL ) ) ) FROM v0 AS a18 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a19 ORDER BY a19.c9, a19.c8, a19.c7; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a20.c1 IS NULL ) ) AND ( NOT ( a20.c3 IS NULL ) ) ) FROM v0 AS a20 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c2 FROM v0 AS a21 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v6 AS a23 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v0 AS ( SELECT a25.c2 FROM v0 AS a25 WHERE a25.c1 LIKE 'ABX' ORDER BY 0 ) SELECT * FROM v6 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c7, a26.c10 FROM v6 AS a26 WHERE a26.c8 LIKE 'v0' ORDER BY + a26.c9; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27, v0 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: expressions prohibited in PRIMARY KEY and UNIQUE constraints
+Parse error near line 2: no such table: main.v0
+Parse error near line 3: no such table: v0
+Parse error near line 4: no such table: main.v0
+Parse error near line 7: no such table: main.v0
+Parse error near line 9: no such table: v0
+Runtime error near line 11: error in index i13 after drop column: no such column: c10
+BEGIN VERI 0
+Parse error near line 13: no such table: v0
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1.84467440737096e+19|0|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v0
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1.84467440737096e+19|0|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+  BX' ORDER BY 0 ) SELECT * FROM v6 AS a24 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( 18446744073709551488 = 'v0' ), CHECK( c2 != c2 ), CHECK( c2 != c1 ) ) WITHOUT ROWID; 
+; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c3 = c3 || c1 WHERE c1 = c1 || c2; END; 
+; 
+CREATE TABLE v6 ( c7, c8, c9, c10, PRIMARY KEY ( c7, c8 ) ) WITHOUT ROWID; 
+INSERT INTO v6 VALUES ( 18446744073709551488, 18446744073709551615, 0, 18446744073709551488 ); 
+; 
+; 
+INSERT INTO v0 VALUES ( - 18446744073709551488, 'v0', 'zyx', 18446744073709551488 ); 
+; 
+ALTER TABLE v6 DROP COLUMN c10; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a14, v0 AS a15 NATURAL JOIN v0 AS a16 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a17 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a18.c1 IS NULL ) ) AND ( NOT ( a18.c2 IS NULL ) ) ) FROM v0 AS a18 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a19 ORDER BY a19.c9, a19.c8, a19.c7; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a20.c1 IS NULL ) ) AND ( NOT ( a20.c3 IS NULL ) ) ) FROM v0 AS a20 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c2 FROM v0 AS a21 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v6 AS a23 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v0 AS ( SELECT a25.c2 FROM v0 AS a25 WHERE a25.c1 LIKE 'ABX' ORDER BY 0 ) SELECT * FROM v6 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c7, a26.c10 FROM v6 AS a26 WHERE a26.c8 LIKE 'v0' ORDER BY + a26.c9; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27, v0 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: expressions prohibited in PRIMARY KEY and UNIQUE constraints
+Parse error near line 3: no such table: v0
+Parse error near line 9: no such table: v0
+BEGIN VERI 0
+Parse error near line 13: no such table: v0
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1.84467440737096e+19|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v0
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1.84467440737096e+19|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+  BX' ORDER BY 0 ) SELECT * FROM v6 AS a24 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a26.c10
+  SELECT a26.c7, a26.c10 FROM v6 AS a26 WHERE a26.c8 LIKE 'v0' ORDER BY + a26.c9
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 13: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19|1.84467440737096e+19|0|1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19|1.84467440737096e+19|0
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19|1.84467440737096e+19|0|1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19|1.84467440737096e+19|0
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+  BX' ORDER BY 0 ) SELECT * FROM v6 AS a24 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+  BX' ORDER BY 0 ) SELECT * FROM v6 AS a24 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 37: no such column: a26.c10
+  SELECT a26.c7, a26.c10 FROM v6 AS a26 WHERE a26.c8 LIKE 'v0' ORDER BY + a26.c9
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no such table: v0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

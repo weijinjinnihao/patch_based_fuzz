@@ -1,0 +1,431 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( x'616263', 'v0', 'v1' ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, '5.4e-08', 'v1' ); 
+INSERT INTO v0 VALUES ( 'Y', count ( ( NOT ( c2 IS NULL ) ) AND ( NOT ( c1 IS NULL ) ) ), 't1b' ); 
+INSERT INTO v0 VALUES ( 'v0', 'x', 'v0' ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( x'616263', 'ccc', '%02x' ); 
+CREATE TABLE v6 ( c7, c8, c9 COLLATE NOCASE ); 
+CREATE INDEX i10 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( NULL, '4', 'v1' ); 
+INSERT INTO v0 VALUES ( 'x', 'v1', 'v0' ); 
+INSERT INTO v6 VALUES ( x'68617265', 'v0', 'y' ); 
+INSERT INTO v6 VALUES ( 16, 'v0', 'v1' ); 
+ALTER TABLE v0 DROP c1; 
+CREATE INDEX i11 ON v0 ( c2 ); 
+INSERT INTO v6 VALUES ( - 16, 'v1', 'x' ); 
+CREATE TABLE v12 ( c13, c14, c15 COLLATE NOCASE ); 
+INSERT INTO v12 SELECT * FROM v0 AS a16 ORDER BY 16; 
+CREATE INDEX i17 ON v0 ( c3 ); 
+INSERT INTO v12 SELECT * FROM v6 AS a18 ORDER BY 16; 
+INSERT INTO v12 SELECT * FROM v6 AS a19 ORDER BY 18446744073709551615; 
+INSERT INTO v0 SELECT * FROM v6 AS a20 ORDER BY 16; 
+INSERT INTO v12 SELECT * FROM v0 AS a21 ORDER BY 3.000000; 
+INSERT INTO v0 SELECT * FROM v0 AS a22 ORDER BY 8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c13, count ( ( NOT ( a23.c14 IS NULL ) ) AND ( NOT ( a23.c15 IS NULL ) ) ) FROM v12 AS a23 ORDER BY 3.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v24 AS ( SELECT 18446744073709551488 y ORDER BY 16 ) SELECT * FROM v24 AS a25 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c3, count ( ( NOT ( a26.c2 IS NULL ) ) AND ( NOT ( a26.c3 IS NULL ) ) ) FROM v0 AS a26 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a27 NATURAL JOIN v6 AS a28 ORDER BY 3.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c3 FROM v0 AS a29 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a30, v6 AS a31 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c13 FROM v12 AS a32 ORDER BY 3.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: misuse of aggregate function count()
+  INSERT INTO v0 VALUES ( 'Y', count ( ( NOT ( c2 IS NULL ) ) AND ( NOT ( c1 IS 
+                 error here ---^
+Runtime error near line 15: error in index i10 after drop column: no such column: c1
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+BEGIN VERI 0
+hare|9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+hare|v0|y|hare|v0|y
+hare|v0|y|16|v0|v1
+hare|v0|y|-16|v1|x
+16|v0|v1|hare|v0|y
+16|v0|v1|16|v0|v1
+16|v0|v1|-16|v1|x
+-16|v1|x|hare|v0|y
+-16|v1|x|16|v0|v1
+-16|v1|x|-16|v1|x
+abc|v0|v1|hare|v0|y
+abc|v0|v1|16|v0|v1
+abc|v0|v1|-16|v1|x
+1.84467440737096e+19|5.4e-08|v1|hare|v0|y
+1.84467440737096e+19|5.4e-08|v1|16|v0|v1
+1.84467440737096e+19|5.4e-08|v1|-16|v1|x
+v0|x|v0|hare|v0|y
+v0|x|v0|16|v0|v1
+v0|x|v0|-16|v1|x
+abc|ccc|%02x|hare|v0|y
+abc|ccc|%02x|16|v0|v1
+abc|ccc|%02x|-16|v1|x
+|4|v1|hare|v0|y
+|4|v1|16|v0|v1
+|4|v1|-16|v1|x
+x|v1|v0|hare|v0|y
+x|v1|v0|16|v0|v1
+x|v1|v0|-16|v1|x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 48: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+hare
+16
+-16
+abc
+1.84467440737096e+19
+v0
+abc
+
+x
+END VERI 0
+BEGIN VERI 0
+hare|v0|y
+16|v0|v1
+-16|v1|x
+abc|v0|v1
+1.84467440737096e+19|5.4e-08|v1
+v0|x|v0
+abc|ccc|%02x
+|4|v1
+x|v1|v0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+; 
+INSERT INTO v0 VALUES ( x'616263', 'v0', 'v1' ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, '5.4e-08', 'v1' ); 
+INSERT INTO v0 VALUES ( 'Y', count ( ( NOT ( c2 IS NULL ) ) AND ( NOT ( c1 IS NULL ) ) ), 't1b' ); 
+INSERT INTO v0 VALUES ( 'v0', 'x', 'v0' ); 
+; 
+INSERT INTO v0 VALUES ( x'616263', 'ccc', '%02x' ); 
+CREATE TABLE v6 ( c7, c8, c9 COLLATE NOCASE ); 
+; 
+INSERT INTO v0 VALUES ( NULL, '4', 'v1' ); 
+INSERT INTO v0 VALUES ( 'x', 'v1', 'v0' ); 
+INSERT INTO v6 VALUES ( x'68617265', 'v0', 'y' ); 
+INSERT INTO v6 VALUES ( 16, 'v0', 'v1' ); 
+ALTER TABLE v0 DROP c1; 
+; 
+INSERT INTO v6 VALUES ( - 16, 'v1', 'x' ); 
+CREATE TABLE v12 ( c13, c14, c15 COLLATE NOCASE ); 
+INSERT INTO v12 SELECT * FROM v0 AS a16 ORDER BY 16; 
+; 
+INSERT INTO v12 SELECT * FROM v6 AS a18 ORDER BY 16; 
+INSERT INTO v12 SELECT * FROM v6 AS a19 ORDER BY 18446744073709551615; 
+INSERT INTO v0 SELECT * FROM v6 AS a20 ORDER BY 16; 
+INSERT INTO v12 SELECT * FROM v0 AS a21 ORDER BY 3.000000; 
+INSERT INTO v0 SELECT * FROM v0 AS a22 ORDER BY 8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c13, count ( ( NOT ( a23.c14 IS NULL ) ) AND ( NOT ( a23.c15 IS NULL ) ) ) FROM v12 AS a23 ORDER BY 3.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v24 AS ( SELECT 18446744073709551488 y ORDER BY 16 ) SELECT * FROM v24 AS a25 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c3, count ( ( NOT ( a26.c2 IS NULL ) ) AND ( NOT ( a26.c3 IS NULL ) ) ) FROM v0 AS a26 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a27 NATURAL JOIN v6 AS a28 ORDER BY 3.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c3 FROM v0 AS a29 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a30, v6 AS a31 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c13 FROM v12 AS a32 ORDER BY 3.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: misuse of aggregate function count()
+  INSERT INTO v0 VALUES ( 'Y', count ( ( NOT ( c2 IS NULL ) ) AND ( NOT ( c1 IS 
+                 error here ---^
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 24: table v12 has 3 columns but 2 values were supplied
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+BEGIN VERI 0
+hare|3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+hare|v0|y|hare|v0|y
+hare|v0|y|16|v0|v1
+hare|v0|y|-16|v1|x
+16|v0|v1|hare|v0|y
+16|v0|v1|16|v0|v1
+16|v0|v1|-16|v1|x
+-16|v1|x|hare|v0|y
+-16|v1|x|16|v0|v1
+-16|v1|x|-16|v1|x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 48: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+hare
+16
+-16
+END VERI 0
+BEGIN VERI 0
+hare|v0|y
+16|v0|v1
+-16|v1|x
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+hare|9
+ 
+INT: 0 
+Str: 
+hare|3
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+hare|v0|y|hare|v0|y
+hare|v0|y|16|v0|v1
+hare|v0|y|-16|v1|x
+16|v0|v1|hare|v0|y
+16|v0|v1|16|v0|v1
+16|v0|v1|-16|v1|x
+-16|v1|x|hare|v0|y
+-16|v1|x|16|v0|v1
+-16|v1|x|-16|v1|x
+abc|v0|v1|hare|v0|y
+abc|v0|v1|16|v0|v1
+abc|v0|v1|-16|v1|x
+1.84467440737096e+19|5.4e-08|v1|hare|v0|y
+1.84467440737096e+19|5.4e-08|v1|16|v0|v1
+1.84467440737096e+19|5.4e-08|v1|-16|v1|x
+v0|x|v0|hare|v0|y
+v0|x|v0|16|v0|v1
+v0|x|v0|-16|v1|x
+abc|ccc|%02x|hare|v0|y
+abc|ccc|%02x|16|v0|v1
+abc|ccc|%02x|-16|v1|x
+|4|v1|hare|v0|y
+|4|v1|16|v0|v1
+|4|v1|-16|v1|x
+x|v1|v0|hare|v0|y
+x|v1|v0|16|v0|v1
+x|v1|v0|-16|v1|x
+ 
+INT: 26 
+Str: 
+hare|v0|y|hare|v0|y
+hare|v0|y|16|v0|v1
+hare|v0|y|-16|v1|x
+16|v0|v1|hare|v0|y
+16|v0|v1|16|v0|v1
+16|v0|v1|-16|v1|x
+-16|v1|x|hare|v0|y
+-16|v1|x|16|v0|v1
+-16|v1|x|-16|v1|x
+ 
+INT: 8 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 45: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 45: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 48: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 48: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+hare
+16
+-16
+abc
+1.84467440737096e+19
+v0
+abc
+
+x
+ 
+INT: 7 
+Str: 
+hare
+16
+-16
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+hare|v0|y
+16|v0|v1
+-16|v1|x
+abc|v0|v1
+1.84467440737096e+19|5.4e-08|v1
+v0|x|v0
+abc|ccc|%02x
+|4|v1
+x|v1|v0
+ 
+INT: 8 
+Str: 
+hare|v0|y
+16|v0|v1
+-16|v1|x
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

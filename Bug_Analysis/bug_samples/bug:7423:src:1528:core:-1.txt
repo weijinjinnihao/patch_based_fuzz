@@ -1,0 +1,325 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER, c2 UNIQUE ON CONFLICT IGNORE, c3 UNIQUE ON CONFLICT FAIL, c4, c5, c6, c7 UNIQUE ON CONFLICT REPLACE, c8, c9 UNIQUE ON CONFLICT REPLACE DEFAULT 127, c10 REFERENCES t1 UNIQUE ON CONFLICT IGNORE, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, PRIMARY KEY ( c9, c23, c21, c2, c2, c13, c25 ) ) WITHOUT ROWID; 
+CREATE TABLE v27 ( c28 INTEGER, c29 INTEGER PRIMARY KEY, c30 BLOB, FOREIGN KEY ( c29 ) REFERENCES t2 ) STRICT; 
+CREATE TABLE v31 ( c32, c33, c34 REFERENCES p1 ( c34 ) ); 
+CREATE TABLE v35 ( c36, c37, c38, c39 REFERENCES p1 ( c36 ) ); 
+CREATE INDEX i40 ON v27 ( c28 ); 
+ALTER TABLE v27 DROP COLUMN c28; 
+CREATE INDEX i41 ON v31 ( c32 ); 
+CREATE INDEX i42 ON v27 ( c30 ); 
+CREATE INDEX i43 ON v27 ( c30 ); 
+ALTER TABLE v27 DROP COLUMN c30; 
+CREATE INDEX i44 ON v27 ( c30 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a45 WHERE CASE WHEN a45.c30 != 'v0' THEN 18446744073709551488 ELSE 127 END > 0 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a46 GROUP BY x'b2b2b2', 18446744073709551488, 0, 127, 127, 127 HAVING CASE WHEN a46.c33 != 'v1' THEN 0 ELSE 18446744071562067968 END > 127 >= 0 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a47 GROUP BY count ( ( NOT ( a47.c4 IS NULL ) ) AND ( NOT ( a47.c15 IS NULL ) ) ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a48 WHERE ( a48.c28 - a48.c29 || a48.c29 ) != 'v0' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v0 AS ( SELECT a49.c20 FROM v35 AS a50 WHERE a49.c17 LIKE '40000 400 1 1' ORDER BY 127 ) SELECT * FROM v0 AS a49 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v35 AS a51, v0 AS a52 NATURAL JOIN v0 AS a53 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a54 WHERE count ( a54.c32 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v35 AS a55 NATURAL JOIN v31 AS a56 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: error in index i40 after drop column: no such column: c28
+Runtime error near line 10: error in index i42 after drop column: no such column: c30
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 26
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+  ( a48.c28 - a48.c29 || a48.c29 ) != 'v0' ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: a49.c20
+  WITH RECURSIVE v0 AS ( SELECT a49.c20 FROM v35 AS a50 WHERE a49.c17 LIKE '4000
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 30
+  AS a51, v0 AS a52 NATURAL JOIN v0 AS a53 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: misuse of aggregate function count()
+  SELECT * FROM v31 AS a54 WHERE count ( a54.c32 ) ORDER BY 127; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 7
+   FROM v35 AS a55 NATURAL JOIN v31 AS a56 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER, c2 UNIQUE ON CONFLICT IGNORE, c3 UNIQUE ON CONFLICT FAIL, c4, c5, c6, c7 UNIQUE ON CONFLICT REPLACE, c8, c9 UNIQUE ON CONFLICT REPLACE DEFAULT 127, c10 REFERENCES t1 UNIQUE ON CONFLICT IGNORE, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, PRIMARY KEY ( c9, c23, c21, c2, c2, c13, c25 ) ) WITHOUT ROWID; 
+CREATE TABLE v27 ( c28 INTEGER, c29 INTEGER PRIMARY KEY, c30 BLOB, FOREIGN KEY ( c29 ) REFERENCES t2 ) STRICT; 
+CREATE TABLE v31 ( c32, c33, c34 REFERENCES p1 ( c34 ) ); 
+CREATE TABLE v35 ( c36, c37, c38, c39 REFERENCES p1 ( c36 ) ); 
+; 
+ALTER TABLE v27 DROP COLUMN c28; 
+; 
+; 
+; 
+ALTER TABLE v27 DROP COLUMN c30; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a45 WHERE CASE WHEN a45.c30 != 'v0' THEN 18446744073709551488 ELSE 127 END > 0 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a46 GROUP BY x'b2b2b2', 18446744073709551488, 0, 127, 127, 127 HAVING CASE WHEN a46.c33 != 'v1' THEN 0 ELSE 18446744071562067968 END > 127 >= 0 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a47 GROUP BY count ( ( NOT ( a47.c4 IS NULL ) ) AND ( NOT ( a47.c15 IS NULL ) ) ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a48 WHERE ( a48.c28 - a48.c29 || a48.c29 ) != 'v0' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v0 AS ( SELECT a49.c20 FROM v35 AS a50 WHERE a49.c17 LIKE '40000 400 1 1' ORDER BY 127 ) SELECT * FROM v0 AS a49 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v35 AS a51, v0 AS a52 NATURAL JOIN v0 AS a53 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a54 WHERE count ( a54.c32 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v35 AS a55 NATURAL JOIN v31 AS a56 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 13: no such column: a45.c30
+  SELECT * FROM v27 AS a45 WHERE CASE WHEN a45.c30 != 'v0' THEN 1844674407370955
+                             error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 26
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a48.c28
+  SELECT * FROM v27 AS a48 WHERE ( a48.c28 - a48.c29 || a48.c29 ) != 'v0' ORDER 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: a49.c20
+  WITH RECURSIVE v0 AS ( SELECT a49.c20 FROM v35 AS a50 WHERE a49.c17 LIKE '4000
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 30
+  AS a51, v0 AS a52 NATURAL JOIN v0 AS a53 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: misuse of aggregate function count()
+  SELECT * FROM v31 AS a54 WHERE count ( a54.c32 ) ORDER BY 127; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 7
+   FROM v35 AS a55 NATURAL JOIN v31 AS a56 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 13: no such column: a45.c30
+  SELECT * FROM v27 AS a45 WHERE CASE WHEN a45.c30 != 'v0' THEN 1844674407370955
+                             error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 26
+ 
+INT: 0 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 26
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+  ( a48.c28 - a48.c29 || a48.c29 ) != 'v0' ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 22: no such column: a48.c28
+  SELECT * FROM v27 AS a48 WHERE ( a48.c28 - a48.c29 || a48.c29 ) != 'v0' ORDER 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no such column: a49.c20
+  WITH RECURSIVE v0 AS ( SELECT a49.c20 FROM v35 AS a50 WHERE a49.c17 LIKE '4000
+                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 25: no such column: a49.c20
+  WITH RECURSIVE v0 AS ( SELECT a49.c20 FROM v35 AS a50 WHERE a49.c17 LIKE '4000
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 30
+  AS a51, v0 AS a52 NATURAL JOIN v0 AS a53 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 30
+  AS a51, v0 AS a52 NATURAL JOIN v0 AS a53 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: misuse of aggregate function count()
+  SELECT * FROM v31 AS a54 WHERE count ( a54.c32 ) ORDER BY 127; 
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 31: misuse of aggregate function count()
+  SELECT * FROM v31 AS a54 WHERE count ( a54.c32 ) ORDER BY 127; 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 7
+   FROM v35 AS a55 NATURAL JOIN v31 AS a56 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 7
+   FROM v35 AS a55 NATURAL JOIN v31 AS a56 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

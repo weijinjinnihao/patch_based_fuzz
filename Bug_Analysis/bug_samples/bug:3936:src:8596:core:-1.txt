@@ -1,0 +1,295 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE TABLE v5 ( c6 PRIMARY KEY NOT NULL PRIMARY KEY ON CONFLICT REPLACE, c7 NOT NULL ); 
+CREATE TABLE v8 ( c9 TEXT, c10 REAL, c11 INT, PRIMARY KEY ( c10 COLLATE nocase, c9 ) ) WITHOUT ROWID; 
+CREATE INDEX i12 ON v0 ( c2 ); 
+CREATE VIEW v13 AS SELECT * FROM v8 AS a14 ORDER BY 18446744073709551615; 
+CREATE TABLE v15 ( c16 INTEGER PRIMARY KEY, c17, c18 UNIQUE ); 
+CREATE INDEX i19 ON v5 ( c7 ); 
+CREATE TABLE v20 ( c21, c22, c23 ); 
+CREATE INDEX i24 ON v0 ( c2 ); 
+CREATE TABLE v25 ( c26 PRIMARY KEY, c27, c28 AS( c27 + c29 - c27 ) DEFAULT - 18446744073709551615, c29 REFERENCES t1 DEFAULT NULL ); 
+ALTER TABLE v20 DROP COLUMN c22; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE VIRTUAL TABLE v30 USING fts5 ( c31, c32 ); 
+CREATE INDEX i33 ON v20 ( c21 ); 
+ALTER TABLE v30 DROP COLUMN c32; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 NATURAL JOIN v13 AS a35 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a36 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a37 NATURAL JOIN v20 AS a38 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a39 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a40 NATURAL JOIN v13 AS a41 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a42 GROUP BY c6, c7, count ( c6 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a43, v13 AS a44 NATURAL JOIN v13 AS a45 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a46 WHERE a46.c7 NOT NULL ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a47 CROSS JOIN v0 AS a48 ON ( a48.c3 = a48.c2 ) WHERE a48.c3 >= ( SELECT a48.c1 FROM v8 AS a49 WHERE a49.c11 IN ( SELECT a48.c2 FROM ( SELECT a48.c3 FROM v8 AS a50 ORDER BY 18446744073709551615 ) AS y WHERE a47.c23 = 18446744073709551488 ORDER BY 18446744073709551615 ) ORDER BY 255 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a51 WHERE ( ( SELECT * FROM v30 AS a52 WHERE a51.c17 = a51.c17 || a51.c18 ORDER BY 255 ) % 16 ) > 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: table "v5" has more than one primary key
+Parse error near line 8: no such table: main.v5
+Parse error near line 11: cannot use DEFAULT on a generated column
+Runtime error near line 13: error in index i12 after drop column: no such column: c2
+Runtime error near line 14: no such module: fts5
+Parse error near line 16: no such table: v30
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v30
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: no such table: v30
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE TABLE v5 ( c6 PRIMARY KEY NOT NULL PRIMARY KEY ON CONFLICT REPLACE, c7 NOT NULL ); 
+CREATE TABLE v8 ( c9 TEXT, c10 REAL, c11 INT, PRIMARY KEY ( c10 COLLATE nocase, c9 ) ) WITHOUT ROWID; 
+; 
+CREATE VIEW v13 AS SELECT * FROM v8 AS a14 ORDER BY 18446744073709551615; 
+CREATE TABLE v15 ( c16 INTEGER PRIMARY KEY, c17, c18 UNIQUE ); 
+; 
+CREATE TABLE v20 ( c21, c22, c23 ); 
+; 
+CREATE TABLE v25 ( c26 PRIMARY KEY, c27, c28 AS( c27 + c29 - c27 ) DEFAULT - 18446744073709551615, c29 REFERENCES t1 DEFAULT NULL ); 
+ALTER TABLE v20 DROP COLUMN c22; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE VIRTUAL TABLE v30 USING fts5 ( c31, c32 ); 
+; 
+ALTER TABLE v30 DROP COLUMN c32; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 NATURAL JOIN v13 AS a35 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a36 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a37 NATURAL JOIN v20 AS a38 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a39 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a40 NATURAL JOIN v13 AS a41 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a42 GROUP BY c6, c7, count ( c6 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a43, v13 AS a44 NATURAL JOIN v13 AS a45 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a46 WHERE a46.c7 NOT NULL ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a47 CROSS JOIN v0 AS a48 ON ( a48.c3 = a48.c2 ) WHERE a48.c3 >= ( SELECT a48.c1 FROM v8 AS a49 WHERE a49.c11 IN ( SELECT a48.c2 FROM ( SELECT a48.c3 FROM v8 AS a50 ORDER BY 18446744073709551615 ) AS y WHERE a47.c23 = 18446744073709551488 ORDER BY 18446744073709551615 ) ORDER BY 255 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a51 WHERE ( ( SELECT * FROM v30 AS a52 WHERE a51.c17 = a51.c17 || a51.c18 ORDER BY 255 ) % 16 ) > 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: table "v5" has more than one primary key
+Parse error near line 11: cannot use DEFAULT on a generated column
+Runtime error near line 14: no such module: fts5
+Parse error near line 16: no such table: v30
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v30
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a48.c2
+  T a48.c1 FROM v8 AS a49 WHERE a49.c11 IN ( SELECT a48.c2 FROM ( SELECT a48.c3 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: no such table: v30
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v30
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v30
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such table: v25
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such table: v25
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such table: v5
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such table: v5
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such column: a48.c2
+  T a48.c1 FROM v8 AS a49 WHERE a49.c11 IN ( SELECT a48.c2 FROM ( SELECT a48.c3 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 45: no such table: v30
+ 
+INT: 0 
+Str: 
+Parse error near line 45: no such table: v30
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

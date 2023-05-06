@@ -1,0 +1,303 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 TEXT DEFAULT 'v0' DEFAULT 100, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 WHERE c3 = 100 ORDER BY 100; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9, c10 UNIQUE ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+CREATE INDEX i15 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v5 DROP COLUMN c2; 
+CREATE INDEX i16 ON v11 ( c12 ); 
+CREATE VIRTUAL TABLE v17 USING fts5 ( c18, c19 ); 
+CREATE INDEX i20 ON v11 ( c13 ); 
+CREATE INDEX i21 ON v5 ( c2 ); 
+ALTER TABLE v17 DROP COLUMN c19; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a22 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23, v0 AS a24 NATURAL JOIN v17 AS a25 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c3 FROM v0 AS a26 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a27 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a28 GROUP BY a28.c2, a28.c2 < a28.c2 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a29, v7 AS a30 NATURAL JOIN v5 AS a31 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c9, count ( ( NOT ( a32.c2 IS NULL ) ) AND ( NOT ( a32.c2 IS NULL ) ) ) FROM v17 AS a32 WHERE ( CASE WHEN a32.c2 != 'x' THEN 100 ELSE 100 END ) GROUP BY 100 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c10, count ( ( NOT ( a34.c10 IS NULL ) ) AND ( NOT ( a34.c9 IS NULL ) ) ) FROM v7 AS a34 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 WHERE a35.c1 < a35.c2 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i4 after drop column: no such column: c2
+Parse error near line 8: cannot drop column from view "v5"
+Runtime error near line 10: no such module: fts5
+Parse error near line 12: views may not be indexed
+Parse error near line 13: no such table: v17
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a33 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 TEXT DEFAULT 'v0' DEFAULT 100, c2, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 WHERE c3 = 100 ORDER BY 100; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9, c10 UNIQUE ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v5 DROP COLUMN c2; 
+; 
+CREATE VIRTUAL TABLE v17 USING fts5 ( c18, c19 ); 
+; 
+; 
+ALTER TABLE v17 DROP COLUMN c19; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a22 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23, v0 AS a24 NATURAL JOIN v17 AS a25 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c3 FROM v0 AS a26 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a27 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a28 GROUP BY a28.c2, a28.c2 < a28.c2 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a29, v7 AS a30 NATURAL JOIN v5 AS a31 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c9, count ( ( NOT ( a32.c2 IS NULL ) ) AND ( NOT ( a32.c2 IS NULL ) ) ) FROM v17 AS a32 WHERE ( CASE WHEN a32.c2 != 'x' THEN 100 ELSE 100 END ) GROUP BY 100 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c10, count ( ( NOT ( a34.c10 IS NULL ) ) AND ( NOT ( a34.c9 IS NULL ) ) ) FROM v7 AS a34 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 WHERE a35.c1 < a35.c2 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop column from view "v5"
+Runtime error near line 10: no such module: fts5
+Parse error near line 13: no such table: v17
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a33 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a35.c2
+  SELECT * FROM v0 AS a35 WHERE a35.c1 < a35.c2 ORDER BY 100; 
+                           error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a33 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a33 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such column: a35.c2
+  SELECT * FROM v0 AS a35 WHERE a35.c1 < a35.c2 ORDER BY 100; 
+                           error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

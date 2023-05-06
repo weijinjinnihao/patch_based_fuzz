@@ -1,0 +1,289 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, CHECK( NULL ), CHECK( c2 != c1 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c1 = c1 || c3 WHERE c1 = c3 || c3; END; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE TABLE v5 ( c6, c7, c8, c9, PRIMARY KEY ( c6, c7 ) ) WITHOUT ROWID; 
+CREATE INDEX i10 ON v0 ( c3 ); 
+INSERT INTO v5 VALUES ( 127, 18446744073709551615, 18446744073709551615, 18446744073709551615 ); 
+CREATE INDEX i11 ON v5 ( c8 ); 
+ALTER TABLE v5 DROP COLUMN c8; 
+CREATE INDEX i12 ON v0 ( c2 ); 
+CREATE INDEX i13 ON v5 ( c8 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a14.c9 ) FROM v5 AS a14 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v15 AS ( SELECT c1 FROM v15 AS a17 WHERE c6 LIKE 'x' ORDER BY 18446744073709551615 ) SELECT max ( c2 ), ( SELECT 'v1' FROM ( SELECT * FROM v15 AS a18 WHERE 18446744073709551488 ORDER BY 18446744073709551615 ) AS y WHERE c1 = 9223372036854775807 ORDER BY 18446744073709551615 ) FROM v15 AS a16 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a19, v0 AS a20 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a21 GROUP BY a21.c7, a21.c8, count ( a21.c7 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c1, max ( a22.c1 || a22.c2 ) FROM v0 AS a22 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c2 FROM v0 AS a23 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c3, max ( a24.c2 || a24.c2 ) FROM v0 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c2, count ( ( NOT ( a25.c3 IS NULL ) ) AND ( NOT ( a25.c2 IS NULL ) ) ) FROM v0 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26, v0 AS a27 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: PRIMARY KEY missing on table v0
+Parse error near line 2: no such table: v0
+Parse error near line 3: no such table: main.v0
+Parse error near line 5: no such table: main.v0
+Runtime error near line 8: error in index i11 after drop column: no such column: c8
+Parse error near line 9: no such table: main.v0
+BEGIN VERI 0
+1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: circular reference: v15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, CHECK( NULL ), CHECK( c2 != c1 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c1 = c1 || c3 WHERE c1 = c3 || c3; END; 
+; 
+CREATE TABLE v5 ( c6, c7, c8, c9, PRIMARY KEY ( c6, c7 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v5 VALUES ( 127, 18446744073709551615, 18446744073709551615, 18446744073709551615 ); 
+; 
+ALTER TABLE v5 DROP COLUMN c8; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a14.c9 ) FROM v5 AS a14 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v15 AS ( SELECT c1 FROM v15 AS a17 WHERE c6 LIKE 'x' ORDER BY 18446744073709551615 ) SELECT max ( c2 ), ( SELECT 'v1' FROM ( SELECT * FROM v15 AS a18 WHERE 18446744073709551488 ORDER BY 18446744073709551615 ) AS y WHERE c1 = 9223372036854775807 ORDER BY 18446744073709551615 ) FROM v15 AS a16 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a19, v0 AS a20 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a21 GROUP BY a21.c7, a21.c8, count ( a21.c7 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c1, max ( a22.c1 || a22.c2 ) FROM v0 AS a22 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c2 FROM v0 AS a23 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c3, max ( a24.c2 || a24.c2 ) FROM v0 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c2, count ( ( NOT ( a25.c3 IS NULL ) ) AND ( NOT ( a25.c2 IS NULL ) ) ) FROM v0 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26, v0 AS a27 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: PRIMARY KEY missing on table v0
+Parse error near line 2: no such table: v0
+BEGIN VERI 0
+1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: circular reference: v15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a21.c8
+  SELECT * FROM v5 AS a21 GROUP BY a21.c7, a21.c8, count ( a21.c7 ) ORDER BY 184
+                             error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+1
+ 
+INT: 0 
+Str: 
+1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: circular reference: v15
+ 
+INT: 0 
+Str: 
+Parse error near line 15: circular reference: v15
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 24: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such column: a21.c8
+  SELECT * FROM v5 AS a21 GROUP BY a21.c7, a21.c8, count ( a21.c7 ) ORDER BY 184
+                             error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such table: v0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

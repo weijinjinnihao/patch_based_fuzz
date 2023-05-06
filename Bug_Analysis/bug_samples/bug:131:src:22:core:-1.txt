@@ -1,0 +1,300 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c2 > 187 ), c4 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709551615, 18446744073709551488 ), ( 18446744073709551615, 18446744073709551488, 18446744073709551615, 18446744073709551615 ); 
+CREATE TABLE v6 ( c7, c8, c9 COLLATE NOCASE, c10, CHECK( c9 > 187 ) ); 
+INSERT INTO v6 VALUES ( 187, 0, 187, 8 ), ( 18446744073709551615, 255, 18446744073709551615, 187 ); 
+CREATE INDEX i11 ON v0 ( c2 ); 
+INSERT INTO v6 VALUES ( 18446744073709551615, 18446744073709551488, 0, 8 ); 
+CREATE INDEX i12 ON v0 ( c1 ); 
+CREATE INDEX i13 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 187, 0, 16, 0 ); 
+ALTER TABLE v0 DROP c1; 
+CREATE INDEX i14 ON v6 ( c10 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a15.c10 ) FROM v6 AS a15 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a16.c9 = + a17.c4, a16.c7 FROM v6 AS a16 LEFT JOIN v0 AS a17 ON a17.c2 = a17.c4 GROUP BY y ( a17.c3 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a18 ORDER BY max ( a18.c8 + a18.c9 * 18446744073709551488 ) + 4294967295, min ( a18.c8, avg ( a18.c10 ) ) + 187; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 GROUP BY a19.c3, abs ( a19.c2 ) ORDER BY 187; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c1, sum ( a20.c3 ) FROM v0 AS a20 GROUP BY a20.c4 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c10 FROM v6 AS a21 ORDER BY a21.c7 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v6 AS a23 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c9 > 187 (19)
+Runtime error near line 7: CHECK constraint failed: c9 > 187 (19)
+Runtime error near line 10: CHECK constraint failed: c2 > 187 (19)
+Runtime error near line 11: error in index i12 after drop column: no such column: c1
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such function: y
+  6 LEFT JOIN v0 AS a17 ON a17.c2 = a17.c4 GROUP BY y ( a17.c3 ) ORDER BY 184467
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: misuse of aggregate: avg()
+  8446744073709551488 ) + 4294967295, min ( a18.c8, avg ( a18.c10 ) ) + 187; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|3.68934881474191e+19
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c2 > 187 ), c4 ); 
+; 
+INSERT INTO v0 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709551615, 18446744073709551488 ), ( 18446744073709551615, 18446744073709551488, 18446744073709551615, 18446744073709551615 ); 
+CREATE TABLE v6 ( c7, c8, c9 COLLATE NOCASE, c10, CHECK( c9 > 187 ) ); 
+INSERT INTO v6 VALUES ( 187, 0, 187, 8 ), ( 18446744073709551615, 255, 18446744073709551615, 187 ); 
+; 
+INSERT INTO v6 VALUES ( 18446744073709551615, 18446744073709551488, 0, 8 ); 
+; 
+; 
+INSERT INTO v0 VALUES ( 187, 0, 16, 0 ); 
+ALTER TABLE v0 DROP c1; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a15.c10 ) FROM v6 AS a15 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a16.c9 = + a17.c4, a16.c7 FROM v6 AS a16 LEFT JOIN v0 AS a17 ON a17.c2 = a17.c4 GROUP BY y ( a17.c3 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a18 ORDER BY max ( a18.c8 + a18.c9 * 18446744073709551488 ) + 4294967295, min ( a18.c8, avg ( a18.c10 ) ) + 187; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 GROUP BY a19.c3, abs ( a19.c2 ) ORDER BY 187; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c1, sum ( a20.c3 ) FROM v0 AS a20 GROUP BY a20.c4 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c10 FROM v6 AS a21 ORDER BY a21.c7 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v6 AS a23 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c9 > 187 (19)
+Runtime error near line 7: CHECK constraint failed: c9 > 187 (19)
+Runtime error near line 10: CHECK constraint failed: c2 > 187 (19)
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such function: y
+  6 LEFT JOIN v0 AS a17 ON a17.c2 = a17.c4 GROUP BY y ( a17.c3 ) ORDER BY 184467
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: misuse of aggregate: avg()
+  8446744073709551488 ) + 4294967295, min ( a18.c8, avg ( a18.c10 ) ) + 187; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: a20.c1
+  SELECT a20.c1, sum ( a20.c3 ) FROM v0 AS a20 GROUP BY a20.c4 ORDER BY 18446744
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no such function: y
+  6 LEFT JOIN v0 AS a17 ON a17.c2 = a17.c4 GROUP BY y ( a17.c3 ) ORDER BY 184467
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 17: no such function: y
+  6 LEFT JOIN v0 AS a17 ON a17.c2 = a17.c4 GROUP BY y ( a17.c3 ) ORDER BY 184467
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: misuse of aggregate: avg()
+  8446744073709551488 ) + 4294967295, min ( a18.c8, avg ( a18.c10 ) ) + 187; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: misuse of aggregate: avg()
+  8446744073709551488 ) + 4294967295, min ( a18.c8, avg ( a18.c10 ) ) + 187; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+1.84467440737096e+19|3.68934881474191e+19
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such column: a20.c1
+  SELECT a20.c1, sum ( a20.c3 ) FROM v0 AS a20 GROUP BY a20.c4 ORDER BY 18446744
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,277 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1 + 127 ) ) WITHOUT ROWID; 
+ATTACH NULL >= 18446744073709551488 AS sqlite_master; 
+CREATE TABLE v4 ( c5, c6 CHECK( 18446744073709551488 ), c7, c8, CHECK( c7 > 127 ) ); 
+CREATE INDEX i9 ON v4 ( c7 ); 
+CREATE INDEX i10 ON v0 ( c1 ); 
+CREATE INDEX i11 ON v4 ( c8 ); 
+ALTER TABLE v4 DROP c8; 
+ALTER TABLE v0 DROP c1; 
+CREATE TABLE v12 ( c13, c14, c15 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i16 ON v0 ( c2 ); 
+CREATE INDEX i17 ON v0 ( ( c2 + 2147483647 ) % 127 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a18 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a19.c6 || a19.c5 ) FROM v4 AS a19 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20, v4 AS a21 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a23 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a24 WHERE ( a24.c8 || a24.c6 || a24.c8 ) != 'v1' ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a25, v0 AS a26 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c13, max ( a27.c14 || a27.c15 ) FROM v12 AS a27 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v28 ( c29 ) AS ( SELECT 'v0' ORDER BY 18446744073709551488 ) SELECT * FROM ( SELECT 18446744073709551615 ORDER BY 9223372036854775807 ) AS y, ( SELECT c29, avg ( c29 ) + 100 FROM v28 AS a30 GROUP BY c29 HAVING c29 > c29 % 18446744073709551488 >= 127 ORDER BY 18446744073709551488 ) AS y ON hex ( 127 ) OR 2147483647 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: expressions prohibited in PRIMARY KEY and UNIQUE constraints
+Parse error near line 5: no such table: main.v0
+Runtime error near line 7: error in index i11 after drop column: no such column: c8
+Parse error near line 8: no such table: v0
+Parse error near line 10: no such table: main.v0
+Parse error near line 11: no such table: main.v0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1 + 127 ) ) WITHOUT ROWID; 
+ATTACH NULL >= 18446744073709551488 AS sqlite_master; 
+CREATE TABLE v4 ( c5, c6 CHECK( 18446744073709551488 ), c7, c8, CHECK( c7 > 127 ) ); 
+; 
+; 
+; 
+ALTER TABLE v4 DROP c8; 
+ALTER TABLE v0 DROP c1; 
+CREATE TABLE v12 ( c13, c14, c15 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a18 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a19.c6 || a19.c5 ) FROM v4 AS a19 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20, v4 AS a21 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a23 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a24 WHERE ( a24.c8 || a24.c6 || a24.c8 ) != 'v1' ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a25, v0 AS a26 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c13, max ( a27.c14 || a27.c15 ) FROM v12 AS a27 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v28 ( c29 ) AS ( SELECT 'v0' ORDER BY 18446744073709551488 ) SELECT * FROM ( SELECT 18446744073709551615 ORDER BY 9223372036854775807 ) AS y, ( SELECT c29, avg ( c29 ) + 100 FROM v28 AS a30 GROUP BY c29 HAVING c29 > c29 % 18446744073709551488 >= 127 ORDER BY 18446744073709551488 ) AS y ON hex ( 127 ) OR 2147483647 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: expressions prohibited in PRIMARY KEY and UNIQUE constraints
+Parse error near line 8: no such table: v0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a24.c8
+  SELECT * FROM v4 AS a24 WHERE ( a24.c8 || a24.c6 || a24.c8 ) != 'v1' ORDER BY 
+                    error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 28: no such column: a24.c8
+  SELECT * FROM v4 AS a24 WHERE ( a24.c8 || a24.c6 || a24.c8 ) != 'v1' ORDER BY 
+                    error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

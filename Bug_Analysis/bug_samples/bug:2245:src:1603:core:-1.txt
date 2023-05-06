@@ -1,0 +1,324 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c2 > 127 ), c4 ); 
+INSERT INTO v0 VALUES ( 127, 10, 127, 127 ), ( 127, 127, 127, 127 ); 
+CREATE TABLE v5 ( c6, c7, c8, c9, CHECK( c7 > 0 ) ); 
+CREATE INDEX i10 ON v5 ( c9 ); 
+INSERT INTO v5 VALUES ( 127, 127, 10, 18446744073709551615 ), ( 18446744073709551488, 127, 127, 127 ); 
+INSERT INTO v5 VALUES ( ( ( c7 + 0 ) % count ( c8 ) ) != 127, 0, 127, 127 ); 
+CREATE TABLE v11 ( c12 INT NOT NULL, c13 INTEGER NOT NULL, c14 TEXT NOT NULL, c15 REAL NOT NULL, c16 BLOB NOT NULL ) STRICT; 
+INSERT INTO v5 VALUES ( 127, 127, 127, 18446744073709551488 ); 
+CREATE INDEX i17 ON v5 ( c9 ); 
+CREATE INDEX i18 ON v5 ( c9 ); 
+CREATE INDEX i19 ON v0 ( c3 ); 
+CREATE INDEX i20 ON v0 ( c3 ); 
+ALTER TABLE v5 DROP c9; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a21.c6 || a21.c9 ) FROM v5 AS a21 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a22 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a23 ORDER BY ( ( hex ( 0 ) ) % 18446744073709551488 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a24, v0 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a26, v11 AS a27 NATURAL JOIN v5 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v29 AS ( SELECT 18446744073709551488 y ORDER BY 8 ) SELECT * FROM v29 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c1 FROM v0 AS a31 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c7 FROM v5 AS a32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a33 WHERE 100 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: CHECK constraint failed: c2 > 127 (19)
+Parse error near line 6: no such column: c7
+  INSERT INTO v5 VALUES ( ( ( c7 + 0 ) % count ( c8 ) ) != 127, 0, 127, 127 ); 
+                error here ---^
+Runtime error near line 13: error in index i10 after drop column: no such column: c9
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+127|127|10|1.84467440737096e+19
+127|127|127|1.84467440737096e+19
+1.84467440737096e+19|127|127|127
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 8
+  SELECT * FROM v5 AS a24, v0 AS a25 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 9
+  S a26, v11 AS a27 NATURAL JOIN v5 AS a28 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+127
+127
+127
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c2 > 127 ), c4 ); 
+INSERT INTO v0 VALUES ( 127, 10, 127, 127 ), ( 127, 127, 127, 127 ); 
+CREATE TABLE v5 ( c6, c7, c8, c9, CHECK( c7 > 0 ) ); 
+; 
+INSERT INTO v5 VALUES ( 127, 127, 10, 18446744073709551615 ), ( 18446744073709551488, 127, 127, 127 ); 
+INSERT INTO v5 VALUES ( ( ( c7 + 0 ) % count ( c8 ) ) != 127, 0, 127, 127 ); 
+CREATE TABLE v11 ( c12 INT NOT NULL, c13 INTEGER NOT NULL, c14 TEXT NOT NULL, c15 REAL NOT NULL, c16 BLOB NOT NULL ) STRICT; 
+INSERT INTO v5 VALUES ( 127, 127, 127, 18446744073709551488 ); 
+; 
+; 
+; 
+; 
+ALTER TABLE v5 DROP c9; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a21.c6 || a21.c9 ) FROM v5 AS a21 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a22 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a23 ORDER BY ( ( hex ( 0 ) ) % 18446744073709551488 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a24, v0 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a26, v11 AS a27 NATURAL JOIN v5 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v29 AS ( SELECT 18446744073709551488 y ORDER BY 8 ) SELECT * FROM v29 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c1 FROM v0 AS a31 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c7 FROM v5 AS a32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a33 WHERE 100 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: CHECK constraint failed: c2 > 127 (19)
+Parse error near line 6: no such column: c7
+  INSERT INTO v5 VALUES ( ( ( c7 + 0 ) % count ( c8 ) ) != 127, 0, 127, 127 ); 
+                error here ---^
+BEGIN VERI 0
+Parse error near line 15: no such column: a21.c9
+  SELECT max ( a21.c6 || a21.c9 ) FROM v5 AS a21 ORDER BY 127; 
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+127|127|10
+127|127|127
+1.84467440737096e+19|127|127
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 7
+  SELECT * FROM v5 AS a24, v0 AS a25 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 8
+  S a26, v11 AS a27 NATURAL JOIN v5 AS a28 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+127
+127
+127
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such column: a21.c9
+  SELECT max ( a21.c6 || a21.c9 ) FROM v5 AS a21 ORDER BY 127; 
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+127|127|10|1.84467440737096e+19
+127|127|127|1.84467440737096e+19
+1.84467440737096e+19|127|127|127
+ 
+INT: 2 
+Str: 
+127|127|10
+127|127|127
+1.84467440737096e+19|127|127
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 8
+  SELECT * FROM v5 AS a24, v0 AS a25 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 7
+  SELECT * FROM v5 AS a24, v0 AS a25 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 9
+  S a26, v11 AS a27 NATURAL JOIN v5 AS a28 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 8
+  S a26, v11 AS a27 NATURAL JOIN v5 AS a28 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+127
+127
+127
+ 
+INT: 2 
+Str: 
+127
+127
+127
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

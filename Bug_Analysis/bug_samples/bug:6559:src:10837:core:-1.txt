@@ -1,0 +1,310 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 UNIQUE, c2, c3 UNIQUE ON CONFLICT IGNORE, c4 UNIQUE ON CONFLICT FAIL, c5 UNIQUE ON CONFLICT REPLACE DEFAULT 0, c6, c7, c8 REAL, c9, c10, c11, c12, c13, PRIMARY KEY ( c8, c4, c8, c7, c10, c3, c10 ) ) WITHOUT ROWID; 
+CREATE INDEX i14 ON v0 ( c8 ); 
+CREATE INDEX i15 ON v0 ( c3 ); 
+CREATE TEMP TRIGGER tri1 INSERT ON v0 BEGIN UPDATE v0 SET c10 = c1 || c6 WHERE c7 = c5 || c4; END; 
+CREATE TABLE v16 ( c17, c18, c19, c20, PRIMARY KEY ( c18, c18 ) ) WITHOUT ROWID; 
+CREATE INDEX i21 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( 0, 0, 0, 0 ); 
+CREATE INDEX i22 ON v16 ( c17 ); 
+ALTER TABLE v16 DROP COLUMN c17; 
+INSERT OR REPLACE INTO v16 ( c20, c20, c19, c18, c19 ) VALUES ( 0, 18446744073709551488, NULL, 127, 0 ); 
+CREATE INDEX i23 ON v0 ( c8 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a24, v0 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v26 AS ( SELECT c3 FROM v26 AS a28 WHERE c18 LIKE 'v0' ORDER BY 0 ) SELECT * FROM v26 AS a27 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c18, a29.c18 FROM v16 AS a29 WHERE a29.c17 LIKE 'v0' ORDER BY max ( a29.c19 + a29.c18 * 127 ) + 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a30 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v31 ( c33 ) AS ( SELECT 'x' ORDER BY 2147483647 ) SELECT c33, sum ( c33 ) FROM v31 AS a32 GROUP BY c33 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 WHERE a34.c8 < a34.c9 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a35 ORDER BY ( ( a35.c17 + 9223372036854775807 ) % 255 ) != 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a36 NATURAL JOIN v0 AS a37 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a38 ORDER BY max ( + 98, 'jim', 'x' ) + 0, min ( a38.c6, avg ( a38.c9 ) ) + NULL >= 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: table v0 has 13 columns but 4 values were supplied
+Runtime error near line 9: error in index i22 after drop column: no such column: c17
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 17
+  SELECT * FROM v16 AS a24, v0 AS a25 ORDER BY 0; 
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: circular reference: v26
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: misuse of aggregate: max()
+   FROM v16 AS a29 WHERE a29.c17 LIKE 'v0' ORDER BY max ( a29.c19 + a29.c18 * 12
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v31 ( c33 ) AS ( SELECT 'x' ORDER BY 2147483647 ) SELECT c33, sum ( c33 )
+                              error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|127||0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: misuse of aggregate: avg()
+  ER BY max ( + 98, 'jim', 'x' ) + 0, min ( a38.c6, avg ( a38.c9 ) ) + NULL >= 9
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 UNIQUE, c2, c3 UNIQUE ON CONFLICT IGNORE, c4 UNIQUE ON CONFLICT FAIL, c5 UNIQUE ON CONFLICT REPLACE DEFAULT 0, c6, c7, c8 REAL, c9, c10, c11, c12, c13, PRIMARY KEY ( c8, c4, c8, c7, c10, c3, c10 ) ) WITHOUT ROWID; 
+; 
+; 
+CREATE TEMP TRIGGER tri1 INSERT ON v0 BEGIN UPDATE v0 SET c10 = c1 || c6 WHERE c7 = c5 || c4; END; 
+CREATE TABLE v16 ( c17, c18, c19, c20, PRIMARY KEY ( c18, c18 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v0 VALUES ( 0, 0, 0, 0 ); 
+; 
+ALTER TABLE v16 DROP COLUMN c17; 
+INSERT OR REPLACE INTO v16 ( c20, c20, c19, c18, c19 ) VALUES ( 0, 18446744073709551488, NULL, 127, 0 ); 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a24, v0 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v26 AS ( SELECT c3 FROM v26 AS a28 WHERE c18 LIKE 'v0' ORDER BY 0 ) SELECT * FROM v26 AS a27 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c18, a29.c18 FROM v16 AS a29 WHERE a29.c17 LIKE 'v0' ORDER BY max ( a29.c19 + a29.c18 * 127 ) + 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a30 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v31 ( c33 ) AS ( SELECT 'x' ORDER BY 2147483647 ) SELECT c33, sum ( c33 ) FROM v31 AS a32 GROUP BY c33 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 WHERE a34.c8 < a34.c9 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a35 ORDER BY ( ( a35.c17 + 9223372036854775807 ) % 255 ) != 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a36 NATURAL JOIN v0 AS a37 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a38 ORDER BY max ( + 98, 'jim', 'x' ) + 0, min ( a38.c6, avg ( a38.c9 ) ) + NULL >= 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: table v0 has 13 columns but 4 values were supplied
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 16
+  SELECT * FROM v16 AS a24, v0 AS a25 ORDER BY 0; 
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: circular reference: v26
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: a29.c17
+  SELECT a29.c18, a29.c18 FROM v16 AS a29 WHERE a29.c17 LIKE 'v0' ORDER BY max (
+                                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v31 ( c33 ) AS ( SELECT 'x' ORDER BY 2147483647 ) SELECT c33, sum ( c33 )
+                              error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a35.c17
+  SELECT * FROM v16 AS a35 ORDER BY ( ( a35.c17 + 9223372036854775807 ) % 255 ) 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: misuse of aggregate: avg()
+  ER BY max ( + 98, 'jim', 'x' ) + 0, min ( a38.c6, avg ( a38.c9 ) ) + NULL >= 9
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 17
+  SELECT * FROM v16 AS a24, v0 AS a25 ORDER BY 0; 
+                                 error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 16
+  SELECT * FROM v16 AS a24, v0 AS a25 ORDER BY 0; 
+                                 error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: circular reference: v26
+ 
+INT: 0 
+Str: 
+Parse error near line 16: circular reference: v26
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: misuse of aggregate: max()
+   FROM v16 AS a29 WHERE a29.c17 LIKE 'v0' ORDER BY max ( a29.c19 + a29.c18 * 12
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 19: no such column: a29.c17
+  SELECT a29.c18, a29.c18 FROM v16 AS a29 WHERE a29.c17 LIKE 'v0' ORDER BY max (
+                                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v31 ( c33 ) AS ( SELECT 'x' ORDER BY 2147483647 ) SELECT c33, sum ( c33 )
+                              error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v31 ( c33 ) AS ( SELECT 'x' ORDER BY 2147483647 ) SELECT c33, sum ( c33 )
+                              error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+|127||0
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no such column: a35.c17
+  SELECT * FROM v16 AS a35 ORDER BY ( ( a35.c17 + 9223372036854775807 ) % 255 ) 
+                          error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: misuse of aggregate: avg()
+  ER BY max ( + 98, 'jim', 'x' ) + 0, min ( a38.c6, avg ( a38.c9 ) ) + NULL >= 9
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: misuse of aggregate: avg()
+  ER BY max ( + 98, 'jim', 'x' ) + 0, min ( a38.c6, avg ( a38.c9 ) ) + NULL >= 9
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

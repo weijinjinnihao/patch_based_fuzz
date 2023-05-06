@@ -1,0 +1,319 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( 10, 'x', 'x' ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 10, 'v0', 'v1' ); 
+INSERT INTO v0 VALUES ( NULL, 'v1', 'aBc3' ); 
+CREATE TABLE v5 ( c6, c7 INTEGER DEFAULT 10, c8 REFERENCES p1 ( c7 ) ); 
+INSERT INTO v5 VALUES ( 'jkl', 'x', 'v0' ); 
+CREATE INDEX i9 ON v0 ( c3 ); 
+CREATE INDEX i10 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( x'616263', 'v0', 'v0' ); 
+CREATE TABLE v11 ( c12, c13, c14 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( 10, 0, 10 ), ( 10, 16, 10 ), ( 16 = 'v1', 10, 10 ); 
+INSERT INTO v11 VALUES ( 'x', 'v1', 'v1' ); 
+CREATE INDEX i15 ON v0 ( c1 ); 
+CREATE TABLE v16 ( c17, c18, c19, c20, c21, c22, c23 REFERENCES t1 DEFAULT 0 DEFAULT 18446744073709551615, c24, c25, c26, c27, c28, c29, c30 PRIMARY KEY ON CONFLICT REPLACE, c31, c32, c33 TEXT UNIQUE NOT NULL ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 'v1', 'v1' ); 
+INSERT INTO v11 VALUES ( - 10, 'x', 'x' ); 
+CREATE TABLE v34 ( c35, c36, c37 COLLATE NOCASE ); 
+INSERT INTO v11 SELECT c14, c14 FROM v11 AS a38 WHERE c14 = c12 + 10 AND c13 = c13 + 18446744073709551615 AND c12 = c12 + 3175546974276630385 ORDER BY 18446744073709551615; 
+CREATE INDEX i39 ON v0 ( c1 ); 
+UPDATE v34 SET c36 = zeroblob ( 10 ); 
+INSERT INTO v0 SELECT * FROM v34 AS a40 ORDER BY 18446744073709551488; 
+INSERT INTO v0 SELECT * FROM v16 AS a41 ORDER BY 0; 
+INSERT INTO v34 SELECT * FROM v5 AS a42 NATURAL JOIN v11 AS a43 ORDER BY 18446744073709551615; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a44 WHERE a44.c8 > ( a44.c6 + - 127 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v34 AS a45 ORDER BY a45.c36; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a46.c7 || a46.c8 ) FROM v5 AS a46 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v34 AS a47 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a48.c30 IS NULL ) ) AND ( NOT ( a48.c25 IS NULL ) ) ) FROM v16 AS a48 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a49 ORDER BY a49.c7 COLLATE nocase; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a50.c1 FROM v0 AS a50 GROUP BY 18446744073709551615 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a51.c1 ) FROM v0 AS a51 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT abs ( a53.c14 ), a52.c7 FROM v5 AS a52 RIGHT JOIN v11 AS a53 ON a52.c6 = y ( a53.c12 ) WHERE ( a52.c7 + 10 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 19: table v11 has 3 columns but 2 values were supplied
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 17
+  INSERT INTO v0 SELECT * FROM v16 AS a41 ORDER BY 0; 
+                                     error here ---^
+Parse error near line 24: table v34 has 3 columns but 6 values were supplied
+BEGIN VERI 0
+jkl|x|v0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+xv0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+jkl|x|v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no tables specified
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 50: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a51.c1 ) FROM v0 AS a51 ORDER BY 0; 
+                                    error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 53: no such function: y
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( 10, 'x', 'x' ); 
+; 
+INSERT INTO v0 VALUES ( 10, 'v0', 'v1' ); 
+INSERT INTO v0 VALUES ( NULL, 'v1', 'aBc3' ); 
+CREATE TABLE v5 ( c6, c7 INTEGER DEFAULT 10, c8 REFERENCES p1 ( c7 ) ); 
+INSERT INTO v5 VALUES ( 'jkl', 'x', 'v0' ); 
+; 
+; 
+INSERT INTO v0 VALUES ( x'616263', 'v0', 'v0' ); 
+CREATE TABLE v11 ( c12, c13, c14 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( 10, 0, 10 ), ( 10, 16, 10 ), ( 16 = 'v1', 10, 10 ); 
+INSERT INTO v11 VALUES ( 'x', 'v1', 'v1' ); 
+; 
+CREATE TABLE v16 ( c17, c18, c19, c20, c21, c22, c23 REFERENCES t1 DEFAULT 0 DEFAULT 18446744073709551615, c24, c25, c26, c27, c28, c29, c30 PRIMARY KEY ON CONFLICT REPLACE, c31, c32, c33 TEXT UNIQUE NOT NULL ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 'v1', 'v1' ); 
+INSERT INTO v11 VALUES ( - 10, 'x', 'x' ); 
+CREATE TABLE v34 ( c35, c36, c37 COLLATE NOCASE ); 
+INSERT INTO v11 SELECT c14, c14 FROM v11 AS a38 WHERE c14 = c12 + 10 AND c13 = c13 + 18446744073709551615 AND c12 = c12 + 3175546974276630385 ORDER BY 18446744073709551615; 
+; 
+UPDATE v34 SET c36 = zeroblob ( 10 ); 
+INSERT INTO v0 SELECT * FROM v34 AS a40 ORDER BY 18446744073709551488; 
+INSERT INTO v0 SELECT * FROM v16 AS a41 ORDER BY 0; 
+INSERT INTO v34 SELECT * FROM v5 AS a42 NATURAL JOIN v11 AS a43 ORDER BY 18446744073709551615; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a44 WHERE a44.c8 > ( a44.c6 + - 127 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v34 AS a45 ORDER BY a45.c36; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a46.c7 || a46.c8 ) FROM v5 AS a46 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v34 AS a47 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a48.c30 IS NULL ) ) AND ( NOT ( a48.c25 IS NULL ) ) ) FROM v16 AS a48 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a49 ORDER BY a49.c7 COLLATE nocase; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a50.c1 FROM v0 AS a50 GROUP BY 18446744073709551615 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a51.c1 ) FROM v0 AS a51 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT abs ( a53.c14 ), a52.c7 FROM v5 AS a52 RIGHT JOIN v11 AS a53 ON a52.c6 = y ( a53.c12 ) WHERE ( a52.c7 + 10 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 19: table v11 has 3 columns but 2 values were supplied
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 17
+  INSERT INTO v0 SELECT * FROM v16 AS a41 ORDER BY 0; 
+                                     error here ---^
+Parse error near line 24: table v34 has 3 columns but 6 values were supplied
+BEGIN VERI 0
+jkl|x|v0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+xv0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+jkl|x|v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no tables specified
+END VERI 0
+BEGIN VERI 0
+10
+END VERI 0
+BEGIN VERI 0
+Parse error near line 50: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a51.c1 ) FROM v0 AS a51 ORDER BY 0; 
+                                    error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 53: no such function: y
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+jkl|x|v0
+ 
+INT: 0 
+Str: 
+jkl|x|v0
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+xv0
+ 
+INT: 0 
+Str: 
+xv0
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+jkl|x|v0
+ 
+INT: 0 
+Str: 
+jkl|x|v0
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 44: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+10
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 50: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a51.c1 ) FROM v0 AS a51 ORDER BY 0; 
+                                    error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 50: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a51.c1 ) FROM v0 AS a51 ORDER BY 0; 
+                                    error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 53: no such function: y
+ 
+INT: 0 
+Str: 
+Parse error near line 53: no such function: y
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

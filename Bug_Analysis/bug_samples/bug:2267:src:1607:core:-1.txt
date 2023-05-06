@@ -1,0 +1,312 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 ); 
+CREATE INDEX i28 ON v0 ( c6 ); 
+CREATE INDEX i29 ON v0 ( c10 ); 
+CREATE INDEX i30 ON v0 ( c14 ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 18446744073709551615, 0, 16 ), ( 18446744073709551615, 18446744073709551615, 0, 18446744073709551615 ); 
+CREATE TABLE v31 ( c32, c33, c34, c35, CHECK( c33 > 18446744073709551615 ) ); 
+CREATE INDEX i36 ON v31 ( c34 ); 
+INSERT INTO v31 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709518848, 18446744073709551615 ), ( 18446744073709551615, 18446744073709551488, 18446744073709551615, 18446744073709551615 ); 
+INSERT INTO v31 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709518848, 18446744073709551615 ) ON CONFLICT ( count ( c35 ) ) WHERE c33 IS NOT NULL DO UPDATE SET c34 = c32, c32 = c32; 
+INSERT INTO v0 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709551615, 18446744073709551615 ); 
+ALTER TABLE v31 DROP c34; 
+CREATE INDEX i37 ON v31 ( c32 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( c6 || c16 || c32 ) != 'v0' WHERE c19 IS NOT NULL >= 18446744071562067968 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a38 GROUP BY a38.c32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a39, v0 AS a40 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a41.c35 ) FROM v31 AS a41 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a43 ORDER BY ( ( a43.c34 + 0 ) % 0 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c34, count ( ( NOT ( a44.c35 IS NULL ) ) AND ( NOT ( a45.c2 IS NULL ) ) ) FROM v31 AS a44 LEFT JOIN v0 AS a45 ON a44.c32 = a45.c24 WHERE a45.c6 != 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c47 ) AS ( SELECT a48.c8 + ( SELECT max ( a50.c15 ) FROM v0 AS a51 ORDER BY 127 ), c47 + ( SELECT a49.c32 FROM v0 AS a50 ORDER BY 18446744073709551615 ), c47 + ( SELECT max ( a46.c2 ) FROM v31 AS a49 ORDER BY 0 ) FROM v0 AS a48 ORDER BY 127 ) SELECT * FROM v0 AS a46 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a52 ORDER BY a52.c12 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a53 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: table v0 has 27 columns but 4 values were supplied
+Runtime error near line 8: CHECK constraint failed: c33 > 18446744073709551615 (19)
+Parse error near line 9: misuse of aggregate function count()
+  73709518848, 18446744073709551615 ) ON CONFLICT ( count ( c35 ) ) WHERE c33 IS
+                                      error here ---^
+Parse error near line 10: table v0 has 27 columns but 4 values were supplied
+Runtime error near line 11: error in index i36 after drop column: no such column: c34
+BEGIN VERI 0
+Parse error near line 14: no such column: c6
+  SELECT ( c6 || c16 || c32 ) != 'v0' WHERE c19 IS NOT NULL >= 18446744071562067
+           ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a42 ORDER BY 2147483647; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v31 AS a53 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 ); 
+; 
+; 
+; 
+INSERT INTO v0 VALUES ( 18446744073709551615, 18446744073709551615, 0, 16 ), ( 18446744073709551615, 18446744073709551615, 0, 18446744073709551615 ); 
+CREATE TABLE v31 ( c32, c33, c34, c35, CHECK( c33 > 18446744073709551615 ) ); 
+; 
+INSERT INTO v31 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709518848, 18446744073709551615 ), ( 18446744073709551615, 18446744073709551488, 18446744073709551615, 18446744073709551615 ); 
+INSERT INTO v31 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709518848, 18446744073709551615 ) ON CONFLICT ( count ( c35 ) ) WHERE c33 IS NOT NULL DO UPDATE SET c34 = c32, c32 = c32; 
+INSERT INTO v0 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709551615, 18446744073709551615 ); 
+ALTER TABLE v31 DROP c34; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( c6 || c16 || c32 ) != 'v0' WHERE c19 IS NOT NULL >= 18446744071562067968 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a38 GROUP BY a38.c32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a39, v0 AS a40 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a41.c35 ) FROM v31 AS a41 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a43 ORDER BY ( ( a43.c34 + 0 ) % 0 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c34, count ( ( NOT ( a44.c35 IS NULL ) ) AND ( NOT ( a45.c2 IS NULL ) ) ) FROM v31 AS a44 LEFT JOIN v0 AS a45 ON a44.c32 = a45.c24 WHERE a45.c6 != 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c47 ) AS ( SELECT a48.c8 + ( SELECT max ( a50.c15 ) FROM v0 AS a51 ORDER BY 127 ), c47 + ( SELECT a49.c32 FROM v0 AS a50 ORDER BY 18446744073709551615 ), c47 + ( SELECT max ( a46.c2 ) FROM v31 AS a49 ORDER BY 0 ) FROM v0 AS a48 ORDER BY 127 ) SELECT * FROM v0 AS a46 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a52 ORDER BY a52.c12 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a53 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: table v0 has 27 columns but 4 values were supplied
+Runtime error near line 8: CHECK constraint failed: c33 > 18446744073709551615 (19)
+Parse error near line 9: misuse of aggregate function count()
+  73709518848, 18446744073709551615 ) ON CONFLICT ( count ( c35 ) ) WHERE c33 IS
+                                      error here ---^
+Parse error near line 10: table v0 has 27 columns but 4 values were supplied
+BEGIN VERI 0
+Parse error near line 14: no such column: c6
+  SELECT ( c6 || c16 || c32 ) != 'v0' WHERE c19 IS NOT NULL >= 18446744071562067
+           ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a42 ORDER BY 2147483647; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a43.c34
+  SELECT * FROM v31 AS a43 ORDER BY ( ( a43.c34 + 0 ) % 0 ); 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a44.c34
+  SELECT a44.c34, count ( ( NOT ( a44.c35 IS NULL ) ) AND ( NOT ( a45.c2 IS NULL
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v31 AS a53 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no such column: c6
+  SELECT ( c6 || c16 || c32 ) != 'v0' WHERE c19 IS NOT NULL >= 18446744071562067
+           ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 14: no such column: c6
+  SELECT ( c6 || c16 || c32 ) != 'v0' WHERE c19 IS NOT NULL >= 18446744071562067
+           ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a42 ORDER BY 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a42 ORDER BY 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 29: no such column: a43.c34
+  SELECT * FROM v31 AS a43 ORDER BY ( ( a43.c34 + 0 ) % 0 ); 
+                          error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such column: a44.c34
+  SELECT a44.c34, count ( ( NOT ( a44.c35 IS NULL ) ) AND ( NOT ( a45.c2 IS NULL
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: circular reference: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 35: circular reference: v0
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v31 AS a53 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v31 AS a53 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

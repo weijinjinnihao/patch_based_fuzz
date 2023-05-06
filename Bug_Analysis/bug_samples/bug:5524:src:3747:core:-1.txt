@@ -1,0 +1,308 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 PRIMARY KEY ON CONFLICT ABORT, c2, c3 COLLATE NOCASE ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE INDEX i6 ON v0 ( c1 ); 
+CREATE INDEX i7 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i8 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v9 ( c11 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v9 AS a10 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a12 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a13 WHERE a13.c2 LIKE ( a13.c3 + 0 ) > 18446744073709551615 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14 NATURAL JOIN v0 AS a15 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c17 ) AS ( SELECT 0 GROUP BY a16.c3 HAVING automatic_index ( * ) >= 0 ORDER BY 0 ) SELECT * FROM v0 AS a16 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c3, max ( a18.c2 || a18.c2 ) FROM v0 AS a18 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 GROUP BY a19.c11, abs ( a19.c3 ) HAVING CASE WHEN a19.c3 != 'count.test cases for NOT INDEXED' THEN 0 ELSE 18446744073709551615 END > 18446744073709551488 >= 0 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( WITH v0 AS ( SELECT 18446744073709551615 y ORDER BY 18446744073709551615 ) SELECT avg ( a20.c3 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a20 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21, v0 AS a22 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: error in index i5 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 9: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v9 ( c11 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v9 AS a10 ORDER BY 0;
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+  KE ( a13.c3 + 0 ) > 18446744073709551615 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+   * FROM v0 AS a14 NATURAL JOIN v0 AS a15 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such function: automatic_index
+  H v0 ( c17 ) AS ( SELECT 0 GROUP BY a16.c3 HAVING automatic_index ( * ) >= 0 O
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a19.c11
+  SELECT * FROM v0 AS a19 GROUP BY a19.c11, abs ( a19.c3 ) HAVING CASE WHEN a19.
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 PRIMARY KEY ON CONFLICT ABORT, c2, c3 COLLATE NOCASE ); 
+; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c2; 
+; 
+SELECT 'BEGIN VERI 0'; 
+WITH v9 ( c11 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v9 AS a10 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a12 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a13 WHERE a13.c2 LIKE ( a13.c3 + 0 ) > 18446744073709551615 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14 NATURAL JOIN v0 AS a15 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c17 ) AS ( SELECT 0 GROUP BY a16.c3 HAVING automatic_index ( * ) >= 0 ORDER BY 0 ) SELECT * FROM v0 AS a16 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c3, max ( a18.c2 || a18.c2 ) FROM v0 AS a18 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 GROUP BY a19.c11, abs ( a19.c3 ) HAVING CASE WHEN a19.c3 != 'count.test cases for NOT INDEXED' THEN 0 ELSE 18446744073709551615 END > 18446744073709551488 >= 0 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( WITH v0 AS ( SELECT 18446744073709551615 y ORDER BY 18446744073709551615 ) SELECT avg ( a20.c3 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a20 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21, v0 AS a22 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 9: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v9 ( c11 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v9 AS a10 ORDER BY 0;
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such column: a13.c2
+  SELECT * FROM v0 AS a13 WHERE a13.c2 LIKE ( a13.c3 + 0 ) > 1844674407370955161
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+   * FROM v0 AS a14 NATURAL JOIN v0 AS a15 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such function: automatic_index
+  H v0 ( c17 ) AS ( SELECT 0 GROUP BY a16.c3 HAVING automatic_index ( * ) >= 0 O
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a18.c2
+  SELECT a18.c3, max ( a18.c2 || a18.c2 ) FROM v0 AS a18 ORDER BY 16; 
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a19.c11
+  SELECT * FROM v0 AS a19 GROUP BY a19.c11, abs ( a19.c3 ) HAVING CASE WHEN a19.
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 9: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v9 ( c11 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v9 AS a10 ORDER BY 0;
+                           error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 9: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v9 ( c11 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v9 AS a10 ORDER BY 0;
+                           error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+  KE ( a13.c3 + 0 ) > 18446744073709551615 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: no such column: a13.c2
+  SELECT * FROM v0 AS a13 WHERE a13.c2 LIKE ( a13.c3 + 0 ) > 1844674407370955161
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+   * FROM v0 AS a14 NATURAL JOIN v0 AS a15 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+   * FROM v0 AS a14 NATURAL JOIN v0 AS a15 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such function: automatic_index
+  H v0 ( c17 ) AS ( SELECT 0 GROUP BY a16.c3 HAVING automatic_index ( * ) >= 0 O
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: no such function: automatic_index
+  H v0 ( c17 ) AS ( SELECT 0 GROUP BY a16.c3 HAVING automatic_index ( * ) >= 0 O
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such column: a18.c2
+  SELECT a18.c3, max ( a18.c2 || a18.c2 ) FROM v0 AS a18 ORDER BY 16; 
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such column: a19.c11
+  SELECT * FROM v0 AS a19 GROUP BY a19.c11, abs ( a19.c3 ) HAVING CASE WHEN a19.
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: no such column: a19.c11
+  SELECT * FROM v0 AS a19 GROUP BY a19.c11, abs ( a19.c3 ) HAVING CASE WHEN a19.
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

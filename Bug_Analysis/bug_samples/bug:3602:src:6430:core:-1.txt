@@ -1,0 +1,305 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE INDEX i6 ON v0 ( c1 ); 
+CREATE VIEW v7 AS SELECT * FROM v0 AS a8 WHERE c3 = 18446744073709551488 ORDER BY 18446744073709551488; 
+CREATE TABLE v9 ( c10, c11, c12 ); 
+CREATE INDEX i13 ON v7 ( c2 ); 
+ALTER TABLE v7 DROP COLUMN c2; 
+CREATE INDEX i14 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE VIRTUAL TABLE v15 USING fts5 ( c16, c17 ); 
+ALTER TABLE v15 DROP COLUMN c17; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c2, a18.c2 FROM v7 AS a18 RIGHT JOIN v9 AS a19 ON a18.c2 = a18.c2 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a20 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c1, count ( a21.c3 ) FROM v0 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a22, v15 AS a23 NATURAL JOIN v7 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( SELECT a25.c2 FROM v0 AS a26 WHERE a26.c1 = NULL AND a26.c3 >= a25.c2 ORDER BY 18446744073709551488 ) ) FROM v7 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a27 NATURAL JOIN v9 AS a28 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a30 WHERE ( CASE WHEN a30.c16 != 'v1' THEN 18446744073709551488 ELSE 18446744073709551488 END ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: views may not be indexed
+Parse error near line 8: cannot drop column from view "v7"
+Runtime error near line 10: error in index i6 after drop column: no such column: c1
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: no such table: v15
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v15
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+   18446744073709551488 ) ) FROM v7 AS a25 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a29 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such table: v15
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+; 
+; 
+CREATE VIEW v7 AS SELECT * FROM v0 AS a8 WHERE c3 = 18446744073709551488 ORDER BY 18446744073709551488; 
+CREATE TABLE v9 ( c10, c11, c12 ); 
+; 
+ALTER TABLE v7 DROP COLUMN c2; 
+; 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE VIRTUAL TABLE v15 USING fts5 ( c16, c17 ); 
+ALTER TABLE v15 DROP COLUMN c17; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c2, a18.c2 FROM v7 AS a18 RIGHT JOIN v9 AS a19 ON a18.c2 = a18.c2 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a20 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c1, count ( a21.c3 ) FROM v0 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a22, v15 AS a23 NATURAL JOIN v7 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( SELECT a25.c2 FROM v0 AS a26 WHERE a26.c1 = NULL AND a26.c3 >= a25.c2 ORDER BY 18446744073709551488 ) ) FROM v7 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a27 NATURAL JOIN v9 AS a28 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a30 WHERE ( CASE WHEN a30.c16 != 'v1' THEN 18446744073709551488 ELSE 18446744073709551488 END ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop column from view "v7"
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: no such table: v15
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a21.c1
+  SELECT a21.c1, count ( a21.c3 ) FROM v0 AS a21 ORDER BY 18446744073709551488; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a26.c1
+  SELECT ( ( SELECT a25.c2 FROM v0 AS a26 WHERE a26.c1 = NULL AND a26.c3 >= a25.
+                                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a29 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such table: v15
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no such table: v15
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no such table: v15
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no such column: a21.c1
+  SELECT a21.c1, count ( a21.c3 ) FROM v0 AS a21 ORDER BY 18446744073709551488; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no such table: v15
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such table: v15
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+   18446744073709551488 ) ) FROM v7 AS a25 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: no such column: a26.c1
+  SELECT ( ( SELECT a25.c2 FROM v0 AS a26 WHERE a26.c1 = NULL AND a26.c3 >= a25.
+                                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 35: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a29 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a29 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no such table: v15
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no such table: v15
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

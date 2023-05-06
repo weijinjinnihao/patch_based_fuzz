@@ -1,0 +1,312 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 PRIMARY KEY, CHECK( ( ( c3 + 0 ) % 0 ) != 0 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE INDEX i6 ON v0 ( c2 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i7 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT *, 'v1' FROM v0 AS a8 ORDER BY + a8.c3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v9 ( c11 ) AS ( SELECT c11 ORDER BY 0 ) SELECT * FROM v9 AS a10 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a12.c1, count ( a12.c3 ) FROM v0 AS a12 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a13 ORDER BY a13.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14 WHERE a14.c3 = a14.c2 > a14.c1 % 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 0 AS y FROM v0 AS a16 WHERE a16.c3 = a16.c2 > 2147483647 ORDER BY 18446744073709551615 ) AS y LEFT JOIN v0 AS a15 ON a15.c1 IS NULL GROUP BY a15.c3 HAVING automatic_index ( * ) >= 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY ( ( a17.c2 + 0 ) % 255 ) < 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT hex ( ) y ORDER BY 0 ) SELECT a19.c3, a20.c1 FROM v0 AS a19, v0 AS a20 WHERE a20.c3 = 'v0' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: error in index i4 after drop column: no such column: c2
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 11: no such column: c11
+  WITH v9 ( c11 ) AS ( SELECT c11 ORDER BY 0 ) SELECT * FROM v9 AS a10 ORDER BY 
+                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 2
+   a12.c1, count ( a12.c3 ) FROM v0 AS a12 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+  S a14 WHERE a14.c3 = a14.c2 > a14.c1 % 0 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such function: automatic_index
+  0 AS a15 ON a15.c1 IS NULL GROUP BY a15.c3 HAVING automatic_index ( * ) >= 0 O
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a18 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: wrong number of arguments to function hex()
+  WITH v0 AS ( SELECT hex ( ) y ORDER BY 0 ) SELECT a19.c3, a20.c1 FROM v0 AS a1
+                      ^--- error here
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 PRIMARY KEY, CHECK( ( ( c3 + 0 ) % 0 ) != 0 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c2; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT *, 'v1' FROM v0 AS a8 ORDER BY + a8.c3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v9 ( c11 ) AS ( SELECT c11 ORDER BY 0 ) SELECT * FROM v9 AS a10 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a12.c1, count ( a12.c3 ) FROM v0 AS a12 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a13 ORDER BY a13.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14 WHERE a14.c3 = a14.c2 > a14.c1 % 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 0 AS y FROM v0 AS a16 WHERE a16.c3 = a16.c2 > 2147483647 ORDER BY 18446744073709551615 ) AS y LEFT JOIN v0 AS a15 ON a15.c1 IS NULL GROUP BY a15.c3 HAVING automatic_index ( * ) >= 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY ( ( a17.c2 + 0 ) % 255 ) < 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT hex ( ) y ORDER BY 0 ) SELECT a19.c3, a20.c1 FROM v0 AS a19, v0 AS a20 WHERE a20.c3 = 'v0' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 11: no such column: c11
+  WITH v9 ( c11 ) AS ( SELECT c11 ORDER BY 0 ) SELECT * FROM v9 AS a10 ORDER BY 
+                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 2
+   a12.c1, count ( a12.c3 ) FROM v0 AS a12 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a14.c2
+  SELECT * FROM v0 AS a14 WHERE a14.c3 = a14.c2 > a14.c1 % 0 ORDER BY 0; 
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: a16.c2
+  ROM ( SELECT 0 AS y FROM v0 AS a16 WHERE a16.c3 = a16.c2 > 2147483647 ORDER BY
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a17.c2
+  SELECT * FROM v0 AS a17 ORDER BY ( ( a17.c2 + 0 ) % 255 ) < 0; 
+                         error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a18 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: wrong number of arguments to function hex()
+  WITH v0 AS ( SELECT hex ( ) y ORDER BY 0 ) SELECT a19.c3, a20.c1 FROM v0 AS a1
+                      ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 11: no such column: c11
+  WITH v9 ( c11 ) AS ( SELECT c11 ORDER BY 0 ) SELECT * FROM v9 AS a10 ORDER BY 
+                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 11: no such column: c11
+  WITH v9 ( c11 ) AS ( SELECT c11 ORDER BY 0 ) SELECT * FROM v9 AS a10 ORDER BY 
+                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 14: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 2
+   a12.c1, count ( a12.c3 ) FROM v0 AS a12 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 2
+   a12.c1, count ( a12.c3 ) FROM v0 AS a12 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+  S a14 WHERE a14.c3 = a14.c2 > a14.c1 % 0 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 23: no such column: a14.c2
+  SELECT * FROM v0 AS a14 WHERE a14.c3 = a14.c2 > a14.c1 % 0 ORDER BY 0; 
+                           error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no such function: automatic_index
+  0 AS a15 ON a15.c1 IS NULL GROUP BY a15.c3 HAVING automatic_index ( * ) >= 0 O
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: no such column: a16.c2
+  ROM ( SELECT 0 AS y FROM v0 AS a16 WHERE a16.c3 = a16.c2 > 2147483647 ORDER BY
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 29: no such column: a17.c2
+  SELECT * FROM v0 AS a17 ORDER BY ( ( a17.c2 + 0 ) % 255 ) < 0; 
+                         error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a18 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a18 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: wrong number of arguments to function hex()
+  WITH v0 AS ( SELECT hex ( ) y ORDER BY 0 ) SELECT a19.c3, a20.c1 FROM v0 AS a1
+                      ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 35: wrong number of arguments to function hex()
+  WITH v0 AS ( SELECT hex ( ) y ORDER BY 0 ) SELECT a19.c3, a20.c1 FROM v0 AS a1
+                      ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

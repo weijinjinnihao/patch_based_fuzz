@@ -1,0 +1,282 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7 DEFAULT x'ABCD', c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, PRIMARY KEY ( c14, c9, c15, c14, c16, c9, c13, c1 ), CHECK( ( ( c5 + 0 ) > 0 ) != 0 ) ) WITHOUT ROWID; 
+CREATE INDEX i18 ON v0 ( c17 ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c12 = c7 || c12 WHERE c4 = c11 || c8; END; 
+CREATE INDEX i19 ON v0 ( c13 ); 
+CREATE INDEX i20 ON v0 ( c9 ) WHERE ( CASE WHEN c14 != 'fig' THEN 0 ELSE 0 END ); 
+CREATE TABLE v21 ( c22, c23, c24, c25, PRIMARY KEY ( c24, c23 ) ) WITHOUT ROWID; 
+CREATE INDEX i26 ON v0 ( c5 ); 
+INSERT INTO v0 VALUES ( 0, 100, 0, 18446744073709518848 ); 
+ALTER TABLE v0 DROP COLUMN c17; 
+CREATE INDEX i27 ON v21 ( c23 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a28 GROUP BY a28.c22, abs ( a28.c24 ) HAVING CASE WHEN a28.c23 != '1.0' THEN 18446744073709518848 ELSE 127 END > 0 >= 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT typeof ( a29.c4 ), a29.c17, typeof ( a29.c4 ), a29.c12 FROM v0 AS a29 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c25, max ( a30.c23 || a30.c22 ) FROM v21 AS a30 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a31 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 ORDER BY a32.c3 % 18446744073709551615 >= 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 18446744073709518848 ORDER BY 18446744073709551488 ) AS y, v21 AS a33 ON a33.c22 = a33.c22 || a33.c25 OR 18446744073709551488 GROUP BY a33.c23 HAVING a33.c22 > a33.c24 % 0 >= 18446744071562067968 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a34 NATURAL JOIN v0 AS a35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a37 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: table v0 has 17 columns but 4 values were supplied
+Runtime error near line 9: error in index i18 after drop column: no such column: c17
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 5
+  22 > a33.c24 % 0 >= 18446744071562067968 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 21
+  * FROM v21 AS a34 NATURAL JOIN v0 AS a35 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7 DEFAULT x'ABCD', c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, PRIMARY KEY ( c14, c9, c15, c14, c16, c9, c13, c1 ), CHECK( ( ( c5 + 0 ) > 0 ) != 0 ) ) WITHOUT ROWID; 
+; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c12 = c7 || c12 WHERE c4 = c11 || c8; END; 
+; 
+; 
+CREATE TABLE v21 ( c22, c23, c24, c25, PRIMARY KEY ( c24, c23 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v0 VALUES ( 0, 100, 0, 18446744073709518848 ); 
+ALTER TABLE v0 DROP COLUMN c17; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a28 GROUP BY a28.c22, abs ( a28.c24 ) HAVING CASE WHEN a28.c23 != '1.0' THEN 18446744073709518848 ELSE 127 END > 0 >= 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT typeof ( a29.c4 ), a29.c17, typeof ( a29.c4 ), a29.c12 FROM v0 AS a29 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c25, max ( a30.c23 || a30.c22 ) FROM v21 AS a30 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a31 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 ORDER BY a32.c3 % 18446744073709551615 >= 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 18446744073709518848 ORDER BY 18446744073709551488 ) AS y, v21 AS a33 ON a33.c22 = a33.c22 || a33.c25 OR 18446744073709551488 GROUP BY a33.c23 HAVING a33.c22 > a33.c24 % 0 >= 18446744071562067968 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a34 NATURAL JOIN v0 AS a35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a37 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: table v0 has 17 columns but 4 values were supplied
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such column: a29.c17
+  SELECT typeof ( a29.c4 ), a29.c17, typeof ( a29.c4 ), a29.c12 FROM v0 AS a29 O
+              error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 5
+  22 > a33.c24 % 0 >= 18446744071562067968 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 20
+  * FROM v21 AS a34 NATURAL JOIN v0 AS a35 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 15: no such column: a29.c17
+  SELECT typeof ( a29.c4 ), a29.c17, typeof ( a29.c4 ), a29.c12 FROM v0 AS a29 O
+              error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 5
+  22 > a33.c24 % 0 >= 18446744071562067968 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 5
+  22 > a33.c24 % 0 >= 18446744071562067968 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 21
+  * FROM v21 AS a34 NATURAL JOIN v0 AS a35 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 20
+  * FROM v21 AS a34 NATURAL JOIN v0 AS a35 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

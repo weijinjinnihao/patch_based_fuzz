@@ -1,0 +1,324 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 100; 
+CREATE INDEX i6 ON v0 ( c1 ); 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9, c10 UNIQUE ); 
+CREATE INDEX i11 ON v4 ( c3 ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i16 ON v0 ( c1 ); 
+ALTER TABLE v7 DROP COLUMN c8; 
+CREATE VIRTUAL TABLE v17 USING fts5 ( c18, c19 ); 
+CREATE INDEX i20 ON v7 ( c10 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i21 ON v4 ( c1 ); 
+CREATE TABLE v22 ( c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38 DEFAULT x'ABCD', c39, c40, c41, c42 ANY ); 
+CREATE TABLE v43 ( c44, c45 TEXT, c46, PRIMARY KEY ( c44, c46 ), UNIQUE ( c44 ) ) STRICT; 
+SELECT 'BEGIN VERI 0'; 
+WITH v47 ( c49 ) AS ( SELECT * ORDER BY 100 ) SELECT * FROM v47 AS a48 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a50, v43 AS a51 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v43 AS a52 WHERE ( a52.c45 = 100 OR a52.c45 = 4294967295 ) AND a52.c44 IN ( WITH v53 AS ( SELECT ( SELECT min ( a52.c44 ) OVER ( ORDER BY 0 IN v53 ) ORDER BY 100 ) FROM v53 AS a54 GROUP BY a52.c45 ORDER BY 255 ) SELECT 100 ORDER BY 0 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a55.c42, a55.c25 FROM v22 AS a55 RIGHT JOIN v4 AS a56 ON a56.c1 = a55.c26 y ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a57 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a58 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a59 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a60.c1, count ( ( NOT ( a60.c3 IS NULL ) ) AND ( NOT ( a60.c3 IS NULL ) ) ) FROM v0 AS a60 ORDER BY 222; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a61 GROUP BY a61.c14 HAVING NULL ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a62 GROUP BY a62.c19 HAVING NULL ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: views may not be indexed
+Parse error near line 9: cannot drop PRIMARY KEY column: "c8"
+Runtime error near line 10: no such module: fts5
+Runtime error near line 12: error in index i6 after drop column: no such column: c1
+Parse error near line 13: views may not be indexed
+Parse error near line 15: missing datatype for v43.c44
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v43
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: near "y": syntax error
+  2 AS a55 RIGHT JOIN v4 AS a56 ON a56.c1 = a55.c26 y ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a59 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+   v12 AS a61 GROUP BY a61.c14 HAVING NULL ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no such table: v17
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 100; 
+; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9, c10 UNIQUE ); 
+; 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+ALTER TABLE v7 DROP COLUMN c8; 
+CREATE VIRTUAL TABLE v17 USING fts5 ( c18, c19 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+CREATE TABLE v22 ( c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38 DEFAULT x'ABCD', c39, c40, c41, c42 ANY ); 
+CREATE TABLE v43 ( c44, c45 TEXT, c46, PRIMARY KEY ( c44, c46 ), UNIQUE ( c44 ) ) STRICT; 
+SELECT 'BEGIN VERI 0'; 
+WITH v47 ( c49 ) AS ( SELECT * ORDER BY 100 ) SELECT * FROM v47 AS a48 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a50, v43 AS a51 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v43 AS a52 WHERE ( a52.c45 = 100 OR a52.c45 = 4294967295 ) AND a52.c44 IN ( WITH v53 AS ( SELECT ( SELECT min ( a52.c44 ) OVER ( ORDER BY 0 IN v53 ) ORDER BY 100 ) FROM v53 AS a54 GROUP BY a52.c45 ORDER BY 255 ) SELECT 100 ORDER BY 0 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a55.c42, a55.c25 FROM v22 AS a55 RIGHT JOIN v4 AS a56 ON a56.c1 = a55.c26 y ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a57 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a58 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a59 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a60.c1, count ( ( NOT ( a60.c3 IS NULL ) ) AND ( NOT ( a60.c3 IS NULL ) ) ) FROM v0 AS a60 ORDER BY 222; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a61 GROUP BY a61.c14 HAVING NULL ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a62 GROUP BY a62.c19 HAVING NULL ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: cannot drop PRIMARY KEY column: "c8"
+Runtime error near line 10: no such module: fts5
+Parse error near line 15: missing datatype for v43.c44
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v43
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: near "y": syntax error
+  2 AS a55 RIGHT JOIN v4 AS a56 ON a56.c1 = a55.c26 y ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM v0 AS a59 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a60.c1
+  SELECT a60.c1, count ( ( NOT ( a60.c3 IS NULL ) ) AND ( NOT ( a60.c3 IS NULL )
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+   v12 AS a61 GROUP BY a61.c14 HAVING NULL ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no such table: v17
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such table: v43
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no such table: v43
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: near "y": syntax error
+  2 AS a55 RIGHT JOIN v4 AS a56 ON a56.c1 = a55.c26 y ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: near "y": syntax error
+  2 AS a55 RIGHT JOIN v4 AS a56 ON a56.c1 = a55.c26 y ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a59 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM v0 AS a59 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 38: no such column: a60.c1
+  SELECT a60.c1, count ( ( NOT ( a60.c3 IS NULL ) ) AND ( NOT ( a60.c3 IS NULL )
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+   v12 AS a61 GROUP BY a61.c14 HAVING NULL ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+   v12 AS a61 GROUP BY a61.c14 HAVING NULL ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 44: no such table: v17
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

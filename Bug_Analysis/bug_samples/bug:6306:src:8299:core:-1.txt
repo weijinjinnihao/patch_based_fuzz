@@ -1,0 +1,314 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2 ), CHECK( c2 != c1 ), CHECK( c2 != c2 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c1 = c2 || c2 WHERE c2 = c3 || c2; END; 
+CREATE TABLE v4 ( c5 TEXT PRIMARY KEY ON CONFLICT REPLACE, c6 UNIQUE ON CONFLICT IGNORE, c7 UNIQUE ON CONFLICT FAIL, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17 TEXT UNIQUE NOT NULL ); 
+CREATE INDEX i18 ON v0 ( c2 ); 
+CREATE TABLE v19 ( c20, c21, c22, c23, PRIMARY KEY ( c22, c22 ) ) WITHOUT ROWID; 
+INSERT OR REPLACE INTO v19 VALUES ( 0, 0, 0, 0 ); 
+CREATE INDEX i24 ON v19 ( c23 ); 
+CREATE INDEX i25 ON v19 ( c21 ); 
+CREATE INDEX i26 ON v19 ( c21 ); 
+ALTER TABLE v19 DROP COLUMN c23; 
+CREATE VIRTUAL TABLE v27 USING rtree ( c28, c29, c30 ); 
+CREATE INDEX i31 ON v0 ( c3 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c3 FROM v0 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 GROUP BY a33.c3, abs ( a33.c2 ) HAVING CASE WHEN a33.c3 != 'x' THEN 127 ELSE 2147483647 END > 203 >= 0 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a35.c23 IS NULL ) ) AND ( NOT ( a35.c21 IS NULL ) ) ) FROM v19 AS a35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 GROUP BY y ( a36.c2 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a37 WHERE a37.c23 = 'aaa' ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a38 GROUP BY a38.c21, abs ( a38.c28 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( a39.c20 + 18446744073709551615 ) % 0 COLLATE NOCASE FROM v19 AS a39 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c21 = + a40.c2, a41.c22 FROM v0 AS a40 LEFT JOIN v19 AS a41 ON a41.c20 = a40.c1 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a42.c20 IS NULL ) ) AND ( NOT ( a42.c21 IS NULL ) ) ) FROM v19 AS a42 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: error in index i24 after drop column: no such column: c23
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 1
+   ( a35.c21 IS NULL ) ) ) FROM v19 AS a35 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+  T * FROM v0 AS a36 GROUP BY y ( a36.c2 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  AS a38 GROUP BY a38.c21, abs ( a38.c28 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  LEFT JOIN v19 AS a41 ON a41.c20 = a40.c1 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2 ), CHECK( c2 != c1 ), CHECK( c2 != c2 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c1 = c2 || c2 WHERE c2 = c3 || c2; END; 
+CREATE TABLE v4 ( c5 TEXT PRIMARY KEY ON CONFLICT REPLACE, c6 UNIQUE ON CONFLICT IGNORE, c7 UNIQUE ON CONFLICT FAIL, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17 TEXT UNIQUE NOT NULL ); 
+; 
+CREATE TABLE v19 ( c20, c21, c22, c23, PRIMARY KEY ( c22, c22 ) ) WITHOUT ROWID; 
+INSERT OR REPLACE INTO v19 VALUES ( 0, 0, 0, 0 ); 
+; 
+; 
+; 
+ALTER TABLE v19 DROP COLUMN c23; 
+CREATE VIRTUAL TABLE v27 USING rtree ( c28, c29, c30 ); 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c3 FROM v0 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 GROUP BY a33.c3, abs ( a33.c2 ) HAVING CASE WHEN a33.c3 != 'x' THEN 127 ELSE 2147483647 END > 203 >= 0 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a35.c23 IS NULL ) ) AND ( NOT ( a35.c21 IS NULL ) ) ) FROM v19 AS a35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 GROUP BY y ( a36.c2 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a37 WHERE a37.c23 = 'aaa' ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a38 GROUP BY a38.c21, abs ( a38.c28 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( a39.c20 + 18446744073709551615 ) % 0 COLLATE NOCASE FROM v19 AS a39 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c21 = + a40.c2, a41.c22 FROM v0 AS a40 LEFT JOIN v19 AS a41 ON a41.c20 = a40.c1 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a42.c20 IS NULL ) ) AND ( NOT ( a42.c21 IS NULL ) ) ) FROM v19 AS a42 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a35.c23
+  SELECT count ( ( NOT ( a35.c23 IS NULL ) ) AND ( NOT ( a35.c21 IS NULL ) ) ) F
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+  T * FROM v0 AS a36 GROUP BY y ( a36.c2 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a37.c23
+  SELECT * FROM v19 AS a37 WHERE a37.c23 = 'aaa' ORDER BY 127; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  AS a38 GROUP BY a38.c21, abs ( a38.c28 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  LEFT JOIN v19 AS a41 ON a41.c20 = a40.c1 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 1
+   ( a35.c21 IS NULL ) ) ) FROM v19 AS a35 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 23: no such column: a35.c23
+  SELECT count ( ( NOT ( a35.c23 IS NULL ) ) AND ( NOT ( a35.c21 IS NULL ) ) ) F
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+  T * FROM v0 AS a36 GROUP BY y ( a36.c2 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+  T * FROM v0 AS a36 GROUP BY y ( a36.c2 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 29: no such column: a37.c23
+  SELECT * FROM v19 AS a37 WHERE a37.c23 = 'aaa' ORDER BY 127; 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  AS a38 GROUP BY a38.c21, abs ( a38.c28 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  AS a38 GROUP BY a38.c21, abs ( a38.c28 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  LEFT JOIN v19 AS a41 ON a41.c20 = a40.c1 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  LEFT JOIN v19 AS a41 ON a41.c20 = a40.c1 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

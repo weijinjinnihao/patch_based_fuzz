@@ -1,0 +1,296 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 3175546974276630385; 
+CREATE TABLE v6 ( c7 PRIMARY KEY, c8, c9 PRIMARY KEY ); 
+CREATE TABLE v10 ( c11, c12, c13 ); 
+CREATE INDEX i14 ON v6 ( c8 ); 
+CREATE INDEX i15 ON v6 ( c9 ); 
+ALTER TABLE v4 DROP COLUMN c3; 
+ALTER TABLE v4 DROP COLUMN c3; 
+UPDATE v4 SET c2 = ( SELECT c2 FROM v6 AS a16 WHERE c3 = 'v1' ORDER BY 3175546974276630385 ); 
+CREATE INDEX i17 ON v10 ( c11 ); 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+CREATE INDEX i21 ON v18 ( c19 ); 
+CREATE INDEX i22 ON v4 ( c1 ); 
+ALTER TABLE v10 DROP COLUMN c11; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a23, v4 AS a24 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a25 GROUP BY count ( ( NOT ( a25.c8 IS NULL ) ) AND ( NOT ( a25.c7 IS NULL ) ) ) ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c1, a27.c3 FROM v4 AS a26 RIGHT JOIN v4 AS a27 ON a27.c3 = x'b1' ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a28, v6 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a31 WHERE a31.c11 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c3 FROM v0 AS a32 WHERE a32.c3 = a32.c2 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a33, v6 AS a34 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a35 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v36 AS ( SELECT c12 FROM v36 AS a38 WHERE c2 LIKE 'v0' ORDER BY 0 ) SELECT * FROM v36 AS a37 WHERE ( c3 = 66 OR c11 = 18446744073709551488 ) AND c3 IN ( ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: table "v6" has more than one primary key
+Parse error near line 5: no such table: main.v6
+Parse error near line 6: no such table: main.v6
+Parse error near line 7: cannot drop column from view "v4"
+Parse error near line 8: cannot drop column from view "v4"
+Parse error near line 9: cannot modify v4 because it is a view
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: no such table: main.v18
+Parse error near line 13: views may not be indexed
+Runtime error near line 14: error in index i17 after drop column: no such column: c11
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: circular reference: v36
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 3175546974276630385; 
+CREATE TABLE v6 ( c7 PRIMARY KEY, c8, c9 PRIMARY KEY ); 
+CREATE TABLE v10 ( c11, c12, c13 ); 
+; 
+; 
+ALTER TABLE v4 DROP COLUMN c3; 
+ALTER TABLE v4 DROP COLUMN c3; 
+UPDATE v4 SET c2 = ( SELECT c2 FROM v6 AS a16 WHERE c3 = 'v1' ORDER BY 3175546974276630385 ); 
+; 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+; 
+; 
+ALTER TABLE v10 DROP COLUMN c11; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a23, v4 AS a24 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a25 GROUP BY count ( ( NOT ( a25.c8 IS NULL ) ) AND ( NOT ( a25.c7 IS NULL ) ) ) ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c1, a27.c3 FROM v4 AS a26 RIGHT JOIN v4 AS a27 ON a27.c3 = x'b1' ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a28, v6 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a31 WHERE a31.c11 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c3 FROM v0 AS a32 WHERE a32.c3 = a32.c2 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a33, v6 AS a34 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a35 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v36 AS ( SELECT c12 FROM v36 AS a38 WHERE c2 LIKE 'v0' ORDER BY 0 ) SELECT * FROM v36 AS a37 WHERE ( c3 = 66 OR c11 = 18446744073709551488 ) AND c3 IN ( ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: table "v6" has more than one primary key
+Parse error near line 7: cannot drop column from view "v4"
+Parse error near line 8: cannot drop column from view "v4"
+Parse error near line 9: cannot modify v4 because it is a view
+Runtime error near line 11: no such module: fts5
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a31.c11
+  SELECT * FROM v10 AS a31 WHERE a31.c11 ORDER BY 16; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: circular reference: v36
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such table: v6
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such table: v6
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no such table: v6
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such table: v6
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such column: a31.c11
+  SELECT * FROM v10 AS a31 WHERE a31.c11 ORDER BY 16; 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such table: v6
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such table: v6
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: circular reference: v36
+ 
+INT: 0 
+Str: 
+Parse error near line 40: circular reference: v36
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 43: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

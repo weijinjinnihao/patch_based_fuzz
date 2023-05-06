@@ -1,0 +1,286 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9 DEFAULT 'v0' DEFAULT 127, PRIMARY KEY ( c4, c2 ) ) WITHOUT ROWID; 
+CREATE TABLE v10 ( c11 UNIQUE, c12, c13 UNIQUE ON CONFLICT IGNORE, c14 UNIQUE ON CONFLICT FAIL, c15 UNIQUE ON CONFLICT REPLACE DEFAULT 0, c16, c17 REFERENCES t1 UNIQUE ON CONFLICT IGNORE, c18, c19, c20, c21, c22, c23 TEXT DEFAULT x'ABCD', c24, c25, c26, c27 UNIQUE ON CONFLICT IGNORE, c28 UNIQUE ON CONFLICT FAIL, c29 UNIQUE ON CONFLICT REPLACE DEFAULT 127, c30, c31 UNIQUE ON CONFLICT REPLACE DEFAULT 127, c32, c33, c34, c35, c36 UNIQUE ON CONFLICT ABORT, c37, c38 INTEGER UNIQUE ON CONFLICT IGNORE, c39 TEXT UNIQUE ON CONFLICT FAIL DEFAULT 0, c40, PRIMARY KEY ( c20, c25 ), UNIQUE ( c21 ) ); 
+ATTACH 'v1' AS sqlite_master; 
+CREATE TABLE v41 ( c42, c43 INTEGER UNIQUE ON CONFLICT FAIL, c44, c45 UNIQUE, c46 UNIQUE ON CONFLICT IGNORE, c47 UNIQUE ON CONFLICT FAIL, c48 UNIQUE ON CONFLICT REPLACE DEFAULT 0, c49, c50 INTEGER UNIQUE ON CONFLICT FAIL, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62, PRIMARY KEY ( c47 ), CHECK( c51 != c55 ), CHECK( c60 != c52 ), UNIQUE ( c47 ) ); 
+ATTACH '2GAT123' AS sqlite_master; 
+CREATE INDEX i63 ON v0 ( c9 ); 
+CREATE INDEX i64 ON v0 ( c9 ); 
+ALTER TABLE v0 DROP c9; 
+ALTER TABLE v0 DROP c7; 
+CREATE INDEX i65 ON v0 ( c5 ); 
+CREATE TABLE v66 ( c67, c68, c69 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i70 ON v10 ( c23 ); 
+CREATE INDEX i71 ON v0 ( c4 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a72 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v66 AS a73 WHERE ( a73.c69 || a73.c69 || a73.c69 ) != 'v0' ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a74 NATURAL JOIN v10 AS a75 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a76 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v41 AS ( SELECT v41.c43 FROM v0 AS a78 WHERE v41.c48 NOT LIKE 'x' ORDER BY 0 ) SELECT count ( a77.c19 ) FROM v10 AS a77 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v66 AS a79 ORDER BY CASE WHEN a79.c67 != 'v1' THEN 18446744073709551615 ELSE 18446744073709551615 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a80 GROUP BY a80.c46 HAVING a80.c42 > a80.c58 % 0 >= 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a81 WHERE ( CASE WHEN a81.c48 != 'v0' THEN 18446744073709551488 ELSE 10 END ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v66 AS a82, v41 AS a83 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a84.c9 ) FROM v0 AS a84 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: database sqlite_master is already in use
+Runtime error near line 8: error in index i63 after drop column: no such column: c9
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 38
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a77.c19 ) FROM v10 AS a77 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 21
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9 DEFAULT 'v0' DEFAULT 127, PRIMARY KEY ( c4, c2 ) ) WITHOUT ROWID; 
+CREATE TABLE v10 ( c11 UNIQUE, c12, c13 UNIQUE ON CONFLICT IGNORE, c14 UNIQUE ON CONFLICT FAIL, c15 UNIQUE ON CONFLICT REPLACE DEFAULT 0, c16, c17 REFERENCES t1 UNIQUE ON CONFLICT IGNORE, c18, c19, c20, c21, c22, c23 TEXT DEFAULT x'ABCD', c24, c25, c26, c27 UNIQUE ON CONFLICT IGNORE, c28 UNIQUE ON CONFLICT FAIL, c29 UNIQUE ON CONFLICT REPLACE DEFAULT 127, c30, c31 UNIQUE ON CONFLICT REPLACE DEFAULT 127, c32, c33, c34, c35, c36 UNIQUE ON CONFLICT ABORT, c37, c38 INTEGER UNIQUE ON CONFLICT IGNORE, c39 TEXT UNIQUE ON CONFLICT FAIL DEFAULT 0, c40, PRIMARY KEY ( c20, c25 ), UNIQUE ( c21 ) ); 
+ATTACH 'v1' AS sqlite_master; 
+CREATE TABLE v41 ( c42, c43 INTEGER UNIQUE ON CONFLICT FAIL, c44, c45 UNIQUE, c46 UNIQUE ON CONFLICT IGNORE, c47 UNIQUE ON CONFLICT FAIL, c48 UNIQUE ON CONFLICT REPLACE DEFAULT 0, c49, c50 INTEGER UNIQUE ON CONFLICT FAIL, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62, PRIMARY KEY ( c47 ), CHECK( c51 != c55 ), CHECK( c60 != c52 ), UNIQUE ( c47 ) ); 
+ATTACH '2GAT123' AS sqlite_master; 
+; 
+; 
+ALTER TABLE v0 DROP c9; 
+ALTER TABLE v0 DROP c7; 
+; 
+CREATE TABLE v66 ( c67, c68, c69 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a72 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v66 AS a73 WHERE ( a73.c69 || a73.c69 || a73.c69 ) != 'v0' ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a74 NATURAL JOIN v10 AS a75 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a76 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v41 AS ( SELECT v41.c43 FROM v0 AS a78 WHERE v41.c48 NOT LIKE 'x' ORDER BY 0 ) SELECT count ( a77.c19 ) FROM v10 AS a77 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v66 AS a79 ORDER BY CASE WHEN a79.c67 != 'v1' THEN 18446744073709551615 ELSE 18446744073709551615 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a80 GROUP BY a80.c46 HAVING a80.c42 > a80.c58 % 0 >= 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a81 WHERE ( CASE WHEN a81.c48 != 'v0' THEN 18446744073709551488 ELSE 10 END ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v66 AS a82, v41 AS a83 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a84.c9 ) FROM v0 AS a84 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: database sqlite_master is already in use
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 37
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a77.c19 ) FROM v10 AS a77 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 21
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a84.c9
+  SELECT count ( a84.c9 ) FROM v0 AS a84 ORDER BY 127; 
+                 ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 38
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 37
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a77.c19 ) FROM v10 AS a77 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a77.c19 ) FROM v10 AS a77 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 21
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 21
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 24
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 24
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such column: a84.c9
+  SELECT count ( a84.c9 ) FROM v0 AS a84 ORDER BY 127; 
+                 ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

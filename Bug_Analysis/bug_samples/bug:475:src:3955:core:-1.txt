@@ -1,0 +1,291 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY ON CONFLICT IGNORE, c2 INT, c3 VARCHAR(1000) ); 
+INSERT INTO v0 ( c2, c1, c3 ) VALUES ( 18446744073709518848, 18446744073709518848, 'v0' ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+ANALYZE; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i5 ON v0 ( c2 ); 
+UPDATE v0 SET c2 = 'm' WHERE c2 = 'I'; 
+CREATE INDEX i6 ON v0 ( c3 ); 
+ANALYZE v0; 
+CREATE INDEX i7 ON v0 ( c2 ); 
+CREATE INDEX i8 ON v0 ( c1 ); 
+CREATE TABLE v9 ( c10 INT, c11 TEXT, c12 BLOB, c13 REAL ); 
+CREATE TABLE v14 ( c15 BLOB PRIMARY KEY, c16 REAL NOT NULL CHECK( c18 > c16 ), c17 INTEGER NOT NULL CHECK( c15 > c17 * 18446744073709518848 ), c18 INTEGER NOT NULL CHECK( c15 BETWEEN c18 AND c18 ) ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c16 FROM v14 AS a20 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 4294967295 ORDER BY 2147483647 ) AS y, ( SELECT 2147483647 ORDER BY 18446744073709518848 ) AS y ON likely ( 18446744073709518848 OR 18446744073709518848 ) OR 18446744073709518848 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c16, max ( a22.c15 || a22.c18 ) FROM v14 AS a22 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23, v0 AS a24 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a25 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26, v9 AS a27 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 GROUP BY a28.c1, a28.c3, count ( a28.c2 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: datatype mismatch (20)
+Runtime error near line 5: error in index i4 after drop column: no such column: c2
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM ( SELECT 4294967295 ORDER BY 2147483647 ) AS y, ( SELECT 2147483
+                               error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a21 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY ON CONFLICT IGNORE, c2 INT, c3 VARCHAR(1000) ); 
+INSERT INTO v0 ( c2, c1, c3 ) VALUES ( 18446744073709518848, 18446744073709518848, 'v0' ); 
+; 
+ANALYZE; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+UPDATE v0 SET c2 = 'm' WHERE c2 = 'I'; 
+; 
+ANALYZE v0; 
+; 
+; 
+CREATE TABLE v9 ( c10 INT, c11 TEXT, c12 BLOB, c13 REAL ); 
+CREATE TABLE v14 ( c15 BLOB PRIMARY KEY, c16 REAL NOT NULL CHECK( c18 > c16 ), c17 INTEGER NOT NULL CHECK( c15 > c17 * 18446744073709518848 ), c18 INTEGER NOT NULL CHECK( c15 BETWEEN c18 AND c18 ) ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c16 FROM v14 AS a20 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 4294967295 ORDER BY 2147483647 ) AS y, ( SELECT 2147483647 ORDER BY 18446744073709518848 ) AS y ON likely ( 18446744073709518848 OR 18446744073709518848 ) OR 18446744073709518848 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c16, max ( a22.c15 || a22.c18 ) FROM v14 AS a22 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23, v0 AS a24 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a25 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26, v9 AS a27 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 GROUP BY a28.c1, a28.c3, count ( a28.c2 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: datatype mismatch (20)
+Parse error near line 7: no such column: c2
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM ( SELECT 4294967295 ORDER BY 2147483647 ) AS y, ( SELECT 2147483
+                               error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a21 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a28.c2
+  * FROM v0 AS a28 GROUP BY a28.c1, a28.c3, count ( a28.c2 ) ORDER BY 1844674407
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM ( SELECT 4294967295 ORDER BY 2147483647 ) AS y, ( SELECT 2147483
+                               error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM ( SELECT 4294967295 ORDER BY 2147483647 ) AS y, ( SELECT 2147483
+                               error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a21 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a21 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 42: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such column: a28.c2
+  * FROM v0 AS a28 GROUP BY a28.c1, a28.c3, count ( a28.c2 ) ORDER BY 1844674407
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

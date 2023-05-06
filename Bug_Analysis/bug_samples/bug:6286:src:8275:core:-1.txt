@@ -1,0 +1,301 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 PRIMARY KEY, CHECK( ( ( c2 + 9223372036854775807 ) % 4294967295 ) != 18446744073709518848 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+ALTER TABLE v0 DROP c1; 
+ALTER TABLE v0 ADD COLUMN c5 INTEGER COLLATE NOCASE; 
+CREATE INDEX i6 ON v0 ( c3 ); 
+CREATE VIEW v7 AS SELECT count ( ) FROM v0 AS a8 ORDER BY 9223372036854775807; 
+CREATE INDEX i9 ON v0 ( c2 ); 
+CREATE INDEX i10 ON v7 ( c3 ); 
+CREATE INDEX i11 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a12.c1 ) FROM v0 AS a12 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a13, v0 AS a14 NATURAL JOIN v7 AS a15 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a16 WHERE a16.c1 LIKE ( ( ( a16.c2 + - 18446744073709551488 ) % 9223372036854775807 ) != 127 + 0 ) % 127 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a18.c2 ) OVER ( ORDER BY 18446744073709551488 ) ORDER BY 18446744073709518848 ) FROM v0 AS a18 GROUP BY a18.c1 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c5, a19.c5 FROM v7 AS a19 RIGHT JOIN v0 AS a20 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( SELECT a21.c5 FROM v7 AS a22 WHERE a21.c3 = NULL AND a22.c2 >= a21.c2 ORDER BY 18446744073709518848 ) ) FROM v7 AS a21 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 WHERE a23.c3 = CASE WHEN a23.c2 != 'v0' THEN 0 ELSE 18446744073709551488 END > 9223372036854775807 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c26 ) AS ( WITH v0 AS ( WITH v7 AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551615 ) SELECT avg ( a25.c3 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 127 ) SELECT 987 ORDER BY 18446744073709551488 ) SELECT * FROM v7 AS a25 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 3: error in index i4 after drop column: no such column: c1
+Parse error near line 8: views may not be indexed
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a16.c2
+  SELECT * FROM v7 AS a16 WHERE a16.c1 LIKE ( ( ( a16.c2 + - 1844674407370955148
+                                    error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: a19.c5
+  SELECT a19.c5, a19.c5 FROM v7 AS a19 RIGHT JOIN v0 AS a20 ORDER BY 18446744073
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a21.c5
+  SELECT count ( ( SELECT a21.c5 FROM v7 AS a22 WHERE a21.c3 = NULL AND a22.c2 >
+                          ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  44073709551488 ) SELECT * FROM v7 AS a25 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 PRIMARY KEY, CHECK( ( ( c2 + 9223372036854775807 ) % 4294967295 ) != 18446744073709518848 ) ) WITHOUT ROWID; 
+; 
+ALTER TABLE v0 DROP c1; 
+ALTER TABLE v0 ADD COLUMN c5 INTEGER COLLATE NOCASE; 
+; 
+CREATE VIEW v7 AS SELECT count ( ) FROM v0 AS a8 ORDER BY 9223372036854775807; 
+; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a12.c1 ) FROM v0 AS a12 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a13, v0 AS a14 NATURAL JOIN v7 AS a15 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a16 WHERE a16.c1 LIKE ( ( ( a16.c2 + - 18446744073709551488 ) % 9223372036854775807 ) != 127 + 0 ) % 127 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a18.c2 ) OVER ( ORDER BY 18446744073709551488 ) ORDER BY 18446744073709518848 ) FROM v0 AS a18 GROUP BY a18.c1 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c5, a19.c5 FROM v7 AS a19 RIGHT JOIN v0 AS a20 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( SELECT a21.c5 FROM v7 AS a22 WHERE a21.c3 = NULL AND a22.c2 >= a21.c2 ORDER BY 18446744073709518848 ) ) FROM v7 AS a21 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 WHERE a23.c3 = CASE WHEN a23.c2 != 'v0' THEN 0 ELSE 18446744073709551488 END > 9223372036854775807 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c26 ) AS ( WITH v0 AS ( WITH v7 AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551615 ) SELECT avg ( a25.c3 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 127 ) SELECT 987 ORDER BY 18446744073709551488 ) SELECT * FROM v7 AS a25 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 11: no such column: a12.c1
+  SELECT count ( a12.c1 ) FROM v0 AS a12 ORDER BY 18446744073709551488; 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a16.c2
+  SELECT * FROM v7 AS a16 WHERE a16.c1 LIKE ( ( ( a16.c2 + - 1844674407370955148
+                                    error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: a19.c5
+  SELECT a19.c5, a19.c5 FROM v7 AS a19 RIGHT JOIN v0 AS a20 ORDER BY 18446744073
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a21.c5
+  SELECT count ( ( SELECT a21.c5 FROM v7 AS a22 WHERE a21.c3 = NULL AND a22.c2 >
+                          ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  44073709551488 ) SELECT * FROM v7 AS a25 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+0
+ 
+INT: 0 
+Str: 
+Parse error near line 11: no such column: a12.c1
+  SELECT count ( a12.c1 ) FROM v0 AS a12 ORDER BY 18446744073709551488; 
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no such column: a16.c2
+  SELECT * FROM v7 AS a16 WHERE a16.c1 LIKE ( ( ( a16.c2 + - 1844674407370955148
+                                    error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 17: no such column: a16.c2
+  SELECT * FROM v7 AS a16 WHERE a16.c1 LIKE ( ( ( a16.c2 + - 1844674407370955148
+                                    error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no such column: a19.c5
+  SELECT a19.c5, a19.c5 FROM v7 AS a19 RIGHT JOIN v0 AS a20 ORDER BY 18446744073
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 26: no such column: a19.c5
+  SELECT a19.c5, a19.c5 FROM v7 AS a19 RIGHT JOIN v0 AS a20 ORDER BY 18446744073
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: no such column: a21.c5
+  SELECT count ( ( SELECT a21.c5 FROM v7 AS a22 WHERE a21.c3 = NULL AND a22.c2 >
+                          ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 29: no such column: a21.c5
+  SELECT count ( ( SELECT a21.c5 FROM v7 AS a22 WHERE a21.c3 = NULL AND a22.c2 >
+                          ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  44073709551488 ) SELECT * FROM v7 AS a25 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  44073709551488 ) SELECT * FROM v7 AS a25 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

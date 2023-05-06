@@ -1,0 +1,339 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 DEFAULT 'v1', c2, c3 AS( c4 + c2 - c1 ) REFERENCES fts5, c4 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE INDEX i6 ON v0 ( c4 ); 
+CREATE INDEX i7 ON v0 ( c4 ); 
+CREATE VIEW v8 AS SELECT * FROM v0 AS a9 ORDER BY 255; 
+CREATE TABLE v10 ( c11 REAL, c12, c13 CHECK( c14 > 255 ), c14 ); 
+CREATE TABLE v15 ( c16, c17, c18 ); 
+ALTER TABLE v10 DROP COLUMN c12; 
+CREATE INDEX i19 ON v15 ( c17 ); 
+ALTER TABLE v15 DROP COLUMN c17; 
+CREATE VIRTUAL TABLE v20 USING fts5 ( c21, c22 ); 
+CREATE INDEX i23 ON v20 ( c22 ); 
+ALTER TABLE v20 DROP COLUMN c4; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a24 ORDER BY max ( NULL, - x'68617265', 'x' ) + 2147483647, min ( a24.c18, avg ( a24.c18 ) ) + NULL >= 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c18, count ( ( NOT ( a25.c17 IS NULL ) ) AND ( NOT ( a25.c16 IS NULL ) ) ) FROM v15 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( NULL, 'x', 'v0' ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 WHERE a26.c4 = a26.c1 NOT NULL ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a27, v15 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a29 WHERE a29.c11 % 2147483647 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a30.c4 IS NULL ) ) AND ( NOT ( a30.c2 IS NULL ) ) ) FROM v0 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a31 NATURAL JOIN v15 AS a32 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a33 ORDER BY ( a33.c4 || a33.c4 || a33.c4 ) != 'v1'; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: error in index i19 after drop column: no such column: c17
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: no such table: main.v20
+Parse error near line 13: no such table: v20
+BEGIN VERI 0
+Parse error near line 15: misuse of aggregate: avg()
+  - x'68617265', 'x' ) + 2147483647, min ( a24.c18, avg ( a24.c18 ) ) + NULL >= 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: near "ORDER": syntax error
+  VALUES ( NULL, 'x', 'v0' ) ORDER BY 0; 
+               error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 4
+  v0 AS a26 WHERE a26.c4 = a26.c1 NOT NULL ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v15 AS a27, v15 AS a28 ORDER BY 0; 
+                                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+  OM v10 AS a29 WHERE a29.c11 % 2147483647 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+   FROM v15 AS a31 NATURAL JOIN v15 AS a32 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 DEFAULT 'v1', c2, c3 AS( c4 + c2 - c1 ) REFERENCES fts5, c4 ); 
+; 
+; 
+; 
+CREATE VIEW v8 AS SELECT * FROM v0 AS a9 ORDER BY 255; 
+CREATE TABLE v10 ( c11 REAL, c12, c13 CHECK( c14 > 255 ), c14 ); 
+CREATE TABLE v15 ( c16, c17, c18 ); 
+ALTER TABLE v10 DROP COLUMN c12; 
+; 
+ALTER TABLE v15 DROP COLUMN c17; 
+CREATE VIRTUAL TABLE v20 USING fts5 ( c21, c22 ); 
+; 
+ALTER TABLE v20 DROP COLUMN c4; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a24 ORDER BY max ( NULL, - x'68617265', 'x' ) + 2147483647, min ( a24.c18, avg ( a24.c18 ) ) + NULL >= 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c18, count ( ( NOT ( a25.c17 IS NULL ) ) AND ( NOT ( a25.c16 IS NULL ) ) ) FROM v15 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( NULL, 'x', 'v0' ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 WHERE a26.c4 = a26.c1 NOT NULL ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a27, v15 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a29 WHERE a29.c11 % 2147483647 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a30.c4 IS NULL ) ) AND ( NOT ( a30.c2 IS NULL ) ) ) FROM v0 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a31 NATURAL JOIN v15 AS a32 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a33 ORDER BY ( a33.c4 || a33.c4 || a33.c4 ) != 'v1'; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: no such table: v20
+BEGIN VERI 0
+Parse error near line 15: misuse of aggregate: avg()
+  - x'68617265', 'x' ) + 2147483647, min ( a24.c18, avg ( a24.c18 ) ) + NULL >= 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: a25.c17
+  SELECT a25.c18, count ( ( NOT ( a25.c17 IS NULL ) ) AND ( NOT ( a25.c16 IS NUL
+                    error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: near "ORDER": syntax error
+  VALUES ( NULL, 'x', 'v0' ) ORDER BY 0; 
+               error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 4
+  v0 AS a26 WHERE a26.c4 = a26.c1 NOT NULL ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v15 AS a27, v15 AS a28 ORDER BY 0; 
+                                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+  OM v10 AS a29 WHERE a29.c11 % 2147483647 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+   FROM v15 AS a31 NATURAL JOIN v15 AS a32 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: misuse of aggregate: avg()
+  - x'68617265', 'x' ) + 2147483647, min ( a24.c18, avg ( a24.c18 ) ) + NULL >= 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: misuse of aggregate: avg()
+  - x'68617265', 'x' ) + 2147483647, min ( a24.c18, avg ( a24.c18 ) ) + NULL >= 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no such column: a25.c17
+  SELECT a25.c18, count ( ( NOT ( a25.c17 IS NULL ) ) AND ( NOT ( a25.c16 IS NUL
+                    error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 66652048
+Str: 
+Parse error near line 24: near "ORDER": syntax error
+  VALUES ( NULL, 'x', 'v0' ) ORDER BY 0; 
+               error here ---^
+ 
+Str: 
+Parse error near line 24: near "ORDER": syntax error
+  VALUES ( NULL, 'x', 'v0' ) ORDER BY 0; 
+               error here ---^
+ 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 4
+  v0 AS a26 WHERE a26.c4 = a26.c1 NOT NULL ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 4
+  v0 AS a26 WHERE a26.c4 = a26.c1 NOT NULL ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v15 AS a27, v15 AS a28 ORDER BY 0; 
+                                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v15 AS a27, v15 AS a28 ORDER BY 0; 
+                                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+  OM v10 AS a29 WHERE a29.c11 % 2147483647 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+  OM v10 AS a29 WHERE a29.c11 % 2147483647 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+   FROM v15 AS a31 NATURAL JOIN v15 AS a32 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+   FROM v15 AS a31 NATURAL JOIN v15 AS a32 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

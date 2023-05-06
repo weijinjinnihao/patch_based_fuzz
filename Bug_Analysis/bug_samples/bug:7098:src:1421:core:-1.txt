@@ -1,0 +1,290 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 9223372036854775807; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY ON CONFLICT REPLACE, c8 INTEGER CHECK( x'b1' ), c9 UNIQUE ON CONFLICT FAIL ); 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12, c13 UNIQUE ); 
+CREATE INDEX i14 ON v6 ( c9 ); 
+CREATE TABLE v15 ( c16, c17, c18 ); 
+CREATE INDEX i19 ON v0 ( c3 ); 
+CREATE INDEX i20 ON v10 ( c11 ); 
+CREATE TABLE v21 ( c22 REAL DEFAULT 9223372036854775807, c23 TEXT, c24 BLOB, CHECK( coalesce ( c23, c22 ) ) ); 
+ALTER TABLE v21 DROP COLUMN c22; 
+CREATE INDEX i25 ON v15 ( c18 ); 
+ALTER TABLE v15 DROP COLUMN c18; 
+CREATE INDEX i26 ON v0 ( c2 ); 
+CREATE VIRTUAL TABLE v27 USING fts5 ( c28, c29 ); 
+ALTER TABLE v21 DROP COLUMN c23; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c8, max ( a30.c29 || a30.c29 ) FROM v27 AS a30 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a31, v21 AS a32 NATURAL JOIN v21 AS a33 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a34.c16 || a34.c18 ) FROM v15 AS a34 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a35 WHERE a35.c18 || a35.c16 IN v15 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c24, a37.c8 FROM v21 AS a36 LEFT JOIN v6 AS a37 ON x'b2b2b2' ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v38 AS ( WITH v38 AS ( SELECT 9223372036854775807 y ORDER BY 9223372036854775807 ) SELECT avg ( c9 ) FROM ( SELECT * ORDER BY 9223372036854775807 ) AS y ORDER BY 9223372036854775807 ) SELECT c8 = + c8, c23 FROM v38 AS a39 LEFT JOIN v38 AS a40 ON c18 = c2 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c12, count ( a41.c11 ) FROM v10 AS a41 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42, v15 AS a43 NATURAL JOIN v27 AS a44 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a45 NATURAL JOIN v10 AS a46 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: error in table v21 after drop column: no such column: c22
+Runtime error near line 12: error in index i25 after drop column: no such column: c18
+Runtime error near line 14: no such module: fts5
+Runtime error near line 15: error in table v21 after drop column: no such column: c23
+BEGIN VERI 0
+Parse error near line 17: no such table: v27
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no tables specified
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such table: v27
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 9223372036854775807; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY ON CONFLICT REPLACE, c8 INTEGER CHECK( x'b1' ), c9 UNIQUE ON CONFLICT FAIL ); 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12, c13 UNIQUE ); 
+; 
+CREATE TABLE v15 ( c16, c17, c18 ); 
+; 
+; 
+CREATE TABLE v21 ( c22 REAL DEFAULT 9223372036854775807, c23 TEXT, c24 BLOB, CHECK( coalesce ( c23, c22 ) ) ); 
+ALTER TABLE v21 DROP COLUMN c22; 
+; 
+ALTER TABLE v15 DROP COLUMN c18; 
+; 
+CREATE VIRTUAL TABLE v27 USING fts5 ( c28, c29 ); 
+ALTER TABLE v21 DROP COLUMN c23; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c8, max ( a30.c29 || a30.c29 ) FROM v27 AS a30 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a31, v21 AS a32 NATURAL JOIN v21 AS a33 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a34.c16 || a34.c18 ) FROM v15 AS a34 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a35 WHERE a35.c18 || a35.c16 IN v15 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c24, a37.c8 FROM v21 AS a36 LEFT JOIN v6 AS a37 ON x'b2b2b2' ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v38 AS ( WITH v38 AS ( SELECT 9223372036854775807 y ORDER BY 9223372036854775807 ) SELECT avg ( c9 ) FROM ( SELECT * ORDER BY 9223372036854775807 ) AS y ORDER BY 9223372036854775807 ) SELECT c8 = + c8, c23 FROM v38 AS a39 LEFT JOIN v38 AS a40 ON c18 = c2 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c12, count ( a41.c11 ) FROM v10 AS a41 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42, v15 AS a43 NATURAL JOIN v27 AS a44 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a45 NATURAL JOIN v10 AS a46 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: error in table v21 after drop column: no such column: c22
+Runtime error near line 14: no such module: fts5
+Runtime error near line 15: error in table v21 after drop column: no such column: c23
+BEGIN VERI 0
+Parse error near line 17: no such table: v27
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a34.c18
+  SELECT max ( a34.c16 || a34.c18 ) FROM v15 AS a34 ORDER BY 1844674407370955161
+                          ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: a35.c18
+  SELECT * FROM v15 AS a35 WHERE a35.c18 || a35.c16 IN v15 ORDER BY 8; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no tables specified
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such table: v27
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no such table: v27
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no such table: v27
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+Parse error near line 23: no such column: a34.c18
+  SELECT max ( a34.c16 || a34.c18 ) FROM v15 AS a34 ORDER BY 1844674407370955161
+                          ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such column: a35.c18
+  SELECT * FROM v15 AS a35 WHERE a35.c18 || a35.c16 IN v15 ORDER BY 8; 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 35: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no such table: v27
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no such table: v27
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

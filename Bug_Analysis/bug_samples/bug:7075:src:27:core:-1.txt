@@ -1,0 +1,296 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1 ), CHECK( c1 != c3 ), CHECK( c3 != c1 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c3 = c1 || c3 WHERE c1 = c1 || c2; END; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE TABLE v5 ( c6, c7, c8, c9, PRIMARY KEY ( c8, c6 ) ) WITHOUT ROWID; 
+CREATE INDEX i10 ON v0 ( c2 ); 
+CREATE INDEX i11 ON v5 ( c6 ); 
+CREATE INDEX i12 ON v5 ( c8 ); 
+CREATE INDEX i13 ON v5 ( c9 ); 
+INSERT INTO v5 VALUES ( 18446744073709551488, 18446744073709551615, 18446744073709551615, 18446744073709551488 ); 
+ALTER TABLE v5 DROP COLUMN c9; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a14 GROUP BY a14.c9 HAVING NULL ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a15.c2, a15.c2 FROM v0 AS a15 RIGHT JOIN v0 AS a16 ON a16.c1 = a15.c2 ORDER BY a16.c3 COLLATE NOCASE; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a18 ORDER BY max ( a18.c6 + a18.c9 * 18446744073709551488 ) + 100, min ( a18.c8, avg ( a18.c9 ) ) + NULL >= 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 WHERE count ( * ) >= 18446744073709551488 = 'v1' ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a20, v5 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 AS ( SELECT hex ( ) y ORDER BY 18446744073709551488 ) SELECT * FROM v5 AS a22 ORDER BY 2; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 2; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c8, a24.c3 FROM v5 AS a23 RIGHT JOIN v0 AS a24 ON a24.c2 = ( 2, count ( * ) ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: error in index i13 after drop column: no such column: c9
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: misuse of aggregate: avg()
+  .c9 * 18446744073709551488 ) + 100, min ( a18.c8, avg ( a18.c9 ) ) + NULL >= 1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: misuse of aggregate function count()
+  SELECT * FROM v0 AS a19 WHERE count ( * ) >= 18446744073709551488 = 'v1' ORDER
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: wrong number of arguments to function hex()
+  WITH v5 AS ( SELECT hex ( ) y ORDER BY 18446744073709551488 ) SELECT * FROM v5
+                      ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: row value misused
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1 ), CHECK( c1 != c3 ), CHECK( c3 != c1 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c3 = c1 || c3 WHERE c1 = c1 || c2; END; 
+; 
+CREATE TABLE v5 ( c6, c7, c8, c9, PRIMARY KEY ( c8, c6 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+INSERT INTO v5 VALUES ( 18446744073709551488, 18446744073709551615, 18446744073709551615, 18446744073709551488 ); 
+ALTER TABLE v5 DROP COLUMN c9; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a14 GROUP BY a14.c9 HAVING NULL ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a15.c2, a15.c2 FROM v0 AS a15 RIGHT JOIN v0 AS a16 ON a16.c1 = a15.c2 ORDER BY a16.c3 COLLATE NOCASE; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a18 ORDER BY max ( a18.c6 + a18.c9 * 18446744073709551488 ) + 100, min ( a18.c8, avg ( a18.c9 ) ) + NULL >= 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 WHERE count ( * ) >= 18446744073709551488 = 'v1' ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a20, v5 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 AS ( SELECT hex ( ) y ORDER BY 18446744073709551488 ) SELECT * FROM v5 AS a22 ORDER BY 2; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 2; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c8, a24.c3 FROM v5 AS a23 RIGHT JOIN v0 AS a24 ON a24.c2 = ( 2, count ( * ) ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 12: no such column: a14.c9
+  SELECT * FROM v5 AS a14 GROUP BY a14.c9 HAVING NULL ORDER BY 18446744073709551
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: a18.c9
+  SELECT * FROM v5 AS a18 ORDER BY max ( a18.c6 + a18.c9 * 18446744073709551488 
+                                    error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: misuse of aggregate function count()
+  SELECT * FROM v0 AS a19 WHERE count ( * ) >= 18446744073709551488 = 'v1' ORDER
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: wrong number of arguments to function hex()
+  WITH v5 AS ( SELECT hex ( ) y ORDER BY 18446744073709551488 ) SELECT * FROM v5
+                      ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: row value misused
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 12: no such column: a14.c9
+  SELECT * FROM v5 AS a14 GROUP BY a14.c9 HAVING NULL ORDER BY 18446744073709551
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: misuse of aggregate: avg()
+  .c9 * 18446744073709551488 ) + 100, min ( a18.c8, avg ( a18.c9 ) ) + NULL >= 1
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: no such column: a18.c9
+  SELECT * FROM v5 AS a18 ORDER BY max ( a18.c6 + a18.c9 * 18446744073709551488 
+                                    error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: misuse of aggregate function count()
+  SELECT * FROM v0 AS a19 WHERE count ( * ) >= 18446744073709551488 = 'v1' ORDER
+                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: misuse of aggregate function count()
+  SELECT * FROM v0 AS a19 WHERE count ( * ) >= 18446744073709551488 = 'v1' ORDER
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: wrong number of arguments to function hex()
+  WITH v5 AS ( SELECT hex ( ) y ORDER BY 18446744073709551488 ) SELECT * FROM v5
+                      ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 33: wrong number of arguments to function hex()
+  WITH v5 AS ( SELECT hex ( ) y ORDER BY 18446744073709551488 ) SELECT * FROM v5
+                      ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 39: row value misused
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

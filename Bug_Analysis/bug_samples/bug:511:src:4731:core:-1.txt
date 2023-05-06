@@ -1,0 +1,309 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c3 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709551615 ), ( 18446744073709551615, 0, 18446744073709551615 ); 
+ALTER TABLE v0 DROP c1; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE TABLE v6 ( c7, c8, c9 REFERENCES t1 ( c8, c9, c8, c8 ) ) WITHOUT ROWID; 
+CREATE INDEX i10 ON v0 ( c2 ); 
+CREATE INDEX i11 ON v6 ( c7 ); 
+CREATE INDEX i12 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a13 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a14.c3, max ( a14.c2 || a14.c2 ) FROM v0 AS a14 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 GROUP BY y ( a15.c3 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c7 FROM v6 AS a16 LEFT JOIN v6 AS a17 ON a17.c8 = a16.c9 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 2147483647, 18446744073709551615 ), ( 18446744073709551615, 18446744071562067968 ), ( 0, 2147483647 ), ( 18446744071562067968, 18446744073709551615 ), ( 2147483647, 0 ), ( 2147483647, 18446744073709551615 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 GROUP BY y ( a18.c1 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 ORDER BY CASE WHEN a19.c2 != 'v1' THEN 2147483647 ELSE 18446744071562067968 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a20, v6 AS a21 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 GROUP BY a23.c3, a23.c3 < a23.c3 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: UNIQUE constraint failed: v0.c1, v0.c3 (19)
+Parse error near line 3: cannot drop PRIMARY KEY column: "c1"
+Runtime error near line 5: error in index i4 after drop column: no such column: c2
+Parse error near line 7: foreign key on c9 should reference only one column of table t1
+  CREATE TABLE v6 ( c7, c8, c9 REFERENCES t1 ( c8, c9, c8, c8 ) ) WITHOUT ROWID;
+                            error here ---^
+Parse error near line 9: no such table: main.v6
+BEGIN VERI 0
+Parse error near line 12: no such table: v6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such function: y
+  SELECT * FROM v0 AS a15 GROUP BY y ( a15.c3 ) ORDER BY 18446744073709551615; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: near "ORDER": syntax error
+  483647, 0 ), ( 2147483647, 18446744073709551615 ) ORDER BY 1844674407370955161
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+  T * FROM v0 AS a18 GROUP BY y ( a18.c1 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c3 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709551615 ), ( 18446744073709551615, 0, 18446744073709551615 ); 
+ALTER TABLE v0 DROP c1; 
+; 
+ALTER TABLE v0 DROP c2; 
+; 
+CREATE TABLE v6 ( c7, c8, c9 REFERENCES t1 ( c8, c9, c8, c8 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a13 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a14.c3, max ( a14.c2 || a14.c2 ) FROM v0 AS a14 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 GROUP BY y ( a15.c3 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c7 FROM v6 AS a16 LEFT JOIN v6 AS a17 ON a17.c8 = a16.c9 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 2147483647, 18446744073709551615 ), ( 18446744073709551615, 18446744071562067968 ), ( 0, 2147483647 ), ( 18446744071562067968, 18446744073709551615 ), ( 2147483647, 0 ), ( 2147483647, 18446744073709551615 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 GROUP BY y ( a18.c1 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 ORDER BY CASE WHEN a19.c2 != 'v1' THEN 2147483647 ELSE 18446744071562067968 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a20, v6 AS a21 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 GROUP BY a23.c3, a23.c3 < a23.c3 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: UNIQUE constraint failed: v0.c1, v0.c3 (19)
+Parse error near line 3: cannot drop PRIMARY KEY column: "c1"
+Parse error near line 7: foreign key on c9 should reference only one column of table t1
+  CREATE TABLE v6 ( c7, c8, c9 REFERENCES t1 ( c8, c9, c8, c8 ) ) WITHOUT ROWID;
+                            error here ---^
+BEGIN VERI 0
+Parse error near line 12: no such table: v6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such column: a14.c2
+  SELECT a14.c3, max ( a14.c2 || a14.c2 ) FROM v0 AS a14 ORDER BY 8; 
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such function: y
+  SELECT * FROM v0 AS a15 GROUP BY y ( a15.c3 ) ORDER BY 18446744073709551615; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: near "ORDER": syntax error
+  483647, 0 ), ( 2147483647, 18446744073709551615 ) ORDER BY 1844674407370955161
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  T * FROM v0 AS a18 GROUP BY y ( a18.c1 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a19.c2
+  SELECT * FROM v0 AS a19 ORDER BY CASE WHEN a19.c2 != 'v1' THEN 2147483647 ELSE
+                               error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: no such table: v6
+ 
+INT: 0 
+Str: 
+Parse error near line 12: no such table: v6
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such column: a14.c2
+  SELECT a14.c3, max ( a14.c2 || a14.c2 ) FROM v0 AS a14 ORDER BY 8; 
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such function: y
+  SELECT * FROM v0 AS a15 GROUP BY y ( a15.c3 ) ORDER BY 18446744073709551615; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 18: no such function: y
+  SELECT * FROM v0 AS a15 GROUP BY y ( a15.c3 ) ORDER BY 18446744073709551615; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such table: v6
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no such table: v6
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 19069984
+Str: 
+Parse error near line 24: near "ORDER": syntax error
+  483647, 0 ), ( 2147483647, 18446744073709551615 ) ORDER BY 1844674407370955161
+                                      error here ---^
+ 
+Str: 
+Parse error near line 24: near "ORDER": syntax error
+  483647, 0 ), ( 2147483647, 18446744073709551615 ) ORDER BY 1844674407370955161
+                                      error here ---^
+ 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+  T * FROM v0 AS a18 GROUP BY y ( a18.c1 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  T * FROM v0 AS a18 GROUP BY y ( a18.c1 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 30: no such column: a19.c2
+  SELECT * FROM v0 AS a19 ORDER BY CASE WHEN a19.c2 != 'v1' THEN 2147483647 ELSE
+                               error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such table: v6
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such table: v6
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,294 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c2 ) ) WITHOUT ROWID; 
+ATTACH 'xxx' AS sqlite_master; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 8, 8, 0 ), ( 0, 0, 8 ); 
+CREATE TABLE v5 ( c6 TEXT PRIMARY KEY ON CONFLICT REPLACE, c7 UNIQUE ON CONFLICT IGNORE, c8 UNIQUE ON CONFLICT FAIL, c9 INT, c10 VARCHAR(1000) ); 
+ALTER TABLE v0 DROP c1; 
+ALTER TABLE v5 DROP c9; 
+CREATE INDEX i11 ON v5 ( c6 ); 
+CREATE TABLE v12 ( c13, c14, c15 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i16 ON v0 ( c3 ); 
+CREATE INDEX i17 ON v12 ( c13 ); 
+CREATE INDEX i18 ON v5 ( c10 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( WITH v5 ( c21 ) AS ( SELECT 'x' ORDER BY 255 ) SELECT * FROM v5 AS a20 LEFT JOIN ( SELECT count ( * ) AS y, a23.c2 FROM ( v12 AS a22 INNER JOIN v0 AS a23 ON c21 = c21 ) AS y WHERE a20.c10 > 8 GROUP BY c21 ORDER BY 255 ) AS y ON a20.c7 = y ( a20.c6 ) ORDER BY 281 ) ) FROM v0 AS a19 WHERE a19.c1 NOT NULL ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a24.c1 ) FROM v0 AS a24 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a25, v5 AS a26 NATURAL JOIN v0 AS a27 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v28 ( c30 ) AS ( SELECT c3, max ( c1 || c8 ) ORDER BY 0 ) SELECT * FROM ( SELECT 4294967295 ORDER BY 4294967295 ) AS y, v28 AS a29 ON ( hex ( 0 ) ) ORDER BY 281; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c2, a32.c1 FROM v0 AS a31 JOIN v0 AS a32 ON a32.c3 = a31.c3 WHERE a32.c2 IN ( 127, 4294967295, 0 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a34 WHERE hex ( 255 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 GROUP BY 100 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c6, count ( ( NOT ( a36.c14 IS NULL ) ) AND ( NOT ( a36.c13 IS ( 'apple', a36.c6 > 127, 'v1' ) ) ) ) FROM v12 AS a36 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a37 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: error in index i4 after drop column: no such column: c1
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 10
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: table v28 has 2 values for 1 columns
+END VERI 0
+BEGIN VERI 0
+0|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st GROUP BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a36.c6
+  SELECT a36.c6, count ( ( NOT ( a36.c14 IS NULL ) ) AND ( NOT ( a36.c13 IS ( 'a
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c2 ) ) WITHOUT ROWID; 
+ATTACH 'xxx' AS sqlite_master; 
+; 
+INSERT INTO v0 VALUES ( 8, 8, 0 ), ( 0, 0, 8 ); 
+CREATE TABLE v5 ( c6 TEXT PRIMARY KEY ON CONFLICT REPLACE, c7 UNIQUE ON CONFLICT IGNORE, c8 UNIQUE ON CONFLICT FAIL, c9 INT, c10 VARCHAR(1000) ); 
+ALTER TABLE v0 DROP c1; 
+ALTER TABLE v5 DROP c9; 
+; 
+CREATE TABLE v12 ( c13, c14, c15 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( WITH v5 ( c21 ) AS ( SELECT 'x' ORDER BY 255 ) SELECT * FROM v5 AS a20 LEFT JOIN ( SELECT count ( * ) AS y, a23.c2 FROM ( v12 AS a22 INNER JOIN v0 AS a23 ON c21 = c21 ) AS y WHERE a20.c10 > 8 GROUP BY c21 ORDER BY 255 ) AS y ON a20.c7 = y ( a20.c6 ) ORDER BY 281 ) ) FROM v0 AS a19 WHERE a19.c1 NOT NULL ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a24.c1 ) FROM v0 AS a24 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a25, v5 AS a26 NATURAL JOIN v0 AS a27 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v28 ( c30 ) AS ( SELECT c3, max ( c1 || c8 ) ORDER BY 0 ) SELECT * FROM ( SELECT 4294967295 ORDER BY 4294967295 ) AS y, v28 AS a29 ON ( hex ( 0 ) ) ORDER BY 281; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c2, a32.c1 FROM v0 AS a31 JOIN v0 AS a32 ON a32.c3 = a31.c3 WHERE a32.c2 IN ( 127, 4294967295, 0 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a34 WHERE hex ( 255 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 GROUP BY 100 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c6, count ( ( NOT ( a36.c14 IS NULL ) ) AND ( NOT ( a36.c13 IS ( 'apple', a36.c6 > 127, 'v1' ) ) ) ) FROM v12 AS a36 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a37 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a24.c1
+  SELECT count ( a24.c1 ) FROM v0 AS a24 ORDER BY 8; 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: table v28 has 2 values for 1 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: a32.c1
+  SELECT a31.c2, a32.c1 FROM v0 AS a31 JOIN v0 AS a32 ON a32.c3 = a31.c3 WHERE a
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st GROUP BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a36.c6
+  SELECT a36.c6, count ( ( NOT ( a36.c14 IS NULL ) ) AND ( NOT ( a36.c13 IS ( 'a
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no such column: a24.c1
+  SELECT count ( a24.c1 ) FROM v0 AS a24 ORDER BY 8; 
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 10
+ 
+INT: 0 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 9
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: table v28 has 2 values for 1 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 23: table v28 has 2 values for 1 columns
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+0|0
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such column: a32.c1
+  SELECT a31.c2, a32.c1 FROM v0 AS a31 JOIN v0 AS a32 ON a32.c3 = a31.c3 WHERE a
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st GROUP BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st GROUP BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no such column: a36.c6
+  SELECT a36.c6, count ( ( NOT ( a36.c14 IS NULL ) ) AND ( NOT ( a36.c13 IS ( 'a
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 38: no such column: a36.c6
+  SELECT a36.c6, count ( ( NOT ( a36.c14 IS NULL ) ) AND ( NOT ( a36.c13 IS ( 'a
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

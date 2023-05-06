@@ -1,0 +1,298 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a4 GROUP BY a4.c3, a4.c2, count ( a4.c1 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE TABLE v6 ( c7 REFERENCES t1 DEFAULT NULL, c8, c9, c10, c11, c12, c13, c14, c15, c16 INTEGER UNIQUE ON CONFLICT FAIL, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, PRIMARY KEY ( c11, c9, c15, c26, c39, c14, c27 ) ) WITHOUT ROWID; 
+CREATE TABLE v41 ( c42 TEXT, c43 REAL, c44 INT, PRIMARY KEY ( c43 COLLATE nocase, c44 ) ) WITHOUT ROWID; 
+CREATE INDEX i45 ON v41 ( c42 ); 
+CREATE TABLE v46 ( c47, c48 INTEGER UNIQUE ON CONFLICT FAIL, c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62, c63, c64, c65, c66, c67, c68, c69, c70, c71, c72, c73 PRIMARY KEY, CHECK( ( ( c51 + 18446744073709551488 ) % 18446744073709551488 ) != 18446744073709551488 ) ) WITHOUT ROWID; 
+CREATE VIEW v74 AS SELECT * FROM v0 AS a75 ORDER BY 18446744073709551488; 
+CREATE INDEX i76 ON v41 ( c42 ); 
+CREATE INDEX i77 ON v46 ( c65 ); 
+CREATE TABLE v78 ( c79 INTEGER PRIMARY KEY, c80, c81 UNIQUE ); 
+CREATE TABLE v82 ( c83, c84, c85 ); 
+ALTER TABLE v41 DROP COLUMN c42; 
+ALTER TABLE v46 DROP COLUMN c54; 
+CREATE VIRTUAL TABLE v86 USING fts5 ( c87, c88 ); 
+ALTER TABLE v82 DROP COLUMN c83; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v74 AS a89 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a90.c69 ) OVER ( ORDER BY ( ( a90.c56 + 18446744073709551488 ) % 18446744073709551488 ) ) ORDER BY 18446744073709551488 ) FROM v46 AS a90 GROUP BY a90.c51 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v91 ( c93 ) AS ( SELECT c93, max ( c93 || c93 ) ORDER BY 18446744073709551488 ) SELECT * FROM v91 AS a92 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a95.c80, a95.c80 ), min ( a94.c34, a95.c79 ) FROM v6 AS a94, v78 AS a95 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a96, v46 AS a97 NATURAL JOIN v74 AS a98 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a99, v74 AS a100 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a101 GROUP BY a101.c42, a101.c42, count ( a101.c44 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a102, v46 AS a103 NATURAL JOIN v78 AS a104 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 3: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+Runtime error near line 15: error in index i45 after drop column: no such column: c42
+Runtime error near line 17: no such module: fts5
+BEGIN VERI 0
+Parse error near line 20: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: table v91 has 2 values for 1 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a4 GROUP BY a4.c3, a4.c2, count ( a4.c1 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+; 
+CREATE TABLE v6 ( c7 REFERENCES t1 DEFAULT NULL, c8, c9, c10, c11, c12, c13, c14, c15, c16 INTEGER UNIQUE ON CONFLICT FAIL, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, PRIMARY KEY ( c11, c9, c15, c26, c39, c14, c27 ) ) WITHOUT ROWID; 
+CREATE TABLE v41 ( c42 TEXT, c43 REAL, c44 INT, PRIMARY KEY ( c43 COLLATE nocase, c44 ) ) WITHOUT ROWID; 
+; 
+CREATE TABLE v46 ( c47, c48 INTEGER UNIQUE ON CONFLICT FAIL, c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62, c63, c64, c65, c66, c67, c68, c69, c70, c71, c72, c73 PRIMARY KEY, CHECK( ( ( c51 + 18446744073709551488 ) % 18446744073709551488 ) != 18446744073709551488 ) ) WITHOUT ROWID; 
+CREATE VIEW v74 AS SELECT * FROM v0 AS a75 ORDER BY 18446744073709551488; 
+; 
+; 
+CREATE TABLE v78 ( c79 INTEGER PRIMARY KEY, c80, c81 UNIQUE ); 
+CREATE TABLE v82 ( c83, c84, c85 ); 
+ALTER TABLE v41 DROP COLUMN c42; 
+ALTER TABLE v46 DROP COLUMN c54; 
+CREATE VIRTUAL TABLE v86 USING fts5 ( c87, c88 ); 
+ALTER TABLE v82 DROP COLUMN c83; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v74 AS a89 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a90.c69 ) OVER ( ORDER BY ( ( a90.c56 + 18446744073709551488 ) % 18446744073709551488 ) ) ORDER BY 18446744073709551488 ) FROM v46 AS a90 GROUP BY a90.c51 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v91 ( c93 ) AS ( SELECT c93, max ( c93 || c93 ) ORDER BY 18446744073709551488 ) SELECT * FROM v91 AS a92 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a95.c80, a95.c80 ), min ( a94.c34, a95.c79 ) FROM v6 AS a94, v78 AS a95 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a96, v46 AS a97 NATURAL JOIN v74 AS a98 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a99, v74 AS a100 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a101 GROUP BY a101.c42, a101.c42, count ( a101.c44 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a102, v46 AS a103 NATURAL JOIN v78 AS a104 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 3: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+Runtime error near line 17: no such module: fts5
+BEGIN VERI 0
+Parse error near line 20: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: table v91 has 2 values for 1 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no such column: a101.c42
+  SELECT * FROM v41 AS a101 GROUP BY a101.c42, a101.c42, count ( a101.c44 ) ORDE
+                       error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 3: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+Str: 
+Parse error near line 3: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: table v91 has 2 values for 1 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 29: table v91 has 2 values for 1 columns
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 44: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+Str: 
+Parse error near line 44: no such column: a101.c42
+  SELECT * FROM v41 AS a101 GROUP BY a101.c42, a101.c42, count ( a101.c44 ) ORDE
+                       error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

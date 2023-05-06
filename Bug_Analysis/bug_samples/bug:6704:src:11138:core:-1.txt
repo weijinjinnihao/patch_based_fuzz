@@ -1,0 +1,349 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( 4294967295, '', 'v0' ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 4294967295, 'v1', 'v0' ); 
+INSERT INTO v0 VALUES ( NULL, 'v0', 'x' ); 
+CREATE TABLE v5 ( c6, c7 INTEGER DEFAULT 0, c8 REFERENCES p1 ( c6 ) ); 
+INSERT INTO v0 VALUES ( 'bmy', 'v0', '%foo%' ); 
+CREATE INDEX i9 ON v0 ( c3 ); 
+CREATE INDEX i10 ON v0 ( c3 ); 
+INSERT INTO v5 VALUES ( x'616263', 'v0', 'x' ); 
+CREATE TABLE v11 ( c12, c13 INTEGER UNIQUE ON CONFLICT FAIL, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26 UNIQUE ON CONFLICT FAIL, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38 INTEGER UNIQUE ON CONFLICT FAIL ); 
+INSERT INTO v11 VALUES ( 4294967295, 4294967295, 0 ), ( 0, 0, 0 ), ( 4294967295 = 'x', 18446744073709551615, 18446744073709551488 ); 
+INSERT INTO v5 VALUES ( 'x', 'b', 'x' ); 
+CREATE INDEX i39 ON v5 ( c8 ); 
+CREATE TABLE v40 ( c41, c42, c43, c44, c45, c46, c47 REFERENCES t1 DEFAULT 4294967295 DEFAULT 8, c48, c49, c50, c51, c52, c53, c54 PRIMARY KEY ON CONFLICT REPLACE, c55, c56, c57 TEXT UNIQUE NOT NULL ); 
+INSERT INTO v0 VALUES ( 0, 'v1', 'v1' ); 
+INSERT INTO v0 VALUES ( - 4294967295, 'vbde', 'v1' ); 
+CREATE TABLE v58 ( c59, c60, c61 COLLATE NOCASE ); 
+INSERT INTO v11 SELECT c59, c61 FROM v40 AS a62, v58 AS a63, ( v5 AS a64 ) NATURAL JOIN ( v40 AS a65 NATURAL JOIN v5 AS a66 ) WHERE c6 = c50 + 11 AND c25 = c53 + 4294967295 AND c51 = c59 + 4294967295 ORDER BY 11; 
+CREATE INDEX i67 ON v58 ( c61 ); 
+UPDATE v58 SET c60 = zeroblob ( 8 ); 
+INSERT INTO v0 SELECT * FROM v5 AS a68 ORDER BY 10; 
+INSERT INTO v5 SELECT * FROM v0 AS a69 ORDER BY 4294967295; 
+INSERT INTO v0 SELECT * FROM v0 AS a70 NATURAL JOIN v40 AS a71 ORDER BY 18446744071562067968; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v40 AS a72 WHERE a72.c46 > ( a72.c42 + - 4294967295 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v58 AS a73 ORDER BY a73.c60; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a74.c3 || a74.c3 ) FROM v0 AS a74 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a75 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a76.c36 IS NULL ) ) AND ( NOT ( a76.c36 IS NULL ) ) ) FROM v11 AS a76 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a77 ORDER BY a77.c2 COLLATE nocase; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a78.c1 FROM v0 AS a78 GROUP BY 18446744073709551615 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a79.c7 ) FROM v5 AS a79 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT abs ( a80.c56 ), a81.c16 FROM v40 AS a80 RIGHT JOIN v11 AS a81 ON a81.c21 = y ( a81.c38 ) WHERE ( a81.c16 + 0 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 12: table v11 has 27 columns but 3 values were supplied
+Parse error near line 19: no such column: c25
+   NATURAL JOIN v5 AS a66 ) WHERE c6 = c50 + 11 AND c25 = c53 + 4294967295 AND c
+                                      error here ---^
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 24: table v0 has 3 columns but 20 values were supplied
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 17
+  ERE a72.c46 > ( a72.c42 + - 4294967295 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+xx
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+   ( a76.c36 IS NULL ) ) ) FROM v11 AS a76 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+4294967295||v0
+|v0|x
+bmy|v0|%foo%
+4294967295|v1|v0
+0|v1|v1
+-4294967295|vbde|v1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no tables specified
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 53: no such function: y
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( 4294967295, '', 'v0' ); 
+; 
+INSERT INTO v0 VALUES ( 4294967295, 'v1', 'v0' ); 
+INSERT INTO v0 VALUES ( NULL, 'v0', 'x' ); 
+CREATE TABLE v5 ( c6, c7 INTEGER DEFAULT 0, c8 REFERENCES p1 ( c6 ) ); 
+INSERT INTO v0 VALUES ( 'bmy', 'v0', '%foo%' ); 
+; 
+; 
+INSERT INTO v5 VALUES ( x'616263', 'v0', 'x' ); 
+CREATE TABLE v11 ( c12, c13 INTEGER UNIQUE ON CONFLICT FAIL, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26 UNIQUE ON CONFLICT FAIL, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38 INTEGER UNIQUE ON CONFLICT FAIL ); 
+INSERT INTO v11 VALUES ( 4294967295, 4294967295, 0 ), ( 0, 0, 0 ), ( 4294967295 = 'x', 18446744073709551615, 18446744073709551488 ); 
+INSERT INTO v5 VALUES ( 'x', 'b', 'x' ); 
+; 
+CREATE TABLE v40 ( c41, c42, c43, c44, c45, c46, c47 REFERENCES t1 DEFAULT 4294967295 DEFAULT 8, c48, c49, c50, c51, c52, c53, c54 PRIMARY KEY ON CONFLICT REPLACE, c55, c56, c57 TEXT UNIQUE NOT NULL ); 
+INSERT INTO v0 VALUES ( 0, 'v1', 'v1' ); 
+INSERT INTO v0 VALUES ( - 4294967295, 'vbde', 'v1' ); 
+CREATE TABLE v58 ( c59, c60, c61 COLLATE NOCASE ); 
+INSERT INTO v11 SELECT c59, c61 FROM v40 AS a62, v58 AS a63, ( v5 AS a64 ) NATURAL JOIN ( v40 AS a65 NATURAL JOIN v5 AS a66 ) WHERE c6 = c50 + 11 AND c25 = c53 + 4294967295 AND c51 = c59 + 4294967295 ORDER BY 11; 
+; 
+UPDATE v58 SET c60 = zeroblob ( 8 ); 
+INSERT INTO v0 SELECT * FROM v5 AS a68 ORDER BY 10; 
+INSERT INTO v5 SELECT * FROM v0 AS a69 ORDER BY 4294967295; 
+INSERT INTO v0 SELECT * FROM v0 AS a70 NATURAL JOIN v40 AS a71 ORDER BY 18446744071562067968; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v40 AS a72 WHERE a72.c46 > ( a72.c42 + - 4294967295 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v58 AS a73 ORDER BY a73.c60; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a74.c3 || a74.c3 ) FROM v0 AS a74 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a75 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a76.c36 IS NULL ) ) AND ( NOT ( a76.c36 IS NULL ) ) ) FROM v11 AS a76 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a77 ORDER BY a77.c2 COLLATE nocase; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a78.c1 FROM v0 AS a78 GROUP BY 18446744073709551615 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a79.c7 ) FROM v5 AS a79 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT abs ( a80.c56 ), a81.c16 FROM v40 AS a80 RIGHT JOIN v11 AS a81 ON a81.c21 = y ( a81.c38 ) WHERE ( a81.c16 + 0 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 12: table v11 has 27 columns but 3 values were supplied
+Parse error near line 19: no such column: c25
+   NATURAL JOIN v5 AS a66 ) WHERE c6 = c50 + 11 AND c25 = c53 + 4294967295 AND c
+                                      error here ---^
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 24: table v0 has 3 columns but 20 values were supplied
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 17
+  ERE a72.c46 > ( a72.c42 + - 4294967295 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+xx
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+   ( a76.c36 IS NULL ) ) ) FROM v11 AS a76 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+4294967295||v0
+|v0|x
+bmy|v0|%foo%
+4294967295|v1|v0
+0|v1|v1
+-4294967295|vbde|v1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no tables specified
+END VERI 0
+BEGIN VERI 0
+4294967295
+END VERI 0
+BEGIN VERI 0
+8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 53: no such function: y
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 17
+  ERE a72.c46 > ( a72.c42 + - 4294967295 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 17
+  ERE a72.c46 > ( a72.c42 + - 4294967295 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+xx
+ 
+INT: 0 
+Str: 
+xx
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+   ( a76.c36 IS NULL ) ) ) FROM v11 AS a76 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+   ( a76.c36 IS NULL ) ) ) FROM v11 AS a76 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+4294967295||v0
+|v0|x
+bmy|v0|%foo%
+4294967295|v1|v0
+0|v1|v1
+-4294967295|vbde|v1
+ 
+INT: 5 
+Str: 
+4294967295||v0
+|v0|x
+bmy|v0|%foo%
+4294967295|v1|v0
+0|v1|v1
+-4294967295|vbde|v1
+ 
+INT: 5 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 44: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+4294967295
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+8
+ 
+INT: 0 
+Str: 
+8
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 53: no such function: y
+ 
+INT: 0 
+Str: 
+Parse error near line 53: no such function: y
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

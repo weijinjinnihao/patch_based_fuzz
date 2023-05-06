@@ -1,0 +1,337 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9 DEFAULT 'v0' DEFAULT 255, PRIMARY KEY ( c5, c7 ) ) WITHOUT ROWID; 
+CREATE INDEX i10 ON v0 ( c9 ); 
+CREATE INDEX i11 ON v0 ( c2 ); 
+ATTACH 'v0' AS sqlite_master; 
+CREATE TABLE v12 ( c13, c14 TEXT, c15, PRIMARY KEY ( c14 ), CHECK( c15 != c14 ), CHECK( c14 != c13 ), UNIQUE ( c13 ) ); 
+CREATE TABLE v16 ( c17, c18 CHECK( 18446744073709551488 ), c19, c20, CHECK( c17 > 0 ) ); 
+ALTER TABLE v0 DROP c9; 
+CREATE INDEX i21 ON v0 ( c7 ); 
+CREATE INDEX i22 ON v0 ( c6 ); 
+CREATE INDEX i23 ON v16 ( c17 ); 
+ALTER TABLE v0 DROP c6; 
+CREATE TABLE v24 ( c25, c26, c27 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE TABLE v28 ( c29 INT, c30 INTEGER, c31 TEXT, c32 REAL PRIMARY KEY, c33 BLOB ) STRICT; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v28 AS a34 GROUP BY a34.c31 HAVING automatic_index ( * ) >= 0 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v24 AS a35 NATURAL JOIN v12 AS a36 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a37 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v38 ( c40 ) AS ( SELECT 0 ORDER BY - hex ( 0 ) ) SELECT * FROM v38 AS a39 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a42.c27 ), a42.c26 FROM v16 AS a41 LEFT JOIN v24 AS a42 ON a42.c26 = a42.c27 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c17, a43.c33 FROM v28 AS a43 RIGHT JOIN v16 AS a44 ON a44.c18 = ( ( ( a43.c31 + 0 ) % 0 ) == 0 ) % 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v28 ( c46 ) AS ( WITH v24 AS ( SELECT ( SELECT min ( v28.c30 ) OVER ( ORDER BY 255 IN v12 ) ORDER BY 0 ) FROM v12 AS a47 GROUP BY a47.c13 ORDER BY 0 ) SELECT 0 ORDER BY 18446744073709551488 ) SELECT * FROM v12 AS a45 GROUP BY c46 HAVING automatic_index ( * ) >= 18446744073709551615 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a48.c20 ) FROM v16 AS a48 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a49.c4 || a49.c9 ) FROM v0 AS a49 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v16 ( c50, c51, c52, c53, c54, c55 ) AS ( SELECT 0 y ORDER BY 4294967295 ) SELECT 0 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i10 after drop column: no such column: c9
+Runtime error near line 11: error in index i22 after drop column: no such column: c6
+BEGIN VERI 0
+Parse error near line 15: no such function: automatic_index
+  SELECT * FROM v28 AS a34 GROUP BY a34.c31 HAVING automatic_index ( * ) >= 0 OR
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v16 AS a37 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  EFT JOIN v24 AS a42 ON a42.c26 = a42.c27 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+  8 = ( ( ( a43.c31 + 0 ) % 0 ) == 0 ) % 0 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such function: automatic_index
+  88 ) SELECT * FROM v12 AS a45 GROUP BY c46 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a48.c20 ) FROM v16 AS a48 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9 DEFAULT 'v0' DEFAULT 255, PRIMARY KEY ( c5, c7 ) ) WITHOUT ROWID; 
+; 
+; 
+ATTACH 'v0' AS sqlite_master; 
+CREATE TABLE v12 ( c13, c14 TEXT, c15, PRIMARY KEY ( c14 ), CHECK( c15 != c14 ), CHECK( c14 != c13 ), UNIQUE ( c13 ) ); 
+CREATE TABLE v16 ( c17, c18 CHECK( 18446744073709551488 ), c19, c20, CHECK( c17 > 0 ) ); 
+ALTER TABLE v0 DROP c9; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c6; 
+CREATE TABLE v24 ( c25, c26, c27 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE TABLE v28 ( c29 INT, c30 INTEGER, c31 TEXT, c32 REAL PRIMARY KEY, c33 BLOB ) STRICT; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v28 AS a34 GROUP BY a34.c31 HAVING automatic_index ( * ) >= 0 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v24 AS a35 NATURAL JOIN v12 AS a36 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a37 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v38 ( c40 ) AS ( SELECT 0 ORDER BY - hex ( 0 ) ) SELECT * FROM v38 AS a39 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a42.c27 ), a42.c26 FROM v16 AS a41 LEFT JOIN v24 AS a42 ON a42.c26 = a42.c27 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c17, a43.c33 FROM v28 AS a43 RIGHT JOIN v16 AS a44 ON a44.c18 = ( ( ( a43.c31 + 0 ) % 0 ) == 0 ) % 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v28 ( c46 ) AS ( WITH v24 AS ( SELECT ( SELECT min ( v28.c30 ) OVER ( ORDER BY 255 IN v12 ) ORDER BY 0 ) FROM v12 AS a47 GROUP BY a47.c13 ORDER BY 0 ) SELECT 0 ORDER BY 18446744073709551488 ) SELECT * FROM v12 AS a45 GROUP BY c46 HAVING automatic_index ( * ) >= 18446744073709551615 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a48.c20 ) FROM v16 AS a48 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a49.c4 || a49.c9 ) FROM v0 AS a49 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v16 ( c50, c51, c52, c53, c54, c55 ) AS ( SELECT 0 y ORDER BY 4294967295 ) SELECT 0 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 15: no such function: automatic_index
+  SELECT * FROM v28 AS a34 GROUP BY a34.c31 HAVING automatic_index ( * ) >= 0 OR
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v16 AS a37 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  EFT JOIN v24 AS a42 ON a42.c26 = a42.c27 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+  8 = ( ( ( a43.c31 + 0 ) % 0 ) == 0 ) % 0 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such function: automatic_index
+  88 ) SELECT * FROM v12 AS a45 GROUP BY c46 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a48.c20 ) FROM v16 AS a48 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a49.c9
+  SELECT max ( a49.c4 || a49.c9 ) FROM v0 AS a49 ORDER BY 18446744073709551488; 
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such function: automatic_index
+  SELECT * FROM v28 AS a34 GROUP BY a34.c31 HAVING automatic_index ( * ) >= 0 OR
+                                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: no such function: automatic_index
+  SELECT * FROM v28 AS a34 GROUP BY a34.c31 HAVING automatic_index ( * ) >= 0 OR
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v16 AS a37 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v16 AS a37 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  EFT JOIN v24 AS a42 ON a42.c26 = a42.c27 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  EFT JOIN v24 AS a42 ON a42.c26 = a42.c27 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+  8 = ( ( ( a43.c31 + 0 ) % 0 ) == 0 ) % 0 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+  8 = ( ( ( a43.c31 + 0 ) % 0 ) == 0 ) % 0 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such function: automatic_index
+  88 ) SELECT * FROM v12 AS a45 GROUP BY c46 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: no such function: automatic_index
+  88 ) SELECT * FROM v12 AS a45 GROUP BY c46 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a48.c20 ) FROM v16 AS a48 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a48.c20 ) FROM v16 AS a48 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+Parse error near line 39: no such column: a49.c9
+  SELECT max ( a49.c4 || a49.c9 ) FROM v0 AS a49 ORDER BY 18446744073709551488; 
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,299 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 PRIMARY KEY, CHECK( ( ( c2 + 18446744073709518848 ) % 18446744073709518848 ) != 18446744073709518848 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+ALTER TABLE v0 DROP c1; 
+CREATE INDEX i5 ON v0 ( c1 ); 
+CREATE INDEX i6 ON v0 ( c3 ); 
+CREATE INDEX i7 ON v0 ( c1 ); 
+CREATE INDEX i8 ON v0 ( ( c3 + 127 ) ); 
+CREATE TABLE v9 AS SELECT c1 + c1 FROM v0 AS a10 ORDER BY 18446744073709518848; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c13, count ( ( NOT ( x'b2b2b2' > NULL ) ) AND ( NOT ( c14 IS NULL ) ) ), count ( ( NOT ( a11.c3 IS NULL ) ) AND ( NOT ( a11.c3 IS NULL ) ) ) FROM v0 AS a11 LEFT JOIN v9 AS a12 ON c3 = c15 WHERE c1 IS NOT NULL ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v0 AS ( SELECT 127 y ORDER BY 18446744073709551615 ) SELECT c18, c19 y FROM v0 AS a16 RIGHT JOIN v9 AS a17 ON a16.c2 = a16.c1 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a20 ORDER BY c21; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c2, count ( ( NOT ( a22.c1 IS NULL ) ) AND ( NOT ( a22.c3 IS NULL ) ) ) FROM v0 AS a22 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v23 AS ( SELECT c30 FROM v23 AS a29 WHERE c31 LIKE 'v0' ORDER BY 127 ) SELECT c3, count ( c2 ), c26 FROM v23 AS a24 LEFT JOIN v23 AS a25 ON c27 = c2 WHERE c28 != 127 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 JOIN v0 AS a33 USING ( a33.c2, a33.c2, a33.c1, a32.c1, a33.c3, a33.c1, a32.c1, a32.c2, a32.c2, a32.c3, a33.c1, a32.c1, a33.c1, a33.c1, a33.c3, a32.c3, a33.c2, a32.c2 ) WHERE max ( a32.c2 ) = ( a33.c1 ) AND a32.c2 = 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a35 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c38, count ( c3 ) FROM v9 AS a37 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 3: error in index i4 after drop column: no such column: c1
+BEGIN VERI 0
+Parse error near line 10: no such column: c13
+  SELECT c13, count ( ( NOT ( x'b2b2b2' > NULL ) ) AND ( NOT ( c14 IS NULL ) ) )
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: no such column: c18
+  LECT 127 y ORDER BY 18446744073709551615 ) SELECT c18, c19 y FROM v0 AS a16 RI
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: c21
+  SELECT * FROM v9 AS a20 ORDER BY c21; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: circular reference: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: near ".": syntax error
+  SELECT * FROM v0 AS a32 JOIN v0 AS a33 USING ( a33.c2, a33.c2, a33.c1, a32.c1,
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: c38
+  SELECT c38, count ( c3 ) FROM v9 AS a37 ORDER BY 18446744073709518848; 
+         ^--- error here
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 PRIMARY KEY, CHECK( ( ( c2 + 18446744073709518848 ) % 18446744073709518848 ) != 18446744073709518848 ) ) WITHOUT ROWID; 
+; 
+ALTER TABLE v0 DROP c1; 
+; 
+; 
+; 
+; 
+CREATE TABLE v9 AS SELECT c1 + c1 FROM v0 AS a10 ORDER BY 18446744073709518848; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c13, count ( ( NOT ( x'b2b2b2' > NULL ) ) AND ( NOT ( c14 IS NULL ) ) ), count ( ( NOT ( a11.c3 IS NULL ) ) AND ( NOT ( a11.c3 IS NULL ) ) ) FROM v0 AS a11 LEFT JOIN v9 AS a12 ON c3 = c15 WHERE c1 IS NOT NULL ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v0 AS ( SELECT 127 y ORDER BY 18446744073709551615 ) SELECT c18, c19 y FROM v0 AS a16 RIGHT JOIN v9 AS a17 ON a16.c2 = a16.c1 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a20 ORDER BY c21; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c2, count ( ( NOT ( a22.c1 IS NULL ) ) AND ( NOT ( a22.c3 IS NULL ) ) ) FROM v0 AS a22 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v23 AS ( SELECT c30 FROM v23 AS a29 WHERE c31 LIKE 'v0' ORDER BY 127 ) SELECT c3, count ( c2 ), c26 FROM v23 AS a24 LEFT JOIN v23 AS a25 ON c27 = c2 WHERE c28 != 127 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 JOIN v0 AS a33 USING ( a33.c2, a33.c2, a33.c1, a32.c1, a33.c3, a33.c1, a32.c1, a32.c2, a32.c2, a32.c3, a33.c1, a32.c1, a33.c1, a33.c1, a33.c3, a32.c3, a33.c2, a32.c2 ) WHERE max ( a32.c2 ) = ( a33.c1 ) AND a32.c2 = 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a35 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c38, count ( c3 ) FROM v9 AS a37 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: no such column: c1
+  CREATE TABLE v9 AS SELECT c1 + c1 FROM v0 AS a10 ORDER BY 18446744073709518848
+              error here ---^
+BEGIN VERI 0
+Parse error near line 10: no such table: v9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: no such table: v9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such table: v9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: a22.c1
+  SELECT a22.c2, count ( ( NOT ( a22.c1 IS NULL ) ) AND ( NOT ( a22.c3 IS NULL )
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: circular reference: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: near ".": syntax error
+  SELECT * FROM v0 AS a32 JOIN v0 AS a33 USING ( a33.c2, a33.c2, a33.c1, a32.c1,
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v9
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 10: no such column: c13
+  SELECT c13, count ( ( NOT ( x'b2b2b2' > NULL ) ) AND ( NOT ( c14 IS NULL ) ) )
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 10: no such table: v9
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 13: no such column: c18
+  LECT 127 y ORDER BY 18446744073709551615 ) SELECT c18, c19 y FROM v0 AS a16 RI
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 13: no such table: v9
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 16: no such column: c21
+  SELECT * FROM v9 AS a20 ORDER BY c21; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: no such table: v9
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such column: a22.c1
+  SELECT a22.c2, count ( ( NOT ( a22.c1 IS NULL ) ) AND ( NOT ( a22.c3 IS NULL )
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: circular reference: v23
+ 
+INT: 0 
+Str: 
+Parse error near line 22: circular reference: v23
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: near ".": syntax error
+  SELECT * FROM v0 AS a32 JOIN v0 AS a33 USING ( a33.c2, a33.c2, a33.c1, a32.c1,
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 25: near ".": syntax error
+  SELECT * FROM v0 AS a32 JOIN v0 AS a33 USING ( a33.c2, a33.c2, a33.c1, a32.c1,
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 31: no such table: v9
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 37: no such column: c38
+  SELECT c38, count ( c3 ) FROM v9 AS a37 ORDER BY 18446744073709518848; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 37: no such table: v9
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

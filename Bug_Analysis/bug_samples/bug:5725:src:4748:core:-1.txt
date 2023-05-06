@@ -1,0 +1,308 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22 PRIMARY KEY, CHECK( ( ( c20 + 0 ) % 0 ) != 0 ) ) WITHOUT ROWID; 
+CREATE INDEX i23 ON v0 ( c9 ); 
+CREATE INDEX i24 ON v0 ( c9 ); 
+CREATE INDEX i25 ON v0 ( c15 ); 
+CREATE INDEX i26 ON v0 ( c6 ); 
+CREATE INDEX i27 ON v0 ( c11 ); 
+ALTER TABLE v0 DROP c15; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28, v0 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c20, count ( ( NOT ( a31.c13 IS NULL ) ) AND ( NOT ( a31.c9 IS NULL ) ) ) FROM v0 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 WHERE ( a32.c8 = a32.c13 = 0 ) AND a32.c18 IN ( SELECT a33.c11 FROM v0 AS a33 NATURAL JOIN v0 AS a34 WHERE a34.c15 = 0 ORDER BY 18446744073709551488 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( - 18446744073709551488, 'fig', 'meyers' ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35, v0 AS a36 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT hex ( ) y ORDER BY 100 ) SELECT 18446744073709551488 FROM v0 AS a38 WHERE ( a38.c7 IS 18446744073709551488 ) IS 10 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39, v0 AS a40 NATURAL JOIN v0 AS a41 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42, v0 AS a43 WHERE CASE WHEN a43.c11 = a42.c2 - 0 THEN 18446744073709551488 ELSE 100 END ORDER BY 104; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a44 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i25 after drop column: no such column: c15
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: near "ORDER": syntax error
+  ALUES ( - 18446744073709551488, 'fig', 'meyers' ) ORDER BY 255; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 44
+  SELECT * FROM v0 AS a35, v0 AS a36 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 22
+  SELECT * FROM v0 AS a37 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: wrong number of arguments to function hex()
+  WITH v0 AS ( SELECT hex ( ) y ORDER BY 100 ) SELECT 18446744073709551488 FROM 
+                      ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 44
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 44
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 22
+  SELECT * FROM v0 AS a44 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22 PRIMARY KEY, CHECK( ( ( c20 + 0 ) % 0 ) != 0 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c15; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28, v0 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c20, count ( ( NOT ( a31.c13 IS NULL ) ) AND ( NOT ( a31.c9 IS NULL ) ) ) FROM v0 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 WHERE ( a32.c8 = a32.c13 = 0 ) AND a32.c18 IN ( SELECT a33.c11 FROM v0 AS a33 NATURAL JOIN v0 AS a34 WHERE a34.c15 = 0 ORDER BY 18446744073709551488 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( - 18446744073709551488, 'fig', 'meyers' ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35, v0 AS a36 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT hex ( ) y ORDER BY 100 ) SELECT 18446744073709551488 FROM v0 AS a38 WHERE ( a38.c7 IS 18446744073709551488 ) IS 10 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39, v0 AS a40 NATURAL JOIN v0 AS a41 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42, v0 AS a43 WHERE CASE WHEN a43.c11 = a42.c2 - 0 THEN 18446744073709551488 ELSE 100 END ORDER BY 104; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a44 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such column: a34.c15
+  3.c11 FROM v0 AS a33 NATURAL JOIN v0 AS a34 WHERE a34.c15 = 0 ORDER BY 1844674
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: near "ORDER": syntax error
+  ALUES ( - 18446744073709551488, 'fig', 'meyers' ) ORDER BY 255; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 42
+  SELECT * FROM v0 AS a35, v0 AS a36 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 21
+  SELECT * FROM v0 AS a37 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: wrong number of arguments to function hex()
+  WITH v0 AS ( SELECT hex ( ) y ORDER BY 100 ) SELECT 18446744073709551488 FROM 
+                      ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 42
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 42
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 21
+  SELECT * FROM v0 AS a44 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 15: no such column: a34.c15
+  3.c11 FROM v0 AS a33 NATURAL JOIN v0 AS a34 WHERE a34.c15 = 0 ORDER BY 1844674
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 83492320
+Str: 
+Parse error near line 18: near "ORDER": syntax error
+  ALUES ( - 18446744073709551488, 'fig', 'meyers' ) ORDER BY 255; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 18: near "ORDER": syntax error
+  ALUES ( - 18446744073709551488, 'fig', 'meyers' ) ORDER BY 255; 
+                                      error here ---^
+ 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 44
+  SELECT * FROM v0 AS a35, v0 AS a36 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 42
+  SELECT * FROM v0 AS a35, v0 AS a36 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 22
+  SELECT * FROM v0 AS a37 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 21
+  SELECT * FROM v0 AS a37 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: wrong number of arguments to function hex()
+  WITH v0 AS ( SELECT hex ( ) y ORDER BY 100 ) SELECT 18446744073709551488 FROM 
+                      ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 27: wrong number of arguments to function hex()
+  WITH v0 AS ( SELECT hex ( ) y ORDER BY 100 ) SELECT 18446744073709551488 FROM 
+                      ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 44
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 42
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 44
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 42
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 22
+  SELECT * FROM v0 AS a44 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 21
+  SELECT * FROM v0 AS a44 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

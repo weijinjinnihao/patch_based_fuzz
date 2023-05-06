@@ -1,0 +1,313 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE TABLE v4 ( c5, c6, c7, CHECK( c6 > 4294967295 ) ); 
+CREATE INDEX i8 ON v0 ( ( 4294967295, count ( * ) ) != 4294967295 ); 
+CREATE INDEX i9 ON v4 ( c5 ); 
+CREATE TABLE v10 ( c11, c12, c13 CHECK( c13 > 4294967295 ) ); 
+CREATE INDEX i14 ON v10 ( c11 ); 
+CREATE INDEX i15 ON v10 ( c12 ); 
+INSERT INTO v4 VALUES ( 4294967295, 4294967295, 4294967295 ); 
+CREATE INDEX i16 ON v0 ( c3 ); 
+INSERT INTO v10 VALUES ( 9223372036854775807, 127, 255 ); 
+INSERT INTO v4 VALUES ( 255, 0, 9223372036854775807 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c7, count ( a17.c6 ) FROM v4 AS a17 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c5, count ( a18.c6 ) FROM v4 AS a18 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a20.c3 || a20.c3 ) FROM v0 AS a20 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a21 NATURAL JOIN v4 AS a22 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551615, 'v0', 0 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23, v0 AS a24 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 WHERE a25.c3 = a25.c3 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 GROUP BY y ( a26.c2, a26.c2, a26.c3, a26.c1, a26.c1, a26.c3, a26.c2, a26.c1, a26.c2, a26.c1, a26.c3, a26.c1, a26.c3, a26.c2, a26.c1, a26.c1, a26.c3 ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a27.c5 ) FROM v4 AS a27 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: row value misused
+Runtime error near line 8: CHECK constraint failed: c6 > 4294967295 (19)
+Runtime error near line 10: CHECK constraint failed: c13 > 4294967295 (19)
+Runtime error near line 11: CHECK constraint failed: c6 > 4294967295 (19)
+Runtime error near line 12: error in index i16 after drop column: no such column: c3
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 6
+  * FROM v10 AS a21 NATURAL JOIN v4 AS a22 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: near "ORDER": syntax error
+  VALUES ( 18446744073709551615, 'v0', 0 ) ORDER BY 9223372036854775807; 
+                             error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v0 AS a23, v0 AS a24 ORDER BY 2147483647; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE TABLE v4 ( c5, c6, c7, CHECK( c6 > 4294967295 ) ); 
+; 
+; 
+CREATE TABLE v10 ( c11, c12, c13 CHECK( c13 > 4294967295 ) ); 
+; 
+; 
+INSERT INTO v4 VALUES ( 4294967295, 4294967295, 4294967295 ); 
+; 
+INSERT INTO v10 VALUES ( 9223372036854775807, 127, 255 ); 
+INSERT INTO v4 VALUES ( 255, 0, 9223372036854775807 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c7, count ( a17.c6 ) FROM v4 AS a17 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c5, count ( a18.c6 ) FROM v4 AS a18 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a20.c3 || a20.c3 ) FROM v0 AS a20 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a21 NATURAL JOIN v4 AS a22 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551615, 'v0', 0 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23, v0 AS a24 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 WHERE a25.c3 = a25.c3 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 GROUP BY y ( a26.c2, a26.c2, a26.c3, a26.c1, a26.c1, a26.c3, a26.c2, a26.c1, a26.c2, a26.c1, a26.c3, a26.c1, a26.c3, a26.c2, a26.c1, a26.c1, a26.c3 ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a27.c5 ) FROM v4 AS a27 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: CHECK constraint failed: c6 > 4294967295 (19)
+Runtime error near line 10: CHECK constraint failed: c13 > 4294967295 (19)
+Runtime error near line 11: CHECK constraint failed: c6 > 4294967295 (19)
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a20.c3
+  SELECT max ( a20.c3 || a20.c3 ) FROM v0 AS a20 ORDER BY 18446744073709551488; 
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 6
+  * FROM v10 AS a21 NATURAL JOIN v4 AS a22 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: near "ORDER": syntax error
+  VALUES ( 18446744073709551615, 'v0', 0 ) ORDER BY 9223372036854775807; 
+                             error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v0 AS a23, v0 AS a24 ORDER BY 2147483647; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a25.c3
+  SELECT * FROM v0 AS a25 WHERE a25.c3 = a25.c3 ORDER BY 18446744073709551615; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+Parse error near line 23: no such column: a20.c3
+  SELECT max ( a20.c3 || a20.c3 ) FROM v0 AS a20 ORDER BY 18446744073709551488; 
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 6
+  * FROM v10 AS a21 NATURAL JOIN v4 AS a22 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 6
+  * FROM v10 AS a21 NATURAL JOIN v4 AS a22 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 21194368
+Str: 
+Parse error near line 29: near "ORDER": syntax error
+  VALUES ( 18446744073709551615, 'v0', 0 ) ORDER BY 9223372036854775807; 
+                             error here ---^
+ 
+Str: 
+Parse error near line 29: near "ORDER": syntax error
+  VALUES ( 18446744073709551615, 'v0', 0 ) ORDER BY 9223372036854775807; 
+                             error here ---^
+ 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v0 AS a23, v0 AS a24 ORDER BY 2147483647; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v0 AS a23, v0 AS a24 ORDER BY 2147483647; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 35: no such column: a25.c3
+  SELECT * FROM v0 AS a25 WHERE a25.c3 = a25.c3 ORDER BY 18446744073709551615; 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

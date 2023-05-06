@@ -1,0 +1,304 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 18446744073709551488; 
+CREATE TABLE v7 AS SELECT max ( c3 || c3 ) FROM v0 AS a8 ORDER BY 18446744073709551615; 
+CREATE TABLE v9 ( c10, c11, c12 ); 
+CREATE INDEX i13 ON v7 ( c1 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+ALTER TABLE v5 DROP COLUMN c3; 
+CREATE INDEX i14 ON v7 ( c10 ); 
+CREATE VIRTUAL TABLE v15 USING fts5; 
+CREATE INDEX i16 ON v5 ( c2 ); 
+CREATE INDEX i17 ON v5 ( c3 ); 
+ALTER TABLE v9 DROP COLUMN c12; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a18 WHERE c3 = - 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c3 + ( SELECT max ( c23 ) FROM v15 AS a22 ORDER BY 18446744073709551615 ), a19.c1 + ( SELECT CASE WHEN c11 % 18446744073709551488 != 0 THEN c10 END, c10, a19.c3 FROM v5 AS a21 WHERE a21.c1 <= 100 ORDER BY 18446744073709518848 ), a19.c2 + ( SELECT max ( a19.c3 ) FROM v7 AS a20 ORDER BY 4294967295 ) FROM v5 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v15 AS ( WITH v5 AS ( SELECT 18446744073709551615 y ORDER BY 0 ) SELECT avg ( c2 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551615 ) SELECT * FROM v7 AS a24 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a25 NATURAL JOIN v7 AS a26 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c29, c30 FROM v7 AS a27 RIGHT JOIN v15 AS a28 ON c12 = ( ( ( c31 + 18446744073709551615 ) % 18446744073709518848 ) == 0 ) % 4294967295 WHERE c32 = c33 NOT NULL ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v9 AS a34 ), ( v0 AS a35, v5 AS a36 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v37 ( c38 ) AS ( SELECT 18446744073709551615 ORDER BY 18446744073709551488 ) VALUES ( 18446744071562067968 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c40 FROM v15 AS a39 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a41 WHERE a41.c1 NOT NULL ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 GROUP BY a42.c3, abs ( a42.c1 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: no such column: c1
+  CREATE INDEX i13 ON v7 ( c1 ); 
+             error here ---^
+Runtime error near line 7: error in index i4 after drop column: no such column: c3
+Parse error near line 8: cannot drop column from view "v5"
+Parse error near line 9: no such column: c10
+  CREATE INDEX i14 ON v7 ( c10 ); 
+             error here ---^
+Runtime error near line 10: no such module: fts5
+Parse error near line 11: views may not be indexed
+Parse error near line 12: views may not be indexed
+BEGIN VERI 0
+Parse error near line 15: no such column: c3
+  SELECT * FROM v7 AS a18 WHERE c3 = - 18446744073709551488 ORDER BY 18446744073
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v15
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v15
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: near "ORDER": syntax error
+  744073709551488 ) VALUES ( 18446744071562067968 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v15
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 18446744073709551488; 
+CREATE TABLE v7 AS SELECT max ( c3 || c3 ) FROM v0 AS a8 ORDER BY 18446744073709551615; 
+CREATE TABLE v9 ( c10, c11, c12 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c3; 
+ALTER TABLE v5 DROP COLUMN c3; 
+; 
+CREATE VIRTUAL TABLE v15 USING fts5; 
+; 
+; 
+ALTER TABLE v9 DROP COLUMN c12; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a18 WHERE c3 = - 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c3 + ( SELECT max ( c23 ) FROM v15 AS a22 ORDER BY 18446744073709551615 ), a19.c1 + ( SELECT CASE WHEN c11 % 18446744073709551488 != 0 THEN c10 END, c10, a19.c3 FROM v5 AS a21 WHERE a21.c1 <= 100 ORDER BY 18446744073709518848 ), a19.c2 + ( SELECT max ( a19.c3 ) FROM v7 AS a20 ORDER BY 4294967295 ) FROM v5 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v15 AS ( WITH v5 AS ( SELECT 18446744073709551615 y ORDER BY 0 ) SELECT avg ( c2 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551615 ) SELECT * FROM v7 AS a24 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a25 NATURAL JOIN v7 AS a26 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c29, c30 FROM v7 AS a27 RIGHT JOIN v15 AS a28 ON c12 = ( ( ( c31 + 18446744073709551615 ) % 18446744073709518848 ) == 0 ) % 4294967295 WHERE c32 = c33 NOT NULL ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v9 AS a34 ), ( v0 AS a35, v5 AS a36 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v37 ( c38 ) AS ( SELECT 18446744073709551615 ORDER BY 18446744073709551488 ) VALUES ( 18446744071562067968 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c40 FROM v15 AS a39 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a41 WHERE a41.c1 NOT NULL ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 GROUP BY a42.c3, abs ( a42.c1 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop column from view "v5"
+Runtime error near line 10: no such module: fts5
+BEGIN VERI 0
+Parse error near line 15: no such column: c3
+  SELECT * FROM v7 AS a18 WHERE c3 = - 18446744073709551488 ORDER BY 18446744073
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v15
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v15
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: near "ORDER": syntax error
+  744073709551488 ) VALUES ( 18446744071562067968 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v15
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a42.c3
+  SELECT * FROM v0 AS a42 GROUP BY a42.c3, abs ( a42.c1 ) ORDER BY 1844674407370
+                     error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such column: c3
+  SELECT * FROM v7 AS a18 WHERE c3 = - 18446744073709551488 ORDER BY 18446744073
+                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: no such column: c3
+  SELECT * FROM v7 AS a18 WHERE c3 = - 18446744073709551488 ORDER BY 18446744073
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such table: v15
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such table: v15
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+
+ 
+INT: -1 
+Str: 
+
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v15
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v15
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such table: v15
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such table: v15
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 43590880
+Str: 
+Parse error near line 33: near "ORDER": syntax error
+  744073709551488 ) VALUES ( 18446744071562067968 ) ORDER BY 0; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 33: near "ORDER": syntax error
+  744073709551488 ) VALUES ( 18446744071562067968 ) ORDER BY 0; 
+                                      error here ---^
+ 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v15
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v15
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 42: no such column: a42.c3
+  SELECT * FROM v0 AS a42 GROUP BY a42.c3, abs ( a42.c1 ) ORDER BY 1844674407370
+                     error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,288 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c1 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( 127, 18446744073709551615, 9223372036854775807 ), ( 9223372036854775807, 0, 127 ); 
+ALTER TABLE v0 DROP c3; 
+CREATE TABLE v6 ( c7, c8 INTEGER UNIQUE ON CONFLICT FAIL, c9, c10, c11, c12, c13, c14 REAL DEFAULT 9223372036854775807, c15, c16, c17, c18, c19, c20, c21 UNIQUE ON CONFLICT FAIL, c22, c23, c24, c25, c26, c27, c28 BLOB, c29 PRIMARY KEY, c30, c31, c32, c33 BLOB, FOREIGN KEY ( c14 ) REFERENCES t2 ) WITHOUT ROWID; 
+CREATE INDEX i34 ON v6 ( c13 ); 
+CREATE TABLE v35 ( c36, c37, c38 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i39 ON v0 ( c3 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a40.c36, max ( a40.c38 || a40.c37 ) FROM v35 AS a40 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 ( c41 ) AS ( SELECT * ORDER BY 18446744073709551615 ) SELECT avg ( c41 ) FROM ( SELECT * FROM v6 AS a42 RIGHT JOIN v6 AS a43 ON c41 ORDER BY 18446744073709551615 ) AS y ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v35 AS a44 ORDER BY a44.c36 || a44.c36 || a44.c37; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a45 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 ( c47 ) AS ( WITH v6 ( c48 ) AS ( WITH v35 ( c49, c50, c51, c52, c53, c54 ) AS ( SELECT 127 y ORDER BY 0 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT * FROM v35 AS a46 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a55 GROUP BY a55.c3, a55.c1 < y ( a55.c2 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a57.c1, a56.c3 FROM v0 AS a56 LEFT JOIN v0 AS a57 ON x'b1' = a56.c3 GROUP BY a57.c3, a56.c3 < a57.c1 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a58 NATURAL JOIN v6 AS a59 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a60.c30 FROM v6 AS a60 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: error in index i5 after drop column: no such column: c3
+BEGIN VERI 0
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: no such column: c41
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+127|1.84467440737096e+19|9223372036854775807
+9223372036854775807|0|127
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+  3709551615 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT * FROM v35 AS a46
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+  5 GROUP BY a55.c3, a55.c1 < y ( a55.c2 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|127
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c1 ) ) WITHOUT ROWID; 
+; 
+; 
+INSERT INTO v0 VALUES ( 127, 18446744073709551615, 9223372036854775807 ), ( 9223372036854775807, 0, 127 ); 
+ALTER TABLE v0 DROP c3; 
+CREATE TABLE v6 ( c7, c8 INTEGER UNIQUE ON CONFLICT FAIL, c9, c10, c11, c12, c13, c14 REAL DEFAULT 9223372036854775807, c15, c16, c17, c18, c19, c20, c21 UNIQUE ON CONFLICT FAIL, c22, c23, c24, c25, c26, c27, c28 BLOB, c29 PRIMARY KEY, c30, c31, c32, c33 BLOB, FOREIGN KEY ( c14 ) REFERENCES t2 ) WITHOUT ROWID; 
+; 
+CREATE TABLE v35 ( c36, c37, c38 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a40.c36, max ( a40.c38 || a40.c37 ) FROM v35 AS a40 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 ( c41 ) AS ( SELECT * ORDER BY 18446744073709551615 ) SELECT avg ( c41 ) FROM ( SELECT * FROM v6 AS a42 RIGHT JOIN v6 AS a43 ON c41 ORDER BY 18446744073709551615 ) AS y ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v35 AS a44 ORDER BY a44.c36 || a44.c36 || a44.c37; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a45 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 ( c47 ) AS ( WITH v6 ( c48 ) AS ( WITH v35 ( c49, c50, c51, c52, c53, c54 ) AS ( SELECT 127 y ORDER BY 0 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT * FROM v35 AS a46 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a55 GROUP BY a55.c3, a55.c1 < y ( a55.c2 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a57.c1, a56.c3 FROM v0 AS a56 LEFT JOIN v0 AS a57 ON x'b1' = a56.c3 GROUP BY a57.c3, a56.c3 < a57.c1 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a58 NATURAL JOIN v6 AS a59 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a60.c30 FROM v6 AS a60 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: no such column: c41
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+127|1.84467440737096e+19
+9223372036854775807|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+  3709551615 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT * FROM v35 AS a46
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  5 GROUP BY a55.c3, a55.c1 < y ( a55.c2 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a56.c3
+  SELECT a57.c1, a56.c3 FROM v0 AS a56 LEFT JOIN v0 AS a57 ON x'b1' = a56.c3 GRO
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no such column: c41
+ 
+INT: 0 
+Str: 
+Parse error near line 14: no such column: c41
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+127|1.84467440737096e+19|9223372036854775807
+9223372036854775807|0|127
+ 
+INT: 1 
+Str: 
+127|1.84467440737096e+19
+9223372036854775807|0
+ 
+INT: 1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+  3709551615 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT * FROM v35 AS a46
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+  3709551615 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT * FROM v35 AS a46
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+  5 GROUP BY a55.c3, a55.c1 < y ( a55.c2 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  5 GROUP BY a55.c3, a55.c1 < y ( a55.c2 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+|127
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such column: a56.c3
+  SELECT a57.c1, a56.c3 FROM v0 AS a56 LEFT JOIN v0 AS a57 ON x'b1' = a56.c3 GRO
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

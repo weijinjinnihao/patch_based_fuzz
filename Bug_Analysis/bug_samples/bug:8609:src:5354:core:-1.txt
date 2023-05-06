@@ -1,0 +1,524 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( x'616263', 'z', 'x' ); 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v0 ( c6 ) AS ( SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a5 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+INSERT INTO v0 VALUES ( 'v1', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT ( c3 IS NULL ) ) ), 'v0' ); 
+INSERT INTO v0 VALUES ( 'v1', 'x', 'x' ); 
+CREATE INDEX i7 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( x'616263', 'count.test cases for NOT INDEXED', 'Al' ); 
+CREATE TABLE v8 ( c9, c10, c11 COLLATE NOCASE ); 
+CREATE INDEX i12 ON v8 ( c9 ); 
+INSERT INTO v8 VALUES ( NULL, 'x', 'fizzle' ); 
+INSERT INTO v8 VALUES ( 'v1', 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'id.3', 'XX' ); 
+INSERT INTO v8 VALUES ( 18446744073709551615, '40000 400 1 1', 'v1' ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i13 ON v8 ( c11 ); 
+INSERT INTO v0 VALUES ( - 0, 'v1', 'x' ); 
+CREATE TABLE v14 ( c15, c16, c17 COLLATE NOCASE ); 
+INSERT INTO v14 SELECT * FROM v8 AS a18 ORDER BY 18446744073709551615; 
+CREATE INDEX i19 ON v14 ( c17 ); 
+INSERT INTO v8 SELECT * FROM v14 AS a20 ORDER BY 16; 
+INSERT INTO v8 SELECT * FROM v14 AS a21 ORDER BY 18446744073709551615; 
+INSERT INTO v8 SELECT * FROM v8 AS a22 ORDER BY 18446744073709551615; 
+INSERT INTO v8 SELECT * FROM v8 AS a23 ORDER BY 18446744073709551615; 
+INSERT INTO v14 SELECT * FROM v14 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c9, count ( ( NOT ( a25.c10 IS NULL ) ) AND ( NOT ( a25.c10 IS NULL ) ) ) FROM v8 AS a25 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v26 AS ( SELECT 4294967295 y ORDER BY 10 ) SELECT * FROM v26 AS a27 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c17, count ( ( NOT ( a28.c16 IS NULL ) ) AND ( NOT ( a28.c16 IS NULL ) ) ) FROM v14 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c9 FROM v8 AS a31 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a32, v0 AS a33 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c11 FROM v8 AS a34 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a35 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+Parse error near line 7: misuse of aggregate function count()
+  INSERT INTO v0 VALUES ( 'v1', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT ( c3 IS
+                  error here ---^
+Runtime error near line 17: error in index i7 after drop column: no such column: c2
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+BEGIN VERI 0
+|24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+fizzle|6
+END VERI 0
+BEGIN VERI 0
+abc|z|x
+v1|x|x
+abc|count.test cases for NOT INDEXED|Al
+hare|id.3|XX
+0|v1|x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no tables specified
+END VERI 0
+BEGIN VERI 0
+
+
+
+
+
+
+
+
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+v1
+v1
+v1
+v1
+v1
+v1
+v1
+v1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 47: no tables specified
+END VERI 0
+BEGIN VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+; 
+INSERT INTO v0 VALUES ( x'616263', 'z', 'x' ); 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v0 ( c6 ) AS ( SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a5 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+INSERT INTO v0 VALUES ( 'v1', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT ( c3 IS NULL ) ) ), 'v0' ); 
+INSERT INTO v0 VALUES ( 'v1', 'x', 'x' ); 
+; 
+INSERT INTO v0 VALUES ( x'616263', 'count.test cases for NOT INDEXED', 'Al' ); 
+CREATE TABLE v8 ( c9, c10, c11 COLLATE NOCASE ); 
+; 
+INSERT INTO v8 VALUES ( NULL, 'x', 'fizzle' ); 
+INSERT INTO v8 VALUES ( 'v1', 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'id.3', 'XX' ); 
+INSERT INTO v8 VALUES ( 18446744073709551615, '40000 400 1 1', 'v1' ); 
+ALTER TABLE v0 DROP c2; 
+; 
+INSERT INTO v0 VALUES ( - 0, 'v1', 'x' ); 
+CREATE TABLE v14 ( c15, c16, c17 COLLATE NOCASE ); 
+INSERT INTO v14 SELECT * FROM v8 AS a18 ORDER BY 18446744073709551615; 
+; 
+INSERT INTO v8 SELECT * FROM v14 AS a20 ORDER BY 16; 
+INSERT INTO v8 SELECT * FROM v14 AS a21 ORDER BY 18446744073709551615; 
+INSERT INTO v8 SELECT * FROM v8 AS a22 ORDER BY 18446744073709551615; 
+INSERT INTO v8 SELECT * FROM v8 AS a23 ORDER BY 18446744073709551615; 
+INSERT INTO v14 SELECT * FROM v14 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c9, count ( ( NOT ( a25.c10 IS NULL ) ) AND ( NOT ( a25.c10 IS NULL ) ) ) FROM v8 AS a25 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v26 AS ( SELECT 4294967295 y ORDER BY 10 ) SELECT * FROM v26 AS a27 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c17, count ( ( NOT ( a28.c16 IS NULL ) ) AND ( NOT ( a28.c16 IS NULL ) ) ) FROM v14 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c9 FROM v8 AS a31 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a32, v0 AS a33 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c11 FROM v8 AS a34 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a35 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+Parse error near line 7: misuse of aggregate function count()
+  INSERT INTO v0 VALUES ( 'v1', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT ( c3 IS
+                  error here ---^
+Parse error near line 19: table v0 has 2 columns but 3 values were supplied
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+BEGIN VERI 0
+|24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+fizzle|6
+END VERI 0
+BEGIN VERI 0
+abc|x
+v1|x
+abc|Al
+hare|XX
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no tables specified
+END VERI 0
+BEGIN VERI 0
+
+v1
+1.84467440737096e+19
+
+v1
+1.84467440737096e+19
+
+v1
+1.84467440737096e+19
+
+v1
+1.84467440737096e+19
+
+v1
+1.84467440737096e+19
+
+v1
+1.84467440737096e+19
+
+v1
+1.84467440737096e+19
+
+v1
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 47: no tables specified
+END VERI 0
+BEGIN VERI 0
+|x|fizzle|abc|x
+|x|fizzle|v1|x
+|x|fizzle|abc|Al
+|x|fizzle|hare|XX
+v1|x|v0|abc|x
+v1|x|v0|v1|x
+v1|x|v0|abc|Al
+v1|x|v0|hare|XX
+1.84467440737096e+19|40000 400 1 1|v1|abc|x
+1.84467440737096e+19|40000 400 1 1|v1|v1|x
+1.84467440737096e+19|40000 400 1 1|v1|abc|Al
+1.84467440737096e+19|40000 400 1 1|v1|hare|XX
+|x|fizzle|abc|x
+|x|fizzle|v1|x
+|x|fizzle|abc|Al
+|x|fizzle|hare|XX
+v1|x|v0|abc|x
+v1|x|v0|v1|x
+v1|x|v0|abc|Al
+v1|x|v0|hare|XX
+1.84467440737096e+19|40000 400 1 1|v1|abc|x
+1.84467440737096e+19|40000 400 1 1|v1|v1|x
+1.84467440737096e+19|40000 400 1 1|v1|abc|Al
+1.84467440737096e+19|40000 400 1 1|v1|hare|XX
+|x|fizzle|abc|x
+|x|fizzle|v1|x
+|x|fizzle|abc|Al
+|x|fizzle|hare|XX
+v1|x|v0|abc|x
+v1|x|v0|v1|x
+v1|x|v0|abc|Al
+v1|x|v0|hare|XX
+1.84467440737096e+19|40000 400 1 1|v1|abc|x
+1.84467440737096e+19|40000 400 1 1|v1|v1|x
+1.84467440737096e+19|40000 400 1 1|v1|abc|Al
+1.84467440737096e+19|40000 400 1 1|v1|hare|XX
+|x|fizzle|abc|x
+|x|fizzle|v1|x
+|x|fizzle|abc|Al
+|x|fizzle|hare|XX
+v1|x|v0|abc|x
+v1|x|v0|v1|x
+v1|x|v0|abc|Al
+v1|x|v0|hare|XX
+1.84467440737096e+19|40000 400 1 1|v1|abc|x
+1.84467440737096e+19|40000 400 1 1|v1|v1|x
+1.84467440737096e+19|40000 400 1 1|v1|abc|Al
+1.84467440737096e+19|40000 400 1 1|v1|hare|XX
+|x|fizzle|abc|x
+|x|fizzle|v1|x
+|x|fizzle|abc|Al
+|x|fizzle|hare|XX
+v1|x|v0|abc|x
+v1|x|v0|v1|x
+v1|x|v0|abc|Al
+v1|x|v0|hare|XX
+1.84467440737096e+19|40000 400 1 1|v1|abc|x
+1.84467440737096e+19|40000 400 1 1|v1|v1|x
+1.84467440737096e+19|40000 400 1 1|v1|abc|Al
+1.84467440737096e+19|40000 400 1 1|v1|hare|XX
+|x|fizzle|abc|x
+|x|fizzle|v1|x
+|x|fizzle|abc|Al
+|x|fizzle|hare|XX
+v1|x|v0|abc|x
+v1|x|v0|v1|x
+v1|x|v0|abc|Al
+v1|x|v0|hare|XX
+1.84467440737096e+19|40000 400 1 1|v1|abc|x
+1.84467440737096e+19|40000 400 1 1|v1|v1|x
+1.84467440737096e+19|40000 400 1 1|v1|abc|Al
+1.84467440737096e+19|40000 400 1 1|v1|hare|XX
+|x|fizzle|abc|x
+|x|fizzle|v1|x
+|x|fizzle|abc|Al
+|x|fizzle|hare|XX
+v1|x|v0|abc|x
+v1|x|v0|v1|x
+v1|x|v0|abc|Al
+v1|x|v0|hare|XX
+1.84467440737096e+19|40000 400 1 1|v1|abc|x
+1.84467440737096e+19|40000 400 1 1|v1|v1|x
+1.84467440737096e+19|40000 400 1 1|v1|abc|Al
+1.84467440737096e+19|40000 400 1 1|v1|hare|XX
+|x|fizzle|abc|x
+|x|fizzle|v1|x
+|x|fizzle|abc|Al
+|x|fizzle|hare|XX
+v1|x|v0|abc|x
+v1|x|v0|v1|x
+v1|x|v0|abc|Al
+v1|x|v0|hare|XX
+1.84467440737096e+19|40000 400 1 1|v1|abc|x
+1.84467440737096e+19|40000 400 1 1|v1|v1|x
+1.84467440737096e+19|40000 400 1 1|v1|abc|Al
+1.84467440737096e+19|40000 400 1 1|v1|hare|XX
+END VERI 0
+BEGIN VERI 0
+fizzle
+v0
+v1
+fizzle
+v0
+v1
+fizzle
+v0
+v1
+fizzle
+v0
+v1
+fizzle
+v0
+v1
+fizzle
+v0
+v1
+fizzle
+v0
+v1
+fizzle
+v0
+v1
+END VERI 0
+BEGIN VERI 0
+|x|fizzle
+v1|x|v0
+1.84467440737096e+19|40000 400 1 1|v1
+|x|fizzle
+v1|x|v0
+1.84467440737096e+19|40000 400 1 1|v1
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+|24
+ 
+INT: 0 
+Str: 
+|24
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+fizzle|6
+ 
+INT: 0 
+Str: 
+fizzle|6
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+abc|z|x
+v1|x|x
+abc|count.test cases for NOT INDEXED|Al
+hare|id.3|XX
+0|v1|x
+ 
+INT: 4 
+Str: 
+abc|x
+v1|x
+abc|Al
+hare|XX
+ 
+INT: 3 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+
+
+
+
+
+
+
+
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+v1
+v1
+v1
+v1
+v1
+v1
+v1
+v1
+ 
+INT: 15 
+Str: 
+
+v1
+1.84467440737096e+19
+
+v1
+1.84467440737096e+19
+
+v1
+1.84467440737096e+19
+
+v1
+1.84467440737096e+19
+
+v1
+1.84467440737096e+19
+
+v1
+1.84467440737096e+19
+
+v1
+1.84467440737096e+19
+
+v1
+1.84467440737096e+19
+ 
+INT: 15 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 47: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 47: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

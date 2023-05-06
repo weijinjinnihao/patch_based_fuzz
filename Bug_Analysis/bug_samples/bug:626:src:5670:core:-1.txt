@@ -1,0 +1,299 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4 UNIQUE ON CONFLICT FAIL, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14 BLOB DEFAULT x'ABCD', c15, c16 INTEGER PRIMARY KEY, c17 ); 
+CREATE TABLE v18 ( c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32 PRIMARY KEY ON CONFLICT REPLACE, c33, c34, c35 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v36 USING rtree ( c37, c38, c39, c40, c41, c42, c43, c44, c45 ); 
+CREATE TABLE v46 ( c47, c48, c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62, c63 TEXT UNIQUE NOT NULL ); 
+CREATE INDEX i64 ON v46 ( c53 ); 
+CREATE INDEX i65 ON v0 ( c2 ); 
+INSERT INTO v36 VALUES ( 18446744071562067968, 'v1' ), ( 18446744071562067968, 'eee' ), ( 18446744073709551615, 'x' ); 
+CREATE INDEX i66 ON v3 ( c9 ); 
+CREATE TABLE v67 ( c68 DEFAULT x'ABCD' DEFAULT 18446744071562067968, c69 NOT NULL DEFAULT 0, c70 NOT NULL ON CONFLICT REPLACE DEFAULT 18446744073709551615, c71 NOT NULL ON CONFLICT IGNORE DEFAULT 18446744071562067968, c72 NOT NULL ON CONFLICT ABORT DEFAULT 0 ); 
+CREATE INDEX i73 ON v36 ( c39 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v3 BEGIN DELETE FROM v3; END; 
+ALTER TABLE v0 DROP c2; 
+UPDATE v36 SET c9 = 'y' WHERE c2 = 18446744073709518848; 
+CREATE INDEX i74 ON v18 ( c35 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a75 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a76, v46 AS a77 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v46 AS a78, v0 AS a79 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a80.c69, count ( ( NOT ( a80.c71 IS NULL ) ) AND ( NOT ( a80.c70 IS NULL ) ) ) FROM v67 AS a80 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a81.c49, a81.c48 FROM v46 AS a81 WHERE a81.c60 = 100 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a82.c21, count ( ( NOT ( a82.c45 IS NULL ) ) AND ( NOT ( a82.c45 IS NULL ) ) ) FROM v36 AS a82 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a83 WHERE a83.c2 > 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v67 AS a84, v3 AS a85 NATURAL JOIN v46 AS a86 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a87, v36 AS a88 NATURAL JOIN v3 AS a89 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a90.c1, max ( a90.c1 || a90.c2 ) FROM v0 AS a90 WHERE a90.c2 > y ( ( a90.c2 + 18446744073709551615 ) ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: table v36 has 9 columns but 2 values were supplied
+Parse error near line 11: virtual tables may not be indexed
+Runtime error near line 13: error in index i65 after drop column: no such column: c2
+Parse error near line 14: no such column: c9
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 19
+  SELECT * FROM v46 AS a78, v0 AS a79 ORDER BY 0; 
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a82.c21
+  SELECT a82.c21, count ( ( NOT ( a82.c45 IS NULL ) ) AND ( NOT ( a82.c45 IS NUL
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no such function: y
+   a90.c1 || a90.c2 ) FROM v0 AS a90 WHERE a90.c2 > y ( ( a90.c2 + 1844674407370
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4 UNIQUE ON CONFLICT FAIL, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14 BLOB DEFAULT x'ABCD', c15, c16 INTEGER PRIMARY KEY, c17 ); 
+CREATE TABLE v18 ( c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32 PRIMARY KEY ON CONFLICT REPLACE, c33, c34, c35 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v36 USING rtree ( c37, c38, c39, c40, c41, c42, c43, c44, c45 ); 
+CREATE TABLE v46 ( c47, c48, c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62, c63 TEXT UNIQUE NOT NULL ); 
+; 
+; 
+INSERT INTO v36 VALUES ( 18446744071562067968, 'v1' ), ( 18446744071562067968, 'eee' ), ( 18446744073709551615, 'x' ); 
+; 
+CREATE TABLE v67 ( c68 DEFAULT x'ABCD' DEFAULT 18446744071562067968, c69 NOT NULL DEFAULT 0, c70 NOT NULL ON CONFLICT REPLACE DEFAULT 18446744073709551615, c71 NOT NULL ON CONFLICT IGNORE DEFAULT 18446744071562067968, c72 NOT NULL ON CONFLICT ABORT DEFAULT 0 ); 
+; 
+CREATE TRIGGER r1 AFTER UPDATE ON v3 BEGIN DELETE FROM v3; END; 
+ALTER TABLE v0 DROP c2; 
+UPDATE v36 SET c9 = 'y' WHERE c2 = 18446744073709518848; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a75 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a76, v46 AS a77 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v46 AS a78, v0 AS a79 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a80.c69, count ( ( NOT ( a80.c71 IS NULL ) ) AND ( NOT ( a80.c70 IS NULL ) ) ) FROM v67 AS a80 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a81.c49, a81.c48 FROM v46 AS a81 WHERE a81.c60 = 100 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a82.c21, count ( ( NOT ( a82.c45 IS NULL ) ) AND ( NOT ( a82.c45 IS NULL ) ) ) FROM v36 AS a82 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a83 WHERE a83.c2 > 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v67 AS a84, v3 AS a85 NATURAL JOIN v46 AS a86 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a87, v36 AS a88 NATURAL JOIN v3 AS a89 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a90.c1, max ( a90.c1 || a90.c2 ) FROM v0 AS a90 WHERE a90.c2 > y ( ( a90.c2 + 18446744073709551615 ) ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: table v36 has 9 columns but 2 values were supplied
+Parse error near line 14: no such column: c9
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 18
+  SELECT * FROM v46 AS a78, v0 AS a79 ORDER BY 0; 
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a82.c21
+  SELECT a82.c21, count ( ( NOT ( a82.c45 IS NULL ) ) AND ( NOT ( a82.c45 IS NUL
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a83.c2
+  SELECT * FROM v0 AS a83 WHERE a83.c2 > 18446744071562067968 ORDER BY 184467440
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no such column: a90.c2
+  SELECT a90.c1, max ( a90.c1 || a90.c2 ) FROM v0 AS a90 WHERE a90.c2 > y ( ( a9
+                   error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 19
+  SELECT * FROM v46 AS a78, v0 AS a79 ORDER BY 0; 
+                                 error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 18
+  SELECT * FROM v46 AS a78, v0 AS a79 ORDER BY 0; 
+                                 error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such column: a82.c21
+  SELECT a82.c21, count ( ( NOT ( a82.c45 IS NULL ) ) AND ( NOT ( a82.c45 IS NUL
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 32: no such column: a82.c21
+  SELECT a82.c21, count ( ( NOT ( a82.c45 IS NULL ) ) AND ( NOT ( a82.c45 IS NUL
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 35: no such column: a83.c2
+  SELECT * FROM v0 AS a83 WHERE a83.c2 > 18446744071562067968 ORDER BY 184467440
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: no such function: y
+   a90.c1 || a90.c2 ) FROM v0 AS a90 WHERE a90.c2 > y ( ( a90.c2 + 1844674407370
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 44: no such column: a90.c2
+  SELECT a90.c1, max ( a90.c1 || a90.c2 ) FROM v0 AS a90 WHERE a90.c2 > y ( ( a9
+                   error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

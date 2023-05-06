@@ -1,0 +1,293 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 UNIQUE, c2 AS( abs ( c17 ) ) NOT NULL, c3 UNIQUE ON CONFLICT IGNORE, c4 CHECK( c13 != 8 ), c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22 UNIQUE, c23, PRIMARY KEY ( c2, c14 ) ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c22 = c9 || c16 FROM v0 AS a24, v0 AS a25 NATURAL JOIN v0 AS a26 WHERE c13 = c9 || c20; END; 
+CREATE TABLE v27 ( c28, c29, c30, c31, PRIMARY KEY ( c28, c29 ) ) WITHOUT ROWID; 
+CREATE INDEX i32 ON v27 ( c31 ); 
+CREATE INDEX i33 ON v27 ( c28 ); 
+CREATE INDEX i34 ON v0 ( c10 ); 
+CREATE INDEX i35 ON v0 ( c22 ); 
+WITH v36 ( c37 ) AS ( WITH v36 ( c38, c39, c40, c41, c42, c43 ) AS ( SELECT 18446744073709551488 y ORDER BY ( ( c42 + 8 ) % 18446744073709551488 ) < 18446744073709551488 ) SELECT 0 ORDER BY 18446744073709518848 ) INSERT INTO v36 VALUES ( 18446744073709551488, 18446744071562067968, 18446744073709551488, 18446744073709551488 ); 
+CREATE VIEW v44 AS SELECT * FROM v27 AS a45 WHERE ( c28 = 10 OR c30 = 127 ) AND c29 IN ( SELECT c30 WHERE c30 = 100 ORDER BY 18446744073709551488 ) ORDER BY 18446744073709551615; 
+ALTER TABLE v27 DROP COLUMN c31; 
+INSERT OR REPLACE INTO v0 ( c28, c16, c8, c5, c20 ) VALUES ( 127, 0, NULL, 16, 127 ); 
+CREATE INDEX i46 ON v0 ( c12 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a47 WHERE ( CASE WHEN a47.c28 != 'xxx' THEN 10 ELSE 16 END ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a48.c28 FROM v27 AS a48 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a49.c29, count ( a49.c29 ) FROM v27 AS a49 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a51.c31, count ( ( NOT ( a51.c31 IS NULL ) ) AND ( NOT ( a51.c28 IS NULL ) ) ) FROM v27 AS a51 WHERE ( CASE WHEN a51.c29 != 'x' THEN 127 ELSE 127 END ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v52 AS ( SELECT 0 y ORDER BY 100 ) SELECT ( SELECT c13 IS c6 = c17, c2 FROM v52 AS a54 ORDER BY 127 ) FROM v52 AS a53 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v44 AS a55 NATURAL JOIN v27 AS a56 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a57 NATURAL JOIN v0 AS a58 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v44 AS a59 WHERE ( ( ( 0 IS NOT 18446744073709551488 ) OR NOT ( 100 IS 10 OR ( a59.c6 = 0 ) ) ) IS 255 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: generated columns cannot be part of the PRIMARY KEY
+Parse error near line 2: no such table: v0
+Parse error near line 6: no such table: main.v0
+Parse error near line 7: no such table: main.v0
+Parse error near line 8: no such table: v36
+Runtime error near line 10: error in index i32 after drop column: no such column: c31
+Parse error near line 11: no such table: v0
+Parse error near line 12: no such table: main.v0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no tables specified
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a59.c6
+  OT 18446744073709551488 ) OR NOT ( 100 IS 10 OR ( a59.c6 = 0 ) ) ) IS 255 ) OR
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 UNIQUE, c2 AS( abs ( c17 ) ) NOT NULL, c3 UNIQUE ON CONFLICT IGNORE, c4 CHECK( c13 != 8 ), c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22 UNIQUE, c23, PRIMARY KEY ( c2, c14 ) ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c22 = c9 || c16 FROM v0 AS a24, v0 AS a25 NATURAL JOIN v0 AS a26 WHERE c13 = c9 || c20; END; 
+CREATE TABLE v27 ( c28, c29, c30, c31, PRIMARY KEY ( c28, c29 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+WITH v36 ( c37 ) AS ( WITH v36 ( c38, c39, c40, c41, c42, c43 ) AS ( SELECT 18446744073709551488 y ORDER BY ( ( c42 + 8 ) % 18446744073709551488 ) < 18446744073709551488 ) SELECT 0 ORDER BY 18446744073709518848 ) INSERT INTO v36 VALUES ( 18446744073709551488, 18446744071562067968, 18446744073709551488, 18446744073709551488 ); 
+CREATE VIEW v44 AS SELECT * FROM v27 AS a45 WHERE ( c28 = 10 OR c30 = 127 ) AND c29 IN ( SELECT c30 WHERE c30 = 100 ORDER BY 18446744073709551488 ) ORDER BY 18446744073709551615; 
+ALTER TABLE v27 DROP COLUMN c31; 
+INSERT OR REPLACE INTO v0 ( c28, c16, c8, c5, c20 ) VALUES ( 127, 0, NULL, 16, 127 ); 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a47 WHERE ( CASE WHEN a47.c28 != 'xxx' THEN 10 ELSE 16 END ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a48.c28 FROM v27 AS a48 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a49.c29, count ( a49.c29 ) FROM v27 AS a49 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a51.c31, count ( ( NOT ( a51.c31 IS NULL ) ) AND ( NOT ( a51.c28 IS NULL ) ) ) FROM v27 AS a51 WHERE ( CASE WHEN a51.c29 != 'x' THEN 127 ELSE 127 END ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v52 AS ( SELECT 0 y ORDER BY 100 ) SELECT ( SELECT c13 IS c6 = c17, c2 FROM v52 AS a54 ORDER BY 127 ) FROM v52 AS a53 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v44 AS a55 NATURAL JOIN v27 AS a56 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a57 NATURAL JOIN v0 AS a58 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v44 AS a59 WHERE ( ( ( 0 IS NOT 18446744073709551488 ) OR NOT ( 100 IS 10 OR ( a59.c6 = 0 ) ) ) IS 255 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: generated columns cannot be part of the PRIMARY KEY
+Parse error near line 2: no such table: v0
+Parse error near line 8: no such table: v36
+Parse error near line 11: no such table: v0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no tables specified
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a51.c31
+  SELECT a51.c31, count ( ( NOT ( a51.c31 IS NULL ) ) AND ( NOT ( a51.c28 IS NUL
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a59.c6
+  OT 18446744073709551488 ) OR NOT ( 100 IS 10 OR ( a59.c6 = 0 ) ) ) IS 255 ) OR
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+Parse error near line 29: no such column: a51.c31
+  SELECT a51.c31, count ( ( NOT ( a51.c31 IS NULL ) ) AND ( NOT ( a51.c28 IS NUL
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 38: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no such column: a59.c6
+  OT 18446744073709551488 ) OR NOT ( 100 IS 10 OR ( a59.c6 = 0 ) ) ) IS 255 ) OR
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: no such column: a59.c6
+  OT 18446744073709551488 ) OR NOT ( 100 IS 10 OR ( a59.c6 = 0 ) ) ) IS 255 ) OR
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

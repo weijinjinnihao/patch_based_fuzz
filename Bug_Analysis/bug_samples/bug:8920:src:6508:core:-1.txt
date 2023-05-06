@@ -1,0 +1,293 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3 ), CHECK( c1 != c1 ), CHECK( c1 != c3 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE TABLE v6 ( c7, c8, c9 CHECK( x'68617265' ), c10 ); 
+CREATE TABLE v11 ( c12 INT PRIMARY KEY, c13 BLOB, PRIMARY KEY ( c12, c13 ), UNIQUE ( c12 ) ); 
+CREATE TABLE v14 ( c15, c16, c17, c18, PRIMARY KEY ( c15, c17 ) ) WITHOUT ROWID; 
+INSERT INTO v14 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709551615, 18446744073709551615 ); 
+CREATE INDEX i19 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i20 ON v14 ( c15 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i21 ON v11 ( c13 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a22, v6 AS a23 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a24, v6 AS a25 NATURAL JOIN v14 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a27 WHERE a27.c13 = 127 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c17, max ( a29.c15 || a28.c12 ), count ( a29.c17 ) FROM v11 AS a28 LEFT JOIN v14 AS a29 ON a28.c12 = a29.c16 WHERE a29.c16 > 127 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a31 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 255 IN ( SELECT a32.c12 FROM v11 AS a32 ORDER BY 127 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a33 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 WHERE ( a34.c1 = 255 OR a34.c2 = 16 ) AND a34.c3 < ( SELECT a34.c2 FROM ( SELECT *, 'v1' FROM v0 AS a35, v6 AS a36 NATURAL JOIN v0 AS a37 ORDER BY 10 ) AS y WHERE a34.c3 = 18446744073709551615 ORDER BY a34.c1, a34.c1 || a34.c1 || a34.c1 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: table "v11" has more than one primary key
+Runtime error near line 9: error in index i4 after drop column: no such column: c2
+Runtime error near line 11: error in index i4 after drop column: no such column: c2
+Parse error near line 12: no such table: main.v11
+BEGIN VERI 0
+Parse error near line 14: no such table: v11
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such table: v11
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v11
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v11
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such table: v11
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such table: v11
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3 ), CHECK( c1 != c1 ), CHECK( c1 != c3 ) ) WITHOUT ROWID; 
+; 
+; 
+CREATE TABLE v6 ( c7, c8, c9 CHECK( x'68617265' ), c10 ); 
+CREATE TABLE v11 ( c12 INT PRIMARY KEY, c13 BLOB, PRIMARY KEY ( c12, c13 ), UNIQUE ( c12 ) ); 
+CREATE TABLE v14 ( c15, c16, c17, c18, PRIMARY KEY ( c15, c17 ) ) WITHOUT ROWID; 
+INSERT INTO v14 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709551615, 18446744073709551615 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+ALTER TABLE v0 DROP c2; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a22, v6 AS a23 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a24, v6 AS a25 NATURAL JOIN v14 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a27 WHERE a27.c13 = 127 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c17, max ( a29.c15 || a28.c12 ), count ( a29.c17 ) FROM v11 AS a28 LEFT JOIN v14 AS a29 ON a28.c12 = a29.c16 WHERE a29.c16 > 127 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a31 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 255 IN ( SELECT a32.c12 FROM v11 AS a32 ORDER BY 127 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a33 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 WHERE ( a34.c1 = 255 OR a34.c2 = 16 ) AND a34.c3 < ( SELECT a34.c2 FROM ( SELECT *, 'v1' FROM v0 AS a35, v6 AS a36 NATURAL JOIN v0 AS a37 ORDER BY 10 ) AS y WHERE a34.c3 = 18446744073709551615 ORDER BY a34.c1, a34.c1 || a34.c1 || a34.c1 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: table "v11" has more than one primary key
+Parse error near line 11: no such column: "c2"
+  ALTER TABLE v0 DROP c2; 
+                      ^--- error here
+BEGIN VERI 0
+Parse error near line 14: no such table: v11
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such table: v11
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v11
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v11
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such table: v11
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such table: v11
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a34.c2
+  SELECT * FROM v0 AS a34 WHERE ( a34.c1 = 255 OR a34.c2 = 16 ) AND a34.c3 < ( S
+                                    error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no such table: v11
+ 
+INT: 0 
+Str: 
+Parse error near line 14: no such table: v11
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no such table: v11
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no such table: v11
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no such table: v11
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no such table: v11
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such table: v11
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no such table: v11
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: no such table: v11
+ 
+INT: 0 
+Str: 
+Parse error near line 29: no such table: v11
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no such table: v11
+ 
+INT: 0 
+Str: 
+Parse error near line 35: no such table: v11
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no such column: a34.c2
+  SELECT * FROM v0 AS a34 WHERE ( a34.c1 = 255 OR a34.c2 = 16 ) AND a34.c3 < ( S
+                                    error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

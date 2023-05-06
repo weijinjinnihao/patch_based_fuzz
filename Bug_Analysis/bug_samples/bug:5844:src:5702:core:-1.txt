@@ -1,0 +1,292 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4, c5, c6, c7, c8, c9, c10 REFERENCES t1 DEFAULT NULL, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 INTEGER PRIMARY KEY, c24 ); 
+CREATE INDEX i25 ON v3 ( c17 ); 
+CREATE INDEX i26 ON v3 ( c14 ); 
+CREATE TABLE v27 ( c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41 PRIMARY KEY ON CONFLICT REPLACE, c42, c43, c44 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v45 USING rtree ( c46, c47, c48, c49, c50, c51, c52, c53, c54 ); 
+CREATE TABLE v55 ( c56, c57, c58, c59, c60, c61, c62, c63, c64, c65, c66, c67, c68, c69, c70, c71, c72 TEXT UNIQUE NOT NULL ); 
+INSERT INTO v0 VALUES ( 16, 'v1' ), ( 16, 'v1' ), ( 100, 'v0' ); 
+CREATE TABLE v73 ( c74 DEFAULT x'ABCD' DEFAULT 100, c75 NOT NULL DEFAULT 100, c76 NOT NULL ON CONFLICT REPLACE DEFAULT 100, c77 NOT NULL ON CONFLICT IGNORE DEFAULT 16, c78 NOT NULL ON CONFLICT ABORT DEFAULT 16 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v0 BEGIN DELETE FROM v0; END; 
+ALTER TABLE v3 DROP COLUMN c17; 
+CREATE INDEX i79 ON v27 ( c38 ); 
+INSERT INTO v0 VALUES ( 18446744073709518848, 16 ), ( 18446744073709518848, 100 ), ( 16, 18446744073709518848 ), ( 18446744073709518848, 100 ), ( 2147483647, 100 ); 
+UPDATE v55 SET c68 = 'x' WHERE c61 = 4294967295; 
+CREATE INDEX i80 ON v55 ( c62 ); 
+CREATE INDEX i81 ON v3 ( c17 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a82 NATURAL JOIN v55 AS a83 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a84 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a85.c40 ) FROM v27 AS a85 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a86.c36 || a86.c31 ) FROM v27 AS a86 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a88.c2, a87.c17 FROM v3 AS a87 RIGHT JOIN v0 AS a88 ON a88.c1 = a88.c1 WHERE a87.c18 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a89.c66, max ( a89.c59 || a89.c72 ) FROM v55 AS a89 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a90.c64 FROM v55 AS a90 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v45 AS a91, v73 AS a92 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a93 ORDER BY 16 COLLATE binary, 18446744073709551615 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v73 AS a94 NATURAL JOIN v0 AS a95 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: UNIQUE constraint failed: v0.c1 (19)
+Runtime error near line 11: error in index i25 after drop column: no such column: c17
+Runtime error near line 13: datatype mismatch (20)
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: 1st ORDER BY term out of range - should be between 1 and 7
+  * FROM v73 AS a94 NATURAL JOIN v0 AS a95 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4, c5, c6, c7, c8, c9, c10 REFERENCES t1 DEFAULT NULL, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 INTEGER PRIMARY KEY, c24 ); 
+; 
+; 
+CREATE TABLE v27 ( c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41 PRIMARY KEY ON CONFLICT REPLACE, c42, c43, c44 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v45 USING rtree ( c46, c47, c48, c49, c50, c51, c52, c53, c54 ); 
+CREATE TABLE v55 ( c56, c57, c58, c59, c60, c61, c62, c63, c64, c65, c66, c67, c68, c69, c70, c71, c72 TEXT UNIQUE NOT NULL ); 
+INSERT INTO v0 VALUES ( 16, 'v1' ), ( 16, 'v1' ), ( 100, 'v0' ); 
+CREATE TABLE v73 ( c74 DEFAULT x'ABCD' DEFAULT 100, c75 NOT NULL DEFAULT 100, c76 NOT NULL ON CONFLICT REPLACE DEFAULT 100, c77 NOT NULL ON CONFLICT IGNORE DEFAULT 16, c78 NOT NULL ON CONFLICT ABORT DEFAULT 16 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v0 BEGIN DELETE FROM v0; END; 
+ALTER TABLE v3 DROP COLUMN c17; 
+; 
+INSERT INTO v0 VALUES ( 18446744073709518848, 16 ), ( 18446744073709518848, 100 ), ( 16, 18446744073709518848 ), ( 18446744073709518848, 100 ), ( 2147483647, 100 ); 
+UPDATE v55 SET c68 = 'x' WHERE c61 = 4294967295; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a82 NATURAL JOIN v55 AS a83 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a84 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a85.c40 ) FROM v27 AS a85 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a86.c36 || a86.c31 ) FROM v27 AS a86 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a88.c2, a87.c17 FROM v3 AS a87 RIGHT JOIN v0 AS a88 ON a88.c1 = a88.c1 WHERE a87.c18 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a89.c66, max ( a89.c59 || a89.c72 ) FROM v55 AS a89 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a90.c64 FROM v55 AS a90 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v45 AS a91, v73 AS a92 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a93 ORDER BY 16 COLLATE binary, 18446744073709551615 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v73 AS a94 NATURAL JOIN v0 AS a95 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: UNIQUE constraint failed: v0.c1 (19)
+Runtime error near line 13: datatype mismatch (20)
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a87.c17
+  SELECT a88.c2, a87.c17 FROM v3 AS a87 RIGHT JOIN v0 AS a88 ON a88.c1 = a88.c1 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: 1st ORDER BY term out of range - should be between 1 and 7
+  * FROM v73 AS a94 NATURAL JOIN v0 AS a95 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+
+ 
+INT: -1 
+Str: 
+
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 30: no such column: a87.c17
+  SELECT a88.c2, a87.c17 FROM v3 AS a87 RIGHT JOIN v0 AS a88 ON a88.c1 = a88.c1 
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such collation sequence: hex
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such collation sequence: hex
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 45: 1st ORDER BY term out of range - should be between 1 and 7
+  * FROM v73 AS a94 NATURAL JOIN v0 AS a95 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 45: 1st ORDER BY term out of range - should be between 1 and 7
+  * FROM v73 AS a94 NATURAL JOIN v0 AS a95 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

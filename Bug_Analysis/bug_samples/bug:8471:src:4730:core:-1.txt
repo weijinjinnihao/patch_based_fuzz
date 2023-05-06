@@ -1,0 +1,308 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2, c2 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709551488, 18446744073709551488 ), ( 18446744073709551488, 0, 18446744073709551488 ); 
+CREATE INDEX i6 ON v0 ( c1 ); 
+CREATE INDEX i7 ON v0 ( c1 ); 
+CREATE TABLE v8 ( c9 AS( typeof ( c10 ) ), c10 ); 
+CREATE INDEX i11 ON v0 ( c1 ); 
+ALTER TABLE v0 DROP c2; 
+ALTER TABLE v0 DROP c1; 
+CREATE TABLE v12 ( c13, c14 INTEGER DEFAULT NULL, c15, c16, c17, c18, c19, c20 ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+WITH v21 ( c23 ) AS ( WITH v24 ( c25 ) AS ( WITH v24 AS ( WITH v26 AS ( SELECT 18446744073709551488 y ORDER BY 0 ) SELECT avg ( c25 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551488 ) SELECT 18446744073709551488 ORDER BY 18446744073709551488 ) SELECT 18446744073709551488 ORDER BY 18446744073709551488 ) SELECT * FROM v21 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 GROUP BY x'b2b2b2', 0, 0, 18446744073709551488, 18446744073709551488, 18446744073709551488 HAVING CASE WHEN a27.c2 != 'x' THEN 18446744073709551488 ELSE 127 END > 18446744073709551488 >= 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a28 GROUP BY a28.c9, a28.c10 < a28.c10 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c1, count ( ( NOT ( a29.c1 IS NULL ) ) AND ( NOT ( a29.c1 IS NULL ) ) ) FROM v0 AS a29 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a30 NATURAL JOIN v0 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32, v12 AS a33 NATURAL JOIN v12 AS a34 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c10, avg ( a35.c9 ) + 18446744073709551615 FROM v8 AS a35 GROUP BY a35.c9 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 GROUP BY a36.c2, a36.c2 < y ( a36.c1 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c9 = 18446744073709551488 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a37 ORDER BY 2147483647, 2147483647; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: cannot drop PRIMARY KEY column: "c2"
+Runtime error near line 10: error in index i4 after drop column: no such column: c1
+Parse error near line 11: PRIMARY KEY missing on table v12
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 2nd GROUP BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a27 GROUP BY x'b2b2b2', 0, 0, 18446744073709551488, 184467
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v12
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such function: y
+  SELECT * FROM v0 AS a36 GROUP BY a36.c2, a36.c2 < y ( a36.c1 ) ORDER BY 184467
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: c9
+  SELECT c9 = 18446744073709551488 ORDER BY 2147483647; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v8 AS a37 ORDER BY 2147483647, 2147483647; 
+                     error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2, c2 ) ) WITHOUT ROWID; 
+; 
+; 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709551488, 18446744073709551488 ), ( 18446744073709551488, 0, 18446744073709551488 ); 
+; 
+; 
+CREATE TABLE v8 ( c9 AS( typeof ( c10 ) ), c10 ); 
+; 
+ALTER TABLE v0 DROP c2; 
+ALTER TABLE v0 DROP c1; 
+CREATE TABLE v12 ( c13, c14 INTEGER DEFAULT NULL, c15, c16, c17, c18, c19, c20 ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+WITH v21 ( c23 ) AS ( WITH v24 ( c25 ) AS ( WITH v24 AS ( WITH v26 AS ( SELECT 18446744073709551488 y ORDER BY 0 ) SELECT avg ( c25 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551488 ) SELECT 18446744073709551488 ORDER BY 18446744073709551488 ) SELECT 18446744073709551488 ORDER BY 18446744073709551488 ) SELECT * FROM v21 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 GROUP BY x'b2b2b2', 0, 0, 18446744073709551488, 18446744073709551488, 18446744073709551488 HAVING CASE WHEN a27.c2 != 'x' THEN 18446744073709551488 ELSE 127 END > 18446744073709551488 >= 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a28 GROUP BY a28.c9, a28.c10 < a28.c10 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c1, count ( ( NOT ( a29.c1 IS NULL ) ) AND ( NOT ( a29.c1 IS NULL ) ) ) FROM v0 AS a29 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a30 NATURAL JOIN v0 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32, v12 AS a33 NATURAL JOIN v12 AS a34 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c10, avg ( a35.c9 ) + 18446744073709551615 FROM v8 AS a35 GROUP BY a35.c9 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 GROUP BY a36.c2, a36.c2 < y ( a36.c1 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c9 = 18446744073709551488 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a37 ORDER BY 2147483647, 2147483647; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: cannot drop PRIMARY KEY column: "c2"
+Parse error near line 11: PRIMARY KEY missing on table v12
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 2nd GROUP BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a27 GROUP BY x'b2b2b2', 0, 0, 18446744073709551488, 184467
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a29.c1
+  SELECT a29.c1, count ( ( NOT ( a29.c1 IS NULL ) ) AND ( NOT ( a29.c1 IS NULL )
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v12
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a36.c1
+  CT * FROM v0 AS a36 GROUP BY a36.c2, a36.c2 < y ( a36.c1 ) ORDER BY 1844674407
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: c9
+  SELECT c9 = 18446744073709551488 ORDER BY 2147483647; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v8 AS a37 ORDER BY 2147483647, 2147483647; 
+                     error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 2nd GROUP BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a27 GROUP BY x'b2b2b2', 0, 0, 18446744073709551488, 184467
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: 2nd GROUP BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a27 GROUP BY x'b2b2b2', 0, 0, 18446744073709551488, 184467
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+1.84467440737096e+19|2
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such column: a29.c1
+  SELECT a29.c1, count ( ( NOT ( a29.c1 IS NULL ) ) AND ( NOT ( a29.c1 IS NULL )
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such table: v12
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such table: v12
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such function: y
+  SELECT * FROM v0 AS a36 GROUP BY a36.c2, a36.c2 < y ( a36.c1 ) ORDER BY 184467
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: no such column: a36.c1
+  CT * FROM v0 AS a36 GROUP BY a36.c2, a36.c2 < y ( a36.c1 ) ORDER BY 1844674407
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such column: c9
+  SELECT c9 = 18446744073709551488 ORDER BY 2147483647; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 37: no such column: c9
+  SELECT c9 = 18446744073709551488 ORDER BY 2147483647; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v8 AS a37 ORDER BY 2147483647, 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v8 AS a37 ORDER BY 2147483647, 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

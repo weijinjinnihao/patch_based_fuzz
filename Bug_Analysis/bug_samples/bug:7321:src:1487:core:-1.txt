@@ -1,0 +1,291 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE TABLE v5 ( c6, c7, c8, CHECK( c7 > 4294967295 ) ); 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c12 > 16 ) ); 
+INSERT INTO v9 VALUES ( 4294967295, 0, 0 ); 
+CREATE INDEX i13 ON v0 ( c3 ); 
+INSERT INTO v5 VALUES ( 4294967295, 4294967295, 4294967295 ); 
+INSERT INTO v0 VALUES ( 16, 4294967295, 3.000000 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE TABLE v14 ( c15, c16, c17 PRIMARY KEY, c18 BLOB, CHECK( coalesce ( c16, c16 ) ) ); 
+CREATE INDEX i19 ON v14 ( c17 ); 
+CREATE INDEX i20 ON v9 ( c12 ) WHERE count ( * ) >= 0 = 'x' != c11; 
+CREATE INDEX i21 ON v9 ( c11 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a22 NATURAL JOIN v9 AS a23 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v14 AS ( SELECT 4294967295 y ORDER BY 4294967295 ) SELECT * FROM v0 AS a24 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a25 WHERE count ( * ) >= 4294967295 = 'x' ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c3, count ( a26.c3 ) FROM v0 AS a26 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a27 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a28.c8 ) OVER ( ORDER BY min ( a28.c8, avg ( a28.c6 ) ) + NULL >= 0 ) ORDER BY 100 ) FROM v5 AS a28 GROUP BY a28.c7 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a29 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a30 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c12, count ( ( NOT ( a31.c12 IS NULL ) ) AND ( NOT ( a31.c11 IS NULL ) ) ) FROM v9 AS a31 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c12 > 16 (19)
+Runtime error near line 7: CHECK constraint failed: c7 > 4294967295 (19)
+Runtime error near line 9: error in index i13 after drop column: no such column: c3
+Parse error near line 12: misuse of aggregate function count()
+  CREATE INDEX i20 ON v9 ( c12 ) WHERE count ( * ) >= 0 = 'x' != c11; 
+                         error here ---^
+BEGIN VERI 0
+Parse error near line 15: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+16|4294967295|3.0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: misuse of aggregate function count()
+  SELECT * FROM v9 AS a25 WHERE count ( * ) >= 4294967295 = 'x' ORDER BY 2147483
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+3.0|1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+; 
+CREATE TABLE v5 ( c6, c7, c8, CHECK( c7 > 4294967295 ) ); 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c12 > 16 ) ); 
+INSERT INTO v9 VALUES ( 4294967295, 0, 0 ); 
+; 
+INSERT INTO v5 VALUES ( 4294967295, 4294967295, 4294967295 ); 
+INSERT INTO v0 VALUES ( 16, 4294967295, 3.000000 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE TABLE v14 ( c15, c16, c17 PRIMARY KEY, c18 BLOB, CHECK( coalesce ( c16, c16 ) ) ); 
+; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a22 NATURAL JOIN v9 AS a23 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v14 AS ( SELECT 4294967295 y ORDER BY 4294967295 ) SELECT * FROM v0 AS a24 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a25 WHERE count ( * ) >= 4294967295 = 'x' ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c3, count ( a26.c3 ) FROM v0 AS a26 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a27 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a28.c8 ) OVER ( ORDER BY min ( a28.c8, avg ( a28.c6 ) ) + NULL >= 0 ) ORDER BY 100 ) FROM v5 AS a28 GROUP BY a28.c7 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a29 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a30 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c12, count ( ( NOT ( a31.c12 IS NULL ) ) AND ( NOT ( a31.c11 IS NULL ) ) ) FROM v9 AS a31 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c12 > 16 (19)
+Runtime error near line 7: CHECK constraint failed: c7 > 4294967295 (19)
+BEGIN VERI 0
+Parse error near line 15: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+16|4294967295
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: misuse of aggregate function count()
+  SELECT * FROM v9 AS a25 WHERE count ( * ) >= 4294967295 = 'x' ORDER BY 2147483
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a26.c3
+  SELECT a26.c3, count ( a26.c3 ) FROM v0 AS a26 ORDER BY 4294967295; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+16|4294967295|3.0
+ 
+INT: 0 
+Str: 
+16|4294967295
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: misuse of aggregate function count()
+  SELECT * FROM v9 AS a25 WHERE count ( * ) >= 4294967295 = 'x' ORDER BY 2147483
+                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: misuse of aggregate function count()
+  SELECT * FROM v9 AS a25 WHERE count ( * ) >= 4294967295 = 'x' ORDER BY 2147483
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+3.0|1
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such column: a26.c3
+  SELECT a26.c3, count ( a26.c3 ) FROM v0 AS a26 ORDER BY 4294967295; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

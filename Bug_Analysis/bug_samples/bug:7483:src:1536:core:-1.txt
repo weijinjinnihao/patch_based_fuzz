@@ -1,0 +1,328 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 DEFAULT 'd' ); 
+CREATE TABLE v3 ( c4, c5, c6 REFERENCES p1 ( c6 ) ); 
+CREATE INDEX i7 ON v3 ( c4 ); 
+CREATE INDEX i8 ON v0 ( c2 ); 
+CREATE INDEX i9 ON v0 ( c1 ); 
+INSERT OR ABORT INTO v3 ( c6, c6, c5, c5, c4 ) VALUES ( 18446744073709551488, 18446744073709551488, NULL, 18446744073709551488, 18446744073709551488 ) ON CONFLICT DO UPDATE SET c6 = c4, c5 = c6, c4 = ( ( ( ( c6 + 18446744073709551488 ) % 0 ) == 0 ) % 18446744073709551488 ); 
+CREATE TABLE v10 ( c11, c12, c13, c14 REFERENCES p1 ( c14 ) ); 
+ALTER TABLE v10 DROP COLUMN c13; 
+CREATE INDEX i15 ON v3 ( c5 ); 
+CREATE INDEX i16 ON v0 ( c2 ); 
+ALTER TABLE v3 DROP COLUMN c4; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c18 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v3 AS a17 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c21 ) AS ( SELECT v0.c2 + ( SELECT max ( a23.c21 ) FROM v10 AS a25 ORDER BY 0 ), a22.c18 + ( SELECT a20.c18 FROM v0 AS a24 ORDER BY 0 ), a20.c2 + ( SELECT max ( a23.c21 ) FROM v0 AS a23 ORDER BY 2147483647 ) FROM v3 AS a22 ORDER BY 16 ) SELECT ( SELECT min ( a22.c4 ) OVER ( ORDER BY 127 ) ORDER BY 16 ) FROM v3 AS a20 GROUP BY a20.c4 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c4, a27.c5 FROM v0 AS a26 RIGHT JOIN v3 AS a27 ON a26.c2 = a26.c2 WHERE a27.c18 != a26.c21 ORDER BY ( ( a27.c6 + - 127 ) % 0 ) != 18446744073709551488 + 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a28 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v29 ( c31 ) AS ( SELECT 'x' ORDER BY 18446744073709551488 ) SELECT * FROM v29 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c4, a32.c4 FROM v3 AS a32 LEFT JOIN v0 AS a33 ON a32.c4 = ( ( hex ( 8 ) ) % 8 ) != 0 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a34 WHERE a34.c18 IS NOT NULL ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a35, v3 AS a36 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 11: error in index i7 after drop column: no such column: c4
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 3
+  T 0 ORDER BY 0 ) SELECT * FROM v3 AS a17 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: a22.c4
+  ROM v3 AS a22 ORDER BY 16 ) SELECT ( SELECT min ( a22.c4 ) OVER ( ORDER BY 127
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a27.c18
+  a26 RIGHT JOIN v3 AS a27 ON a26.c2 = a26.c2 WHERE a27.c18 != a26.c21 ORDER BY 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19||1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+  4073709551488 ) SELECT * FROM v29 AS a30 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a34.c18
+  SELECT * FROM v3 AS a34 WHERE a34.c18 IS NOT NULL ORDER BY 16; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v10 AS a35, v3 AS a36 ORDER BY 0; 
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 DEFAULT 'd' ); 
+CREATE TABLE v3 ( c4, c5, c6 REFERENCES p1 ( c6 ) ); 
+; 
+; 
+; 
+INSERT OR ABORT INTO v3 ( c6, c6, c5, c5, c4 ) VALUES ( 18446744073709551488, 18446744073709551488, NULL, 18446744073709551488, 18446744073709551488 ) ON CONFLICT DO UPDATE SET c6 = c4, c5 = c6, c4 = ( ( ( ( c6 + 18446744073709551488 ) % 0 ) == 0 ) % 18446744073709551488 ); 
+CREATE TABLE v10 ( c11, c12, c13, c14 REFERENCES p1 ( c14 ) ); 
+ALTER TABLE v10 DROP COLUMN c13; 
+; 
+; 
+ALTER TABLE v3 DROP COLUMN c4; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c18 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v3 AS a17 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c21 ) AS ( SELECT v0.c2 + ( SELECT max ( a23.c21 ) FROM v10 AS a25 ORDER BY 0 ), a22.c18 + ( SELECT a20.c18 FROM v0 AS a24 ORDER BY 0 ), a20.c2 + ( SELECT max ( a23.c21 ) FROM v0 AS a23 ORDER BY 2147483647 ) FROM v3 AS a22 ORDER BY 16 ) SELECT ( SELECT min ( a22.c4 ) OVER ( ORDER BY 127 ) ORDER BY 16 ) FROM v3 AS a20 GROUP BY a20.c4 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c4, a27.c5 FROM v0 AS a26 RIGHT JOIN v3 AS a27 ON a26.c2 = a26.c2 WHERE a27.c18 != a26.c21 ORDER BY ( ( a27.c6 + - 127 ) % 0 ) != 18446744073709551488 + 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a28 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v29 ( c31 ) AS ( SELECT 'x' ORDER BY 18446744073709551488 ) SELECT * FROM v29 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c4, a32.c4 FROM v3 AS a32 LEFT JOIN v0 AS a33 ON a32.c4 = ( ( hex ( 8 ) ) % 8 ) != 0 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a34 WHERE a34.c18 IS NOT NULL ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a35, v3 AS a36 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 2
+  T 0 ORDER BY 0 ) SELECT * FROM v3 AS a17 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: a22.c4
+  ROM v3 AS a22 ORDER BY 16 ) SELECT ( SELECT min ( a22.c4 ) OVER ( ORDER BY 127
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a27.c4
+  SELECT a27.c4, a27.c5 FROM v0 AS a26 RIGHT JOIN v3 AS a27 ON a26.c2 = a26.c2 W
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+  4073709551488 ) SELECT * FROM v29 AS a30 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a32.c4
+  SELECT a32.c4, a32.c4 FROM v3 AS a32 LEFT JOIN v0 AS a33 ON a32.c4 = ( ( hex (
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a34.c18
+  SELECT * FROM v3 AS a34 WHERE a34.c18 IS NOT NULL ORDER BY 16; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 5
+  SELECT * FROM v10 AS a35, v3 AS a36 ORDER BY 0; 
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 3
+  T 0 ORDER BY 0 ) SELECT * FROM v3 AS a17 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 2
+  T 0 ORDER BY 0 ) SELECT * FROM v3 AS a17 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such column: a22.c4
+  ROM v3 AS a22 ORDER BY 16 ) SELECT ( SELECT min ( a22.c4 ) OVER ( ORDER BY 127
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 19: no such column: a22.c4
+  ROM v3 AS a22 ORDER BY 16 ) SELECT ( SELECT min ( a22.c4 ) OVER ( ORDER BY 127
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such column: a27.c18
+  a26 RIGHT JOIN v3 AS a27 ON a26.c2 = a26.c2 WHERE a27.c18 != a26.c21 ORDER BY 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 22: no such column: a27.c4
+  SELECT a27.c4, a27.c5 FROM v0 AS a26 RIGHT JOIN v3 AS a27 ON a26.c2 = a26.c2 W
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19||1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+|1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+  4073709551488 ) SELECT * FROM v29 AS a30 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+  4073709551488 ) SELECT * FROM v29 AS a30 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+1.84467440737096e+19|1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no such column: a32.c4
+  SELECT a32.c4, a32.c4 FROM v3 AS a32 LEFT JOIN v0 AS a33 ON a32.c4 = ( ( hex (
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such column: a34.c18
+  SELECT * FROM v3 AS a34 WHERE a34.c18 IS NOT NULL ORDER BY 16; 
+                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: no such column: a34.c18
+  SELECT * FROM v3 AS a34 WHERE a34.c18 IS NOT NULL ORDER BY 16; 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v10 AS a35, v3 AS a36 ORDER BY 0; 
+                                 error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 5
+  SELECT * FROM v10 AS a35, v3 AS a36 ORDER BY 0; 
+                                 error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

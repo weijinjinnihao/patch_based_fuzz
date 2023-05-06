@@ -1,0 +1,315 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2, c1 ) ) WITHOUT ROWID; 
+ATTACH 'eee' AS sqlite_master; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709551615, 18446744073709518848 ), ( 18446744073709551615, 222, 18446744073709551615 ); 
+ALTER TABLE v0 DROP c3; 
+CREATE INDEX i6 ON v0 ( c3 ); 
+CREATE INDEX i7 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE TABLE v8 ( c9, c10, c11 CHECK( c10 != 18446744071562067968 ) ) WITHOUT ROWID; 
+CREATE INDEX i12 ON v8 ( c10 ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v13 AS ( SELECT 4294967295 y ORDER BY 18446744073709551615 ) SELECT * FROM v13 AS a14 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a15.c11, max ( a15.c10 || a15.c9 ) FROM v8 AS a15 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( 4294967295, count ( * ) ) FROM v0 AS a16 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT lower ( a17.c2 ) FROM v0 AS a17, v0 AS a18 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a20 WHERE a20.c10 > 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c1 FROM v0 AS a21 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709551615 IN ( SELECT * FROM v0 AS a22 ORDER BY 18446744073709551488 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a23.c9 ) FROM v8 AS a23 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 WHERE a24.c3 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: error in index i4 after drop column: no such column: c3
+Parse error near line 9: cannot drop PRIMARY KEY column: "c2"
+Parse error near line 10: PRIMARY KEY missing on table v8
+Parse error near line 11: no such table: main.v8
+BEGIN VERI 0
+4294967295
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such table: v8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+  4294967295, count ( * ) ) FROM v0 AS a16 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+1.84467440737096e+19
+222
+222
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v8
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: sub-select returns 3 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v8
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1.84467440737096e+19|1.84467440737095e+19
+1.84467440737096e+19|222|1.84467440737096e+19
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2, c1 ) ) WITHOUT ROWID; 
+ATTACH 'eee' AS sqlite_master; 
+; 
+; 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709551615, 18446744073709518848 ), ( 18446744073709551615, 222, 18446744073709551615 ); 
+ALTER TABLE v0 DROP c3; 
+; 
+; 
+ALTER TABLE v0 DROP c2; 
+CREATE TABLE v8 ( c9, c10, c11 CHECK( c10 != 18446744071562067968 ) ) WITHOUT ROWID; 
+; 
+SELECT 'BEGIN VERI 0'; 
+WITH v13 AS ( SELECT 4294967295 y ORDER BY 18446744073709551615 ) SELECT * FROM v13 AS a14 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a15.c11, max ( a15.c10 || a15.c9 ) FROM v8 AS a15 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( 4294967295, count ( * ) ) FROM v0 AS a16 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT lower ( a17.c2 ) FROM v0 AS a17, v0 AS a18 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a20 WHERE a20.c10 > 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c1 FROM v0 AS a21 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709551615 IN ( SELECT * FROM v0 AS a22 ORDER BY 18446744073709551488 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a23.c9 ) FROM v8 AS a23 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 WHERE a24.c3 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: cannot drop PRIMARY KEY column: "c2"
+Parse error near line 10: PRIMARY KEY missing on table v8
+BEGIN VERI 0
+4294967295
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such table: v8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+  4294967295, count ( * ) ) FROM v0 AS a16 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+222
+222
+1.84467440737096e+19
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v8
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: sub-select returns 2 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a24.c3
+  SELECT * FROM v0 AS a24 WHERE a24.c3 ORDER BY 18446744073709551615; 
+                  error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+4294967295
+ 
+INT: 0 
+Str: 
+4294967295
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such table: v8
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such table: v8
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+  4294967295, count ( * ) ) FROM v0 AS a16 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+  4294967295, count ( * ) ) FROM v0 AS a16 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19
+1.84467440737096e+19
+222
+222
+ 
+INT: 3 
+Str: 
+222
+222
+1.84467440737096e+19
+1.84467440737096e+19
+ 
+INT: 3 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no such table: v8
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such table: v8
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such table: v8
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such table: v8
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19
+1.84467440737096e+19
+ 
+INT: 1 
+Str: 
+1.84467440737096e+19
+1.84467440737096e+19
+ 
+INT: 1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: sub-select returns 3 columns - expected 1
+ 
+INT: 0 
+Str: 
+Parse error near line 34: sub-select returns 2 columns - expected 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such table: v8
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no such table: v8
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+1.84467440737096e+19|1.84467440737096e+19|1.84467440737095e+19
+1.84467440737096e+19|222|1.84467440737096e+19
+ 
+INT: 1 
+Str: 
+Parse error near line 40: no such column: a24.c3
+  SELECT * FROM v0 AS a24 WHERE a24.c3 ORDER BY 18446744073709551615; 
+                  error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

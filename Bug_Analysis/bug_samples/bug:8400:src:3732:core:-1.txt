@@ -1,0 +1,286 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 UNIQUE, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7 PRIMARY KEY, CHECK( ( ( c6 + 255 ) % 18446744071562067968 ) != 255 ) ) WITHOUT ROWID; 
+CREATE INDEX i8 ON v0 ( c3 ); 
+CREATE INDEX i9 ON v0 ( c4 ); 
+ALTER TABLE v0 DROP c3; 
+CREATE INDEX i10 ON v0 ( c2 ); 
+CREATE VIEW v11 AS SELECT count ( c2 ), c1 FROM v0 AS a12 GROUP BY c3 ORDER BY 255; 
+CREATE INDEX i13 ON v11 ( y ); 
+CREATE INDEX i14 ON v11 ( y ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a15 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( WITH v11 ( c18 ) AS ( SELECT 'v0' ORDER BY 255 ) SELECT * FROM v11 AS a17 LEFT JOIN ( SELECT count ( * ) AS y, a16.y FROM ( v11 AS a19 INNER JOIN v0 AS a20 ON a19.y = a19.c3 ) AS y WHERE a16.c18 > 18446744073709518848 GROUP BY a19.y ORDER BY 255 ) AS y ON a16.c3 = y ( a16.c3 ) ORDER BY 255 ) ) FROM v11 AS a16 WHERE a16.y NOT NULL ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c4, count ( a21.c3 ) FROM v0 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v0 AS a23 NATURAL JOIN v11 AS a24 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a25, v0 AS a26 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27, v0 AS a28 NATURAL JOIN v0 AS a29 ORDER BY 25; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a30 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31, v11 AS a32 NATURAL JOIN v0 AS a33 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a34 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v11 ( c35 ) AS ( SELECT 255 ORDER BY 255 ) VALUES ( 255, 255 ), ( 255, 25 ), ( 127, 255 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 4: error in index i8 after drop column: no such column: c3
+Parse error near line 7: views may not be indexed
+Parse error near line 8: views may not be indexed
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 14
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: near "ORDER": syntax error
+   ) VALUES ( 255, 255 ), ( 255, 25 ), ( 127, 255 ) ORDER BY 255; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 UNIQUE, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7 PRIMARY KEY, CHECK( ( ( c6 + 255 ) % 18446744071562067968 ) != 255 ) ) WITHOUT ROWID; 
+; 
+; 
+ALTER TABLE v0 DROP c3; 
+; 
+CREATE VIEW v11 AS SELECT count ( c2 ), c1 FROM v0 AS a12 GROUP BY c3 ORDER BY 255; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a15 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( WITH v11 ( c18 ) AS ( SELECT 'v0' ORDER BY 255 ) SELECT * FROM v11 AS a17 LEFT JOIN ( SELECT count ( * ) AS y, a16.y FROM ( v11 AS a19 INNER JOIN v0 AS a20 ON a19.y = a19.c3 ) AS y WHERE a16.c18 > 18446744073709518848 GROUP BY a19.y ORDER BY 255 ) AS y ON a16.c3 = y ( a16.c3 ) ORDER BY 255 ) ) FROM v11 AS a16 WHERE a16.y NOT NULL ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c4, count ( a21.c3 ) FROM v0 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v0 AS a23 NATURAL JOIN v11 AS a24 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a25, v0 AS a26 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27, v0 AS a28 NATURAL JOIN v0 AS a29 ORDER BY 25; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a30 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31, v11 AS a32 NATURAL JOIN v0 AS a33 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a34 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v11 ( c35 ) AS ( SELECT 255 ORDER BY 255 ) VALUES ( 255, 255 ), ( 255, 25 ), ( 127, 255 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: a21.c3
+  SELECT a21.c4, count ( a21.c3 ) FROM v0 AS a21 ORDER BY 18446744073709551488; 
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 12
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: near "ORDER": syntax error
+   ) VALUES ( 255, 255 ), ( 255, 25 ), ( 127, 255 ) ORDER BY 255; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such column: a21.c3
+  SELECT a21.c4, count ( a21.c3 ) FROM v0 AS a21 ORDER BY 18446744073709551488; 
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 14
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 12
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 97226080
+Str: 
+Parse error near line 37: near "ORDER": syntax error
+   ) VALUES ( 255, 255 ), ( 255, 25 ), ( 127, 255 ) ORDER BY 255; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 37: near "ORDER": syntax error
+   ) VALUES ( 255, 255 ), ( 255, 25 ), ( 127, 255 ) ORDER BY 255; 
+                                      error here ---^
+ 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,296 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9 DEFAULT 'v0' DEFAULT 18446744073709551615, PRIMARY KEY ( c7, c5 ) ) WITHOUT ROWID; 
+CREATE TABLE v10 ( c11 UNIQUE, c12, c13 UNIQUE ON CONFLICT IGNORE, c14 UNIQUE ON CONFLICT FAIL, c15 UNIQUE ON CONFLICT REPLACE DEFAULT 456, c16, c17 REFERENCES t1 UNIQUE ON CONFLICT IGNORE, c18, c19, c20, c21, c22, c23 TEXT DEFAULT x'ABCD', c24, c25, c26, c27 UNIQUE ON CONFLICT IGNORE, c28 UNIQUE ON CONFLICT FAIL, c29 UNIQUE ON CONFLICT REPLACE DEFAULT 2147483647, c30, c31 UNIQUE ON CONFLICT REPLACE DEFAULT 456, c32, c33, c34, c35, c36 UNIQUE ON CONFLICT ABORT, c37, c38 INTEGER UNIQUE ON CONFLICT IGNORE, c39 TEXT UNIQUE ON CONFLICT FAIL DEFAULT 9223372036854775807, c40, PRIMARY KEY ( c30, c27 ), UNIQUE ( c31 ) ); 
+ATTACH 'x' AS sqlite_master; 
+CREATE INDEX i41 ON v0 ( c2 ); 
+CREATE INDEX i42 ON v0 ( c8 ); 
+CREATE TABLE v43 ( c44, c45 TEXT, c46, PRIMARY KEY ( c44 ), CHECK( c44 != c44 ), CHECK( c45 != c46 ), UNIQUE ( c46 ) ); 
+CREATE TABLE v47 ( c48, c49 CHECK( 18446744073709551488 ), c50, c51, CHECK( c50 > 456 ) ); 
+CREATE INDEX i52 ON v10 ( c38 ); 
+CREATE INDEX i53 ON v47 ( c51 ); 
+ALTER TABLE v47 DROP c51; 
+CREATE INDEX i54 ON v0 ( c6 ); 
+ALTER TABLE v10 DROP c14; 
+CREATE TABLE v55 ( c56, c57, c58 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a59.c5 ) FROM v0 AS a59 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v47 AS a60 GROUP BY a60.c48, a60.c51 < a60.c49 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a61 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a62 ORDER BY ( ( a62.c23 + 456 ) % 456 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v43 AS a63 ORDER BY 456, 456; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a64.c44, count ( a64.c45 ) FROM v43 AS a64, v10 AS a65 GROUP BY a64.c45 HAVING automatic_index ( * ) >= 18446744073709551615 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v43 AS a66 GROUP BY count ( ( NOT ( a66.c44 IS NULL ) ) AND ( NOT ( a66.c46 IS NULL ) ) ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v55 AS a67, v10 AS a68 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( 16 ) FROM v47 AS a69 ORDER BY 456; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a70.c12 FROM v10 AS a70 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: error in index i53 after drop column: no such column: c51
+Parse error near line 12: cannot drop UNIQUE column: "c14"
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such function: automatic_index
+  OM v43 AS a64, v10 AS a65 GROUP BY a64.c45 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 33
+  SELECT * FROM v55 AS a67, v10 AS a68 ORDER BY 2147483647; 
+                                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9 DEFAULT 'v0' DEFAULT 18446744073709551615, PRIMARY KEY ( c7, c5 ) ) WITHOUT ROWID; 
+CREATE TABLE v10 ( c11 UNIQUE, c12, c13 UNIQUE ON CONFLICT IGNORE, c14 UNIQUE ON CONFLICT FAIL, c15 UNIQUE ON CONFLICT REPLACE DEFAULT 456, c16, c17 REFERENCES t1 UNIQUE ON CONFLICT IGNORE, c18, c19, c20, c21, c22, c23 TEXT DEFAULT x'ABCD', c24, c25, c26, c27 UNIQUE ON CONFLICT IGNORE, c28 UNIQUE ON CONFLICT FAIL, c29 UNIQUE ON CONFLICT REPLACE DEFAULT 2147483647, c30, c31 UNIQUE ON CONFLICT REPLACE DEFAULT 456, c32, c33, c34, c35, c36 UNIQUE ON CONFLICT ABORT, c37, c38 INTEGER UNIQUE ON CONFLICT IGNORE, c39 TEXT UNIQUE ON CONFLICT FAIL DEFAULT 9223372036854775807, c40, PRIMARY KEY ( c30, c27 ), UNIQUE ( c31 ) ); 
+ATTACH 'x' AS sqlite_master; 
+; 
+; 
+CREATE TABLE v43 ( c44, c45 TEXT, c46, PRIMARY KEY ( c44 ), CHECK( c44 != c44 ), CHECK( c45 != c46 ), UNIQUE ( c46 ) ); 
+CREATE TABLE v47 ( c48, c49 CHECK( 18446744073709551488 ), c50, c51, CHECK( c50 > 456 ) ); 
+; 
+; 
+ALTER TABLE v47 DROP c51; 
+; 
+ALTER TABLE v10 DROP c14; 
+CREATE TABLE v55 ( c56, c57, c58 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a59.c5 ) FROM v0 AS a59 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v47 AS a60 GROUP BY a60.c48, a60.c51 < a60.c49 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a61 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a62 ORDER BY ( ( a62.c23 + 456 ) % 456 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v43 AS a63 ORDER BY 456, 456; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a64.c44, count ( a64.c45 ) FROM v43 AS a64, v10 AS a65 GROUP BY a64.c45 HAVING automatic_index ( * ) >= 18446744073709551615 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v43 AS a66 GROUP BY count ( ( NOT ( a66.c44 IS NULL ) ) AND ( NOT ( a66.c46 IS NULL ) ) ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v55 AS a67, v10 AS a68 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( 16 ) FROM v47 AS a69 ORDER BY 456; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a70.c12 FROM v10 AS a70 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 12: cannot drop UNIQUE column: "c14"
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: a60.c51
+  SELECT * FROM v47 AS a60 GROUP BY a60.c48, a60.c51 < a60.c49 ORDER BY 92233720
+                               error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such function: automatic_index
+  OM v43 AS a64, v10 AS a65 GROUP BY a64.c45 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 33
+  SELECT * FROM v55 AS a67, v10 AS a68 ORDER BY 2147483647; 
+                                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 18: no such column: a60.c51
+  SELECT * FROM v47 AS a60 GROUP BY a60.c48, a60.c51 < a60.c49 ORDER BY 92233720
+                               error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such function: automatic_index
+  OM v43 AS a64, v10 AS a65 GROUP BY a64.c45 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: no such function: automatic_index
+  OM v43 AS a64, v10 AS a65 GROUP BY a64.c45 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+Str: 
+Parse error near line 33: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 33
+  SELECT * FROM v55 AS a67, v10 AS a68 ORDER BY 2147483647; 
+                                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 33
+  SELECT * FROM v55 AS a67, v10 AS a68 ORDER BY 2147483647; 
+                                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

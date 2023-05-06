@@ -1,0 +1,314 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10 INT UNIQUE ON CONFLICT IGNORE, c11 AS( c11 + c32 - c15 ) NOT NULL, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29 INT UNIQUE ON CONFLICT IGNORE, c30 AS( c23 + c13 ) NOT NULL, c31, c32, c33, c34, c35, c36, c37, c38 INTEGER PRIMARY KEY ON CONFLICT IGNORE ); 
+CREATE VIEW v39 AS SELECT * FROM v0 AS a40 ORDER BY 10; 
+CREATE TABLE v41 ( c42 INTEGER PRIMARY KEY, c43, c44 UNIQUE ); 
+CREATE INDEX i45 ON v41 ( c43 ); 
+CREATE TABLE v46 ( c47, c48, c49 ); 
+CREATE INDEX i50 ON v46 ( c47 ); 
+CREATE INDEX i51 ON v46 ( c49 ); 
+ALTER TABLE v41 DROP COLUMN c43; 
+ALTER TABLE v0 DROP COLUMN c22; 
+CREATE VIEW v52 AS SELECT c30, c42 FROM v41 AS a53 LEFT JOIN v39 AS a54 ON c44 = c6 y ORDER BY 10; 
+CREATE VIRTUAL TABLE v55 USING fts5 ( c56, c57 ); 
+CREATE INDEX i58 ON v46 ( c48 ); 
+ALTER TABLE v55 DROP COLUMN c57; 
+CREATE INDEX i59 ON v46 ( c47 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a60.c57 FROM v55 AS a60 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v46 AS a61, v52 AS a62 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( a64.c7 ), min ( a64.c7 ), max ( a63.c43 ), max ( a64.c3 ), sum ( a64.c1 ), sum ( a63.c42 ), avg ( a63.c44 ), a63.c44 = ( a64.c1 + 44.000000 ) % count ( a64.c7 ) FROM v41 AS a63 NATURAL JOIN v52 AS a64 GROUP BY x'616263', 'x', a64.c7 = + a63.c42 HAVING count ( * ) >= 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a65 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a66 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v46 AS a67 GROUP BY x'616263', 'v0', a67.c48 = + a67.c47 HAVING count ( * ) >= 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v55 AS a68, v41 AS a69 NATURAL JOIN v46 AS a70 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a71 ORDER BY ( ( a71.c43 + - 10 ) % 2 ) != 10 + 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a72.c42, count ( ( NOT ( a72.c43 IS NULL ) ) AND ( NOT ( a72.c43 IS NULL ) ) ) FROM v41 AS a72 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in index i45 after drop column: no such column: c43
+Parse error near line 10: near "y": syntax error
+   FROM v41 AS a53 LEFT JOIN v39 AS a54 ON c44 = c6 y ORDER BY 10; 
+                                      error here ---^
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: no such table: v55
+BEGIN VERI 0
+Parse error near line 16: no such table: v55
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v52
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v52
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: generated column loop on "c11"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+  .c48 = + a67.c47 HAVING count ( * ) >= 0 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v55
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 2
+   ( a72.c43 IS NULL ) ) ) FROM v41 AS a72 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10 INT UNIQUE ON CONFLICT IGNORE, c11 AS( c11 + c32 - c15 ) NOT NULL, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29 INT UNIQUE ON CONFLICT IGNORE, c30 AS( c23 + c13 ) NOT NULL, c31, c32, c33, c34, c35, c36, c37, c38 INTEGER PRIMARY KEY ON CONFLICT IGNORE ); 
+CREATE VIEW v39 AS SELECT * FROM v0 AS a40 ORDER BY 10; 
+CREATE TABLE v41 ( c42 INTEGER PRIMARY KEY, c43, c44 UNIQUE ); 
+; 
+CREATE TABLE v46 ( c47, c48, c49 ); 
+; 
+; 
+ALTER TABLE v41 DROP COLUMN c43; 
+ALTER TABLE v0 DROP COLUMN c22; 
+CREATE VIEW v52 AS SELECT c30, c42 FROM v41 AS a53 LEFT JOIN v39 AS a54 ON c44 = c6 y ORDER BY 10; 
+CREATE VIRTUAL TABLE v55 USING fts5 ( c56, c57 ); 
+; 
+ALTER TABLE v55 DROP COLUMN c57; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a60.c57 FROM v55 AS a60 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v46 AS a61, v52 AS a62 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( a64.c7 ), min ( a64.c7 ), max ( a63.c43 ), max ( a64.c3 ), sum ( a64.c1 ), sum ( a63.c42 ), avg ( a63.c44 ), a63.c44 = ( a64.c1 + 44.000000 ) % count ( a64.c7 ) FROM v41 AS a63 NATURAL JOIN v52 AS a64 GROUP BY x'616263', 'x', a64.c7 = + a63.c42 HAVING count ( * ) >= 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a65 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a66 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v46 AS a67 GROUP BY x'616263', 'v0', a67.c48 = + a67.c47 HAVING count ( * ) >= 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v55 AS a68, v41 AS a69 NATURAL JOIN v46 AS a70 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a71 ORDER BY ( ( a71.c43 + - 10 ) % 2 ) != 10 + 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a72.c42, count ( ( NOT ( a72.c43 IS NULL ) ) AND ( NOT ( a72.c43 IS NULL ) ) ) FROM v41 AS a72 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: near "y": syntax error
+   FROM v41 AS a53 LEFT JOIN v39 AS a54 ON c44 = c6 y ORDER BY 10; 
+                                      error here ---^
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: no such table: v55
+BEGIN VERI 0
+Parse error near line 16: no such table: v55
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v52
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v52
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: generated column loop on "c11"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+  .c48 = + a67.c47 HAVING count ( * ) >= 0 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v55
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a71.c43
+  SELECT * FROM v41 AS a71 ORDER BY ( ( a71.c43 + - 10 ) % 2 ) != 10 + 0; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such column: a72.c43
+  SELECT a72.c42, count ( ( NOT ( a72.c43 IS NULL ) ) AND ( NOT ( a72.c43 IS NUL
+                    error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such table: v55
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such table: v55
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such table: v52
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such table: v52
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no such table: v52
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such table: v52
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: generated column loop on "c11"
+ 
+INT: 0 
+Str: 
+Parse error near line 28: generated column loop on "c11"
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+  .c48 = + a67.c47 HAVING count ( * ) >= 0 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+  .c48 = + a67.c47 HAVING count ( * ) >= 0 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such table: v55
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no such table: v55
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 40: no such column: a71.c43
+  SELECT * FROM v41 AS a71 ORDER BY ( ( a71.c43 + - 10 ) % 2 ) != 10 + 0; 
+                          error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 2
+   ( a72.c43 IS NULL ) ) ) FROM v41 AS a72 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 43: no such column: a72.c43
+  SELECT a72.c42, count ( ( NOT ( a72.c43 IS NULL ) ) AND ( NOT ( a72.c43 IS NUL
+                    error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

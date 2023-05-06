@@ -1,0 +1,290 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TEMP TRIGGER tri1 INSERT ON t0 BEGIN UPDATE t1 SET c3 = c4 || c5 WHERE c6 = c7 || c8; END; 
+CREATE TABLE v9 ( c10, c11, c12, c13, PRIMARY KEY ( c10, c13 ) ) WITHOUT ROWID; 
+CREATE INDEX i14 ON v9 ( c11 ); 
+INSERT INTO v2 VALUES ( 0, 0, 9223372036854775807, 18446744073709551615 ); 
+ALTER TABLE v9 DROP COLUMN c11; 
+CREATE INDEX i15 ON v9 ( c13 ); 
+CREATE INDEX i16 ON v9 ( c10 ); 
+INSERT OR REPLACE INTO v2 ( c17, c12, c18, c19, c10 ) VALUES ( 9223372036854775807, 9223372036854775807, NULL, 18446744073709551615, 0 ); 
+CREATE INDEX i20 ON v2 ( c12 ); 
+CREATE INDEX i21 ON v2 ( c22 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a23 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( c10 ) FROM v2 AS a24 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a25, v9 AS a26 NATURAL JOIN v2 AS a27 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a28.c11 ) FROM v9 AS a28 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a29 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a30 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a31, v9 AS a32 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a33 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a34 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: no such table: t0
+Parse error near line 4: no such table: v2
+Runtime error near line 5: error in index i14 after drop column: no such column: c11
+Parse error near line 8: no such table: v2
+Parse error near line 9: no such table: main.v2
+Parse error near line 10: no such table: main.v2
+BEGIN VERI 0
+Parse error near line 12: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v2
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v2
+END VERI 0
+
+Query: 1: 
+CREATE TEMP TRIGGER tri1 INSERT ON t0 BEGIN UPDATE t1 SET c3 = c4 || c5 WHERE c6 = c7 || c8; END; 
+CREATE TABLE v9 ( c10, c11, c12, c13, PRIMARY KEY ( c10, c13 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v2 VALUES ( 0, 0, 9223372036854775807, 18446744073709551615 ); 
+ALTER TABLE v9 DROP COLUMN c11; 
+; 
+; 
+INSERT OR REPLACE INTO v2 ( c17, c12, c18, c19, c10 ) VALUES ( 9223372036854775807, 9223372036854775807, NULL, 18446744073709551615, 0 ); 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a23 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( c10 ) FROM v2 AS a24 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a25, v9 AS a26 NATURAL JOIN v2 AS a27 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a28.c11 ) FROM v9 AS a28 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a29 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a30 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a31, v9 AS a32 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a33 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a34 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: no such table: t0
+Parse error near line 4: no such table: v2
+Parse error near line 8: no such table: v2
+BEGIN VERI 0
+Parse error near line 12: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a28.c11
+  SELECT count ( a28.c11 ) FROM v9 AS a28 ORDER BY 9223372036854775807; 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v2
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: no such table: v2
+ 
+INT: 0 
+Str: 
+Parse error near line 12: no such table: v2
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such table: v2
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such table: v2
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such table: v2
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no such table: v2
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+0
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such column: a28.c11
+  SELECT count ( a28.c11 ) FROM v9 AS a28 ORDER BY 9223372036854775807; 
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such table: v2
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such table: v2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such table: v2
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no such table: v2
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such table: v2
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such table: v2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v2
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such table: v2
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such table: v2
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

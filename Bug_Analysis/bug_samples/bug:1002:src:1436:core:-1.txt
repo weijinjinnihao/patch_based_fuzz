@@ -1,0 +1,296 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 TEXT ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 18446744073709518848; 
+CREATE INDEX i7 ON v0 ( c3 ); 
+CREATE INDEX i8 ON v0 ( c1 ); 
+CREATE TABLE v9 ( c10, c11, c12 ); 
+ALTER TABLE v9 DROP COLUMN c10; 
+CREATE INDEX i13 ON v0 ( c1 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE INDEX i14 ON v9 ( c11 ); 
+CREATE VIRTUAL TABLE v15 USING fts5 ( c16, c17 ); 
+ALTER TABLE v5 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 ORDER BY ( a18.c1 + 18446744073709551615 ) % count ( a18.c1 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 ORDER BY 18446744073709551615 - ( a19.c1 + a19.c3 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 GROUP BY y ( a20.c1 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a21, v9 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 ( c24 ) AS ( SELECT '40000 400 1' ORDER BY 18446744073709551615 ) SELECT * FROM v5 AS a23 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a25 GROUP BY a25.c16, abs ( a25.c10 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c17 + 18446744073709551615, a26.c16 + 127 FROM v15 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a27 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c1 FROM v5 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a29 ORDER BY abs ( a29.c12 ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: error in index i4 after drop column: no such column: c3
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: cannot drop column from view "v5"
+BEGIN VERI 0
+Parse error near line 14: misuse of aggregate: count()
+   a18 ORDER BY ( a18.c1 + 18446744073709551615 ) % count ( a18.c1 ); 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such function: y
+  SELECT * FROM v0 AS a20 GROUP BY y ( a20.c1 ) ORDER BY 18446744073709551615; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v15
+END VERI 0
+BEGIN VERI 0
+40000 400 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such table: v15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such table: v15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such table: v15
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 TEXT ); 
+; 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 18446744073709518848; 
+; 
+; 
+CREATE TABLE v9 ( c10, c11, c12 ); 
+ALTER TABLE v9 DROP COLUMN c10; 
+; 
+ALTER TABLE v0 DROP COLUMN c3; 
+; 
+CREATE VIRTUAL TABLE v15 USING fts5 ( c16, c17 ); 
+ALTER TABLE v5 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 ORDER BY ( a18.c1 + 18446744073709551615 ) % count ( a18.c1 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 ORDER BY 18446744073709551615 - ( a19.c1 + a19.c3 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 GROUP BY y ( a20.c1 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a21, v9 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 ( c24 ) AS ( SELECT '40000 400 1' ORDER BY 18446744073709551615 ) SELECT * FROM v5 AS a23 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a25 GROUP BY a25.c16, abs ( a25.c10 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c17 + 18446744073709551615, a26.c16 + 127 FROM v15 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a27 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c1 FROM v5 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a29 ORDER BY abs ( a29.c12 ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: cannot drop column from view "v5"
+BEGIN VERI 0
+Parse error near line 14: misuse of aggregate: count()
+   a18 ORDER BY ( a18.c1 + 18446744073709551615 ) % count ( a18.c1 ); 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a19.c3
+  AS a19 ORDER BY 18446744073709551615 - ( a19.c1 + a19.c3 ); 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such function: y
+  SELECT * FROM v0 AS a20 GROUP BY y ( a20.c1 ) ORDER BY 18446744073709551615; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v15
+END VERI 0
+BEGIN VERI 0
+40000 400 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such table: v15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such table: v15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such table: v15
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: misuse of aggregate: count()
+   a18 ORDER BY ( a18.c1 + 18446744073709551615 ) % count ( a18.c1 ); 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 14: misuse of aggregate: count()
+   a18 ORDER BY ( a18.c1 + 18446744073709551615 ) % count ( a18.c1 ); 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 17: no such column: a19.c3
+  AS a19 ORDER BY 18446744073709551615 - ( a19.c1 + a19.c3 ); 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no such function: y
+  SELECT * FROM v0 AS a20 GROUP BY y ( a20.c1 ) ORDER BY 18446744073709551615; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: no such function: y
+  SELECT * FROM v0 AS a20 GROUP BY y ( a20.c1 ) ORDER BY 18446744073709551615; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such table: v15
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no such table: v15
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+40000 400 1
+ 
+INT: 0 
+Str: 
+40000 400 1
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: no such table: v15
+ 
+INT: 0 
+Str: 
+Parse error near line 29: no such table: v15
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such table: v15
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such table: v15
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no such table: v15
+ 
+INT: 0 
+Str: 
+Parse error near line 35: no such table: v15
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

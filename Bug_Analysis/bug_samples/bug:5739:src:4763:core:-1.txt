@@ -1,0 +1,280 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17 REAL, c18, c19, c20, c21, c22, c23 TEXT, c24, c25 INT, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42 PRIMARY KEY, CHECK( ( ( c9 + 255 ) % 100 ) != 255 ) ) WITHOUT ROWID; 
+CREATE INDEX i43 ON v0 ( c5 ); 
+CREATE INDEX i44 ON v0 ( c20 ); 
+CREATE INDEX i45 ON v0 ( c1 ); 
+CREATE INDEX i46 ON v0 ( c33 ); 
+CREATE INDEX i47 ON v0 ( c38 ); 
+ALTER TABLE v0 DROP c5; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 ORDER BY a48.c34, a48.c9, a48.c11; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a49.c18, count ( a49.c14 ) FROM v0 AS a49 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50, v0 AS a51 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a52 GROUP BY a52.c32, abs ( a52.c7 ) HAVING count ( * ) >= 100 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a53 ORDER BY 456; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v54 ( c56 ) AS ( SELECT 255 GROUP BY c56 HAVING automatic_index ( * ) >= 18446744073709551488 ORDER BY 255 ) SELECT * FROM v54 AS a55 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a57 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a60.c41 + a59.c35 * 456 ) + 18446744073709551488 FROM v0 AS a58, v0 AS a59 NATURAL JOIN v0 AS a60 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a61.c3, max ( a62.c5 || a61.c14 ), count ( a62.c35 ) FROM v0 AS a61 LEFT JOIN v0 AS a62 ON a61.c18 = a61.c33 WHERE a61.c18 > 4294967295 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a64.c5, a63.c2 FROM v0 AS a63 NATURAL JOIN v0 AS a64 WHERE ( CASE WHEN a64.c37 != 'x' THEN 100 ELSE 100 END ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i43 after drop column: no such column: c5
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 84
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 42
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 42
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such function: automatic_index
+  H v54 ( c56 ) AS ( SELECT 255 GROUP BY c56 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17 REAL, c18, c19, c20, c21, c22, c23 TEXT, c24, c25 INT, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42 PRIMARY KEY, CHECK( ( ( c9 + 255 ) % 100 ) != 255 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c5; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 ORDER BY a48.c34, a48.c9, a48.c11; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a49.c18, count ( a49.c14 ) FROM v0 AS a49 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50, v0 AS a51 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a52 GROUP BY a52.c32, abs ( a52.c7 ) HAVING count ( * ) >= 100 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a53 ORDER BY 456; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v54 ( c56 ) AS ( SELECT 255 GROUP BY c56 HAVING automatic_index ( * ) >= 18446744073709551488 ORDER BY 255 ) SELECT * FROM v54 AS a55 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a57 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a60.c41 + a59.c35 * 456 ) + 18446744073709551488 FROM v0 AS a58, v0 AS a59 NATURAL JOIN v0 AS a60 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a61.c3, max ( a62.c5 || a61.c14 ), count ( a62.c35 ) FROM v0 AS a61 LEFT JOIN v0 AS a62 ON a61.c18 = a61.c33 WHERE a61.c18 > 4294967295 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a64.c5, a63.c2 FROM v0 AS a63 NATURAL JOIN v0 AS a64 WHERE ( CASE WHEN a64.c37 != 'x' THEN 100 ELSE 100 END ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 82
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 41
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 41
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such function: automatic_index
+  H v54 ( c56 ) AS ( SELECT 255 GROUP BY c56 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a62.c5
+  SELECT a61.c3, max ( a62.c5 || a61.c14 ), count ( a62.c35 ) FROM v0 AS a61 LEF
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a64.c5
+  SELECT a64.c5, a63.c2 FROM v0 AS a63 NATURAL JOIN v0 AS a64 WHERE ( CASE WHEN 
+         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 84
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 82
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 42
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 41
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 42
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 41
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such function: automatic_index
+  H v54 ( c56 ) AS ( SELECT 255 GROUP BY c56 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: no such function: automatic_index
+  H v54 ( c56 ) AS ( SELECT 255 GROUP BY c56 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+
+ 
+INT: -1 
+Str: 
+
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such column: a62.c5
+  SELECT a61.c3, max ( a62.c5 || a61.c14 ), count ( a62.c35 ) FROM v0 AS a61 LEF
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such column: a64.c5
+  SELECT a64.c5, a63.c2 FROM v0 AS a63 NATURAL JOIN v0 AS a64 WHERE ( CASE WHEN 
+         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

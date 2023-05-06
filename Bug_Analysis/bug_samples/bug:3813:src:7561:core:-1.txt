@@ -1,0 +1,297 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 REFERENCES t1 ( c26, c26, c5, c13 ), c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25 UNIQUE, c26, PRIMARY KEY ( c17, c7 ) ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c20 = c6 || c22 FROM v0 AS a27, v0 AS a28 NATURAL JOIN v0 AS a29 WHERE c15 = c11 || c14; END; 
+CREATE TABLE v30 ( c31, c32, c33, c34, PRIMARY KEY ( c31, c32 ) ) WITHOUT ROWID; 
+CREATE INDEX i35 ON v30 ( c32 ); 
+INSERT INTO v0 VALUES ( 127, 127, 127, 255 ); 
+CREATE INDEX i36 ON v30 ( c34 ); 
+CREATE INDEX i37 ON v30 ( c31 ); 
+CREATE INDEX i38 ON v30 ( c32 ); 
+ALTER TABLE v30 DROP COLUMN c34; 
+CREATE INDEX i39 ON v0 ( c6 ); 
+INSERT OR REPLACE INTO v0 ( c10, c17, c17, c6, c13 ) VALUES ( 127, 127, NULL, 18446744073709551615, 18446744073709551615 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a40 ORDER BY ( 127, count ( * ) ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a42 WHERE ( a42.c31 = 255 OR a42.c33 = 18446744073709551488 ) AND a42.c32 IN ( SELECT lower ( a43.c5 ) FROM v0 AS a43 NATURAL JOIN v0 AS a44 ORDER BY 18446744073709551488 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a45 GROUP BY a45.c32, abs ( a45.c34 ) HAVING count ( * ) >= 18446744073709551615 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a46 GROUP BY a46.c33 HAVING NULL ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a47.c32 NOT NULL, avg ( a47.c34 ) + 18446744073709551615 FROM v30 AS a47 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 ORDER BY a48.c5, a48.c3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v50 AS ( SELECT * FROM v50 AS a52 ORDER BY c34, c26 ) SELECT * FROM v50 AS a51 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a53.c32 ) FROM v30 AS a53 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: foreign key on c2 should reference only one column of table t1
+  CREATE TABLE v0 ( c1, c2 REFERENCES t1 ( c26, c26, c5, c13 ), c3, c4, c5, c6, 
+                        error here ---^
+Parse error near line 2: no such table: v0
+Parse error near line 5: no such table: v0
+Runtime error near line 9: error in index i36 after drop column: no such column: c34
+Parse error near line 10: no such table: main.v0
+Parse error near line 11: no such table: v0
+BEGIN VERI 0
+Parse error near line 13: row value misused
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: circular reference: v50
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 REFERENCES t1 ( c26, c26, c5, c13 ), c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25 UNIQUE, c26, PRIMARY KEY ( c17, c7 ) ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c20 = c6 || c22 FROM v0 AS a27, v0 AS a28 NATURAL JOIN v0 AS a29 WHERE c15 = c11 || c14; END; 
+CREATE TABLE v30 ( c31, c32, c33, c34, PRIMARY KEY ( c31, c32 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v0 VALUES ( 127, 127, 127, 255 ); 
+; 
+; 
+; 
+ALTER TABLE v30 DROP COLUMN c34; 
+; 
+INSERT OR REPLACE INTO v0 ( c10, c17, c17, c6, c13 ) VALUES ( 127, 127, NULL, 18446744073709551615, 18446744073709551615 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a40 ORDER BY ( 127, count ( * ) ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a42 WHERE ( a42.c31 = 255 OR a42.c33 = 18446744073709551488 ) AND a42.c32 IN ( SELECT lower ( a43.c5 ) FROM v0 AS a43 NATURAL JOIN v0 AS a44 ORDER BY 18446744073709551488 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a45 GROUP BY a45.c32, abs ( a45.c34 ) HAVING count ( * ) >= 18446744073709551615 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a46 GROUP BY a46.c33 HAVING NULL ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a47.c32 NOT NULL, avg ( a47.c34 ) + 18446744073709551615 FROM v30 AS a47 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 ORDER BY a48.c5, a48.c3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v50 AS ( SELECT * FROM v50 AS a52 ORDER BY c34, c26 ) SELECT * FROM v50 AS a51 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a53.c32 ) FROM v30 AS a53 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: foreign key on c2 should reference only one column of table t1
+  CREATE TABLE v0 ( c1, c2 REFERENCES t1 ( c26, c26, c5, c13 ), c3, c4, c5, c6, 
+                        error here ---^
+Parse error near line 2: no such table: v0
+Parse error near line 5: no such table: v0
+Parse error near line 11: no such table: v0
+BEGIN VERI 0
+Parse error near line 13: row value misused
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a47.c34
+  SELECT a47.c32 NOT NULL, avg ( a47.c34 ) + 18446744073709551615 FROM v30 AS a4
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: circular reference: v50
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 13: row value misused
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such column: a47.c34
+  SELECT a47.c32 NOT NULL, avg ( a47.c34 ) + 18446744073709551615 FROM v30 AS a4
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: circular reference: v50
+ 
+INT: 0 
+Str: 
+Parse error near line 37: circular reference: v50
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

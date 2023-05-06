@@ -1,0 +1,286 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE TABLE v5 ( c6 INTEGER PRIMARY KEY, c7 INT, c8 INT ) WITHOUT ROWID; 
+CREATE INDEX i9 ON v5 ( c7 ); 
+CREATE TABLE v10 ( c11, c12, c13 CHECK( c12 > 100 ) ); 
+CREATE INDEX i14 ON v10 ( c12 ); 
+CREATE INDEX i15 ON v5 ( c7 ); 
+INSERT INTO v0 VALUES ( 100, 100, 100 ); 
+CREATE INDEX i16 ON v5 ( c6 ); 
+INSERT INTO v5 VALUES ( 100, 127, 18446744073709551488 ); 
+INSERT INTO v10 VALUES ( 127, 100, 100 ); 
+ALTER TABLE v5 DROP COLUMN c7; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a17 ORDER BY CASE WHEN a17.c8 != 'x' THEN 127 ELSE 127 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a18.c7 ) FROM v5 AS a18 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a19, v0 AS a20 NATURAL JOIN v5 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551488, 100, 127 ), ( 127, 100, 100 ), ( 100 = 'yyy', 100, 100 ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a22 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT quote ( a24.c2 ), quote ( a24.c1 ), 'x' FROM v0 AS a24 GROUP BY a24.c3, abs ( a24.c2 ) HAVING count ( * ) >= 18446744073709551615 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c12 FROM v10 AS a25 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v26 ( c28, c29, c30, c31, c32, c33 ) AS ( SELECT 18446744073709551488 y ORDER BY 16 ) SELECT * FROM v26 AS a27 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a34, v10 AS a35 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 11: CHECK constraint failed: c12 > 100 (19)
+Runtime error near line 12: error in index i9 after drop column: no such column: c7
+BEGIN VERI 0
+100|127|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: near "ORDER": syntax error
+  7 ), ( 127, 100, 100 ), ( 100 = 'yyy', 100, 100 ) ORDER BY 100; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+100|127|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: table v26 has 1 values for 6 columns
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+; 
+CREATE TABLE v5 ( c6 INTEGER PRIMARY KEY, c7 INT, c8 INT ) WITHOUT ROWID; 
+; 
+CREATE TABLE v10 ( c11, c12, c13 CHECK( c12 > 100 ) ); 
+; 
+; 
+INSERT INTO v0 VALUES ( 100, 100, 100 ); 
+; 
+INSERT INTO v5 VALUES ( 100, 127, 18446744073709551488 ); 
+INSERT INTO v10 VALUES ( 127, 100, 100 ); 
+ALTER TABLE v5 DROP COLUMN c7; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a17 ORDER BY CASE WHEN a17.c8 != 'x' THEN 127 ELSE 127 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a18.c7 ) FROM v5 AS a18 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a19, v0 AS a20 NATURAL JOIN v5 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551488, 100, 127 ), ( 127, 100, 100 ), ( 100 = 'yyy', 100, 100 ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a22 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT quote ( a24.c2 ), quote ( a24.c1 ), 'x' FROM v0 AS a24 GROUP BY a24.c3, abs ( a24.c2 ) HAVING count ( * ) >= 18446744073709551615 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c12 FROM v10 AS a25 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v26 ( c28, c29, c30, c31, c32, c33 ) AS ( SELECT 18446744073709551488 y ORDER BY 16 ) SELECT * FROM v26 AS a27 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a34, v10 AS a35 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 11: CHECK constraint failed: c12 > 100 (19)
+BEGIN VERI 0
+100|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a18.c7
+  SELECT count ( a18.c7 ) FROM v5 AS a18 ORDER BY 16; 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: near "ORDER": syntax error
+  7 ), ( 127, 100, 100 ), ( 100 = 'yyy', 100, 100 ) ORDER BY 100; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+100|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: table v26 has 1 values for 6 columns
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+100|127|1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+100|1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no such column: a18.c7
+  SELECT count ( a18.c7 ) FROM v5 AS a18 ORDER BY 16; 
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 455536
+Str: 
+Parse error near line 23: near "ORDER": syntax error
+  7 ), ( 127, 100, 100 ), ( 100 = 'yyy', 100, 100 ) ORDER BY 100; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 23: near "ORDER": syntax error
+  7 ), ( 127, 100, 100 ), ( 100 = 'yyy', 100, 100 ) ORDER BY 100; 
+                                      error here ---^
+ 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+100|127|1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+100|1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: table v26 has 1 values for 6 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 38: table v26 has 1 values for 6 columns
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

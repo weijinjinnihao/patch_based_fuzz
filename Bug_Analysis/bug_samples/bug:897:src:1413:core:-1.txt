@@ -1,0 +1,324 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 REAL, c3 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 18446744073709551615; 
+CREATE INDEX i7 ON v5 ( c2 ); 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+ALTER TABLE v12 DROP COLUMN c13; 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i16 ON v5 ( c1 ); 
+CREATE INDEX i17 ON v0 ( c1 ); 
+CREATE TABLE v18 ( c19, c20 NOT NULL, c21 NOT NULL, c22 NOT NULL ); 
+CREATE INDEX i23 ON v0 ( c3 ); 
+CREATE VIRTUAL TABLE v24 USING fts5 ( c25, c26 ); 
+ALTER TABLE v24 DROP COLUMN c25; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c3, count ( ( NOT ( a28.c14 IS NULL ) ) AND ( NOT ( a28.c13 IS NULL ) ) ) FROM v0 AS a27 RIGHT JOIN v12 AS a28 ON a27.c2 = a28.c15 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c14, count ( a29.c13 ) FROM v12 AS a29 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v30 ( c32 ) AS ( SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v30 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v8 ( c35, c36, c37, c38, c39, c40 ) AS ( SELECT 0 y ORDER BY 18446744073709551615 ) SELECT c38, a33.c13 FROM v12 AS a33 RIGHT JOIN v24 AS a34 ON a33.c15 = c38 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a41 WHERE a41.c1 = + a41.c1 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a43.c13, a43.c14 ), min ( a43.c13, a42.c22 ) FROM v18 AS a42, v12 AS a43 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a44.c26 || a44.c25 ) FROM v24 AS a44 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a45, v24 AS a46 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v18 ( c47 ) AS ( WITH v18 ( c48, c49, c50, c51, c52, c53 ) AS ( SELECT 18446744073709551615 y ORDER BY 18446744073709551615 ) SELECT 2147483647 ORDER BY 0 ) VALUES ( 18446744073709551488, 100 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: views may not be indexed
+Runtime error near line 8: error in index i4 after drop column: no such column: c1
+Parse error near line 9: views may not be indexed
+Runtime error near line 13: no such module: fts5
+Parse error near line 14: no such table: v24
+BEGIN VERI 0
+Parse error near line 16: no such column: a28.c13
+  , count ( ( NOT ( a28.c14 IS NULL ) ) AND ( NOT ( a28.c13 IS NULL ) ) ) FROM v
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: a29.c13
+  SELECT a29.c14, count ( a29.c13 ) FROM v12 AS a29 ORDER BY 1844674407370955161
+                          ^--- error here
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v24
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a43.c13
+  SELECT max ( a43.c13, a43.c14 ), min ( a43.c13, a42.c22 ) FROM v18 AS a42, v12
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: near "ORDER": syntax error
+  ORDER BY 0 ) VALUES ( 18446744073709551488, 100 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 REAL, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 18446744073709551615; 
+; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+ALTER TABLE v12 DROP COLUMN c13; 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+; 
+CREATE TABLE v18 ( c19, c20 NOT NULL, c21 NOT NULL, c22 NOT NULL ); 
+; 
+CREATE VIRTUAL TABLE v24 USING fts5 ( c25, c26 ); 
+ALTER TABLE v24 DROP COLUMN c25; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c3, count ( ( NOT ( a28.c14 IS NULL ) ) AND ( NOT ( a28.c13 IS NULL ) ) ) FROM v0 AS a27 RIGHT JOIN v12 AS a28 ON a27.c2 = a28.c15 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c14, count ( a29.c13 ) FROM v12 AS a29 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v30 ( c32 ) AS ( SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v30 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v8 ( c35, c36, c37, c38, c39, c40 ) AS ( SELECT 0 y ORDER BY 18446744073709551615 ) SELECT c38, a33.c13 FROM v12 AS a33 RIGHT JOIN v24 AS a34 ON a33.c15 = c38 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a41 WHERE a41.c1 = + a41.c1 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a43.c13, a43.c14 ), min ( a43.c13, a42.c22 ) FROM v18 AS a42, v12 AS a43 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a44.c26 || a44.c25 ) FROM v24 AS a44 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a45, v24 AS a46 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v18 ( c47 ) AS ( WITH v18 ( c48, c49, c50, c51, c52, c53 ) AS ( SELECT 18446744073709551615 y ORDER BY 18446744073709551615 ) SELECT 2147483647 ORDER BY 0 ) VALUES ( 18446744073709551488, 100 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 13: no such module: fts5
+Parse error near line 14: no such table: v24
+BEGIN VERI 0
+Parse error near line 16: no such column: a28.c13
+  , count ( ( NOT ( a28.c14 IS NULL ) ) AND ( NOT ( a28.c13 IS NULL ) ) ) FROM v
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: a29.c13
+  SELECT a29.c14, count ( a29.c13 ) FROM v12 AS a29 ORDER BY 1844674407370955161
+                          ^--- error here
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a41.c1
+  SELECT * FROM v5 AS a41 WHERE a41.c1 = + a41.c1 ORDER BY 18446744073709551615;
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a43.c13
+  SELECT max ( a43.c13, a43.c14 ), min ( a43.c13, a42.c22 ) FROM v18 AS a42, v12
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: near "ORDER": syntax error
+  ORDER BY 0 ) VALUES ( 18446744073709551488, 100 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such column: a28.c13
+  , count ( ( NOT ( a28.c14 IS NULL ) ) AND ( NOT ( a28.c13 IS NULL ) ) ) FROM v
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: no such column: a28.c13
+  , count ( ( NOT ( a28.c14 IS NULL ) ) AND ( NOT ( a28.c13 IS NULL ) ) ) FROM v
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such column: a29.c13
+  SELECT a29.c14, count ( a29.c13 ) FROM v12 AS a29 ORDER BY 1844674407370955161
+                          ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 19: no such column: a29.c13
+  SELECT a29.c14, count ( a29.c13 ) FROM v12 AS a29 ORDER BY 1844674407370955161
+                          ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no such table: v24
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such table: v24
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 28: no such column: a41.c1
+  SELECT * FROM v5 AS a41 WHERE a41.c1 = + a41.c1 ORDER BY 18446744073709551615;
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no such column: a43.c13
+  SELECT max ( a43.c13, a43.c14 ), min ( a43.c13, a42.c22 ) FROM v18 AS a42, v12
+               ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 31: no such column: a43.c13
+  SELECT max ( a43.c13, a43.c14 ), min ( a43.c13, a42.c22 ) FROM v18 AS a42, v12
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such table: v24
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no such table: v24
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such table: v24
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no such table: v24
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 29769088
+Str: 
+Parse error near line 43: near "ORDER": syntax error
+  ORDER BY 0 ) VALUES ( 18446744073709551488, 100 ) ORDER BY 0; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 43: near "ORDER": syntax error
+  ORDER BY 0 ) VALUES ( 18446744073709551488, 100 ) ORDER BY 0; 
+                                      error here ---^
+ 
+Compare_result_int: 
+0
+
+
+

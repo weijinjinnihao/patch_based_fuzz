@@ -1,0 +1,303 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 INTEGER DEFAULT 100 DEFAULT 4294967295 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE TABLE v5 ( c6 INTEGER PRIMARY KEY, c7, c8 UNIQUE ); 
+CREATE INDEX i9 ON v5 ( c8 ); 
+CREATE TABLE v10 ( c11, c12 INTEGER PRIMARY KEY, c13 ); 
+CREATE INDEX i14 ON v10 ( c12 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE VIRTUAL TABLE v15 USING fts5 ( c16, c17 ); 
+ALTER TABLE v10 DROP COLUMN c11; 
+CREATE INDEX i18 ON v15 ( c6 ); 
+CREATE INDEX i19 ON v5 ( c7 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a20, v10 AS a21 NATURAL JOIN v5 AS a22 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 GROUP BY a23.c3, a23.c1, count ( a23.c3 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a24 WHERE a24.c11 NOT NULL ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 4294967295 AS y FROM v15 AS a26 ORDER BY 4294967295 ) AS y LEFT JOIN v0 AS a25 ON a25.c2 IS NULL GROUP BY a25.c2 HAVING a25.c3 > a25.c1 % 18446744073709551615 >= 4294967295 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c2 FROM v0 AS a27 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v10 ( c29 ) AS ( WITH v0 ( c30 ) AS ( WITH v15 ( c31 ) AS ( WITH v0 ( c32, c33, c34, c35, c36, c37 ) AS ( SELECT 4294967295 y ORDER BY ( ( v15.c17 + 100 ) % 100 ) < 18446744073709518848 ) SELECT 18446744073709551488 ORDER BY 4294967295 ) SELECT 4294967295 ORDER BY 100 ) SELECT 2147483647 ORDER BY 4294967295 ) SELECT * FROM v5 AS a28 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c12, typeof ( a38.c11 ) FROM v10 AS a38 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a39 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a40 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in index i4 after drop column: no such column: c2
+Runtime error near line 9: no such module: fts5
+Parse error near line 11: no such table: main.v15
+BEGIN VERI 0
+Parse error near line 14: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such table: v15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such column: a23.c1
+  SELECT * FROM v0 AS a23 GROUP BY a23.c3, a23.c1, count ( a23.c3 ) ORDER BY 429
+                             error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a24.c11
+  SELECT * FROM v10 AS a24 WHERE a24.c11 NOT NULL ORDER BY 18446744073709551615;
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v15
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a38.c11
+  SELECT a38.c12, typeof ( a38.c11 ) FROM v10 AS a38 ORDER BY 4294967295; 
+             error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 INTEGER DEFAULT 100 DEFAULT 4294967295 ); 
+; 
+CREATE TABLE v5 ( c6 INTEGER PRIMARY KEY, c7, c8 UNIQUE ); 
+; 
+CREATE TABLE v10 ( c11, c12 INTEGER PRIMARY KEY, c13 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c1; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE VIRTUAL TABLE v15 USING fts5 ( c16, c17 ); 
+ALTER TABLE v10 DROP COLUMN c11; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a20, v10 AS a21 NATURAL JOIN v5 AS a22 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 GROUP BY a23.c3, a23.c1, count ( a23.c3 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a24 WHERE a24.c11 NOT NULL ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 4294967295 AS y FROM v15 AS a26 ORDER BY 4294967295 ) AS y LEFT JOIN v0 AS a25 ON a25.c2 IS NULL GROUP BY a25.c2 HAVING a25.c3 > a25.c1 % 18446744073709551615 >= 4294967295 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c2 FROM v0 AS a27 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v10 ( c29 ) AS ( WITH v0 ( c30 ) AS ( WITH v15 ( c31 ) AS ( WITH v0 ( c32, c33, c34, c35, c36, c37 ) AS ( SELECT 4294967295 y ORDER BY ( ( v15.c17 + 100 ) % 100 ) < 18446744073709518848 ) SELECT 18446744073709551488 ORDER BY 4294967295 ) SELECT 4294967295 ORDER BY 100 ) SELECT 2147483647 ORDER BY 4294967295 ) SELECT * FROM v5 AS a28 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c12, typeof ( a38.c11 ) FROM v10 AS a38 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a39 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a40 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: no such module: fts5
+BEGIN VERI 0
+Parse error near line 14: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such table: v15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such column: a23.c1
+  SELECT * FROM v0 AS a23 GROUP BY a23.c3, a23.c1, count ( a23.c3 ) ORDER BY 429
+                             error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a24.c11
+  SELECT * FROM v10 AS a24 WHERE a24.c11 NOT NULL ORDER BY 18446744073709551615;
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a27.c2
+  SELECT a27.c2 FROM v0 AS a27 ORDER BY 4294967295; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a38.c11
+  SELECT a38.c12, typeof ( a38.c11 ) FROM v10 AS a38 ORDER BY 4294967295; 
+             error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 14: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no such table: v15
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no such table: v15
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no such column: a23.c1
+  SELECT * FROM v0 AS a23 GROUP BY a23.c3, a23.c1, count ( a23.c3 ) ORDER BY 429
+                             error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: no such column: a23.c1
+  SELECT * FROM v0 AS a23 GROUP BY a23.c3, a23.c1, count ( a23.c3 ) ORDER BY 429
+                             error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such column: a24.c11
+  SELECT * FROM v10 AS a24 WHERE a24.c11 NOT NULL ORDER BY 18446744073709551615;
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 23: no such column: a24.c11
+  SELECT * FROM v10 AS a24 WHERE a24.c11 NOT NULL ORDER BY 18446744073709551615;
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no such table: v15
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such table: v15
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 29: no such column: a27.c2
+  SELECT a27.c2 FROM v0 AS a27 ORDER BY 4294967295; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no such column: a38.c11
+  SELECT a38.c12, typeof ( a38.c11 ) FROM v10 AS a38 ORDER BY 4294967295; 
+             error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: no such column: a38.c11
+  SELECT a38.c12, typeof ( a38.c11 ) FROM v10 AS a38 ORDER BY 4294967295; 
+             error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

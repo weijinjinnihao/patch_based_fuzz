@@ -1,0 +1,1429 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( 255, 'x', 'v1' ); 
+INSERT INTO v0 VALUES ( 255, 'v0', 'x3' ); 
+INSERT INTO v0 VALUES ( 255, 255, - 255 ), ( 0, 255, 255 ); 
+INSERT INTO v0 VALUES ( 'x', 'v1', 'v0' ); 
+INSERT INTO v0 VALUES ( x'616263', 'x', 'two-b' ); 
+CREATE TABLE v4 ( c5, c6, c7 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( NULL, 'eee', 'x' ); 
+INSERT INTO v4 VALUES ( 'jim', 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'v0', 'x' ); 
+CREATE INDEX i8 ON v4 ( c5 ); 
+INSERT INTO v0 VALUES ( 255, '1.0', 'xxx' ); 
+INSERT INTO v0 VALUES ( - 255, 'three-a', 'x' ); 
+CREATE INDEX i9 ON v0 ( c3 ); 
+WITH RECURSIVE v10 AS ( SELECT c7 FROM v10 AS a12 WHERE c6 LIKE 'x' ORDER BY 0 ) INSERT INTO v10 SELECT c3 FROM v10 AS a11 ORDER BY 255; 
+INSERT INTO v0 SELECT * FROM v4 AS a13 GROUP BY c2 HAVING c6 > c1 % 18446744071562067968 >= 1 ORDER BY 255; 
+INSERT INTO v0 SELECT * FROM v4 AS a14 ORDER BY 9223372036854775807; 
+INSERT INTO v4 SELECT * FROM v0 AS a15 ORDER BY 10; 
+CREATE INDEX i16 ON v0 ( c2 ); 
+INSERT INTO v4 SELECT * FROM v0 AS a17 ORDER BY 9223372036854775807; 
+INSERT INTO v0 SELECT * FROM v4 AS a18 ORDER BY 255; 
+INSERT INTO v0 SELECT * FROM v0 AS a19 ORDER BY 255; 
+CREATE INDEX i20 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a21.c5 ) OVER ( ORDER BY 255 ) ORDER BY 1 ) FROM v4 AS a21, v4 AS a22 NATURAL JOIN v0 AS a23 GROUP BY a23.c1 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 NATURAL JOIN v4 AS a25 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c7, c3, lower ( ( SELECT a26.c1 FROM v4 AS a27 WHERE a27.c5 = a26.c2 ORDER BY 1 ) ), 'M' FROM ( SELECT count ( * ) AS y, a26.c3 AS y FROM v0 AS a26 GROUP BY 1 ORDER BY 18446744073709551615 ) AS y ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28, v4 AS a29 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 ORDER BY 0 - ( a30.c3 + a30.c1 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c7 FROM v4 AS a31 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a33.c5 IS NULL ) ) AND ( NOT ( a33.c5 IS NULL ) ) ) FROM v4 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 WHERE NULL IS a34.c2 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 15: no such table: v10
+Parse error near line 16: no such column: c1
+  0 SELECT * FROM v4 AS a13 GROUP BY c2 HAVING c6 > c1 % 18446744071562067968 >=
+                                      error here ---^
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+BEGIN VERI 0
+
+
+
+
+
+
+
+
+END VERI 0
+BEGIN VERI 0
+255|x|v1|jim|x|v0
+255|x|v1|255|x|v1
+255|x|v1|255|v0|x3
+255|x|v1|255|255|-255
+255|x|v1|0|255|255
+255|x|v1|x|v1|v0
+255|x|v1|abc|x|two-b
+255|x|v1||eee|x
+255|x|v1|hare|v0|x
+255|x|v1|255|1.0|xxx
+255|x|v1|-255|three-a|x
+255|x|v1|jim|x|v0
+255|v0|x3|jim|x|v0
+255|v0|x3|255|x|v1
+255|v0|x3|255|v0|x3
+255|v0|x3|255|255|-255
+255|v0|x3|0|255|255
+255|v0|x3|x|v1|v0
+255|v0|x3|abc|x|two-b
+255|v0|x3||eee|x
+255|v0|x3|hare|v0|x
+255|v0|x3|255|1.0|xxx
+255|v0|x3|-255|three-a|x
+255|v0|x3|jim|x|v0
+255|255|-255|jim|x|v0
+255|255|-255|255|x|v1
+255|255|-255|255|v0|x3
+255|255|-255|255|255|-255
+255|255|-255|0|255|255
+255|255|-255|x|v1|v0
+255|255|-255|abc|x|two-b
+255|255|-255||eee|x
+255|255|-255|hare|v0|x
+255|255|-255|255|1.0|xxx
+255|255|-255|-255|three-a|x
+255|255|-255|jim|x|v0
+0|255|255|jim|x|v0
+0|255|255|255|x|v1
+0|255|255|255|v0|x3
+0|255|255|255|255|-255
+0|255|255|0|255|255
+0|255|255|x|v1|v0
+0|255|255|abc|x|two-b
+0|255|255||eee|x
+0|255|255|hare|v0|x
+0|255|255|255|1.0|xxx
+0|255|255|-255|three-a|x
+0|255|255|jim|x|v0
+x|v1|v0|jim|x|v0
+x|v1|v0|255|x|v1
+x|v1|v0|255|v0|x3
+x|v1|v0|255|255|-255
+x|v1|v0|0|255|255
+x|v1|v0|x|v1|v0
+x|v1|v0|abc|x|two-b
+x|v1|v0||eee|x
+x|v1|v0|hare|v0|x
+x|v1|v0|255|1.0|xxx
+x|v1|v0|-255|three-a|x
+x|v1|v0|jim|x|v0
+abc|x|two-b|jim|x|v0
+abc|x|two-b|255|x|v1
+abc|x|two-b|255|v0|x3
+abc|x|two-b|255|255|-255
+abc|x|two-b|0|255|255
+abc|x|two-b|x|v1|v0
+abc|x|two-b|abc|x|two-b
+abc|x|two-b||eee|x
+abc|x|two-b|hare|v0|x
+abc|x|two-b|255|1.0|xxx
+abc|x|two-b|-255|three-a|x
+abc|x|two-b|jim|x|v0
+|eee|x|jim|x|v0
+|eee|x|255|x|v1
+|eee|x|255|v0|x3
+|eee|x|255|255|-255
+|eee|x|0|255|255
+|eee|x|x|v1|v0
+|eee|x|abc|x|two-b
+|eee|x||eee|x
+|eee|x|hare|v0|x
+|eee|x|255|1.0|xxx
+|eee|x|-255|three-a|x
+|eee|x|jim|x|v0
+hare|v0|x|jim|x|v0
+hare|v0|x|255|x|v1
+hare|v0|x|255|v0|x3
+hare|v0|x|255|255|-255
+hare|v0|x|0|255|255
+hare|v0|x|x|v1|v0
+hare|v0|x|abc|x|two-b
+hare|v0|x||eee|x
+hare|v0|x|hare|v0|x
+hare|v0|x|255|1.0|xxx
+hare|v0|x|-255|three-a|x
+hare|v0|x|jim|x|v0
+255|1.0|xxx|jim|x|v0
+255|1.0|xxx|255|x|v1
+255|1.0|xxx|255|v0|x3
+255|1.0|xxx|255|255|-255
+255|1.0|xxx|0|255|255
+255|1.0|xxx|x|v1|v0
+255|1.0|xxx|abc|x|two-b
+255|1.0|xxx||eee|x
+255|1.0|xxx|hare|v0|x
+255|1.0|xxx|255|1.0|xxx
+255|1.0|xxx|-255|three-a|x
+255|1.0|xxx|jim|x|v0
+-255|three-a|x|jim|x|v0
+-255|three-a|x|255|x|v1
+-255|three-a|x|255|v0|x3
+-255|three-a|x|255|255|-255
+-255|three-a|x|0|255|255
+-255|three-a|x|x|v1|v0
+-255|three-a|x|abc|x|two-b
+-255|three-a|x||eee|x
+-255|three-a|x|hare|v0|x
+-255|three-a|x|255|1.0|xxx
+-255|three-a|x|-255|three-a|x
+-255|three-a|x|jim|x|v0
+jim|x|v0|jim|x|v0
+jim|x|v0|255|x|v1
+jim|x|v0|255|v0|x3
+jim|x|v0|255|255|-255
+jim|x|v0|0|255|255
+jim|x|v0|x|v1|v0
+jim|x|v0|abc|x|two-b
+jim|x|v0||eee|x
+jim|x|v0|hare|v0|x
+jim|x|v0|255|1.0|xxx
+jim|x|v0|-255|three-a|x
+jim|x|v0|jim|x|v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+255|x|v1|jim|x|v0
+255|x|v1|255|x|v1
+255|x|v1|255|v0|x3
+255|x|v1|255|255|-255
+255|x|v1|0|255|255
+255|x|v1|x|v1|v0
+255|x|v1|abc|x|two-b
+255|x|v1||eee|x
+255|x|v1|hare|v0|x
+255|x|v1|255|1.0|xxx
+255|x|v1|-255|three-a|x
+255|x|v1|jim|x|v0
+255|v0|x3|jim|x|v0
+255|v0|x3|255|x|v1
+255|v0|x3|255|v0|x3
+255|v0|x3|255|255|-255
+255|v0|x3|0|255|255
+255|v0|x3|x|v1|v0
+255|v0|x3|abc|x|two-b
+255|v0|x3||eee|x
+255|v0|x3|hare|v0|x
+255|v0|x3|255|1.0|xxx
+255|v0|x3|-255|three-a|x
+255|v0|x3|jim|x|v0
+255|255|-255|jim|x|v0
+255|255|-255|255|x|v1
+255|255|-255|255|v0|x3
+255|255|-255|255|255|-255
+255|255|-255|0|255|255
+255|255|-255|x|v1|v0
+255|255|-255|abc|x|two-b
+255|255|-255||eee|x
+255|255|-255|hare|v0|x
+255|255|-255|255|1.0|xxx
+255|255|-255|-255|three-a|x
+255|255|-255|jim|x|v0
+0|255|255|jim|x|v0
+0|255|255|255|x|v1
+0|255|255|255|v0|x3
+0|255|255|255|255|-255
+0|255|255|0|255|255
+0|255|255|x|v1|v0
+0|255|255|abc|x|two-b
+0|255|255||eee|x
+0|255|255|hare|v0|x
+0|255|255|255|1.0|xxx
+0|255|255|-255|three-a|x
+0|255|255|jim|x|v0
+x|v1|v0|jim|x|v0
+x|v1|v0|255|x|v1
+x|v1|v0|255|v0|x3
+x|v1|v0|255|255|-255
+x|v1|v0|0|255|255
+x|v1|v0|x|v1|v0
+x|v1|v0|abc|x|two-b
+x|v1|v0||eee|x
+x|v1|v0|hare|v0|x
+x|v1|v0|255|1.0|xxx
+x|v1|v0|-255|three-a|x
+x|v1|v0|jim|x|v0
+abc|x|two-b|jim|x|v0
+abc|x|two-b|255|x|v1
+abc|x|two-b|255|v0|x3
+abc|x|two-b|255|255|-255
+abc|x|two-b|0|255|255
+abc|x|two-b|x|v1|v0
+abc|x|two-b|abc|x|two-b
+abc|x|two-b||eee|x
+abc|x|two-b|hare|v0|x
+abc|x|two-b|255|1.0|xxx
+abc|x|two-b|-255|three-a|x
+abc|x|two-b|jim|x|v0
+|eee|x|jim|x|v0
+|eee|x|255|x|v1
+|eee|x|255|v0|x3
+|eee|x|255|255|-255
+|eee|x|0|255|255
+|eee|x|x|v1|v0
+|eee|x|abc|x|two-b
+|eee|x||eee|x
+|eee|x|hare|v0|x
+|eee|x|255|1.0|xxx
+|eee|x|-255|three-a|x
+|eee|x|jim|x|v0
+hare|v0|x|jim|x|v0
+hare|v0|x|255|x|v1
+hare|v0|x|255|v0|x3
+hare|v0|x|255|255|-255
+hare|v0|x|0|255|255
+hare|v0|x|x|v1|v0
+hare|v0|x|abc|x|two-b
+hare|v0|x||eee|x
+hare|v0|x|hare|v0|x
+hare|v0|x|255|1.0|xxx
+hare|v0|x|-255|three-a|x
+hare|v0|x|jim|x|v0
+255|1.0|xxx|jim|x|v0
+255|1.0|xxx|255|x|v1
+255|1.0|xxx|255|v0|x3
+255|1.0|xxx|255|255|-255
+255|1.0|xxx|0|255|255
+255|1.0|xxx|x|v1|v0
+255|1.0|xxx|abc|x|two-b
+255|1.0|xxx||eee|x
+255|1.0|xxx|hare|v0|x
+255|1.0|xxx|255|1.0|xxx
+255|1.0|xxx|-255|three-a|x
+255|1.0|xxx|jim|x|v0
+-255|three-a|x|jim|x|v0
+-255|three-a|x|255|x|v1
+-255|three-a|x|255|v0|x3
+-255|three-a|x|255|255|-255
+-255|three-a|x|0|255|255
+-255|three-a|x|x|v1|v0
+-255|three-a|x|abc|x|two-b
+-255|three-a|x||eee|x
+-255|three-a|x|hare|v0|x
+-255|three-a|x|255|1.0|xxx
+-255|three-a|x|-255|three-a|x
+-255|three-a|x|jim|x|v0
+jim|x|v0|jim|x|v0
+jim|x|v0|255|x|v1
+jim|x|v0|255|v0|x3
+jim|x|v0|255|255|-255
+jim|x|v0|0|255|255
+jim|x|v0|x|v1|v0
+jim|x|v0|abc|x|two-b
+jim|x|v0||eee|x
+jim|x|v0|hare|v0|x
+jim|x|v0|255|1.0|xxx
+jim|x|v0|-255|three-a|x
+jim|x|v0|jim|x|v0
+END VERI 0
+BEGIN VERI 0
+|eee|x
+255|x|v1
+255|v0|x3
+0|255|255
+255|1.0|xxx
+255|255|-255
+x|v1|v0
+abc|x|two-b
+hare|v0|x
+jim|x|v0
+-255|three-a|x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 46: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+12
+END VERI 0
+BEGIN VERI 0
+Parse error near line 52: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( 255, 'x', 'v1' ); 
+INSERT INTO v0 VALUES ( 255, 'v0', 'x3' ); 
+INSERT INTO v0 VALUES ( 255, 255, - 255 ), ( 0, 255, 255 ); 
+INSERT INTO v0 VALUES ( 'x', 'v1', 'v0' ); 
+INSERT INTO v0 VALUES ( x'616263', 'x', 'two-b' ); 
+CREATE TABLE v4 ( c5, c6, c7 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( NULL, 'eee', 'x' ); 
+INSERT INTO v4 VALUES ( 'jim', 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'v0', 'x' ); 
+; 
+INSERT INTO v0 VALUES ( 255, '1.0', 'xxx' ); 
+INSERT INTO v0 VALUES ( - 255, 'three-a', 'x' ); 
+; 
+WITH RECURSIVE v10 AS ( SELECT c7 FROM v10 AS a12 WHERE c6 LIKE 'x' ORDER BY 0 ) INSERT INTO v10 SELECT c3 FROM v10 AS a11 ORDER BY 255; 
+INSERT INTO v0 SELECT * FROM v4 AS a13 GROUP BY c2 HAVING c6 > c1 % 18446744071562067968 >= 1 ORDER BY 255; 
+INSERT INTO v0 SELECT * FROM v4 AS a14 ORDER BY 9223372036854775807; 
+INSERT INTO v4 SELECT * FROM v0 AS a15 ORDER BY 10; 
+; 
+INSERT INTO v4 SELECT * FROM v0 AS a17 ORDER BY 9223372036854775807; 
+INSERT INTO v0 SELECT * FROM v4 AS a18 ORDER BY 255; 
+INSERT INTO v0 SELECT * FROM v0 AS a19 ORDER BY 255; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a21.c5 ) OVER ( ORDER BY 255 ) ORDER BY 1 ) FROM v4 AS a21, v4 AS a22 NATURAL JOIN v0 AS a23 GROUP BY a23.c1 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 NATURAL JOIN v4 AS a25 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c7, c3, lower ( ( SELECT a26.c1 FROM v4 AS a27 WHERE a27.c5 = a26.c2 ORDER BY 1 ) ), 'M' FROM ( SELECT count ( * ) AS y, a26.c3 AS y FROM v0 AS a26 GROUP BY 1 ORDER BY 18446744073709551615 ) AS y ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28, v4 AS a29 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 ORDER BY 0 - ( a30.c3 + a30.c1 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c7 FROM v4 AS a31 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a33.c5 IS NULL ) ) AND ( NOT ( a33.c5 IS NULL ) ) ) FROM v4 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 WHERE NULL IS a34.c2 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 15: no such table: v10
+Parse error near line 16: no such column: c1
+  0 SELECT * FROM v4 AS a13 GROUP BY c2 HAVING c6 > c1 % 18446744071562067968 >=
+                                      error here ---^
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+BEGIN VERI 0
+jim
+jim
+jim
+jim
+jim
+jim
+jim
+jim
+END VERI 0
+BEGIN VERI 0
+255|x|v1|jim|x|v0
+255|x|v1|255|x|v1
+255|x|v1|255|v0|x3
+255|x|v1|255|255|-255
+255|x|v1|0|255|255
+255|x|v1|x|v1|v0
+255|x|v1|abc|x|two-b
+255|x|v1||eee|x
+255|x|v1|hare|v0|x
+255|x|v1|255|1.0|xxx
+255|x|v1|-255|three-a|x
+255|x|v1|jim|x|v0
+255|v0|x3|jim|x|v0
+255|v0|x3|255|x|v1
+255|v0|x3|255|v0|x3
+255|v0|x3|255|255|-255
+255|v0|x3|0|255|255
+255|v0|x3|x|v1|v0
+255|v0|x3|abc|x|two-b
+255|v0|x3||eee|x
+255|v0|x3|hare|v0|x
+255|v0|x3|255|1.0|xxx
+255|v0|x3|-255|three-a|x
+255|v0|x3|jim|x|v0
+255|255|-255|jim|x|v0
+255|255|-255|255|x|v1
+255|255|-255|255|v0|x3
+255|255|-255|255|255|-255
+255|255|-255|0|255|255
+255|255|-255|x|v1|v0
+255|255|-255|abc|x|two-b
+255|255|-255||eee|x
+255|255|-255|hare|v0|x
+255|255|-255|255|1.0|xxx
+255|255|-255|-255|three-a|x
+255|255|-255|jim|x|v0
+0|255|255|jim|x|v0
+0|255|255|255|x|v1
+0|255|255|255|v0|x3
+0|255|255|255|255|-255
+0|255|255|0|255|255
+0|255|255|x|v1|v0
+0|255|255|abc|x|two-b
+0|255|255||eee|x
+0|255|255|hare|v0|x
+0|255|255|255|1.0|xxx
+0|255|255|-255|three-a|x
+0|255|255|jim|x|v0
+x|v1|v0|jim|x|v0
+x|v1|v0|255|x|v1
+x|v1|v0|255|v0|x3
+x|v1|v0|255|255|-255
+x|v1|v0|0|255|255
+x|v1|v0|x|v1|v0
+x|v1|v0|abc|x|two-b
+x|v1|v0||eee|x
+x|v1|v0|hare|v0|x
+x|v1|v0|255|1.0|xxx
+x|v1|v0|-255|three-a|x
+x|v1|v0|jim|x|v0
+abc|x|two-b|jim|x|v0
+abc|x|two-b|255|x|v1
+abc|x|two-b|255|v0|x3
+abc|x|two-b|255|255|-255
+abc|x|two-b|0|255|255
+abc|x|two-b|x|v1|v0
+abc|x|two-b|abc|x|two-b
+abc|x|two-b||eee|x
+abc|x|two-b|hare|v0|x
+abc|x|two-b|255|1.0|xxx
+abc|x|two-b|-255|three-a|x
+abc|x|two-b|jim|x|v0
+|eee|x|jim|x|v0
+|eee|x|255|x|v1
+|eee|x|255|v0|x3
+|eee|x|255|255|-255
+|eee|x|0|255|255
+|eee|x|x|v1|v0
+|eee|x|abc|x|two-b
+|eee|x||eee|x
+|eee|x|hare|v0|x
+|eee|x|255|1.0|xxx
+|eee|x|-255|three-a|x
+|eee|x|jim|x|v0
+hare|v0|x|jim|x|v0
+hare|v0|x|255|x|v1
+hare|v0|x|255|v0|x3
+hare|v0|x|255|255|-255
+hare|v0|x|0|255|255
+hare|v0|x|x|v1|v0
+hare|v0|x|abc|x|two-b
+hare|v0|x||eee|x
+hare|v0|x|hare|v0|x
+hare|v0|x|255|1.0|xxx
+hare|v0|x|-255|three-a|x
+hare|v0|x|jim|x|v0
+255|1.0|xxx|jim|x|v0
+255|1.0|xxx|255|x|v1
+255|1.0|xxx|255|v0|x3
+255|1.0|xxx|255|255|-255
+255|1.0|xxx|0|255|255
+255|1.0|xxx|x|v1|v0
+255|1.0|xxx|abc|x|two-b
+255|1.0|xxx||eee|x
+255|1.0|xxx|hare|v0|x
+255|1.0|xxx|255|1.0|xxx
+255|1.0|xxx|-255|three-a|x
+255|1.0|xxx|jim|x|v0
+-255|three-a|x|jim|x|v0
+-255|three-a|x|255|x|v1
+-255|three-a|x|255|v0|x3
+-255|three-a|x|255|255|-255
+-255|three-a|x|0|255|255
+-255|three-a|x|x|v1|v0
+-255|three-a|x|abc|x|two-b
+-255|three-a|x||eee|x
+-255|three-a|x|hare|v0|x
+-255|three-a|x|255|1.0|xxx
+-255|three-a|x|-255|three-a|x
+-255|three-a|x|jim|x|v0
+jim|x|v0|jim|x|v0
+jim|x|v0|255|x|v1
+jim|x|v0|255|v0|x3
+jim|x|v0|255|255|-255
+jim|x|v0|0|255|255
+jim|x|v0|x|v1|v0
+jim|x|v0|abc|x|two-b
+jim|x|v0||eee|x
+jim|x|v0|hare|v0|x
+jim|x|v0|255|1.0|xxx
+jim|x|v0|-255|three-a|x
+jim|x|v0|jim|x|v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+255|x|v1|jim|x|v0
+255|x|v1|255|x|v1
+255|x|v1|255|v0|x3
+255|x|v1|255|255|-255
+255|x|v1|0|255|255
+255|x|v1|x|v1|v0
+255|x|v1|abc|x|two-b
+255|x|v1||eee|x
+255|x|v1|hare|v0|x
+255|x|v1|255|1.0|xxx
+255|x|v1|-255|three-a|x
+255|x|v1|jim|x|v0
+255|v0|x3|jim|x|v0
+255|v0|x3|255|x|v1
+255|v0|x3|255|v0|x3
+255|v0|x3|255|255|-255
+255|v0|x3|0|255|255
+255|v0|x3|x|v1|v0
+255|v0|x3|abc|x|two-b
+255|v0|x3||eee|x
+255|v0|x3|hare|v0|x
+255|v0|x3|255|1.0|xxx
+255|v0|x3|-255|three-a|x
+255|v0|x3|jim|x|v0
+255|255|-255|jim|x|v0
+255|255|-255|255|x|v1
+255|255|-255|255|v0|x3
+255|255|-255|255|255|-255
+255|255|-255|0|255|255
+255|255|-255|x|v1|v0
+255|255|-255|abc|x|two-b
+255|255|-255||eee|x
+255|255|-255|hare|v0|x
+255|255|-255|255|1.0|xxx
+255|255|-255|-255|three-a|x
+255|255|-255|jim|x|v0
+0|255|255|jim|x|v0
+0|255|255|255|x|v1
+0|255|255|255|v0|x3
+0|255|255|255|255|-255
+0|255|255|0|255|255
+0|255|255|x|v1|v0
+0|255|255|abc|x|two-b
+0|255|255||eee|x
+0|255|255|hare|v0|x
+0|255|255|255|1.0|xxx
+0|255|255|-255|three-a|x
+0|255|255|jim|x|v0
+x|v1|v0|jim|x|v0
+x|v1|v0|255|x|v1
+x|v1|v0|255|v0|x3
+x|v1|v0|255|255|-255
+x|v1|v0|0|255|255
+x|v1|v0|x|v1|v0
+x|v1|v0|abc|x|two-b
+x|v1|v0||eee|x
+x|v1|v0|hare|v0|x
+x|v1|v0|255|1.0|xxx
+x|v1|v0|-255|three-a|x
+x|v1|v0|jim|x|v0
+abc|x|two-b|jim|x|v0
+abc|x|two-b|255|x|v1
+abc|x|two-b|255|v0|x3
+abc|x|two-b|255|255|-255
+abc|x|two-b|0|255|255
+abc|x|two-b|x|v1|v0
+abc|x|two-b|abc|x|two-b
+abc|x|two-b||eee|x
+abc|x|two-b|hare|v0|x
+abc|x|two-b|255|1.0|xxx
+abc|x|two-b|-255|three-a|x
+abc|x|two-b|jim|x|v0
+|eee|x|jim|x|v0
+|eee|x|255|x|v1
+|eee|x|255|v0|x3
+|eee|x|255|255|-255
+|eee|x|0|255|255
+|eee|x|x|v1|v0
+|eee|x|abc|x|two-b
+|eee|x||eee|x
+|eee|x|hare|v0|x
+|eee|x|255|1.0|xxx
+|eee|x|-255|three-a|x
+|eee|x|jim|x|v0
+hare|v0|x|jim|x|v0
+hare|v0|x|255|x|v1
+hare|v0|x|255|v0|x3
+hare|v0|x|255|255|-255
+hare|v0|x|0|255|255
+hare|v0|x|x|v1|v0
+hare|v0|x|abc|x|two-b
+hare|v0|x||eee|x
+hare|v0|x|hare|v0|x
+hare|v0|x|255|1.0|xxx
+hare|v0|x|-255|three-a|x
+hare|v0|x|jim|x|v0
+255|1.0|xxx|jim|x|v0
+255|1.0|xxx|255|x|v1
+255|1.0|xxx|255|v0|x3
+255|1.0|xxx|255|255|-255
+255|1.0|xxx|0|255|255
+255|1.0|xxx|x|v1|v0
+255|1.0|xxx|abc|x|two-b
+255|1.0|xxx||eee|x
+255|1.0|xxx|hare|v0|x
+255|1.0|xxx|255|1.0|xxx
+255|1.0|xxx|-255|three-a|x
+255|1.0|xxx|jim|x|v0
+-255|three-a|x|jim|x|v0
+-255|three-a|x|255|x|v1
+-255|three-a|x|255|v0|x3
+-255|three-a|x|255|255|-255
+-255|three-a|x|0|255|255
+-255|three-a|x|x|v1|v0
+-255|three-a|x|abc|x|two-b
+-255|three-a|x||eee|x
+-255|three-a|x|hare|v0|x
+-255|three-a|x|255|1.0|xxx
+-255|three-a|x|-255|three-a|x
+-255|three-a|x|jim|x|v0
+jim|x|v0|jim|x|v0
+jim|x|v0|255|x|v1
+jim|x|v0|255|v0|x3
+jim|x|v0|255|255|-255
+jim|x|v0|0|255|255
+jim|x|v0|x|v1|v0
+jim|x|v0|abc|x|two-b
+jim|x|v0||eee|x
+jim|x|v0|hare|v0|x
+jim|x|v0|255|1.0|xxx
+jim|x|v0|-255|three-a|x
+jim|x|v0|jim|x|v0
+END VERI 0
+BEGIN VERI 0
+|eee|x
+255|x|v1
+255|v0|x3
+0|255|255
+255|1.0|xxx
+255|255|-255
+x|v1|v0
+abc|x|two-b
+hare|v0|x
+jim|x|v0
+-255|three-a|x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 46: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+12
+END VERI 0
+BEGIN VERI 0
+Parse error near line 52: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+
+
+
+
+
+
+
+
+ 
+INT: -1 
+Str: 
+jim
+jim
+jim
+jim
+jim
+jim
+jim
+jim
+ 
+INT: 7 
+
+
+Result NUM: 1 
+RESULT FLAGS: -1
+Str: 
+255|x|v1|jim|x|v0
+255|x|v1|255|x|v1
+255|x|v1|255|v0|x3
+255|x|v1|255|255|-255
+255|x|v1|0|255|255
+255|x|v1|x|v1|v0
+255|x|v1|abc|x|two-b
+255|x|v1||eee|x
+255|x|v1|hare|v0|x
+255|x|v1|255|1.0|xxx
+255|x|v1|-255|three-a|x
+255|x|v1|jim|x|v0
+255|v0|x3|jim|x|v0
+255|v0|x3|255|x|v1
+255|v0|x3|255|v0|x3
+255|v0|x3|255|255|-255
+255|v0|x3|0|255|255
+255|v0|x3|x|v1|v0
+255|v0|x3|abc|x|two-b
+255|v0|x3||eee|x
+255|v0|x3|hare|v0|x
+255|v0|x3|255|1.0|xxx
+255|v0|x3|-255|three-a|x
+255|v0|x3|jim|x|v0
+255|255|-255|jim|x|v0
+255|255|-255|255|x|v1
+255|255|-255|255|v0|x3
+255|255|-255|255|255|-255
+255|255|-255|0|255|255
+255|255|-255|x|v1|v0
+255|255|-255|abc|x|two-b
+255|255|-255||eee|x
+255|255|-255|hare|v0|x
+255|255|-255|255|1.0|xxx
+255|255|-255|-255|three-a|x
+255|255|-255|jim|x|v0
+0|255|255|jim|x|v0
+0|255|255|255|x|v1
+0|255|255|255|v0|x3
+0|255|255|255|255|-255
+0|255|255|0|255|255
+0|255|255|x|v1|v0
+0|255|255|abc|x|two-b
+0|255|255||eee|x
+0|255|255|hare|v0|x
+0|255|255|255|1.0|xxx
+0|255|255|-255|three-a|x
+0|255|255|jim|x|v0
+x|v1|v0|jim|x|v0
+x|v1|v0|255|x|v1
+x|v1|v0|255|v0|x3
+x|v1|v0|255|255|-255
+x|v1|v0|0|255|255
+x|v1|v0|x|v1|v0
+x|v1|v0|abc|x|two-b
+x|v1|v0||eee|x
+x|v1|v0|hare|v0|x
+x|v1|v0|255|1.0|xxx
+x|v1|v0|-255|three-a|x
+x|v1|v0|jim|x|v0
+abc|x|two-b|jim|x|v0
+abc|x|two-b|255|x|v1
+abc|x|two-b|255|v0|x3
+abc|x|two-b|255|255|-255
+abc|x|two-b|0|255|255
+abc|x|two-b|x|v1|v0
+abc|x|two-b|abc|x|two-b
+abc|x|two-b||eee|x
+abc|x|two-b|hare|v0|x
+abc|x|two-b|255|1.0|xxx
+abc|x|two-b|-255|three-a|x
+abc|x|two-b|jim|x|v0
+|eee|x|jim|x|v0
+|eee|x|255|x|v1
+|eee|x|255|v0|x3
+|eee|x|255|255|-255
+|eee|x|0|255|255
+|eee|x|x|v1|v0
+|eee|x|abc|x|two-b
+|eee|x||eee|x
+|eee|x|hare|v0|x
+|eee|x|255|1.0|xxx
+|eee|x|-255|three-a|x
+|eee|x|jim|x|v0
+hare|v0|x|jim|x|v0
+hare|v0|x|255|x|v1
+hare|v0|x|255|v0|x3
+hare|v0|x|255|255|-255
+hare|v0|x|0|255|255
+hare|v0|x|x|v1|v0
+hare|v0|x|abc|x|two-b
+hare|v0|x||eee|x
+hare|v0|x|hare|v0|x
+hare|v0|x|255|1.0|xxx
+hare|v0|x|-255|three-a|x
+hare|v0|x|jim|x|v0
+255|1.0|xxx|jim|x|v0
+255|1.0|xxx|255|x|v1
+255|1.0|xxx|255|v0|x3
+255|1.0|xxx|255|255|-255
+255|1.0|xxx|0|255|255
+255|1.0|xxx|x|v1|v0
+255|1.0|xxx|abc|x|two-b
+255|1.0|xxx||eee|x
+255|1.0|xxx|hare|v0|x
+255|1.0|xxx|255|1.0|xxx
+255|1.0|xxx|-255|three-a|x
+255|1.0|xxx|jim|x|v0
+-255|three-a|x|jim|x|v0
+-255|three-a|x|255|x|v1
+-255|three-a|x|255|v0|x3
+-255|three-a|x|255|255|-255
+-255|three-a|x|0|255|255
+-255|three-a|x|x|v1|v0
+-255|three-a|x|abc|x|two-b
+-255|three-a|x||eee|x
+-255|three-a|x|hare|v0|x
+-255|three-a|x|255|1.0|xxx
+-255|three-a|x|-255|three-a|x
+-255|three-a|x|jim|x|v0
+jim|x|v0|jim|x|v0
+jim|x|v0|255|x|v1
+jim|x|v0|255|v0|x3
+jim|x|v0|255|255|-255
+jim|x|v0|0|255|255
+jim|x|v0|x|v1|v0
+jim|x|v0|abc|x|two-b
+jim|x|v0||eee|x
+jim|x|v0|hare|v0|x
+jim|x|v0|255|1.0|xxx
+jim|x|v0|-255|three-a|x
+jim|x|v0|jim|x|v0
+ 
+Str: 
+255|x|v1|jim|x|v0
+255|x|v1|255|x|v1
+255|x|v1|255|v0|x3
+255|x|v1|255|255|-255
+255|x|v1|0|255|255
+255|x|v1|x|v1|v0
+255|x|v1|abc|x|two-b
+255|x|v1||eee|x
+255|x|v1|hare|v0|x
+255|x|v1|255|1.0|xxx
+255|x|v1|-255|three-a|x
+255|x|v1|jim|x|v0
+255|v0|x3|jim|x|v0
+255|v0|x3|255|x|v1
+255|v0|x3|255|v0|x3
+255|v0|x3|255|255|-255
+255|v0|x3|0|255|255
+255|v0|x3|x|v1|v0
+255|v0|x3|abc|x|two-b
+255|v0|x3||eee|x
+255|v0|x3|hare|v0|x
+255|v0|x3|255|1.0|xxx
+255|v0|x3|-255|three-a|x
+255|v0|x3|jim|x|v0
+255|255|-255|jim|x|v0
+255|255|-255|255|x|v1
+255|255|-255|255|v0|x3
+255|255|-255|255|255|-255
+255|255|-255|0|255|255
+255|255|-255|x|v1|v0
+255|255|-255|abc|x|two-b
+255|255|-255||eee|x
+255|255|-255|hare|v0|x
+255|255|-255|255|1.0|xxx
+255|255|-255|-255|three-a|x
+255|255|-255|jim|x|v0
+0|255|255|jim|x|v0
+0|255|255|255|x|v1
+0|255|255|255|v0|x3
+0|255|255|255|255|-255
+0|255|255|0|255|255
+0|255|255|x|v1|v0
+0|255|255|abc|x|two-b
+0|255|255||eee|x
+0|255|255|hare|v0|x
+0|255|255|255|1.0|xxx
+0|255|255|-255|three-a|x
+0|255|255|jim|x|v0
+x|v1|v0|jim|x|v0
+x|v1|v0|255|x|v1
+x|v1|v0|255|v0|x3
+x|v1|v0|255|255|-255
+x|v1|v0|0|255|255
+x|v1|v0|x|v1|v0
+x|v1|v0|abc|x|two-b
+x|v1|v0||eee|x
+x|v1|v0|hare|v0|x
+x|v1|v0|255|1.0|xxx
+x|v1|v0|-255|three-a|x
+x|v1|v0|jim|x|v0
+abc|x|two-b|jim|x|v0
+abc|x|two-b|255|x|v1
+abc|x|two-b|255|v0|x3
+abc|x|two-b|255|255|-255
+abc|x|two-b|0|255|255
+abc|x|two-b|x|v1|v0
+abc|x|two-b|abc|x|two-b
+abc|x|two-b||eee|x
+abc|x|two-b|hare|v0|x
+abc|x|two-b|255|1.0|xxx
+abc|x|two-b|-255|three-a|x
+abc|x|two-b|jim|x|v0
+|eee|x|jim|x|v0
+|eee|x|255|x|v1
+|eee|x|255|v0|x3
+|eee|x|255|255|-255
+|eee|x|0|255|255
+|eee|x|x|v1|v0
+|eee|x|abc|x|two-b
+|eee|x||eee|x
+|eee|x|hare|v0|x
+|eee|x|255|1.0|xxx
+|eee|x|-255|three-a|x
+|eee|x|jim|x|v0
+hare|v0|x|jim|x|v0
+hare|v0|x|255|x|v1
+hare|v0|x|255|v0|x3
+hare|v0|x|255|255|-255
+hare|v0|x|0|255|255
+hare|v0|x|x|v1|v0
+hare|v0|x|abc|x|two-b
+hare|v0|x||eee|x
+hare|v0|x|hare|v0|x
+hare|v0|x|255|1.0|xxx
+hare|v0|x|-255|three-a|x
+hare|v0|x|jim|x|v0
+255|1.0|xxx|jim|x|v0
+255|1.0|xxx|255|x|v1
+255|1.0|xxx|255|v0|x3
+255|1.0|xxx|255|255|-255
+255|1.0|xxx|0|255|255
+255|1.0|xxx|x|v1|v0
+255|1.0|xxx|abc|x|two-b
+255|1.0|xxx||eee|x
+255|1.0|xxx|hare|v0|x
+255|1.0|xxx|255|1.0|xxx
+255|1.0|xxx|-255|three-a|x
+255|1.0|xxx|jim|x|v0
+-255|three-a|x|jim|x|v0
+-255|three-a|x|255|x|v1
+-255|three-a|x|255|v0|x3
+-255|three-a|x|255|255|-255
+-255|three-a|x|0|255|255
+-255|three-a|x|x|v1|v0
+-255|three-a|x|abc|x|two-b
+-255|three-a|x||eee|x
+-255|three-a|x|hare|v0|x
+-255|three-a|x|255|1.0|xxx
+-255|three-a|x|-255|three-a|x
+-255|three-a|x|jim|x|v0
+jim|x|v0|jim|x|v0
+jim|x|v0|255|x|v1
+jim|x|v0|255|v0|x3
+jim|x|v0|255|255|-255
+jim|x|v0|0|255|255
+jim|x|v0|x|v1|v0
+jim|x|v0|abc|x|two-b
+jim|x|v0||eee|x
+jim|x|v0|hare|v0|x
+jim|x|v0|255|1.0|xxx
+jim|x|v0|-255|three-a|x
+jim|x|v0|jim|x|v0
+ 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+Str: 
+Parse error near line 34: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: -1
+Str: 
+255|x|v1|jim|x|v0
+255|x|v1|255|x|v1
+255|x|v1|255|v0|x3
+255|x|v1|255|255|-255
+255|x|v1|0|255|255
+255|x|v1|x|v1|v0
+255|x|v1|abc|x|two-b
+255|x|v1||eee|x
+255|x|v1|hare|v0|x
+255|x|v1|255|1.0|xxx
+255|x|v1|-255|three-a|x
+255|x|v1|jim|x|v0
+255|v0|x3|jim|x|v0
+255|v0|x3|255|x|v1
+255|v0|x3|255|v0|x3
+255|v0|x3|255|255|-255
+255|v0|x3|0|255|255
+255|v0|x3|x|v1|v0
+255|v0|x3|abc|x|two-b
+255|v0|x3||eee|x
+255|v0|x3|hare|v0|x
+255|v0|x3|255|1.0|xxx
+255|v0|x3|-255|three-a|x
+255|v0|x3|jim|x|v0
+255|255|-255|jim|x|v0
+255|255|-255|255|x|v1
+255|255|-255|255|v0|x3
+255|255|-255|255|255|-255
+255|255|-255|0|255|255
+255|255|-255|x|v1|v0
+255|255|-255|abc|x|two-b
+255|255|-255||eee|x
+255|255|-255|hare|v0|x
+255|255|-255|255|1.0|xxx
+255|255|-255|-255|three-a|x
+255|255|-255|jim|x|v0
+0|255|255|jim|x|v0
+0|255|255|255|x|v1
+0|255|255|255|v0|x3
+0|255|255|255|255|-255
+0|255|255|0|255|255
+0|255|255|x|v1|v0
+0|255|255|abc|x|two-b
+0|255|255||eee|x
+0|255|255|hare|v0|x
+0|255|255|255|1.0|xxx
+0|255|255|-255|three-a|x
+0|255|255|jim|x|v0
+x|v1|v0|jim|x|v0
+x|v1|v0|255|x|v1
+x|v1|v0|255|v0|x3
+x|v1|v0|255|255|-255
+x|v1|v0|0|255|255
+x|v1|v0|x|v1|v0
+x|v1|v0|abc|x|two-b
+x|v1|v0||eee|x
+x|v1|v0|hare|v0|x
+x|v1|v0|255|1.0|xxx
+x|v1|v0|-255|three-a|x
+x|v1|v0|jim|x|v0
+abc|x|two-b|jim|x|v0
+abc|x|two-b|255|x|v1
+abc|x|two-b|255|v0|x3
+abc|x|two-b|255|255|-255
+abc|x|two-b|0|255|255
+abc|x|two-b|x|v1|v0
+abc|x|two-b|abc|x|two-b
+abc|x|two-b||eee|x
+abc|x|two-b|hare|v0|x
+abc|x|two-b|255|1.0|xxx
+abc|x|two-b|-255|three-a|x
+abc|x|two-b|jim|x|v0
+|eee|x|jim|x|v0
+|eee|x|255|x|v1
+|eee|x|255|v0|x3
+|eee|x|255|255|-255
+|eee|x|0|255|255
+|eee|x|x|v1|v0
+|eee|x|abc|x|two-b
+|eee|x||eee|x
+|eee|x|hare|v0|x
+|eee|x|255|1.0|xxx
+|eee|x|-255|three-a|x
+|eee|x|jim|x|v0
+hare|v0|x|jim|x|v0
+hare|v0|x|255|x|v1
+hare|v0|x|255|v0|x3
+hare|v0|x|255|255|-255
+hare|v0|x|0|255|255
+hare|v0|x|x|v1|v0
+hare|v0|x|abc|x|two-b
+hare|v0|x||eee|x
+hare|v0|x|hare|v0|x
+hare|v0|x|255|1.0|xxx
+hare|v0|x|-255|three-a|x
+hare|v0|x|jim|x|v0
+255|1.0|xxx|jim|x|v0
+255|1.0|xxx|255|x|v1
+255|1.0|xxx|255|v0|x3
+255|1.0|xxx|255|255|-255
+255|1.0|xxx|0|255|255
+255|1.0|xxx|x|v1|v0
+255|1.0|xxx|abc|x|two-b
+255|1.0|xxx||eee|x
+255|1.0|xxx|hare|v0|x
+255|1.0|xxx|255|1.0|xxx
+255|1.0|xxx|-255|three-a|x
+255|1.0|xxx|jim|x|v0
+-255|three-a|x|jim|x|v0
+-255|three-a|x|255|x|v1
+-255|three-a|x|255|v0|x3
+-255|three-a|x|255|255|-255
+-255|three-a|x|0|255|255
+-255|three-a|x|x|v1|v0
+-255|three-a|x|abc|x|two-b
+-255|three-a|x||eee|x
+-255|three-a|x|hare|v0|x
+-255|three-a|x|255|1.0|xxx
+-255|three-a|x|-255|three-a|x
+-255|three-a|x|jim|x|v0
+jim|x|v0|jim|x|v0
+jim|x|v0|255|x|v1
+jim|x|v0|255|v0|x3
+jim|x|v0|255|255|-255
+jim|x|v0|0|255|255
+jim|x|v0|x|v1|v0
+jim|x|v0|abc|x|two-b
+jim|x|v0||eee|x
+jim|x|v0|hare|v0|x
+jim|x|v0|255|1.0|xxx
+jim|x|v0|-255|three-a|x
+jim|x|v0|jim|x|v0
+ 
+Str: 
+255|x|v1|jim|x|v0
+255|x|v1|255|x|v1
+255|x|v1|255|v0|x3
+255|x|v1|255|255|-255
+255|x|v1|0|255|255
+255|x|v1|x|v1|v0
+255|x|v1|abc|x|two-b
+255|x|v1||eee|x
+255|x|v1|hare|v0|x
+255|x|v1|255|1.0|xxx
+255|x|v1|-255|three-a|x
+255|x|v1|jim|x|v0
+255|v0|x3|jim|x|v0
+255|v0|x3|255|x|v1
+255|v0|x3|255|v0|x3
+255|v0|x3|255|255|-255
+255|v0|x3|0|255|255
+255|v0|x3|x|v1|v0
+255|v0|x3|abc|x|two-b
+255|v0|x3||eee|x
+255|v0|x3|hare|v0|x
+255|v0|x3|255|1.0|xxx
+255|v0|x3|-255|three-a|x
+255|v0|x3|jim|x|v0
+255|255|-255|jim|x|v0
+255|255|-255|255|x|v1
+255|255|-255|255|v0|x3
+255|255|-255|255|255|-255
+255|255|-255|0|255|255
+255|255|-255|x|v1|v0
+255|255|-255|abc|x|two-b
+255|255|-255||eee|x
+255|255|-255|hare|v0|x
+255|255|-255|255|1.0|xxx
+255|255|-255|-255|three-a|x
+255|255|-255|jim|x|v0
+0|255|255|jim|x|v0
+0|255|255|255|x|v1
+0|255|255|255|v0|x3
+0|255|255|255|255|-255
+0|255|255|0|255|255
+0|255|255|x|v1|v0
+0|255|255|abc|x|two-b
+0|255|255||eee|x
+0|255|255|hare|v0|x
+0|255|255|255|1.0|xxx
+0|255|255|-255|three-a|x
+0|255|255|jim|x|v0
+x|v1|v0|jim|x|v0
+x|v1|v0|255|x|v1
+x|v1|v0|255|v0|x3
+x|v1|v0|255|255|-255
+x|v1|v0|0|255|255
+x|v1|v0|x|v1|v0
+x|v1|v0|abc|x|two-b
+x|v1|v0||eee|x
+x|v1|v0|hare|v0|x
+x|v1|v0|255|1.0|xxx
+x|v1|v0|-255|three-a|x
+x|v1|v0|jim|x|v0
+abc|x|two-b|jim|x|v0
+abc|x|two-b|255|x|v1
+abc|x|two-b|255|v0|x3
+abc|x|two-b|255|255|-255
+abc|x|two-b|0|255|255
+abc|x|two-b|x|v1|v0
+abc|x|two-b|abc|x|two-b
+abc|x|two-b||eee|x
+abc|x|two-b|hare|v0|x
+abc|x|two-b|255|1.0|xxx
+abc|x|two-b|-255|three-a|x
+abc|x|two-b|jim|x|v0
+|eee|x|jim|x|v0
+|eee|x|255|x|v1
+|eee|x|255|v0|x3
+|eee|x|255|255|-255
+|eee|x|0|255|255
+|eee|x|x|v1|v0
+|eee|x|abc|x|two-b
+|eee|x||eee|x
+|eee|x|hare|v0|x
+|eee|x|255|1.0|xxx
+|eee|x|-255|three-a|x
+|eee|x|jim|x|v0
+hare|v0|x|jim|x|v0
+hare|v0|x|255|x|v1
+hare|v0|x|255|v0|x3
+hare|v0|x|255|255|-255
+hare|v0|x|0|255|255
+hare|v0|x|x|v1|v0
+hare|v0|x|abc|x|two-b
+hare|v0|x||eee|x
+hare|v0|x|hare|v0|x
+hare|v0|x|255|1.0|xxx
+hare|v0|x|-255|three-a|x
+hare|v0|x|jim|x|v0
+255|1.0|xxx|jim|x|v0
+255|1.0|xxx|255|x|v1
+255|1.0|xxx|255|v0|x3
+255|1.0|xxx|255|255|-255
+255|1.0|xxx|0|255|255
+255|1.0|xxx|x|v1|v0
+255|1.0|xxx|abc|x|two-b
+255|1.0|xxx||eee|x
+255|1.0|xxx|hare|v0|x
+255|1.0|xxx|255|1.0|xxx
+255|1.0|xxx|-255|three-a|x
+255|1.0|xxx|jim|x|v0
+-255|three-a|x|jim|x|v0
+-255|three-a|x|255|x|v1
+-255|three-a|x|255|v0|x3
+-255|three-a|x|255|255|-255
+-255|three-a|x|0|255|255
+-255|three-a|x|x|v1|v0
+-255|three-a|x|abc|x|two-b
+-255|three-a|x||eee|x
+-255|three-a|x|hare|v0|x
+-255|three-a|x|255|1.0|xxx
+-255|three-a|x|-255|three-a|x
+-255|three-a|x|jim|x|v0
+jim|x|v0|jim|x|v0
+jim|x|v0|255|x|v1
+jim|x|v0|255|v0|x3
+jim|x|v0|255|255|-255
+jim|x|v0|0|255|255
+jim|x|v0|x|v1|v0
+jim|x|v0|abc|x|two-b
+jim|x|v0||eee|x
+jim|x|v0|hare|v0|x
+jim|x|v0|255|1.0|xxx
+jim|x|v0|-255|three-a|x
+jim|x|v0|jim|x|v0
+ 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+|eee|x
+255|x|v1
+255|v0|x3
+0|255|255
+255|1.0|xxx
+255|255|-255
+x|v1|v0
+abc|x|two-b
+hare|v0|x
+jim|x|v0
+-255|three-a|x
+ 
+INT: 10 
+Str: 
+|eee|x
+255|x|v1
+255|v0|x3
+0|255|255
+255|1.0|xxx
+255|255|-255
+x|v1|v0
+abc|x|two-b
+hare|v0|x
+jim|x|v0
+-255|three-a|x
+ 
+INT: 10 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 46: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 46: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+12
+ 
+INT: 0 
+Str: 
+12
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 52: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 52: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

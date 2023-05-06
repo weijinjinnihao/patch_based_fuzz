@@ -1,0 +1,371 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INT, c2 INT ); 
+BEGIN; 
+INSERT INTO v0 VALUES ( 10, 10 ); 
+CREATE INDEX i3 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( 10, 10 ); 
+INSERT INTO v0 VALUES ( 10, 16 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+CREATE INDEX i6 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 255, 18446744073709551488 ); 
+ALTER TABLE v0 ADD COLUMN c7 TEXT CHECK( c2 != 10 ) DEFAULT 18446744073709551488; 
+CREATE INDEX i8 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a9 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a10.c1 || a10.c7 ) FROM v0 AS a10 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a11, v0 AS a12 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v13 AS ( SELECT hex ( ) y ORDER BY 255 ) SELECT * FROM v13 AS a14 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c16 ) AS ( SELECT a15.c7 + ( SELECT max ( a17.c7 ) FROM v0 AS a20 ORDER BY 18446744071562067968 ), a17.c2 + ( SELECT a17.c7 FROM v0 AS a19 ORDER BY 10 ), c16 + ( SELECT max ( a18.c2 ) FROM v0 AS a18 ORDER BY 18446744073709551488 ) FROM v0 AS a17 ORDER BY 8 ) SELECT * FROM v0 AS a15 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c22 ) AS ( SELECT 0 ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a21 ORDER BY 3.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a23.c7 || a23.c2 ) FROM v0 AS a23 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT hex ( ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24, v0 AS a25 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 11: CHECK constraint failed
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a10.c7
+  SELECT max ( a10.c1 || a10.c7 ) FROM v0 AS a10 ORDER BY 18446744073709551488; 
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+10|10|10|10
+10|10|10|10
+10|10|10|16
+10|10|255|1.84467440737096e+19
+10|10|10|10
+10|10|10|10
+10|10|10|16
+10|10|255|1.84467440737096e+19
+10|16|10|10
+10|16|10|10
+10|16|10|16
+10|16|255|1.84467440737096e+19
+255|1.84467440737096e+19|10|10
+255|1.84467440737096e+19|10|10
+255|1.84467440737096e+19|10|16
+255|1.84467440737096e+19|255|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: wrong number of arguments to function hex()
+  WITH v13 AS ( SELECT hex ( ) y ORDER BY 255 ) SELECT * FROM v13 AS a14 ORDER B
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no tables specified
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a23.c7
+  SELECT max ( a23.c7 || a23.c2 ) FROM v0 AS a23 ORDER BY 8; 
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: wrong number of arguments to function hex()
+  SELECT hex ( ) ORDER BY 18446744071562067968; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INT, c2 INT ); 
+BEGIN; 
+INSERT INTO v0 VALUES ( 10, 10 ); 
+; 
+INSERT INTO v0 VALUES ( 10, 10 ); 
+INSERT INTO v0 VALUES ( 10, 16 ); 
+; 
+; 
+; 
+INSERT INTO v0 VALUES ( 255, 18446744073709551488 ); 
+ALTER TABLE v0 ADD COLUMN c7 TEXT CHECK( c2 != 10 ) DEFAULT 18446744073709551488; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a9 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a10.c1 || a10.c7 ) FROM v0 AS a10 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a11, v0 AS a12 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v13 AS ( SELECT hex ( ) y ORDER BY 255 ) SELECT * FROM v13 AS a14 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c16 ) AS ( SELECT a15.c7 + ( SELECT max ( a17.c7 ) FROM v0 AS a20 ORDER BY 18446744071562067968 ), a17.c2 + ( SELECT a17.c7 FROM v0 AS a19 ORDER BY 10 ), c16 + ( SELECT max ( a18.c2 ) FROM v0 AS a18 ORDER BY 18446744073709551488 ) FROM v0 AS a17 ORDER BY 8 ) SELECT * FROM v0 AS a15 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c22 ) AS ( SELECT 0 ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a21 ORDER BY 3.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a23.c7 || a23.c2 ) FROM v0 AS a23 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT hex ( ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24, v0 AS a25 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 11: CHECK constraint failed
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Runtime error near line 17: no such column: a10.c7
+END VERI 0
+BEGIN VERI 0
+10|10|10|10
+10|10|10|10
+10|10|10|16
+10|10|255|1.84467440737096e+19
+10|10|10|10
+10|10|10|10
+10|10|10|16
+10|10|255|1.84467440737096e+19
+10|16|10|10
+10|16|10|10
+10|16|10|16
+10|16|255|1.84467440737096e+19
+255|1.84467440737096e+19|10|10
+255|1.84467440737096e+19|10|10
+255|1.84467440737096e+19|10|16
+255|1.84467440737096e+19|255|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: wrong number of arguments to function hex()
+  WITH v13 AS ( SELECT hex ( ) y ORDER BY 255 ) SELECT * FROM v13 AS a14 ORDER B
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no tables specified
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a23.c7
+  SELECT max ( a23.c7 || a23.c2 ) FROM v0 AS a23 ORDER BY 8; 
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: wrong number of arguments to function hex()
+  SELECT hex ( ) ORDER BY 18446744071562067968; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 17: no such column: a10.c7
+  SELECT max ( a10.c1 || a10.c7 ) FROM v0 AS a10 ORDER BY 18446744073709551488; 
+                         ^--- error here
+ 
+INT: 2 
+Str: 
+Runtime error near line 17: no such column: a10.c7
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+10|10|10|10
+10|10|10|10
+10|10|10|16
+10|10|255|1.84467440737096e+19
+10|10|10|10
+10|10|10|10
+10|10|10|16
+10|10|255|1.84467440737096e+19
+10|16|10|10
+10|16|10|10
+10|16|10|16
+10|16|255|1.84467440737096e+19
+255|1.84467440737096e+19|10|10
+255|1.84467440737096e+19|10|10
+255|1.84467440737096e+19|10|16
+255|1.84467440737096e+19|255|1.84467440737096e+19
+ 
+INT: 15 
+Str: 
+10|10|10|10
+10|10|10|10
+10|10|10|16
+10|10|255|1.84467440737096e+19
+10|10|10|10
+10|10|10|10
+10|10|10|16
+10|10|255|1.84467440737096e+19
+10|16|10|10
+10|16|10|10
+10|16|10|16
+10|16|255|1.84467440737096e+19
+255|1.84467440737096e+19|10|10
+255|1.84467440737096e+19|10|10
+255|1.84467440737096e+19|10|16
+255|1.84467440737096e+19|255|1.84467440737096e+19
+ 
+INT: 15 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: wrong number of arguments to function hex()
+  WITH v13 AS ( SELECT hex ( ) y ORDER BY 255 ) SELECT * FROM v13 AS a14 ORDER B
+                       ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 23: wrong number of arguments to function hex()
+  WITH v13 AS ( SELECT hex ( ) y ORDER BY 255 ) SELECT * FROM v13 AS a14 ORDER B
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: circular reference: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 26: circular reference: v0
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 29: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no such column: a23.c7
+  SELECT max ( a23.c7 || a23.c2 ) FROM v0 AS a23 ORDER BY 8; 
+               ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 35: no such column: a23.c7
+  SELECT max ( a23.c7 || a23.c2 ) FROM v0 AS a23 ORDER BY 8; 
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: wrong number of arguments to function hex()
+  SELECT hex ( ) ORDER BY 18446744071562067968; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 38: wrong number of arguments to function hex()
+  SELECT hex ( ) ORDER BY 18446744071562067968; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

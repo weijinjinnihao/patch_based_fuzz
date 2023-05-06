@@ -1,0 +1,298 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE TABLE v6 ( c7, c8, c9, c10, c11 INTEGER PRIMARY KEY ON CONFLICT REPLACE, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, CHECK( c17 > 0 ) ); 
+CREATE TABLE v26 ( c27, c28, c29 CHECK( c28 > 0 ) ); 
+INSERT INTO v6 VALUES ( 0, 10, 0 ); 
+CREATE INDEX i30 ON v6 ( c16 ); 
+CREATE INDEX i31 ON v26 ( c27 ); 
+INSERT INTO v26 VALUES ( 10, 10, 18446744073709551615 ); 
+INSERT INTO v6 VALUES ( 18446744073709551488, 0, 10 ); 
+ALTER TABLE v26 DROP COLUMN c27; 
+CREATE INDEX i32 ON v26 ( c27 ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v6 ( c33 ) AS ( SELECT 'x' ORDER BY 0 ) SELECT 127 y ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v34 ( c36 ) AS ( WITH v34 ( c37 ) AS ( WITH v34 ( c38, c39, c40, c41, c42, c43 ) AS ( SELECT 18446744073709551615 y ORDER BY ( ( c37 + 18446744073709551488 ) % 0 ) < 0 ) SELECT 8 ORDER BY 0 ) SELECT 0 ORDER BY 0 ) SELECT * FROM v34 AS a35 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a44 WHERE a44.c28 < 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( x'b2b2b2', 'v1' ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a45, v26 AS a46 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a48.c1, a47.c28 FROM v26 AS a47 RIGHT JOIN v0 AS a48 ON a48.c1 = a48.c2 WHERE a47.c27 = a48.c1 NOT NULL ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49 NATURAL JOIN v0 AS a50 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a51 NATURAL JOIN v0 AS a52 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a53 WHERE a53.c12 > 127 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 0 IS NOT 0 ) OR NOT ( a54.c2 != 'x' IS 127 OR ( a54.c3 = 18446744073709551615 ) ) ) IS 18446744073709551488 FROM v0 AS a54 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: table v6 has 19 columns but 3 values were supplied
+Parse error near line 10: table v6 has 19 columns but 3 values were supplied
+Runtime error near line 11: error in index i31 after drop column: no such column: c27
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+  0 ) < 0 ) SELECT 8 ORDER BY 0 ) SELECT 0 ORDER BY 0 ) SELECT * FROM v34 AS a35
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+10|10|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: near "ORDER": syntax error
+  VALUES ( x'b2b2b2', 'v1' ) ORDER BY 18446744073709551488; 
+               error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 19
+  ECT * FROM v6 AS a53 WHERE a53.c12 > 127 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+; 
+; 
+CREATE TABLE v6 ( c7, c8, c9, c10, c11 INTEGER PRIMARY KEY ON CONFLICT REPLACE, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, CHECK( c17 > 0 ) ); 
+CREATE TABLE v26 ( c27, c28, c29 CHECK( c28 > 0 ) ); 
+INSERT INTO v6 VALUES ( 0, 10, 0 ); 
+; 
+; 
+INSERT INTO v26 VALUES ( 10, 10, 18446744073709551615 ); 
+INSERT INTO v6 VALUES ( 18446744073709551488, 0, 10 ); 
+ALTER TABLE v26 DROP COLUMN c27; 
+; 
+SELECT 'BEGIN VERI 0'; 
+WITH v6 ( c33 ) AS ( SELECT 'x' ORDER BY 0 ) SELECT 127 y ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v34 ( c36 ) AS ( WITH v34 ( c37 ) AS ( WITH v34 ( c38, c39, c40, c41, c42, c43 ) AS ( SELECT 18446744073709551615 y ORDER BY ( ( c37 + 18446744073709551488 ) % 0 ) < 0 ) SELECT 8 ORDER BY 0 ) SELECT 0 ORDER BY 0 ) SELECT * FROM v34 AS a35 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a44 WHERE a44.c28 < 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( x'b2b2b2', 'v1' ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a45, v26 AS a46 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a48.c1, a47.c28 FROM v26 AS a47 RIGHT JOIN v0 AS a48 ON a48.c1 = a48.c2 WHERE a47.c27 = a48.c1 NOT NULL ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49 NATURAL JOIN v0 AS a50 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a51 NATURAL JOIN v0 AS a52 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a53 WHERE a53.c12 > 127 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 0 IS NOT 0 ) OR NOT ( a54.c2 != 'x' IS 127 OR ( a54.c3 = 18446744073709551615 ) ) ) IS 18446744073709551488 FROM v0 AS a54 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: table v6 has 19 columns but 3 values were supplied
+Parse error near line 10: table v6 has 19 columns but 3 values were supplied
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+  0 ) < 0 ) SELECT 8 ORDER BY 0 ) SELECT 0 ORDER BY 0 ) SELECT * FROM v34 AS a35
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+10|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: near "ORDER": syntax error
+  VALUES ( x'b2b2b2', 'v1' ) ORDER BY 18446744073709551488; 
+               error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a47.c27
+  a47 RIGHT JOIN v0 AS a48 ON a48.c1 = a48.c2 WHERE a47.c27 = a48.c1 NOT NULL OR
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 19
+  ECT * FROM v6 AS a53 WHERE a53.c12 > 127 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+  0 ) < 0 ) SELECT 8 ORDER BY 0 ) SELECT 0 ORDER BY 0 ) SELECT * FROM v34 AS a35
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+  0 ) < 0 ) SELECT 8 ORDER BY 0 ) SELECT 0 ORDER BY 0 ) SELECT * FROM v34 AS a35
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+10|10|1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+10|1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 36506944
+Str: 
+Parse error near line 23: near "ORDER": syntax error
+  VALUES ( x'b2b2b2', 'v1' ) ORDER BY 18446744073709551488; 
+               error here ---^
+ 
+Str: 
+Parse error near line 23: near "ORDER": syntax error
+  VALUES ( x'b2b2b2', 'v1' ) ORDER BY 18446744073709551488; 
+               error here ---^
+ 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 29: no such column: a47.c27
+  a47 RIGHT JOIN v0 AS a48 ON a48.c1 = a48.c2 WHERE a47.c27 = a48.c1 NOT NULL OR
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 19
+  ECT * FROM v6 AS a53 WHERE a53.c12 > 127 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 19
+  ECT * FROM v6 AS a53 WHERE a53.c12 > 127 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

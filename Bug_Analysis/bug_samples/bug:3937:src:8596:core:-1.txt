@@ -1,0 +1,287 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE TABLE v5 ( c6 UNIQUE, c7 INTEGER UNIQUE ON CONFLICT FAIL, c8, c9, c10, c11 DEFAULT 18446744073709551615, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, PRIMARY KEY ( c7, c27, c9, c14, c24, c18, c13 ) ) WITHOUT ROWID; 
+CREATE TABLE v30 ( c31 TEXT, c32 REAL, c33 INT, PRIMARY KEY ( c31 COLLATE nocase, c31 ) ) WITHOUT ROWID; 
+CREATE INDEX i34 ON v5 ( c9 ); 
+CREATE VIEW v35 AS SELECT * FROM v30 AS a36 ORDER BY 18446744073709551615; 
+CREATE TABLE v37 ( c38 INTEGER PRIMARY KEY, c39, c40 UNIQUE ); 
+CREATE INDEX i41 ON v35 ( c26 ); 
+CREATE TABLE v42 ( c43, c44, c45 ); 
+CREATE INDEX i46 ON v30 ( c32 ); 
+CREATE TABLE v47 ( c48 PRIMARY KEY, c49, c50 AS( c50 + c48 - c48 ) DEFAULT - 18446744073709551615, c51 REFERENCES t1 DEFAULT NULL ); 
+ALTER TABLE v30 DROP COLUMN c32; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE VIRTUAL TABLE v52 USING fts5 ( c53, c54 ); 
+CREATE INDEX i55 ON v30 ( c33 ); 
+ALTER TABLE v5 DROP COLUMN c12; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v47 AS a56 NATURAL JOIN v0 AS a57 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v35 AS a58 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a59 NATURAL JOIN v37 AS a60 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v52 AS a61 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a62 NATURAL JOIN v37 AS a63 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a64 GROUP BY a64.c32, a64.c33, count ( a64.c32 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a65, v42 AS a66 NATURAL JOIN v30 AS a67 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a68 WHERE a68.c3 NOT NULL ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a69 CROSS JOIN v52 AS a70 ON ( a70.c39 = a70.c54 ) WHERE a69.c31 >= ( SELECT a69.c31 FROM v37 AS a71 WHERE a70.c39 IN ( SELECT a70.c53 FROM ( SELECT a70.c53 FROM v35 AS a72 ORDER BY 18446744073709518848 ) AS y WHERE a70.c54 = 16 ORDER BY 16 ) ORDER BY 18446744073709518848 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a73 WHERE ( ( SELECT * FROM v35 AS a74 WHERE a73.c9 = a73.c15 || c50 ORDER BY 18446744073709518848 ) % 18446744073709518848 ) > 0 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: views may not be indexed
+Parse error near line 11: cannot use DEFAULT on a generated column
+Runtime error near line 12: error in index i46 after drop column: no such column: c32
+Runtime error near line 14: no such module: fts5
+BEGIN VERI 0
+Parse error near line 18: no such table: v47
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v52
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v52
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: no such column: c50
+  ELECT * FROM v35 AS a74 WHERE a73.c9 = a73.c15 || c50 ORDER BY 184467440737095
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE TABLE v5 ( c6 UNIQUE, c7 INTEGER UNIQUE ON CONFLICT FAIL, c8, c9, c10, c11 DEFAULT 18446744073709551615, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, PRIMARY KEY ( c7, c27, c9, c14, c24, c18, c13 ) ) WITHOUT ROWID; 
+CREATE TABLE v30 ( c31 TEXT, c32 REAL, c33 INT, PRIMARY KEY ( c31 COLLATE nocase, c31 ) ) WITHOUT ROWID; 
+; 
+CREATE VIEW v35 AS SELECT * FROM v30 AS a36 ORDER BY 18446744073709551615; 
+CREATE TABLE v37 ( c38 INTEGER PRIMARY KEY, c39, c40 UNIQUE ); 
+; 
+CREATE TABLE v42 ( c43, c44, c45 ); 
+; 
+CREATE TABLE v47 ( c48 PRIMARY KEY, c49, c50 AS( c50 + c48 - c48 ) DEFAULT - 18446744073709551615, c51 REFERENCES t1 DEFAULT NULL ); 
+ALTER TABLE v30 DROP COLUMN c32; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE VIRTUAL TABLE v52 USING fts5 ( c53, c54 ); 
+; 
+ALTER TABLE v5 DROP COLUMN c12; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v47 AS a56 NATURAL JOIN v0 AS a57 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v35 AS a58 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a59 NATURAL JOIN v37 AS a60 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v52 AS a61 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a62 NATURAL JOIN v37 AS a63 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a64 GROUP BY a64.c32, a64.c33, count ( a64.c32 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a65, v42 AS a66 NATURAL JOIN v30 AS a67 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a68 WHERE a68.c3 NOT NULL ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a69 CROSS JOIN v52 AS a70 ON ( a70.c39 = a70.c54 ) WHERE a69.c31 >= ( SELECT a69.c31 FROM v37 AS a71 WHERE a70.c39 IN ( SELECT a70.c53 FROM ( SELECT a70.c53 FROM v35 AS a72 ORDER BY 18446744073709518848 ) AS y WHERE a70.c54 = 16 ORDER BY 16 ) ORDER BY 18446744073709518848 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a73 WHERE ( ( SELECT * FROM v35 AS a74 WHERE a73.c9 = a73.c15 || c50 ORDER BY 18446744073709518848 ) % 18446744073709518848 ) > 0 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 11: cannot use DEFAULT on a generated column
+Runtime error near line 14: no such module: fts5
+BEGIN VERI 0
+Parse error near line 18: no such table: v47
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v52
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a64.c32
+  SELECT * FROM v30 AS a64 GROUP BY a64.c32, a64.c33, count ( a64.c32 ) ORDER BY
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v52
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: no such column: c50
+  ELECT * FROM v35 AS a74 WHERE a73.c9 = a73.c15 || c50 ORDER BY 184467440737095
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such table: v47
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such table: v47
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such table: v52
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such table: v52
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 33: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such column: a64.c32
+  SELECT * FROM v30 AS a64 GROUP BY a64.c32, a64.c33, count ( a64.c32 ) ORDER BY
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such table: v52
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such table: v52
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 45: no such column: c50
+  ELECT * FROM v35 AS a74 WHERE a73.c9 = a73.c15 || c50 ORDER BY 184467440737095
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 45: no such column: c50
+  ELECT * FROM v35 AS a74 WHERE a73.c9 = a73.c15 || c50 ORDER BY 184467440737095
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

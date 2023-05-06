@@ -1,0 +1,284 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c19 + 4294967295 ) % 10 ) != 4294967295 ) ) WITHOUT ROWID; 
+INSERT OR IGNORE INTO v0 ( c19, c14, c2 ) VALUES ( x'68617265', 'v1', 'v0' ); 
+CREATE INDEX i28 ON v0 ( c16 ); 
+CREATE INDEX i29 ON v0 ( c14 ); 
+CREATE INDEX i30 ON v0 ( c8 ); 
+ALTER TABLE v0 DROP c16; 
+ALTER TABLE v0 ADD COLUMN c31 TEXT DEFAULT 'x' DEFAULT 4294967295; 
+CREATE INDEX i32 ON v0 ( c15 ); 
+CREATE INDEX i33 ON v0 ( c6 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34, v0 AS a35 WHERE a34.c4 = a35.c21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c37 ) AS ( SELECT a36.c10 + ( SELECT max ( a38.c2 ) FROM v0 AS a41 ORDER BY 0 ), c37 + ( SELECT a38.c4 FROM v0 AS a40 ORDER BY 4294967295 ), a38.c26 + ( SELECT max ( c37 ) FROM v0 AS a39 ORDER BY 18446744073709551615 ) FROM v0 AS a38 ORDER BY 127 ) SELECT * FROM v0 AS a36 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a42.c25 IS NULL ) ) AND ( NOT ( a42.c16 IS NULL ) ) ) FROM v0 AS a42 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a44 WHERE hex ( 18446744073709551615 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c18, c18, lower ( ( SELECT a46.c14 FROM v0 AS a46 WHERE a46.c21 = a46.c27 ORDER BY 127 ) ), 'a__' FROM ( SELECT count ( * ) AS y, a45.c5 AS y FROM v0 AS a45 GROUP BY 18446744073709551488 ORDER BY 18446744073709551615 ) AS y ORDER BY c6, c16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT * FROM v0 AS a48 ORDER BY a47.c26, a48.c1 ) SELECT * FROM v0 AS a47 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49, v0 AS a50 NATURAL JOIN v0 AS a51 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a52.c22, count ( ( NOT ( a52.c7 IS NULL ) ) AND ( NOT ( a52.c26 IS NULL ) ) ) FROM v0 AS a52 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c25, typeof ( a53.c10 ) FROM v0 AS a53 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: error in index i28 after drop column: no such column: c16
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 28
+  SELECT * FROM v0 AS a43 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 28
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: c18
+  SELECT c18, c18, lower ( ( SELECT a46.c14 FROM v0 AS a46 WHERE a46.c21 = a46.c
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c19 + 4294967295 ) % 10 ) != 4294967295 ) ) WITHOUT ROWID; 
+INSERT OR IGNORE INTO v0 ( c19, c14, c2 ) VALUES ( x'68617265', 'v1', 'v0' ); 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c16; 
+ALTER TABLE v0 ADD COLUMN c31 TEXT DEFAULT 'x' DEFAULT 4294967295; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34, v0 AS a35 WHERE a34.c4 = a35.c21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c37 ) AS ( SELECT a36.c10 + ( SELECT max ( a38.c2 ) FROM v0 AS a41 ORDER BY 0 ), c37 + ( SELECT a38.c4 FROM v0 AS a40 ORDER BY 4294967295 ), a38.c26 + ( SELECT max ( c37 ) FROM v0 AS a39 ORDER BY 18446744073709551615 ) FROM v0 AS a38 ORDER BY 127 ) SELECT * FROM v0 AS a36 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a42.c25 IS NULL ) ) AND ( NOT ( a42.c16 IS NULL ) ) ) FROM v0 AS a42 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a44 WHERE hex ( 18446744073709551615 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c18, c18, lower ( ( SELECT a46.c14 FROM v0 AS a46 WHERE a46.c21 = a46.c27 ORDER BY 127 ) ), 'a__' FROM ( SELECT count ( * ) AS y, a45.c5 AS y FROM v0 AS a45 GROUP BY 18446744073709551488 ORDER BY 18446744073709551615 ) AS y ORDER BY c6, c16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT * FROM v0 AS a48 ORDER BY a47.c26, a48.c1 ) SELECT * FROM v0 AS a47 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49, v0 AS a50 NATURAL JOIN v0 AS a51 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a52.c22, count ( ( NOT ( a52.c7 IS NULL ) ) AND ( NOT ( a52.c26 IS NULL ) ) ) FROM v0 AS a52 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c25, typeof ( a53.c10 ) FROM v0 AS a53 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a42.c16
+  T count ( ( NOT ( a42.c25 IS NULL ) ) AND ( NOT ( a42.c16 IS NULL ) ) ) FROM v
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a43 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 27
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: c18
+  SELECT c18, c18, lower ( ( SELECT a46.c14 FROM v0 AS a46 WHERE a46.c21 = a46.c
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: circular reference: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 14: circular reference: v0
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+0
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no such column: a42.c16
+  T count ( ( NOT ( a42.c25 IS NULL ) ) AND ( NOT ( a42.c16 IS NULL ) ) ) FROM v
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 28
+  SELECT * FROM v0 AS a43 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a43 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 28
+ 
+INT: 0 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 27
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no such column: c18
+  SELECT c18, c18, lower ( ( SELECT a46.c14 FROM v0 AS a46 WHERE a46.c21 = a46.c
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 26: no such column: c18
+  SELECT c18, c18, lower ( ( SELECT a46.c14 FROM v0 AS a46 WHERE a46.c21 = a46.c
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: circular reference: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 29: circular reference: v0
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

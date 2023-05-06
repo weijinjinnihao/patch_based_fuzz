@@ -1,0 +1,316 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3 ), CHECK( c1 != c1 ), CHECK( c3 != c3 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN WITH v0 ( c4 ) AS ( SELECT c3 + ( SELECT max ( c2 ) FROM v0 AS a8 ORDER BY 0 ), c1 + ( SELECT c4 FROM v0 AS a7 ORDER BY 0 ), c1 + ( SELECT max ( c3 ) FROM v0 AS a6 ORDER BY 0 ) FROM v0 AS a5 ORDER BY 0 ) UPDATE v0 SET c4 = c2 || c4 WHERE c4 = c2 || c1; END; 
+CREATE INDEX i9 ON v0 ( c3 ); 
+CREATE TABLE v10 ( c11, c12, c13, c14, PRIMARY KEY ( c14, c13 ) ) WITHOUT ROWID; 
+CREATE INDEX i15 ON v0 ( c3 ); 
+INSERT INTO v10 VALUES ( 0, 18446744073709551488, 0, 18446744073709551488 ); 
+CREATE INDEX i16 ON v0 ( c2 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i17 ON v10 ( c13 ); 
+CREATE INDEX i18 ON v10 ( c12 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a19.c11 ) FROM v10 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v20 AS ( SELECT c1 FROM v20 AS a22 WHERE c12 LIKE 'v1' ORDER BY 0 ) SELECT max ( c12 ), ( SELECT 'x' FROM ( SELECT * FROM v20 AS a23 WHERE 18446744073709551615 ORDER BY 0 ) AS y WHERE c3 = 18446744073709551488 ORDER BY 0 ) FROM v20 AS a21 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a24, v0 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a26 GROUP BY a26.c13, a26.c12, count ( a26.c11 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c3, max ( a27.c2 || a27.c2 ) FROM v0 AS a27 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c3 FROM v0 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c2, max ( a29.c3 || a29.c1 ) FROM v0 AS a29 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c14, count ( ( NOT ( a30.c12 IS NULL ) ) AND ( NOT ( a30.c11 IS NULL ) ) ) FROM v10 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31, v0 AS a32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: near "UPDATE": syntax error
+   v0 AS a6 ORDER BY 0 ) FROM v0 AS a5 ORDER BY 0 ) UPDATE v0 SET c4 = c2 || c4 
+                                      error here ---^
+Runtime error near line 8: error in index i16 after drop column: no such column: c2
+BEGIN VERI 0
+1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: circular reference: v20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 7
+  SELECT * FROM v10 AS a24, v0 AS a25 ORDER BY 0; 
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 4
+  P BY a26.c13, a26.c12, count ( a26.c11 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+   max ( a27.c2 || a27.c2 ) FROM v0 AS a27 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a28.c3 FROM v0 AS a28 ORDER BY 0; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3 ), CHECK( c1 != c1 ), CHECK( c3 != c3 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN WITH v0 ( c4 ) AS ( SELECT c3 + ( SELECT max ( c2 ) FROM v0 AS a8 ORDER BY 0 ), c1 + ( SELECT c4 FROM v0 AS a7 ORDER BY 0 ), c1 + ( SELECT max ( c3 ) FROM v0 AS a6 ORDER BY 0 ) FROM v0 AS a5 ORDER BY 0 ) UPDATE v0 SET c4 = c2 || c4 WHERE c4 = c2 || c1; END; 
+; 
+CREATE TABLE v10 ( c11, c12, c13, c14, PRIMARY KEY ( c14, c13 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v10 VALUES ( 0, 18446744073709551488, 0, 18446744073709551488 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a19.c11 ) FROM v10 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v20 AS ( SELECT c1 FROM v20 AS a22 WHERE c12 LIKE 'v1' ORDER BY 0 ) SELECT max ( c12 ), ( SELECT 'x' FROM ( SELECT * FROM v20 AS a23 WHERE 18446744073709551615 ORDER BY 0 ) AS y WHERE c3 = 18446744073709551488 ORDER BY 0 ) FROM v20 AS a21 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a24, v0 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a26 GROUP BY a26.c13, a26.c12, count ( a26.c11 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c3, max ( a27.c2 || a27.c2 ) FROM v0 AS a27 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c3 FROM v0 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c2, max ( a29.c3 || a29.c1 ) FROM v0 AS a29 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c14, count ( ( NOT ( a30.c12 IS NULL ) ) AND ( NOT ( a30.c11 IS NULL ) ) ) FROM v10 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31, v0 AS a32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: near "UPDATE": syntax error
+   v0 AS a6 ORDER BY 0 ) FROM v0 AS a5 ORDER BY 0 ) UPDATE v0 SET c4 = c2 || c4 
+                                      error here ---^
+BEGIN VERI 0
+1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: circular reference: v20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v10 AS a24, v0 AS a25 ORDER BY 0; 
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 4
+  P BY a26.c13, a26.c12, count ( a26.c11 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a27.c2
+  SELECT a27.c3, max ( a27.c2 || a27.c2 ) FROM v0 AS a27 ORDER BY 0; 
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a28.c3 FROM v0 AS a28 ORDER BY 0; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a29.c2
+  SELECT a29.c2, max ( a29.c3 || a29.c1 ) FROM v0 AS a29 ORDER BY 18446744073709
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+1
+ 
+INT: 0 
+Str: 
+1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: circular reference: v20
+ 
+INT: 0 
+Str: 
+Parse error near line 15: circular reference: v20
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 7
+  SELECT * FROM v10 AS a24, v0 AS a25 ORDER BY 0; 
+                                 error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v10 AS a24, v0 AS a25 ORDER BY 0; 
+                                 error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 4
+  P BY a26.c13, a26.c12, count ( a26.c11 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 4
+  P BY a26.c13, a26.c12, count ( a26.c11 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+   max ( a27.c2 || a27.c2 ) FROM v0 AS a27 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: no such column: a27.c2
+  SELECT a27.c3, max ( a27.c2 || a27.c2 ) FROM v0 AS a27 ORDER BY 0; 
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a28.c3 FROM v0 AS a28 ORDER BY 0; 
+                          error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a28.c3 FROM v0 AS a28 ORDER BY 0; 
+                          error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such column: a29.c2
+  SELECT a29.c2, max ( a29.c3 || a29.c1 ) FROM v0 AS a29 ORDER BY 18446744073709
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19|1
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19|1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,334 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c1 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( 0, 0, 0 ), ( 0, 0, 255 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i6 ON v0 ( c2 ); 
+UPDATE v0 SET c1 = 255 FROM v0 AS a7, v0 AS a8 NATURAL JOIN v0 AS a9 WHERE c2 = c1; 
+CREATE INDEX i10 ON v0 ( c3 ); 
+CREATE TABLE v11 ( c12, c13, c14 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i15 ON v0 ( c1 ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT 0 y ORDER BY 18446744073709551488 ) SELECT a16.c2, a16.c3 FROM v0 AS a16 ORDER BY a16.c1, a16.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 ( c17 ) AS ( SELECT 18446744071562067968 ORDER BY 8 ) SELECT abs ( v11.c13 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a18.c3 || a18.c3 ) FROM v0 AS a18 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a19.c12 ) FROM v11 AS a19 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551488 ) SELECT v11.c13 + ( SELECT max ( a22.c13 ) FROM v0 AS a23 ORDER BY 0 ), v11.c12 + ( SELECT CASE WHEN a22.c13 % 18446744073709551488 != 18446744073709551488 THEN a22.c12 END, a22.c12, a20.c1 FROM v11 AS a22 WHERE a22.c12 <= 0 ORDER BY 0 ), a20.c2 + ( SELECT max ( a21.c1 ) FROM v0 AS a21 ORDER BY 18446744073709551488 ) FROM v0 AS a20 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c17, ( + a25.c2 ) y, ( + a25.c3 ) y, ( + a25.c2 ) y, NOT EXISTS ( SELECT NULL FROM v0 AS a26 ORDER BY 4294967295 ), CASE a24.c17 WHEN 127 THEN 127 WHEN 18446744073709551615 THEN 18446744073709551488 WHEN 0 THEN 'x' END, 'XX' FROM v11 AS a24 LEFT JOIN v0 AS a25 ON a24.c13 = a24.c13 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a27 GROUP BY a27.c17, abs ( a27.c14 ) HAVING CASE WHEN a27.c13 != 'v0' THEN 0 ELSE 18446744071562067968 END > 18446744073709551615 >= 18446744073709551488 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 GROUP BY count ( ( NOT ( a28.c2 IS NULL ) ) AND ( NOT ( a28.c1 IS NULL ) ) ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 3: UNIQUE constraint failed: v0.c1 (19)
+Runtime error near line 5: error in index i4 after drop column: no such column: c2
+Parse error near line 7: ambiguous column name: c1
+BEGIN VERI 0
+Parse error near line 12: no such column: a16.c2
+  SELECT 0 y ORDER BY 18446744073709551488 ) SELECT a16.c2, a16.c3 FROM v0 AS a1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such column: v11.c13
+  CT 18446744071562067968 ORDER BY 8 ) SELECT abs ( v11.c13 ) ORDER BY 184467440
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a19.c12 ) FROM v11 AS a19 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: v11.c13
+  09551488 y ORDER BY 18446744073709551488 ) SELECT v11.c13 + ( SELECT max ( a22
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a24.c17
+  SELECT a24.c17, ( + a25.c2 ) y, ( + a25.c3 ) y, ( + a25.c2 ) y, NOT EXISTS ( S
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v11 AS a29 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c1 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v0 VALUES ( 0, 0, 0 ), ( 0, 0, 255 ); 
+; 
+ALTER TABLE v0 DROP c2; 
+; 
+UPDATE v0 SET c1 = 255 FROM v0 AS a7, v0 AS a8 NATURAL JOIN v0 AS a9 WHERE c2 = c1; 
+; 
+CREATE TABLE v11 ( c12, c13, c14 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT 0 y ORDER BY 18446744073709551488 ) SELECT a16.c2, a16.c3 FROM v0 AS a16 ORDER BY a16.c1, a16.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 ( c17 ) AS ( SELECT 18446744071562067968 ORDER BY 8 ) SELECT abs ( v11.c13 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a18.c3 || a18.c3 ) FROM v0 AS a18 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a19.c12 ) FROM v11 AS a19 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551488 ) SELECT v11.c13 + ( SELECT max ( a22.c13 ) FROM v0 AS a23 ORDER BY 0 ), v11.c12 + ( SELECT CASE WHEN a22.c13 % 18446744073709551488 != 18446744073709551488 THEN a22.c12 END, a22.c12, a20.c1 FROM v11 AS a22 WHERE a22.c12 <= 0 ORDER BY 0 ), a20.c2 + ( SELECT max ( a21.c1 ) FROM v0 AS a21 ORDER BY 18446744073709551488 ) FROM v0 AS a20 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c17, ( + a25.c2 ) y, ( + a25.c3 ) y, ( + a25.c2 ) y, NOT EXISTS ( SELECT NULL FROM v0 AS a26 ORDER BY 4294967295 ), CASE a24.c17 WHEN 127 THEN 127 WHEN 18446744073709551615 THEN 18446744073709551488 WHEN 0 THEN 'x' END, 'XX' FROM v11 AS a24 LEFT JOIN v0 AS a25 ON a24.c13 = a24.c13 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a27 GROUP BY a27.c17, abs ( a27.c14 ) HAVING CASE WHEN a27.c13 != 'v0' THEN 0 ELSE 18446744071562067968 END > 18446744073709551615 >= 18446744073709551488 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 GROUP BY count ( ( NOT ( a28.c2 IS NULL ) ) AND ( NOT ( a28.c1 IS NULL ) ) ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 3: UNIQUE constraint failed: v0.c1 (19)
+Parse error near line 7: ambiguous column name: c1
+BEGIN VERI 0
+Parse error near line 12: no such column: a16.c2
+  SELECT 0 y ORDER BY 18446744073709551488 ) SELECT a16.c2, a16.c3 FROM v0 AS a1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such column: v11.c13
+  CT 18446744071562067968 ORDER BY 8 ) SELECT abs ( v11.c13 ) ORDER BY 184467440
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a19.c12 ) FROM v11 AS a19 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: v11.c13
+  09551488 y ORDER BY 18446744073709551488 ) SELECT v11.c13 + ( SELECT max ( a22
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a24.c17
+  SELECT a24.c17, ( + a25.c2 ) y, ( + a25.c3 ) y, ( + a25.c2 ) y, NOT EXISTS ( S
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a28.c2
+  SELECT * FROM v0 AS a28 GROUP BY count ( ( NOT ( a28.c2 IS NULL ) ) AND ( NOT 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v11 AS a29 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: no such column: a16.c2
+  SELECT 0 y ORDER BY 18446744073709551488 ) SELECT a16.c2, a16.c3 FROM v0 AS a1
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 12: no such column: a16.c2
+  SELECT 0 y ORDER BY 18446744073709551488 ) SELECT a16.c2, a16.c3 FROM v0 AS a1
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such column: v11.c13
+  CT 18446744071562067968 ORDER BY 8 ) SELECT abs ( v11.c13 ) ORDER BY 184467440
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: no such column: v11.c13
+  CT 18446744071562067968 ORDER BY 8 ) SELECT abs ( v11.c13 ) ORDER BY 184467440
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a19.c12 ) FROM v11 AS a19 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a19.c12 ) FROM v11 AS a19 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such column: v11.c13
+  09551488 y ORDER BY 18446744073709551488 ) SELECT v11.c13 + ( SELECT max ( a22
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: no such column: v11.c13
+  09551488 y ORDER BY 18446744073709551488 ) SELECT v11.c13 + ( SELECT max ( a22
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such column: a24.c17
+  SELECT a24.c17, ( + a25.c2 ) y, ( + a25.c3 ) y, ( + a25.c2 ) y, NOT EXISTS ( S
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 30: no such column: a24.c17
+  SELECT a24.c17, ( + a25.c2 ) y, ( + a25.c3 ) y, ( + a25.c2 ) y, NOT EXISTS ( S
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 36: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such column: a28.c2
+  SELECT * FROM v0 AS a28 GROUP BY count ( ( NOT ( a28.c2 IS NULL ) ) AND ( NOT 
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v11 AS a29 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v11 AS a29 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

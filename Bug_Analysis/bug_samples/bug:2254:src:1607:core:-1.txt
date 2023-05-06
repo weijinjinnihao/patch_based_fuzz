@@ -1,0 +1,286 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 ); 
+CREATE INDEX i3 ON v0 ( c2 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 8, 18446744073709551615, 18446744073709551615, 18446744073709551615 ), ( 8, 9223372036854775807, 16, 9223372036854775807 ); 
+CREATE TABLE v6 ( c7, c8, c9, c10, CHECK( c9 > 8 ) ); 
+CREATE INDEX i11 ON v6 ( c10 ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 8, 18446744073709551615, 18446744073709551615 ), ( 18446744073709551488, 0, 0, 8 ); 
+INSERT INTO v0 VALUES ( 8, 0, 16, 9223372036854775807 ); 
+INSERT INTO v0 VALUES ( 8, 100, 8, 18446744073709551615 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i12 ON v6 ( c7 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( c1 || c2 || c10 ) != 'v0' WHERE c10 IS NOT NULL >= 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a13 GROUP BY a13.c7 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14, v6 AS a15 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a16.c1 ) FROM v0 AS a16 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a17 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 ORDER BY ( ( a18.c1 + 18446744073709551615 ) % 100 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c1, count ( ( NOT ( a19.c1 IS NULL ) ) AND ( NOT ( a20.c1 IS NULL ) ) ) FROM v0 AS a19 LEFT JOIN v0 AS a20 ON a19.c1 = a20.c2 WHERE a20.c2 != 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v6 ( c22 ) AS ( SELECT c22 + ( SELECT max ( a21.c8 ) FROM v6 AS a26 ORDER BY 9223372036854775807 ), c22 + ( SELECT a23.c2 FROM v6 AS a25 ORDER BY 16 ), a21.c9 + ( SELECT max ( c22 ) FROM v6 AS a24 ORDER BY 16 ) FROM v0 AS a23 ORDER BY 16 ) SELECT * FROM v6 AS a21 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a27 ORDER BY a27.c10 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a28 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: table v0 has 2 columns but 4 values were supplied
+Parse error near line 8: table v0 has 2 columns but 4 values were supplied
+Parse error near line 9: table v0 has 2 columns but 4 values were supplied
+Parse error near line 10: table v0 has 2 columns but 4 values were supplied
+Runtime error near line 11: error in index i3 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 14: no such column: c1
+  SELECT ( c1 || c2 || c10 ) != 'v0' WHERE c10 IS NOT NULL >= 184467440737095514
+           ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: circular reference: v6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 ); 
+; 
+; 
+; 
+INSERT INTO v0 VALUES ( 8, 18446744073709551615, 18446744073709551615, 18446744073709551615 ), ( 8, 9223372036854775807, 16, 9223372036854775807 ); 
+CREATE TABLE v6 ( c7, c8, c9, c10, CHECK( c9 > 8 ) ); 
+; 
+INSERT INTO v0 VALUES ( 18446744073709551615, 8, 18446744073709551615, 18446744073709551615 ), ( 18446744073709551488, 0, 0, 8 ); 
+INSERT INTO v0 VALUES ( 8, 0, 16, 9223372036854775807 ); 
+INSERT INTO v0 VALUES ( 8, 100, 8, 18446744073709551615 ); 
+ALTER TABLE v0 DROP c2; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( c1 || c2 || c10 ) != 'v0' WHERE c10 IS NOT NULL >= 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a13 GROUP BY a13.c7 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14, v6 AS a15 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a16.c1 ) FROM v0 AS a16 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a17 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 ORDER BY ( ( a18.c1 + 18446744073709551615 ) % 100 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c1, count ( ( NOT ( a19.c1 IS NULL ) ) AND ( NOT ( a20.c1 IS NULL ) ) ) FROM v0 AS a19 LEFT JOIN v0 AS a20 ON a19.c1 = a20.c2 WHERE a20.c2 != 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v6 ( c22 ) AS ( SELECT c22 + ( SELECT max ( a21.c8 ) FROM v6 AS a26 ORDER BY 9223372036854775807 ), c22 + ( SELECT a23.c2 FROM v6 AS a25 ORDER BY 16 ), a21.c9 + ( SELECT max ( c22 ) FROM v6 AS a24 ORDER BY 16 ) FROM v0 AS a23 ORDER BY 16 ) SELECT * FROM v6 AS a21 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a27 ORDER BY a27.c10 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a28 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: table v0 has 2 columns but 4 values were supplied
+Parse error near line 8: table v0 has 2 columns but 4 values were supplied
+Parse error near line 9: table v0 has 2 columns but 4 values were supplied
+Parse error near line 10: table v0 has 2 columns but 4 values were supplied
+BEGIN VERI 0
+Parse error near line 14: no such column: c1
+  SELECT ( c1 || c2 || c10 ) != 'v0' WHERE c10 IS NOT NULL >= 184467440737095514
+           ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a20.c2
+   a19 LEFT JOIN v0 AS a20 ON a19.c1 = a20.c2 WHERE a20.c2 != 184467440737095516
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: circular reference: v6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no such column: c1
+  SELECT ( c1 || c2 || c10 ) != 'v0' WHERE c10 IS NOT NULL >= 184467440737095514
+           ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 14: no such column: c1
+  SELECT ( c1 || c2 || c10 ) != 'v0' WHERE c10 IS NOT NULL >= 184467440737095514
+           ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such column: a20.c2
+   a19 LEFT JOIN v0 AS a20 ON a19.c1 = a20.c2 WHERE a20.c2 != 184467440737095516
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: circular reference: v6
+ 
+INT: 0 
+Str: 
+Parse error near line 35: circular reference: v6
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

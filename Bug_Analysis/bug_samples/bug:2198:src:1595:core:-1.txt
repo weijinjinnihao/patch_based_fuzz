@@ -1,0 +1,287 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c1 > 18446744073709551615 ), c4 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE INDEX i6 ON v0 ( c4 ); 
+CREATE INDEX i7 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709551615, 18446744073709551615 ), ( 18446744073709551615, 4294967295, 18446744073709551615, 4294967295 ); 
+CREATE TABLE v8 ( c9, c10, c11, c12, CHECK( c11 > 18446744073709551615 ) ); 
+CREATE INDEX i13 ON v0 ( c1 ); 
+INSERT INTO v8 VALUES ( 4294967295, 18446744073709551615, 0, 18446744073709551615 ), ( 4294967295, 0, 18446744073709551615, 18446744073709551615 ); 
+INSERT INTO v0 VALUES ( 0, 4294967295, 0, 18446744073709551615 ); 
+ALTER TABLE v0 DROP c4; 
+CREATE INDEX i14 ON v0 ( c4 COLLATE REVERSE ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a15.c1, count ( a15.c2 ), quote ( a15.c4 ), 'v1' FROM v0 AS a15 GROUP BY a15.c2, abs ( a15.c2 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( x'68617265', 'v1', 'c' ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a16 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY ( ( a17.c1 + 18446744073709551488 ) % 18446744073709551615 ) != 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18, v8 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c3, max ( a20.c1 || a20.c2 ) FROM v0 AS a20 WHERE ( a20.c2 || a20.c4 || a20.c2 ) != 'x' ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c3 FROM v0 AS a21 WHERE ( a21.c2, a21.c4 ) NOT IN ( SELECT * FROM v0 AS a22 ORDER BY 0 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24, v8 AS a25 NATURAL JOIN v8 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c1 > 18446744073709551615 (19)
+Runtime error near line 8: CHECK constraint failed: c11 > 18446744073709551615 (19)
+Runtime error near line 9: CHECK constraint failed: c1 > 18446744073709551615 (19)
+Runtime error near line 10: error in index i6 after drop column: no such column: c4
+Parse error near line 11: no such collation sequence: REVERSE
+BEGIN VERI 0
+Parse error near line 13: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: near "ORDER": syntax error
+  VALUES ( x'68617265', 'v1', 'c' ) ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+  21.c4 ) NOT IN ( SELECT * FROM v0 AS a22 ORDER BY 0 ) ORDER BY 922337203685477
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c1 > 18446744073709551615 ), c4 ); 
+; 
+; 
+; 
+INSERT INTO v0 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709551615, 18446744073709551615 ), ( 18446744073709551615, 4294967295, 18446744073709551615, 4294967295 ); 
+CREATE TABLE v8 ( c9, c10, c11, c12, CHECK( c11 > 18446744073709551615 ) ); 
+; 
+INSERT INTO v8 VALUES ( 4294967295, 18446744073709551615, 0, 18446744073709551615 ), ( 4294967295, 0, 18446744073709551615, 18446744073709551615 ); 
+INSERT INTO v0 VALUES ( 0, 4294967295, 0, 18446744073709551615 ); 
+ALTER TABLE v0 DROP c4; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a15.c1, count ( a15.c2 ), quote ( a15.c4 ), 'v1' FROM v0 AS a15 GROUP BY a15.c2, abs ( a15.c2 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( x'68617265', 'v1', 'c' ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a16 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY ( ( a17.c1 + 18446744073709551488 ) % 18446744073709551615 ) != 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18, v8 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c3, max ( a20.c1 || a20.c2 ) FROM v0 AS a20 WHERE ( a20.c2 || a20.c4 || a20.c2 ) != 'x' ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c3 FROM v0 AS a21 WHERE ( a21.c2, a21.c4 ) NOT IN ( SELECT * FROM v0 AS a22 ORDER BY 0 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24, v8 AS a25 NATURAL JOIN v8 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c1 > 18446744073709551615 (19)
+Runtime error near line 8: CHECK constraint failed: c11 > 18446744073709551615 (19)
+Runtime error near line 9: CHECK constraint failed: c1 > 18446744073709551615 (19)
+BEGIN VERI 0
+Parse error near line 13: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: a15.c4
+  SELECT a15.c1, count ( a15.c2 ), quote ( a15.c4 ), 'v1' FROM v0 AS a15 GROUP B
+                             error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: near "ORDER": syntax error
+  VALUES ( x'68617265', 'v1', 'c' ) ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a20.c4
+  0.c1 || a20.c2 ) FROM v0 AS a20 WHERE ( a20.c2 || a20.c4 || a20.c2 ) != 'x' OR
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+  21.c4 ) NOT IN ( SELECT * FROM v0 AS a22 ORDER BY 0 ) ORDER BY 922337203685477
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 13: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 16: no such column: a15.c4
+  SELECT a15.c1, count ( a15.c2 ), quote ( a15.c4 ), 'v1' FROM v0 AS a15 GROUP B
+                             error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 57401776
+Str: 
+Parse error near line 19: near "ORDER": syntax error
+  VALUES ( x'68617265', 'v1', 'c' ) ORDER BY 0; 
+                      error here ---^
+ 
+Str: 
+Parse error near line 19: near "ORDER": syntax error
+  VALUES ( x'68617265', 'v1', 'c' ) ORDER BY 0; 
+                      error here ---^
+ 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no such column: a20.c4
+  0.c1 || a20.c2 ) FROM v0 AS a20 WHERE ( a20.c2 || a20.c4 || a20.c2 ) != 'x' OR
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+  21.c4 ) NOT IN ( SELECT * FROM v0 AS a22 ORDER BY 0 ) ORDER BY 922337203685477
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+  21.c4 ) NOT IN ( SELECT * FROM v0 AS a22 ORDER BY 0 ) ORDER BY 922337203685477
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

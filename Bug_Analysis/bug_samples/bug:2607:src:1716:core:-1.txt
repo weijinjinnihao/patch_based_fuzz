@@ -1,0 +1,294 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1 ), CHECK( c2 != c2 ), CHECK( c2 != c2 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+CREATE INDEX i6 ON v0 ( c2 ); 
+CREATE TABLE v7 ( c8, c9, c10, c11, PRIMARY KEY ( c8, c11 ) ) WITHOUT ROWID; 
+CREATE INDEX i12 ON v7 ( c10 ); 
+CREATE INDEX i13 ON v7 ( c9 ); 
+ALTER TABLE v7 DROP COLUMN c9; 
+SELECT 'BEGIN VERI 0'; 
+SELECT lower ( a14.c10 ) FROM v7 AS a14 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 45 - ( c1 + c1 ) WHERE CASE WHEN c1 != 'eee' THEN 45 ELSE 45 END > 0 ORDER BY 45 - ( c8 + c8 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT 45 y ORDER BY 45 ) SELECT ( SELECT min ( ) OVER ( ORDER BY 100 ) ORDER BY 45 ) FROM v0 AS a16 GROUP BY a16.c2 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c8, max ( a17.c10 || a17.c8 ) FROM v7 AS a17 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c8, max ( a18.c9 || a18.c11 ) FROM v7 AS a18 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a19 GROUP BY a19.c9, a19.c9 < a19.c10 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a20, v7 AS a21 NATURAL JOIN v7 AS a22 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a23, v0 AS a24 NATURAL JOIN v0 AS a25 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a26, v7 AS a27 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in index i13 after drop column: no such column: c9
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: no such column: c1
+  SELECT 45 - ( c1 + c1 ) WHERE CASE WHEN c1 != 'eee' THEN 45 ELSE 45 END > 0 OR
+                ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 8
+  AS a20, v7 AS a21 NATURAL JOIN v7 AS a22 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1 ), CHECK( c2 != c2 ), CHECK( c2 != c2 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+CREATE TABLE v7 ( c8, c9, c10, c11, PRIMARY KEY ( c8, c11 ) ) WITHOUT ROWID; 
+; 
+; 
+ALTER TABLE v7 DROP COLUMN c9; 
+SELECT 'BEGIN VERI 0'; 
+SELECT lower ( a14.c10 ) FROM v7 AS a14 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 45 - ( c1 + c1 ) WHERE CASE WHEN c1 != 'eee' THEN 45 ELSE 45 END > 0 ORDER BY 45 - ( c8 + c8 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT 45 y ORDER BY 45 ) SELECT ( SELECT min ( ) OVER ( ORDER BY 100 ) ORDER BY 45 ) FROM v0 AS a16 GROUP BY a16.c2 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c8, max ( a17.c10 || a17.c8 ) FROM v7 AS a17 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c8, max ( a18.c9 || a18.c11 ) FROM v7 AS a18 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a19 GROUP BY a19.c9, a19.c9 < a19.c10 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a20, v7 AS a21 NATURAL JOIN v7 AS a22 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a23, v0 AS a24 NATURAL JOIN v0 AS a25 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a26, v7 AS a27 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: no such column: c1
+  SELECT 45 - ( c1 + c1 ) WHERE CASE WHEN c1 != 'eee' THEN 45 ELSE 45 END > 0 OR
+                ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: a18.c9
+  SELECT a18.c8, max ( a18.c9 || a18.c11 ) FROM v7 AS a18 ORDER BY 45; 
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 6
+  AS a20, v7 AS a21 NATURAL JOIN v7 AS a22 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: no such column: c1
+  SELECT 45 - ( c1 + c1 ) WHERE CASE WHEN c1 != 'eee' THEN 45 ELSE 45 END > 0 OR
+                ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 13: no such column: c1
+  SELECT 45 - ( c1 + c1 ) WHERE CASE WHEN c1 != 'eee' THEN 45 ELSE 45 END > 0 OR
+                ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such column: a18.c9
+  SELECT a18.c8, max ( a18.c9 || a18.c11 ) FROM v7 AS a18 ORDER BY 45; 
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 8
+  AS a20, v7 AS a21 NATURAL JOIN v7 AS a22 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 6
+  AS a20, v7 AS a21 NATURAL JOIN v7 AS a22 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

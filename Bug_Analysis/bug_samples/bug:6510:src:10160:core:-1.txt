@@ -1,0 +1,290 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 REFERENCES t1 DEFAULT 18446744073709551488, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17 UNIQUE, c18, PRIMARY KEY ( c4, c12 ) ON CONFLICT REPLACE ); 
+BEGIN; 
+CREATE TABLE v19 ( c20 INTEGER, c21 TEXT, c22 BLOB, CHECK( coalesce ( NULL, 'v0', 18446744073709551488, 18446744073709551488, c20 = c22 > 18446744073709551488 ) ) ); 
+CREATE INDEX i23 ON v0 ( c9 ); 
+UPDATE v19 SET c13 = c20 || c21 FROM v19 AS a24, v19 AS a25 NATURAL JOIN v0 AS a26 WHERE c20 = c22 || c20; 
+CREATE INDEX i27 ON v0 ( c7 ); 
+CREATE INDEX i28 ON v19 ( c21 ); 
+CREATE INDEX i29 ON v19 ( c21 ); 
+END; 
+CREATE TABLE v30 ( c31, c32, c33, c34, PRIMARY KEY ( c33, c33 ) ) WITHOUT ROWID; 
+CREATE INDEX i35 ON v19 ( c21 ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709551488, 2147483647, 18446744073709551488 ); 
+CREATE VIEW v36 AS WITH v19 AS ( SELECT ( SELECT min ( c16 ) OVER ( ORDER BY 18446744073709551488 IN v19 ) ORDER BY 18446744073709551488 ) FROM v30 AS a38 GROUP BY c34 ORDER BY 18446744073709551488 ) SELECT ( SELECT min ( ) OVER ( ORDER BY 18446744073709551488 ) ORDER BY 18446744073709551488 ) FROM v0 AS a37 ORDER BY 18446744073709551488; 
+ALTER TABLE v19 DROP COLUMN c21; 
+INSERT OR REPLACE INTO v36 ( c19, c28, c19, c28, c19 ) VALUES ( 0, 18446744073709551488, NULL, 18446744073709551488, 18446744073709551488 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39, v19 AS a40 NATURAL JOIN v19 AS a41 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a42 NATURAL JOIN v0 AS a43 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v36 AS a44 NATURAL JOIN v30 AS a45 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v36 AS a46 ORDER BY ( 18446744073709551488, count ( * ) ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a47 NATURAL JOIN v36 AS a48 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a49 ORDER BY 18446744073709551615 NOT IN v19; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a50 WHERE a50.c22 > a50.c21 % 10 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a51, v30 AS a52 NATURAL JOIN v19 AS a53 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709551488 < a54.c28 FROM v36 AS a54 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: no such column: c13
+Parse error near line 12: table v0 has 18 columns but 4 values were supplied
+Runtime error near line 14: error in index i28 after drop column: no such column: c21
+Parse error near line 15: min() may not be used as a window function
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 21
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: min() may not be used as a window function
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: min() may not be used as a window function
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: min() may not be used as a window function
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: sub-select returns 3 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: min() may not be used as a window function
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 REFERENCES t1 DEFAULT 18446744073709551488, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17 UNIQUE, c18, PRIMARY KEY ( c4, c12 ) ON CONFLICT REPLACE ); 
+BEGIN; 
+CREATE TABLE v19 ( c20 INTEGER, c21 TEXT, c22 BLOB, CHECK( coalesce ( NULL, 'v0', 18446744073709551488, 18446744073709551488, c20 = c22 > 18446744073709551488 ) ) ); 
+; 
+UPDATE v19 SET c13 = c20 || c21 FROM v19 AS a24, v19 AS a25 NATURAL JOIN v0 AS a26 WHERE c20 = c22 || c20; 
+; 
+; 
+; 
+END; 
+CREATE TABLE v30 ( c31, c32, c33, c34, PRIMARY KEY ( c33, c33 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709551488, 2147483647, 18446744073709551488 ); 
+CREATE VIEW v36 AS WITH v19 AS ( SELECT ( SELECT min ( c16 ) OVER ( ORDER BY 18446744073709551488 IN v19 ) ORDER BY 18446744073709551488 ) FROM v30 AS a38 GROUP BY c34 ORDER BY 18446744073709551488 ) SELECT ( SELECT min ( ) OVER ( ORDER BY 18446744073709551488 ) ORDER BY 18446744073709551488 ) FROM v0 AS a37 ORDER BY 18446744073709551488; 
+ALTER TABLE v19 DROP COLUMN c21; 
+INSERT OR REPLACE INTO v36 ( c19, c28, c19, c28, c19 ) VALUES ( 0, 18446744073709551488, NULL, 18446744073709551488, 18446744073709551488 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39, v19 AS a40 NATURAL JOIN v19 AS a41 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a42 NATURAL JOIN v0 AS a43 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v36 AS a44 NATURAL JOIN v30 AS a45 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v36 AS a46 ORDER BY ( 18446744073709551488, count ( * ) ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a47 NATURAL JOIN v36 AS a48 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a49 ORDER BY 18446744073709551615 NOT IN v19; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a50 WHERE a50.c22 > a50.c21 % 10 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a51, v30 AS a52 NATURAL JOIN v19 AS a53 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709551488 < a54.c28 FROM v36 AS a54 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: no such column: c13
+Parse error near line 12: table v0 has 18 columns but 4 values were supplied
+Parse error near line 15: min() may not be used as a window function
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 20
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: min() may not be used as a window function
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: min() may not be used as a window function
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: min() may not be used as a window function
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: sub-select returns 2 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a50.c21
+  SELECT * FROM v19 AS a50 WHERE a50.c22 > a50.c21 % 10 ORDER BY 8; 
+                             error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: min() may not be used as a window function
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 21
+ 
+INT: 0 
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 20
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: min() may not be used as a window function
+ 
+INT: 0 
+Str: 
+Parse error near line 23: min() may not be used as a window function
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: min() may not be used as a window function
+ 
+INT: 0 
+Str: 
+Parse error near line 29: min() may not be used as a window function
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: min() may not be used as a window function
+ 
+INT: 0 
+Str: 
+Parse error near line 32: min() may not be used as a window function
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: sub-select returns 3 columns - expected 1
+ 
+INT: 0 
+Str: 
+Parse error near line 35: sub-select returns 2 columns - expected 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 38: no such column: a50.c21
+  SELECT * FROM v19 AS a50 WHERE a50.c22 > a50.c21 % 10 ORDER BY 8; 
+                             error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: min() may not be used as a window function
+ 
+INT: 0 
+Str: 
+Parse error near line 44: min() may not be used as a window function
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

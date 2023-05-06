@@ -1,0 +1,333 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c2 ) ) WITHOUT ROWID; 
+ATTACH c2 > c2 AS sqlite_master; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE INDEX i6 ON v0 ( c1 ); 
+CREATE TABLE v7 ( c8, c9 CHECK( 8 ), c10, c11, CHECK( c10 > 8 ) ); 
+ALTER TABLE v7 DROP c11; 
+ALTER TABLE v0 DROP c1; 
+CREATE INDEX i12 ON v0 ( c2 ); 
+CREATE VIEW v13 AS SELECT * FROM ( v7 AS a14 ), ( v7 AS a15 ), ( v7 AS a16 ), ( v0 AS a17, v0 AS a18 NATURAL JOIN v0 AS a19 ) WHERE c1 = c3 + 8 AND c2 = c1 + 8 AND c10 = c8 + 8 ORDER BY 8; 
+CREATE INDEX i20 ON v13 ( c1 ); 
+CREATE TABLE v21 ( c22, c23, c24 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a25 WHERE a25.c11 = 8 ORDER BY 77; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a26 WHERE a26.c23 = a26.c24 != a26.c23 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 8, ( a27.c2 + 8 ), a27.c2 != 'v0' ) % 8 ), a27.c2 + ( SELECT max ( a28.c8 ) FROM v21 AS a29 ORDER BY 0 ), a27.c3 + ( SELECT max ( a27.c1 ) FROM v7 AS a28 ORDER BY 18446744071562067968 ) FROM v0 AS a27 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN a30.c22 = 8 THEN 255 ELSE ( a30.c22 + 8 ) / 77 END ) AS y, count ( * ) FROM v21 AS a30 GROUP BY y ( a30.c23 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a31 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v21 ( c33 ) AS ( WITH v21 AS ( SELECT ( SELECT min ( a34.c22 ) OVER ( ORDER BY 0 ) ORDER BY 8 ) FROM v21 AS a34 GROUP BY c33 ORDER BY 8 ) SELECT 8 ORDER BY 8 ) SELECT * FROM v21 AS a32 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a36 WHERE ( a36.c9 + 8 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v37 ( c39 ) AS ( WITH v37 ( c40 ) AS ( WITH v41 AS ( WITH v42 AS ( SELECT 8 y ORDER BY 8 ) SELECT avg ( c40 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 8 ) SELECT 77 ORDER BY 8 ) SELECT 9223372036854775807 ORDER BY 0 ) SELECT c39, count ( * ), avg ( c39 ), max ( c39 + c39 * 18446744073709551615 ) FROM v37 AS a38 GROUP BY y ( c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39 ) ORDER BY 77; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c1 FROM v0 AS a43 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: no such column: c2
+  ATTACH c2 > c2 AS sqlite_master; 
+         ^--- error here
+Runtime error near line 8: error in index i4 after drop column: no such column: c1
+Parse error near line 11: views may not be indexed
+BEGIN VERI 0
+Parse error near line 14: no such column: a25.c11
+  SELECT * FROM v7 AS a25 WHERE a25.c11 = 8 ORDER BY 77; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such column: a28.c8
+  , a27.c2 != 'v0' ) % 8 ), a27.c2 + ( SELECT max ( a28.c8 ) FROM v21 AS a29 ORD
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+  ) FROM v21 AS a30 GROUP BY y ( a30.c23 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v7 AS a35 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  CT * FROM v7 AS a36 WHERE ( a36.c9 + 8 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+   ORDER BY 8 ) SELECT 9223372036854775807 ORDER BY 0 ) SELECT c39, count ( * ),
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c2 ) ) WITHOUT ROWID; 
+ATTACH c2 > c2 AS sqlite_master; 
+; 
+; 
+; 
+CREATE TABLE v7 ( c8, c9 CHECK( 8 ), c10, c11, CHECK( c10 > 8 ) ); 
+ALTER TABLE v7 DROP c11; 
+ALTER TABLE v0 DROP c1; 
+; 
+CREATE VIEW v13 AS SELECT * FROM ( v7 AS a14 ), ( v7 AS a15 ), ( v7 AS a16 ), ( v0 AS a17, v0 AS a18 NATURAL JOIN v0 AS a19 ) WHERE c1 = c3 + 8 AND c2 = c1 + 8 AND c10 = c8 + 8 ORDER BY 8; 
+; 
+CREATE TABLE v21 ( c22, c23, c24 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a25 WHERE a25.c11 = 8 ORDER BY 77; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a26 WHERE a26.c23 = a26.c24 != a26.c23 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 8, ( a27.c2 + 8 ), a27.c2 != 'v0' ) % 8 ), a27.c2 + ( SELECT max ( a28.c8 ) FROM v21 AS a29 ORDER BY 0 ), a27.c3 + ( SELECT max ( a27.c1 ) FROM v7 AS a28 ORDER BY 18446744071562067968 ) FROM v0 AS a27 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN a30.c22 = 8 THEN 255 ELSE ( a30.c22 + 8 ) / 77 END ) AS y, count ( * ) FROM v21 AS a30 GROUP BY y ( a30.c23 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a31 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v21 ( c33 ) AS ( WITH v21 AS ( SELECT ( SELECT min ( a34.c22 ) OVER ( ORDER BY 0 ) ORDER BY 8 ) FROM v21 AS a34 GROUP BY c33 ORDER BY 8 ) SELECT 8 ORDER BY 8 ) SELECT * FROM v21 AS a32 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a36 WHERE ( a36.c9 + 8 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v37 ( c39 ) AS ( WITH v37 ( c40 ) AS ( WITH v41 AS ( WITH v42 AS ( SELECT 8 y ORDER BY 8 ) SELECT avg ( c40 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 8 ) SELECT 77 ORDER BY 8 ) SELECT 9223372036854775807 ORDER BY 0 ) SELECT c39, count ( * ), avg ( c39 ), max ( c39 + c39 * 18446744073709551615 ) FROM v37 AS a38 GROUP BY y ( c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39 ) ORDER BY 77; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c1 FROM v0 AS a43 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: no such column: c2
+  ATTACH c2 > c2 AS sqlite_master; 
+         ^--- error here
+BEGIN VERI 0
+Parse error near line 14: no such column: a25.c11
+  SELECT * FROM v7 AS a25 WHERE a25.c11 = 8 ORDER BY 77; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such column: a28.c8
+  , a27.c2 != 'v0' ) % 8 ), a27.c2 + ( SELECT max ( a28.c8 ) FROM v21 AS a29 ORD
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+  ) FROM v21 AS a30 GROUP BY y ( a30.c23 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v7 AS a35 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  CT * FROM v7 AS a36 WHERE ( a36.c9 + 8 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+   ORDER BY 8 ) SELECT 9223372036854775807 ORDER BY 0 ) SELECT c39, count ( * ),
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a43.c1
+  SELECT a43.c1 FROM v0 AS a43 ORDER BY 8; 
+         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no such column: a25.c11
+  SELECT * FROM v7 AS a25 WHERE a25.c11 = 8 ORDER BY 77; 
+                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 14: no such column: a25.c11
+  SELECT * FROM v7 AS a25 WHERE a25.c11 = 8 ORDER BY 77; 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no such column: a28.c8
+  , a27.c2 != 'v0' ) % 8 ), a27.c2 + ( SELECT max ( a28.c8 ) FROM v21 AS a29 ORD
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: no such column: a28.c8
+  , a27.c2 != 'v0' ) % 8 ), a27.c2 + ( SELECT max ( a28.c8 ) FROM v21 AS a29 ORD
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+  ) FROM v21 AS a30 GROUP BY y ( a30.c23 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+  ) FROM v21 AS a30 GROUP BY y ( a30.c23 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v7 AS a35 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v7 AS a35 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  CT * FROM v7 AS a36 WHERE ( a36.c9 + 8 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  CT * FROM v7 AS a36 WHERE ( a36.c9 + 8 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+   ORDER BY 8 ) SELECT 9223372036854775807 ORDER BY 0 ) SELECT c39, count ( * ),
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+   ORDER BY 8 ) SELECT 9223372036854775807 ORDER BY 0 ) SELECT c39, count ( * ),
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no such column: a43.c1
+  SELECT a43.c1 FROM v0 AS a43 ORDER BY 8; 
+         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

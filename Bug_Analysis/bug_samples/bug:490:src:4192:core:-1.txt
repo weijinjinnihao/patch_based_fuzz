@@ -1,0 +1,319 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 DEFAULT 'one-b' ); 
+INSERT INTO v0 VALUES ( 127, 'X', 'hello' ); 
+INSERT INTO v0 VALUES ( 0, 'x', 'v1' ); 
+INSERT INTO v0 VALUES ( NULL, '1.1', 'Y' ); 
+INSERT INTO v0 VALUES ( 'cba', 'y', 'x' ); 
+INSERT INTO v0 VALUES ( x'616263', 'x', 'v1' ); 
+CREATE TABLE v4 ( c5, c6, c7 COLLATE NOCASE ); 
+INSERT INTO v4 VALUES ( NULL, 'x', 'x' ); 
+CREATE INDEX i8 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 'x', 'v0', 'v0' ); 
+INSERT INTO v4 VALUES ( x'68617265', 'two-b', 'v1' ); 
+CREATE INDEX i9 ON v4 ( c5 ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, '1.10', 'v1' ); 
+CREATE INDEX i10 ON v4 ( c7 ); 
+CREATE INDEX i11 ON v4 ( c7 ); 
+INSERT INTO v0 VALUES ( - 18446744071562067968, 'v1', 'aBc3' ); 
+CREATE TABLE v12 ( c13, c14 REAL, c15 COLLATE NOCASE ); 
+INSERT INTO v0 SELECT * FROM v4 AS a16 ORDER BY 18446744073709551488; 
+INSERT INTO v4 SELECT * FROM v4 AS a17 ORDER BY 0; 
+CREATE INDEX i18 ON v4 ( c5 ); 
+INSERT INTO v0 SELECT * FROM v0 AS a19 ORDER BY 0; 
+INSERT INTO v4 SELECT * FROM v4 AS a20 ORDER BY 18446744073709551615; 
+INSERT INTO v0 SELECT * FROM v4 AS a21 ORDER BY 18446744073709551615; 
+INSERT INTO v0 SELECT * FROM v12 AS a22 ORDER BY 127; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c5 FROM v4 AS a23 WHERE a23.c6 LIKE 'v0' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c14 FROM v12 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c1 FROM v0 AS a26 GROUP BY 18446744073709551615 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c6 FROM v4 AS a27 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a28 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 GROUP BY a29.c2, a29.c1, count ( a29.c2 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c2, count ( ( NOT ( a30.c14 IS NULL ) ) AND ( NOT ( a30.c15 IS NULL ) ) ), count ( ( NOT ( a30.c13 IS NULL ) ) AND ( NOT ( a30.c15 IS NULL ) ) ) FROM v12 AS a30 LEFT JOIN v0 AS a31 ON a31.c1 = 'v0' ORDER BY 31; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v4 SELECT * FROM v4 AS a17 ORDER BY 0; 
+                                    error here ---^
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v0 SELECT * FROM v0 AS a19 ORDER BY 0; 
+                                    error here ---^
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no tables specified
+END VERI 0
+BEGIN VERI 0
+x
+two-b
+x
+two-b
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 50: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+Parse error near line 53: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 DEFAULT 'one-b' ); 
+INSERT INTO v0 VALUES ( 127, 'X', 'hello' ); 
+INSERT INTO v0 VALUES ( 0, 'x', 'v1' ); 
+INSERT INTO v0 VALUES ( NULL, '1.1', 'Y' ); 
+INSERT INTO v0 VALUES ( 'cba', 'y', 'x' ); 
+INSERT INTO v0 VALUES ( x'616263', 'x', 'v1' ); 
+CREATE TABLE v4 ( c5, c6, c7 COLLATE NOCASE ); 
+INSERT INTO v4 VALUES ( NULL, 'x', 'x' ); 
+; 
+INSERT INTO v0 VALUES ( 'x', 'v0', 'v0' ); 
+INSERT INTO v4 VALUES ( x'68617265', 'two-b', 'v1' ); 
+; 
+INSERT INTO v0 VALUES ( 18446744073709551615, '1.10', 'v1' ); 
+; 
+; 
+INSERT INTO v0 VALUES ( - 18446744071562067968, 'v1', 'aBc3' ); 
+CREATE TABLE v12 ( c13, c14 REAL, c15 COLLATE NOCASE ); 
+INSERT INTO v0 SELECT * FROM v4 AS a16 ORDER BY 18446744073709551488; 
+INSERT INTO v4 SELECT * FROM v4 AS a17 ORDER BY 0; 
+; 
+INSERT INTO v0 SELECT * FROM v0 AS a19 ORDER BY 0; 
+INSERT INTO v4 SELECT * FROM v4 AS a20 ORDER BY 18446744073709551615; 
+INSERT INTO v0 SELECT * FROM v4 AS a21 ORDER BY 18446744073709551615; 
+INSERT INTO v0 SELECT * FROM v12 AS a22 ORDER BY 127; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c5 FROM v4 AS a23 WHERE a23.c6 LIKE 'v0' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c14 FROM v12 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c1 FROM v0 AS a26 GROUP BY 18446744073709551615 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c6 FROM v4 AS a27 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a28 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 GROUP BY a29.c2, a29.c1, count ( a29.c2 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c2, count ( ( NOT ( a30.c14 IS NULL ) ) AND ( NOT ( a30.c15 IS NULL ) ) ), count ( ( NOT ( a30.c13 IS NULL ) ) AND ( NOT ( a30.c15 IS NULL ) ) ) FROM v12 AS a30 LEFT JOIN v0 AS a31 ON a31.c1 = 'v0' ORDER BY 31; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v4 SELECT * FROM v4 AS a17 ORDER BY 0; 
+                                    error here ---^
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v0 SELECT * FROM v0 AS a19 ORDER BY 0; 
+                                    error here ---^
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+127
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no tables specified
+END VERI 0
+BEGIN VERI 0
+x
+two-b
+x
+two-b
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 50: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+Parse error near line 53: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+127
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 38: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+x
+two-b
+x
+two-b
+ 
+INT: 3 
+Str: 
+x
+two-b
+x
+two-b
+ 
+INT: 3 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 44: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 50: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+Str: 
+Parse error near line 50: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 53: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 53: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

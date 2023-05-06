@@ -1,0 +1,322 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, PRIMARY KEY ( c3 ), CHECK( c3 != c2 ), CHECK( c3 != c3 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c1 = c3 || c3 WHERE c2 = c2 || c2; END; 
+CREATE TABLE v6 ( c7 REFERENCES t1 DEFAULT 18446744073709551615 DEFAULT 18446744073709551615, c8 INTEGER PRIMARY KEY, c9 BLOB, FOREIGN KEY ( c9 ) REFERENCES t2 ); 
+CREATE INDEX i10 ON v0 ( c2 ); 
+CREATE INDEX i11 ON v6 ( c8 ); 
+CREATE INDEX i12 ON v6 ( c7 ); 
+CREATE TABLE v13 ( c14, c15, c16, c17, PRIMARY KEY ( c14, c15 ) ) WITHOUT ROWID; 
+INSERT INTO v13 VALUES ( - 2147483647, 18446744073709551615, 'apple', 0, 8 ); 
+ALTER TABLE v6 DROP COLUMN c7; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a18, v13 AS a19 NATURAL JOIN v13 AS a20 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT hex ( ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c9, max ( a21.c8 || a21.c8 ) FROM v6 AS a21 WHERE ( a21.c8 || a21.c9 || a21.c7 ) != 'aaa' ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v22 ( c24 ) AS ( SELECT c8, max ( c7 || c17 ) ORDER BY 8 ) SELECT * FROM v22 AS a23 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY a25.c3 COLLATE NOCASE, a25.c2; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v26 ( c28 ) AS ( SELECT 2147483647 ORDER BY 0 ) SELECT * FROM v26 AS a27 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 2147483647 ORDER BY 0 ) AS y, v0 AS a29 ON likely ( 18446744073709518848 < 18446744071562067968 ) OR 0 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c2, max ( a30.c1 || a30.c1 ) FROM v0 AS a30 WHERE a30.c3 > y ( ( a30.c3 + 100 ) ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: table v13 has 4 columns but 5 values were supplied
+Runtime error near line 11: error in index i12 after drop column: no such column: c7
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 8
+   a18, v13 AS a19 NATURAL JOIN v13 AS a20 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: wrong number of arguments to function hex()
+  SELECT hex ( ) ORDER BY 0; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: table v22 has 2 values for 1 columns
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+  RSIVE v26 ( c28 ) AS ( SELECT 2147483647 ORDER BY 0 ) SELECT * FROM v26 AS a27
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM ( SELECT 2147483647 ORDER BY 0 ) AS y, v0 AS a29 ON likely ( 184
+                               error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such function: y
+   a30.c1 || a30.c1 ) FROM v0 AS a30 WHERE a30.c3 > y ( ( a30.c3 + 100 ) ) ORDER
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, PRIMARY KEY ( c3 ), CHECK( c3 != c2 ), CHECK( c3 != c3 ) ) WITHOUT ROWID; 
+; 
+; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c1 = c3 || c3 WHERE c2 = c2 || c2; END; 
+CREATE TABLE v6 ( c7 REFERENCES t1 DEFAULT 18446744073709551615 DEFAULT 18446744073709551615, c8 INTEGER PRIMARY KEY, c9 BLOB, FOREIGN KEY ( c9 ) REFERENCES t2 ); 
+; 
+; 
+; 
+CREATE TABLE v13 ( c14, c15, c16, c17, PRIMARY KEY ( c14, c15 ) ) WITHOUT ROWID; 
+INSERT INTO v13 VALUES ( - 2147483647, 18446744073709551615, 'apple', 0, 8 ); 
+ALTER TABLE v6 DROP COLUMN c7; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a18, v13 AS a19 NATURAL JOIN v13 AS a20 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT hex ( ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c9, max ( a21.c8 || a21.c8 ) FROM v6 AS a21 WHERE ( a21.c8 || a21.c9 || a21.c7 ) != 'aaa' ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v22 ( c24 ) AS ( SELECT c8, max ( c7 || c17 ) ORDER BY 8 ) SELECT * FROM v22 AS a23 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY a25.c3 COLLATE NOCASE, a25.c2; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v26 ( c28 ) AS ( SELECT 2147483647 ORDER BY 0 ) SELECT * FROM v26 AS a27 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 2147483647 ORDER BY 0 ) AS y, v0 AS a29 ON likely ( 18446744073709518848 < 18446744071562067968 ) OR 0 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c2, max ( a30.c1 || a30.c1 ) FROM v0 AS a30 WHERE a30.c3 > y ( ( a30.c3 + 100 ) ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: table v13 has 4 columns but 5 values were supplied
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 8
+   a18, v13 AS a19 NATURAL JOIN v13 AS a20 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: wrong number of arguments to function hex()
+  SELECT hex ( ) ORDER BY 0; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: a21.c7
+  1.c8 ) FROM v6 AS a21 WHERE ( a21.c8 || a21.c9 || a21.c7 ) != 'aaa' ORDER BY 9
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: table v22 has 2 values for 1 columns
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+  RSIVE v26 ( c28 ) AS ( SELECT 2147483647 ORDER BY 0 ) SELECT * FROM v26 AS a27
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM ( SELECT 2147483647 ORDER BY 0 ) AS y, v0 AS a29 ON likely ( 184
+                               error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such function: y
+   a30.c1 || a30.c1 ) FROM v0 AS a30 WHERE a30.c3 > y ( ( a30.c3 + 100 ) ) ORDER
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 8
+   a18, v13 AS a19 NATURAL JOIN v13 AS a20 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 8
+   a18, v13 AS a19 NATURAL JOIN v13 AS a20 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: wrong number of arguments to function hex()
+  SELECT hex ( ) ORDER BY 0; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 16: wrong number of arguments to function hex()
+  SELECT hex ( ) ORDER BY 0; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such column: a21.c7
+  1.c8 ) FROM v6 AS a21 WHERE ( a21.c8 || a21.c9 || a21.c7 ) != 'aaa' ORDER BY 9
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: table v22 has 2 values for 1 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 22: table v22 has 2 values for 1 columns
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+  RSIVE v26 ( c28 ) AS ( SELECT 2147483647 ORDER BY 0 ) SELECT * FROM v26 AS a27
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+  RSIVE v26 ( c28 ) AS ( SELECT 2147483647 ORDER BY 0 ) SELECT * FROM v26 AS a27
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM ( SELECT 2147483647 ORDER BY 0 ) AS y, v0 AS a29 ON likely ( 184
+                               error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM ( SELECT 2147483647 ORDER BY 0 ) AS y, v0 AS a29 ON likely ( 184
+                               error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such function: y
+   a30.c1 || a30.c1 ) FROM v0 AS a30 WHERE a30.c3 > y ( ( a30.c3 + 100 ) ) ORDER
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 40: no such function: y
+   a30.c1 || a30.c1 ) FROM v0 AS a30 WHERE a30.c3 > y ( ( a30.c3 + 100 ) ) ORDER
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

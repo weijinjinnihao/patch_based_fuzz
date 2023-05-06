@@ -1,0 +1,278 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 UNIQUE ); 
+CREATE INDEX i3 ON v0 ( c2 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE TABLE v5 ( c6, c7, c8 PRIMARY KEY ON CONFLICT FAIL ); 
+CREATE TABLE v9 ( c10, c11, c12, c13 REFERENCES p1 ( c11 ) ); 
+ALTER TABLE v5 DROP COLUMN c8; 
+CREATE INDEX i14 ON v5 ( c6 ); 
+CREATE INDEX i15 ON v9 ( c13 ); 
+CREATE INDEX i16 ON v5 ( c8 ); 
+ALTER TABLE v9 DROP COLUMN c13; 
+SELECT 'BEGIN VERI 0'; 
+SELECT - 255, a18.c6 FROM v9 AS a17 LEFT JOIN v5 AS a18 ON a17.c10 = a17.c13 ORDER BY ( ( a17.c13 + 0 ) % 0 ) != 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a19, v9 AS a20 NATURAL JOIN v5 AS a21 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a22 WHERE count ( a22.c12 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a23 NATURAL JOIN v5 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c1, sum ( NULL, NULL ) AS y FROM v0 AS a25 GROUP BY a25.c2 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26, v0 AS a27 NATURAL JOIN v9 AS a28 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c10 FROM v9 AS a29 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( * ) ORDER BY 64000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c2 FROM v0 AS a30 INNER JOIN v0 AS a31 ON ( a31.c2 = a30.c1 ) WHERE ( a30.c1 IN ( SELECT a31.c1 FROM v5 AS a32 WHERE ( ( a32.c6 = 'v0' ) AND ( a31.c1 IS NOT NULL ) AND ( a30.c1 IN ( SELECT a30.c1 FROM ( SELECT a33.c1, row_number ( ) OVER ( PARTITION BY a33.c2 ORDER BY a31.c1 ) AS y FROM v0 AS a33 WHERE ( a33.c2 = 'two-b' ) ORDER BY 127 ) AS y WHERE ( a31.c1 = 18446744073709551488 ) ORDER BY 0 ) ) AND ( a32.c6 IN ( 4294967295, 18446744073709551488 ) ) ) ORDER BY 64000 ) ) ORDER BY 1.250000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a34.c10 ) FROM v9 AS a34 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: cannot drop PRIMARY KEY column: "c8"
+Runtime error near line 10: error in index i15 after drop column: no such column: c13
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: misuse of aggregate function count()
+  SELECT * FROM v9 AS a22 WHERE count ( a22.c12 ) ORDER BY 18446744073709551488;
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: wrong number of arguments to function sum()
+  SELECT a25.c1, sum ( NULL, NULL ) AS y FROM v0 AS a25 GROUP BY a25.c2 ORDER BY
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 UNIQUE ); 
+; 
+; 
+CREATE TABLE v5 ( c6, c7, c8 PRIMARY KEY ON CONFLICT FAIL ); 
+CREATE TABLE v9 ( c10, c11, c12, c13 REFERENCES p1 ( c11 ) ); 
+ALTER TABLE v5 DROP COLUMN c8; 
+; 
+; 
+; 
+ALTER TABLE v9 DROP COLUMN c13; 
+SELECT 'BEGIN VERI 0'; 
+SELECT - 255, a18.c6 FROM v9 AS a17 LEFT JOIN v5 AS a18 ON a17.c10 = a17.c13 ORDER BY ( ( a17.c13 + 0 ) % 0 ) != 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a19, v9 AS a20 NATURAL JOIN v5 AS a21 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a22 WHERE count ( a22.c12 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a23 NATURAL JOIN v5 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c1, sum ( NULL, NULL ) AS y FROM v0 AS a25 GROUP BY a25.c2 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26, v0 AS a27 NATURAL JOIN v9 AS a28 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c10 FROM v9 AS a29 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( * ) ORDER BY 64000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c2 FROM v0 AS a30 INNER JOIN v0 AS a31 ON ( a31.c2 = a30.c1 ) WHERE ( a30.c1 IN ( SELECT a31.c1 FROM v5 AS a32 WHERE ( ( a32.c6 = 'v0' ) AND ( a31.c1 IS NOT NULL ) AND ( a30.c1 IN ( SELECT a30.c1 FROM ( SELECT a33.c1, row_number ( ) OVER ( PARTITION BY a33.c2 ORDER BY a31.c1 ) AS y FROM v0 AS a33 WHERE ( a33.c2 = 'two-b' ) ORDER BY 127 ) AS y WHERE ( a31.c1 = 18446744073709551488 ) ORDER BY 0 ) ) AND ( a32.c6 IN ( 4294967295, 18446744073709551488 ) ) ) ORDER BY 64000 ) ) ORDER BY 1.250000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a34.c10 ) FROM v9 AS a34 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: cannot drop PRIMARY KEY column: "c8"
+BEGIN VERI 0
+Parse error near line 12: no such column: a17.c13
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: misuse of aggregate function count()
+  SELECT * FROM v9 AS a22 WHERE count ( a22.c12 ) ORDER BY 18446744073709551488;
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: wrong number of arguments to function sum()
+  SELECT a25.c1, sum ( NULL, NULL ) AS y FROM v0 AS a25 GROUP BY a25.c2 ORDER BY
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 12: no such column: a17.c13
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: misuse of aggregate function count()
+  SELECT * FROM v9 AS a22 WHERE count ( a22.c12 ) ORDER BY 18446744073709551488;
+                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 18: misuse of aggregate function count()
+  SELECT * FROM v9 AS a22 WHERE count ( a22.c12 ) ORDER BY 18446744073709551488;
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: wrong number of arguments to function sum()
+  SELECT a25.c1, sum ( NULL, NULL ) AS y FROM v0 AS a25 GROUP BY a25.c2 ORDER BY
+                 ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 24: wrong number of arguments to function sum()
+  SELECT a25.c1, sum ( NULL, NULL ) AS y FROM v0 AS a25 GROUP BY a25.c2 ORDER BY
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

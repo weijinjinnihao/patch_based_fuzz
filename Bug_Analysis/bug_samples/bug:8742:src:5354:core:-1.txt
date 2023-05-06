@@ -1,0 +1,472 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( x'616263', 'two-b', 'v0' ); 
+INSERT INTO v0 VALUES ( 0, 'x', 'x' ); 
+INSERT INTO v0 VALUES ( 'v0', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT ( c3 IS NULL ) ) ), 'v1' ); 
+INSERT INTO v0 VALUES ( 'vbde', 'v1', 'x' ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( x'616263', 'x', 'def' ); 
+CREATE TABLE v6 ( c7, c8, c9 COLLATE NOCASE ); 
+CREATE INDEX i10 ON v6 ( c7 ); 
+INSERT INTO v0 VALUES ( NULL, '-2', 'v1' ); 
+INSERT INTO v6 VALUES ( 'v1', 'bmy', 'v0' ); 
+INSERT INTO v6 VALUES ( x'68617265', 'v0', 'x' ); 
+INSERT INTO v0 VALUES ( 0, 'v1', 'v0' ); 
+ALTER TABLE v6 DROP c7; 
+CREATE INDEX i11 ON v6 ( c9 ); 
+INSERT INTO v0 VALUES ( - 0, 'v0', 'x' ); 
+CREATE TABLE v12 ( c13, c14, c15 COLLATE NOCASE ); 
+INSERT INTO v12 SELECT * FROM v12 AS a16 ORDER BY 0; 
+CREATE INDEX i17 ON v6 ( c7 ); 
+INSERT INTO v6 SELECT * FROM v12 AS a18 ORDER BY 0; 
+INSERT INTO v6 SELECT * FROM v6 AS a19 ORDER BY 0; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a20 ORDER BY a20.c14 COLLATE binary; 
+SELECT 'END VERI 0'; 
+INSERT INTO v0 SELECT * FROM v6 AS a21 ORDER BY 0; 
+INSERT INTO v0 SELECT * FROM v12 AS a22 ORDER BY 0; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c8, count ( ( NOT ( a23.c9 IS NULL ) ) AND ( NOT ( a23.c8 IS NULL ) ) ) FROM v6 AS a23 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v24 AS ( SELECT 0 y ORDER BY 0 ) SELECT * FROM v24 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c7, count ( ( NOT ( a26.c7 IS NULL ) ) AND ( NOT ( a26.c8 IS NULL ) ) ) FROM v6 AS a26 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a27 NATURAL JOIN v12 AS a28 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c7 FROM v6 AS a29 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30, v6 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c13 FROM v12 AS a32 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: misuse of aggregate function count()
+  INSERT INTO v0 VALUES ( 'v0', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT ( c3 IS
+                  error here ---^
+Runtime error near line 15: error in index i10 after drop column: no such column: c7
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v12 SELECT * FROM v12 AS a16 ORDER BY 0; 
+                                      error here ---^
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v6 SELECT * FROM v12 AS a18 ORDER BY 0; 
+                                     error here ---^
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v6 SELECT * FROM v6 AS a19 ORDER BY 0; 
+                                    error here ---^
+BEGIN VERI 0
+END VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v0 SELECT * FROM v6 AS a21 ORDER BY 0; 
+                                    error here ---^
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v0 SELECT * FROM v12 AS a22 ORDER BY 0; 
+                                     error here ---^
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  OT ( a23.c8 IS NULL ) ) ) FROM v6 AS a23 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v24 AS ( SELECT 0 y ORDER BY 0 ) SELECT * FROM v24 AS a25 ORDER BY 184467
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+  OT ( a26.c8 IS NULL ) ) ) FROM v6 AS a26 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no tables specified
+END VERI 0
+BEGIN VERI 0
+v1
+hare
+END VERI 0
+BEGIN VERI 0
+Parse error near line 47: no tables specified
+END VERI 0
+BEGIN VERI 0
+abc|two-b|v0|v1|bmy|v0
+abc|two-b|v0|hare|v0|x
+0|x|x|v1|bmy|v0
+0|x|x|hare|v0|x
+vbde|v1|x|v1|bmy|v0
+vbde|v1|x|hare|v0|x
+abc|x|def|v1|bmy|v0
+abc|x|def|hare|v0|x
+|-2|v1|v1|bmy|v0
+|-2|v1|hare|v0|x
+0|v1|v0|v1|bmy|v0
+0|v1|v0|hare|v0|x
+0|v0|x|v1|bmy|v0
+0|v0|x|hare|v0|x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 53: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a32.c13 FROM v12 AS a32 ORDER BY 0; 
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+abc|two-b|v0
+0|x|x
+vbde|v1|x
+abc|x|def
+|-2|v1
+0|v1|v0
+0|v0|x
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+; 
+INSERT INTO v0 VALUES ( x'616263', 'two-b', 'v0' ); 
+INSERT INTO v0 VALUES ( 0, 'x', 'x' ); 
+INSERT INTO v0 VALUES ( 'v0', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT ( c3 IS NULL ) ) ), 'v1' ); 
+INSERT INTO v0 VALUES ( 'vbde', 'v1', 'x' ); 
+; 
+INSERT INTO v0 VALUES ( x'616263', 'x', 'def' ); 
+CREATE TABLE v6 ( c7, c8, c9 COLLATE NOCASE ); 
+; 
+INSERT INTO v0 VALUES ( NULL, '-2', 'v1' ); 
+INSERT INTO v6 VALUES ( 'v1', 'bmy', 'v0' ); 
+INSERT INTO v6 VALUES ( x'68617265', 'v0', 'x' ); 
+INSERT INTO v0 VALUES ( 0, 'v1', 'v0' ); 
+ALTER TABLE v6 DROP c7; 
+; 
+INSERT INTO v0 VALUES ( - 0, 'v0', 'x' ); 
+CREATE TABLE v12 ( c13, c14, c15 COLLATE NOCASE ); 
+INSERT INTO v12 SELECT * FROM v12 AS a16 ORDER BY 0; 
+; 
+INSERT INTO v6 SELECT * FROM v12 AS a18 ORDER BY 0; 
+INSERT INTO v6 SELECT * FROM v6 AS a19 ORDER BY 0; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a20 ORDER BY a20.c14 COLLATE binary; 
+SELECT 'END VERI 0'; 
+INSERT INTO v0 SELECT * FROM v6 AS a21 ORDER BY 0; 
+INSERT INTO v0 SELECT * FROM v12 AS a22 ORDER BY 0; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c8, count ( ( NOT ( a23.c9 IS NULL ) ) AND ( NOT ( a23.c8 IS NULL ) ) ) FROM v6 AS a23 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v24 AS ( SELECT 0 y ORDER BY 0 ) SELECT * FROM v24 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c7, count ( ( NOT ( a26.c7 IS NULL ) ) AND ( NOT ( a26.c8 IS NULL ) ) ) FROM v6 AS a26 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a27 NATURAL JOIN v12 AS a28 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c7 FROM v6 AS a29 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30, v6 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c13 FROM v12 AS a32 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: misuse of aggregate function count()
+  INSERT INTO v0 VALUES ( 'v0', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT ( c3 IS
+                  error here ---^
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v12 SELECT * FROM v12 AS a16 ORDER BY 0; 
+                                      error here ---^
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v6 SELECT * FROM v12 AS a18 ORDER BY 0; 
+                                     error here ---^
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+  INSERT INTO v6 SELECT * FROM v6 AS a19 ORDER BY 0; 
+                                    error here ---^
+BEGIN VERI 0
+END VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+  INSERT INTO v0 SELECT * FROM v6 AS a21 ORDER BY 0; 
+                                    error here ---^
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v0 SELECT * FROM v12 AS a22 ORDER BY 0; 
+                                     error here ---^
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  OT ( a23.c8 IS NULL ) ) ) FROM v6 AS a23 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v24 AS ( SELECT 0 y ORDER BY 0 ) SELECT * FROM v24 AS a25 ORDER BY 184467
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a26.c7
+  SELECT a26.c7, count ( ( NOT ( a26.c7 IS NULL ) ) AND ( NOT ( a26.c8 IS NULL )
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no such column: a29.c7
+  SELECT a29.c7 FROM v6 AS a29 ORDER BY 18446744071562067968; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 47: no tables specified
+END VERI 0
+BEGIN VERI 0
+abc|two-b|v0|bmy|v0
+abc|two-b|v0|v0|x
+0|x|x|bmy|v0
+0|x|x|v0|x
+vbde|v1|x|bmy|v0
+vbde|v1|x|v0|x
+abc|x|def|bmy|v0
+abc|x|def|v0|x
+|-2|v1|bmy|v0
+|-2|v1|v0|x
+0|v1|v0|bmy|v0
+0|v1|v0|v0|x
+0|v0|x|bmy|v0
+0|v0|x|v0|x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 53: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a32.c13 FROM v12 AS a32 ORDER BY 0; 
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+abc|two-b|v0
+0|x|x
+vbde|v1|x
+abc|x|def
+|-2|v1
+0|v1|v0
+0|v0|x
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  OT ( a23.c8 IS NULL ) ) ) FROM v6 AS a23 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  OT ( a23.c8 IS NULL ) ) ) FROM v6 AS a23 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v24 AS ( SELECT 0 y ORDER BY 0 ) SELECT * FROM v24 AS a25 ORDER BY 184467
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v24 AS ( SELECT 0 y ORDER BY 0 ) SELECT * FROM v24 AS a25 ORDER BY 184467
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+  OT ( a26.c8 IS NULL ) ) ) FROM v6 AS a26 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: no such column: a26.c7
+  SELECT a26.c7, count ( ( NOT ( a26.c7 IS NULL ) ) AND ( NOT ( a26.c8 IS NULL )
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+v1
+hare
+ 
+INT: 1 
+Str: 
+Parse error near line 44: no such column: a29.c7
+  SELECT a29.c7 FROM v6 AS a29 ORDER BY 18446744071562067968; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 47: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 47: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+abc|two-b|v0|v1|bmy|v0
+abc|two-b|v0|hare|v0|x
+0|x|x|v1|bmy|v0
+0|x|x|hare|v0|x
+vbde|v1|x|v1|bmy|v0
+vbde|v1|x|hare|v0|x
+abc|x|def|v1|bmy|v0
+abc|x|def|hare|v0|x
+|-2|v1|v1|bmy|v0
+|-2|v1|hare|v0|x
+0|v1|v0|v1|bmy|v0
+0|v1|v0|hare|v0|x
+0|v0|x|v1|bmy|v0
+0|v0|x|hare|v0|x
+ 
+INT: 13 
+Str: 
+abc|two-b|v0|bmy|v0
+abc|two-b|v0|v0|x
+0|x|x|bmy|v0
+0|x|x|v0|x
+vbde|v1|x|bmy|v0
+vbde|v1|x|v0|x
+abc|x|def|bmy|v0
+abc|x|def|v0|x
+|-2|v1|bmy|v0
+|-2|v1|v0|x
+0|v1|v0|bmy|v0
+0|v1|v0|v0|x
+0|v0|x|bmy|v0
+0|v0|x|v0|x
+ 
+INT: 13 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 53: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a32.c13 FROM v12 AS a32 ORDER BY 0; 
+                            error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 53: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a32.c13 FROM v12 AS a32 ORDER BY 0; 
+                            error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+abc|two-b|v0
+0|x|x
+vbde|v1|x
+abc|x|def
+|-2|v1
+0|v1|v0
+0|v0|x
+ 
+INT: 6 
+Str: 
+abc|two-b|v0
+0|x|x
+vbde|v1|x
+abc|x|def
+|-2|v1
+0|v1|v0
+0|v0|x
+ 
+INT: 6 
+Compare_result_int: 
+0
+
+
+

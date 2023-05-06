@@ -1,0 +1,310 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INT, c2 INT ); 
+CREATE INDEX i3 ON v0 ( c2 ); 
+BEGIN; 
+INSERT INTO v0 VALUES ( 2147483647, 255 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+ALTER TABLE v0 ADD COLUMN c6 CHECK( x'b1' ); 
+CREATE INDEX i7 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 2147483647, 2147483647 ); 
+CREATE INDEX i8 ON v0 ( c2 ); 
+CREATE TABLE v9 ( c10 TEXT, c11 INTEGER, c12 INT, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32 TEXT DEFAULT - 2147483647, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46, c47, c48, c49, c50, c51 PRIMARY KEY, CHECK( ( ( c28 + 0 ) % 0 ) != 127 ) ) WITHOUT ROWID; 
+INSERT INTO v9 VALUES ( 0, 0 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a52, v9 AS a53 NATURAL JOIN v9 AS a54 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a55 NATURAL JOIN v9 AS a56 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a57 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c60 ) AS ( SELECT * ORDER BY 18446744073709551488 ) SELECT c60, a58.c41 FROM v9 AS a58 LEFT JOIN v0 AS a59 ON ( 'v0', a59.c6 > 10, 'ABX' ) < 18446744073709551488 = a59.c6 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a61.c2, count ( ( NOT ( a61.c2 IS NULL ) ) AND ( NOT ( a61.c6 IS NULL ) ) ) FROM v0 AS a61 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v62 ( c64 ) AS ( SELECT 18446744073709551488 ORDER BY 100 ) SELECT c64, count ( * ) FROM v62 AS a63 GROUP BY c64 HAVING count ( * ) >= 9223372036854775807 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a65.c1, a65.c2, a65.c1 FROM v0 AS a65 WHERE hex ( 18446744073709551488 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a66 ORDER BY 0, 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( c6 + - 100 ) % 18446744073709551488 WHERE c26 > c26 % 127 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: CHECK constraint failed
+Parse error near line 12: table v9 has 42 columns but 2 values were supplied
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 44
+END VERI 0
+BEGIN VERI 0
+2147483647|255
+2147483647|2147483647
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a61.c6
+  2, count ( ( NOT ( a61.c2 IS NULL ) ) AND ( NOT ( a61.c6 IS NULL ) ) ) FROM v0
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+2147483647|255|2147483647
+2147483647|2147483647|2147483647
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a66 ORDER BY 0, 18446744073709551488; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: c6
+  SELECT ( c6 + - 100 ) % 18446744073709551488 WHERE c26 > c26 % 127 ORDER BY 18
+           ^--- error here
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INT, c2 INT ); 
+; 
+BEGIN; 
+INSERT INTO v0 VALUES ( 2147483647, 255 ); 
+; 
+; 
+ALTER TABLE v0 ADD COLUMN c6 CHECK( x'b1' ); 
+; 
+INSERT INTO v0 VALUES ( 2147483647, 2147483647 ); 
+; 
+CREATE TABLE v9 ( c10 TEXT, c11 INTEGER, c12 INT, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32 TEXT DEFAULT - 2147483647, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46, c47, c48, c49, c50, c51 PRIMARY KEY, CHECK( ( ( c28 + 0 ) % 0 ) != 127 ) ) WITHOUT ROWID; 
+INSERT INTO v9 VALUES ( 0, 0 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a52, v9 AS a53 NATURAL JOIN v9 AS a54 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a55 NATURAL JOIN v9 AS a56 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a57 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c60 ) AS ( SELECT * ORDER BY 18446744073709551488 ) SELECT c60, a58.c41 FROM v9 AS a58 LEFT JOIN v0 AS a59 ON ( 'v0', a59.c6 > 10, 'ABX' ) < 18446744073709551488 = a59.c6 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a61.c2, count ( ( NOT ( a61.c2 IS NULL ) ) AND ( NOT ( a61.c6 IS NULL ) ) ) FROM v0 AS a61 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v62 ( c64 ) AS ( SELECT 18446744073709551488 ORDER BY 100 ) SELECT c64, count ( * ) FROM v62 AS a63 GROUP BY c64 HAVING count ( * ) >= 9223372036854775807 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a65.c1, a65.c2, a65.c1 FROM v0 AS a65 WHERE hex ( 18446744073709551488 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a66 ORDER BY 0, 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( c6 + - 100 ) % 18446744073709551488 WHERE c26 > c26 % 127 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: CHECK constraint failed
+Parse error near line 9: table v0 has 3 columns but 2 values were supplied
+Parse error near line 12: table v9 has 42 columns but 2 values were supplied
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 44
+END VERI 0
+BEGIN VERI 0
+2147483647|255
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a61.c6
+  2, count ( ( NOT ( a61.c2 IS NULL ) ) AND ( NOT ( a61.c6 IS NULL ) ) ) FROM v0
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+2147483647|255|2147483647
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a66 ORDER BY 0, 18446744073709551488; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: c6
+  SELECT ( c6 + - 100 ) % 18446744073709551488 WHERE c26 > c26 % 127 ORDER BY 18
+           ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 44
+ 
+INT: 0 
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 44
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+2147483647|255
+2147483647|2147483647
+ 
+INT: 1 
+Str: 
+2147483647|255
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: no such column: a61.c6
+  2, count ( ( NOT ( a61.c2 IS NULL ) ) AND ( NOT ( a61.c6 IS NULL ) ) ) FROM v0
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: no such column: a61.c6
+  2, count ( ( NOT ( a61.c2 IS NULL ) ) AND ( NOT ( a61.c6 IS NULL ) ) ) FROM v0
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+2147483647|255|2147483647
+2147483647|2147483647|2147483647
+ 
+INT: 1 
+Str: 
+2147483647|255|2147483647
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a66 ORDER BY 0, 18446744073709551488; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a66 ORDER BY 0, 18446744073709551488; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no such column: c6
+  SELECT ( c6 + - 100 ) % 18446744073709551488 WHERE c26 > c26 % 127 ORDER BY 18
+           ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 41: no such column: c6
+  SELECT ( c6 + - 100 ) % 18446744073709551488 WHERE c26 > c26 % 127 ORDER BY 18
+           ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,819 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( x'616263', 'xyz%dabc', 'v1' ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 'one-a', 'x' ); 
+INSERT INTO v0 VALUES ( 'x', count ( ( NOT ( c3 IS NULL ) ) AND ( NOT ( c3 IS NULL ) ) ), 'v1' ); 
+INSERT INTO v0 VALUES ( 'v1', 'x', 'v1' ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( x'616263', 'x', 'v1' ); 
+CREATE TABLE v5 ( c6, c7, c8 COLLATE NOCASE ); 
+CREATE INDEX i9 ON v5 ( c7 ); 
+INSERT INTO v0 VALUES ( NULL, 'v0', 'x1' ); 
+INSERT INTO v0 VALUES ( 'v0', 'x', 'x' ); 
+INSERT INTO v5 VALUES ( x'68617265', 'GHI', 'one-a' ); 
+INSERT INTO v5 VALUES ( 18446744073709551488, '10000 500', 'd' ); 
+ALTER TABLE v5 DROP c7; 
+INSERT INTO v0 VALUES ( - 18446744073709551488, 'count.test cases for NOT INDEXED', 'v1' ); 
+CREATE INDEX i10 ON v5 ( c6 ); 
+CREATE TABLE v11 ( c12, c13, c14 COLLATE NOCASE ); 
+INSERT INTO v5 SELECT * FROM v11 AS a15 ORDER BY 18446744073709551488; 
+INSERT INTO v11 SELECT * FROM v5 AS a16 ORDER BY 18446744073709551488; 
+CREATE INDEX i17 ON v5 ( c7 ); 
+INSERT INTO v11 SELECT * FROM v11 AS a18 ORDER BY 0; 
+INSERT INTO v0 SELECT * FROM v5 AS a19 ORDER BY 18446744071562067968; 
+INSERT INTO v5 SELECT * FROM v0 AS a20 GROUP BY c6 HAVING c1 > c3 % 18446744073709551488 >= 18446744073709551615 ORDER BY 18446744073709551615; 
+INSERT INTO v0 SELECT * FROM v11 AS a21 ORDER BY 2147483647; 
+CREATE INDEX i22 ON v0 ( c1 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c1, a24.c12 FROM v0 AS a23 RIGHT JOIN v11 AS a24 ON a24.c14 = a24.c13 GROUP BY a24.c12 HAVING count ( * ) >= 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c2, a25.c1 FROM v0 AS a25 RIGHT JOIN v0 AS a26 ON a26.c3 = a26.c3 WHERE a25.c2 != a26.c2 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a27, v5 AS a28 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29, v0 AS a30 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a33.c1 ) FROM v0 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 ORDER BY ( 18446744073709551615, count ( * ) ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: misuse of aggregate function count()
+  INSERT INTO v0 VALUES ( 'x', count ( ( NOT ( c3 IS NULL ) ) AND ( NOT ( c3 IS 
+                 error here ---^
+Runtime error near line 14: error in index i9 after drop column: no such column: c7
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v11 SELECT * FROM v11 AS a18 ORDER BY 0; 
+                                      error here ---^
+Parse error near line 23: no such column: c6
+  INSERT INTO v5 SELECT * FROM v0 AS a20 GROUP BY c6 HAVING c1 > c3 % 1844674407
+                                    error here ---^
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v0 SELECT * FROM v11 AS a21 ORDER BY 2147483647; 
+                                     error here ---^
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+one-a|abc
+x|abc
+x|abc
+v0|abc
+x|abc
+count.test cases for NOT INDEXED|abc
+GHI|abc
+10000 500|abc
+xyz%dabc|1.84467440737096e+19
+x|1.84467440737096e+19
+x|1.84467440737096e+19
+v0|1.84467440737096e+19
+x|1.84467440737096e+19
+count.test cases for NOT INDEXED|1.84467440737096e+19
+GHI|1.84467440737096e+19
+10000 500|1.84467440737096e+19
+xyz%dabc|v1
+one-a|v1
+v0|v1
+count.test cases for NOT INDEXED|v1
+GHI|v1
+10000 500|v1
+xyz%dabc|abc
+one-a|abc
+v0|abc
+count.test cases for NOT INDEXED|abc
+GHI|abc
+10000 500|abc
+xyz%dabc|
+one-a|
+x|
+x|
+x|
+count.test cases for NOT INDEXED|
+GHI|
+10000 500|
+xyz%dabc|v0
+one-a|v0
+v0|v0
+count.test cases for NOT INDEXED|v0
+GHI|v0
+10000 500|v0
+xyz%dabc|-1.84467440737096e+19
+one-a|-1.84467440737096e+19
+x|-1.84467440737096e+19
+x|-1.84467440737096e+19
+v0|-1.84467440737096e+19
+x|-1.84467440737096e+19
+GHI|-1.84467440737096e+19
+10000 500|-1.84467440737096e+19
+xyz%dabc|hare
+one-a|hare
+x|hare
+x|hare
+v0|hare
+x|hare
+count.test cases for NOT INDEXED|hare
+10000 500|hare
+xyz%dabc|1.84467440737096e+19
+one-a|1.84467440737096e+19
+x|1.84467440737096e+19
+x|1.84467440737096e+19
+v0|1.84467440737096e+19
+x|1.84467440737096e+19
+count.test cases for NOT INDEXED|1.84467440737096e+19
+GHI|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+hare|GHI|one-a|hare|GHI|one-a
+hare|GHI|one-a|1.84467440737096e+19|10000 500|d
+1.84467440737096e+19|10000 500|d|hare|GHI|one-a
+1.84467440737096e+19|10000 500|d|1.84467440737096e+19|10000 500|d
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no tables specified
+END VERI 0
+BEGIN VERI 0
+abc|xyz%dabc|v1|abc|xyz%dabc|v1
+abc|xyz%dabc|v1|1.84467440737096e+19|one-a|x
+abc|xyz%dabc|v1|v1|x|v1
+abc|xyz%dabc|v1|abc|x|v1
+abc|xyz%dabc|v1||v0|x1
+abc|xyz%dabc|v1|v0|x|x
+abc|xyz%dabc|v1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+abc|xyz%dabc|v1|hare|GHI|one-a
+abc|xyz%dabc|v1|1.84467440737096e+19|10000 500|d
+1.84467440737096e+19|one-a|x|abc|xyz%dabc|v1
+1.84467440737096e+19|one-a|x|1.84467440737096e+19|one-a|x
+1.84467440737096e+19|one-a|x|v1|x|v1
+1.84467440737096e+19|one-a|x|abc|x|v1
+1.84467440737096e+19|one-a|x||v0|x1
+1.84467440737096e+19|one-a|x|v0|x|x
+1.84467440737096e+19|one-a|x|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+1.84467440737096e+19|one-a|x|hare|GHI|one-a
+1.84467440737096e+19|one-a|x|1.84467440737096e+19|10000 500|d
+v1|x|v1|abc|xyz%dabc|v1
+v1|x|v1|1.84467440737096e+19|one-a|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|x|v1
+v1|x|v1||v0|x1
+v1|x|v1|v0|x|x
+v1|x|v1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+v1|x|v1|hare|GHI|one-a
+v1|x|v1|1.84467440737096e+19|10000 500|d
+abc|x|v1|abc|xyz%dabc|v1
+abc|x|v1|1.84467440737096e+19|one-a|x
+abc|x|v1|v1|x|v1
+abc|x|v1|abc|x|v1
+abc|x|v1||v0|x1
+abc|x|v1|v0|x|x
+abc|x|v1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+abc|x|v1|hare|GHI|one-a
+abc|x|v1|1.84467440737096e+19|10000 500|d
+|v0|x1|abc|xyz%dabc|v1
+|v0|x1|1.84467440737096e+19|one-a|x
+|v0|x1|v1|x|v1
+|v0|x1|abc|x|v1
+|v0|x1||v0|x1
+|v0|x1|v0|x|x
+|v0|x1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+|v0|x1|hare|GHI|one-a
+|v0|x1|1.84467440737096e+19|10000 500|d
+v0|x|x|abc|xyz%dabc|v1
+v0|x|x|1.84467440737096e+19|one-a|x
+v0|x|x|v1|x|v1
+v0|x|x|abc|x|v1
+v0|x|x||v0|x1
+v0|x|x|v0|x|x
+v0|x|x|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+v0|x|x|hare|GHI|one-a
+v0|x|x|1.84467440737096e+19|10000 500|d
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|abc|xyz%dabc|v1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|1.84467440737096e+19|one-a|x
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|v1|x|v1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|abc|x|v1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1||v0|x1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|v0|x|x
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|hare|GHI|one-a
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|1.84467440737096e+19|10000 500|d
+hare|GHI|one-a|abc|xyz%dabc|v1
+hare|GHI|one-a|1.84467440737096e+19|one-a|x
+hare|GHI|one-a|v1|x|v1
+hare|GHI|one-a|abc|x|v1
+hare|GHI|one-a||v0|x1
+hare|GHI|one-a|v0|x|x
+hare|GHI|one-a|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+hare|GHI|one-a|hare|GHI|one-a
+hare|GHI|one-a|1.84467440737096e+19|10000 500|d
+1.84467440737096e+19|10000 500|d|abc|xyz%dabc|v1
+1.84467440737096e+19|10000 500|d|1.84467440737096e+19|one-a|x
+1.84467440737096e+19|10000 500|d|v1|x|v1
+1.84467440737096e+19|10000 500|d|abc|x|v1
+1.84467440737096e+19|10000 500|d||v0|x1
+1.84467440737096e+19|10000 500|d|v0|x|x
+1.84467440737096e+19|10000 500|d|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+1.84467440737096e+19|10000 500|d|hare|GHI|one-a
+1.84467440737096e+19|10000 500|d|1.84467440737096e+19|10000 500|d
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+BEGIN VERI 0
+hare|GHI|one-a
+1.84467440737096e+19|10000 500|d
+END VERI 0
+BEGIN VERI 0
+abc|xyz%dabc|v1
+1.84467440737096e+19|one-a|x
+v1|x|v1
+abc|x|v1
+|v0|x1
+v0|x|x
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+hare|GHI|one-a
+1.84467440737096e+19|10000 500|d
+END VERI 0
+BEGIN VERI 0
+8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 54: row value misused
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( x'616263', 'xyz%dabc', 'v1' ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 'one-a', 'x' ); 
+INSERT INTO v0 VALUES ( 'x', count ( ( NOT ( c3 IS NULL ) ) AND ( NOT ( c3 IS NULL ) ) ), 'v1' ); 
+INSERT INTO v0 VALUES ( 'v1', 'x', 'v1' ); 
+; 
+INSERT INTO v0 VALUES ( x'616263', 'x', 'v1' ); 
+CREATE TABLE v5 ( c6, c7, c8 COLLATE NOCASE ); 
+; 
+INSERT INTO v0 VALUES ( NULL, 'v0', 'x1' ); 
+INSERT INTO v0 VALUES ( 'v0', 'x', 'x' ); 
+INSERT INTO v5 VALUES ( x'68617265', 'GHI', 'one-a' ); 
+INSERT INTO v5 VALUES ( 18446744073709551488, '10000 500', 'd' ); 
+ALTER TABLE v5 DROP c7; 
+INSERT INTO v0 VALUES ( - 18446744073709551488, 'count.test cases for NOT INDEXED', 'v1' ); 
+; 
+CREATE TABLE v11 ( c12, c13, c14 COLLATE NOCASE ); 
+INSERT INTO v5 SELECT * FROM v11 AS a15 ORDER BY 18446744073709551488; 
+INSERT INTO v11 SELECT * FROM v5 AS a16 ORDER BY 18446744073709551488; 
+; 
+INSERT INTO v11 SELECT * FROM v11 AS a18 ORDER BY 0; 
+INSERT INTO v0 SELECT * FROM v5 AS a19 ORDER BY 18446744071562067968; 
+INSERT INTO v5 SELECT * FROM v0 AS a20 GROUP BY c6 HAVING c1 > c3 % 18446744073709551488 >= 18446744073709551615 ORDER BY 18446744073709551615; 
+INSERT INTO v0 SELECT * FROM v11 AS a21 ORDER BY 2147483647; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c1, a24.c12 FROM v0 AS a23 RIGHT JOIN v11 AS a24 ON a24.c14 = a24.c13 GROUP BY a24.c12 HAVING count ( * ) >= 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c2, a25.c1 FROM v0 AS a25 RIGHT JOIN v0 AS a26 ON a26.c3 = a26.c3 WHERE a25.c2 != a26.c2 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a27, v5 AS a28 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29, v0 AS a30 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a33.c1 ) FROM v0 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 ORDER BY ( 18446744073709551615, count ( * ) ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: misuse of aggregate function count()
+  INSERT INTO v0 VALUES ( 'x', count ( ( NOT ( c3 IS NULL ) ) AND ( NOT ( c3 IS 
+                 error here ---^
+Parse error near line 18: table v5 has 2 columns but 3 values were supplied
+Parse error near line 19: table v11 has 3 columns but 2 values were supplied
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v11 SELECT * FROM v11 AS a18 ORDER BY 0; 
+                                      error here ---^
+Parse error near line 22: table v0 has 3 columns but 2 values were supplied
+Parse error near line 23: no such column: c6
+  INSERT INTO v5 SELECT * FROM v0 AS a20 GROUP BY c6 HAVING c1 > c3 % 1844674407
+                                    error here ---^
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v0 SELECT * FROM v11 AS a21 ORDER BY 2147483647; 
+                                     error here ---^
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+one-a|abc
+x|abc
+x|abc
+v0|abc
+x|abc
+count.test cases for NOT INDEXED|abc
+xyz%dabc|1.84467440737096e+19
+x|1.84467440737096e+19
+x|1.84467440737096e+19
+v0|1.84467440737096e+19
+x|1.84467440737096e+19
+count.test cases for NOT INDEXED|1.84467440737096e+19
+xyz%dabc|v1
+one-a|v1
+v0|v1
+count.test cases for NOT INDEXED|v1
+xyz%dabc|abc
+one-a|abc
+v0|abc
+count.test cases for NOT INDEXED|abc
+xyz%dabc|
+one-a|
+x|
+x|
+x|
+count.test cases for NOT INDEXED|
+xyz%dabc|v0
+one-a|v0
+v0|v0
+count.test cases for NOT INDEXED|v0
+xyz%dabc|-1.84467440737096e+19
+one-a|-1.84467440737096e+19
+x|-1.84467440737096e+19
+x|-1.84467440737096e+19
+v0|-1.84467440737096e+19
+x|-1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no tables specified
+END VERI 0
+BEGIN VERI 0
+abc|xyz%dabc|v1|abc|xyz%dabc|v1
+abc|xyz%dabc|v1|1.84467440737096e+19|one-a|x
+abc|xyz%dabc|v1|v1|x|v1
+abc|xyz%dabc|v1|abc|x|v1
+abc|xyz%dabc|v1||v0|x1
+abc|xyz%dabc|v1|v0|x|x
+abc|xyz%dabc|v1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+1.84467440737096e+19|one-a|x|abc|xyz%dabc|v1
+1.84467440737096e+19|one-a|x|1.84467440737096e+19|one-a|x
+1.84467440737096e+19|one-a|x|v1|x|v1
+1.84467440737096e+19|one-a|x|abc|x|v1
+1.84467440737096e+19|one-a|x||v0|x1
+1.84467440737096e+19|one-a|x|v0|x|x
+1.84467440737096e+19|one-a|x|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+v1|x|v1|abc|xyz%dabc|v1
+v1|x|v1|1.84467440737096e+19|one-a|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|x|v1
+v1|x|v1||v0|x1
+v1|x|v1|v0|x|x
+v1|x|v1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+abc|x|v1|abc|xyz%dabc|v1
+abc|x|v1|1.84467440737096e+19|one-a|x
+abc|x|v1|v1|x|v1
+abc|x|v1|abc|x|v1
+abc|x|v1||v0|x1
+abc|x|v1|v0|x|x
+abc|x|v1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+|v0|x1|abc|xyz%dabc|v1
+|v0|x1|1.84467440737096e+19|one-a|x
+|v0|x1|v1|x|v1
+|v0|x1|abc|x|v1
+|v0|x1||v0|x1
+|v0|x1|v0|x|x
+|v0|x1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+v0|x|x|abc|xyz%dabc|v1
+v0|x|x|1.84467440737096e+19|one-a|x
+v0|x|x|v1|x|v1
+v0|x|x|abc|x|v1
+v0|x|x||v0|x1
+v0|x|x|v0|x|x
+v0|x|x|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|abc|xyz%dabc|v1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|1.84467440737096e+19|one-a|x
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|v1|x|v1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|abc|x|v1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1||v0|x1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|v0|x|x
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+BEGIN VERI 0
+hare|one-a
+1.84467440737096e+19|d
+END VERI 0
+BEGIN VERI 0
+abc|xyz%dabc|v1
+1.84467440737096e+19|one-a|x
+v1|x|v1
+abc|x|v1
+|v0|x1
+v0|x|x
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+END VERI 0
+BEGIN VERI 0
+6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 54: row value misused
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: -1
+Str: 
+one-a|abc
+x|abc
+x|abc
+v0|abc
+x|abc
+count.test cases for NOT INDEXED|abc
+GHI|abc
+10000 500|abc
+xyz%dabc|1.84467440737096e+19
+x|1.84467440737096e+19
+x|1.84467440737096e+19
+v0|1.84467440737096e+19
+x|1.84467440737096e+19
+count.test cases for NOT INDEXED|1.84467440737096e+19
+GHI|1.84467440737096e+19
+10000 500|1.84467440737096e+19
+xyz%dabc|v1
+one-a|v1
+v0|v1
+count.test cases for NOT INDEXED|v1
+GHI|v1
+10000 500|v1
+xyz%dabc|abc
+one-a|abc
+v0|abc
+count.test cases for NOT INDEXED|abc
+GHI|abc
+10000 500|abc
+xyz%dabc|
+one-a|
+x|
+x|
+x|
+count.test cases for NOT INDEXED|
+GHI|
+10000 500|
+xyz%dabc|v0
+one-a|v0
+v0|v0
+count.test cases for NOT INDEXED|v0
+GHI|v0
+10000 500|v0
+xyz%dabc|-1.84467440737096e+19
+one-a|-1.84467440737096e+19
+x|-1.84467440737096e+19
+x|-1.84467440737096e+19
+v0|-1.84467440737096e+19
+x|-1.84467440737096e+19
+GHI|-1.84467440737096e+19
+10000 500|-1.84467440737096e+19
+xyz%dabc|hare
+one-a|hare
+x|hare
+x|hare
+v0|hare
+x|hare
+count.test cases for NOT INDEXED|hare
+10000 500|hare
+xyz%dabc|1.84467440737096e+19
+one-a|1.84467440737096e+19
+x|1.84467440737096e+19
+x|1.84467440737096e+19
+v0|1.84467440737096e+19
+x|1.84467440737096e+19
+count.test cases for NOT INDEXED|1.84467440737096e+19
+GHI|1.84467440737096e+19
+ 
+Str: 
+one-a|abc
+x|abc
+x|abc
+v0|abc
+x|abc
+count.test cases for NOT INDEXED|abc
+xyz%dabc|1.84467440737096e+19
+x|1.84467440737096e+19
+x|1.84467440737096e+19
+v0|1.84467440737096e+19
+x|1.84467440737096e+19
+count.test cases for NOT INDEXED|1.84467440737096e+19
+xyz%dabc|v1
+one-a|v1
+v0|v1
+count.test cases for NOT INDEXED|v1
+xyz%dabc|abc
+one-a|abc
+v0|abc
+count.test cases for NOT INDEXED|abc
+xyz%dabc|
+one-a|
+x|
+x|
+x|
+count.test cases for NOT INDEXED|
+xyz%dabc|v0
+one-a|v0
+v0|v0
+count.test cases for NOT INDEXED|v0
+xyz%dabc|-1.84467440737096e+19
+one-a|-1.84467440737096e+19
+x|-1.84467440737096e+19
+x|-1.84467440737096e+19
+v0|-1.84467440737096e+19
+x|-1.84467440737096e+19
+ 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+hare|GHI|one-a|hare|GHI|one-a
+hare|GHI|one-a|1.84467440737096e+19|10000 500|d
+1.84467440737096e+19|10000 500|d|hare|GHI|one-a
+1.84467440737096e+19|10000 500|d|1.84467440737096e+19|10000 500|d
+ 
+INT: 3 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: -1
+Str: 
+abc|xyz%dabc|v1|abc|xyz%dabc|v1
+abc|xyz%dabc|v1|1.84467440737096e+19|one-a|x
+abc|xyz%dabc|v1|v1|x|v1
+abc|xyz%dabc|v1|abc|x|v1
+abc|xyz%dabc|v1||v0|x1
+abc|xyz%dabc|v1|v0|x|x
+abc|xyz%dabc|v1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+abc|xyz%dabc|v1|hare|GHI|one-a
+abc|xyz%dabc|v1|1.84467440737096e+19|10000 500|d
+1.84467440737096e+19|one-a|x|abc|xyz%dabc|v1
+1.84467440737096e+19|one-a|x|1.84467440737096e+19|one-a|x
+1.84467440737096e+19|one-a|x|v1|x|v1
+1.84467440737096e+19|one-a|x|abc|x|v1
+1.84467440737096e+19|one-a|x||v0|x1
+1.84467440737096e+19|one-a|x|v0|x|x
+1.84467440737096e+19|one-a|x|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+1.84467440737096e+19|one-a|x|hare|GHI|one-a
+1.84467440737096e+19|one-a|x|1.84467440737096e+19|10000 500|d
+v1|x|v1|abc|xyz%dabc|v1
+v1|x|v1|1.84467440737096e+19|one-a|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|x|v1
+v1|x|v1||v0|x1
+v1|x|v1|v0|x|x
+v1|x|v1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+v1|x|v1|hare|GHI|one-a
+v1|x|v1|1.84467440737096e+19|10000 500|d
+abc|x|v1|abc|xyz%dabc|v1
+abc|x|v1|1.84467440737096e+19|one-a|x
+abc|x|v1|v1|x|v1
+abc|x|v1|abc|x|v1
+abc|x|v1||v0|x1
+abc|x|v1|v0|x|x
+abc|x|v1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+abc|x|v1|hare|GHI|one-a
+abc|x|v1|1.84467440737096e+19|10000 500|d
+|v0|x1|abc|xyz%dabc|v1
+|v0|x1|1.84467440737096e+19|one-a|x
+|v0|x1|v1|x|v1
+|v0|x1|abc|x|v1
+|v0|x1||v0|x1
+|v0|x1|v0|x|x
+|v0|x1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+|v0|x1|hare|GHI|one-a
+|v0|x1|1.84467440737096e+19|10000 500|d
+v0|x|x|abc|xyz%dabc|v1
+v0|x|x|1.84467440737096e+19|one-a|x
+v0|x|x|v1|x|v1
+v0|x|x|abc|x|v1
+v0|x|x||v0|x1
+v0|x|x|v0|x|x
+v0|x|x|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+v0|x|x|hare|GHI|one-a
+v0|x|x|1.84467440737096e+19|10000 500|d
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|abc|xyz%dabc|v1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|1.84467440737096e+19|one-a|x
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|v1|x|v1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|abc|x|v1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1||v0|x1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|v0|x|x
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|hare|GHI|one-a
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|1.84467440737096e+19|10000 500|d
+hare|GHI|one-a|abc|xyz%dabc|v1
+hare|GHI|one-a|1.84467440737096e+19|one-a|x
+hare|GHI|one-a|v1|x|v1
+hare|GHI|one-a|abc|x|v1
+hare|GHI|one-a||v0|x1
+hare|GHI|one-a|v0|x|x
+hare|GHI|one-a|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+hare|GHI|one-a|hare|GHI|one-a
+hare|GHI|one-a|1.84467440737096e+19|10000 500|d
+1.84467440737096e+19|10000 500|d|abc|xyz%dabc|v1
+1.84467440737096e+19|10000 500|d|1.84467440737096e+19|one-a|x
+1.84467440737096e+19|10000 500|d|v1|x|v1
+1.84467440737096e+19|10000 500|d|abc|x|v1
+1.84467440737096e+19|10000 500|d||v0|x1
+1.84467440737096e+19|10000 500|d|v0|x|x
+1.84467440737096e+19|10000 500|d|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+1.84467440737096e+19|10000 500|d|hare|GHI|one-a
+1.84467440737096e+19|10000 500|d|1.84467440737096e+19|10000 500|d
+ 
+Str: 
+abc|xyz%dabc|v1|abc|xyz%dabc|v1
+abc|xyz%dabc|v1|1.84467440737096e+19|one-a|x
+abc|xyz%dabc|v1|v1|x|v1
+abc|xyz%dabc|v1|abc|x|v1
+abc|xyz%dabc|v1||v0|x1
+abc|xyz%dabc|v1|v0|x|x
+abc|xyz%dabc|v1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+1.84467440737096e+19|one-a|x|abc|xyz%dabc|v1
+1.84467440737096e+19|one-a|x|1.84467440737096e+19|one-a|x
+1.84467440737096e+19|one-a|x|v1|x|v1
+1.84467440737096e+19|one-a|x|abc|x|v1
+1.84467440737096e+19|one-a|x||v0|x1
+1.84467440737096e+19|one-a|x|v0|x|x
+1.84467440737096e+19|one-a|x|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+v1|x|v1|abc|xyz%dabc|v1
+v1|x|v1|1.84467440737096e+19|one-a|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|x|v1
+v1|x|v1||v0|x1
+v1|x|v1|v0|x|x
+v1|x|v1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+abc|x|v1|abc|xyz%dabc|v1
+abc|x|v1|1.84467440737096e+19|one-a|x
+abc|x|v1|v1|x|v1
+abc|x|v1|abc|x|v1
+abc|x|v1||v0|x1
+abc|x|v1|v0|x|x
+abc|x|v1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+|v0|x1|abc|xyz%dabc|v1
+|v0|x1|1.84467440737096e+19|one-a|x
+|v0|x1|v1|x|v1
+|v0|x1|abc|x|v1
+|v0|x1||v0|x1
+|v0|x1|v0|x|x
+|v0|x1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+v0|x|x|abc|xyz%dabc|v1
+v0|x|x|1.84467440737096e+19|one-a|x
+v0|x|x|v1|x|v1
+v0|x|x|abc|x|v1
+v0|x|x||v0|x1
+v0|x|x|v0|x|x
+v0|x|x|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|abc|xyz%dabc|v1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|1.84467440737096e+19|one-a|x
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|v1|x|v1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|abc|x|v1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1||v0|x1
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|v0|x|x
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1|-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+ 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+hare|GHI|one-a
+1.84467440737096e+19|10000 500|d
+ 
+INT: 1 
+Str: 
+hare|one-a
+1.84467440737096e+19|d
+ 
+INT: 1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+abc|xyz%dabc|v1
+1.84467440737096e+19|one-a|x
+v1|x|v1
+abc|x|v1
+|v0|x1
+v0|x|x
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+hare|GHI|one-a
+1.84467440737096e+19|10000 500|d
+ 
+INT: 8 
+Str: 
+abc|xyz%dabc|v1
+1.84467440737096e+19|one-a|x
+v1|x|v1
+abc|x|v1
+|v0|x1
+v0|x|x
+-1.84467440737096e+19|count.test cases for NOT INDEXED|v1
+ 
+INT: 6 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+8
+ 
+INT: 0 
+Str: 
+6
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 54: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 54: row value misused
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

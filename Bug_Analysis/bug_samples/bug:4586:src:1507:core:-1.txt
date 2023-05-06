@@ -1,0 +1,312 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE TABLE v5 ( c6, c7, c8, CHECK( c8 > 18446744073709518848 ) ); 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c11 < 18446744073709518848 ) ); 
+INSERT INTO v9 VALUES ( 18446744073709518848, 18446744073709518848, 18446744073709518848 ); 
+CREATE INDEX i13 ON v0 ( c2 ); 
+CREATE TABLE v14 ( c15 INTEGER CHECK( x'616263' == c17 ), c16 NUMERIC CHECK( typeof ( coalesce ( c16, 18446744073709518848 ) ) == 'x' ), c17 TEXT CHECK( typeof ( coalesce ( c15, 'three-a' ) ) == 'a__' ) ); 
+INSERT INTO v14 VALUES ( 18446744073709518848, 18446744073709518848, 18446744073709518848 ); 
+CREATE INDEX i18 ON v5 ( c8 ); 
+INSERT INTO v14 VALUES ( 127, 18446744073709518848, 127 ); 
+CREATE INDEX i19 ON v9 ( c10 ); 
+ALTER TABLE v9 DROP COLUMN c10; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( count ( c15 ), 'v1' ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a20 NATURAL JOIN v14 AS a21 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v9 AS ( SELECT * FROM v5 AS a23 JOIN v14 AS a24 USING ( a23.c8, a22.c12, a22.c10, a22.c12, a22.c11, a22.c12, a24.c15, a23.c7 ) WHERE a22.c12 = a23.c8 >= 18446744073709518848 ORDER BY 4294967295 ) SELECT * FROM v9 AS a22 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN c7 != 'v1' THEN 127 ELSE 18446744073709518848 END ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( - 18446744073709518848 IS NULL ) ) AND ( NOT ( a25.c10 IS NULL ) ) ), a25.c10 FROM v9 AS a25 LEFT JOIN v0 AS a26 ON a26.c2 = a26.c3 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a27 WHERE a27.c11 = a27.c10 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a28, v5 AS a29 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a30 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c1, a32.c3 FROM v5 AS a31, v0 AS a32 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v9 AS a33 ), ( v5 AS a34 NATURAL JOIN v9 AS a35 ), ( v14 AS a36 ), ( v5 AS a37 ) WHERE a34.c6 = a36.c17 + 0 AND a37.c6 = a35.c11 + 9223372036854775807 AND a36.c17 = a33.c11 + 0 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c11 < 18446744073709518848 (19)
+Runtime error near line 8: CHECK constraint failed: x'616263' == c17 (19)
+Runtime error near line 10: CHECK constraint failed: x'616263' == c17 (19)
+Runtime error near line 12: error in index i19 after drop column: no such column: c10
+BEGIN VERI 0
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c15 ), 'v1' ) ORDER BY 4294967295; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: near ".": syntax error
+  ELECT * FROM v5 AS a23 JOIN v14 AS a24 USING ( a23.c8, a22.c12, a22.c10, a22.c
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: c7
+  SELECT ( CASE WHEN c7 != 'v1' THEN 127 ELSE 18446744073709518848 END ) ORDER B
+                     ^--- error here
+END VERI 0
+BEGIN VERI 0
+0|
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a36.c17
+  5 ), ( v14 AS a36 ), ( v5 AS a37 ) WHERE a34.c6 = a36.c17 + 0 AND a37.c6 = a35
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+; 
+CREATE TABLE v5 ( c6, c7, c8, CHECK( c8 > 18446744073709518848 ) ); 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c11 < 18446744073709518848 ) ); 
+INSERT INTO v9 VALUES ( 18446744073709518848, 18446744073709518848, 18446744073709518848 ); 
+; 
+CREATE TABLE v14 ( c15 INTEGER CHECK( x'616263' == c17 ), c16 NUMERIC CHECK( typeof ( coalesce ( c16, 18446744073709518848 ) ) == 'x' ), c17 TEXT CHECK( typeof ( coalesce ( c15, 'three-a' ) ) == 'a__' ) ); 
+INSERT INTO v14 VALUES ( 18446744073709518848, 18446744073709518848, 18446744073709518848 ); 
+; 
+INSERT INTO v14 VALUES ( 127, 18446744073709518848, 127 ); 
+; 
+ALTER TABLE v9 DROP COLUMN c10; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( count ( c15 ), 'v1' ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a20 NATURAL JOIN v14 AS a21 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v9 AS ( SELECT * FROM v5 AS a23 JOIN v14 AS a24 USING ( a23.c8, a22.c12, a22.c10, a22.c12, a22.c11, a22.c12, a24.c15, a23.c7 ) WHERE a22.c12 = a23.c8 >= 18446744073709518848 ORDER BY 4294967295 ) SELECT * FROM v9 AS a22 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN c7 != 'v1' THEN 127 ELSE 18446744073709518848 END ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( - 18446744073709518848 IS NULL ) ) AND ( NOT ( a25.c10 IS NULL ) ) ), a25.c10 FROM v9 AS a25 LEFT JOIN v0 AS a26 ON a26.c2 = a26.c3 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a27 WHERE a27.c11 = a27.c10 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a28, v5 AS a29 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a30 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c1, a32.c3 FROM v5 AS a31, v0 AS a32 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v9 AS a33 ), ( v5 AS a34 NATURAL JOIN v9 AS a35 ), ( v14 AS a36 ), ( v5 AS a37 ) WHERE a34.c6 = a36.c17 + 0 AND a37.c6 = a35.c11 + 9223372036854775807 AND a36.c17 = a33.c11 + 0 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c11 < 18446744073709518848 (19)
+Runtime error near line 8: CHECK constraint failed: x'616263' == c17 (19)
+Runtime error near line 10: CHECK constraint failed: x'616263' == c17 (19)
+BEGIN VERI 0
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c15 ), 'v1' ) ORDER BY 4294967295; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: near ".": syntax error
+  ELECT * FROM v5 AS a23 JOIN v14 AS a24 USING ( a23.c8, a22.c12, a22.c10, a22.c
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: c7
+  SELECT ( CASE WHEN c7 != 'v1' THEN 127 ELSE 18446744073709518848 END ) ORDER B
+                     ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: a25.c10
+   ( - 18446744073709518848 IS NULL ) ) AND ( NOT ( a25.c10 IS NULL ) ) ), a25.c
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a27.c10
+  SELECT * FROM v9 AS a27 WHERE a27.c11 = a27.c10 ORDER BY 18446744073709518848;
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a36.c17
+  5 ), ( v14 AS a36 ), ( v5 AS a37 ) WHERE a34.c6 = a36.c17 + 0 AND a37.c6 = a35
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 25294960
+Str: 
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c15 ), 'v1' ) ORDER BY 4294967295; 
+                   error here ---^
+ 
+Str: 
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c15 ), 'v1' ) ORDER BY 4294967295; 
+                   error here ---^
+ 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: near ".": syntax error
+  ELECT * FROM v5 AS a23 JOIN v14 AS a24 USING ( a23.c8, a22.c12, a22.c10, a22.c
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: near ".": syntax error
+  ELECT * FROM v5 AS a23 JOIN v14 AS a24 USING ( a23.c8, a22.c12, a22.c10, a22.c
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such column: c7
+  SELECT ( CASE WHEN c7 != 'v1' THEN 127 ELSE 18446744073709518848 END ) ORDER B
+                     ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 23: no such column: c7
+  SELECT ( CASE WHEN c7 != 'v1' THEN 127 ELSE 18446744073709518848 END ) ORDER B
+                     ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+0|
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such column: a25.c10
+   ( - 18446744073709518848 IS NULL ) ) AND ( NOT ( a25.c10 IS NULL ) ) ), a25.c
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 29: no such column: a27.c10
+  SELECT * FROM v9 AS a27 WHERE a27.c11 = a27.c10 ORDER BY 18446744073709518848;
+                            error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no such column: a36.c17
+  5 ), ( v14 AS a36 ), ( v5 AS a37 ) WHERE a34.c6 = a36.c17 + 0 AND a37.c6 = a35
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: no such column: a36.c17
+  5 ), ( v14 AS a36 ), ( v5 AS a37 ) WHERE a34.c6 = a36.c17 + 0 AND a37.c6 = a35
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

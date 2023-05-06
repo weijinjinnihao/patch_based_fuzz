@@ -1,0 +1,364 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 REFERENCES t1 DEFAULT NULL, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, PRIMARY KEY ( c4, c5, c6, c9, c8, c11, c9 ) ) WITHOUT ROWID; 
+CREATE INDEX i20 ON v0 ( c6 ); 
+CREATE TEMP TRIGGER tri1 INSERT ON v0 BEGIN UPDATE v0 SET c10 = c10 || c9 WHERE c16 = c5 || c17; END; 
+CREATE TABLE v21 ( c22, c23, c24, c25, PRIMARY KEY ( c24, c23 ) ) WITHOUT ROWID; 
+CREATE INDEX i26 ON v21 ( c23 ); 
+INSERT INTO v21 VALUES ( 0, 9223372036854775807, 4294967295, 18446744071562067968 ); 
+CREATE INDEX i27 ON v21 ( c25 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 18446744071562067968 ORDER BY 0 ) AS y, v0 AS a28 ON likely ( 0 OR 4294967295 ) OR ( ( ( ( a28.c5 + - 18446744073709551488 ) % 0 ) != 0 + 0 ) % 0 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+ALTER TABLE v21 DROP COLUMN c25; 
+INSERT OR REPLACE INTO v21 ( c24, c23, c22, c23, c24 ) VALUES ( 0, 10, NULL, 10, 18446744073709518848 ); 
+CREATE INDEX i29 ON v0 ( c10 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a30 GROUP BY a30.c23, a30.c25 < a30.c25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a31 ORDER BY NULL; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32, v0 AS a33 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c11, a35.c8 FROM v21 AS a34 LEFT JOIN v0 AS a35 ON a35.c1 = a35.c16 GROUP BY a35.c19 HAVING count ( * ) >= 18446744071562067968 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a36 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c19, c23, ( SELECT a37.c25 FROM v0 AS a38 WHERE a37.c24 = a37.c23 ORDER BY 127 ), 'v1' FROM ( SELECT count ( * ) AS y, a37.c22 AS y FROM v21 AS a37 GROUP BY 10 ORDER BY 0 ) AS y ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c8, sum ( a39.c19 ) FROM v0 AS a39 GROUP BY a39.c19 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 WHERE count ( * ) >= 0 = 'x' != a40.c7 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a41.c18 || a41.c13 ) FROM v0 AS a41 ORDER BY 10 COLLATE binary, 18446744073709551488 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 WHERE hex ( 0 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 9: 1st ORDER BY term out of range - should be between 1 and 1
+  ECT * FROM ( SELECT 18446744071562067968 ORDER BY 0 ) AS y, v0 AS a28 ON likel
+                                      error here ---^
+END VERI 0
+Runtime error near line 11: error in index i27 after drop column: no such column: c25
+BEGIN VERI 0
+|10|0|
+0|9223372036854775807|4294967295|1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+|10|0|
+0|9223372036854775807|4294967295|1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 38
+  SELECT * FROM v0 AS a32, v0 AS a33 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+  VING count ( * ) >= 18446744071562067968 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|10|0|
+0|9223372036854775807|4294967295|1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+  a37.c22 AS y FROM v21 AS a37 GROUP BY 10 ORDER BY 0 ) AS y ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: misuse of aggregate function count()
+  SELECT * FROM v0 AS a40 WHERE count ( * ) >= 0 = 'x' != a40.c7 ORDER BY 0; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 19
+  SELECT * FROM v0 AS a42 WHERE hex ( 0 ) ORDER BY 0; 
+                                     error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 REFERENCES t1 DEFAULT NULL, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, PRIMARY KEY ( c4, c5, c6, c9, c8, c11, c9 ) ) WITHOUT ROWID; 
+; 
+CREATE TEMP TRIGGER tri1 INSERT ON v0 BEGIN UPDATE v0 SET c10 = c10 || c9 WHERE c16 = c5 || c17; END; 
+CREATE TABLE v21 ( c22, c23, c24, c25, PRIMARY KEY ( c24, c23 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v21 VALUES ( 0, 9223372036854775807, 4294967295, 18446744071562067968 ); 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 18446744071562067968 ORDER BY 0 ) AS y, v0 AS a28 ON likely ( 0 OR 4294967295 ) OR ( ( ( ( a28.c5 + - 18446744073709551488 ) % 0 ) != 0 + 0 ) % 0 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+ALTER TABLE v21 DROP COLUMN c25; 
+INSERT OR REPLACE INTO v21 ( c24, c23, c22, c23, c24 ) VALUES ( 0, 10, NULL, 10, 18446744073709518848 ); 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a30 GROUP BY a30.c23, a30.c25 < a30.c25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a31 ORDER BY NULL; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32, v0 AS a33 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c11, a35.c8 FROM v21 AS a34 LEFT JOIN v0 AS a35 ON a35.c1 = a35.c16 GROUP BY a35.c19 HAVING count ( * ) >= 18446744071562067968 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a36 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c19, c23, ( SELECT a37.c25 FROM v0 AS a38 WHERE a37.c24 = a37.c23 ORDER BY 127 ), 'v1' FROM ( SELECT count ( * ) AS y, a37.c22 AS y FROM v21 AS a37 GROUP BY 10 ORDER BY 0 ) AS y ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c8, sum ( a39.c19 ) FROM v0 AS a39 GROUP BY a39.c19 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 WHERE count ( * ) >= 0 = 'x' != a40.c7 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a41.c18 || a41.c13 ) FROM v0 AS a41 ORDER BY 10 COLLATE binary, 18446744073709551488 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 WHERE hex ( 0 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 9: 1st ORDER BY term out of range - should be between 1 and 1
+  ECT * FROM ( SELECT 18446744071562067968 ORDER BY 0 ) AS y, v0 AS a28 ON likel
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such column: a30.c25
+  SELECT * FROM v21 AS a30 GROUP BY a30.c23, a30.c25 < a30.c25 ORDER BY 18446744
+                               error here ---^
+END VERI 0
+BEGIN VERI 0
+|10|0
+0|9223372036854775807|4294967295
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 38
+  SELECT * FROM v0 AS a32, v0 AS a33 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+  VING count ( * ) >= 18446744071562067968 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|10|0
+0|9223372036854775807|4294967295
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+  a37.c22 AS y FROM v21 AS a37 GROUP BY 10 ORDER BY 0 ) AS y ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: misuse of aggregate function count()
+  SELECT * FROM v0 AS a40 WHERE count ( * ) >= 0 = 'x' != a40.c7 ORDER BY 0; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 19
+  SELECT * FROM v0 AS a42 WHERE hex ( 0 ) ORDER BY 0; 
+                                     error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 9: 1st ORDER BY term out of range - should be between 1 and 1
+  ECT * FROM ( SELECT 18446744071562067968 ORDER BY 0 ) AS y, v0 AS a28 ON likel
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 9: 1st ORDER BY term out of range - should be between 1 and 1
+  ECT * FROM ( SELECT 18446744071562067968 ORDER BY 0 ) AS y, v0 AS a28 ON likel
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+|10|0|
+0|9223372036854775807|4294967295|1.84467440715621e+19
+ 
+INT: 1 
+Str: 
+Parse error near line 15: no such column: a30.c25
+  SELECT * FROM v21 AS a30 GROUP BY a30.c23, a30.c25 < a30.c25 ORDER BY 18446744
+                               error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+|10|0|
+0|9223372036854775807|4294967295|1.84467440715621e+19
+ 
+INT: 1 
+Str: 
+|10|0
+0|9223372036854775807|4294967295
+ 
+INT: 1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 38
+  SELECT * FROM v0 AS a32, v0 AS a33 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 38
+  SELECT * FROM v0 AS a32, v0 AS a33 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+  VING count ( * ) >= 18446744071562067968 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+  VING count ( * ) >= 18446744071562067968 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+|10|0|
+0|9223372036854775807|4294967295|1.84467440715621e+19
+ 
+INT: 1 
+Str: 
+|10|0
+0|9223372036854775807|4294967295
+ 
+INT: 1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+  a37.c22 AS y FROM v21 AS a37 GROUP BY 10 ORDER BY 0 ) AS y ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+  a37.c22 AS y FROM v21 AS a37 GROUP BY 10 ORDER BY 0 ) AS y ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: misuse of aggregate function count()
+  SELECT * FROM v0 AS a40 WHERE count ( * ) >= 0 = 'x' != a40.c7 ORDER BY 0; 
+                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: misuse of aggregate function count()
+  SELECT * FROM v0 AS a40 WHERE count ( * ) >= 0 = 'x' != a40.c7 ORDER BY 0; 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 19
+  SELECT * FROM v0 AS a42 WHERE hex ( 0 ) ORDER BY 0; 
+                                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 19
+  SELECT * FROM v0 AS a42 WHERE hex ( 0 ) ORDER BY 0; 
+                                     error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

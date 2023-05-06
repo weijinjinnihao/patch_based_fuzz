@@ -1,0 +1,310 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c4 > 16 ), c4 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( 16, 16, 16, 16 ), ( 16, 16, 0, 9223372036854775807 ); 
+CREATE INDEX i6 ON v0 ( c2 ); 
+CREATE TABLE v7 ( c8, c9, c10, c11, CHECK( c11 > 18446744073709551488 ) ); 
+CREATE INDEX i12 ON v7 ( c9 ); 
+INSERT INTO v7 VALUES ( 16, 16, 18446744073709551615, 16 ), ( 18446744071562067968, 10, 10, 16 ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709518848, 18446744073709551488, 16 ); 
+CREATE INDEX i13 ON v7 ( c9 ); 
+CREATE INDEX i14 ON v0 ( c2 ); 
+CREATE TABLE v15 ( c16, c17, c18, c19, c20, c21, c22, c23, c24, c25 INT UNIQUE ON CONFLICT IGNORE, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36 ); 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 16, 18446744073709551488, 18446744073709551488, 18446744073709551488 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+ALTER TABLE v7 ADD COLUMN c37 CHECK( c9 != 16 ); 
+ALTER TABLE v0 DROP c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a38 WHERE NOT NULL >= 16 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a39 GROUP BY a39.c11, abs ( a39.c8 ) HAVING CASE WHEN a39.c10 != 'x' THEN 55 ELSE 0 END > 0 >= 16 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a40 ORDER BY ( ( a40.c8 + 16 ) % 16 ) != 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a41 WHERE 16 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a42 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a45.c32, ( + a44.c11 ) y, ( + a44.c11 ) y, ( + a45.c16 ) y, NOT EXISTS ( SELECT NULL FROM v15 AS a46 ORDER BY 18446744071562067968 ), CASE a44.c11 WHEN 16 THEN 16 WHEN 16 THEN 16 WHEN 16 THEN 'x' END, 'v1' FROM v7 AS a44 LEFT JOIN v15 AS a45 ON a45.c34 = a44.c11 WHERE a44.c37 < a44.c11 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a47, v7 AS a48 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a49.c3 FROM v0 AS a49 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 GROUP BY a50.c1 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 3: CHECK constraint failed: c4 > 16 (19)
+Runtime error near line 7: CHECK constraint failed: c11 > 18446744073709551488 (19)
+Runtime error near line 8: CHECK constraint failed: c4 > 16 (19)
+BEGIN VERI 0
+Parse error near line 13: near "ORDER": syntax error
+  488, 18446744073709551488, 18446744073709551488 ) ORDER BY 1; 
+                                      error here ---^
+END VERI 0
+Runtime error near line 16: error in index i5 after drop column: no such column: c3
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 21
+  SELECT * FROM v15 AS a41 WHERE 16 ORDER BY 0; 
+                               error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 10
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c4 > 16 ), c4 ); 
+; 
+INSERT INTO v0 VALUES ( 16, 16, 16, 16 ), ( 16, 16, 0, 9223372036854775807 ); 
+; 
+CREATE TABLE v7 ( c8, c9, c10, c11, CHECK( c11 > 18446744073709551488 ) ); 
+; 
+INSERT INTO v7 VALUES ( 16, 16, 18446744073709551615, 16 ), ( 18446744071562067968, 10, 10, 16 ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709518848, 18446744073709551488, 16 ); 
+; 
+; 
+CREATE TABLE v15 ( c16, c17, c18, c19, c20, c21, c22, c23, c24, c25 INT UNIQUE ON CONFLICT IGNORE, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36 ); 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 16, 18446744073709551488, 18446744073709551488, 18446744073709551488 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+ALTER TABLE v7 ADD COLUMN c37 CHECK( c9 != 16 ); 
+ALTER TABLE v0 DROP c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a38 WHERE NOT NULL >= 16 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a39 GROUP BY a39.c11, abs ( a39.c8 ) HAVING CASE WHEN a39.c10 != 'x' THEN 55 ELSE 0 END > 0 >= 16 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a40 ORDER BY ( ( a40.c8 + 16 ) % 16 ) != 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a41 WHERE 16 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a42 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a45.c32, ( + a44.c11 ) y, ( + a44.c11 ) y, ( + a45.c16 ) y, NOT EXISTS ( SELECT NULL FROM v15 AS a46 ORDER BY 18446744071562067968 ), CASE a44.c11 WHEN 16 THEN 16 WHEN 16 THEN 16 WHEN 16 THEN 'x' END, 'v1' FROM v7 AS a44 LEFT JOIN v15 AS a45 ON a45.c34 = a44.c11 WHERE a44.c37 < a44.c11 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a47, v7 AS a48 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a49.c3 FROM v0 AS a49 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 GROUP BY a50.c1 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 3: CHECK constraint failed: c4 > 16 (19)
+Runtime error near line 7: CHECK constraint failed: c11 > 18446744073709551488 (19)
+Runtime error near line 8: CHECK constraint failed: c4 > 16 (19)
+BEGIN VERI 0
+Parse error near line 13: near "ORDER": syntax error
+  488, 18446744073709551488, 18446744073709551488 ) ORDER BY 1; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 21
+  SELECT * FROM v15 AS a41 WHERE 16 ORDER BY 0; 
+                               error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 10
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a49.c3
+  SELECT a49.c3 FROM v0 AS a49 ORDER BY 9223372036854775807; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 19877872
+Str: 
+Parse error near line 13: near "ORDER": syntax error
+  488, 18446744073709551488, 18446744073709551488 ) ORDER BY 1; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 13: near "ORDER": syntax error
+  488, 18446744073709551488, 18446744073709551488 ) ORDER BY 1; 
+                                      error here ---^
+ 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 21
+  SELECT * FROM v15 AS a41 WHERE 16 ORDER BY 0; 
+                               error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 21
+  SELECT * FROM v15 AS a41 WHERE 16 ORDER BY 0; 
+                               error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 10
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 10
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 42: no such column: a49.c3
+  SELECT a49.c3 FROM v0 AS a49 ORDER BY 9223372036854775807; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

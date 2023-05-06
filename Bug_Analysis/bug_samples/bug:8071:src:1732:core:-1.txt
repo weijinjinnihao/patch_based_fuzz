@@ -1,0 +1,304 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2 COLLATE REVERSE ), CHECK( c2 != c3 ), CHECK( c2 != c3 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN SELECT ( c1 + 255 ) % 255, c2 FROM v0 AS a4 LEFT JOIN v0 AS a5 ON c2 = c3 WHERE c1 = c3 || c3 ORDER BY 18446744073709551488; END; 
+CREATE INDEX i6 ON v0 ( c2 ); 
+CREATE INDEX i7 ON v0 ( c3 ); 
+CREATE TABLE v8 ( c9, c10, c11, c12, PRIMARY KEY ( c9, c11 ) ) WITHOUT ROWID; 
+CREATE INDEX i13 ON v8 ( c10 ); 
+INSERT INTO v8 VALUES ( 255, 18446744073709551488, 255, 255 ); 
+ALTER TABLE v8 DROP COLUMN c10; 
+CREATE INDEX i14 ON v8 ( c11 ); 
+CREATE INDEX i15 ON v8 ( c11 ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c18 ) AS ( WITH v19 ( c20, c21, c22, c23, c24, c25 ) AS ( SELECT 255 y ORDER BY 255 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT a17.c2, a17.c2 FROM v8 AS a16 LEFT JOIN v0 AS a17 ON a16.c12 = ( ( hex ( 255 ) ) % 255 ) != 255 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26, v8 AS a27 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v28 AS ( SELECT c12 FROM v28 AS a30 WHERE c22 NOT LIKE 'x' ORDER BY 255 ) SELECT * FROM v28 AS a29 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 WHERE a31.c2 NOT NULL ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 WHERE ( a32.c22 = 255 OR a32.c22 = 18446744071562067968 + 18446744073709551488 NOT BETWEEN a32.c25 AND a32.c25 ) AND a32.c2 < ( SELECT a32.c25 FROM ( SELECT *, 'V' FROM v8 AS a33, v0 AS a34 NATURAL JOIN v8 AS a35 ORDER BY 2147483647 ) AS y WHERE a32.c2 = 255 ORDER BY 255 ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c2, count ( a36.c3 ) FROM v0 AS a36 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a37 ORDER BY a37.c10, a37.c12 || a37.c11 || a37.c10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c2 FROM v0 AS a38 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a39 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: no such collation sequence: REVERSE
+Parse error near line 2: no such table: v0
+Parse error near line 3: no such table: main.v0
+Parse error near line 4: no such table: main.v0
+Runtime error near line 8: error in index i13 after drop column: no such column: c10
+BEGIN VERI 0
+Parse error near line 12: no such column: a17.c2
+  3709551615 ORDER BY 18446744073709551615 ) SELECT a17.c2, a17.c2 FROM v8 AS a1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: circular reference: v28
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v0
+END VERI 0
+BEGIN VERI 0
+255|1.84467440737096e+19|255|255
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v8 AS a39 ORDER BY 2147483647; 
+                     error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2 COLLATE REVERSE ), CHECK( c2 != c3 ), CHECK( c2 != c3 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN SELECT ( c1 + 255 ) % 255, c2 FROM v0 AS a4 LEFT JOIN v0 AS a5 ON c2 = c3 WHERE c1 = c3 || c3 ORDER BY 18446744073709551488; END; 
+; 
+; 
+CREATE TABLE v8 ( c9, c10, c11, c12, PRIMARY KEY ( c9, c11 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v8 VALUES ( 255, 18446744073709551488, 255, 255 ); 
+ALTER TABLE v8 DROP COLUMN c10; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c18 ) AS ( WITH v19 ( c20, c21, c22, c23, c24, c25 ) AS ( SELECT 255 y ORDER BY 255 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT a17.c2, a17.c2 FROM v8 AS a16 LEFT JOIN v0 AS a17 ON a16.c12 = ( ( hex ( 255 ) ) % 255 ) != 255 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26, v8 AS a27 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v28 AS ( SELECT c12 FROM v28 AS a30 WHERE c22 NOT LIKE 'x' ORDER BY 255 ) SELECT * FROM v28 AS a29 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 WHERE a31.c2 NOT NULL ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 WHERE ( a32.c22 = 255 OR a32.c22 = 18446744071562067968 + 18446744073709551488 NOT BETWEEN a32.c25 AND a32.c25 ) AND a32.c2 < ( SELECT a32.c25 FROM ( SELECT *, 'V' FROM v8 AS a33, v0 AS a34 NATURAL JOIN v8 AS a35 ORDER BY 2147483647 ) AS y WHERE a32.c2 = 255 ORDER BY 255 ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c2, count ( a36.c3 ) FROM v0 AS a36 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a37 ORDER BY a37.c10, a37.c12 || a37.c11 || a37.c10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c2 FROM v0 AS a38 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a39 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: no such collation sequence: REVERSE
+Parse error near line 2: no such table: v0
+BEGIN VERI 0
+Parse error near line 12: no such column: a17.c2
+  3709551615 ORDER BY 18446744073709551615 ) SELECT a17.c2, a17.c2 FROM v8 AS a1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: circular reference: v28
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a37.c10
+  SELECT * FROM v8 AS a37 ORDER BY a37.c10, a37.c12 || a37.c11 || a37.c10; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v8 AS a39 ORDER BY 2147483647; 
+                     error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: no such column: a17.c2
+  3709551615 ORDER BY 18446744073709551615 ) SELECT a17.c2, a17.c2 FROM v8 AS a1
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 12: no such column: a17.c2
+  3709551615 ORDER BY 18446744073709551615 ) SELECT a17.c2, a17.c2 FROM v8 AS a1
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: circular reference: v28
+ 
+INT: 0 
+Str: 
+Parse error near line 18: circular reference: v28
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+255|1.84467440737096e+19|255|255
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such column: a37.c10
+  SELECT * FROM v8 AS a37 ORDER BY a37.c10, a37.c12 || a37.c11 || a37.c10; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v8 AS a39 ORDER BY 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v8 AS a39 ORDER BY 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

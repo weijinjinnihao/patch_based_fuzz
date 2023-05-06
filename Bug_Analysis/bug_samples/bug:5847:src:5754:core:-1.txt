@@ -1,0 +1,297 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4, c5, c6, c7, c8, c9, c10 REFERENCES t1 DEFAULT NULL, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 INTEGER PRIMARY KEY, c24 ); 
+CREATE TABLE v25 ( c26, c27, c28, c29, c30, c31, c32, c33 REFERENCES t1 DEFAULT 18446744073709551615 DEFAULT 18446744073709551615, c34, c35, c36, c37, c38, c39 PRIMARY KEY ON CONFLICT REPLACE, c40, c41, c42 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v43 USING rtree ( c44, c45, c46, c47, c48, c49, c50, c51, c52 ); 
+CREATE TABLE v53 ( c54, c55, c56, c57, c58, c59, c60, c61, c62, c63, c64, c65, c66, c67, c68, c69, c70 TEXT UNIQUE NOT NULL ); 
+CREATE INDEX i71 ON v43 ( c16 ); 
+CREATE INDEX i72 ON v43 ( c15 ); 
+CREATE VIEW v73 ( c74 ) AS WITH v75 ( c77 ) AS ( SELECT 18446744071562067968 ORDER BY 18446744073709551615 ) SELECT ( SELECT min ( ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 255 ) FROM v75 AS a76 GROUP BY c77 ORDER BY 255; 
+CREATE TABLE v78 ( c79 DEFAULT x'ABCD' DEFAULT 18446744073709551615, c80 NOT NULL DEFAULT 255, c81 NOT NULL ON CONFLICT REPLACE DEFAULT 255, c82 NOT NULL ON CONFLICT IGNORE DEFAULT 4294967295, c83 NOT NULL ON CONFLICT ABORT DEFAULT 255 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v73 BEGIN DELETE FROM v0; END; 
+CREATE INDEX i84 ON v0 ( c2 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i85 ON v3 ( c5 ); 
+UPDATE v78 SET c80 = 'x' WHERE c81 = 18446744073709551615; 
+CREATE INDEX i86 ON v43 ( c40 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a87 CROSS JOIN v25 AS a88 ON ( a88.c33 = a88.c38 ) WHERE a88.c37 >= ( SELECT a88.c41 FROM v3 AS a89 WHERE a89.c16 IN ( SELECT a88.c28, a88.c34 NOT NULL FROM v53 AS a90 RIGHT JOIN v0 AS a91 ON a88.c32 = a89.c13 ORDER BY 255 ) ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 18446744073709551488 ORDER BY 18446744073709551615 ) AS y, v73 AS a92 ON likely ( 18446744073709551615 OR 4294967295 ) OR ( ( ( ( a92.c10 + - 18446744073709551615 ) % 18446744073709551488 ) != 0 + 18446744073709518848 ) % 18446744073709551615 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v3 AS ( SELECT v3.c7 FROM v73 AS a94 WHERE a94.c10 LIKE 'v0' ORDER BY 255 ) SELECT * FROM v25 AS a93 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v78 AS a95 NATURAL JOIN v73 AS a96 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( WITH v3 ( c99 ) AS ( SELECT 'x' ORDER BY 18446744073709551615 ) SELECT * FROM v53 AS a98 LEFT JOIN ( SELECT count ( * ) AS y, a97.c16 FROM ( v3 AS a100 INNER JOIN v0 AS a101 ON a100.c7 = c99 ) AS y WHERE c99 > 18446744073709518848 GROUP BY a97.c40 ORDER BY 2147483647 ) AS y ON c99 = y ( v3.c17 ) ORDER BY 255 ) ) FROM v43 AS a97 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a102.c2, a102.c1 FROM v0 AS a102 LEFT JOIN v78 AS a103 ON ( 'jkl', a103.c82 > 18446744071562067968, 'v1' ) IS a102.c1 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a104 ORDER BY ( ( a104.c1 + 255 ) % 255 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v53 AS a105 WHERE a105.c55 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a106.c1, count ( ( NOT ( a106.c2 IS NULL ) ) AND ( NOT ( a106.c2 IS NULL ) ) ) FROM v0 AS a106 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: virtual tables may not be indexed
+Parse error near line 7: virtual tables may not be indexed
+Parse error near line 10: cannot create AFTER trigger on view: v73
+Runtime error near line 12: error in index i84 after drop column: no such column: c2
+Parse error near line 15: virtual tables may not be indexed
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: min() may not be used as a window function
+   AS y, v73 AS a92 ON likely ( 18446744073709551615 OR 4294967295 ) OR ( ( ( ( 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: min() may not be used as a window function
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a100.c7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: row value misused
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no tables specified
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4, c5, c6, c7, c8, c9, c10 REFERENCES t1 DEFAULT NULL, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 INTEGER PRIMARY KEY, c24 ); 
+CREATE TABLE v25 ( c26, c27, c28, c29, c30, c31, c32, c33 REFERENCES t1 DEFAULT 18446744073709551615 DEFAULT 18446744073709551615, c34, c35, c36, c37, c38, c39 PRIMARY KEY ON CONFLICT REPLACE, c40, c41, c42 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v43 USING rtree ( c44, c45, c46, c47, c48, c49, c50, c51, c52 ); 
+CREATE TABLE v53 ( c54, c55, c56, c57, c58, c59, c60, c61, c62, c63, c64, c65, c66, c67, c68, c69, c70 TEXT UNIQUE NOT NULL ); 
+; 
+; 
+CREATE VIEW v73 ( c74 ) AS WITH v75 ( c77 ) AS ( SELECT 18446744071562067968 ORDER BY 18446744073709551615 ) SELECT ( SELECT min ( ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 255 ) FROM v75 AS a76 GROUP BY c77 ORDER BY 255; 
+CREATE TABLE v78 ( c79 DEFAULT x'ABCD' DEFAULT 18446744073709551615, c80 NOT NULL DEFAULT 255, c81 NOT NULL ON CONFLICT REPLACE DEFAULT 255, c82 NOT NULL ON CONFLICT IGNORE DEFAULT 4294967295, c83 NOT NULL ON CONFLICT ABORT DEFAULT 255 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v73 BEGIN DELETE FROM v0; END; 
+; 
+ALTER TABLE v0 DROP c2; 
+; 
+UPDATE v78 SET c80 = 'x' WHERE c81 = 18446744073709551615; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a87 CROSS JOIN v25 AS a88 ON ( a88.c33 = a88.c38 ) WHERE a88.c37 >= ( SELECT a88.c41 FROM v3 AS a89 WHERE a89.c16 IN ( SELECT a88.c28, a88.c34 NOT NULL FROM v53 AS a90 RIGHT JOIN v0 AS a91 ON a88.c32 = a89.c13 ORDER BY 255 ) ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 18446744073709551488 ORDER BY 18446744073709551615 ) AS y, v73 AS a92 ON likely ( 18446744073709551615 OR 4294967295 ) OR ( ( ( ( a92.c10 + - 18446744073709551615 ) % 18446744073709551488 ) != 0 + 18446744073709518848 ) % 18446744073709551615 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v3 AS ( SELECT v3.c7 FROM v73 AS a94 WHERE a94.c10 LIKE 'v0' ORDER BY 255 ) SELECT * FROM v25 AS a93 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v78 AS a95 NATURAL JOIN v73 AS a96 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( WITH v3 ( c99 ) AS ( SELECT 'x' ORDER BY 18446744073709551615 ) SELECT * FROM v53 AS a98 LEFT JOIN ( SELECT count ( * ) AS y, a97.c16 FROM ( v3 AS a100 INNER JOIN v0 AS a101 ON a100.c7 = c99 ) AS y WHERE c99 > 18446744073709518848 GROUP BY a97.c40 ORDER BY 2147483647 ) AS y ON c99 = y ( v3.c17 ) ORDER BY 255 ) ) FROM v43 AS a97 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a102.c2, a102.c1 FROM v0 AS a102 LEFT JOIN v78 AS a103 ON ( 'jkl', a103.c82 > 18446744071562067968, 'v1' ) IS a102.c1 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a104 ORDER BY ( ( a104.c1 + 255 ) % 255 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v53 AS a105 WHERE a105.c55 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a106.c1, count ( ( NOT ( a106.c2 IS NULL ) ) AND ( NOT ( a106.c2 IS NULL ) ) ) FROM v0 AS a106 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: cannot create AFTER trigger on view: v73
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: min() may not be used as a window function
+   AS y, v73 AS a92 ON likely ( 18446744073709551615 OR 4294967295 ) OR ( ( ( ( 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: min() may not be used as a window function
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a100.c7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a102.c2
+  SELECT a102.c2, a102.c1 FROM v0 AS a102 LEFT JOIN v78 AS a103 ON ( 'jkl', a103
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no such column: a106.c2
+  SELECT a106.c1, count ( ( NOT ( a106.c2 IS NULL ) ) AND ( NOT ( a106.c2 IS NUL
+                    error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: min() may not be used as a window function
+   AS y, v73 AS a92 ON likely ( 18446744073709551615 OR 4294967295 ) OR ( ( ( ( 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: min() may not be used as a window function
+   AS y, v73 AS a92 ON likely ( 18446744073709551615 OR 4294967295 ) OR ( ( ( ( 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: min() may not be used as a window function
+ 
+INT: 0 
+Str: 
+Parse error near line 26: min() may not be used as a window function
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: no such column: a100.c7
+ 
+INT: 0 
+Str: 
+Parse error near line 29: no such column: a100.c7
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 32: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such column: a102.c2
+  SELECT a102.c2, a102.c1 FROM v0 AS a102 LEFT JOIN v78 AS a103 ON ( 'jkl', a103
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+Parse error near line 44: no such column: a106.c2
+  SELECT a106.c1, count ( ( NOT ( a106.c2 IS NULL ) ) AND ( NOT ( a106.c2 IS NUL
+                    error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

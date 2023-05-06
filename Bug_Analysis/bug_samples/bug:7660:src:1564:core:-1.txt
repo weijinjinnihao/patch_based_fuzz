@@ -1,0 +1,318 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INT UNIQUE ON CONFLICT IGNORE, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3 INTEGER UNIQUE ON CONFLICT FAIL, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16 UNIQUE ON CONFLICT FAIL, c17, c18, c19, c20, PRIMARY KEY ( c3, c11 ) ) WITHOUT ROWID; 
+WITH v0 AS ( SELECT 2147483647 y ORDER BY 2147483647 ) INSERT INTO v0 VALUES ( 127, 2147483647, 127 ), ( 127, 127, 127 ); 
+CREATE INDEX i21 ON v0 ( c19 ); 
+CREATE INDEX i22 ON v0 ( c9 ); 
+CREATE INDEX i23 ON v0 ( c20 ); 
+CREATE INDEX i24 ON v0 ( c4 ); 
+ALTER TABLE v0 DROP c19; 
+CREATE TABLE v25 ( c26, c27, c28 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i29 ON v25 ( c28 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c27, count ( a30.c27 ) FROM v25 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c28 FROM v25 AS a31 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v25 ( c32 ) AS ( WITH v25 ( c36 ) AS ( WITH v25 AS ( WITH v38 AS ( SELECT 127 y ORDER BY 2147483647 ) SELECT avg ( a37.c5 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 2147483647 ) SELECT 127 ORDER BY 2147483647 ) SELECT 127 FROM v25 AS a33, v0 AS a34 NATURAL JOIN v25 AS a35 ORDER BY 0 ) SELECT 127 IN ( SELECT * FROM v0 AS a37 ORDER BY 127 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a39, v25 AS a40 NATURAL JOIN v0 AS a41 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a42.c7, count ( ( NOT ( a42.c19 IS NULL ) ) AND ( NOT ( a42.c8 IS NULL ) ) ) FROM v0 AS a42 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 127 IN ( SELECT a44.c1 = ( a43.c19 + 2147483647 ) % count ( a45.c26 ) FROM v25 AS a45 ORDER BY 127 ) FROM v0 AS a43, v0 AS a44 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a46, v0 AS a47 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c27, count ( c15 ) GROUP BY c9 HAVING count ( * ) >= 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: table v0 has 20 columns but 3 values were supplied
+Runtime error near line 7: error in index i21 after drop column: no such column: c19
+BEGIN VERI 0
+Parse error near line 11: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+  0.c27, count ( a30.c27 ) FROM v25 AS a30 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a31.c28 FROM v25 AS a31 ORDER BY 0; 
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 20
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+  OT ( a42.c8 IS NULL ) ) ) FROM v0 AS a42 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 40
+  SELECT * FROM v0 AS a46, v0 AS a47 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: c27
+  SELECT c27, count ( c15 ) GROUP BY c9 HAVING count ( * ) >= 127 ORDER BY 127; 
+         ^--- error here
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INT UNIQUE ON CONFLICT IGNORE, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3 INTEGER UNIQUE ON CONFLICT FAIL, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16 UNIQUE ON CONFLICT FAIL, c17, c18, c19, c20, PRIMARY KEY ( c3, c11 ) ) WITHOUT ROWID; 
+WITH v0 AS ( SELECT 2147483647 y ORDER BY 2147483647 ) INSERT INTO v0 VALUES ( 127, 2147483647, 127 ), ( 127, 127, 127 ); 
+; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c19; 
+CREATE TABLE v25 ( c26, c27, c28 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c27, count ( a30.c27 ) FROM v25 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c28 FROM v25 AS a31 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v25 ( c32 ) AS ( WITH v25 ( c36 ) AS ( WITH v25 AS ( WITH v38 AS ( SELECT 127 y ORDER BY 2147483647 ) SELECT avg ( a37.c5 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 2147483647 ) SELECT 127 ORDER BY 2147483647 ) SELECT 127 FROM v25 AS a33, v0 AS a34 NATURAL JOIN v25 AS a35 ORDER BY 0 ) SELECT 127 IN ( SELECT * FROM v0 AS a37 ORDER BY 127 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a39, v25 AS a40 NATURAL JOIN v0 AS a41 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a42.c7, count ( ( NOT ( a42.c19 IS NULL ) ) AND ( NOT ( a42.c8 IS NULL ) ) ) FROM v0 AS a42 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 127 IN ( SELECT a44.c1 = ( a43.c19 + 2147483647 ) % count ( a45.c26 ) FROM v25 AS a45 ORDER BY 127 ) FROM v0 AS a43, v0 AS a44 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a46, v0 AS a47 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c27, count ( c15 ) GROUP BY c9 HAVING count ( * ) >= 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: table v0 has 20 columns but 3 values were supplied
+BEGIN VERI 0
+Parse error near line 11: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+  0.c27, count ( a30.c27 ) FROM v25 AS a30 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a31.c28 FROM v25 AS a31 ORDER BY 0; 
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 19
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: a42.c19
+  SELECT a42.c7, count ( ( NOT ( a42.c19 IS NULL ) ) AND ( NOT ( a42.c8 IS NULL 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a43.c19
+  SELECT 127 IN ( SELECT a44.c1 = ( a43.c19 + 2147483647 ) % count ( a45.c26 ) F
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 38
+  SELECT * FROM v0 AS a46, v0 AS a47 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: c27
+  SELECT c27, count ( c15 ) GROUP BY c9 HAVING count ( * ) >= 127 ORDER BY 127; 
+         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 11: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 11: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+  0.c27, count ( a30.c27 ) FROM v25 AS a30 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+  0.c27, count ( a30.c27 ) FROM v25 AS a30 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a31.c28 FROM v25 AS a31 ORDER BY 0; 
+                            error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a31.c28 FROM v25 AS a31 ORDER BY 0; 
+                            error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 20
+ 
+INT: 0 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 19
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+  OT ( a42.c8 IS NULL ) ) ) FROM v0 AS a42 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: no such column: a42.c19
+  SELECT a42.c7, count ( ( NOT ( a42.c19 IS NULL ) ) AND ( NOT ( a42.c8 IS NULL 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 29: no such column: a43.c19
+  SELECT 127 IN ( SELECT a44.c1 = ( a43.c19 + 2147483647 ) % count ( a45.c26 ) F
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 40
+  SELECT * FROM v0 AS a46, v0 AS a47 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 38
+  SELECT * FROM v0 AS a46, v0 AS a47 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no such column: c27
+  SELECT c27, count ( c15 ) GROUP BY c9 HAVING count ( * ) >= 127 ORDER BY 127; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 38: no such column: c27
+  SELECT c27, count ( c15 ) GROUP BY c9 HAVING count ( * ) >= 127 ORDER BY 127; 
+         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

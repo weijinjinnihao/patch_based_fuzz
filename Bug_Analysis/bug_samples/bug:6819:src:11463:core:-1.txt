@@ -1,0 +1,298 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 UNIQUE, c2, c3 UNIQUE ON CONFLICT IGNORE, c4 UNIQUE ON CONFLICT FAIL, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19 AS( c1 + c37 ( ( ( ( c9 + 22 ) % 22 ) == 22 ) % c15 != automatic_index ( * ) ) != 22 ) CHECK( x'b1' ), c20, c21, c22 UNIQUE, c23, PRIMARY KEY ( c14, c14 ) ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c3 = c22 || c3 FROM v0 AS a24, v0 AS a25 NATURAL JOIN v0 AS a26 WHERE c8 = c22 || c16; END; 
+CREATE TABLE v27 ( c28, c29, c30, c31, PRIMARY KEY ( c30, c31 ) ) WITHOUT ROWID; 
+CREATE INDEX i32 ON v0 ( c20 ); 
+INSERT INTO v0 VALUES ( 4294967295, 127, 18446744071562067968, 4294967295 ); 
+CREATE VIEW v33 AS SELECT * FROM v27 AS a34 WHERE ( c29 = abs ( c30 ) OR c28 = 8 ) AND c30 IN ( SELECT c30 FROM ( WITH v0 AS ( SELECT c28, count ( ( NOT ( c29 IS NULL ) ) AND ( NOT ( c31 IS NULL ) ) ) ORDER BY 22 ) SELECT *, 'v1' FROM v27 AS a35 LEFT JOIN v27 AS a36 ORDER BY 22 ) AS y WHERE c30 = 4294967295 ORDER BY 4294967295 ) ORDER BY 18446744073709551488; 
+CREATE TABLE v37 ( c38 DEFAULT x'ABCD', c39 TEXT, c40 BLOB, CHECK( coalesce ( c40, c40 ) ) ); 
+CREATE INDEX i41 ON v33 ( c28 ); 
+CREATE INDEX i42 ON v37 ( c38 ); 
+ALTER TABLE v37 DROP COLUMN c38; 
+INSERT OR REPLACE INTO v33 ( c28, c30, c31, y, c31 ) VALUES ( + y, 0 ) ON CONFLICT DO UPDATE SET c30 = c31, c31 = y, c31 = y ( c30 ); 
+CREATE INDEX i43 ON v0 ( c23 ); 
+CREATE INDEX i44 ON v33 ( y ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a45 WHERE a45.c30 != 22 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a46.c31, count ( ( NOT ( a46.c31 IS NULL ) ) AND ( NOT ( a46.c28 IS NULL ) ) ) FROM v27 AS a46 ORDER BY 22; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v37 AS a47 WHERE ( hex ( 22 ) ) ORDER BY 22; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 GROUP BY NULL, 'v0', 'x', 18446744073709551488, abs ( a48.c6 ) HAVING count ( * ) >= 22 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v37 AS a49 ORDER BY a49.c40 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a50 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a52.c40, a52.c40 FROM v37 AS a51 RIGHT JOIN v37 AS a52 ON a51.c38 = a51.c38 GROUP BY a52.c39 HAVING a52.c38 > a51.c38 % 0 >= 127 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c29, max ( a53.c29 || a53.c31 ) FROM v33 AS a53 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a54 ORDER BY count ( ( NOT ( a54.c23 IS NULL ) ) AND ( NOT ( a54.c16 IS NULL ) ) ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a55 NATURAL JOIN v33 AS a56 ORDER BY 22; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: no such function: c37
+  , c12, c13, c14, c15, c16, c17, c18, c19 AS( c1 + c37 ( ( ( ( c9 + 22 ) % 22 )
+                                      error here ---^
+Parse error near line 2: no such table: v0
+Parse error near line 4: no such table: main.v0
+Parse error near line 5: no such table: v0
+Parse error near line 8: views may not be indexed
+Runtime error near line 10: error in index i42 after drop column: no such column: c38
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 9
+Parse error near line 12: no such table: main.v0
+Parse error near line 13: views may not be indexed
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 9
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 UNIQUE, c2, c3 UNIQUE ON CONFLICT IGNORE, c4 UNIQUE ON CONFLICT FAIL, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19 AS( c1 + c37 ( ( ( ( c9 + 22 ) % 22 ) == 22 ) % c15 != automatic_index ( * ) ) != 22 ) CHECK( x'b1' ), c20, c21, c22 UNIQUE, c23, PRIMARY KEY ( c14, c14 ) ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c3 = c22 || c3 FROM v0 AS a24, v0 AS a25 NATURAL JOIN v0 AS a26 WHERE c8 = c22 || c16; END; 
+CREATE TABLE v27 ( c28, c29, c30, c31, PRIMARY KEY ( c30, c31 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v0 VALUES ( 4294967295, 127, 18446744071562067968, 4294967295 ); 
+CREATE VIEW v33 AS SELECT * FROM v27 AS a34 WHERE ( c29 = abs ( c30 ) OR c28 = 8 ) AND c30 IN ( SELECT c30 FROM ( WITH v0 AS ( SELECT c28, count ( ( NOT ( c29 IS NULL ) ) AND ( NOT ( c31 IS NULL ) ) ) ORDER BY 22 ) SELECT *, 'v1' FROM v27 AS a35 LEFT JOIN v27 AS a36 ORDER BY 22 ) AS y WHERE c30 = 4294967295 ORDER BY 4294967295 ) ORDER BY 18446744073709551488; 
+CREATE TABLE v37 ( c38 DEFAULT x'ABCD', c39 TEXT, c40 BLOB, CHECK( coalesce ( c40, c40 ) ) ); 
+; 
+; 
+ALTER TABLE v37 DROP COLUMN c38; 
+INSERT OR REPLACE INTO v33 ( c28, c30, c31, y, c31 ) VALUES ( + y, 0 ) ON CONFLICT DO UPDATE SET c30 = c31, c31 = y, c31 = y ( c30 ); 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a45 WHERE a45.c30 != 22 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a46.c31, count ( ( NOT ( a46.c31 IS NULL ) ) AND ( NOT ( a46.c28 IS NULL ) ) ) FROM v27 AS a46 ORDER BY 22; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v37 AS a47 WHERE ( hex ( 22 ) ) ORDER BY 22; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 GROUP BY NULL, 'v0', 'x', 18446744073709551488, abs ( a48.c6 ) HAVING count ( * ) >= 22 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v37 AS a49 ORDER BY a49.c40 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a50 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a52.c40, a52.c40 FROM v37 AS a51 RIGHT JOIN v37 AS a52 ON a51.c38 = a51.c38 GROUP BY a52.c39 HAVING a52.c38 > a51.c38 % 0 >= 127 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c29, max ( a53.c29 || a53.c31 ) FROM v33 AS a53 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a54 ORDER BY count ( ( NOT ( a54.c23 IS NULL ) ) AND ( NOT ( a54.c16 IS NULL ) ) ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a55 NATURAL JOIN v33 AS a56 ORDER BY 22; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: no such function: c37
+  , c12, c13, c14, c15, c16, c17, c18, c19 AS( c1 + c37 ( ( ( ( c9 + 22 ) % 22 )
+                                      error here ---^
+Parse error near line 2: no such table: v0
+Parse error near line 5: no such table: v0
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 9
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a52.c38
+   a52 ON a51.c38 = a51.c38 GROUP BY a52.c39 HAVING a52.c38 > a51.c38 % 0 >= 127
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 9
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 9
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 9
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 9
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 33: no such column: a52.c38
+   a52 ON a51.c38 = a51.c38 GROUP BY a52.c39 HAVING a52.c38 > a51.c38 % 0 >= 127
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 9
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 9
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such table: v0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

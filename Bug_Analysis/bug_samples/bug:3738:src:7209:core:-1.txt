@@ -1,0 +1,319 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 NATURAL JOIN v0 AS a6 ORDER BY 18446744073709551488; 
+WITH v7 ( c8 ) AS ( SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) UPDATE v4 SET c3 = 'u'; 
+CREATE INDEX i9 ON v0 ( c2 ); 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12 REFERENCES t1 ( c13, c12, c13, c12 ), c13 UNIQUE ); 
+CREATE TABLE v14 ( c15, c16, c17 ); 
+CREATE INDEX i18 ON v14 ( c16 ); 
+CREATE INDEX i19 ON v4 ( c1 ); 
+CREATE TABLE v20 ( c21 INTEGER PRIMARY KEY, c22 INTEGER REFERENCES t1 ON DELETE CASCADE REFERENCES t2, c23 TEXT, FOREIGN KEY ( c21, c21 ) REFERENCES encoding ( c23, c23 ) ON UPDATE CASCADE ); 
+ALTER TABLE v14 DROP COLUMN c16; 
+CREATE INDEX i24 ON v10 ( c12 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE INDEX i25 ON v10 ( c13 ); 
+CREATE VIRTUAL TABLE v26 USING fts5 ( c27, c28 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c28, count ( ( NOT ( a29.c28 IS NULL ) ) AND ( NOT ( a29.c28 IS NULL ) ) ) FROM v26 AS a29 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v14 AS ( WITH v31 AS ( SELECT 127 y ORDER BY 0 ) SELECT avg ( v14.c16 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 127 ) SELECT * FROM v20 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a32 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a33 WHERE a33.c28 = a33.c28 > 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c16 FROM v14 AS a34 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 8, 127, 8, 18446744073709551488, 100 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 ( c37 ) AS ( WITH v35 AS ( SELECT ( SELECT min ( c37 ) OVER ( ORDER BY 127 ) ORDER BY 127 ) FROM v35 AS a38 GROUP BY c37 ORDER BY 18446744073709551615 ) SELECT 0 ORDER BY 127 ) SELECT * FROM v35 AS a36 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a39.c2 IS NULL ) ) AND ( NOT ( a39.c1 IS NULL ) ) ), count ( ( NOT ( a40.c2 IS NULL ) ) AND ( NOT ( a39.c3 IS NULL ) ) ), count ( ( NOT ( a40.c3 IS NULL ) ) AND ( NOT ( a39.c2 IS NULL ) ) ) FROM v4 AS a39 LEFT JOIN v0 AS a40 ON a40.c3 = a39.c2 WHERE a39.c2 < a40.c2 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a41 GROUP BY a41.c21, abs ( a41.c21 ) HAVING CASE WHEN a41.c21 != 'x' THEN 127 ELSE 18446744073709551488 END > 127 >= 127 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: cannot modify v4 because it is a view
+Parse error near line 5: foreign key on c12 should reference only one column of table t1
+  BLE v10 ( c11 INTEGER PRIMARY KEY, c12 REFERENCES t1 ( c13, c12, c13, c12 ), c
+                                      error here ---^
+Parse error near line 8: views may not be indexed
+Runtime error near line 10: error in index i18 after drop column: no such column: c16
+Parse error near line 11: no such table: main.v10
+Parse error near line 13: no such table: main.v10
+Runtime error near line 14: no such module: fts5
+Parse error near line 15: no such column: "c3"
+  ALTER TABLE v0 DROP COLUMN c3; 
+               error here ---^
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v26
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v10
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such table: v26
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: near "ORDER": syntax error
+  VALUES ( 8, 127, 8, 18446744073709551488, 100 ) ORDER BY 0; 
+                                    error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a39.c3
+  ), count ( ( NOT ( a40.c2 IS NULL ) ) AND ( NOT ( a39.c3 IS NULL ) ) ), count 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 NATURAL JOIN v0 AS a6 ORDER BY 18446744073709551488; 
+WITH v7 ( c8 ) AS ( SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) UPDATE v4 SET c3 = 'u'; 
+; 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12 REFERENCES t1 ( c13, c12, c13, c12 ), c13 UNIQUE ); 
+CREATE TABLE v14 ( c15, c16, c17 ); 
+; 
+; 
+CREATE TABLE v20 ( c21 INTEGER PRIMARY KEY, c22 INTEGER REFERENCES t1 ON DELETE CASCADE REFERENCES t2, c23 TEXT, FOREIGN KEY ( c21, c21 ) REFERENCES encoding ( c23, c23 ) ON UPDATE CASCADE ); 
+ALTER TABLE v14 DROP COLUMN c16; 
+; 
+ALTER TABLE v0 DROP COLUMN c3; 
+; 
+CREATE VIRTUAL TABLE v26 USING fts5 ( c27, c28 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c28, count ( ( NOT ( a29.c28 IS NULL ) ) AND ( NOT ( a29.c28 IS NULL ) ) ) FROM v26 AS a29 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v14 AS ( WITH v31 AS ( SELECT 127 y ORDER BY 0 ) SELECT avg ( v14.c16 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 127 ) SELECT * FROM v20 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a32 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a33 WHERE a33.c28 = a33.c28 > 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c16 FROM v14 AS a34 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 8, 127, 8, 18446744073709551488, 100 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 ( c37 ) AS ( WITH v35 AS ( SELECT ( SELECT min ( c37 ) OVER ( ORDER BY 127 ) ORDER BY 127 ) FROM v35 AS a38 GROUP BY c37 ORDER BY 18446744073709551615 ) SELECT 0 ORDER BY 127 ) SELECT * FROM v35 AS a36 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a39.c2 IS NULL ) ) AND ( NOT ( a39.c1 IS NULL ) ) ), count ( ( NOT ( a40.c2 IS NULL ) ) AND ( NOT ( a39.c3 IS NULL ) ) ), count ( ( NOT ( a40.c3 IS NULL ) ) AND ( NOT ( a39.c2 IS NULL ) ) ) FROM v4 AS a39 LEFT JOIN v0 AS a40 ON a40.c3 = a39.c2 WHERE a39.c2 < a40.c2 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a41 GROUP BY a41.c21, abs ( a41.c21 ) HAVING CASE WHEN a41.c21 != 'x' THEN 127 ELSE 18446744073709551488 END > 127 >= 127 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: cannot modify v4 because it is a view
+Parse error near line 5: foreign key on c12 should reference only one column of table t1
+  BLE v10 ( c11 INTEGER PRIMARY KEY, c12 REFERENCES t1 ( c13, c12, c13, c12 ), c
+                                      error here ---^
+Runtime error near line 14: no such module: fts5
+Parse error near line 15: no such column: "c3"
+  ALTER TABLE v0 DROP COLUMN c3; 
+               error here ---^
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v26
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v10
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such table: v26
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a34.c16
+  SELECT a34.c16 FROM v14 AS a34 ORDER BY 18446744073709551488; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: near "ORDER": syntax error
+  VALUES ( 8, 127, 8, 18446744073709551488, 100 ) ORDER BY 0; 
+                                    error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a39.c3
+  ), count ( ( NOT ( a40.c2 IS NULL ) ) AND ( NOT ( a39.c3 IS NULL ) ) ), count 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no such table: v26
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no such table: v26
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no such table: v10
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such table: v10
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: no such table: v26
+ 
+INT: 0 
+Str: 
+Parse error near line 29: no such table: v26
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 32: no such column: a34.c16
+  SELECT a34.c16 FROM v14 AS a34 ORDER BY 18446744073709551488; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 12285184
+Str: 
+Parse error near line 35: near "ORDER": syntax error
+  VALUES ( 8, 127, 8, 18446744073709551488, 100 ) ORDER BY 0; 
+                                    error here ---^
+ 
+Str: 
+Parse error near line 35: near "ORDER": syntax error
+  VALUES ( 8, 127, 8, 18446744073709551488, 100 ) ORDER BY 0; 
+                                    error here ---^
+ 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no such column: a39.c3
+  ), count ( ( NOT ( a40.c2 IS NULL ) ) AND ( NOT ( a39.c3 IS NULL ) ) ), count 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: no such column: a39.c3
+  ), count ( ( NOT ( a40.c2 IS NULL ) ) AND ( NOT ( a39.c3 IS NULL ) ) ), count 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 44: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

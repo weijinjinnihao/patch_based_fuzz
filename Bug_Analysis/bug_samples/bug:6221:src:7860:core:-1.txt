@@ -1,0 +1,431 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( 2147483647, '1.0', 'X' ); 
+INSERT INTO v0 VALUES ( 0, 'x', 'v0' ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( NULL, 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( NULL, 0, 18446744073709551488, 'x' ), ( NULL, 0, 0, 'v0' ), ( NULL, 18446744073709551488, 18446744073709551488, 'three-c' ), ( 18446744073709551488, 0, - 18446744071562067968 ), ( NULL, 0, 18446744071562067968, 'a' ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE INDEX i6 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( x'616263', 'v1', 'v0' ); 
+CREATE TABLE v7 ( c8, c9, c10 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( NULL, 'x', 'aaabbb' ); 
+INSERT INTO v0 VALUES ( 'v0', 'v0', 'v0' ); 
+INSERT INTO v7 VALUES ( x'68617265', 'hello', 'v1' ); 
+CREATE INDEX i11 ON v0 ( c1 ); 
+CREATE INDEX i12 ON v7 ( c9 ); 
+INSERT INTO v0 VALUES ( 0, 'v0', 'ghi' ); 
+INSERT INTO v7 VALUES ( - 0, 'v1', 'v1' ); 
+CREATE VIEW v13 AS SELECT c1, avg ( c1 ) + 255 FROM v7 AS a14, v0 AS a15 GROUP BY c8 ORDER BY c9 COLLATE binary; 
+INSERT INTO v13 SELECT * FROM v7 AS a16 ORDER BY 16; 
+INSERT INTO v0 SELECT * FROM v0 AS a17 ORDER BY 0; 
+INSERT INTO v0 SELECT * FROM v0 AS a18 ORDER BY 0; 
+INSERT INTO v13 SELECT * FROM v7 AS a19 ORDER BY 0; 
+INSERT INTO v7 SELECT * ORDER BY 127; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a20, v0 AS a21 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v7 AS a23 NATURAL JOIN v0 AS a24 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v25 AS ( SELECT ( SELECT min ( c10 ) OVER ( ORDER BY 0 ) ORDER BY c2 ) FROM v25 AS a27 GROUP BY c1 ORDER BY 0 ) SELECT * FROM v25 AS a26 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c2 FROM v0 AS a28 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 WHERE ( a29.c1 || a29.c2 || a29.c1 ) != 'v1' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 18446744073709551488 ORDER BY 9223372036854775807 ) AS y, ( SELECT 0 ORDER BY 18446744073709551615 ) AS y ON likely ( 0 OR 10 ) OR 18446744071562067968 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c2 FROM v0 AS a30 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a31, v0 AS a32 NATURAL JOIN v13 AS a33 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a34 NATURAL JOIN v13 AS a35 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: all VALUES must have the same number of terms
+Parse error near line 19: cannot modify v13 because it is a view
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v0 SELECT * FROM v0 AS a17 ORDER BY 0; 
+                                    error here ---^
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v0 SELECT * FROM v0 AS a18 ORDER BY 0; 
+                                    error here ---^
+Parse error near line 22: cannot modify v13 because it is a view
+Parse error near line 23: no tables specified
+BEGIN VERI 0
+|429496984.4|2147483647|1.0|X
+|429496984.4|0|x|v0
+|429496984.4||x|v0
+|429496984.4|abc|v1|v0
+|429496984.4||x|aaabbb
+|429496984.4|v0|v0|v0
+|429496984.4|0|v0|ghi
+|429496984.4|2147483647|1.0|X
+|429496984.4|0|x|v0
+|429496984.4||x|v0
+|429496984.4|abc|v1|v0
+|429496984.4||x|aaabbb
+|429496984.4|v0|v0|v0
+|429496984.4|0|v0|ghi
+END VERI 0
+BEGIN VERI 0
+2147483647|1.0|X|hare|hello|v1
+2147483647|1.0|X|0|v1|v1
+0|x|v0|hare|hello|v1
+0|x|v0|0|v1|v1
+abc|v1|v0|hare|hello|v1
+abc|v1|v0|0|v1|v1
+v0|v0|v0|hare|hello|v1
+v0|v0|v0|0|v1|v1
+0|v0|ghi|hare|hello|v1
+0|v0|ghi|0|v1|v1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: circular reference: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a28.c2 FROM v0 AS a28 ORDER BY 2147483647; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 3
+  E ( a29.c1 || a29.c2 || a29.c1 ) != 'v1' ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 46: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 49: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( 2147483647, '1.0', 'X' ); 
+INSERT INTO v0 VALUES ( 0, 'x', 'v0' ); 
+; 
+INSERT INTO v0 VALUES ( NULL, 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( NULL, 0, 18446744073709551488, 'x' ), ( NULL, 0, 0, 'v0' ), ( NULL, 18446744073709551488, 18446744073709551488, 'three-c' ), ( 18446744073709551488, 0, - 18446744071562067968 ), ( NULL, 0, 18446744071562067968, 'a' ); 
+; 
+; 
+INSERT INTO v0 VALUES ( x'616263', 'v1', 'v0' ); 
+CREATE TABLE v7 ( c8, c9, c10 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( NULL, 'x', 'aaabbb' ); 
+INSERT INTO v0 VALUES ( 'v0', 'v0', 'v0' ); 
+INSERT INTO v7 VALUES ( x'68617265', 'hello', 'v1' ); 
+; 
+; 
+INSERT INTO v0 VALUES ( 0, 'v0', 'ghi' ); 
+INSERT INTO v7 VALUES ( - 0, 'v1', 'v1' ); 
+CREATE VIEW v13 AS SELECT c1, avg ( c1 ) + 255 FROM v7 AS a14, v0 AS a15 GROUP BY c8 ORDER BY c9 COLLATE binary; 
+INSERT INTO v13 SELECT * FROM v7 AS a16 ORDER BY 16; 
+INSERT INTO v0 SELECT * FROM v0 AS a17 ORDER BY 0; 
+INSERT INTO v0 SELECT * FROM v0 AS a18 ORDER BY 0; 
+INSERT INTO v13 SELECT * FROM v7 AS a19 ORDER BY 0; 
+INSERT INTO v7 SELECT * ORDER BY 127; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a20, v0 AS a21 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v7 AS a23 NATURAL JOIN v0 AS a24 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v25 AS ( SELECT ( SELECT min ( c10 ) OVER ( ORDER BY 0 ) ORDER BY c2 ) FROM v25 AS a27 GROUP BY c1 ORDER BY 0 ) SELECT * FROM v25 AS a26 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c2 FROM v0 AS a28 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 WHERE ( a29.c1 || a29.c2 || a29.c1 ) != 'v1' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 18446744073709551488 ORDER BY 9223372036854775807 ) AS y, ( SELECT 0 ORDER BY 18446744073709551615 ) AS y ON likely ( 0 OR 10 ) OR 18446744071562067968 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c2 FROM v0 AS a30 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a31, v0 AS a32 NATURAL JOIN v13 AS a33 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a34 NATURAL JOIN v13 AS a35 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: all VALUES must have the same number of terms
+Parse error near line 19: cannot modify v13 because it is a view
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v0 SELECT * FROM v0 AS a17 ORDER BY 0; 
+                                    error here ---^
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v0 SELECT * FROM v0 AS a18 ORDER BY 0; 
+                                    error here ---^
+Parse error near line 22: cannot modify v13 because it is a view
+Parse error near line 23: no tables specified
+BEGIN VERI 0
+2147483647|429496984.4|2147483647|1.0|X
+2147483647|429496984.4|0|x|v0
+2147483647|429496984.4||x|v0
+2147483647|429496984.4|abc|v1|v0
+2147483647|429496984.4||x|aaabbb
+2147483647|429496984.4|v0|v0|v0
+2147483647|429496984.4|0|v0|ghi
+2147483647|429496984.4|2147483647|1.0|X
+2147483647|429496984.4|0|x|v0
+2147483647|429496984.4||x|v0
+2147483647|429496984.4|abc|v1|v0
+2147483647|429496984.4||x|aaabbb
+2147483647|429496984.4|v0|v0|v0
+2147483647|429496984.4|0|v0|ghi
+END VERI 0
+BEGIN VERI 0
+2147483647|1.0|X|hare|hello|v1
+2147483647|1.0|X|0|v1|v1
+0|x|v0|hare|hello|v1
+0|x|v0|0|v1|v1
+abc|v1|v0|hare|hello|v1
+abc|v1|v0|0|v1|v1
+v0|v0|v0|hare|hello|v1
+v0|v0|v0|0|v1|v1
+0|v0|ghi|hare|hello|v1
+0|v0|ghi|0|v1|v1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: circular reference: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a28.c2 FROM v0 AS a28 ORDER BY 2147483647; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 3
+  E ( a29.c1 || a29.c2 || a29.c1 ) != 'v1' ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 46: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 49: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+2147483647|429496984.4
+2147483647|429496984.4
+2147483647|429496984.4
+2147483647|429496984.4
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+|429496984.4|2147483647|1.0|X
+|429496984.4|0|x|v0
+|429496984.4||x|v0
+|429496984.4|abc|v1|v0
+|429496984.4||x|aaabbb
+|429496984.4|v0|v0|v0
+|429496984.4|0|v0|ghi
+|429496984.4|2147483647|1.0|X
+|429496984.4|0|x|v0
+|429496984.4||x|v0
+|429496984.4|abc|v1|v0
+|429496984.4||x|aaabbb
+|429496984.4|v0|v0|v0
+|429496984.4|0|v0|ghi
+ 
+INT: 13 
+Str: 
+2147483647|429496984.4|2147483647|1.0|X
+2147483647|429496984.4|0|x|v0
+2147483647|429496984.4||x|v0
+2147483647|429496984.4|abc|v1|v0
+2147483647|429496984.4||x|aaabbb
+2147483647|429496984.4|v0|v0|v0
+2147483647|429496984.4|0|v0|ghi
+2147483647|429496984.4|2147483647|1.0|X
+2147483647|429496984.4|0|x|v0
+2147483647|429496984.4||x|v0
+2147483647|429496984.4|abc|v1|v0
+2147483647|429496984.4||x|aaabbb
+2147483647|429496984.4|v0|v0|v0
+2147483647|429496984.4|0|v0|ghi
+ 
+INT: 13 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+2147483647|1.0|X|hare|hello|v1
+2147483647|1.0|X|0|v1|v1
+0|x|v0|hare|hello|v1
+0|x|v0|0|v1|v1
+abc|v1|v0|hare|hello|v1
+abc|v1|v0|0|v1|v1
+v0|v0|v0|hare|hello|v1
+v0|v0|v0|0|v1|v1
+0|v0|ghi|hare|hello|v1
+0|v0|ghi|0|v1|v1
+ 
+INT: 9 
+Str: 
+2147483647|1.0|X|hare|hello|v1
+2147483647|1.0|X|0|v1|v1
+0|x|v0|hare|hello|v1
+0|x|v0|0|v1|v1
+abc|v1|v0|hare|hello|v1
+abc|v1|v0|0|v1|v1
+v0|v0|v0|hare|hello|v1
+v0|v0|v0|0|v1|v1
+0|v0|ghi|hare|hello|v1
+0|v0|ghi|0|v1|v1
+ 
+INT: 9 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: circular reference: v25
+ 
+INT: 0 
+Str: 
+Parse error near line 31: circular reference: v25
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a28.c2 FROM v0 AS a28 ORDER BY 2147483647; 
+                          error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a28.c2 FROM v0 AS a28 ORDER BY 2147483647; 
+                          error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 3
+  E ( a29.c1 || a29.c2 || a29.c1 ) != 'v1' ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 3
+  E ( a29.c1 || a29.c2 || a29.c1 ) != 'v1' ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 46: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 46: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 49: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+Str: 
+Parse error near line 49: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+2147483647|429496984.4
+2147483647|429496984.4
+2147483647|429496984.4
+2147483647|429496984.4
+ 
+INT: 3 
+Compare_result_int: 
+0
+
+
+

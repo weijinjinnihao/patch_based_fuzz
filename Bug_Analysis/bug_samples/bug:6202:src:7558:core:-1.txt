@@ -1,0 +1,300 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 REFERENCES t1 DEFAULT NULL, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11 TEXT, c12, c13, c14, c15, c16, c17, c18, c19, PRIMARY KEY ( c11, c10, c19, c12, c17, c10, c17 ) ) WITHOUT ROWID; 
+CREATE INDEX i20 ON v0 ( c4 ); 
+CREATE TEMP TRIGGER tri1 INSERT ON v0 BEGIN UPDATE v0 SET c8 = c14 || c3 WHERE c13 = c13 || c14; END; 
+CREATE TABLE v21 ( c22, c23, c24, c25, PRIMARY KEY ( c24, c25 ) ) WITHOUT ROWID; 
+CREATE INDEX i26 ON v21 ( c22 ); 
+INSERT INTO v21 VALUES ( 0, 0, 0, 0 ); 
+CREATE INDEX i27 ON v0 ( c19 ); 
+CREATE INDEX i28 ON v21 ( c23 ); 
+ALTER TABLE v21 DROP COLUMN c22; 
+INSERT OR REPLACE INTO v0 ( c8, c6, c15, c7, c3 ) VALUES ( 0, 0, NULL, 18446744073709551488, 0 ); 
+CREATE INDEX i29 ON v0 ( c19 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 GROUP BY a30.c12, a30.c19 < a30.c14 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 ORDER BY NULL; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32, v0 AS a33 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c23, a34.c24 FROM v21 AS a34 LEFT JOIN v21 AS a35 ON a34.c22 = a35.c23 GROUP BY a34.c24 HAVING count ( * ) >= 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a36 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c5, c13, ( SELECT a38.c23 FROM v21 AS a38 WHERE a38.c24 = a38.c22 ORDER BY 18446744073709551488 ), 'C' FROM ( SELECT count ( * ) AS y, a37.c24 AS y FROM v21 AS a37 GROUP BY 18446744073709551488 ORDER BY 127 ) AS y ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c11, sum ( a39.c12 ) FROM v0 AS a39 GROUP BY a39.c16 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a40 WHERE count ( * ) >= 18446744073709551488 = 'apple' != a40.c24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a41.c7 || a41.c10 ) FROM v0 AS a41 ORDER BY 9223372036854775807 COLLATE binary, 0 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a42 WHERE hex ( 18446744073709551488 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: error in index i26 after drop column: no such column: c22
+Runtime error near line 10: NOT NULL constraint failed: v0.c10 (19)
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 19
+   a30 GROUP BY a30.c12, a30.c19 < a30.c14 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: misuse of aggregate function count()
+  SELECT * FROM v21 AS a40 WHERE count ( * ) >= 18446744073709551488 = 'apple' !
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 2nd ORDER BY term out of range - should be between 1 and 1
+   a41 ORDER BY 9223372036854775807 COLLATE binary, 0 COLLATE hex; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 4
+  S a42 WHERE hex ( 18446744073709551488 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 REFERENCES t1 DEFAULT NULL, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11 TEXT, c12, c13, c14, c15, c16, c17, c18, c19, PRIMARY KEY ( c11, c10, c19, c12, c17, c10, c17 ) ) WITHOUT ROWID; 
+; 
+CREATE TEMP TRIGGER tri1 INSERT ON v0 BEGIN UPDATE v0 SET c8 = c14 || c3 WHERE c13 = c13 || c14; END; 
+CREATE TABLE v21 ( c22, c23, c24, c25, PRIMARY KEY ( c24, c25 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v21 VALUES ( 0, 0, 0, 0 ); 
+; 
+; 
+ALTER TABLE v21 DROP COLUMN c22; 
+INSERT OR REPLACE INTO v0 ( c8, c6, c15, c7, c3 ) VALUES ( 0, 0, NULL, 18446744073709551488, 0 ); 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 GROUP BY a30.c12, a30.c19 < a30.c14 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 ORDER BY NULL; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32, v0 AS a33 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c23, a34.c24 FROM v21 AS a34 LEFT JOIN v21 AS a35 ON a34.c22 = a35.c23 GROUP BY a34.c24 HAVING count ( * ) >= 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a36 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c5, c13, ( SELECT a38.c23 FROM v21 AS a38 WHERE a38.c24 = a38.c22 ORDER BY 18446744073709551488 ), 'C' FROM ( SELECT count ( * ) AS y, a37.c24 AS y FROM v21 AS a37 GROUP BY 18446744073709551488 ORDER BY 127 ) AS y ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c11, sum ( a39.c12 ) FROM v0 AS a39 GROUP BY a39.c16 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a40 WHERE count ( * ) >= 18446744073709551488 = 'apple' != a40.c24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a41.c7 || a41.c10 ) FROM v0 AS a41 ORDER BY 9223372036854775807 COLLATE binary, 0 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a42 WHERE hex ( 18446744073709551488 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: NOT NULL constraint failed: v0.c10 (19)
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 19
+   a30 GROUP BY a30.c12, a30.c19 < a30.c14 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a34.c22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: misuse of aggregate function count()
+  SELECT * FROM v21 AS a40 WHERE count ( * ) >= 18446744073709551488 = 'apple' !
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 2nd ORDER BY term out of range - should be between 1 and 1
+   a41 ORDER BY 9223372036854775807 COLLATE binary, 0 COLLATE hex; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 3
+  S a42 WHERE hex ( 18446744073709551488 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 19
+   a30 GROUP BY a30.c12, a30.c19 < a30.c14 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 19
+   a30 GROUP BY a30.c12, a30.c19 < a30.c14 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 22: no such column: a34.c22
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: misuse of aggregate function count()
+  SELECT * FROM v21 AS a40 WHERE count ( * ) >= 18446744073709551488 = 'apple' !
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: misuse of aggregate function count()
+  SELECT * FROM v21 AS a40 WHERE count ( * ) >= 18446744073709551488 = 'apple' !
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 2nd ORDER BY term out of range - should be between 1 and 1
+   a41 ORDER BY 9223372036854775807 COLLATE binary, 0 COLLATE hex; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: 2nd ORDER BY term out of range - should be between 1 and 1
+   a41 ORDER BY 9223372036854775807 COLLATE binary, 0 COLLATE hex; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 4
+  S a42 WHERE hex ( 18446744073709551488 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 3
+  S a42 WHERE hex ( 18446744073709551488 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

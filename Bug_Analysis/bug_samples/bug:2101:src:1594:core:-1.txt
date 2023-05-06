@@ -1,0 +1,296 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 PRIMARY KEY, CHECK( ( ( c2 + 18446744073709551488 ) % 18446744073709551488 ) != 18446744073709551488 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+CREATE INDEX i6 ON v0 ( c1 ); 
+ALTER TABLE v0 DROP c1; 
+CREATE TABLE v7 ( c8 INTEGER CHECK( 18446744073709551488 ), c9 ); 
+CREATE INDEX i10 ON v0 ( c3 ); 
+CREATE INDEX i11 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a12.c8, a13.c1 FROM v7 AS a12, v0 AS a13 ON a12.c9 = a12.c8 WHERE a12.c9 = + a12.c9 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v14 ( c16 ) AS ( SELECT c16, max ( c16 || c16 ) ORDER BY 18446744073709551488 ) SELECT * FROM v14 AS a15 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a17 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a18.c2 ) FROM v0 AS a18 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v19 ( c21 ) AS ( WITH v19 ( c22, c23, c24, c25, c26, c27 ) AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551488 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT * FROM v19 AS a20 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 ORDER BY a28.c3 COLLATE NOCASE; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v29 AS ( SELECT c8 FROM v29 AS a31 WHERE c9 LIKE 'cantaloupe' ORDER BY 18446744073709551488 ) SELECT * FROM v29 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a32.c1 || a32.c1 ) FROM v0 AS a32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c3 + ( SELECT max ( a35.c9 ) FROM v7 AS a36 ORDER BY 18446744073709551488 ), a33.c1 + ( SELECT a34.c8 FROM v7 AS a35 ORDER BY 0 ), a33.c2 + ( SELECT max ( a33.c3 ) FROM v7 AS a34 ORDER BY 18446744073709551488 ) FROM v0 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a37 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: error in index i5 after drop column: no such column: c1
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: table v14 has 2 values for 1 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v7 AS a17 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+  3709551488 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT * FROM v19 AS a20
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: circular reference: v29
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a35.c9
+  SELECT a33.c3 + ( SELECT max ( a35.c9 ) FROM v7 AS a36 ORDER BY 18446744073709
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 PRIMARY KEY, CHECK( ( ( c2 + 18446744073709551488 ) % 18446744073709551488 ) != 18446744073709551488 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c1; 
+CREATE TABLE v7 ( c8 INTEGER CHECK( 18446744073709551488 ), c9 ); 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a12.c8, a13.c1 FROM v7 AS a12, v0 AS a13 ON a12.c9 = a12.c8 WHERE a12.c9 = + a12.c9 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v14 ( c16 ) AS ( SELECT c16, max ( c16 || c16 ) ORDER BY 18446744073709551488 ) SELECT * FROM v14 AS a15 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a17 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a18.c2 ) FROM v0 AS a18 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v19 ( c21 ) AS ( WITH v19 ( c22, c23, c24, c25, c26, c27 ) AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551488 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT * FROM v19 AS a20 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 ORDER BY a28.c3 COLLATE NOCASE; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v29 AS ( SELECT c8 FROM v29 AS a31 WHERE c9 LIKE 'cantaloupe' ORDER BY 18446744073709551488 ) SELECT * FROM v29 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a32.c1 || a32.c1 ) FROM v0 AS a32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c3 + ( SELECT max ( a35.c9 ) FROM v7 AS a36 ORDER BY 18446744073709551488 ), a33.c1 + ( SELECT a34.c8 FROM v7 AS a35 ORDER BY 0 ), a33.c2 + ( SELECT max ( a33.c3 ) FROM v7 AS a34 ORDER BY 18446744073709551488 ) FROM v0 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a37 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 10: no such column: a13.c1
+  SELECT a12.c8, a13.c1 FROM v7 AS a12, v0 AS a13 ON a12.c9 = a12.c8 WHERE a12.c
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: table v14 has 2 values for 1 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v7 AS a17 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+  3709551488 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT * FROM v19 AS a20
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: circular reference: v29
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a32.c1
+  SELECT max ( a32.c1 || a32.c1 ) FROM v0 AS a32 ORDER BY 18446744073709551488; 
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a35.c9
+  SELECT a33.c3 + ( SELECT max ( a35.c9 ) FROM v7 AS a36 ORDER BY 18446744073709
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 10: no such column: a13.c1
+  SELECT a12.c8, a13.c1 FROM v7 AS a12, v0 AS a13 ON a12.c9 = a12.c8 WHERE a12.c
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: table v14 has 2 values for 1 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 13: table v14 has 2 values for 1 columns
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v7 AS a17 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v7 AS a17 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+  3709551488 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT * FROM v19 AS a20
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+  3709551488 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT * FROM v19 AS a20
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: circular reference: v29
+ 
+INT: 0 
+Str: 
+Parse error near line 28: circular reference: v29
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+Parse error near line 31: no such column: a32.c1
+  SELECT max ( a32.c1 || a32.c1 ) FROM v0 AS a32 ORDER BY 18446744073709551488; 
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such column: a35.c9
+  SELECT a33.c3 + ( SELECT max ( a35.c9 ) FROM v7 AS a36 ORDER BY 18446744073709
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: no such column: a35.c9
+  SELECT a33.c3 + ( SELECT max ( a35.c9 ) FROM v7 AS a36 ORDER BY 18446744073709
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

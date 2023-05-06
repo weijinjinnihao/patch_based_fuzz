@@ -1,0 +1,17 @@
+CREATE TABLE v0 ( c1, c2, c3 PRIMARY KEY, CHECK( ( ( c1 + 0 ) % 0 ) != 0 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP c3; 
+CREATE INDEX i6 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( 'x', 'v0', 'x' ); 
+CREATE INDEX i7 ON v0 ( c1 ); 
+SELECT * ORDER BY 8; 
+SELECT * ORDER BY 0; 
+SELECT a9.c3, a8.c2 FROM v0 AS a8 LEFT JOIN v0 AS a9 ON a9.c3 = a8.c3 ORDER BY max ( a8.c2 + a9.c1 * 255 ) + 100, min ( a9.c1, avg ( a9.c3 ) ) + 16; 
+SELECT * FROM v0 AS a10 WHERE a10.c1 = 16 ORDER BY 100; 
+SELECT * FROM v0 AS a11 WHERE a11.c1 NOT NULL ORDER BY 255; 
+SELECT a12.c3, count ( a13.c3 ) FROM v0 AS a12, v0 AS a13 WHERE a12.c2 = a13.c3 GROUP BY y ( a12.c2 ) ORDER BY 8; 
+SELECT * FROM v0 AS a14 ORDER BY a14.c1, a14.c1, a14.c1; 
+SELECT * ORDER BY 0; 
+SELECT * FROM ( v0 AS a15 ), ( v0 AS a16 ), ( v0 AS a17 ), ( v0 AS a18 ) WHERE a17.c3 = a15.c3 + 16 AND a15.c1 = a17.c1 + 100 AND a16.c1 = a15.c2 + 0 ORDER BY 8; 
+SELECT a19.c3, count ( ( NOT ( a19.c1 IS NULL ) ) AND ( NOT ( a19.c3 IS NULL ) ) ) FROM v0 AS a19 WHERE ( CASE WHEN a19.c2 != 'v1' THEN 4294967295 ELSE 0 END ) GROUP BY 0 ORDER BY 0 COLLATE hex; 

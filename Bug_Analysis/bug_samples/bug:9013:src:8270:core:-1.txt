@@ -1,0 +1,299 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6 INTEGER, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29 ); 
+CREATE INDEX i30 ON v0 ( c24 ); 
+CREATE VIEW v31 AS SELECT * FROM v0 AS a32 WHERE c21 = 18446744071562067968 ORDER BY 18446744071562067968; 
+CREATE TABLE v33 ( c34 INTEGER PRIMARY KEY, c35, c36 UNIQUE ); 
+CREATE INDEX i37 ON v33 ( c35 ); 
+CREATE TABLE v38 ( c39, c40, c41 ); 
+ALTER TABLE v33 DROP COLUMN c36; 
+ALTER TABLE v33 DROP COLUMN c35; 
+CREATE VIRTUAL TABLE v42 USING fts5 ( c43, c44 ); 
+CREATE INDEX i45 ON v38 ( c41 ); 
+CREATE INDEX i46 ON v38 ( c39 ); 
+ALTER TABLE v31 DROP COLUMN c10; 
+CREATE INDEX i47 ON v42 ( c43 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a48.c35, max ( a48.c34 || a48.c35 ) FROM v33 AS a48 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a49, v38 AS a50 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a51.c39 FROM v38 AS a51 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a52 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v53 ( c55 ) AS ( SELECT 18446744071562067968 ORDER BY 18446744073709551488 ) SELECT * FROM v53 AS a54 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a56 WHERE a56.c10 = a56.c10 != a56.c10 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a57 WHERE count ( a57.c10 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a58 WHERE ( a58.c25 = 18446744071562067968 OR a58.c15 = 18446744071562067968 ) AND a58.c27 IN ( SELECT a58.c10 FROM ( SELECT a58.c22 FROM v38 AS a59 ORDER BY 18446744071562067968 ) AS y WHERE a58.c1 = 18446744071562067968 ORDER BY 18446744071562067968 ) GROUP BY a58.c10, abs ( a58.c22 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a60 WHERE a60.c40 = + a60.c43 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a61, v33 AS a62 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: cannot drop UNIQUE column: "c36"
+Runtime error near line 8: error in index i37 after drop column: no such column: c35
+Runtime error near line 9: no such module: fts5
+Parse error near line 12: cannot drop column from view "v31"
+Parse error near line 13: no such table: main.v42
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v42
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v42
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 29
+  S a56 WHERE a56.c10 = a56.c10 != a56.c10 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: misuse of aggregate function count()
+  SELECT * FROM v31 AS a57 WHERE count ( a57.c10 ) ORDER BY 18446744071562067968
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v42
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6 INTEGER, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29 ); 
+; 
+CREATE VIEW v31 AS SELECT * FROM v0 AS a32 WHERE c21 = 18446744071562067968 ORDER BY 18446744071562067968; 
+CREATE TABLE v33 ( c34 INTEGER PRIMARY KEY, c35, c36 UNIQUE ); 
+; 
+CREATE TABLE v38 ( c39, c40, c41 ); 
+ALTER TABLE v33 DROP COLUMN c36; 
+ALTER TABLE v33 DROP COLUMN c35; 
+CREATE VIRTUAL TABLE v42 USING fts5 ( c43, c44 ); 
+; 
+; 
+ALTER TABLE v31 DROP COLUMN c10; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a48.c35, max ( a48.c34 || a48.c35 ) FROM v33 AS a48 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a49, v38 AS a50 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a51.c39 FROM v38 AS a51 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a52 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v53 ( c55 ) AS ( SELECT 18446744071562067968 ORDER BY 18446744073709551488 ) SELECT * FROM v53 AS a54 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a56 WHERE a56.c10 = a56.c10 != a56.c10 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a57 WHERE count ( a57.c10 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a58 WHERE ( a58.c25 = 18446744071562067968 OR a58.c15 = 18446744071562067968 ) AND a58.c27 IN ( SELECT a58.c10 FROM ( SELECT a58.c22 FROM v38 AS a59 ORDER BY 18446744071562067968 ) AS y WHERE a58.c1 = 18446744071562067968 ORDER BY 18446744071562067968 ) GROUP BY a58.c10, abs ( a58.c22 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a60 WHERE a60.c40 = + a60.c43 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a61, v33 AS a62 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: cannot drop UNIQUE column: "c36"
+Runtime error near line 9: no such module: fts5
+Parse error near line 12: cannot drop column from view "v31"
+BEGIN VERI 0
+Parse error near line 15: no such column: a48.c35
+  SELECT a48.c35, max ( a48.c34 || a48.c35 ) FROM v33 AS a48 ORDER BY 1844674407
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v42
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v42
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 29
+  S a56 WHERE a56.c10 = a56.c10 != a56.c10 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: misuse of aggregate function count()
+  SELECT * FROM v31 AS a57 WHERE count ( a57.c10 ) ORDER BY 18446744071562067968
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v42
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such column: a48.c35
+  SELECT a48.c35, max ( a48.c34 || a48.c35 ) FROM v33 AS a48 ORDER BY 1844674407
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such table: v42
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such table: v42
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v42
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v42
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+1.84467440715621e+19
+ 
+INT: 0 
+Str: 
+1.84467440715621e+19
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 29
+  S a56 WHERE a56.c10 = a56.c10 != a56.c10 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 29
+  S a56 WHERE a56.c10 = a56.c10 != a56.c10 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: misuse of aggregate function count()
+  SELECT * FROM v31 AS a57 WHERE count ( a57.c10 ) ORDER BY 18446744071562067968
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: misuse of aggregate function count()
+  SELECT * FROM v31 AS a57 WHERE count ( a57.c10 ) ORDER BY 18446744071562067968
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such table: v42
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such table: v42
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

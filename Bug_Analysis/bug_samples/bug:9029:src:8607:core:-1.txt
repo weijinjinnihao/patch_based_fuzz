@@ -1,0 +1,311 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT c3 COLLATE hex FROM v0 AS a5 ORDER BY 18446744073709551615; 
+CREATE VIEW v6 AS WITH v4 AS ( SELECT 18446744073709551615 y ORDER BY 4294967295 ) SELECT * FROM v4 AS a7 ORDER BY 18446744073709551615; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE INDEX i12 ON v6 ( c3 ); 
+CREATE TABLE v13 ( c14, c15, c16 ); 
+CREATE INDEX i17 ON v0 ( c1 ); 
+ALTER TABLE v4 DROP COLUMN c1; 
+ALTER TABLE v8 DROP COLUMN c11; 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+CREATE INDEX i21 ON v8 ( c11 ); 
+CREATE INDEX i22 ON v13 ( c15 ); 
+ALTER TABLE v13 DROP COLUMN c15; 
+CREATE INDEX i23 ON v8 ( c9 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c15, a25.c15 FROM v13 AS a24 RIGHT JOIN v13 AS a25 ON a25.c14 = a24.c16 WHERE ( CASE WHEN a24.c15 != 'x' THEN 4294967295 ELSE 4294967295 END ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a26 NATURAL JOIN v8 AS a27 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a28 LEFT JOIN v6 AS a29 ON ( a29.c3 = + a28.c1 ) LEFT JOIN v8 AS a30 ON ( a28.c1 IS NULL ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c1 FROM v0 AS a31 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c2 != 'v0' FROM v6 AS a32 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a33, v18 AS a34 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v18 ( c35 ) AS ( SELECT 'v1' ORDER BY 18446744071562067968 ) SELECT v18.c19, v18.c20, lower ( ( SELECT a37.c19 FROM v18 AS a37 WHERE a37.c19 = a37.c19 ORDER BY 18446744073709551615 ) ), 'v0' FROM ( SELECT count ( * ) AS y, v18.c20 AS y FROM v6 AS a36 GROUP BY 0 ORDER BY 18446744073709551488 ) AS y ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a38 WHERE ( a38.c3 = 18446744071562067968 OR a38.c1 = 0 ) AND a38.c2 IN ( WITH v39 AS ( SELECT ( SELECT min ( a38.c2 ) OVER ( ORDER BY 4294967295 IN v39 ) ORDER BY 9223372036854775807 ) FROM v39 AS a40 GROUP BY a38.c2 ORDER BY 18446744073709551488 ) SELECT 18446744073709551615 ORDER BY 4294967295 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: views may not be indexed
+Parse error near line 8: cannot drop column from view "v4"
+Parse error near line 9: cannot drop UNIQUE column: "c11"
+Runtime error near line 10: no such module: fts5
+Runtime error near line 13: error in index i22 after drop column: no such column: c15
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a32.c2
+  SELECT a32.c2 != 'v0' FROM v6 AS a32 ORDER BY 4294967295; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: v18.c20
+  9551615 ) ), 'v0' FROM ( SELECT count ( * ) AS y, v18.c20 AS y FROM v6 AS a36 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such column: a38.c3
+  SELECT * FROM v6 AS a38 WHERE ( a38.c3 = 18446744071562067968 OR a38.c1 = 0 ) 
+                    error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT c3 COLLATE hex FROM v0 AS a5 ORDER BY 18446744073709551615; 
+CREATE VIEW v6 AS WITH v4 AS ( SELECT 18446744073709551615 y ORDER BY 4294967295 ) SELECT * FROM v4 AS a7 ORDER BY 18446744073709551615; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+; 
+CREATE TABLE v13 ( c14, c15, c16 ); 
+; 
+ALTER TABLE v4 DROP COLUMN c1; 
+ALTER TABLE v8 DROP COLUMN c11; 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+; 
+; 
+ALTER TABLE v13 DROP COLUMN c15; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c15, a25.c15 FROM v13 AS a24 RIGHT JOIN v13 AS a25 ON a25.c14 = a24.c16 WHERE ( CASE WHEN a24.c15 != 'x' THEN 4294967295 ELSE 4294967295 END ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a26 NATURAL JOIN v8 AS a27 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a28 LEFT JOIN v6 AS a29 ON ( a29.c3 = + a28.c1 ) LEFT JOIN v8 AS a30 ON ( a28.c1 IS NULL ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c1 FROM v0 AS a31 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c2 != 'v0' FROM v6 AS a32 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a33, v18 AS a34 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v18 ( c35 ) AS ( SELECT 'v1' ORDER BY 18446744071562067968 ) SELECT v18.c19, v18.c20, lower ( ( SELECT a37.c19 FROM v18 AS a37 WHERE a37.c19 = a37.c19 ORDER BY 18446744073709551615 ) ), 'v0' FROM ( SELECT count ( * ) AS y, v18.c20 AS y FROM v6 AS a36 GROUP BY 0 ORDER BY 18446744073709551488 ) AS y ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a38 WHERE ( a38.c3 = 18446744071562067968 OR a38.c1 = 0 ) AND a38.c2 IN ( WITH v39 AS ( SELECT ( SELECT min ( a38.c2 ) OVER ( ORDER BY 4294967295 IN v39 ) ORDER BY 9223372036854775807 ) FROM v39 AS a40 GROUP BY a38.c2 ORDER BY 18446744073709551488 ) SELECT 18446744073709551615 ORDER BY 4294967295 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop column from view "v4"
+Parse error near line 9: cannot drop UNIQUE column: "c11"
+Runtime error near line 10: no such module: fts5
+BEGIN VERI 0
+Parse error near line 16: no such column: a25.c15
+  SELECT a25.c15, a25.c15 FROM v13 AS a24 RIGHT JOIN v13 AS a25 ON a25.c14 = a24
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a32.c2
+  SELECT a32.c2 != 'v0' FROM v6 AS a32 ORDER BY 4294967295; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: v18.c20
+  9551615 ) ), 'v0' FROM ( SELECT count ( * ) AS y, v18.c20 AS y FROM v6 AS a36 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such column: a38.c3
+  SELECT * FROM v6 AS a38 WHERE ( a38.c3 = 18446744071562067968 OR a38.c1 = 0 ) 
+                    error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 16: no such column: a25.c15
+  SELECT a25.c15, a25.c15 FROM v13 AS a24 RIGHT JOIN v13 AS a25 ON a25.c14 = a24
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such collation sequence: hex
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such collation sequence: hex
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such column: a32.c2
+  SELECT a32.c2 != 'v0' FROM v6 AS a32 ORDER BY 4294967295; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 28: no such column: a32.c2
+  SELECT a32.c2 != 'v0' FROM v6 AS a32 ORDER BY 4294967295; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such column: v18.c20
+  9551615 ) ), 'v0' FROM ( SELECT count ( * ) AS y, v18.c20 AS y FROM v6 AS a36 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 40: no such column: v18.c20
+  9551615 ) ), 'v0' FROM ( SELECT count ( * ) AS y, v18.c20 AS y FROM v6 AS a36 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: no such column: a38.c3
+  SELECT * FROM v6 AS a38 WHERE ( a38.c3 = 18446744071562067968 OR a38.c1 = 0 ) 
+                    error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 43: no such column: a38.c3
+  SELECT * FROM v6 AS a38 WHERE ( a38.c3 = 18446744071562067968 OR a38.c1 = 0 ) 
+                    error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

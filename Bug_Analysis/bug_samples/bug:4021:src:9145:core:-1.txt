@@ -1,0 +1,321 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE TABLE v5 ( c6, c7 REAL NOT NULL DEFAULT 18446744073709551615, c8, PRIMARY KEY ( c8, c6 ) ); 
+CREATE VIEW v9 AS WITH v5 ( c11 ) AS ( WITH v0 AS ( SELECT ( SELECT min ( c2 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615 ) FROM v5 AS a12 GROUP BY c2 ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a10 ORDER BY 18446744073709551615; 
+CREATE TABLE v13 ( c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 INT UNIQUE ON CONFLICT IGNORE, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41 UNIQUE ); 
+CREATE TABLE v42 ( c43, c44, c45 ); 
+ALTER TABLE v5 DROP COLUMN c6; 
+CREATE INDEX i46 ON v13 ( c24 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i47 ON v5 ( c6 ); 
+CREATE VIRTUAL TABLE v48 USING fts5 ( c49, c50 ); 
+CREATE INDEX i51 ON v48 ( c35 ); 
+ALTER TABLE v42 DROP COLUMN c44; 
+CREATE INDEX i52 ON v0 ( c3 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c50 + 18446744073709551615 FROM v48 AS a53 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a54 GROUP BY y ( a54.c43 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a55 ORDER BY a55.c2 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v48 AS a56 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a57.c7, count ( ( NOT ( a57.c8 IS NULL ) ) AND ( NOT ( a57.c6 IS NULL ) ) ) FROM v5 AS a57 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v58 ( c60 ) AS ( SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v58 AS a59 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v48 AS a61 GROUP BY 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a62 ORDER BY max ( a62.c45 + a62.c45 * 18446744073709551488 ) + 18446744073709551615, min ( a62.c44, avg ( a62.c43 ) ) + 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a63, v9 AS a64 NATURAL JOIN v13 AS a65 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v66 AS ( SELECT * FROM v66 AS a67 ORDER BY c11, c45 ) SELECT c2 COLLATE nocase ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: cannot drop PRIMARY KEY column: "c6"
+Runtime error near line 9: error in index i4 after drop column: no such column: c2
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: no such table: main.v48
+BEGIN VERI 0
+Parse error near line 16: no such table: v48
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such function: y
+  SELECT * FROM v42 AS a54 GROUP BY y ( a54.c43 ) ORDER BY 18446744073709551615;
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v48
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  4073709551615 ) SELECT * FROM v58 AS a59 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v48
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a62.c44
+  46744073709551488 ) + 18446744073709551615, min ( a62.c44, avg ( a62.c43 ) ) +
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such column: c2
+  LECT * FROM v66 AS a67 ORDER BY c11, c45 ) SELECT c2 COLLATE nocase ORDER BY 1
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE TABLE v5 ( c6, c7 REAL NOT NULL DEFAULT 18446744073709551615, c8, PRIMARY KEY ( c8, c6 ) ); 
+CREATE VIEW v9 AS WITH v5 ( c11 ) AS ( WITH v0 AS ( SELECT ( SELECT min ( c2 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615 ) FROM v5 AS a12 GROUP BY c2 ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a10 ORDER BY 18446744073709551615; 
+CREATE TABLE v13 ( c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 INT UNIQUE ON CONFLICT IGNORE, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41 UNIQUE ); 
+CREATE TABLE v42 ( c43, c44, c45 ); 
+ALTER TABLE v5 DROP COLUMN c6; 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+CREATE VIRTUAL TABLE v48 USING fts5 ( c49, c50 ); 
+; 
+ALTER TABLE v42 DROP COLUMN c44; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c50 + 18446744073709551615 FROM v48 AS a53 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a54 GROUP BY y ( a54.c43 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a55 ORDER BY a55.c2 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v48 AS a56 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a57.c7, count ( ( NOT ( a57.c8 IS NULL ) ) AND ( NOT ( a57.c6 IS NULL ) ) ) FROM v5 AS a57 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v58 ( c60 ) AS ( SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v58 AS a59 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v48 AS a61 GROUP BY 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a62 ORDER BY max ( a62.c45 + a62.c45 * 18446744073709551488 ) + 18446744073709551615, min ( a62.c44, avg ( a62.c43 ) ) + 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a63, v9 AS a64 NATURAL JOIN v13 AS a65 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v66 AS ( SELECT * FROM v66 AS a67 ORDER BY c11, c45 ) SELECT c2 COLLATE nocase ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: cannot drop PRIMARY KEY column: "c6"
+Runtime error near line 11: no such module: fts5
+BEGIN VERI 0
+Parse error near line 16: no such table: v48
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such function: y
+  SELECT * FROM v42 AS a54 GROUP BY y ( a54.c43 ) ORDER BY 18446744073709551615;
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a55.c2
+  SELECT * FROM v9 AS a55 ORDER BY a55.c2 COLLATE binary; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v48
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  4073709551615 ) SELECT * FROM v58 AS a59 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v48
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a62.c44
+  46744073709551488 ) + 18446744073709551615, min ( a62.c44, avg ( a62.c43 ) ) +
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such column: c2
+  LECT * FROM v66 AS a67 ORDER BY c11, c45 ) SELECT c2 COLLATE nocase ORDER BY 1
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such table: v48
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such table: v48
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such function: y
+  SELECT * FROM v42 AS a54 GROUP BY y ( a54.c43 ) ORDER BY 18446744073709551615;
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 19: no such function: y
+  SELECT * FROM v42 AS a54 GROUP BY y ( a54.c43 ) ORDER BY 18446744073709551615;
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 22: no such column: a55.c2
+  SELECT * FROM v9 AS a55 ORDER BY a55.c2 COLLATE binary; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no such table: v48
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such table: v48
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  4073709551615 ) SELECT * FROM v58 AS a59 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  4073709551615 ) SELECT * FROM v58 AS a59 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such table: v48
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such table: v48
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such column: a62.c44
+  46744073709551488 ) + 18446744073709551615, min ( a62.c44, avg ( a62.c43 ) ) +
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: no such column: a62.c44
+  46744073709551488 ) + 18446744073709551615, min ( a62.c44, avg ( a62.c43 ) ) +
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: no such column: c2
+  LECT * FROM v66 AS a67 ORDER BY c11, c45 ) SELECT c2 COLLATE nocase ORDER BY 1
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 43: no such column: c2
+  LECT * FROM v66 AS a67 ORDER BY c11, c45 ) SELECT c2 COLLATE nocase ORDER BY 1
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

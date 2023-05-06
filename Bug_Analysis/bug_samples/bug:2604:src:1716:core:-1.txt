@@ -1,0 +1,288 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE INDEX i1 ON t0 ( c3 ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v2 BEGIN UPDATE v2 SET c4 = c5 || c6 WHERE c7 = c8 || c9; END; 
+CREATE INDEX i10 ON v2 ( c11 ); 
+CREATE INDEX i12 ON v2 ( c13 ); 
+CREATE TABLE v14 ( c15, c16, c17, c18, PRIMARY KEY ( c17, c15 ) ) WITHOUT ROWID; 
+CREATE INDEX i19 ON v14 ( c16 ); 
+CREATE INDEX i20 ON v2 ( c21 ); 
+ALTER TABLE v14 DROP COLUMN c16; 
+SELECT 'BEGIN VERI 0'; 
+SELECT lower ( c23 ) FROM v2 AS a22 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 9223372036854775807 - ( c24 + c18 ) WHERE CASE WHEN c17 != 'xyz' THEN 127 ELSE 9223372036854775807 END > 9223372036854775807 ORDER BY 9223372036854775807 - ( c25 + c26 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a27 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v2 AS ( SELECT 9223372036854775807 y ORDER BY 127 ) SELECT ( SELECT min ( ) OVER ( ORDER BY 9223372036854775807 ) ORDER BY 127 ) FROM v2 AS a28 GROUP BY c29 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c16, max ( a30.c18 || a30.c18 ) FROM v14 AS a30 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c15, max ( c15 || c17 ) FROM v2 AS a31 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a32 GROUP BY a32.c18, a32.c15 < a32.c17 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a33, v2 AS a34 NATURAL JOIN v2 AS a35 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a36, v14 AS a37 NATURAL JOIN v2 AS a38 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a39, v2 AS a40 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: no such table: main.t0
+Parse error near line 2: no such table: v2
+Parse error near line 3: no such table: main.v2
+Parse error near line 4: no such table: main.v2
+Parse error near line 7: no such table: main.v2
+Runtime error near line 8: error in index i19 after drop column: no such column: c16
+BEGIN VERI 0
+Parse error near line 10: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: no such column: c24
+  SELECT 9223372036854775807 - ( c24 + c18 ) WHERE CASE WHEN c17 != 'xyz' THEN 1
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v2
+END VERI 0
+
+Query: 1: 
+; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v2 BEGIN UPDATE v2 SET c4 = c5 || c6 WHERE c7 = c8 || c9; END; 
+; 
+; 
+CREATE TABLE v14 ( c15, c16, c17, c18, PRIMARY KEY ( c17, c15 ) ) WITHOUT ROWID; 
+; 
+; 
+ALTER TABLE v14 DROP COLUMN c16; 
+SELECT 'BEGIN VERI 0'; 
+SELECT lower ( c23 ) FROM v2 AS a22 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 9223372036854775807 - ( c24 + c18 ) WHERE CASE WHEN c17 != 'xyz' THEN 127 ELSE 9223372036854775807 END > 9223372036854775807 ORDER BY 9223372036854775807 - ( c25 + c26 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a27 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v2 AS ( SELECT 9223372036854775807 y ORDER BY 127 ) SELECT ( SELECT min ( ) OVER ( ORDER BY 9223372036854775807 ) ORDER BY 127 ) FROM v2 AS a28 GROUP BY c29 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c16, max ( a30.c18 || a30.c18 ) FROM v14 AS a30 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c15, max ( c15 || c17 ) FROM v2 AS a31 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a32 GROUP BY a32.c18, a32.c15 < a32.c17 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a33, v2 AS a34 NATURAL JOIN v2 AS a35 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a36, v14 AS a37 NATURAL JOIN v2 AS a38 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a39, v2 AS a40 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: no such table: v2
+BEGIN VERI 0
+Parse error near line 10: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: no such column: c24
+  SELECT 9223372036854775807 - ( c24 + c18 ) WHERE CASE WHEN c17 != 'xyz' THEN 1
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a30.c16
+  SELECT a30.c16, max ( a30.c18 || a30.c18 ) FROM v14 AS a30 ORDER BY 9223372036
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v2
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 10: no such table: v2
+ 
+INT: 0 
+Str: 
+Parse error near line 10: no such table: v2
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: no such column: c24
+  SELECT 9223372036854775807 - ( c24 + c18 ) WHERE CASE WHEN c17 != 'xyz' THEN 1
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 13: no such column: c24
+  SELECT 9223372036854775807 - ( c24 + c18 ) WHERE CASE WHEN c17 != 'xyz' THEN 1
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such table: v2
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such table: v2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such column: a30.c16
+  SELECT a30.c16, max ( a30.c18 || a30.c18 ) FROM v14 AS a30 ORDER BY 9223372036
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no such table: v2
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such table: v2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no such table: v2
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no such table: v2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such table: v2
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such table: v2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such table: v2
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no such table: v2
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,280 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10 INT UNIQUE ON CONFLICT IGNORE, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c25 + 127 ) % 10 ) != 127 ) ) WITHOUT ROWID; 
+CREATE INDEX i28 ON v0 ( c2 ); 
+CREATE INDEX i29 ON v0 ( c12 ); 
+CREATE INDEX i30 ON v0 ( c15 ); 
+CREATE INDEX i31 ON v0 ( c14 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE TABLE v32 ( c33, c34 INT UNIQUE ON CONFLICT IGNORE, c35 COLLATE NOCASE ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v32 AS ( SELECT hex ( ) y ORDER BY 127 ) SELECT * FROM v32 AS a36 WHERE a36.c35 < a36.c33 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT a37.c7 FROM v0 AS a37 WHERE a37.c15 LIKE 'v1' ORDER BY 127 ) SELECT * FROM ( SELECT 127 ORDER BY 10 ) AS y, ( SELECT a37.c10, avg ( a37.c17 ) + 127 FROM v32 AS a38 GROUP BY a38.c34 HAVING a38.c34 > a37.c21 % 127 >= 18446744073709551488 ORDER BY 127 ) AS y ON hex ( 255 ) OR 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 ORDER BY ( 127, count ( * ) ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c41 ) AS ( WITH v32 AS ( SELECT ( SELECT min ( a42.c17 ) OVER ( ORDER BY 10 ) ORDER BY a40.c35 ) FROM v0 AS a42 GROUP BY a42.c21 ORDER BY 127 ) SELECT 18446744073709518848 ORDER BY 127 ) SELECT * FROM v32 AS a40 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 GROUP BY a43.c13 HAVING a43.c19 > a43.c2 % 18446744073709551615 >= 18446744073709518848 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v32 AS a44 WHERE a44.c35 > ( a44.c34 + - 127 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a45 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a46 NATURAL JOIN v0 AS a47 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v32 AS a48, v0 AS a49 NATURAL JOIN v0 AS a50 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v51 ( c53 ) AS ( SELECT 'v0' ORDER BY 100 ) SELECT c53, count ( c53 ) FROM v51 AS a52 GROUP BY c53 ORDER BY c53 != 'v0'; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: error in index i28 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 9: wrong number of arguments to function hex()
+  WITH v32 AS ( SELECT hex ( ) y ORDER BY 127 ) SELECT * FROM v32 AS a36 WHERE a
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: row value misused
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 27
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 27
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 30
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10 INT UNIQUE ON CONFLICT IGNORE, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c25 + 127 ) % 10 ) != 127 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c2; 
+CREATE TABLE v32 ( c33, c34 INT UNIQUE ON CONFLICT IGNORE, c35 COLLATE NOCASE ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v32 AS ( SELECT hex ( ) y ORDER BY 127 ) SELECT * FROM v32 AS a36 WHERE a36.c35 < a36.c33 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT a37.c7 FROM v0 AS a37 WHERE a37.c15 LIKE 'v1' ORDER BY 127 ) SELECT * FROM ( SELECT 127 ORDER BY 10 ) AS y, ( SELECT a37.c10, avg ( a37.c17 ) + 127 FROM v32 AS a38 GROUP BY a38.c34 HAVING a38.c34 > a37.c21 % 127 >= 18446744073709551488 ORDER BY 127 ) AS y ON hex ( 255 ) OR 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 ORDER BY ( 127, count ( * ) ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c41 ) AS ( WITH v32 AS ( SELECT ( SELECT min ( a42.c17 ) OVER ( ORDER BY 10 ) ORDER BY a40.c35 ) FROM v0 AS a42 GROUP BY a42.c21 ORDER BY 127 ) SELECT 18446744073709518848 ORDER BY 127 ) SELECT * FROM v32 AS a40 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 GROUP BY a43.c13 HAVING a43.c19 > a43.c2 % 18446744073709551615 >= 18446744073709518848 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v32 AS a44 WHERE a44.c35 > ( a44.c34 + - 127 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a45 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a46 NATURAL JOIN v0 AS a47 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v32 AS a48, v0 AS a49 NATURAL JOIN v0 AS a50 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v51 ( c53 ) AS ( SELECT 'v0' ORDER BY 100 ) SELECT c53, count ( c53 ) FROM v51 AS a52 GROUP BY c53 ORDER BY c53 != 'v0'; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 9: wrong number of arguments to function hex()
+  WITH v32 AS ( SELECT hex ( ) y ORDER BY 127 ) SELECT * FROM v32 AS a36 WHERE a
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: row value misused
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: a43.c2
+   FROM v0 AS a43 GROUP BY a43.c13 HAVING a43.c19 > a43.c2 % 1844674407370955161
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 26
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 29
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 9: wrong number of arguments to function hex()
+  WITH v32 AS ( SELECT hex ( ) y ORDER BY 127 ) SELECT * FROM v32 AS a36 WHERE a
+                       ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 9: wrong number of arguments to function hex()
+  WITH v32 AS ( SELECT hex ( ) y ORDER BY 127 ) SELECT * FROM v32 AS a36 WHERE a
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 15: row value misused
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 27
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no such column: a43.c2
+   FROM v0 AS a43 GROUP BY a43.c13 HAVING a43.c19 > a43.c2 % 1844674407370955161
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 27
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 26
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 30
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 29
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

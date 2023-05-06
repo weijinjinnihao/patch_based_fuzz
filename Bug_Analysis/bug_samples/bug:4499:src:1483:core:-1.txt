@@ -1,0 +1,298 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 18446744073709518848; 
+CREATE INDEX i7 ON v5 ( c1 ); 
+CREATE INDEX i8 ON v5 ( c3 ); 
+CREATE TABLE v9 ( c10 DEFAULT x'ABCD' DEFAULT 18446744073709518848, c11 NOT NULL DEFAULT 18446744073709518848, c12 NOT NULL ON CONFLICT REPLACE DEFAULT 18446744073709518848, c13 REFERENCES t1 UNIQUE ON CONFLICT IGNORE, c14 NOT NULL ON CONFLICT ABORT DEFAULT 18446744073709518848 ); 
+CREATE TABLE v15 ( c16, c17, c18 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+ALTER TABLE v5 DROP COLUMN c3; 
+CREATE VIRTUAL TABLE v19 USING fts5 ( c20, c21 ); 
+CREATE INDEX i22 ON v5 ( c3 ); 
+CREATE TABLE v23 AS SELECT c3 FROM v0 AS a24 ORDER BY 18446744073709518848; 
+CREATE INDEX i25 ON v19 ( c21 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c1 FROM v0 AS a26 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a27, v5 AS a28 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a31 NATURAL JOIN v5 AS a32 ORDER BY 56.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a33 ORDER BY max ( a33.c10 + a33.c10 * 0 ) + 18446744073709518848, min ( a33.c10, avg ( a33.c20 ) ) + 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c16 FROM v15 AS a34 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a35, v23 AS a36 NATURAL JOIN v0 AS a37 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a38 GROUP BY a38.c16, a38.c16 < y ( a38.c16 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a39, v19 AS a40 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a41 WHERE c2 IS 255 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: views may not be indexed
+Parse error near line 5: views may not be indexed
+Runtime error near line 8: error in index i4 after drop column: no such column: c1
+Parse error near line 9: cannot drop column from view "v5"
+Runtime error near line 10: no such module: fts5
+Parse error near line 11: views may not be indexed
+Parse error near line 13: no such table: main.v19
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such function: y
+  ECT * FROM v15 AS a38 GROUP BY a38.c16, a38.c16 < y ( a38.c16 ) ORDER BY 18446
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: c2
+  SELECT * FROM v23 AS a41 WHERE c2 IS 255 ORDER BY 0; 
+                   error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 18446744073709518848; 
+; 
+; 
+CREATE TABLE v9 ( c10 DEFAULT x'ABCD' DEFAULT 18446744073709518848, c11 NOT NULL DEFAULT 18446744073709518848, c12 NOT NULL ON CONFLICT REPLACE DEFAULT 18446744073709518848, c13 REFERENCES t1 UNIQUE ON CONFLICT IGNORE, c14 NOT NULL ON CONFLICT ABORT DEFAULT 18446744073709518848 ); 
+CREATE TABLE v15 ( c16, c17, c18 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+ALTER TABLE v5 DROP COLUMN c3; 
+CREATE VIRTUAL TABLE v19 USING fts5 ( c20, c21 ); 
+; 
+CREATE TABLE v23 AS SELECT c3 FROM v0 AS a24 ORDER BY 18446744073709518848; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c1 FROM v0 AS a26 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a27, v5 AS a28 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a31 NATURAL JOIN v5 AS a32 ORDER BY 56.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a33 ORDER BY max ( a33.c10 + a33.c10 * 0 ) + 18446744073709518848, min ( a33.c10, avg ( a33.c20 ) ) + 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c16 FROM v15 AS a34 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a35, v23 AS a36 NATURAL JOIN v0 AS a37 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a38 GROUP BY a38.c16, a38.c16 < y ( a38.c16 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a39, v19 AS a40 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a41 WHERE c2 IS 255 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: cannot drop column from view "v5"
+Runtime error near line 10: no such module: fts5
+BEGIN VERI 0
+Parse error near line 15: no such column: a26.c1
+  SELECT a26.c1 FROM v0 AS a26 ORDER BY 18446744073709518848; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such function: y
+  ECT * FROM v15 AS a38 GROUP BY a38.c16, a38.c16 < y ( a38.c16 ) ORDER BY 18446
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: c2
+  SELECT * FROM v23 AS a41 WHERE c2 IS 255 ORDER BY 0; 
+                   error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 15: no such column: a26.c1
+  SELECT a26.c1 FROM v0 AS a26 ORDER BY 18446744073709518848; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such table: v19
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such table: v19
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such function: y
+  ECT * FROM v15 AS a38 GROUP BY a38.c16, a38.c16 < y ( a38.c16 ) ORDER BY 18446
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: no such function: y
+  ECT * FROM v15 AS a38 GROUP BY a38.c16, a38.c16 < y ( a38.c16 ) ORDER BY 18446
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such table: v19
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such table: v19
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such column: c2
+  SELECT * FROM v23 AS a41 WHERE c2 IS 255 ORDER BY 0; 
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 42: no such column: c2
+  SELECT * FROM v23 AS a41 WHERE c2 IS 255 ORDER BY 0; 
+                   error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

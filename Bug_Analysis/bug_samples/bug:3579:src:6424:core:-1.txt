@@ -1,0 +1,342 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 UNIQUE ON CONFLICT FAIL DEFAULT 10 ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE VIEW v6 AS SELECT c1 * 10 + 18446744073709551488 AS y, count ( * ) AS y FROM v0 AS a7 GROUP BY c3 ORDER BY 18446744073709551615; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+CREATE INDEX i16 ON v0 ( c2 ); 
+ALTER TABLE v8 DROP COLUMN c10; 
+ALTER TABLE v8 DROP COLUMN c10; 
+CREATE INDEX i17 ON v0 ( c1 ); 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i21 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a22 WHERE a22.c13 = CASE WHEN a22.c14 != 'x' THEN 18446744073709551488 ELSE 0 END > 18446744073709551488 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a23 ORDER BY a23.c19, a23.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c2, c2 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v12 AS ( SELECT * FROM v8 AS a25 ORDER BY v12.c15, a25.c10 ) SELECT v12.c14, max ( v12.c15 || a24.c1 ) FROM v18 AS a24 WHERE ( a24.c19 || a24.c19 || v12.c14 ) != 't2' GROUP BY v12.c13 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a26 ORDER BY a26.c1 COLLATE NOCASE, a26.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c2, a28.c3 FROM v0 AS a27 RIGHT JOIN v0 AS a28 ON a28.c2 = a27.c3 WHERE a28.c1 IS 0 ORDER BY 'v0'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a29 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c10, max ( a30.c11 || a30.c10 ) FROM v8 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a31 WHERE a31.c13 = ( a31.c14 + 100 ) % count ( a31.c13 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a32, v0 AS a33 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: no such column: "c10"
+  ALTER TABLE v8 DROP COLUMN c10; 
+               error here ---^
+Runtime error near line 11: no such module: fts5
+Runtime error near line 12: error in index i5 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+  551488 ELSE 0 END > 18446744073709551488 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: c2
+  SELECT c2, c2 ORDER BY 8; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a26.c1
+  SELECT * FROM v6 AS a26 ORDER BY a26.c1 COLLATE NOCASE, a26.c1; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a30.c10
+  SELECT a30.c10, max ( a30.c11 || a30.c10 ) FROM v8 AS a30 ORDER BY 0; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: misuse of aggregate function count()
+  OM v12 AS a31 WHERE a31.c13 = ( a31.c14 + 100 ) % count ( a31.c13 ) ORDER BY 1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 5
+  SELECT * FROM v6 AS a32, v0 AS a33 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 UNIQUE ON CONFLICT FAIL DEFAULT 10 ); 
+; 
+; 
+CREATE VIEW v6 AS SELECT c1 * 10 + 18446744073709551488 AS y, count ( * ) AS y FROM v0 AS a7 GROUP BY c3 ORDER BY 18446744073709551615; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+; 
+ALTER TABLE v8 DROP COLUMN c10; 
+ALTER TABLE v8 DROP COLUMN c10; 
+; 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a22 WHERE a22.c13 = CASE WHEN a22.c14 != 'x' THEN 18446744073709551488 ELSE 0 END > 18446744073709551488 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a23 ORDER BY a23.c19, a23.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c2, c2 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v12 AS ( SELECT * FROM v8 AS a25 ORDER BY v12.c15, a25.c10 ) SELECT v12.c14, max ( v12.c15 || a24.c1 ) FROM v18 AS a24 WHERE ( a24.c19 || a24.c19 || v12.c14 ) != 't2' GROUP BY v12.c13 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a26 ORDER BY a26.c1 COLLATE NOCASE, a26.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c2, a28.c3 FROM v0 AS a27 RIGHT JOIN v0 AS a28 ON a28.c2 = a27.c3 WHERE a28.c1 IS 0 ORDER BY 'v0'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a29 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c10, max ( a30.c11 || a30.c10 ) FROM v8 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a31 WHERE a31.c13 = ( a31.c14 + 100 ) % count ( a31.c13 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a32, v0 AS a33 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: no such column: "c10"
+  ALTER TABLE v8 DROP COLUMN c10; 
+               error here ---^
+Runtime error near line 11: no such module: fts5
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+  551488 ELSE 0 END > 18446744073709551488 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: c2
+  SELECT c2, c2 ORDER BY 8; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a26.c1
+  SELECT * FROM v6 AS a26 ORDER BY a26.c1 COLLATE NOCASE, a26.c1; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a28.c2
+  SELECT a28.c2, a28.c3 FROM v0 AS a27 RIGHT JOIN v0 AS a28 ON a28.c2 = a27.c3 W
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a30.c10
+  SELECT a30.c10, max ( a30.c11 || a30.c10 ) FROM v8 AS a30 ORDER BY 0; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: misuse of aggregate function count()
+  OM v12 AS a31 WHERE a31.c13 = ( a31.c14 + 100 ) % count ( a31.c13 ) ORDER BY 1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v6 AS a32, v0 AS a33 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+  551488 ELSE 0 END > 18446744073709551488 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+  551488 ELSE 0 END > 18446744073709551488 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such column: c2
+  SELECT c2, c2 ORDER BY 8; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 21: no such column: c2
+  SELECT c2, c2 ORDER BY 8; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such column: a26.c1
+  SELECT * FROM v6 AS a26 ORDER BY a26.c1 COLLATE NOCASE, a26.c1; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: no such column: a26.c1
+  SELECT * FROM v6 AS a26 ORDER BY a26.c1 COLLATE NOCASE, a26.c1; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 30: no such column: a28.c2
+  SELECT a28.c2, a28.c3 FROM v0 AS a27 RIGHT JOIN v0 AS a28 ON a28.c2 = a27.c3 W
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such column: a30.c10
+  SELECT a30.c10, max ( a30.c11 || a30.c10 ) FROM v8 AS a30 ORDER BY 0; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 36: no such column: a30.c10
+  SELECT a30.c10, max ( a30.c11 || a30.c10 ) FROM v8 AS a30 ORDER BY 0; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: misuse of aggregate function count()
+  OM v12 AS a31 WHERE a31.c13 = ( a31.c14 + 100 ) % count ( a31.c13 ) ORDER BY 1
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: misuse of aggregate function count()
+  OM v12 AS a31 WHERE a31.c13 = ( a31.c14 + 100 ) % count ( a31.c13 ) ORDER BY 1
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 5
+  SELECT * FROM v6 AS a32, v0 AS a33 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v6 AS a32, v0 AS a33 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

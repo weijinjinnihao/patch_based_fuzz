@@ -1,0 +1,296 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709551615; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+CREATE INDEX i10 ON v6 ( c7 COLLATE nocase, c7 COLLATE nocase ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+CREATE INDEX i15 ON v11 ( c12 ); 
+CREATE INDEX i16 ON v11 ( c13 ); 
+ALTER TABLE v11 DROP COLUMN c12; 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE VIEW v17 AS SELECT c3, c1 FROM v0 AS a18 LEFT JOIN v6 AS a19 ON c1 = c8 y ORDER BY 18446744073709551615; 
+CREATE VIRTUAL TABLE v20 USING fts5 ( c21, c22 ); 
+CREATE INDEX i23 ON v6 ( c7 ); 
+ALTER TABLE v20 DROP COLUMN c1; 
+CREATE INDEX i24 ON v6 ( c8 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c13 FROM v11 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a26, v20 AS a27 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( a29.c1 ), min ( a28.c22 ), max ( a29.c2 ), max ( a29.c1 ), sum ( a29.c2 ), sum ( a28.c21 ), avg ( a29.c3 ), a28.c22 = ( a28.c3 + 18446744073709551488 ) % count ( a29.c2 ) FROM v20 AS a28 NATURAL JOIN v0 AS a29 GROUP BY x'616263', 'abc', a29.c1 = + a28.c21 HAVING count ( * ) >= 18446744073709551488 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a31 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a32 GROUP BY x'616263', 'v0', a32.c7 = + a32.c8 HAVING count ( * ) >= 100 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a33, v0 AS a34 NATURAL JOIN v11 AS a35 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a36 ORDER BY ( ( a36.c1 + - 100 ) % 8 ) != 18446744073709551615 + 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.c12, count ( ( NOT ( a37.c13 IS NULL ) ) AND ( NOT ( a37.c13 IS NULL ) ) ) FROM v11 AS a37 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in index i15 after drop column: no such column: c12
+Parse error near line 10: near "y": syntax error
+   c1 FROM v0 AS a18 LEFT JOIN v6 AS a19 ON c1 = c8 y ORDER BY 18446744073709551
+                                      error here ---^
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: no such table: v20
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709551615; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+; 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+; 
+; 
+ALTER TABLE v11 DROP COLUMN c12; 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE VIEW v17 AS SELECT c3, c1 FROM v0 AS a18 LEFT JOIN v6 AS a19 ON c1 = c8 y ORDER BY 18446744073709551615; 
+CREATE VIRTUAL TABLE v20 USING fts5 ( c21, c22 ); 
+; 
+ALTER TABLE v20 DROP COLUMN c1; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c13 FROM v11 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a26, v20 AS a27 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( a29.c1 ), min ( a28.c22 ), max ( a29.c2 ), max ( a29.c1 ), sum ( a29.c2 ), sum ( a28.c21 ), avg ( a29.c3 ), a28.c22 = ( a28.c3 + 18446744073709551488 ) % count ( a29.c2 ) FROM v20 AS a28 NATURAL JOIN v0 AS a29 GROUP BY x'616263', 'abc', a29.c1 = + a28.c21 HAVING count ( * ) >= 18446744073709551488 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a31 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a32 GROUP BY x'616263', 'v0', a32.c7 = + a32.c8 HAVING count ( * ) >= 100 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a33, v0 AS a34 NATURAL JOIN v11 AS a35 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a36 ORDER BY ( ( a36.c1 + - 100 ) % 8 ) != 18446744073709551615 + 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.c12, count ( ( NOT ( a37.c13 IS NULL ) ) AND ( NOT ( a37.c13 IS NULL ) ) ) FROM v11 AS a37 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: near "y": syntax error
+   c1 FROM v0 AS a18 LEFT JOIN v6 AS a19 ON c1 = c8 y ORDER BY 18446744073709551
+                                      error here ---^
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: no such table: v20
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such column: a37.c12
+  SELECT a37.c12, count ( ( NOT ( a37.c13 IS NULL ) ) AND ( NOT ( a37.c13 IS NUL
+         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such table: v20
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such table: v20
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no such table: v20
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such table: v20
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such table: v20
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such table: v20
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 43: no such column: a37.c12
+  SELECT a37.c12, count ( ( NOT ( a37.c13 IS NULL ) ) AND ( NOT ( a37.c13 IS NUL
+         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

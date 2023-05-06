@@ -1,0 +1,288 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 REFERENCES t1 DEFAULT NULL, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, PRIMARY KEY ( c12, c1, c19, c5, c16, c1, c19 ) ) WITHOUT ROWID; 
+CREATE INDEX i20 ON v0 ( c8 ); 
+CREATE TEMP TRIGGER tri1 INSERT ON v0 BEGIN UPDATE v0 SET c9 = c13 || c8 WHERE c3 = c12 || c19; END; 
+CREATE TABLE v21 ( c22, c23, c24, c25, PRIMARY KEY ( c22, c24 ) ) WITHOUT ROWID; 
+CREATE INDEX i26 ON v21 ( c25 ); 
+INSERT INTO v0 VALUES ( 100, 16, 0, 16 ); 
+CREATE INDEX i27 ON v0 ( c14 ); 
+CREATE INDEX i28 ON v21 ( c23 ); 
+ALTER TABLE v21 DROP COLUMN c23; 
+INSERT OR REPLACE INTO v21 ( c23, c25, c25, c24, c24 ) VALUES ( 16, 16, NULL, 127, 18446744071562067968 ); 
+CREATE INDEX i29 ON v21 ( c22 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 GROUP BY a30.c1, a30.c3 < a30.c18 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a31 ORDER BY NULL; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a32, v0 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c25, a34.c23 FROM v21 AS a34 LEFT JOIN v0 AS a35 ON a35.c5 = a34.c22 GROUP BY a34.c22 HAVING count ( * ) >= 18446744071562067968 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a36 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c5, c22, ( SELECT a38.c25 FROM v21 AS a38 WHERE a38.c23 = a38.c25 ORDER BY 0 ), 'v1' FROM ( SELECT count ( * ) AS y, a37.c12 AS y FROM v0 AS a37 GROUP BY 16 ORDER BY 0 ) AS y ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c22, sum ( a39.c22 ) FROM v21 AS a39 GROUP BY a39.c24 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a40 WHERE count ( * ) >= 8 = 'v1' != a40.c23 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a41.c3 || a41.c12 ) FROM v0 AS a41 ORDER BY 16 COLLATE binary, 127 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 WHERE hex ( 0 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: table v0 has 19 columns but 4 values were supplied
+Runtime error near line 9: error in index i28 after drop column: no such column: c23
+Runtime error near line 10: NOT NULL constraint failed: v21.c22 (19)
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+   a37.c12 AS y FROM v0 AS a37 GROUP BY 16 ORDER BY 0 ) AS y ORDER BY 1844674407
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: misuse of aggregate function count()
+  SELECT * FROM v21 AS a40 WHERE count ( * ) >= 8 = 'v1' != a40.c23 ORDER BY 16;
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 REFERENCES t1 DEFAULT NULL, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, PRIMARY KEY ( c12, c1, c19, c5, c16, c1, c19 ) ) WITHOUT ROWID; 
+; 
+CREATE TEMP TRIGGER tri1 INSERT ON v0 BEGIN UPDATE v0 SET c9 = c13 || c8 WHERE c3 = c12 || c19; END; 
+CREATE TABLE v21 ( c22, c23, c24, c25, PRIMARY KEY ( c22, c24 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v0 VALUES ( 100, 16, 0, 16 ); 
+; 
+; 
+ALTER TABLE v21 DROP COLUMN c23; 
+INSERT OR REPLACE INTO v21 ( c23, c25, c25, c24, c24 ) VALUES ( 16, 16, NULL, 127, 18446744071562067968 ); 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 GROUP BY a30.c1, a30.c3 < a30.c18 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a31 ORDER BY NULL; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a32, v0 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c25, a34.c23 FROM v21 AS a34 LEFT JOIN v0 AS a35 ON a35.c5 = a34.c22 GROUP BY a34.c22 HAVING count ( * ) >= 18446744071562067968 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a36 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c5, c22, ( SELECT a38.c25 FROM v21 AS a38 WHERE a38.c23 = a38.c25 ORDER BY 0 ), 'v1' FROM ( SELECT count ( * ) AS y, a37.c12 AS y FROM v0 AS a37 GROUP BY 16 ORDER BY 0 ) AS y ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c22, sum ( a39.c22 ) FROM v21 AS a39 GROUP BY a39.c24 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a40 WHERE count ( * ) >= 8 = 'v1' != a40.c23 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a41.c3 || a41.c12 ) FROM v0 AS a41 ORDER BY 16 COLLATE binary, 127 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 WHERE hex ( 0 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: table v0 has 19 columns but 4 values were supplied
+Parse error near line 10: table v21 has no column named c23
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a34.c23
+  SELECT a34.c25, a34.c23 FROM v21 AS a34 LEFT JOIN v0 AS a35 ON a35.c5 = a34.c2
+                  ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+   a37.c12 AS y FROM v0 AS a37 GROUP BY 16 ORDER BY 0 ) AS y ORDER BY 1844674407
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: misuse of aggregate function count()
+  SELECT * FROM v21 AS a40 WHERE count ( * ) >= 8 = 'v1' != a40.c23 ORDER BY 16;
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such column: a34.c23
+  SELECT a34.c25, a34.c23 FROM v21 AS a34 LEFT JOIN v0 AS a35 ON a35.c5 = a34.c2
+                  ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+   a37.c12 AS y FROM v0 AS a37 GROUP BY 16 ORDER BY 0 ) AS y ORDER BY 1844674407
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+   a37.c12 AS y FROM v0 AS a37 GROUP BY 16 ORDER BY 0 ) AS y ORDER BY 1844674407
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: misuse of aggregate function count()
+  SELECT * FROM v21 AS a40 WHERE count ( * ) >= 8 = 'v1' != a40.c23 ORDER BY 16;
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: misuse of aggregate function count()
+  SELECT * FROM v21 AS a40 WHERE count ( * ) >= 8 = 'v1' != a40.c23 ORDER BY 16;
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

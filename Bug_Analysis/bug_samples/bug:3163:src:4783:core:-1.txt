@@ -1,0 +1,301 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 REFERENCES t1 DEFAULT NULL, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, PRIMARY KEY ( c7, c8, c7, c1, c9, c14, c19 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c4 = c13 || c8 WHERE c3 = c2 || c15; END; 
+CREATE TABLE v20 ( c21, c22, c23, c24, PRIMARY KEY ( c24, c22 ) ) WITHOUT ROWID; 
+INSERT INTO v20 VALUES ( 18446744073709551615, 18446744073709551615, 8, 18446744073709551615 ); 
+CREATE INDEX i25 ON v0 ( c14 ); 
+CREATE INDEX i26 ON v20 ( c21 ); 
+ALTER TABLE v20 DROP COLUMN c21; 
+CREATE INDEX i27 ON v0 ( c14 ); 
+INSERT OR REPLACE INTO v20 ( c22, c23, c21, c23, c24 ) VALUES ( 18446744073709551615, 18446744073709551615, NULL, 18446744073709551615, 18446744073709551615 ); 
+CREATE INDEX i28 ON v0 ( c4 ); 
+CREATE INDEX i29 ON v0 ( c11 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c4, count ( ( NOT ( a30.c3 IS NULL ) ) AND ( NOT ( a30.c15 IS NULL ) ) ) FROM v0 AS a30 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709551615 AS y, 255 AS y ORDER BY c19; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a31 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a32 ORDER BY ( ( a32.c21 + 4294967295 ) % 8 ) == 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34, v0 AS a35 NATURAL JOIN v20 AS a36 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c15 COLLATE NOCASE WHERE c15 = c24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a37, v0 AS a38 NATURAL JOIN v0 AS a39 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i26 after drop column: no such column: c21
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: c19
+  LECT 18446744073709551615 AS y, 255 AS y ORDER BY c19; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: c15
+  SELECT c15 COLLATE NOCASE WHERE c15 = c24 ORDER BY 18446744073709551615; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 23
+  AS a37, v0 AS a38 NATURAL JOIN v0 AS a39 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 REFERENCES t1 DEFAULT NULL, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, PRIMARY KEY ( c7, c8, c7, c1, c9, c14, c19 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c4 = c13 || c8 WHERE c3 = c2 || c15; END; 
+CREATE TABLE v20 ( c21, c22, c23, c24, PRIMARY KEY ( c24, c22 ) ) WITHOUT ROWID; 
+INSERT INTO v20 VALUES ( 18446744073709551615, 18446744073709551615, 8, 18446744073709551615 ); 
+; 
+; 
+ALTER TABLE v20 DROP COLUMN c21; 
+; 
+INSERT OR REPLACE INTO v20 ( c22, c23, c21, c23, c24 ) VALUES ( 18446744073709551615, 18446744073709551615, NULL, 18446744073709551615, 18446744073709551615 ); 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c4, count ( ( NOT ( a30.c3 IS NULL ) ) AND ( NOT ( a30.c15 IS NULL ) ) ) FROM v0 AS a30 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709551615 AS y, 255 AS y ORDER BY c19; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a31 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a32 ORDER BY ( ( a32.c21 + 4294967295 ) % 8 ) == 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34, v0 AS a35 NATURAL JOIN v20 AS a36 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c15 COLLATE NOCASE WHERE c15 = c24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a37, v0 AS a38 NATURAL JOIN v0 AS a39 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: table v20 has no column named c21
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: c19
+  LECT 18446744073709551615 AS y, 255 AS y ORDER BY c19; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|8|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: a32.c21
+  SELECT * FROM v20 AS a32 ORDER BY ( ( a32.c21 + 4294967295 ) % 8 ) == 18446744
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|8|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: c15
+  SELECT c15 COLLATE NOCASE WHERE c15 = c24 ORDER BY 18446744073709551615; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 22
+  AS a37, v0 AS a38 NATURAL JOIN v0 AS a39 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such column: c19
+  LECT 18446744073709551615 AS y, 255 AS y ORDER BY c19; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: no such column: c19
+  LECT 18446744073709551615 AS y, 255 AS y ORDER BY c19; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19|8|1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such column: a32.c21
+  SELECT * FROM v20 AS a32 ORDER BY ( ( a32.c21 + 4294967295 ) % 8 ) == 18446744
+                          error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19|8|1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such column: c15
+  SELECT c15 COLLATE NOCASE WHERE c15 = c24 ORDER BY 18446744073709551615; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 34: no such column: c15
+  SELECT c15 COLLATE NOCASE WHERE c15 = c24 ORDER BY 18446744073709551615; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 23
+  AS a37, v0 AS a38 NATURAL JOIN v0 AS a39 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 22
+  AS a37, v0 AS a38 NATURAL JOIN v0 AS a39 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,337 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 GROUP BY c2, c2 < c2 ORDER BY 100; 
+CREATE INDEX i6 ON v0 ( c2 ); 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9, c10 UNIQUE ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+CREATE INDEX i15 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE INDEX i16 ON v0 ( c1 ); 
+ALTER TABLE v4 DROP COLUMN c2; 
+CREATE INDEX i17 ON v11 ( c12 ); 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+CREATE INDEX i21 ON v18 ( c20 ); 
+ALTER TABLE v4 DROP COLUMN c3; 
+CREATE TABLE v22 ( c23, c24, c25, c26, CHECK( c23 < 18446744073709551488 ) ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( 0, 255, 127, count ( ( NOT ( a27.c19 IS NULL ) ) AND ( NOT ( a27.c20 IS NULL ) ) ) ) OVER ( ORDER BY 100 ) ORDER BY 100 ) FROM v18 AS a27 GROUP BY a27.c20 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 ( c29 ) AS ( SELECT 'v1' ORDER BY 0 ) SELECT ( SELECT min ( v7.c9 ) OVER ( ORDER BY 127 ) ORDER BY 100 ) FROM v0 AS a28 GROUP BY v7.c10 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 ( c33 ) AS ( WITH v30 ( c34, c35, c36, c37, c38, c39 ) AS ( SELECT 18446744073709551615 y ORDER BY 0 ) SELECT 127 ORDER BY 18446744073709551615 ) SELECT * FROM v30 AS a31, v30 AS a32 WHERE CASE WHEN c33 = c33 - 100 THEN 18446744073709551615 ELSE 255 END ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a40 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41 WHERE ( a41.c3 = ( ( a41.c2 + 100 ) % 18446744073709551488 ) != 100 ) AND a41.c1 IS ( SELECT a43.c2 FROM ( SELECT a41.c1 FROM v22 AS a44 GROUP BY NULL, 'v0', 'x', 100, abs ( a42.c25 ) HAVING count ( * ) >= 100 ORDER BY 18446744073709551488 ) AS y, v22 AS a42 NATURAL JOIN v4 AS a43 WHERE a42.c24 = 100 ORDER BY 127 ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a45.c14 FROM v11 AS a45 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a46.c3 IS NULL ) ) AND ( NOT ( a46.c3 IS NULL ) ) ) FROM v0 AS a46 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v47 AS ( WITH v49 AS ( SELECT 127 y ORDER BY 255 ) SELECT avg ( c19 ) FROM ( SELECT * ORDER BY 0 ) AS y ORDER BY 16 ) SELECT * FROM v47 AS a48 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a50 ORDER BY max ( NULL, - x'68617265', 'hello' ) + 10, min ( a50.c12, avg ( a50.c12 ) ) + NULL >= 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v51 ( c53 ) AS ( WITH v51 AS ( SELECT ( SELECT min ( c53 ) OVER ( ORDER BY 8 ) ORDER BY 10 ) FROM v51 AS a54 GROUP BY c53 ORDER BY 18446744073709551615 ) SELECT 100 ORDER BY 0 ) SELECT * FROM v51 AS a52 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i15 after drop column: no such column: c3
+Parse error near line 9: cannot drop column from view "v4"
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: no such table: main.v18
+Parse error near line 13: cannot drop column from view "v4"
+BEGIN VERI 0
+Parse error near line 16: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: v7.c9
+   ( SELECT 'v1' ORDER BY 0 ) SELECT ( SELECT min ( v7.c9 ) OVER ( ORDER BY 127 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: ambiguous column name: c33
+  ECT * FROM v30 AS a31, v30 AS a32 WHERE CASE WHEN c33 = c33 - 100 THEN 1844674
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a45.c14 FROM v11 AS a45 ORDER BY 0; 
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: misuse of aggregate: avg()
+  LL, - x'68617265', 'hello' ) + 10, min ( a50.c12, avg ( a50.c12 ) ) + NULL >= 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+  DER BY 18446744073709551615 ) SELECT 100 ORDER BY 0 ) SELECT * FROM v51 AS a52
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 GROUP BY c2, c2 < c2 ORDER BY 100; 
+; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9, c10 UNIQUE ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c3; 
+; 
+ALTER TABLE v4 DROP COLUMN c2; 
+; 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+; 
+ALTER TABLE v4 DROP COLUMN c3; 
+CREATE TABLE v22 ( c23, c24, c25, c26, CHECK( c23 < 18446744073709551488 ) ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( 0, 255, 127, count ( ( NOT ( a27.c19 IS NULL ) ) AND ( NOT ( a27.c20 IS NULL ) ) ) ) OVER ( ORDER BY 100 ) ORDER BY 100 ) FROM v18 AS a27 GROUP BY a27.c20 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 ( c29 ) AS ( SELECT 'v1' ORDER BY 0 ) SELECT ( SELECT min ( v7.c9 ) OVER ( ORDER BY 127 ) ORDER BY 100 ) FROM v0 AS a28 GROUP BY v7.c10 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 ( c33 ) AS ( WITH v30 ( c34, c35, c36, c37, c38, c39 ) AS ( SELECT 18446744073709551615 y ORDER BY 0 ) SELECT 127 ORDER BY 18446744073709551615 ) SELECT * FROM v30 AS a31, v30 AS a32 WHERE CASE WHEN c33 = c33 - 100 THEN 18446744073709551615 ELSE 255 END ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a40 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41 WHERE ( a41.c3 = ( ( a41.c2 + 100 ) % 18446744073709551488 ) != 100 ) AND a41.c1 IS ( SELECT a43.c2 FROM ( SELECT a41.c1 FROM v22 AS a44 GROUP BY NULL, 'v0', 'x', 100, abs ( a42.c25 ) HAVING count ( * ) >= 100 ORDER BY 18446744073709551488 ) AS y, v22 AS a42 NATURAL JOIN v4 AS a43 WHERE a42.c24 = 100 ORDER BY 127 ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a45.c14 FROM v11 AS a45 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a46.c3 IS NULL ) ) AND ( NOT ( a46.c3 IS NULL ) ) ) FROM v0 AS a46 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v47 AS ( WITH v49 AS ( SELECT 127 y ORDER BY 255 ) SELECT avg ( c19 ) FROM ( SELECT * ORDER BY 0 ) AS y ORDER BY 16 ) SELECT * FROM v47 AS a48 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a50 ORDER BY max ( NULL, - x'68617265', 'hello' ) + 10, min ( a50.c12, avg ( a50.c12 ) ) + NULL >= 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v51 ( c53 ) AS ( WITH v51 AS ( SELECT ( SELECT min ( c53 ) OVER ( ORDER BY 8 ) ORDER BY 10 ) FROM v51 AS a54 GROUP BY c53 ORDER BY 18446744073709551615 ) SELECT 100 ORDER BY 0 ) SELECT * FROM v51 AS a52 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: cannot drop column from view "v4"
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: cannot drop column from view "v4"
+BEGIN VERI 0
+Parse error near line 16: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: v7.c9
+   ( SELECT 'v1' ORDER BY 0 ) SELECT ( SELECT min ( v7.c9 ) OVER ( ORDER BY 127 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: ambiguous column name: c33
+  ECT * FROM v30 AS a31, v30 AS a32 WHERE CASE WHEN c33 = c33 - 100 THEN 1844674
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a45.c14 FROM v11 AS a45 ORDER BY 0; 
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a46.c3
+  SELECT count ( ( NOT ( a46.c3 IS NULL ) ) AND ( NOT ( a46.c3 IS NULL ) ) ) FRO
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: misuse of aggregate: avg()
+  LL, - x'68617265', 'hello' ) + 10, min ( a50.c12, avg ( a50.c12 ) ) + NULL >= 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+  DER BY 18446744073709551615 ) SELECT 100 ORDER BY 0 ) SELECT * FROM v51 AS a52
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such column: v7.c9
+   ( SELECT 'v1' ORDER BY 0 ) SELECT ( SELECT min ( v7.c9 ) OVER ( ORDER BY 127 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 19: no such column: v7.c9
+   ( SELECT 'v1' ORDER BY 0 ) SELECT ( SELECT min ( v7.c9 ) OVER ( ORDER BY 127 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: ambiguous column name: c33
+  ECT * FROM v30 AS a31, v30 AS a32 WHERE CASE WHEN c33 = c33 - 100 THEN 1844674
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 22: ambiguous column name: c33
+  ECT * FROM v30 AS a31, v30 AS a32 WHERE CASE WHEN c33 = c33 - 100 THEN 1844674
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a45.c14 FROM v11 AS a45 ORDER BY 0; 
+                            error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a45.c14 FROM v11 AS a45 ORDER BY 0; 
+                            error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such column: a46.c3
+  SELECT count ( ( NOT ( a46.c3 IS NULL ) ) AND ( NOT ( a46.c3 IS NULL ) ) ) FRO
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: misuse of aggregate: avg()
+  LL, - x'68617265', 'hello' ) + 10, min ( a50.c12, avg ( a50.c12 ) ) + NULL >= 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 40: misuse of aggregate: avg()
+  LL, - x'68617265', 'hello' ) + 10, min ( a50.c12, avg ( a50.c12 ) ) + NULL >= 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+  DER BY 18446744073709551615 ) SELECT 100 ORDER BY 0 ) SELECT * FROM v51 AS a52
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+  DER BY 18446744073709551615 ) SELECT 100 ORDER BY 0 ) SELECT * FROM v51 AS a52
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

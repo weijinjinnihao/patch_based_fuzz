@@ -1,0 +1,303 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE TABLE v4 ( c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28 ); 
+CREATE INDEX i29 ON v0 ( c3 ); 
+CREATE VIEW v30 AS SELECT * FROM v4 AS a31 ORDER BY 127; 
+CREATE TABLE v32 ( c33 INTEGER PRIMARY KEY, c34, c35 UNIQUE ); 
+CREATE TABLE v36 ( c37, c38, c39 ); 
+CREATE INDEX i40 ON v36 ( c38 ); 
+ALTER TABLE v32 ADD COLUMN c41 PRIMARY KEY ON CONFLICT REPLACE; 
+ALTER TABLE v36 DROP COLUMN c38; 
+CREATE INDEX i42 ON v4 ( c23 ); 
+CREATE VIRTUAL TABLE v43 USING fts5 ( c44, c45 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i46 ON v32 ( c33 ); 
+CREATE INDEX i47 ON v43 ( c44 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a48.c3 ) FROM v0 AS a48 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v36 AS a49 ORDER BY a49.c39 % 18446744071562067968 >= 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a50.c38 IS NULL ) ) AND ( NOT ( a50.c37 IS NULL ) ) ) FROM v36 AS a50 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a51.c45 FROM v43 AS a51 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a52.c1 + 18446744071562067968, a52.c3 + 18446744071562067968 FROM v0 AS a52 y GROUP BY y ( a52.c3 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a53 WHERE a53.c21 = a53.c14 % 18446744071562067968 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a54.c2, count ( a55.c24 ), a55.c12 FROM v0 AS a54 RIGHT JOIN v4 AS a55 ON a54.c2 = a55.c6 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a56 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c33 FROM v30 AS a57 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a58.c14, count ( ( NOT ( a58.c28 IS NULL ) ) AND ( NOT ( a58.c6 IS NULL ) ) ) FROM v4 AS a58 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: Cannot add a PRIMARY KEY column
+Runtime error near line 9: error in index i40 after drop column: no such column: c38
+Runtime error near line 11: no such module: fts5
+Parse error near line 14: no such table: main.v43
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v43
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: near "y": syntax error
+  968, a52.c3 + 18446744071562067968 FROM v0 AS a52 y GROUP BY y ( a52.c3 ) ORDE
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a54.c2
+  SELECT a54.c2, count ( a55.c24 ), a55.c12 FROM v0 AS a54 RIGHT JOIN v4 AS a55 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 24
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE TABLE v4 ( c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28 ); 
+; 
+CREATE VIEW v30 AS SELECT * FROM v4 AS a31 ORDER BY 127; 
+CREATE TABLE v32 ( c33 INTEGER PRIMARY KEY, c34, c35 UNIQUE ); 
+CREATE TABLE v36 ( c37, c38, c39 ); 
+; 
+ALTER TABLE v32 ADD COLUMN c41 PRIMARY KEY ON CONFLICT REPLACE; 
+ALTER TABLE v36 DROP COLUMN c38; 
+; 
+CREATE VIRTUAL TABLE v43 USING fts5 ( c44, c45 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a48.c3 ) FROM v0 AS a48 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v36 AS a49 ORDER BY a49.c39 % 18446744071562067968 >= 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a50.c38 IS NULL ) ) AND ( NOT ( a50.c37 IS NULL ) ) ) FROM v36 AS a50 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a51.c45 FROM v43 AS a51 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a52.c1 + 18446744071562067968, a52.c3 + 18446744071562067968 FROM v0 AS a52 y GROUP BY y ( a52.c3 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a53 WHERE a53.c21 = a53.c14 % 18446744071562067968 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a54.c2, count ( a55.c24 ), a55.c12 FROM v0 AS a54 RIGHT JOIN v4 AS a55 ON a54.c2 = a55.c6 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a56 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c33 FROM v30 AS a57 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a58.c14, count ( ( NOT ( a58.c28 IS NULL ) ) AND ( NOT ( a58.c6 IS NULL ) ) ) FROM v4 AS a58 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: Cannot add a PRIMARY KEY column
+Runtime error near line 11: no such module: fts5
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a50.c38
+  SELECT count ( ( NOT ( a50.c38 IS NULL ) ) AND ( NOT ( a50.c37 IS NULL ) ) ) F
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v43
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: near "y": syntax error
+  968, a52.c3 + 18446744071562067968 FROM v0 AS a52 y GROUP BY y ( a52.c3 ) ORDE
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a54.c2
+  SELECT a54.c2, count ( a55.c24 ), a55.c12 FROM v0 AS a54 RIGHT JOIN v4 AS a55 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 24
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+0
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such column: a50.c38
+  SELECT count ( ( NOT ( a50.c38 IS NULL ) ) AND ( NOT ( a50.c37 IS NULL ) ) ) F
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no such table: v43
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such table: v43
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: near "y": syntax error
+  968, a52.c3 + 18446744071562067968 FROM v0 AS a52 y GROUP BY y ( a52.c3 ) ORDE
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 28: near "y": syntax error
+  968, a52.c3 + 18446744071562067968 FROM v0 AS a52 y GROUP BY y ( a52.c3 ) ORDE
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such column: a54.c2
+  SELECT a54.c2, count ( a55.c24 ), a55.c12 FROM v0 AS a54 RIGHT JOIN v4 AS a55 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 34: no such column: a54.c2
+  SELECT a54.c2, count ( a55.c24 ), a55.c12 FROM v0 AS a54 RIGHT JOIN v4 AS a55 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 24
+ 
+INT: 0 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 24
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 24
+ 
+INT: 0 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 24
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

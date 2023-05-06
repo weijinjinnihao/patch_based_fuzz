@@ -1,0 +1,308 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 8; 
+CREATE INDEX i7 ON v5 ( c2 ); 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+ALTER TABLE v12 DROP COLUMN c13; 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i16 ON v5 ( c2 ); 
+CREATE INDEX i17 ON v8 ( c11 ); 
+CREATE TABLE v18 ( c19, c20 NOT NULL, c21 NOT NULL, c22 NOT NULL ); 
+CREATE INDEX i23 ON v18 ( c19 ); 
+CREATE VIRTUAL TABLE v24 USING fts5 ( c25, c26 ); 
+ALTER TABLE v12 DROP COLUMN c14; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c3, count ( ( NOT ( a28.c2 IS NULL ) ) AND ( NOT ( a28.c2 IS NULL ) ) ) FROM v18 AS a27 RIGHT JOIN v0 AS a28 ON a27.c19 = a28.c1 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c10, count ( a29.c10 ) FROM v8 AS a29 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v30 ( c32 ) AS ( SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM v30 AS a31 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v8 ( c35, c36, c37, c38, c39, c40 ) AS ( SELECT 0 y ORDER BY 8 ) SELECT a34.c3, a33.c9 FROM v8 AS a33 RIGHT JOIN v8 AS a34 ON c35 = c37 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a41 WHERE a41.c11 = + a41.c11 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a43.c3, a42.c2 ), min ( a42.c1, a43.c3 ) FROM v5 AS a42, v8 AS a43 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a44.c1 || a44.c3 ) FROM v0 AS a44 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a45, v12 AS a46 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c47 ) AS ( WITH v8 ( c48, c49, c50, c51, c52, c53 ) AS ( SELECT 9223372036854775807 y ORDER BY 18446744073709551488 ) SELECT 9223372036854775807 ORDER BY 9223372036854775807 ) VALUES ( 9223372036854775807, 8 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: views may not be indexed
+Runtime error near line 8: error in index i4 after drop column: no such column: c1
+Parse error near line 9: views may not be indexed
+Runtime error near line 13: no such module: fts5
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+  ( c32 ) AS ( SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM v30 AS a31
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: table v8 has 1 values for 6 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: near "ORDER": syntax error
+  2036854775807 ) VALUES ( 9223372036854775807, 8 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 8; 
+; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+ALTER TABLE v12 DROP COLUMN c13; 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+; 
+CREATE TABLE v18 ( c19, c20 NOT NULL, c21 NOT NULL, c22 NOT NULL ); 
+; 
+CREATE VIRTUAL TABLE v24 USING fts5 ( c25, c26 ); 
+ALTER TABLE v12 DROP COLUMN c14; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c3, count ( ( NOT ( a28.c2 IS NULL ) ) AND ( NOT ( a28.c2 IS NULL ) ) ) FROM v18 AS a27 RIGHT JOIN v0 AS a28 ON a27.c19 = a28.c1 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c10, count ( a29.c10 ) FROM v8 AS a29 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v30 ( c32 ) AS ( SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM v30 AS a31 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v8 ( c35, c36, c37, c38, c39, c40 ) AS ( SELECT 0 y ORDER BY 8 ) SELECT a34.c3, a33.c9 FROM v8 AS a33 RIGHT JOIN v8 AS a34 ON c35 = c37 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a41 WHERE a41.c11 = + a41.c11 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a43.c3, a42.c2 ), min ( a42.c1, a43.c3 ) FROM v5 AS a42, v8 AS a43 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a44.c1 || a44.c3 ) FROM v0 AS a44 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a45, v12 AS a46 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c47 ) AS ( WITH v8 ( c48, c49, c50, c51, c52, c53 ) AS ( SELECT 9223372036854775807 y ORDER BY 18446744073709551488 ) SELECT 9223372036854775807 ORDER BY 9223372036854775807 ) VALUES ( 9223372036854775807, 8 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 13: no such module: fts5
+BEGIN VERI 0
+Parse error near line 16: no such column: a28.c1
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+  ( c32 ) AS ( SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM v30 AS a31
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: table v8 has 1 values for 6 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a44.c1
+  SELECT max ( a44.c1 || a44.c3 ) FROM v0 AS a44 ORDER BY 16; 
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: near "ORDER": syntax error
+  2036854775807 ) VALUES ( 9223372036854775807, 8 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such column: a28.c1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+  ( c32 ) AS ( SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM v30 AS a31
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+  ( c32 ) AS ( SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM v30 AS a31
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: table v8 has 1 values for 6 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 25: table v8 has 1 values for 6 columns
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no such column: a44.c1
+  SELECT max ( a44.c1 || a44.c3 ) FROM v0 AS a44 ORDER BY 16; 
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 17542576
+Str: 
+Parse error near line 43: near "ORDER": syntax error
+  2036854775807 ) VALUES ( 9223372036854775807, 8 ) ORDER BY 0; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 43: near "ORDER": syntax error
+  2036854775807 ) VALUES ( 9223372036854775807, 8 ) ORDER BY 0; 
+                                      error here ---^
+ 
+Compare_result_int: 
+0
+
+
+

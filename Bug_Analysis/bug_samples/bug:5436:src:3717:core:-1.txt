@@ -1,0 +1,304 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER, c2, c3, PRIMARY KEY ( c2, c1 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( 127, 9223372036854775807, 127 ), ( 127, 9223372036854775807, 127 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+ALTER TABLE v0 DROP c3; 
+CREATE INDEX i6 ON v0 ( c3 ); 
+UPDATE v0 SET c3 = 0 FROM v0 AS a7, v0 AS a8 NATURAL JOIN v0 AS a9 WHERE c3 = c2; 
+CREATE INDEX i10 ON v0 ( c3 ); 
+CREATE TABLE v11 ( c12, c13, c14 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i15 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT 0 y ORDER BY 9223372036854775807 ) SELECT a16.c3, a16.c2 FROM v0 AS a16 ORDER BY a16.c1, a16.c3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 ( c17 ) AS ( SELECT 0 ORDER BY 9223372036854775807 ) SELECT abs ( v11.c13 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a18.c2 || a18.c2 ) FROM v0 AS a18 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a19.c3 ) FROM v0 AS a19 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 AS ( SELECT 0 y ORDER BY 18446744073709551488 ) SELECT a20.c3 + ( SELECT max ( a22.c17 ) FROM v0 AS a23 ORDER BY 9223372036854775807 ), a20.c1 + ( SELECT CASE WHEN a21.c2 % 255 != 0 THEN a20.c1 END, a20.c1, a21.c2 FROM v11 AS a22 WHERE a21.c3 <= 9223372036854775807 ORDER BY 9223372036854775807 ), a20.c3 + ( SELECT max ( a21.c3 ) FROM v0 AS a21 ORDER BY 18446744073709551615 ) FROM v0 AS a20 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c1, ( + a24.c13 ) y, ( + a25.c3 ) y, ( + a25.c1 ) y, NOT EXISTS ( SELECT NULL FROM v11 AS a26 ORDER BY 18446744073709551615 ), CASE a24.c12 WHEN 0 THEN 100 WHEN 9223372036854775807 THEN 18446744073709551488 WHEN 127 THEN 'Parent' END, 'v0' FROM v11 AS a24 LEFT JOIN v0 AS a25 ON a24.c13 = a24.c13 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 GROUP BY a27.c1, abs ( a27.c1 ) HAVING CASE WHEN a27.c1 != 'v1' THEN 18446744073709551615 ELSE 9223372036854775807 END > 9223372036854775807 >= 100 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a28 GROUP BY count ( ( NOT ( a28.c12 IS NULL ) ) AND ( NOT ( a28.c14 IS NULL ) ) ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a29 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 3: UNIQUE constraint failed: v0.c2, v0.c1 (19)
+Runtime error near line 5: error in index i4 after drop column: no such column: c3
+Parse error near line 7: ambiguous column name: c1
+BEGIN VERI 0
+Parse error near line 12: no such column: a16.c3
+   SELECT 0 y ORDER BY 9223372036854775807 ) SELECT a16.c3, a16.c2 FROM v0 AS a1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such column: v11.c13
+  ECT 0 ORDER BY 9223372036854775807 ) SELECT abs ( v11.c13 ) ORDER BY 922337203
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a22.c17
+  6744073709551488 ) SELECT a20.c3 + ( SELECT max ( a22.c17 ) FROM v0 AS a23 ORD
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER, c2, c3, PRIMARY KEY ( c2, c1 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v0 VALUES ( 127, 9223372036854775807, 127 ), ( 127, 9223372036854775807, 127 ); 
+; 
+ALTER TABLE v0 DROP c3; 
+; 
+UPDATE v0 SET c3 = 0 FROM v0 AS a7, v0 AS a8 NATURAL JOIN v0 AS a9 WHERE c3 = c2; 
+; 
+CREATE TABLE v11 ( c12, c13, c14 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT 0 y ORDER BY 9223372036854775807 ) SELECT a16.c3, a16.c2 FROM v0 AS a16 ORDER BY a16.c1, a16.c3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 ( c17 ) AS ( SELECT 0 ORDER BY 9223372036854775807 ) SELECT abs ( v11.c13 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a18.c2 || a18.c2 ) FROM v0 AS a18 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a19.c3 ) FROM v0 AS a19 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 AS ( SELECT 0 y ORDER BY 18446744073709551488 ) SELECT a20.c3 + ( SELECT max ( a22.c17 ) FROM v0 AS a23 ORDER BY 9223372036854775807 ), a20.c1 + ( SELECT CASE WHEN a21.c2 % 255 != 0 THEN a20.c1 END, a20.c1, a21.c2 FROM v11 AS a22 WHERE a21.c3 <= 9223372036854775807 ORDER BY 9223372036854775807 ), a20.c3 + ( SELECT max ( a21.c3 ) FROM v0 AS a21 ORDER BY 18446744073709551615 ) FROM v0 AS a20 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c1, ( + a24.c13 ) y, ( + a25.c3 ) y, ( + a25.c1 ) y, NOT EXISTS ( SELECT NULL FROM v11 AS a26 ORDER BY 18446744073709551615 ), CASE a24.c12 WHEN 0 THEN 100 WHEN 9223372036854775807 THEN 18446744073709551488 WHEN 127 THEN 'Parent' END, 'v0' FROM v11 AS a24 LEFT JOIN v0 AS a25 ON a24.c13 = a24.c13 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 GROUP BY a27.c1, abs ( a27.c1 ) HAVING CASE WHEN a27.c1 != 'v1' THEN 18446744073709551615 ELSE 9223372036854775807 END > 9223372036854775807 >= 100 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a28 GROUP BY count ( ( NOT ( a28.c12 IS NULL ) ) AND ( NOT ( a28.c14 IS NULL ) ) ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a29 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 3: UNIQUE constraint failed: v0.c2, v0.c1 (19)
+Parse error near line 7: no such column: c3
+BEGIN VERI 0
+Parse error near line 12: no such column: a16.c3
+   SELECT 0 y ORDER BY 9223372036854775807 ) SELECT a16.c3, a16.c2 FROM v0 AS a1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such column: v11.c13
+  ECT 0 ORDER BY 9223372036854775807 ) SELECT abs ( v11.c13 ) ORDER BY 922337203
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: a19.c3
+  SELECT count ( a19.c3 ) FROM v0 AS a19 ORDER BY 9223372036854775807; 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a20.c3
+  SELECT 0 y ORDER BY 18446744073709551488 ) SELECT a20.c3 + ( SELECT max ( a22.
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a25.c3
+  SELECT a25.c1, ( + a24.c13 ) y, ( + a25.c3 ) y, ( + a25.c1 ) y, NOT EXISTS ( S
+                        error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: no such column: a16.c3
+   SELECT 0 y ORDER BY 9223372036854775807 ) SELECT a16.c3, a16.c2 FROM v0 AS a1
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 12: no such column: a16.c3
+   SELECT 0 y ORDER BY 9223372036854775807 ) SELECT a16.c3, a16.c2 FROM v0 AS a1
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such column: v11.c13
+  ECT 0 ORDER BY 9223372036854775807 ) SELECT abs ( v11.c13 ) ORDER BY 922337203
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: no such column: v11.c13
+  ECT 0 ORDER BY 9223372036854775807 ) SELECT abs ( v11.c13 ) ORDER BY 922337203
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+
+ 
+INT: -1 
+Str: 
+
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+0
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no such column: a19.c3
+  SELECT count ( a19.c3 ) FROM v0 AS a19 ORDER BY 9223372036854775807; 
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such column: a22.c17
+  6744073709551488 ) SELECT a20.c3 + ( SELECT max ( a22.c17 ) FROM v0 AS a23 ORD
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: no such column: a20.c3
+  SELECT 0 y ORDER BY 18446744073709551488 ) SELECT a20.c3 + ( SELECT max ( a22.
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 30: no such column: a25.c3
+  SELECT a25.c1, ( + a24.c13 ) y, ( + a25.c3 ) y, ( + a25.c1 ) y, NOT EXISTS ( S
+                        error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+Str: 
+Parse error near line 36: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

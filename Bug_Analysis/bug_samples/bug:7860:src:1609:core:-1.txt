@@ -1,0 +1,317 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 CHECK( c4 != 18446744073709551488 ), c2, c3 CHECK( c4 > 18446744073709551488 ), c4 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( 18446744073709518848, 0, 0, 0 ), ( 0, 18446744073709551488, 9223372036854775807, 18446744073709551488 ); 
+CREATE TABLE v6 ( c7, c8, c9, c10 REFERENCES t1 ( c10, c9, c7, c9 ), CHECK( c10 > 4294967295 ) ); 
+CREATE INDEX i11 ON v6 ( c9 ); 
+INSERT INTO v0 VALUES ( 2147483647, 0, 0, 0 ), ( 0, 18446744073709551488, 4294967295, 18446744073709551488 ); 
+CREATE INDEX i12 ON v6 ( c9 ); 
+INSERT INTO v6 VALUES ( 0, 0, 0, 9223372036854775807 ); 
+CREATE INDEX i13 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( 9223372036854775807, 0, 18446744073709551488, 18446744073709551488 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i14 ON v6 ( c8 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a15 WHERE a15.c9 != 18446744073709551615 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c1, a16.c2 FROM v0 AS a16 RIGHT JOIN v0 AS a17 ON a17.c2 = a17.c1 ORDER BY 'v0'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 NATURAL JOIN v6 AS a19 WHERE ( a18.c2 = 0 OR a18.c3 > 0 ) AND a19.c10 IN ( SELECT a18.c2 FROM ( SELECT *, 'v0' FROM v0 AS a20 LEFT JOIN v0 AS a21 ORDER BY 0 ) AS y WHERE a18.c4 = 0 ORDER BY 18446744073709551488 ) GROUP BY y ( a18.c1 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a22, v6 AS a23 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c26 ) AS ( WITH v0 ( c27 ) AS ( WITH v28 ( c29, c30, c31, c32, c33, c34 ) AS ( SELECT 18446744073709551615 y ORDER BY ( ( a25.c2 + 0 ) % 18446744073709551615 ) < 8 ) SELECT 18446744073709551488 ORDER BY 127 ) SELECT 0 ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a35 NATURAL JOIN v6 AS a36 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a37 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c30 FROM v0 AS a38 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 3: CHECK constraint failed: c4 > 18446744073709551488 (19)
+Parse error near line 4: foreign key on c10 should reference only one column of table t1
+  CREATE TABLE v6 ( c7, c8, c9, c10 REFERENCES t1 ( c10, c9, c7, c9 ), CHECK( c1
+                                 error here ---^
+Parse error near line 5: no such table: main.v6
+Runtime error near line 6: CHECK constraint failed: c4 > 18446744073709551488 (19)
+Parse error near line 7: no such table: main.v6
+Parse error near line 8: no such table: v6
+Runtime error near line 10: CHECK constraint failed: c4 != 18446744073709551488 (19)
+Runtime error near line 11: error in index i5 after drop column: no such column: c2
+Parse error near line 12: no such table: main.v6
+BEGIN VERI 0
+Parse error near line 14: no such table: v6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+  44073709551488 ) SELECT * FROM v0 AS a25 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such table: v6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such table: v6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a38.c30
+  SELECT a38.c30 FROM v0 AS a38 ORDER BY 0; 
+         ^--- error here
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 CHECK( c4 != 18446744073709551488 ), c2, c3 CHECK( c4 > 18446744073709551488 ), c4 ); 
+; 
+INSERT INTO v0 VALUES ( 18446744073709518848, 0, 0, 0 ), ( 0, 18446744073709551488, 9223372036854775807, 18446744073709551488 ); 
+CREATE TABLE v6 ( c7, c8, c9, c10 REFERENCES t1 ( c10, c9, c7, c9 ), CHECK( c10 > 4294967295 ) ); 
+; 
+INSERT INTO v0 VALUES ( 2147483647, 0, 0, 0 ), ( 0, 18446744073709551488, 4294967295, 18446744073709551488 ); 
+; 
+INSERT INTO v6 VALUES ( 0, 0, 0, 9223372036854775807 ); 
+; 
+INSERT INTO v0 VALUES ( 9223372036854775807, 0, 18446744073709551488, 18446744073709551488 ); 
+ALTER TABLE v0 DROP c2; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a15 WHERE a15.c9 != 18446744073709551615 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c1, a16.c2 FROM v0 AS a16 RIGHT JOIN v0 AS a17 ON a17.c2 = a17.c1 ORDER BY 'v0'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 NATURAL JOIN v6 AS a19 WHERE ( a18.c2 = 0 OR a18.c3 > 0 ) AND a19.c10 IN ( SELECT a18.c2 FROM ( SELECT *, 'v0' FROM v0 AS a20 LEFT JOIN v0 AS a21 ORDER BY 0 ) AS y WHERE a18.c4 = 0 ORDER BY 18446744073709551488 ) GROUP BY y ( a18.c1 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a22, v6 AS a23 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c26 ) AS ( WITH v0 ( c27 ) AS ( WITH v28 ( c29, c30, c31, c32, c33, c34 ) AS ( SELECT 18446744073709551615 y ORDER BY ( ( a25.c2 + 0 ) % 18446744073709551615 ) < 8 ) SELECT 18446744073709551488 ORDER BY 127 ) SELECT 0 ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a35 NATURAL JOIN v6 AS a36 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a37 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c30 FROM v0 AS a38 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 3: CHECK constraint failed: c4 > 18446744073709551488 (19)
+Parse error near line 4: foreign key on c10 should reference only one column of table t1
+  CREATE TABLE v6 ( c7, c8, c9, c10 REFERENCES t1 ( c10, c9, c7, c9 ), CHECK( c1
+                                 error here ---^
+Runtime error near line 6: CHECK constraint failed: c4 > 18446744073709551488 (19)
+Parse error near line 8: no such table: v6
+Runtime error near line 10: CHECK constraint failed: c4 != 18446744073709551488 (19)
+BEGIN VERI 0
+Parse error near line 14: no such table: v6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a16.c2
+  SELECT a17.c1, a16.c2 FROM v0 AS a16 RIGHT JOIN v0 AS a17 ON a17.c2 = a17.c1 O
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+  44073709551488 ) SELECT * FROM v0 AS a25 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such table: v6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such table: v6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a38.c30
+  SELECT a38.c30 FROM v0 AS a38 ORDER BY 0; 
+         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no such table: v6
+ 
+INT: 0 
+Str: 
+Parse error near line 14: no such table: v6
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 17: no such column: a16.c2
+  SELECT a17.c1, a16.c2 FROM v0 AS a16 RIGHT JOIN v0 AS a17 ON a17.c2 = a17.c1 O
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such table: v6
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no such table: v6
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no such table: v6
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such table: v6
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+  44073709551488 ) SELECT * FROM v0 AS a25 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+  44073709551488 ) SELECT * FROM v0 AS a25 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no such table: v6
+ 
+INT: 0 
+Str: 
+Parse error near line 35: no such table: v6
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no such table: v6
+ 
+INT: 0 
+Str: 
+Parse error near line 38: no such table: v6
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no such column: a38.c30
+  SELECT a38.c30 FROM v0 AS a38 ORDER BY 0; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 41: no such column: a38.c30
+  SELECT a38.c30 FROM v0 AS a38 ORDER BY 0; 
+         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

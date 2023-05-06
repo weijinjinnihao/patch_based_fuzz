@@ -1,0 +1,296 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2, c2 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( 9223372036854775807, 9223372036854775807, 18446744073709551488 ), ( 9223372036854775807, 18446744073709551488, 18446744073709551488 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP c1; 
+ALTER TABLE v0 DROP c3; 
+CREATE INDEX i6 ON v0 ( c2 ); 
+CREATE INDEX i7 ON v0 ( c1 ); 
+CREATE TABLE v8 ( c9, c10, c11 PRIMARY KEY ) WITHOUT ROWID STRICT; 
+CREATE INDEX i12 ON v8 ( c9 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a13.c11 IS NULL ) ) AND ( NOT ( a13.c10 IS NULL ) ) ) FROM v8 AS a13 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a14.c11, count ( ( NOT ( a14.c10 IS NULL ) ) AND ( NOT ( a15.c1 IS NULL ) ) ), count ( ( hex ( 9223372036854775807 ) ) % 127 AND ( NOT ( a15.c1 IS NULL ) ) ) FROM v8 AS a14 LEFT JOIN v0 AS a15 ON a14.c11 = a15.c2 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a16 GROUP BY x'616263', 'v1', a16.c10 = + a16.c9 HAVING count ( * ) >= 9223372036854775807 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY ( ( a17.c2 + - 9223372036854775807 ) % 9223372036854775807 ) != 255 + 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a18 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19, v8 AS a20 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21, v8 AS a22 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v23 AS ( SELECT 127 y ORDER BY 127 ) SELECT avg ( c1 ) FROM ( SELECT * ORDER BY 18446744073709551488 ) AS y ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c3, max ( a24.c2 || a24.c2 ) FROM v0 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a25 WHERE CASE WHEN a25.c10 != 'x1i' THEN 9223372036854775807 ELSE 9223372036854775807 END > 127 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: error in index i4 after drop column: no such column: c3
+Parse error near line 8: no such column: c1
+  CREATE INDEX i7 ON v0 ( c1 ); 
+                          ^--- error here
+Parse error near line 9: near "STRICT": syntax error
+  BLE v8 ( c9, c10, c11 PRIMARY KEY ) WITHOUT ROWID STRICT; 
+                                      error here ---^
+Parse error near line 10: no such table: main.v8
+BEGIN VERI 0
+Parse error near line 12: no such table: v8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such table: v8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v8
+END VERI 0
+BEGIN VERI 0
+9223372036854775807|1.84467440737096e+19
+1.84467440737096e+19|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no tables specified
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|92233720368547758079223372036854775807
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v8
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2, c2 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v0 VALUES ( 9223372036854775807, 9223372036854775807, 18446744073709551488 ), ( 9223372036854775807, 18446744073709551488, 18446744073709551488 ); 
+; 
+ALTER TABLE v0 DROP c1; 
+ALTER TABLE v0 DROP c3; 
+; 
+; 
+CREATE TABLE v8 ( c9, c10, c11 PRIMARY KEY ) WITHOUT ROWID STRICT; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a13.c11 IS NULL ) ) AND ( NOT ( a13.c10 IS NULL ) ) ) FROM v8 AS a13 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a14.c11, count ( ( NOT ( a14.c10 IS NULL ) ) AND ( NOT ( a15.c1 IS NULL ) ) ), count ( ( hex ( 9223372036854775807 ) ) % 127 AND ( NOT ( a15.c1 IS NULL ) ) ) FROM v8 AS a14 LEFT JOIN v0 AS a15 ON a14.c11 = a15.c2 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a16 GROUP BY x'616263', 'v1', a16.c10 = + a16.c9 HAVING count ( * ) >= 9223372036854775807 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY ( ( a17.c2 + - 9223372036854775807 ) % 9223372036854775807 ) != 255 + 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a18 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19, v8 AS a20 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21, v8 AS a22 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v23 AS ( SELECT 127 y ORDER BY 127 ) SELECT avg ( c1 ) FROM ( SELECT * ORDER BY 18446744073709551488 ) AS y ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c3, max ( a24.c2 || a24.c2 ) FROM v0 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a25 WHERE CASE WHEN a25.c10 != 'x1i' THEN 9223372036854775807 ELSE 9223372036854775807 END > 127 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: near "STRICT": syntax error
+  BLE v8 ( c9, c10, c11 PRIMARY KEY ) WITHOUT ROWID STRICT; 
+                                      error here ---^
+BEGIN VERI 0
+Parse error near line 12: no such table: v8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such table: v8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v8
+END VERI 0
+BEGIN VERI 0
+9223372036854775807
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a24.c3
+  SELECT a24.c3, max ( a24.c2 || a24.c2 ) FROM v0 AS a24 ORDER BY 18446744073709
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v8
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: no such table: v8
+ 
+INT: 0 
+Str: 
+Parse error near line 12: no such table: v8
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such table: v8
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such table: v8
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such table: v8
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such table: v8
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+9223372036854775807|1.84467440737096e+19
+1.84467440737096e+19|1.84467440737096e+19
+ 
+INT: 1 
+Str: 
+9223372036854775807
+1.84467440737096e+19
+ 
+INT: 1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v8
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v8
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such table: v8
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such table: v8
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such table: v8
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no such table: v8
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+1.84467440737096e+19|92233720368547758079223372036854775807
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such column: a24.c3
+  SELECT a24.c3, max ( a24.c2 || a24.c2 ) FROM v0 AS a24 ORDER BY 18446744073709
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such table: v8
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such table: v8
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,310 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE TABLE v4 ( c5 INTEGER PRIMARY KEY, c6, c7 UNIQUE ); 
+CREATE TABLE v8 ( c9, c10 INTEGER PRIMARY KEY, c11 ); 
+ALTER TABLE v8 DROP COLUMN c10; 
+CREATE INDEX i12 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i13 ON v8 ( c10 ); 
+CREATE INDEX i14 ON v0 ( c1 ); 
+CREATE INDEX i15 ON v4 ( count ( * ) ); 
+CREATE VIRTUAL TABLE v16 USING fts5 ( c17, c18 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i19 ON v16 ( c9 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c10 AS y, a20.c9 || a20.c10 AS y FROM v8 AS a20 WHERE a20.c9 IN ( 'abc', 'v1' ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c6, a21.c3 FROM v0 AS a21 JOIN v4 AS a22 ON a21.c2 = a21.c3 WHERE a22.c6 = a21.c2 || a22.c6 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 NATURAL JOIN v0 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a25, v16 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c7, a27.c6 FROM v4 AS a27 WHERE a27.c6 = 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c7, a28.c7, a28.c7 FROM v4 AS a28 WHERE a28.c5 < y ( a28.c5 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a29, v4 AS a30 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c11 = + a31.c18, a32.c11 FROM v16 AS a31 RIGHT JOIN v8 AS a32 ON a31.c6 = a31.c18 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a33 CROSS JOIN v0 AS a34 ON ( a33.c6 = a34.c2 ) WHERE a34.c1 IN ( SELECT a34.c1 FROM v8 AS a35, v8 AS a36 NATURAL JOIN v0 AS a37 WHERE a37.c1 IN ( SELECT a35.c9 FROM ( SELECT a37.c3 FROM v0 AS a38 ORDER BY 4294967295 ) AS y WHERE a36.c11 = 100 ORDER BY 127 ) ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c5, count ( ( NOT ( a39.c5 IS NULL ) ) AND ( NOT ( a39.c7 IS NULL ) ) ) FROM v4 AS a39 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: cannot drop PRIMARY KEY column: "c10"
+Parse error near line 9: misuse of aggregate function count()
+  CREATE INDEX i15 ON v4 ( count ( * ) ); 
+             error here ---^
+Runtime error near line 10: no such module: fts5
+Runtime error near line 11: error in index i14 after drop column: no such column: c1
+Parse error near line 12: no such table: main.v16
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a21.c2
+   JOIN v4 AS a22 ON a21.c2 = a21.c3 WHERE a22.c6 = a21.c2 || a22.c6 ORDER BY 18
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v16
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+  , a27.c6 FROM v4 AS a27 WHERE a27.c6 = 0 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such function: y
+  .c7, a28.c7, a28.c7 FROM v4 AS a28 WHERE a28.c5 < y ( a28.c5 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such table: v16
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such table: v16
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE TABLE v4 ( c5 INTEGER PRIMARY KEY, c6, c7 UNIQUE ); 
+CREATE TABLE v8 ( c9, c10 INTEGER PRIMARY KEY, c11 ); 
+ALTER TABLE v8 DROP COLUMN c10; 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+; 
+; 
+CREATE VIRTUAL TABLE v16 USING fts5 ( c17, c18 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c10 AS y, a20.c9 || a20.c10 AS y FROM v8 AS a20 WHERE a20.c9 IN ( 'abc', 'v1' ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c6, a21.c3 FROM v0 AS a21 JOIN v4 AS a22 ON a21.c2 = a21.c3 WHERE a22.c6 = a21.c2 || a22.c6 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 NATURAL JOIN v0 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a25, v16 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c7, a27.c6 FROM v4 AS a27 WHERE a27.c6 = 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c7, a28.c7, a28.c7 FROM v4 AS a28 WHERE a28.c5 < y ( a28.c5 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a29, v4 AS a30 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c11 = + a31.c18, a32.c11 FROM v16 AS a31 RIGHT JOIN v8 AS a32 ON a31.c6 = a31.c18 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a33 CROSS JOIN v0 AS a34 ON ( a33.c6 = a34.c2 ) WHERE a34.c1 IN ( SELECT a34.c1 FROM v8 AS a35, v8 AS a36 NATURAL JOIN v0 AS a37 WHERE a37.c1 IN ( SELECT a35.c9 FROM ( SELECT a37.c3 FROM v0 AS a38 ORDER BY 4294967295 ) AS y WHERE a36.c11 = 100 ORDER BY 127 ) ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c5, count ( ( NOT ( a39.c5 IS NULL ) ) AND ( NOT ( a39.c7 IS NULL ) ) ) FROM v4 AS a39 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: cannot drop PRIMARY KEY column: "c10"
+Runtime error near line 10: no such module: fts5
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a21.c2
+   JOIN v4 AS a22 ON a21.c2 = a21.c3 WHERE a22.c6 = a21.c2 || a22.c6 ORDER BY 18
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v16
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+  , a27.c6 FROM v4 AS a27 WHERE a27.c6 = 0 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such function: y
+  .c7, a28.c7, a28.c7 FROM v4 AS a28 WHERE a28.c5 < y ( a28.c5 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such table: v16
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such table: v16
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a34.c1
+  4 ON ( a33.c6 = a34.c2 ) WHERE a34.c1 IN ( SELECT a34.c1 FROM v8 AS a35, v8 AS
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no such column: a21.c2
+   JOIN v4 AS a22 ON a21.c2 = a21.c3 WHERE a22.c6 = a21.c2 || a22.c6 ORDER BY 18
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 17: no such column: a21.c2
+   JOIN v4 AS a22 ON a21.c2 = a21.c3 WHERE a22.c6 = a21.c2 || a22.c6 ORDER BY 18
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such table: v16
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no such table: v16
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+  , a27.c6 FROM v4 AS a27 WHERE a27.c6 = 0 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+  , a27.c6 FROM v4 AS a27 WHERE a27.c6 = 0 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: no such function: y
+  .c7, a28.c7, a28.c7 FROM v4 AS a28 WHERE a28.c5 < y ( a28.c5 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: no such function: y
+  .c7, a28.c7, a28.c7 FROM v4 AS a28 WHERE a28.c5 < y ( a28.c5 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such table: v16
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such table: v16
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no such table: v16
+ 
+INT: 0 
+Str: 
+Parse error near line 35: no such table: v16
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 38: no such column: a34.c1
+  4 ON ( a33.c6 = a34.c2 ) WHERE a34.c1 IN ( SELECT a34.c1 FROM v8 AS a35, v8 AS
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

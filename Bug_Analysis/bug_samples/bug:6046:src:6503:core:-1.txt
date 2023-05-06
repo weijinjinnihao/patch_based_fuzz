@@ -1,0 +1,284 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7 DEFAULT x'ABCD', c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, PRIMARY KEY ( c9, c1, c8, c12, c9, c5, c1, c14 ), CHECK( ( ( c2 + 18446744071562067968 ) > 18446744073709551615 ) != 18446744071562067968 ) ) WITHOUT ROWID; 
+CREATE INDEX i18 ON v0 ( c11 ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c10 = c3 || c10 WHERE c7 = c13 || c5; END; 
+CREATE INDEX i19 ON v0 ( c7 ); 
+CREATE INDEX i20 ON v0 ( c16 ); 
+CREATE TABLE v21 ( c22, c23, c24, c25, PRIMARY KEY ( c24, c22 ) ) WITHOUT ROWID; 
+CREATE INDEX i26 ON v0 ( c17 ); 
+INSERT INTO v0 VALUES ( 18446744071562067968, 18446744071562067968, 0, 18446744071562067968 ); 
+ALTER TABLE v0 DROP COLUMN c17; 
+CREATE INDEX i27 ON v0 ( c10 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 GROUP BY a28.c4, abs ( a28.c7 ) HAVING CASE WHEN a28.c17 != 'C' THEN 18446744071562067968 ELSE 18446744073709551615 END > 18446744071562067968 >= 0 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT typeof ( a29.c4 ), a29.c16, typeof ( a29.c14 ), a29.c7 FROM v0 AS a29 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c13, max ( a30.c12 || a30.c13 ) FROM v0 AS a30 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 ORDER BY a32.c12 % 18446744073709551615 >= 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 18446744073709551615 ORDER BY 18446744071562067968 ) AS y, v0 AS a33 ON a33.c4 = a33.c2 || a33.c1 OR 127 GROUP BY a33.c9 HAVING a33.c5 > a33.c17 % 10 >= 16 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a34 NATURAL JOIN v21 AS a35 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a36 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a37 ORDER BY 55; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: table v0 has 17 columns but 4 values were supplied
+Runtime error near line 9: error in index i26 after drop column: no such column: c17
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 17
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 17
+  SELECT * FROM v0 AS a31 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 18
+  33.c9 HAVING a33.c5 > a33.c17 % 10 >= 16 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7 DEFAULT x'ABCD', c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, PRIMARY KEY ( c9, c1, c8, c12, c9, c5, c1, c14 ), CHECK( ( ( c2 + 18446744071562067968 ) > 18446744073709551615 ) != 18446744071562067968 ) ) WITHOUT ROWID; 
+; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c10 = c3 || c10 WHERE c7 = c13 || c5; END; 
+; 
+; 
+CREATE TABLE v21 ( c22, c23, c24, c25, PRIMARY KEY ( c24, c22 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v0 VALUES ( 18446744071562067968, 18446744071562067968, 0, 18446744071562067968 ); 
+ALTER TABLE v0 DROP COLUMN c17; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 GROUP BY a28.c4, abs ( a28.c7 ) HAVING CASE WHEN a28.c17 != 'C' THEN 18446744071562067968 ELSE 18446744073709551615 END > 18446744071562067968 >= 0 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT typeof ( a29.c4 ), a29.c16, typeof ( a29.c14 ), a29.c7 FROM v0 AS a29 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c13, max ( a30.c12 || a30.c13 ) FROM v0 AS a30 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 ORDER BY a32.c12 % 18446744073709551615 >= 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 18446744073709551615 ORDER BY 18446744071562067968 ) AS y, v0 AS a33 ON a33.c4 = a33.c2 || a33.c1 OR 127 GROUP BY a33.c9 HAVING a33.c5 > a33.c17 % 10 >= 16 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a34 NATURAL JOIN v21 AS a35 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a36 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a37 ORDER BY 55; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: table v0 has 17 columns but 4 values were supplied
+BEGIN VERI 0
+Parse error near line 12: no such column: a28.c17
+   GROUP BY a28.c4, abs ( a28.c7 ) HAVING CASE WHEN a28.c17 != 'C' THEN 18446744
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 16
+  SELECT * FROM v0 AS a31 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a33.c17
+   || a33.c1 OR 127 GROUP BY a33.c9 HAVING a33.c5 > a33.c17 % 10 >= 16 ORDER BY 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 17
+ 
+INT: 0 
+Str: 
+Parse error near line 12: no such column: a28.c17
+   GROUP BY a28.c4, abs ( a28.c7 ) HAVING CASE WHEN a28.c17 != 'C' THEN 18446744
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 17
+  SELECT * FROM v0 AS a31 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 16
+  SELECT * FROM v0 AS a31 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 18
+  33.c9 HAVING a33.c5 > a33.c17 % 10 >= 16 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: no such column: a33.c17
+   || a33.c1 OR 127 GROUP BY a33.c9 HAVING a33.c5 > a33.c17 % 10 >= 16 ORDER BY 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

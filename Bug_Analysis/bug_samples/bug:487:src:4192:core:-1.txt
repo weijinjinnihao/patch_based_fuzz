@@ -1,0 +1,873 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 DEFAULT 'one-c' ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 'v1', 'x' ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 'v0', 'aB%' ); 
+INSERT INTO v0 VALUES ( NULL, 'x', 'x' ); 
+INSERT INTO v0 VALUES ( 'three-c', 'v1', 'v0' ); 
+INSERT INTO v0 VALUES ( x'616263', 'f', 'v1' ); 
+CREATE TABLE v4 ( c5, c6, c7 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( NULL, 'C', 'v1' ); 
+CREATE INDEX i8 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( 'v0', 'aB%', 'v0' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'v0', 'e' ); 
+CREATE INDEX i9 ON v0 ( c1 ); 
+INSERT INTO v4 VALUES ( 18446744073709551615, 'hill', 'v0' ); 
+CREATE INDEX i10 ON v4 ( abs ( c5 ) ); 
+CREATE INDEX i11 ON v4 ( c5 ); 
+INSERT INTO v0 VALUES ( - 18446744073709551615, 'aaabbb', '3' ); 
+CREATE TABLE v12 ( c13, c14, c15 COLLATE NOCASE ); 
+INSERT INTO v0 SELECT * FROM v0 AS a16 ORDER BY 18446744073709551615; 
+INSERT INTO v0 SELECT * FROM v0 AS a17 ORDER BY 18446744073709551615; 
+CREATE INDEX i18 ON v12 ( c13 ); 
+INSERT INTO v12 SELECT * FROM v0 AS a19 ORDER BY 18446744073709551615; 
+INSERT INTO v4 SELECT * FROM v4 AS a20 ORDER BY 18446744073709551615; 
+INSERT INTO v4 SELECT * FROM v12 AS a21 ORDER BY 18446744073709551615; 
+INSERT INTO v12 SELECT * FROM v0 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c1 FROM v0 AS a23 WHERE a23.c2 LIKE 'v1' ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c1 FROM v0 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c1 FROM v0 AS a26 GROUP BY 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c3 FROM v0 AS a27 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 GROUP BY a29.c2, a29.c3, count ( a29.c1 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c2, count ( ( NOT ( a30.c3 IS NULL ) ) AND ( NOT ( a30.c2 IS NULL ) ) ), count ( ( NOT ( a30.c1 IS NULL ) ) AND ( NOT ( a30.c3 IS NULL ) ) ) FROM v0 AS a30 LEFT JOIN v12 AS a31 ON a31.c14 = 'aaabbb' ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+
+
+
+
+
+
+
+
+-1.84467440737096e+19
+-1.84467440737096e+19
+-1.84467440737096e+19
+-1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+three-c
+three-c
+three-c
+three-c
+v0
+v0
+v0
+v0
+abc
+abc
+abc
+abc
+hare
+hare
+hare
+hare
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no tables specified
+END VERI 0
+BEGIN VERI 0
+3
+3
+3
+3
+aB%
+aB%
+aB%
+aB%
+e
+e
+e
+e
+v0
+v0
+v0
+v0
+v0
+v0
+v0
+v0
+v1
+v1
+v1
+v1
+v1
+v1
+v1
+v1
+x
+x
+x
+x
+x
+x
+x
+x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no tables specified
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|hill|v0
+1.84467440737096e+19|hill|v0
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 50: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+v1|288|288
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 DEFAULT 'one-c' ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 'v1', 'x' ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 'v0', 'aB%' ); 
+INSERT INTO v0 VALUES ( NULL, 'x', 'x' ); 
+INSERT INTO v0 VALUES ( 'three-c', 'v1', 'v0' ); 
+INSERT INTO v0 VALUES ( x'616263', 'f', 'v1' ); 
+CREATE TABLE v4 ( c5, c6, c7 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( NULL, 'C', 'v1' ); 
+; 
+INSERT INTO v0 VALUES ( 'v0', 'aB%', 'v0' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'v0', 'e' ); 
+; 
+INSERT INTO v4 VALUES ( 18446744073709551615, 'hill', 'v0' ); 
+; 
+; 
+INSERT INTO v0 VALUES ( - 18446744073709551615, 'aaabbb', '3' ); 
+CREATE TABLE v12 ( c13, c14, c15 COLLATE NOCASE ); 
+INSERT INTO v0 SELECT * FROM v0 AS a16 ORDER BY 18446744073709551615; 
+INSERT INTO v0 SELECT * FROM v0 AS a17 ORDER BY 18446744073709551615; 
+; 
+INSERT INTO v12 SELECT * FROM v0 AS a19 ORDER BY 18446744073709551615; 
+INSERT INTO v4 SELECT * FROM v4 AS a20 ORDER BY 18446744073709551615; 
+INSERT INTO v4 SELECT * FROM v12 AS a21 ORDER BY 18446744073709551615; 
+INSERT INTO v12 SELECT * FROM v0 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c1 FROM v0 AS a23 WHERE a23.c2 LIKE 'v1' ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c1 FROM v0 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c1 FROM v0 AS a26 GROUP BY 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c3 FROM v0 AS a27 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 GROUP BY a29.c2, a29.c3, count ( a29.c1 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c2, count ( ( NOT ( a30.c3 IS NULL ) ) AND ( NOT ( a30.c2 IS NULL ) ) ), count ( ( NOT ( a30.c1 IS NULL ) ) AND ( NOT ( a30.c3 IS NULL ) ) ) FROM v0 AS a30 LEFT JOIN v12 AS a31 ON a31.c14 = 'aaabbb' ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+1.84467440737096e+19
+
+three-c
+abc
+
+v0
+hare
+-1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+
+three-c
+abc
+
+v0
+hare
+-1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+
+three-c
+abc
+
+v0
+hare
+-1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+
+three-c
+abc
+
+v0
+hare
+-1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no tables specified
+END VERI 0
+BEGIN VERI 0
+x
+aB%
+x
+v0
+v1
+v1
+v0
+e
+3
+x
+aB%
+x
+v0
+v1
+v1
+v0
+e
+3
+x
+aB%
+x
+v0
+v1
+v1
+v0
+e
+3
+x
+aB%
+x
+v0
+v1
+v1
+v0
+e
+3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no tables specified
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|hill|v0
+1.84467440737096e+19|hill|v0
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 50: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+v1|288|288
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+
+
+
+
+
+
+
+
+-1.84467440737096e+19
+-1.84467440737096e+19
+-1.84467440737096e+19
+-1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+three-c
+three-c
+three-c
+three-c
+v0
+v0
+v0
+v0
+abc
+abc
+abc
+abc
+hare
+hare
+hare
+hare
+ 
+INT: 27 
+Str: 
+1.84467440737096e+19
+1.84467440737096e+19
+
+three-c
+abc
+
+v0
+hare
+-1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+
+three-c
+abc
+
+v0
+hare
+-1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+
+three-c
+abc
+
+v0
+hare
+-1.84467440737096e+19
+1.84467440737096e+19
+1.84467440737096e+19
+
+three-c
+abc
+
+v0
+hare
+-1.84467440737096e+19
+ 
+INT: 27 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+ 
+INT: 35 
+Str: 
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+ 
+INT: 35 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 38: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+3
+3
+3
+3
+aB%
+aB%
+aB%
+aB%
+e
+e
+e
+e
+v0
+v0
+v0
+v0
+v0
+v0
+v0
+v0
+v1
+v1
+v1
+v1
+v1
+v1
+v1
+v1
+x
+x
+x
+x
+x
+x
+x
+x
+ 
+INT: 35 
+Str: 
+x
+aB%
+x
+v0
+v1
+v1
+v0
+e
+3
+x
+aB%
+x
+v0
+v1
+v1
+v0
+e
+3
+x
+aB%
+x
+v0
+v1
+v1
+v0
+e
+3
+x
+aB%
+x
+v0
+v1
+v1
+v0
+e
+3
+ 
+INT: 35 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 44: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19|hill|v0
+1.84467440737096e+19|hill|v0
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+ 
+INT: 37 
+Str: 
+1.84467440737096e+19|hill|v0
+1.84467440737096e+19|hill|v0
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+1.84467440737096e+19|v1|x
+1.84467440737096e+19|v0|aB%
+|x|x
+three-c|v1|v0
+abc|f|v1
+|C|v1
+v0|aB%|v0
+hare|v0|e
+-1.84467440737096e+19|aaabbb|3
+ 
+INT: 37 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 50: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+Str: 
+Parse error near line 50: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+v1|288|288
+ 
+INT: 0 
+Str: 
+v1|288|288
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

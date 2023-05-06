@@ -1,0 +1,294 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 TEXT, c2 INTEGER, c3 INT, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c8 + 127 ) % 0 ) != 18446744073709551488 ) ) WITHOUT ROWID; 
+CREATE INDEX i28 ON v0 ( c20 ); 
+CREATE INDEX i29 ON v0 ( c21 ); 
+CREATE INDEX i30 ON v0 ( c12 ); 
+CREATE INDEX i31 ON v0 ( c26 ); 
+ALTER TABLE v0 DROP c21; 
+CREATE INDEX i32 ON v0 ( c6 ); 
+ALTER TABLE v0 ADD COLUMN c33 TEXT DEFAULT 'v1' DEFAULT 127; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c35 ) AS ( SELECT 127 ORDER BY 127 ) SELECT * FROM v0 AS a34 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c7, count ( a36.c1 ) FROM v0 AS a36 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c7, a38.c7 FROM v0 AS a37, v0 AS a38, ( v0 AS a39 ) NATURAL JOIN ( v0 AS a40 NATURAL JOIN v0 AS a41 ) WHERE a38.c6 = a37.c12 + 127 AND a38.c18 = a37.c6 + 127 AND a39.c14 = a37.c23 + 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a42.c16, count ( a42.c24 ) FROM v0 AS a42 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 ORDER BY 222; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a44, v0 AS a45 NATURAL JOIN v0 AS a46 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT ( SELECT min ( a48.c18 ) OVER ( ORDER BY 18446744073709551488 IN v0 ) ORDER BY 127 ) FROM v0 AS a48 GROUP BY a47.c18 ORDER BY 255 ) SELECT * FROM v0 AS a47 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a49.c21, count ( ( NOT ( a49.c4 IS NULL ) ) AND ( NOT ( a49.c14 IS NULL ) ) ) FROM v0 AS a49 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 GROUP BY a50.c11, a50.c10, count ( a50.c26 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a51 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: error in index i29 after drop column: no such column: c21
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: a39.c14
+  c6 = a37.c12 + 127 AND a38.c18 = a37.c6 + 127 AND a39.c14 = a37.c23 + 18446744
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 28
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 56
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 28
+  SELECT * FROM v0 AS a51 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 TEXT, c2 INTEGER, c3 INT, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c8 + 127 ) % 0 ) != 18446744073709551488 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c21; 
+; 
+ALTER TABLE v0 ADD COLUMN c33 TEXT DEFAULT 'v1' DEFAULT 127; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c35 ) AS ( SELECT 127 ORDER BY 127 ) SELECT * FROM v0 AS a34 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c7, count ( a36.c1 ) FROM v0 AS a36 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c7, a38.c7 FROM v0 AS a37, v0 AS a38, ( v0 AS a39 ) NATURAL JOIN ( v0 AS a40 NATURAL JOIN v0 AS a41 ) WHERE a38.c6 = a37.c12 + 127 AND a38.c18 = a37.c6 + 127 AND a39.c14 = a37.c23 + 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a42.c16, count ( a42.c24 ) FROM v0 AS a42 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 ORDER BY 222; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a44, v0 AS a45 NATURAL JOIN v0 AS a46 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT ( SELECT min ( a48.c18 ) OVER ( ORDER BY 18446744073709551488 IN v0 ) ORDER BY 127 ) FROM v0 AS a48 GROUP BY a47.c18 ORDER BY 255 ) SELECT * FROM v0 AS a47 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a49.c21, count ( ( NOT ( a49.c4 IS NULL ) ) AND ( NOT ( a49.c14 IS NULL ) ) ) FROM v0 AS a49 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 GROUP BY a50.c11, a50.c10, count ( a50.c26 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a51 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: a39.c14
+  c6 = a37.c12 + 127 AND a38.c18 = a37.c6 + 127 AND a39.c14 = a37.c23 + 18446744
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 27
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 54
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a49.c21
+  SELECT a49.c21, count ( ( NOT ( a49.c4 IS NULL ) ) AND ( NOT ( a49.c14 IS NULL
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a51 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such column: a39.c14
+  c6 = a37.c12 + 127 AND a38.c18 = a37.c6 + 127 AND a39.c14 = a37.c23 + 18446744
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: no such column: a39.c14
+  c6 = a37.c12 + 127 AND a38.c18 = a37.c6 + 127 AND a39.c14 = a37.c23 + 18446744
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 28
+ 
+INT: 0 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 27
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 56
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 54
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: circular reference: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 28: circular reference: v0
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no such column: a49.c21
+  SELECT a49.c21, count ( ( NOT ( a49.c4 IS NULL ) ) AND ( NOT ( a49.c14 IS NULL
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+Str: 
+Parse error near line 34: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 28
+  SELECT * FROM v0 AS a51 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a51 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,310 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE TABLE v4 ( c5, c6, c7, CHECK( c5 > 18446744073709551488 ) ); 
+CREATE INDEX i8 ON v0 ( c1 ); 
+CREATE INDEX i9 ON v4 ( c7 ); 
+CREATE TABLE v10 ( c11, c12 INT, c13 CHECK( c11 > 9223372036854775807 ) ); 
+INSERT INTO v4 VALUES ( 9223372036854775807, 18446744073709551488, 4294967295 ); 
+INSERT INTO v4 VALUES ( 18446744073709551488, 9223372036854775807, 18446744073709551488 ); 
+CREATE INDEX i14 ON v4 ( c6 ); 
+INSERT INTO v4 VALUES ( 18446744073709551488, 18446744073709551488, 18446744073709551488 ); 
+CREATE INDEX i15 ON v10 ( c13 ); 
+CREATE INDEX i16 ON v10 ( c12 ); 
+ALTER TABLE v4 DROP COLUMN c6; 
+SELECT 'BEGIN VERI 0'; 
+WITH v4 ( c18 ) AS ( WITH v10 ( c19 ) AS ( WITH v20 ( c21 ) AS ( WITH v22 ( c23 ) AS ( WITH v24 ( c25, c26, c27, c28, c29, c30 ) AS ( SELECT 18446744073709551488 y ORDER BY ( ( a17.c18 + 4294967295 ) % 6 ) < 111 ) SELECT 18446744071562067968 ORDER BY 9223372036854775807 ) SELECT 9 ORDER BY 18446744073709551488 ) SELECT 16 ORDER BY 18446744073709551488 ) SELECT 9223372036854775807 ORDER BY 18446744073709551488 ) SELECT * FROM v4 AS a17 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c1, a31.c1 FROM v10 AS a31 NATURAL JOIN v0 AS a32 ON a32.c2 = y ( a32.c2, a31.c1, a32.c1 COLLATE NOCASE ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 GROUP BY a33.c2, abs ( a33.c1 ) HAVING count ( * ) >= 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a34 ORDER BY a34.c6 % 18446744073709551488 >= 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 ( c37 ) AS ( WITH v38 ( c39 ) AS ( WITH v35 AS ( SELECT ( SELECT min ( c37 ) OVER ( ORDER BY 9223372036854775807 IN v38 ) ORDER BY 18446744073709551488 ) FROM v38 AS a40 GROUP BY c39 ORDER BY 0 ) SELECT 18446744073709551488 ORDER BY 18446744073709551615 ) SELECT 18446744073709551488 ORDER BY 18446744073709551488 ) SELECT * FROM v35 AS a36 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c1, max ( a41.c1 || a41.c3 ) FROM v0 AS a41 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a42, v10 AS a43 NATURAL JOIN v4 AS a44 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v45 ( c47 ) AS ( SELECT 8 GROUP BY c47 HAVING automatic_index ( * ) >= 18446744073709551615 ORDER BY 18446744073709551488 ) SELECT * FROM v45 AS a46 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a48.c19 IS NULL ) ) AND ( NOT ( a48.c1 IS NULL ) ) ) FROM v10 AS a48 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a49 ORDER BY ( a49.c12 + 9223372036854775807 ) % count ( a49.c13 ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: CHECK constraint failed: c5 > 18446744073709551488 (19)
+Runtime error near line 7: CHECK constraint failed: c5 > 18446744073709551488 (19)
+Runtime error near line 9: CHECK constraint failed: c5 > 18446744073709551488 (19)
+Runtime error near line 12: error in index i14 after drop column: no such column: c6
+BEGIN VERI 0
+9223372036854775807
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: a NATURAL join may not have an ON or USING clause
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such function: automatic_index
+  ITH v45 ( c47 ) AS ( SELECT 8 GROUP BY c47 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a48.c19
+  SELECT count ( ( NOT ( a48.c19 IS NULL ) ) AND ( NOT ( a48.c1 IS NULL ) ) ) FR
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: misuse of aggregate: count()
+   a49 ORDER BY ( a49.c12 + 9223372036854775807 ) % count ( a49.c13 ); 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE TABLE v4 ( c5, c6, c7, CHECK( c5 > 18446744073709551488 ) ); 
+; 
+; 
+CREATE TABLE v10 ( c11, c12 INT, c13 CHECK( c11 > 9223372036854775807 ) ); 
+INSERT INTO v4 VALUES ( 9223372036854775807, 18446744073709551488, 4294967295 ); 
+INSERT INTO v4 VALUES ( 18446744073709551488, 9223372036854775807, 18446744073709551488 ); 
+; 
+INSERT INTO v4 VALUES ( 18446744073709551488, 18446744073709551488, 18446744073709551488 ); 
+; 
+; 
+ALTER TABLE v4 DROP COLUMN c6; 
+SELECT 'BEGIN VERI 0'; 
+WITH v4 ( c18 ) AS ( WITH v10 ( c19 ) AS ( WITH v20 ( c21 ) AS ( WITH v22 ( c23 ) AS ( WITH v24 ( c25, c26, c27, c28, c29, c30 ) AS ( SELECT 18446744073709551488 y ORDER BY ( ( a17.c18 + 4294967295 ) % 6 ) < 111 ) SELECT 18446744071562067968 ORDER BY 9223372036854775807 ) SELECT 9 ORDER BY 18446744073709551488 ) SELECT 16 ORDER BY 18446744073709551488 ) SELECT 9223372036854775807 ORDER BY 18446744073709551488 ) SELECT * FROM v4 AS a17 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c1, a31.c1 FROM v10 AS a31 NATURAL JOIN v0 AS a32 ON a32.c2 = y ( a32.c2, a31.c1, a32.c1 COLLATE NOCASE ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 GROUP BY a33.c2, abs ( a33.c1 ) HAVING count ( * ) >= 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a34 ORDER BY a34.c6 % 18446744073709551488 >= 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 ( c37 ) AS ( WITH v38 ( c39 ) AS ( WITH v35 AS ( SELECT ( SELECT min ( c37 ) OVER ( ORDER BY 9223372036854775807 IN v38 ) ORDER BY 18446744073709551488 ) FROM v38 AS a40 GROUP BY c39 ORDER BY 0 ) SELECT 18446744073709551488 ORDER BY 18446744073709551615 ) SELECT 18446744073709551488 ORDER BY 18446744073709551488 ) SELECT * FROM v35 AS a36 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c1, max ( a41.c1 || a41.c3 ) FROM v0 AS a41 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a42, v10 AS a43 NATURAL JOIN v4 AS a44 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v45 ( c47 ) AS ( SELECT 8 GROUP BY c47 HAVING automatic_index ( * ) >= 18446744073709551615 ORDER BY 18446744073709551488 ) SELECT * FROM v45 AS a46 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a48.c19 IS NULL ) ) AND ( NOT ( a48.c1 IS NULL ) ) ) FROM v10 AS a48 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a49 ORDER BY ( a49.c12 + 9223372036854775807 ) % count ( a49.c13 ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: CHECK constraint failed: c5 > 18446744073709551488 (19)
+Runtime error near line 7: CHECK constraint failed: c5 > 18446744073709551488 (19)
+Runtime error near line 9: CHECK constraint failed: c5 > 18446744073709551488 (19)
+BEGIN VERI 0
+9223372036854775807
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: a NATURAL join may not have an ON or USING clause
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a34.c6
+  SELECT * FROM v4 AS a34 ORDER BY a34.c6 % 18446744073709551488 >= 922337203685
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such function: automatic_index
+  ITH v45 ( c47 ) AS ( SELECT 8 GROUP BY c47 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a48.c19
+  SELECT count ( ( NOT ( a48.c19 IS NULL ) ) AND ( NOT ( a48.c1 IS NULL ) ) ) FR
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: misuse of aggregate: count()
+   a49 ORDER BY ( a49.c12 + 9223372036854775807 ) % count ( a49.c13 ); 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+9223372036854775807
+ 
+INT: 0 
+Str: 
+9223372036854775807
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: a NATURAL join may not have an ON or USING clause
+ 
+INT: 0 
+Str: 
+Parse error near line 17: a NATURAL join may not have an ON or USING clause
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 23: no such column: a34.c6
+  SELECT * FROM v4 AS a34 ORDER BY a34.c6 % 18446744073709551488 >= 922337203685
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 9
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no such function: automatic_index
+  ITH v45 ( c47 ) AS ( SELECT 8 GROUP BY c47 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: no such function: automatic_index
+  ITH v45 ( c47 ) AS ( SELECT 8 GROUP BY c47 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no such column: a48.c19
+  SELECT count ( ( NOT ( a48.c19 IS NULL ) ) AND ( NOT ( a48.c1 IS NULL ) ) ) FR
+                         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 38: no such column: a48.c19
+  SELECT count ( ( NOT ( a48.c19 IS NULL ) ) AND ( NOT ( a48.c1 IS NULL ) ) ) FR
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: misuse of aggregate: count()
+   a49 ORDER BY ( a49.c12 + 9223372036854775807 ) % count ( a49.c13 ); 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: misuse of aggregate: count()
+   a49 ORDER BY ( a49.c12 + 9223372036854775807 ) % count ( a49.c13 ); 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

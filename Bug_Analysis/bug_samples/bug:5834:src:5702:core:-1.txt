@@ -1,0 +1,341 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4, c5, c6, c7, c8, c9, c10 REFERENCES t1 DEFAULT NULL, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 INTEGER PRIMARY KEY, c24 ); 
+CREATE INDEX i25 ON v0 ( c2 ); 
+CREATE INDEX i26 ON v3 ( c10 ); 
+CREATE TABLE v27 ( c28, c29 INTEGER UNIQUE ON CONFLICT FAIL, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39 AS( c51 + c36 - c31 ) NOT NULL, c40, c41, c42, c43, c44, c45, c46, c47, c48, c49, c50, c51 INTEGER NOT NULL CHECK( c45 BETWEEN c30 AND c30 ), c52, c53, c54, c55, c56, c57, c58, c59, c60, c61 PRIMARY KEY ON CONFLICT REPLACE, c62, c63, c64 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v65 USING rtree ( c66, c67, c68, c69, c70, c71, c72, c73, c74 ); 
+CREATE TABLE v75 ( c76, c77, c78, c79, c80, c81, c82, c83, c84, c85, c86, c87, c88, c89, c90, c91, c92 TEXT UNIQUE NOT NULL ); 
+INSERT INTO v27 VALUES ( 0, 'x' ), ( 0, 'x' ), ( 2147483647, 'x' ); 
+CREATE TABLE v93 ( c94 DEFAULT x'ABCD' DEFAULT 8, c95 NOT NULL DEFAULT 0, c96 NOT NULL ON CONFLICT REPLACE DEFAULT 18446744073709551488, c97 NOT NULL ON CONFLICT IGNORE DEFAULT 100, c98 NOT NULL ON CONFLICT ABORT DEFAULT 0 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v27 BEGIN DELETE FROM v93; END; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i99 ON v27 ( c43 ); 
+INSERT INTO v75 VALUES ( 2147483647, 2147483647 ), ( 2147483647, 2147483647 ), ( 16, 0 ), ( 2147483647, 2147483647 ), ( 18446744073709551615, 2147483647 ); 
+UPDATE v3 SET c19 = 'v1' WHERE c7 = 18446744073709551488; 
+CREATE INDEX i100 ON v65 ( c74 ); 
+CREATE INDEX i101 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v65 AS a102 NATURAL JOIN v75 AS a103 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a104 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a105.c87 ) FROM v75 AS a105 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a106.c2 || a106.c1 ) FROM v0 AS a106 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a107.c84, a108.c14 FROM v75 AS a107 RIGHT JOIN v3 AS a108 ON a107.c78 = a108.c18 WHERE a108.c16 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a109.c68, max ( a109.c71 || a109.c74 ) FROM v65 AS a109 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a110.c2 FROM v0 AS a110 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a111, v27 AS a112 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v65 AS a113 ORDER BY 2147483647 COLLATE binary, 18446744073709551615 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a114 NATURAL JOIN v65 AS a115 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: table v27 has 36 columns but 2 values were supplied
+Runtime error near line 11: error in index i25 after drop column: no such column: c2
+Parse error near line 13: table v75 has 17 columns but 2 values were supplied
+Parse error near line 15: virtual tables may not be indexed
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 26
+  ROM v65 AS a102 NATURAL JOIN v75 AS a103 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+  LECT count ( a105.c87 ) FROM v75 AS a105 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+   a109.c71 || a109.c74 ) FROM v65 AS a109 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 58
+  SELECT * FROM v3 AS a111, v27 AS a112 ORDER BY 0; 
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 9
+  SELECT * FROM v65 AS a113 ORDER BY 2147483647 COLLATE binary, 1844674407370955
+                       error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: 1st ORDER BY term out of range - should be between 1 and 30
+  FROM v3 AS a114 NATURAL JOIN v65 AS a115 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4, c5, c6, c7, c8, c9, c10 REFERENCES t1 DEFAULT NULL, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 INTEGER PRIMARY KEY, c24 ); 
+; 
+; 
+CREATE TABLE v27 ( c28, c29 INTEGER UNIQUE ON CONFLICT FAIL, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39 AS( c51 + c36 - c31 ) NOT NULL, c40, c41, c42, c43, c44, c45, c46, c47, c48, c49, c50, c51 INTEGER NOT NULL CHECK( c45 BETWEEN c30 AND c30 ), c52, c53, c54, c55, c56, c57, c58, c59, c60, c61 PRIMARY KEY ON CONFLICT REPLACE, c62, c63, c64 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v65 USING rtree ( c66, c67, c68, c69, c70, c71, c72, c73, c74 ); 
+CREATE TABLE v75 ( c76, c77, c78, c79, c80, c81, c82, c83, c84, c85, c86, c87, c88, c89, c90, c91, c92 TEXT UNIQUE NOT NULL ); 
+INSERT INTO v27 VALUES ( 0, 'x' ), ( 0, 'x' ), ( 2147483647, 'x' ); 
+CREATE TABLE v93 ( c94 DEFAULT x'ABCD' DEFAULT 8, c95 NOT NULL DEFAULT 0, c96 NOT NULL ON CONFLICT REPLACE DEFAULT 18446744073709551488, c97 NOT NULL ON CONFLICT IGNORE DEFAULT 100, c98 NOT NULL ON CONFLICT ABORT DEFAULT 0 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v27 BEGIN DELETE FROM v93; END; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+INSERT INTO v75 VALUES ( 2147483647, 2147483647 ), ( 2147483647, 2147483647 ), ( 16, 0 ), ( 2147483647, 2147483647 ), ( 18446744073709551615, 2147483647 ); 
+UPDATE v3 SET c19 = 'v1' WHERE c7 = 18446744073709551488; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v65 AS a102 NATURAL JOIN v75 AS a103 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a104 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a105.c87 ) FROM v75 AS a105 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a106.c2 || a106.c1 ) FROM v0 AS a106 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a107.c84, a108.c14 FROM v75 AS a107 RIGHT JOIN v3 AS a108 ON a107.c78 = a108.c18 WHERE a108.c16 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a109.c68, max ( a109.c71 || a109.c74 ) FROM v65 AS a109 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a110.c2 FROM v0 AS a110 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a111, v27 AS a112 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v65 AS a113 ORDER BY 2147483647 COLLATE binary, 18446744073709551615 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a114 NATURAL JOIN v65 AS a115 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: table v27 has 36 columns but 2 values were supplied
+Parse error near line 13: table v75 has 17 columns but 2 values were supplied
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 26
+  ROM v65 AS a102 NATURAL JOIN v75 AS a103 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+  LECT count ( a105.c87 ) FROM v75 AS a105 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a106.c2
+  SELECT max ( a106.c2 || a106.c1 ) FROM v0 AS a106 ORDER BY 1844674407156206796
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+   a109.c71 || a109.c74 ) FROM v65 AS a109 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a110.c2
+  SELECT a110.c2 FROM v0 AS a110 ORDER BY 18446744071562067968; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 58
+  SELECT * FROM v3 AS a111, v27 AS a112 ORDER BY 0; 
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 9
+  SELECT * FROM v65 AS a113 ORDER BY 2147483647 COLLATE binary, 1844674407370955
+                       error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: 1st ORDER BY term out of range - should be between 1 and 30
+  FROM v3 AS a114 NATURAL JOIN v65 AS a115 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 26
+  ROM v65 AS a102 NATURAL JOIN v75 AS a103 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 26
+  ROM v65 AS a102 NATURAL JOIN v75 AS a103 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+  LECT count ( a105.c87 ) FROM v75 AS a105 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+  LECT count ( a105.c87 ) FROM v75 AS a105 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+Parse error near line 27: no such column: a106.c2
+  SELECT max ( a106.c2 || a106.c1 ) FROM v0 AS a106 ORDER BY 1844674407156206796
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+   a109.c71 || a109.c74 ) FROM v65 AS a109 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+   a109.c71 || a109.c74 ) FROM v65 AS a109 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 36: no such column: a110.c2
+  SELECT a110.c2 FROM v0 AS a110 ORDER BY 18446744071562067968; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 58
+  SELECT * FROM v3 AS a111, v27 AS a112 ORDER BY 0; 
+                                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 58
+  SELECT * FROM v3 AS a111, v27 AS a112 ORDER BY 0; 
+                                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 9
+  SELECT * FROM v65 AS a113 ORDER BY 2147483647 COLLATE binary, 1844674407370955
+                       error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 9
+  SELECT * FROM v65 AS a113 ORDER BY 2147483647 COLLATE binary, 1844674407370955
+                       error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 45: 1st ORDER BY term out of range - should be between 1 and 30
+  FROM v3 AS a114 NATURAL JOIN v65 AS a115 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 45: 1st ORDER BY term out of range - should be between 1 and 30
+  FROM v3 AS a114 NATURAL JOIN v65 AS a115 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

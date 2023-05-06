@@ -1,0 +1,317 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, PRIMARY KEY ( c1 ), CHECK( c1 != c1 ), CHECK( c3 != c1 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c1 = c3 || c3 WHERE c2 = c2 || c1; END; 
+CREATE TABLE v5 ( c6, c7, c8, c9, PRIMARY KEY ( c9, c9 ) ) WITHOUT ROWID; 
+CREATE INDEX i10 ON v0 ( c1 ); 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551488, 10, 18446744073709551488, 10 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+CREATE INDEX i11 ON v5 ( c7 ); 
+ALTER TABLE v5 DROP COLUMN c7; 
+CREATE INDEX i12 ON v5 ( c6 ); 
+INSERT OR REPLACE INTO v5 ( c9, c7, c7, c6, c8 ) VALUES ( 18446744073709551488, 18446744073709551615, NULL, 18446744073709551488, 18446744073709551488 ); 
+CREATE INDEX i13 ON v0 ( c1 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a15.c6 + ( SELECT max ( a18.c9 ) FROM v5 AS a18 ORDER BY 18446744073709551488 ), a15.c7 + ( SELECT max ( a15.c6 || a15.c6 ) FROM v0 AS a17 ORDER BY 18446744073709551488 ), a15.c6 + ( SELECT max ( a16.c8 ) FROM v5 AS a16 ORDER BY 18446744073709551488 ) FROM v5 AS a15 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 ORDER BY a19.c1 + 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v20 ( c22 ) AS ( SELECT ( ( c6 + - 10 ) % 10 ) ORDER BY 18446744073709551615 ) SELECT * FROM v20 AS a21 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c2, max ( a23.c2 || a23.c3 ) FROM v0 AS a23 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c9, max ( a24.c9 || a24.c9 ) FROM v5 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a25 WHERE ( a25.c8 = 18446744073709551488 OR a25.c6 = 18446744073709551615 ) AND a25.c7 IN ( SELECT a25.c9 FROM ( SELECT *, 'v0' FROM v5 AS a26 LEFT JOIN v0 AS a27 ON a27.c2 = 18446744073709551488 AND ( ( SELECT * FROM v5 AS a28 WHERE a28.c7 = a25.c8 || a28.c8 ORDER BY 18446744073709551488 ) % 18446744073709551488 ) != 10 ORDER BY 10 ) AS y WHERE a25.c9 = 0 ORDER BY 0 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a29 WHERE ( a29.c8 || a29.c9 || a29.c8 ) != 'bbb' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 ( c32 ) AS ( WITH v33 ( c34 ) AS ( WITH v33 ( c35 ) AS ( WITH v30 ( c36 ) AS ( WITH v37 ( c38, c39, c40, c41, c42, c43 ) AS ( SELECT 10 y ORDER BY ( ( c38 + 8 ) % 18446744071562067968 ) < 100 ) SELECT 10 ORDER BY 127 ) SELECT 18446744073709551615 ORDER BY 127 ) SELECT 18446744073709551488 ORDER BY 10 ) SELECT 10 ORDER BY 10 ) SELECT * FROM v30 AS a31 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c9 FROM v5 AS a44 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 7: near "ORDER": syntax error
+  46744073709551488, 10, 18446744073709551488, 10 ) ORDER BY 1; 
+                                      error here ---^
+END VERI 0
+Runtime error near line 10: error in index i11 after drop column: no such column: c7
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+3.68934881474191e+19||3.68934881474191e+19
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: c6
+  WITH v20 ( c22 ) AS ( SELECT ( ( c6 + - 10 ) % 10 ) ORDER BY 18446744073709551
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1.84467440737096e+191.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, PRIMARY KEY ( c1 ), CHECK( c1 != c1 ), CHECK( c3 != c1 ) ) WITHOUT ROWID; 
+; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c1 = c3 || c3 WHERE c2 = c2 || c1; END; 
+CREATE TABLE v5 ( c6, c7, c8, c9, PRIMARY KEY ( c9, c9 ) ) WITHOUT ROWID; 
+; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551488, 10, 18446744073709551488, 10 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+; 
+ALTER TABLE v5 DROP COLUMN c7; 
+; 
+INSERT OR REPLACE INTO v5 ( c9, c7, c7, c6, c8 ) VALUES ( 18446744073709551488, 18446744073709551615, NULL, 18446744073709551488, 18446744073709551488 ); 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a15.c6 + ( SELECT max ( a18.c9 ) FROM v5 AS a18 ORDER BY 18446744073709551488 ), a15.c7 + ( SELECT max ( a15.c6 || a15.c6 ) FROM v0 AS a17 ORDER BY 18446744073709551488 ), a15.c6 + ( SELECT max ( a16.c8 ) FROM v5 AS a16 ORDER BY 18446744073709551488 ) FROM v5 AS a15 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 ORDER BY a19.c1 + 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v20 ( c22 ) AS ( SELECT ( ( c6 + - 10 ) % 10 ) ORDER BY 18446744073709551615 ) SELECT * FROM v20 AS a21 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c2, max ( a23.c2 || a23.c3 ) FROM v0 AS a23 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c9, max ( a24.c9 || a24.c9 ) FROM v5 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a25 WHERE ( a25.c8 = 18446744073709551488 OR a25.c6 = 18446744073709551615 ) AND a25.c7 IN ( SELECT a25.c9 FROM ( SELECT *, 'v0' FROM v5 AS a26 LEFT JOIN v0 AS a27 ON a27.c2 = 18446744073709551488 AND ( ( SELECT * FROM v5 AS a28 WHERE a28.c7 = a25.c8 || a28.c8 ORDER BY 18446744073709551488 ) % 18446744073709551488 ) != 10 ORDER BY 10 ) AS y WHERE a25.c9 = 0 ORDER BY 0 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a29 WHERE ( a29.c8 || a29.c9 || a29.c8 ) != 'bbb' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 ( c32 ) AS ( WITH v33 ( c34 ) AS ( WITH v33 ( c35 ) AS ( WITH v30 ( c36 ) AS ( WITH v37 ( c38, c39, c40, c41, c42, c43 ) AS ( SELECT 10 y ORDER BY ( ( c38 + 8 ) % 18446744071562067968 ) < 100 ) SELECT 10 ORDER BY 127 ) SELECT 18446744073709551615 ORDER BY 127 ) SELECT 18446744073709551488 ORDER BY 10 ) SELECT 10 ORDER BY 10 ) SELECT * FROM v30 AS a31 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c9 FROM v5 AS a44 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 7: near "ORDER": syntax error
+  46744073709551488, 10, 18446744073709551488, 10 ) ORDER BY 1; 
+                                      error here ---^
+END VERI 0
+Parse error near line 12: table v5 has no column named c7
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: a15.c7
+  ) FROM v5 AS a18 ORDER BY 18446744073709551488 ), a15.c7 + ( SELECT max ( a15.
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: c6
+  WITH v20 ( c22 ) AS ( SELECT ( ( c6 + - 10 ) % 10 ) ORDER BY 18446744073709551
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a28.c7
+  73709551488 AND ( ( SELECT * FROM v5 AS a28 WHERE a28.c7 = a25.c8 || a28.c8 OR
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 40589200
+Str: 
+Parse error near line 7: near "ORDER": syntax error
+  46744073709551488, 10, 18446744073709551488, 10 ) ORDER BY 1; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 7: near "ORDER": syntax error
+  46744073709551488, 10, 18446744073709551488, 10 ) ORDER BY 1; 
+                                      error here ---^
+ 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+3.68934881474191e+19||3.68934881474191e+19
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such column: a15.c7
+  ) FROM v5 AS a18 ORDER BY 18446744073709551488 ), a15.c7 + ( SELECT max ( a15.
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such column: c6
+  WITH v20 ( c22 ) AS ( SELECT ( ( c6 + - 10 ) % 10 ) ORDER BY 18446744073709551
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: no such column: c6
+  WITH v20 ( c22 ) AS ( SELECT ( ( c6 + - 10 ) % 10 ) ORDER BY 18446744073709551
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19|1.84467440737096e+191.84467440737096e+19
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such column: a28.c7
+  73709551488 AND ( ( SELECT * FROM v5 AS a28 WHERE a28.c7 = a25.c8 || a28.c8 OR
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19|1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 10 
+RESULT FLAGS: 0
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

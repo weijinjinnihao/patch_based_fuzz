@@ -1,0 +1,293 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 INTEGER NOT NULL, c3 INTEGER NOT NULL, c4 TEXT, UNIQUE ( c2, c1 ) ) WITHOUT ROWID; 
+CREATE INDEX i5 ON v0 ( c4 ); 
+CREATE VIEW v6 AS SELECT * FROM v0 AS a7 ORDER BY 127; 
+CREATE INDEX i8 ON v0 ( c4 ); 
+CREATE INDEX i9 ON v6 ( c4 ); 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12, c13 UNIQUE ); 
+CREATE TABLE v14 ( c15, c16, c17 ); 
+ALTER TABLE v0 DROP COLUMN c4; 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+CREATE INDEX i21 ON v0 ( c1 ); 
+CREATE TABLE v22 AS SELECT c17 FROM v14 AS a23 ORDER BY 127; 
+CREATE INDEX i24 ON v0 ( c1 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c17 FROM v14 AS a25 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a26, v22 AS a27 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a28 NATURAL JOIN v22 AS a29 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a30 NATURAL JOIN v10 AS a31 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a32 ORDER BY max ( a32.c3 + a32.c1 * 127 ) + 18446744073709551615, min ( a32.c3, avg ( a32.c1 ) ) + 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c4 FROM v0 AS a33 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a34, v14 AS a35 NATURAL JOIN v6 AS a36 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a37 GROUP BY c1, c19 < y ( c16 ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a38, v10 AS a39 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a40 WHERE a40.c15 IS 100 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: views may not be indexed
+Runtime error near line 8: error in index i5 after drop column: no such column: c4
+Runtime error near line 10: no such module: fts5
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 INTEGER NOT NULL, c3 INTEGER NOT NULL, c4 TEXT, UNIQUE ( c2, c1 ) ) WITHOUT ROWID; 
+; 
+CREATE VIEW v6 AS SELECT * FROM v0 AS a7 ORDER BY 127; 
+; 
+; 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12, c13 UNIQUE ); 
+CREATE TABLE v14 ( c15, c16, c17 ); 
+ALTER TABLE v0 DROP COLUMN c4; 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+; 
+CREATE TABLE v22 AS SELECT c17 FROM v14 AS a23 ORDER BY 127; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c17 FROM v14 AS a25 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a26, v22 AS a27 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a28 NATURAL JOIN v22 AS a29 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a30 NATURAL JOIN v10 AS a31 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a32 ORDER BY max ( a32.c3 + a32.c1 * 127 ) + 18446744073709551615, min ( a32.c3, avg ( a32.c1 ) ) + 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c4 FROM v0 AS a33 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a34, v14 AS a35 NATURAL JOIN v6 AS a36 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a37 GROUP BY c1, c19 < y ( c16 ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a38, v10 AS a39 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a40 WHERE a40.c15 IS 100 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: no such module: fts5
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a33.c4
+  SELECT a33.c4 FROM v0 AS a33 ORDER BY 127; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such table: v22
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such table: v22
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such table: v22
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no such table: v22
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no such column: a33.c4
+  SELECT a33.c4 FROM v0 AS a33 ORDER BY 127; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v22
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v22
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

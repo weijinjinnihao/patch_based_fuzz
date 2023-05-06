@@ -1,0 +1,306 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 16; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+CREATE INDEX i10 ON v0 ( c1 ); 
+CREATE INDEX i11 ON v4 ( c3 ); 
+CREATE TABLE v12 ( c13 AS( c15 + c37 ( ( ( ( c13 + 16 ) % 16 ) == 16 ) % c14 != automatic_index ( * ) ) != 16 ) CHECK( x'b1' ), c14 INTEGER PRIMARY KEY, c15 ); 
+CREATE INDEX i16 ON v12 ( c14 ); 
+ALTER TABLE v12 DROP COLUMN c15; 
+CREATE INDEX i17 ON v6 ( c9 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i18 ON v0 ( c1 ); 
+CREATE VIRTUAL TABLE v19 USING rtree ( c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c7 FROM v6 AS a31 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a32 WHERE a32.c14 IS 16 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a33 WHERE ( a33.c1 = 16 OR a33.c2 = 16 ) AND a33.c2 IN ( SELECT count ( ( NOT ( a33.c2 IS NULL ) ) AND ( NOT ( a33.c1 IS NULL ) ) ) FROM ( SELECT *, 'D' FROM v19 AS a34 LEFT JOIN v6 AS a35 ON a33.c2 = 16 AND a35.c9 = 18446744073709551488 ORDER BY 16 ) AS y WHERE a33.c2 = 16 ORDER BY 16 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a36 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.c9, count ( a37.c8 ) FROM v6 AS a37 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a38 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a40.c3 IS NULL ) ) AND ( NOT ( a40.c1 IS NULL ) ) ) FROM v0 AS a40 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a41, v0 AS a42 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a43 WHERE a43.c9 = 'v0' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: views may not be indexed
+Parse error near line 6: no such function: c37
+  CREATE TABLE v12 ( c13 AS( c15 + c37 ( ( ( ( c13 + 16 ) % 16 ) == 16 ) % c14 !
+                     error here ---^
+Parse error near line 7: no such table: main.v12
+Parse error near line 8: no such table: v12
+Runtime error near line 10: error in index i10 after drop column: no such column: c1
+Runtime error near line 13: error in index i10 after drop column: no such column: c1
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: a32.c14
+  SELECT * FROM v19 AS a32 WHERE a32.c14 IS 16 ORDER BY 16; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v12
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 11
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 16; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+; 
+; 
+CREATE TABLE v12 ( c13 AS( c15 + c37 ( ( ( ( c13 + 16 ) % 16 ) == 16 ) % c14 != automatic_index ( * ) ) != 16 ) CHECK( x'b1' ), c14 INTEGER PRIMARY KEY, c15 ); 
+; 
+ALTER TABLE v12 DROP COLUMN c15; 
+; 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+CREATE VIRTUAL TABLE v19 USING rtree ( c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c7 FROM v6 AS a31 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a32 WHERE a32.c14 IS 16 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a33 WHERE ( a33.c1 = 16 OR a33.c2 = 16 ) AND a33.c2 IN ( SELECT count ( ( NOT ( a33.c2 IS NULL ) ) AND ( NOT ( a33.c1 IS NULL ) ) ) FROM ( SELECT *, 'D' FROM v19 AS a34 LEFT JOIN v6 AS a35 ON a33.c2 = 16 AND a35.c9 = 18446744073709551488 ORDER BY 16 ) AS y WHERE a33.c2 = 16 ORDER BY 16 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a36 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.c9, count ( a37.c8 ) FROM v6 AS a37 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a38 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a40.c3 IS NULL ) ) AND ( NOT ( a40.c1 IS NULL ) ) ) FROM v0 AS a40 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a41, v0 AS a42 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a43 WHERE a43.c9 = 'v0' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: no such function: c37
+  CREATE TABLE v12 ( c13 AS( c15 + c37 ( ( ( ( c13 + 16 ) % 16 ) == 16 ) % c14 !
+                     error here ---^
+Parse error near line 8: no such table: v12
+Parse error near line 13: no such column: "c1"
+  ALTER TABLE v0 DROP COLUMN c1; 
+               error here ---^
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: a32.c14
+  SELECT * FROM v19 AS a32 WHERE a32.c14 IS 16 ORDER BY 16; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v12
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 11
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a40.c1
+  CT count ( ( NOT ( a40.c3 IS NULL ) ) AND ( NOT ( a40.c1 IS NULL ) ) ) FROM v0
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such column: a32.c14
+  SELECT * FROM v19 AS a32 WHERE a32.c14 IS 16 ORDER BY 16; 
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 18: no such column: a32.c14
+  SELECT * FROM v19 AS a32 WHERE a32.c14 IS 16 ORDER BY 16; 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v12
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v12
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 11
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 11
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such column: a40.c1
+  CT count ( ( NOT ( a40.c3 IS NULL ) ) AND ( NOT ( a40.c1 IS NULL ) ) ) FROM v0
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

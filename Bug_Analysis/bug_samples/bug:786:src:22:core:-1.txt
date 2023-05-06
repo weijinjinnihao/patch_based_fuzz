@@ -1,0 +1,300 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c1 > 18446744071562067968 ), c4 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE INDEX i6 ON v0 ( c4 ); 
+INSERT INTO v0 VALUES ( 18446744071562067968, 18446744071562067968, 18446744071562067968, 0 ), ( 0, 0, 9223372036854775807, 18446744071562067968 ); 
+CREATE TABLE v7 ( c8, c9, c10, c11, CHECK( c10 > 0 ) ); 
+CREATE INDEX i12 ON v0 ( c3 ); 
+INSERT INTO v7 VALUES ( 18446744073709551488, 0, 0, 9223372036854775807 ), ( 18446744073709551488, 16, 18446744071562067968, 0 ); 
+INSERT INTO v7 VALUES ( 18446744071562067968, 18446744071562067968, 18446744073709551488, 18446744071562067968 ); 
+INSERT INTO v7 VALUES ( 4294967295, 18446744071562067968, 0, 255 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i13 ON v7 ( c11 ); 
+CREATE INDEX i14 ON v0 ( c4 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a15 GROUP BY a15.c11, a15.c11 < a15.c11 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 GROUP BY a17.c4 HAVING count ( * ) >= 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c4, max ( a18.c3 || a18.c3 ) FROM v0 AS a18 WHERE count ( * ) >= 18446744071562067968 = 'v0' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19, v0 AS a20 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a21 WHERE a21.c10 NOT NULL ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a22.c3 IS NULL ) ) AND ( NOT ( a22.c2 IS NULL ) ) ) FROM v0 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a24 ORDER BY + a24.c9; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c8, max ( a25.c9 || a25.c8 ) FROM v7 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 4: CHECK constraint failed: c1 > 18446744071562067968 (19)
+Runtime error near line 7: CHECK constraint failed: c10 > 0 (19)
+Runtime error near line 9: CHECK constraint failed: c10 > 0 (19)
+Runtime error near line 10: error in index i5 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 4
+   GROUP BY a17.c4 HAVING count ( * ) >= 0 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+  unt ( * ) >= 18446744071562067968 = 'v0' ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|1.84467440715621e+19|1.84467440737096e+19|1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|1.84467440715621e+191.84467440715621e+19
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c1 > 18446744071562067968 ), c4 ); 
+; 
+; 
+INSERT INTO v0 VALUES ( 18446744071562067968, 18446744071562067968, 18446744071562067968, 0 ), ( 0, 0, 9223372036854775807, 18446744071562067968 ); 
+CREATE TABLE v7 ( c8, c9, c10, c11, CHECK( c10 > 0 ) ); 
+; 
+INSERT INTO v7 VALUES ( 18446744073709551488, 0, 0, 9223372036854775807 ), ( 18446744073709551488, 16, 18446744071562067968, 0 ); 
+INSERT INTO v7 VALUES ( 18446744071562067968, 18446744071562067968, 18446744073709551488, 18446744071562067968 ); 
+INSERT INTO v7 VALUES ( 4294967295, 18446744071562067968, 0, 255 ); 
+ALTER TABLE v0 DROP c2; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a15 GROUP BY a15.c11, a15.c11 < a15.c11 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 GROUP BY a17.c4 HAVING count ( * ) >= 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c4, max ( a18.c3 || a18.c3 ) FROM v0 AS a18 WHERE count ( * ) >= 18446744071562067968 = 'v0' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19, v0 AS a20 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a21 WHERE a21.c10 NOT NULL ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a22.c3 IS NULL ) ) AND ( NOT ( a22.c2 IS NULL ) ) ) FROM v0 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a24 ORDER BY + a24.c9; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c8, max ( a25.c9 || a25.c8 ) FROM v7 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 4: CHECK constraint failed: c1 > 18446744071562067968 (19)
+Runtime error near line 7: CHECK constraint failed: c10 > 0 (19)
+Runtime error near line 9: CHECK constraint failed: c10 > 0 (19)
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+   GROUP BY a17.c4 HAVING count ( * ) >= 0 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+  unt ( * ) >= 18446744071562067968 = 'v0' ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a22.c2
+  CT count ( ( NOT ( a22.c3 IS NULL ) ) AND ( NOT ( a22.c2 IS NULL ) ) ) FROM v0
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|1.84467440715621e+19|1.84467440737096e+19|1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|1.84467440715621e+191.84467440715621e+19
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 4
+   GROUP BY a17.c4 HAVING count ( * ) >= 0 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+   GROUP BY a17.c4 HAVING count ( * ) >= 0 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+  unt ( * ) >= 18446744071562067968 = 'v0' ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+  unt ( * ) >= 18446744071562067968 = 'v0' ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+0
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such column: a22.c2
+  CT count ( ( NOT ( a22.c3 IS NULL ) ) AND ( NOT ( a22.c2 IS NULL ) ) ) FROM v0
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+1.84467440715621e+19|1.84467440715621e+19|1.84467440737096e+19|1.84467440715621e+19
+ 
+INT: 0 
+Str: 
+1.84467440715621e+19|1.84467440715621e+19|1.84467440737096e+19|1.84467440715621e+19
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+1.84467440715621e+19|1.84467440715621e+191.84467440715621e+19
+ 
+INT: 0 
+Str: 
+1.84467440715621e+19|1.84467440715621e+191.84467440715621e+19
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,302 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 ( c5, c6, c7, c8, c9, c10 ) AS SELECT * FROM v0 AS a11 ORDER BY 9223372036854775807; 
+CREATE INDEX i12 ON v4 ( c10 ); 
+CREATE INDEX i13 ON v0 ( c1 ); 
+CREATE INDEX i14 ON v4 ( c1 ); 
+CREATE TABLE v15 ( c16 INTEGER PRIMARY KEY, c17, c18 UNIQUE ); 
+CREATE TABLE v19 ( c20, c21 INTEGER PRIMARY KEY, c22 ); 
+CREATE INDEX i23 ON v15 ( c17 ); 
+ALTER TABLE v15 DROP COLUMN c18; 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i24 ON v0 ( c1 ); 
+CREATE VIRTUAL TABLE v25 USING fts5 ( c26, c27 ); 
+ALTER TABLE v4 DROP COLUMN c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c3, sum ( a28.c2 ) AS y FROM v0 AS a28 GROUP BY a28.c1 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a29 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c3 FROM v0 AS a30 WHERE 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a31 GROUP BY a31.c2, a31.c27 < a31.c26 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 ORDER BY 9223372036854775807 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( a34.c16, a34.c17 ), max ( a33.c17, a34.c17 ) FROM v15 AS a33, v15 AS a34 ON x ( a34.c16 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT 18446744073709551615 y ORDER BY 8 ) SELECT * FROM v0 AS a35 WHERE ( a35.c3 = 127 OR a35.c3 = 0 ) AND a35.c2 IS ( SELECT a35.c2 FROM ( SELECT a35.c2 FROM v4 AS a36 ORDER BY 9223372036854775807 ) AS y WHERE a35.c3 = 127 ORDER BY 9223372036854775807 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a37.c26 ) OVER ( ORDER BY 9223372036854775807 IN v25 ) ORDER BY 127 ) FROM v25 AS a37 GROUP BY y ( a37.c26 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( c27, avg ( c2 ) ) + 9223372036854775807 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: views may not be indexed
+Parse error near line 5: views may not be indexed
+Parse error near line 9: cannot drop UNIQUE column: "c18"
+Runtime error near line 10: error in index i13 after drop column: no such column: c1
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: cannot drop column from view "v4"
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such function: x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: c27
+  SELECT min ( c27, avg ( c2 ) ) + 9223372036854775807 ORDER BY 127; 
+               ^--- error here
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 ( c5, c6, c7, c8, c9, c10 ) AS SELECT * FROM v0 AS a11 ORDER BY 9223372036854775807; 
+; 
+; 
+; 
+CREATE TABLE v15 ( c16 INTEGER PRIMARY KEY, c17, c18 UNIQUE ); 
+CREATE TABLE v19 ( c20, c21 INTEGER PRIMARY KEY, c22 ); 
+; 
+ALTER TABLE v15 DROP COLUMN c18; 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+CREATE VIRTUAL TABLE v25 USING fts5 ( c26, c27 ); 
+ALTER TABLE v4 DROP COLUMN c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c3, sum ( a28.c2 ) AS y FROM v0 AS a28 GROUP BY a28.c1 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a29 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c3 FROM v0 AS a30 WHERE 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a31 GROUP BY a31.c2, a31.c27 < a31.c26 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 ORDER BY 9223372036854775807 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( a34.c16, a34.c17 ), max ( a33.c17, a34.c17 ) FROM v15 AS a33, v15 AS a34 ON x ( a34.c16 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT 18446744073709551615 y ORDER BY 8 ) SELECT * FROM v0 AS a35 WHERE ( a35.c3 = 127 OR a35.c3 = 0 ) AND a35.c2 IS ( SELECT a35.c2 FROM ( SELECT a35.c2 FROM v4 AS a36 ORDER BY 9223372036854775807 ) AS y WHERE a35.c3 = 127 ORDER BY 9223372036854775807 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a37.c26 ) OVER ( ORDER BY 9223372036854775807 IN v25 ) ORDER BY 127 ) FROM v25 AS a37 GROUP BY y ( a37.c26 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( c27, avg ( c2 ) ) + 9223372036854775807 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: cannot drop UNIQUE column: "c18"
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: cannot drop column from view "v4"
+BEGIN VERI 0
+Parse error near line 15: no such column: a28.c1
+  8.c3, sum ( a28.c2 ) AS y FROM v0 AS a28 GROUP BY a28.c1 ORDER BY 922337203685
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such function: x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: c27
+  SELECT min ( c27, avg ( c2 ) ) + 9223372036854775807 ORDER BY 127; 
+               ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 15: no such column: a28.c1
+  8.c3, sum ( a28.c2 ) AS y FROM v0 AS a28 GROUP BY a28.c1 ORDER BY 922337203685
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such table: v25
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such table: v25
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v25
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v25
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such collation sequence: hex
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such collation sequence: hex
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such function: x
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no such function: x
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v25
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v25
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such column: c27
+  SELECT min ( c27, avg ( c2 ) ) + 9223372036854775807 ORDER BY 127; 
+               ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 42: no such column: c27
+  SELECT min ( c27, avg ( c2 ) ) + 9223372036854775807 ORDER BY 127; 
+               ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

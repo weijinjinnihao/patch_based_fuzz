@@ -1,0 +1,278 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c1 ) ) WITHOUT ROWID; 
+ALTER TABLE v0 ADD COLUMN c4 COLLATE NOCASE; 
+CREATE INDEX i5 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( 0.100000, 0.100000, 8 ), ( 0.100000, 0.100000, 18446744073709551488 ); 
+CREATE INDEX i6 ON v0 ( c4 ); 
+CREATE INDEX i7 ON v0 ( c2 ); 
+CREATE INDEX i8 ON v0 ( c2 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i9 ON v0 ( c1 ); 
+CREATE TABLE v10 ( c11, c12, c13 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a15 NATURAL JOIN v10 AS a16 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a17 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT 0.100000 y ORDER BY 0.100000 ) SELECT a19.c11 = + a19.c13, a19.c11 FROM v10 AS a18 LEFT JOIN v10 AS a19 ON a19.c11 = a19.c12 GROUP BY y ( a18.c12 ) ORDER BY 0.100000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c11 FROM v10 AS a20 WHERE a20.c11 NOT LIKE 'v0' ORDER BY 0.100000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a21.c4 IS NULL ) ) AND ( NOT ( a21.c2 IS NULL ) ) ) FROM v0 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 0.100000 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 100, 'v0', c11 = + c1 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 0.100000; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: table v0 has 4 columns but 3 values were supplied
+Runtime error near line 8: error in index i7 after drop column: no such column: c2
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such function: y
+  EFT JOIN v10 AS a19 ON a19.c11 = a19.c12 GROUP BY y ( a18.c12 ) ORDER BY 0.100
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: near "ORDER": syntax error
+  VALUES ( 100, 'v0', c11 = + c1 ) ORDER BY 9223372036854775807; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c1 ) ) WITHOUT ROWID; 
+ALTER TABLE v0 ADD COLUMN c4 COLLATE NOCASE; 
+; 
+INSERT INTO v0 VALUES ( 0.100000, 0.100000, 8 ), ( 0.100000, 0.100000, 18446744073709551488 ); 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c2; 
+; 
+CREATE TABLE v10 ( c11, c12, c13 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a15 NATURAL JOIN v10 AS a16 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a17 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT 0.100000 y ORDER BY 0.100000 ) SELECT a19.c11 = + a19.c13, a19.c11 FROM v10 AS a18 LEFT JOIN v10 AS a19 ON a19.c11 = a19.c12 GROUP BY y ( a18.c12 ) ORDER BY 0.100000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c11 FROM v10 AS a20 WHERE a20.c11 NOT LIKE 'v0' ORDER BY 0.100000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a21.c4 IS NULL ) ) AND ( NOT ( a21.c2 IS NULL ) ) ) FROM v0 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 0.100000 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 100, 'v0', c11 = + c1 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 0.100000; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: table v0 has 4 columns but 3 values were supplied
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such function: y
+  EFT JOIN v10 AS a19 ON a19.c11 = a19.c12 GROUP BY y ( a18.c12 ) ORDER BY 0.100
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a21.c2
+  CT count ( ( NOT ( a21.c4 IS NULL ) ) AND ( NOT ( a21.c2 IS NULL ) ) ) FROM v0
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: near "ORDER": syntax error
+  VALUES ( 100, 'v0', c11 = + c1 ) ORDER BY 9223372036854775807; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such function: y
+  EFT JOIN v10 AS a19 ON a19.c11 = a19.c12 GROUP BY y ( a18.c12 ) ORDER BY 0.100
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: no such function: y
+  EFT JOIN v10 AS a19 ON a19.c11 = a19.c12 GROUP BY y ( a18.c12 ) ORDER BY 0.100
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+0
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such column: a21.c2
+  CT count ( ( NOT ( a21.c4 IS NULL ) ) AND ( NOT ( a21.c2 IS NULL ) ) ) FROM v0
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 77591680
+Str: 
+Parse error near line 36: near "ORDER": syntax error
+  VALUES ( 100, 'v0', c11 = + c1 ) ORDER BY 9223372036854775807; 
+                     error here ---^
+ 
+Str: 
+Parse error near line 36: near "ORDER": syntax error
+  VALUES ( 100, 'v0', c11 = + c1 ) ORDER BY 9223372036854775807; 
+                     error here ---^
+ 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

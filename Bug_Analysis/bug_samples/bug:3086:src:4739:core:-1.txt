@@ -1,0 +1,301 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 REFERENCES t1 ( c19, c3, c17, c10 ), c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21 PRIMARY KEY, CHECK( ( ( 100, ( c19 + 100 ), c17 != 'v0' ) % 2147483647 ) != 100 ) ) WITHOUT ROWID; 
+CREATE TABLE v22 ( c23 TEXT, c24 ); 
+CREATE INDEX i25 ON v0 ( c9 ); 
+CREATE INDEX i26 ON v22 ( c24 ); 
+CREATE INDEX i27 ON v22 ( c24 ); 
+ALTER TABLE v22 DROP c24; 
+CREATE INDEX i28 ON v22 ( c23 ); 
+CREATE INDEX i29 ON v22 ( c24 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a30 NATURAL JOIN v22 AS a31 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a32, v0 AS a33 NATURAL JOIN v0 AS a34 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a36, v22 AS a37 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT ( SELECT min ( a39.c17 ) OVER ( ORDER BY 0 ) ORDER BY 18446744073709551488 ) FROM v0 AS a39 GROUP BY a39.c2 ORDER BY 18446744073709551488 ) SELECT * FROM v22 AS a38 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a40 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a41 WHERE ( a41.c24 IS NULL ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: foreign key on c2 should reference only one column of table t1
+  CREATE TABLE v0 ( c1, c2 REFERENCES t1 ( c19, c3, c17, c10 ), c3, c4, c5, c6, 
+                        error here ---^
+Parse error near line 3: no such table: main.v0
+Runtime error near line 6: error in index i26 after drop column: no such column: c24
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v22 AS a35 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+  4073709551488 ) SELECT * FROM v22 AS a38 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 REFERENCES t1 ( c19, c3, c17, c10 ), c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21 PRIMARY KEY, CHECK( ( ( 100, ( c19 + 100 ), c17 != 'v0' ) % 2147483647 ) != 100 ) ) WITHOUT ROWID; 
+CREATE TABLE v22 ( c23 TEXT, c24 ); 
+; 
+; 
+; 
+ALTER TABLE v22 DROP c24; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a30 NATURAL JOIN v22 AS a31 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a32, v0 AS a33 NATURAL JOIN v0 AS a34 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a36, v22 AS a37 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT ( SELECT min ( a39.c17 ) OVER ( ORDER BY 0 ) ORDER BY 18446744073709551488 ) FROM v0 AS a39 GROUP BY a39.c2 ORDER BY 18446744073709551488 ) SELECT * FROM v22 AS a38 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a40 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a41 WHERE ( a41.c24 IS NULL ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: foreign key on c2 should reference only one column of table t1
+  CREATE TABLE v0 ( c1, c2 REFERENCES t1 ( c19, c3, c17, c10 ), c3, c4, c5, c6, 
+                        error here ---^
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM v22 AS a35 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+  4073709551488 ) SELECT * FROM v22 AS a38 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a41.c24
+  SELECT * FROM v22 AS a41 WHERE ( a41.c24 IS NULL ) ORDER BY 100; 
+                     error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 13: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v22 AS a35 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM v22 AS a35 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+  4073709551488 ) SELECT * FROM v22 AS a38 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+  4073709551488 ) SELECT * FROM v22 AS a38 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no such column: a41.c24
+  SELECT * FROM v22 AS a41 WHERE ( a41.c24 IS NULL ) ORDER BY 100; 
+                     error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

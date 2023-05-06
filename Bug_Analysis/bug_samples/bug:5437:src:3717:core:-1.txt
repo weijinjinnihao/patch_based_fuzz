@@ -1,0 +1,320 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 DEFAULT x'b2b2b2', PRIMARY KEY ( c1, c2 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( 255, 255, 255 ), ( 0, 255, 255 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP c3; 
+CREATE INDEX i6 ON v0 ( c3 ); 
+UPDATE v0 SET c3 = 255 FROM v0 AS a7, v0 AS a8 NATURAL JOIN v0 AS a9 WHERE c2 = c1; 
+CREATE INDEX i10 ON v0 ( c1 ); 
+CREATE TABLE v11 ( c12, c13, c14 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i15 ON v11 ( c13 ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT 0 y ORDER BY 0 ) SELECT v0.c2, a16.c13 FROM v11 AS a16 ORDER BY a16.c12, v0.c2; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 ( c17 ) AS ( SELECT 255 ORDER BY 255 ) SELECT abs ( v11.c12 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a18.c3 || a18.c2 ) FROM v0 AS a18 ORDER BY 123.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a19.c14 ) FROM v11 AS a19 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 AS ( SELECT 255 y ORDER BY 18446744073709551488 ) SELECT a20.c17 + ( SELECT max ( a21.c3 ) FROM v0 AS a23 ORDER BY 255 ), a20.c12 + ( SELECT CASE WHEN a22.c14 % 0 != 16 THEN a22.c3 END, a22.c3, a22.c3 FROM v11 AS a22 WHERE a22.c17 <= 255 ORDER BY 255 ), a20.c13 + ( SELECT max ( a20.c17 ) FROM v11 AS a21 ORDER BY 0 ) FROM v11 AS a20 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c3, ( + a24.c2 ) y, ( + a24.c2 ) y, ( + a24.c1 ) y, NOT EXISTS ( SELECT NULL FROM v0 AS a26 ORDER BY 18446744073709551488 ), CASE a25.c3 WHEN 255 THEN 18446744073709551615 WHEN 18446744073709551615 THEN 0 WHEN 18446744073709551488 THEN 'x' END, 'v0' FROM v0 AS a24 LEFT JOIN v11 AS a25 ON a24.c3 = a25.c14 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a27 GROUP BY a27.c3, abs ( a27.c14 ) HAVING CASE WHEN a27.c14 != 'x' THEN 127 ELSE 255 END > 255 >= 0 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 GROUP BY count ( ( NOT ( a28.c3 IS NULL ) ) AND ( NOT ( a28.c3 IS NULL ) ) ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: error in index i5 after drop column: no such column: c3
+Parse error near line 7: ambiguous column name: c1
+BEGIN VERI 0
+Parse error near line 12: no such column: v0.c2
+  WITH v0 AS ( SELECT 0 y ORDER BY 0 ) SELECT v0.c2, a16.c13 FROM v11 AS a16 ORD
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such column: v11.c12
+  c17 ) AS ( SELECT 255 ORDER BY 255 ) SELECT abs ( v11.c12 ) ORDER BY 184467440
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+255255
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a20.c17
+  LECT 255 y ORDER BY 18446744073709551488 ) SELECT a20.c17 + ( SELECT max ( a21
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a25.c3
+  M v0 AS a26 ORDER BY 18446744073709551488 ), CASE a25.c3 WHEN 255 THEN 1844674
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+0|255|255
+255|255|255
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 DEFAULT x'b2b2b2', PRIMARY KEY ( c1, c2 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v0 VALUES ( 255, 255, 255 ), ( 0, 255, 255 ); 
+; 
+ALTER TABLE v0 DROP c3; 
+; 
+UPDATE v0 SET c3 = 255 FROM v0 AS a7, v0 AS a8 NATURAL JOIN v0 AS a9 WHERE c2 = c1; 
+; 
+CREATE TABLE v11 ( c12, c13, c14 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT 0 y ORDER BY 0 ) SELECT v0.c2, a16.c13 FROM v11 AS a16 ORDER BY a16.c12, v0.c2; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 ( c17 ) AS ( SELECT 255 ORDER BY 255 ) SELECT abs ( v11.c12 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a18.c3 || a18.c2 ) FROM v0 AS a18 ORDER BY 123.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a19.c14 ) FROM v11 AS a19 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 AS ( SELECT 255 y ORDER BY 18446744073709551488 ) SELECT a20.c17 + ( SELECT max ( a21.c3 ) FROM v0 AS a23 ORDER BY 255 ), a20.c12 + ( SELECT CASE WHEN a22.c14 % 0 != 16 THEN a22.c3 END, a22.c3, a22.c3 FROM v11 AS a22 WHERE a22.c17 <= 255 ORDER BY 255 ), a20.c13 + ( SELECT max ( a20.c17 ) FROM v11 AS a21 ORDER BY 0 ) FROM v11 AS a20 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c3, ( + a24.c2 ) y, ( + a24.c2 ) y, ( + a24.c1 ) y, NOT EXISTS ( SELECT NULL FROM v0 AS a26 ORDER BY 18446744073709551488 ), CASE a25.c3 WHEN 255 THEN 18446744073709551615 WHEN 18446744073709551615 THEN 0 WHEN 18446744073709551488 THEN 'x' END, 'v0' FROM v0 AS a24 LEFT JOIN v11 AS a25 ON a24.c3 = a25.c14 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a27 GROUP BY a27.c3, abs ( a27.c14 ) HAVING CASE WHEN a27.c14 != 'x' THEN 127 ELSE 255 END > 255 >= 0 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 GROUP BY count ( ( NOT ( a28.c3 IS NULL ) ) AND ( NOT ( a28.c3 IS NULL ) ) ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: no such column: c3
+BEGIN VERI 0
+Parse error near line 12: no such column: v0.c2
+  WITH v0 AS ( SELECT 0 y ORDER BY 0 ) SELECT v0.c2, a16.c13 FROM v11 AS a16 ORD
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such column: v11.c12
+  c17 ) AS ( SELECT 255 ORDER BY 255 ) SELECT abs ( v11.c12 ) ORDER BY 184467440
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: a18.c3
+  SELECT max ( a18.c3 || a18.c2 ) FROM v0 AS a18 ORDER BY 123.500000; 
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a20.c17
+  LECT 255 y ORDER BY 18446744073709551488 ) SELECT a20.c17 + ( SELECT max ( a21
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a24.c3
+  SELECT a24.c3, ( + a24.c2 ) y, ( + a24.c2 ) y, ( + a24.c1 ) y, NOT EXISTS ( SE
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+0|255
+255|255
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: no such column: v0.c2
+  WITH v0 AS ( SELECT 0 y ORDER BY 0 ) SELECT v0.c2, a16.c13 FROM v11 AS a16 ORD
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 12: no such column: v0.c2
+  WITH v0 AS ( SELECT 0 y ORDER BY 0 ) SELECT v0.c2, a16.c13 FROM v11 AS a16 ORD
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such column: v11.c12
+  c17 ) AS ( SELECT 255 ORDER BY 255 ) SELECT abs ( v11.c12 ) ORDER BY 184467440
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: no such column: v11.c12
+  c17 ) AS ( SELECT 255 ORDER BY 255 ) SELECT abs ( v11.c12 ) ORDER BY 184467440
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+255255
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such column: a18.c3
+  SELECT max ( a18.c3 || a18.c2 ) FROM v0 AS a18 ORDER BY 123.500000; 
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such column: a20.c17
+  LECT 255 y ORDER BY 18446744073709551488 ) SELECT a20.c17 + ( SELECT max ( a21
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: no such column: a20.c17
+  LECT 255 y ORDER BY 18446744073709551488 ) SELECT a20.c17 + ( SELECT max ( a21
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such column: a25.c3
+  M v0 AS a26 ORDER BY 18446744073709551488 ), CASE a25.c3 WHEN 255 THEN 1844674
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: no such column: a24.c3
+  SELECT a24.c3, ( + a24.c2 ) y, ( + a24.c2 ) y, ( + a24.c1 ) y, NOT EXISTS ( SE
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+0|255|255
+255|255|255
+ 
+INT: 1 
+Str: 
+0|255
+255|255
+ 
+INT: 1 
+Compare_result_int: 
+0
+
+
+

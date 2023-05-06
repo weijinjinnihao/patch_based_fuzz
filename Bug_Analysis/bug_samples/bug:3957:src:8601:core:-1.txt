@@ -1,0 +1,283 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE VIEW v5 AS WITH v6 ( c8 ) AS ( SELECT 'v0' ORDER BY 18446744073709551615 ) SELECT * FROM v6 AS a7 ORDER BY 18446744073709551488; 
+CREATE TABLE v9 ( c10 INTEGER PRIMARY KEY, c11, c12 UNIQUE ); 
+CREATE INDEX i13 ON v5 ( c2 ); 
+CREATE TABLE v14 ( c15, c16, c17 ); 
+CREATE INDEX i18 ON v0 ( c2 ); 
+ALTER TABLE v9 DROP COLUMN c10; 
+CREATE INDEX i19 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i20 ON v9 ( c10 ); 
+CREATE VIRTUAL TABLE v21 USING fts5 ( c22, c23 ); 
+ALTER TABLE v14 DROP COLUMN c15; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a26, v9 AS a27 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 WHERE ( CASE WHEN a29.c2 != 'zyx' THEN 18446744073709551488 ELSE 18446744073709518848 END ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a30 WHERE a30.c10 = CASE WHEN a30.c10 != 'v1' THEN 0 ELSE 16 END > 9223372036854775807 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a31.c23 IS NULL ) ) AND ( NOT ( a31.c22 IS NULL ) ) ) FROM v21 AS a31 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a32 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: views may not be indexed
+Parse error near line 8: cannot drop PRIMARY KEY column: "c10"
+Runtime error near line 10: error in index i4 after drop column: no such column: c2
+Runtime error near line 12: no such module: fts5
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v21
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v21
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v9 AS a32 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS WITH v6 ( c8 ) AS ( SELECT 'v0' ORDER BY 18446744073709551615 ) SELECT * FROM v6 AS a7 ORDER BY 18446744073709551488; 
+CREATE TABLE v9 ( c10 INTEGER PRIMARY KEY, c11, c12 UNIQUE ); 
+; 
+CREATE TABLE v14 ( c15, c16, c17 ); 
+; 
+ALTER TABLE v9 DROP COLUMN c10; 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+CREATE VIRTUAL TABLE v21 USING fts5 ( c22, c23 ); 
+ALTER TABLE v14 DROP COLUMN c15; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a26, v9 AS a27 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 WHERE ( CASE WHEN a29.c2 != 'zyx' THEN 18446744073709551488 ELSE 18446744073709518848 END ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a30 WHERE a30.c10 = CASE WHEN a30.c10 != 'v1' THEN 0 ELSE 16 END > 9223372036854775807 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a31.c23 IS NULL ) ) AND ( NOT ( a31.c22 IS NULL ) ) ) FROM v21 AS a31 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a32 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop PRIMARY KEY column: "c10"
+Runtime error near line 12: no such module: fts5
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v21
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a29.c2
+  SELECT * FROM v0 AS a29 WHERE ( CASE WHEN a29.c2 != 'zyx' THEN 184467440737095
+                              error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v21
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v9 AS a32 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v21
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v21
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 27: no such column: a29.c2
+  SELECT * FROM v0 AS a29 WHERE ( CASE WHEN a29.c2 != 'zyx' THEN 184467440737095
+                              error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v21
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v21
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v9 AS a32 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v9 AS a32 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

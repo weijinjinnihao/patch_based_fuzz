@@ -1,0 +1,286 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 UNIQUE ); 
+CREATE TABLE v3 ( c4, c5, c6 REFERENCES p1 ( c6 ) ); 
+CREATE INDEX i7 ON v3 ( c4 ); 
+CREATE TABLE v8 ( c9, c10, c11, c12 REFERENCES p1 ( c9 ) ); 
+ALTER TABLE v3 DROP COLUMN c4; 
+CREATE VIEW v13 AS SELECT c9, c6 FROM v8 AS a14, v3 AS a15 ORDER BY max ( c4 + c5 * 18446744073709551615 ) + 18446744073709551615, min ( c5, avg ( c5 ) ) + 18446744073709551615; 
+ALTER TABLE v8 DROP COLUMN c9; 
+CREATE INDEX i16 ON v0 ( c2 ); 
+CREATE INDEX i17 ON v3 ( c5 ); 
+CREATE INDEX i18 ON v13 ( c11 ); 
+CREATE INDEX i19 ON v13 ( c13 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c1, count ( ( NOT ( a20.c13 IS NULL ) ) AND ( NOT ( a20.c11 IS NULL ) ) ), count ( ( hex ( 18446744073709551615 ) ) % 18446744073709551615 AND ( NOT ( a20.c13 IS NULL ) ) ) FROM v13 AS a20 LEFT JOIN v0 AS a21 ON a21.c1 = a20.c10 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT a23.c10 FROM v13 AS a23 WHERE a22.c9 LIKE 'I' ORDER BY 18446744073709551615 ) SELECT * FROM v8 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a25 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a26 ORDER BY ( ( a26.c10 + - 18446744073709551615 ) % 0 ) != 18446744073709551615 + 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a27 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c4, max ( a28.c5 || a28.c6 ) FROM v3 AS a28 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT avg ( c1 ) FROM ( SELECT * FROM v3 AS a29 RIGHT JOIN v3 AS a30 ON a30.c5 ORDER BY 18446744073709551615 ) AS y WHERE ( c1 || c4 || c11 ) != 'x' ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: error in index i7 after drop column: no such column: c4
+Runtime error near line 7: error in view v13 after drop column: no such column: c9
+Parse error near line 10: views may not be indexed
+Parse error near line 11: views may not be indexed
+BEGIN VERI 0
+Parse error near line 13: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: a20.c13
+  SELECT a21.c1, count ( ( NOT ( a20.c13 IS NULL ) ) AND ( NOT ( a20.c11 IS NULL
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a26.c10
+  SELECT * FROM v13 AS a26 ORDER BY ( ( a26.c10 + - 18446744073709551615 ) % 0 )
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: c1
+  SELECT avg ( c1 ) FROM ( SELECT * FROM v3 AS a29 RIGHT JOIN v3 AS a30 ON a30.c
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 UNIQUE ); 
+CREATE TABLE v3 ( c4, c5, c6 REFERENCES p1 ( c6 ) ); 
+; 
+CREATE TABLE v8 ( c9, c10, c11, c12 REFERENCES p1 ( c9 ) ); 
+ALTER TABLE v3 DROP COLUMN c4; 
+CREATE VIEW v13 AS SELECT c9, c6 FROM v8 AS a14, v3 AS a15 ORDER BY max ( c4 + c5 * 18446744073709551615 ) + 18446744073709551615, min ( c5, avg ( c5 ) ) + 18446744073709551615; 
+ALTER TABLE v8 DROP COLUMN c9; 
+; 
+; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c1, count ( ( NOT ( a20.c13 IS NULL ) ) AND ( NOT ( a20.c11 IS NULL ) ) ), count ( ( hex ( 18446744073709551615 ) ) % 18446744073709551615 AND ( NOT ( a20.c13 IS NULL ) ) ) FROM v13 AS a20 LEFT JOIN v0 AS a21 ON a21.c1 = a20.c10 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT a23.c10 FROM v13 AS a23 WHERE a22.c9 LIKE 'I' ORDER BY 18446744073709551615 ) SELECT * FROM v8 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a25 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a26 ORDER BY ( ( a26.c10 + - 18446744073709551615 ) % 0 ) != 18446744073709551615 + 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a27 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c4, max ( a28.c5 || a28.c6 ) FROM v3 AS a28 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT avg ( c1 ) FROM ( SELECT * FROM v3 AS a29 RIGHT JOIN v3 AS a30 ON a30.c5 ORDER BY 18446744073709551615 ) AS y WHERE ( c1 || c4 || c11 ) != 'x' ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in view v13: no such column: c4
+BEGIN VERI 0
+Parse error near line 13: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: c4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: c4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: c4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a28.c4
+  SELECT a28.c4, max ( a28.c5 || a28.c6 ) FROM v3 AS a28 ORDER BY 100; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: c1
+  SELECT avg ( c1 ) FROM ( SELECT * FROM v3 AS a29 RIGHT JOIN v3 AS a30 ON a30.c
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 13: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 16: no such column: a20.c13
+  SELECT a21.c1, count ( ( NOT ( a20.c13 IS NULL ) ) AND ( NOT ( a20.c11 IS NULL
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: no such column: c4
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 25: no such column: c4
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 28: no such column: a26.c10
+  SELECT * FROM v13 AS a26 ORDER BY ( ( a26.c10 + - 18446744073709551615 ) % 0 )
+                          error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 28: no such column: c4
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such column: a28.c4
+  SELECT a28.c4, max ( a28.c5 || a28.c6 ) FROM v3 AS a28 ORDER BY 100; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such column: c1
+  SELECT avg ( c1 ) FROM ( SELECT * FROM v3 AS a29 RIGHT JOIN v3 AS a30 ON a30.c
+               ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 37: no such column: c1
+  SELECT avg ( c1 ) FROM ( SELECT * FROM v3 AS a29 RIGHT JOIN v3 AS a30 ON a30.c
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,292 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 TEXT, c2 INTEGER, c3 INT, c4, c5, PRIMARY KEY ( c5 ), CHECK( c5 != c1 ), CHECK( c5 != c4 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c3 = c4 || c2 WHERE c5 = c5 || c4; END; 
+CREATE INDEX i6 ON v0 ( c3 ); 
+CREATE INDEX i7 ON v0 ( c5 ); 
+CREATE TABLE v8 ( c9, c10, c11, c12, PRIMARY KEY ( c9, c9 ) ) WITHOUT ROWID; 
+CREATE INDEX i13 ON v8 ( c9 ); 
+CREATE INDEX i14 ON v0 ( c5 ); 
+INSERT INTO v8 VALUES ( NOT NULL >= 18446744071562067968, 18446744071562067968, 0, 2147483647 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE INDEX i15 ON v0 ( c4 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a16 GROUP BY a16.c9 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c2, max ( a17.c1 || a17.c5 ) FROM v0 AS a17 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a18, v8 AS a19 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT quote ( a20.c10 ), quote ( a20.c10 ), 'v0' FROM v8 AS a20 GROUP BY NULL, 'x', 'v1', 18446744073709551488, abs ( a20.c10 ) HAVING count ( * ) >= 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c3, max ( a21.c1 || a21.c2 ) FROM v0 AS a21 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v8 AS a23 NATURAL JOIN v8 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY a25.c2 COLLATE NOCASE, a25.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a26 WHERE a26.c12 = 2147483647 ORDER BY 127 IN ( SELECT * FROM v8 AS a27 ORDER BY 18446744073709551488 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a28 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v29 AS ( SELECT c3 FROM v29 AS a31 WHERE c2 LIKE 'v1' ORDER BY 127 ) SELECT * FROM v29 AS a30 WHERE ( c9 = 18446744071562067968 OR c12 = 18446744073709551488 ) AND c9 IN ( ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: NOT NULL constraint failed: v8.c9 (19)
+Runtime error near line 9: error in index i6 after drop column: no such column: c3
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v8 AS a16 GROUP BY a16.c9 ORDER BY 0; 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+   max ( a17.c1 || a17.c5 ) FROM v0 AS a17 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 8
+  SELECT * FROM v8 AS a18, v8 AS a19 ORDER BY 2147483647; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: sub-select returns 4 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: circular reference: v29
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 TEXT, c2 INTEGER, c3 INT, c4, c5, PRIMARY KEY ( c5 ), CHECK( c5 != c1 ), CHECK( c5 != c4 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c3 = c4 || c2 WHERE c5 = c5 || c4; END; 
+; 
+; 
+CREATE TABLE v8 ( c9, c10, c11, c12, PRIMARY KEY ( c9, c9 ) ) WITHOUT ROWID; 
+; 
+; 
+INSERT INTO v8 VALUES ( NOT NULL >= 18446744071562067968, 18446744071562067968, 0, 2147483647 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a16 GROUP BY a16.c9 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c2, max ( a17.c1 || a17.c5 ) FROM v0 AS a17 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a18, v8 AS a19 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT quote ( a20.c10 ), quote ( a20.c10 ), 'v0' FROM v8 AS a20 GROUP BY NULL, 'x', 'v1', 18446744073709551488, abs ( a20.c10 ) HAVING count ( * ) >= 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c3, max ( a21.c1 || a21.c2 ) FROM v0 AS a21 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v8 AS a23 NATURAL JOIN v8 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY a25.c2 COLLATE NOCASE, a25.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a26 WHERE a26.c12 = 2147483647 ORDER BY 127 IN ( SELECT * FROM v8 AS a27 ORDER BY 18446744073709551488 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a28 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v29 AS ( SELECT c3 FROM v29 AS a31 WHERE c2 LIKE 'v1' ORDER BY 127 ) SELECT * FROM v29 AS a30 WHERE ( c9 = 18446744071562067968 OR c12 = 18446744073709551488 ) AND c9 IN ( ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: NOT NULL constraint failed: v8.c9 (19)
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v8 AS a16 GROUP BY a16.c9 ORDER BY 0; 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+   max ( a17.c1 || a17.c5 ) FROM v0 AS a17 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 8
+  SELECT * FROM v8 AS a18, v8 AS a19 ORDER BY 2147483647; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a21.c3
+  SELECT a21.c3, max ( a21.c1 || a21.c2 ) FROM v0 AS a21 ORDER BY 255; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: sub-select returns 4 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: circular reference: v29
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v8 AS a16 GROUP BY a16.c9 ORDER BY 0; 
+                                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v8 AS a16 GROUP BY a16.c9 ORDER BY 0; 
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+   max ( a17.c1 || a17.c5 ) FROM v0 AS a17 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+   max ( a17.c1 || a17.c5 ) FROM v0 AS a17 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 8
+  SELECT * FROM v8 AS a18, v8 AS a19 ORDER BY 2147483647; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 8
+  SELECT * FROM v8 AS a18, v8 AS a19 ORDER BY 2147483647; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such column: a21.c3
+  SELECT a21.c3, max ( a21.c1 || a21.c2 ) FROM v0 AS a21 ORDER BY 255; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: sub-select returns 4 columns - expected 1
+ 
+INT: 0 
+Str: 
+Parse error near line 33: sub-select returns 4 columns - expected 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: circular reference: v29
+ 
+INT: 0 
+Str: 
+Parse error near line 39: circular reference: v29
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

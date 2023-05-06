@@ -1,0 +1,318 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 AS( abs ( c2 ) ) NOT NULL, c4 ); 
+INSERT INTO v0 VALUES ( 0, 0, 18446744073709518848, 0 ), ( 0, 0, 18446744073709551615, 18446744073709518848 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE TABLE v6 ( c7, c8, c9, c10, CHECK( c7 > 2147483647 ) ); 
+INSERT INTO v6 VALUES ( 0, 222, 2147483647, 0 ), ( 2147483647, 18446744073709551615, 0, 0 ); 
+CREATE INDEX i11 ON v6 ( c8 ); 
+CREATE INDEX i12 ON v0 ( c4 ); 
+INSERT INTO v6 VALUES ( 18446744073709551615, 0, 0, 18446744073709551615 ); 
+CREATE INDEX i13 ON v0 ( c2 ); 
+CREATE INDEX i14 ON v6 ( c9 ); 
+INSERT INTO v0 VALUES ( 0, 0, 18446744073709518848, 18446744073709551488 ); 
+ALTER TABLE v0 DROP c3; 
+SELECT 'BEGIN VERI 0'; 
+WITH v15 ( c17 ) AS ( SELECT 'Y' ORDER BY 18446744073709518848 ) SELECT * FROM v15 AS a16 LEFT JOIN ( SELECT count ( * ) AS y, c17 FROM ( v15 AS a18 NATURAL JOIN v15 AS a19 ) AS y WHERE c17 > 0 GROUP BY c17 ORDER BY 18446744073709518848 ) AS y ON c17 = y ( c17 ) ORDER BY 222; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c4, a21.c3 FROM v0 AS a20 RIGHT JOIN v0 AS a21 ON a20.c4 = a21.c3 > 18446744073709551488 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a22.c1 ) FROM v0 AS a22 ORDER BY 222; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a23 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c1 FROM v0 AS a25 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c7 != 'v1' FROM v6 AS a26 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 GROUP BY y ( a27.c3, a27.c4, a27.c1, a27.c2, a27.c4, a27.c2, a27.c2, a27.c3, a27.c2, a27.c3, a27.c1, a27.c1, a27.c2, a27.c4, a27.c2, a27.c1, a27.c3 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a28 ORDER BY a28.c8 COLLATE NOCASE; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v29 ( c31 ) AS ( SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v29 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: table v0 has 3 columns but 4 values were supplied
+Runtime error near line 5: CHECK constraint failed: c7 > 2147483647 (19)
+Parse error near line 11: table v0 has 3 columns but 4 values were supplied
+Runtime error near line 12: error in index i5 after drop column: no such column: c3
+BEGIN VERI 0
+Parse error near line 14: ambiguous column name: c17
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v6 AS a23 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v0 AS a24 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 4
+  a27.c2, a27.c4, a27.c2, a27.c1, a27.c3 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|0|0|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+  4073709551615 ) SELECT * FROM v29 AS a30 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 AS( abs ( c2 ) ) NOT NULL, c4 ); 
+INSERT INTO v0 VALUES ( 0, 0, 18446744073709518848, 0 ), ( 0, 0, 18446744073709551615, 18446744073709518848 ); 
+; 
+CREATE TABLE v6 ( c7, c8, c9, c10, CHECK( c7 > 2147483647 ) ); 
+INSERT INTO v6 VALUES ( 0, 222, 2147483647, 0 ), ( 2147483647, 18446744073709551615, 0, 0 ); 
+; 
+; 
+INSERT INTO v6 VALUES ( 18446744073709551615, 0, 0, 18446744073709551615 ); 
+; 
+; 
+INSERT INTO v0 VALUES ( 0, 0, 18446744073709518848, 18446744073709551488 ); 
+ALTER TABLE v0 DROP c3; 
+SELECT 'BEGIN VERI 0'; 
+WITH v15 ( c17 ) AS ( SELECT 'Y' ORDER BY 18446744073709518848 ) SELECT * FROM v15 AS a16 LEFT JOIN ( SELECT count ( * ) AS y, c17 FROM ( v15 AS a18 NATURAL JOIN v15 AS a19 ) AS y WHERE c17 > 0 GROUP BY c17 ORDER BY 18446744073709518848 ) AS y ON c17 = y ( c17 ) ORDER BY 222; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c4, a21.c3 FROM v0 AS a20 RIGHT JOIN v0 AS a21 ON a20.c4 = a21.c3 > 18446744073709551488 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a22.c1 ) FROM v0 AS a22 ORDER BY 222; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a23 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c1 FROM v0 AS a25 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c7 != 'v1' FROM v6 AS a26 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 GROUP BY y ( a27.c3, a27.c4, a27.c1, a27.c2, a27.c4, a27.c2, a27.c2, a27.c3, a27.c2, a27.c3, a27.c1, a27.c1, a27.c2, a27.c4, a27.c2, a27.c1, a27.c3 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a28 ORDER BY a28.c8 COLLATE NOCASE; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v29 ( c31 ) AS ( SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v29 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: table v0 has 3 columns but 4 values were supplied
+Runtime error near line 5: CHECK constraint failed: c7 > 2147483647 (19)
+Parse error near line 11: table v0 has 3 columns but 4 values were supplied
+BEGIN VERI 0
+Parse error near line 14: ambiguous column name: c17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a21.c3
+  SELECT a21.c4, a21.c3 FROM v0 AS a20 RIGHT JOIN v0 AS a21 ON a20.c4 = a21.c3 >
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v6 AS a23 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a24 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  a27.c2, a27.c4, a27.c2, a27.c1, a27.c3 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|0|0|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+  4073709551615 ) SELECT * FROM v29 AS a30 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: ambiguous column name: c17
+ 
+INT: 0 
+Str: 
+Parse error near line 14: ambiguous column name: c17
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 17: no such column: a21.c3
+  SELECT a21.c4, a21.c3 FROM v0 AS a20 RIGHT JOIN v0 AS a21 ON a20.c4 = a21.c3 >
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v6 AS a23 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v6 AS a23 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v0 AS a24 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a24 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+1
+ 
+INT: 0 
+Str: 
+1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 4
+  a27.c2, a27.c4, a27.c2, a27.c1, a27.c3 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  a27.c2, a27.c4, a27.c2, a27.c1, a27.c3 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19|0|0|1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19|0|0|1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+  4073709551615 ) SELECT * FROM v29 AS a30 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+  4073709551615 ) SELECT * FROM v29 AS a30 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

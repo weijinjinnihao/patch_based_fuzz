@@ -1,0 +1,313 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 127; 
+CREATE TABLE v7 AS SELECT max ( c3 || c2 ) FROM v0 AS a8 ORDER BY 0 COLLATE binary, 100 COLLATE hex; 
+CREATE TABLE v9 ( c10, c11, c12 ); 
+CREATE INDEX i13 ON v7 ( c14 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE INDEX i15 ON v5 ( c3 ); 
+CREATE VIRTUAL TABLE v16 USING fts5 ( c17, c18 ); 
+CREATE INDEX i19 ON v9 ( c10 ); 
+CREATE INDEX i20 ON v5 ( c3 ); 
+ALTER TABLE v5 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a21 WHERE a21.c10 = - 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c3 + ( SELECT max ( c1 ) FROM v5 AS a26 ORDER BY 0 ), a22.c3 + ( SELECT CASE WHEN c25 % 18446744073709551488 != 18446744073709551615 THEN a22.c3 END, c1, a24.c1 FROM v5 AS a24 WHERE a24.c3 <= 100 ORDER BY 16 ), a22.c1 + ( SELECT max ( a22.c1 ) FROM v7 AS a23 ORDER BY 100 ) FROM v5 AS a22 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 AS ( WITH v9 AS ( SELECT 18446744073709551615 y ORDER BY 100 ) SELECT avg ( a27.c1 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551615 ) SELECT * FROM v5 AS a27 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a28 NATURAL JOIN v16 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c2, a31.c3 FROM v0 AS a30 RIGHT JOIN v0 AS a31 ON a30.c2 = ( ( ( a31.c1 + 3.000000 ) % 0 ) == 18446744073709551615 ) % 18446744071562067968 WHERE a30.c3 = a31.c1 NOT NULL ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v0 AS a32 ), ( v9 AS a33, v5 AS a34 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 ( c36 ) AS ( SELECT 0 ORDER BY 100 ) VALUES ( 18446744073709518848 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.c1 FROM v5 AS a37 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a38 WHERE a38.c3 NOT NULL ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a39 GROUP BY a39.c12, abs ( a39.c12 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: 1st ORDER BY term out of range - should be between 1 and 1
+  AS SELECT max ( c3 || c2 ) FROM v0 AS a8 ORDER BY 0 COLLATE binary, 100 COLLAT
+                                      error here ---^
+Parse error near line 6: no such table: main.v7
+Runtime error near line 7: error in index i4 after drop column: no such column: c3
+Runtime error near line 8: error in index i4 after drop column: no such column: c3
+Parse error near line 9: views may not be indexed
+Runtime error near line 10: no such module: fts5
+Parse error near line 12: views may not be indexed
+Parse error near line 13: cannot drop column from view "v5"
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v16
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: near "ORDER": syntax error
+   0 ORDER BY 100 ) VALUES ( 18446744073709518848 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v16
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 127; 
+CREATE TABLE v7 AS SELECT max ( c3 || c2 ) FROM v0 AS a8 ORDER BY 0 COLLATE binary, 100 COLLATE hex; 
+CREATE TABLE v9 ( c10, c11, c12 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c3; 
+ALTER TABLE v0 DROP COLUMN c3; 
+; 
+CREATE VIRTUAL TABLE v16 USING fts5 ( c17, c18 ); 
+; 
+; 
+ALTER TABLE v5 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a21 WHERE a21.c10 = - 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c3 + ( SELECT max ( c1 ) FROM v5 AS a26 ORDER BY 0 ), a22.c3 + ( SELECT CASE WHEN c25 % 18446744073709551488 != 18446744073709551615 THEN a22.c3 END, c1, a24.c1 FROM v5 AS a24 WHERE a24.c3 <= 100 ORDER BY 16 ), a22.c1 + ( SELECT max ( a22.c1 ) FROM v7 AS a23 ORDER BY 100 ) FROM v5 AS a22 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 AS ( WITH v9 AS ( SELECT 18446744073709551615 y ORDER BY 100 ) SELECT avg ( a27.c1 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551615 ) SELECT * FROM v5 AS a27 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a28 NATURAL JOIN v16 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c2, a31.c3 FROM v0 AS a30 RIGHT JOIN v0 AS a31 ON a30.c2 = ( ( ( a31.c1 + 3.000000 ) % 0 ) == 18446744073709551615 ) % 18446744071562067968 WHERE a30.c3 = a31.c1 NOT NULL ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v0 AS a32 ), ( v9 AS a33, v5 AS a34 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 ( c36 ) AS ( SELECT 0 ORDER BY 100 ) VALUES ( 18446744073709518848 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.c1 FROM v5 AS a37 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a38 WHERE a38.c3 NOT NULL ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a39 GROUP BY a39.c12, abs ( a39.c12 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: 1st ORDER BY term out of range - should be between 1 and 1
+  AS SELECT max ( c3 || c2 ) FROM v0 AS a8 ORDER BY 0 COLLATE binary, 100 COLLAT
+                                      error here ---^
+Parse error near line 8: no such column: "c3"
+  ALTER TABLE v0 DROP COLUMN c3; 
+               error here ---^
+Runtime error near line 10: no such module: fts5
+Parse error near line 13: cannot drop column from view "v5"
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v16
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a31.c3
+  SELECT a30.c2, a31.c3 FROM v0 AS a30 RIGHT JOIN v0 AS a31 ON a30.c2 = ( ( ( a3
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: near "ORDER": syntax error
+   0 ORDER BY 100 ) VALUES ( 18446744073709518848 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a38.c3
+  SELECT * FROM v0 AS a38 WHERE a38.c3 NOT NULL ORDER BY 18446744073709551488; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v16
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v16
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v16
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such column: a31.c3
+  SELECT a30.c2, a31.c3 FROM v0 AS a30 RIGHT JOIN v0 AS a31 ON a30.c2 = ( ( ( a3
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 49406752
+Str: 
+Parse error near line 33: near "ORDER": syntax error
+   0 ORDER BY 100 ) VALUES ( 18446744073709518848 ) ORDER BY 0; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 33: near "ORDER": syntax error
+   0 ORDER BY 100 ) VALUES ( 18446744073709518848 ) ORDER BY 0; 
+                                      error here ---^
+ 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 39: no such column: a38.c3
+  SELECT * FROM v0 AS a38 WHERE a38.c3 NOT NULL ORDER BY 18446744073709551488; 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such table: v16
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such table: v16
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

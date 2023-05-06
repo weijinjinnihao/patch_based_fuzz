@@ -1,0 +1,319 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE TABLE v5 ( c6 TEXT NOT NULL ON CONFLICT FAIL, c7 TEXT NOT NULL, c8 TEXT, CONSTRAINT y PRIMARY KEY ( c7, c6 ) ON CONFLICT IGNORE, CONSTRAINT y UNIQUE ( c7 ) ); 
+CREATE TABLE v9 ( c10 PRIMARY KEY, c11, c12 AS( c10 + c12 - c10 ) REFERENCES t0, c13 ) WITHOUT ROWID; 
+CREATE TABLE v14 ( c15 INTEGER PRIMARY KEY, c16, c17 UNIQUE ); 
+CREATE TABLE v18 ( c19, c20, c21, c22, c23, c24 INTEGER, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44 UNIQUE ON CONFLICT REPLACE, c45, c46, c47, c48, c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60 TEXT PRIMARY KEY, c61 ); 
+CREATE TABLE v62 ( c63 AS( ( - 18446744073709551615 + 18446744073709551615, 'DEF', 'x', 0, 18446744073709551615, 18446744073709551615 ) % 0 != 18446744073709551615 ), c64 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v62 DROP COLUMN c63; 
+CREATE INDEX i65 ON v9 ( ( c12 || c10 || c13 ) ); 
+CREATE VIRTUAL TABLE v66 USING fts5 ( c67, c68 ); 
+CREATE INDEX i69 ON v9 ( c10 ); 
+ALTER TABLE v66 DROP COLUMN c67; 
+CREATE INDEX i70 ON v62 ( c63 ); 
+CREATE INDEX i71 ON v66 ( c67 ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v72 AS ( SELECT ( SELECT min ( c64 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 0 ) FROM v72 AS a74 GROUP BY c12 ORDER BY 18446744073709551615 ) SELECT * FROM v72 AS a73 GROUP BY c17 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a75 GROUP BY a75.c6 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a76 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a77 WHERE a77.c2 NOT NULL ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a78.c6, count ( ( NOT ( a78.c7 IS NULL ) ) AND ( NOT ( a78.c8 IS NULL ) ) ) FROM v5 AS a78 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a79 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a80.c23 ), ( SELECT 'v0' FROM ( SELECT * FROM v5 AS a81 WHERE 8 ORDER BY 0 ) AS y WHERE a80.c24 = 18446744073709551488 ORDER BY 0 ) FROM v18 AS a80 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v82 AS ( SELECT ( SELECT min ( c13 ) OVER ( ORDER BY 18446744073709551615 IN v82 ) ORDER BY 0 ) FROM v82 AS a84 NATURAL JOIN v82 AS a85 GROUP BY c64 ORDER BY 18446744073709551615 ) SELECT * FROM v82 AS a83 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a86, v5 AS a87 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a90.c11, a90.c13 FROM v9 AS a88 RIGHT JOIN v14 AS a89 ON a88.c12, v9 AS a90 WHERE a89.c17 = 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in index i4 after drop column: no such column: c2
+Parse error near line 10: generated column loop on "c12"
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: no such table: v66
+Parse error near line 14: no such column: c63
+  CREATE INDEX i70 ON v62 ( c63 ); 
+              error here ---^
+Parse error near line 15: no such table: main.v66
+BEGIN VERI 0
+Parse error near line 17: circular reference: v72
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v5 AS a75 GROUP BY a75.c6 ORDER BY 0; 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a79 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  ' FROM ( SELECT * FROM v5 AS a81 WHERE 8 ORDER BY 0 ) AS y WHERE a80.c24 = 184
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: circular reference: v82
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: generated column loop on "c12"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: generated column loop on "c12"
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE TABLE v5 ( c6 TEXT NOT NULL ON CONFLICT FAIL, c7 TEXT NOT NULL, c8 TEXT, CONSTRAINT y PRIMARY KEY ( c7, c6 ) ON CONFLICT IGNORE, CONSTRAINT y UNIQUE ( c7 ) ); 
+CREATE TABLE v9 ( c10 PRIMARY KEY, c11, c12 AS( c10 + c12 - c10 ) REFERENCES t0, c13 ) WITHOUT ROWID; 
+CREATE TABLE v14 ( c15 INTEGER PRIMARY KEY, c16, c17 UNIQUE ); 
+CREATE TABLE v18 ( c19, c20, c21, c22, c23, c24 INTEGER, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44 UNIQUE ON CONFLICT REPLACE, c45, c46, c47, c48, c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60 TEXT PRIMARY KEY, c61 ); 
+CREATE TABLE v62 ( c63 AS( ( - 18446744073709551615 + 18446744073709551615, 'DEF', 'x', 0, 18446744073709551615, 18446744073709551615 ) % 0 != 18446744073709551615 ), c64 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v62 DROP COLUMN c63; 
+; 
+CREATE VIRTUAL TABLE v66 USING fts5 ( c67, c68 ); 
+; 
+ALTER TABLE v66 DROP COLUMN c67; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+WITH v72 AS ( SELECT ( SELECT min ( c64 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 0 ) FROM v72 AS a74 GROUP BY c12 ORDER BY 18446744073709551615 ) SELECT * FROM v72 AS a73 GROUP BY c17 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a75 GROUP BY a75.c6 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a76 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a77 WHERE a77.c2 NOT NULL ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a78.c6, count ( ( NOT ( a78.c7 IS NULL ) ) AND ( NOT ( a78.c8 IS NULL ) ) ) FROM v5 AS a78 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a79 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a80.c23 ), ( SELECT 'v0' FROM ( SELECT * FROM v5 AS a81 WHERE 8 ORDER BY 0 ) AS y WHERE a80.c24 = 18446744073709551488 ORDER BY 0 ) FROM v18 AS a80 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v82 AS ( SELECT ( SELECT min ( c13 ) OVER ( ORDER BY 18446744073709551615 IN v82 ) ORDER BY 0 ) FROM v82 AS a84 NATURAL JOIN v82 AS a85 GROUP BY c64 ORDER BY 18446744073709551615 ) SELECT * FROM v82 AS a83 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a86, v5 AS a87 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a90.c11, a90.c13 FROM v9 AS a88 RIGHT JOIN v14 AS a89 ON a88.c12, v9 AS a90 WHERE a89.c17 = 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: no such table: v66
+BEGIN VERI 0
+Parse error near line 17: circular reference: v72
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v5 AS a75 GROUP BY a75.c6 ORDER BY 0; 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: a77.c2
+  SELECT * FROM v0 AS a77 WHERE a77.c2 NOT NULL ORDER BY 18446744073709551615; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a79 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  ' FROM ( SELECT * FROM v5 AS a81 WHERE 8 ORDER BY 0 ) AS y WHERE a80.c24 = 184
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: circular reference: v82
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: generated column loop on "c12"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: generated column loop on "c12"
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: circular reference: v72
+ 
+INT: 0 
+Str: 
+Parse error near line 17: circular reference: v72
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v5 AS a75 GROUP BY a75.c6 ORDER BY 0; 
+                                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v5 AS a75 GROUP BY a75.c6 ORDER BY 0; 
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 26: no such column: a77.c2
+  SELECT * FROM v0 AS a77 WHERE a77.c2 NOT NULL ORDER BY 18446744073709551615; 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a79 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a79 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  ' FROM ( SELECT * FROM v5 AS a81 WHERE 8 ORDER BY 0 ) AS y WHERE a80.c24 = 184
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  ' FROM ( SELECT * FROM v5 AS a81 WHERE 8 ORDER BY 0 ) AS y WHERE a80.c24 = 184
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: circular reference: v82
+ 
+INT: 0 
+Str: 
+Parse error near line 38: circular reference: v82
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: generated column loop on "c12"
+ 
+INT: 0 
+Str: 
+Parse error near line 41: generated column loop on "c12"
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: generated column loop on "c12"
+ 
+INT: 0 
+Str: 
+Parse error near line 44: generated column loop on "c12"
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

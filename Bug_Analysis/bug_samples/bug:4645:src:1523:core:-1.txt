@@ -1,0 +1,284 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 UNIQUE ); 
+CREATE INDEX i3 ON v0 ( c2 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+CREATE TABLE v6 ( c7, c8, c9, c10 REFERENCES p1 ( c10 ) ); 
+CREATE INDEX i11 ON v6 ( c10 ); 
+ALTER TABLE v6 DROP COLUMN c10; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i12 ON v6 ( c9 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a13.c7 + 18446744073709551615, a13.c10 + 9223372036854775807 FROM v6 AS a13 y GROUP BY y ( a13.c8 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c14 ) AS ( WITH v15 ( c16 ) AS ( WITH v17 AS ( SELECT ( SELECT min ( c16 ) OVER ( ORDER BY 9223372036854775807 IN v15 ) ORDER BY 9223372036854775807 ) FROM v17 AS a18 GROUP BY v0.c1 ORDER BY 9223372036854775807 ) SELECT 9223372036854775807 ORDER BY 992 ) SELECT 9223372036854775807 ORDER BY 9223372036854775807 ) SELECT hex ( ) y ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a19 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 NATURAL JOIN v0 AS a21 ORDER BY 992; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT quote ( a22.c10 ), a22.c10 = a22.c10, 'v0' FROM v6 AS a22 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 18446744071562067968 COLLATE binary, 9223372036854775807 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 992; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY ( CASE WHEN a25.c2 != 'v1' THEN 9223372036854775807 ELSE 18446744073709551615 END ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 WHERE a26.c2 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i11 after drop column: no such column: c10
+Parse error near line 8: cannot drop UNIQUE column: "c2"
+BEGIN VERI 0
+Parse error near line 11: near "y": syntax error
+  615, a13.c10 + 9223372036854775807 FROM v6 AS a13 y GROUP BY y ( a13.c8 ) ORDE
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: wrong number of arguments to function hex()
+  36854775807 ORDER BY 9223372036854775807 ) SELECT hex ( ) y ORDER BY 184467440
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 UNIQUE ); 
+; 
+; 
+; 
+CREATE TABLE v6 ( c7, c8, c9, c10 REFERENCES p1 ( c10 ) ); 
+; 
+ALTER TABLE v6 DROP COLUMN c10; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a13.c7 + 18446744073709551615, a13.c10 + 9223372036854775807 FROM v6 AS a13 y GROUP BY y ( a13.c8 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c14 ) AS ( WITH v15 ( c16 ) AS ( WITH v17 AS ( SELECT ( SELECT min ( c16 ) OVER ( ORDER BY 9223372036854775807 IN v15 ) ORDER BY 9223372036854775807 ) FROM v17 AS a18 GROUP BY v0.c1 ORDER BY 9223372036854775807 ) SELECT 9223372036854775807 ORDER BY 992 ) SELECT 9223372036854775807 ORDER BY 9223372036854775807 ) SELECT hex ( ) y ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a19 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 NATURAL JOIN v0 AS a21 ORDER BY 992; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT quote ( a22.c10 ), a22.c10 = a22.c10, 'v0' FROM v6 AS a22 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 18446744071562067968 COLLATE binary, 9223372036854775807 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 992; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY ( CASE WHEN a25.c2 != 'v1' THEN 9223372036854775807 ELSE 18446744073709551615 END ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 WHERE a26.c2 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop UNIQUE column: "c2"
+BEGIN VERI 0
+Parse error near line 11: near "y": syntax error
+  615, a13.c10 + 9223372036854775807 FROM v6 AS a13 y GROUP BY y ( a13.c8 ) ORDE
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: wrong number of arguments to function hex()
+  36854775807 ORDER BY 9223372036854775807 ) SELECT hex ( ) y ORDER BY 184467440
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a22.c10
+  SELECT quote ( a22.c10 ), a22.c10 = a22.c10, 'v0' FROM v6 AS a22 ORDER BY 9223
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 11: near "y": syntax error
+  615, a13.c10 + 9223372036854775807 FROM v6 AS a13 y GROUP BY y ( a13.c8 ) ORDE
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 11: near "y": syntax error
+  615, a13.c10 + 9223372036854775807 FROM v6 AS a13 y GROUP BY y ( a13.c8 ) ORDE
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: wrong number of arguments to function hex()
+  36854775807 ORDER BY 9223372036854775807 ) SELECT hex ( ) y ORDER BY 184467440
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 14: wrong number of arguments to function hex()
+  36854775807 ORDER BY 9223372036854775807 ) SELECT hex ( ) y ORDER BY 184467440
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 23: no such column: a22.c10
+  SELECT quote ( a22.c10 ), a22.c10 = a22.c10, 'v0' FROM v6 AS a22 ORDER BY 9223
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no such collation sequence: hex
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such collation sequence: hex
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 29: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,302 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c1 ) ) WITHOUT ROWID; 
+ATTACH 'v1' AS sqlite_master; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE INDEX i6 ON v0 ( c2 ); 
+CREATE TABLE v7 ( c8, c9 CHECK( 16 ), c10, c11, CHECK( c8 > 16 ) ); 
+ALTER TABLE v7 DROP c11; 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i12 ON v7 ( c9 ); 
+CREATE VIEW v13 AS SELECT * FROM ( v0 AS a14 ), ( v0 AS a15 ), ( v7 AS a16 ), ( v0 AS a17, v0 AS a18 NATURAL JOIN v0 AS a19 ) WHERE c2 = c3 + 16 AND c3 = c1 + 127 AND c1 = c1 + 16 ORDER BY 16; 
+CREATE INDEX i20 ON v7 ( c9 ); 
+CREATE TABLE v21 ( c22, c23, c24 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a25 WHERE a25.c23 = 16 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a26 WHERE a26.c24 = a26.c23 != a26.c24 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 127, ( a27.c9 + 16 ), a27.c10 != 'v0' ) % 16 ), a27.c11 + ( SELECT max ( a27.c9 ) FROM v0 AS a29 ORDER BY 255 ), a27.c9 + ( SELECT max ( a27.c11 ) FROM v21 AS a28 ORDER BY 16 ) FROM v7 AS a27 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN a30.c7 = 16 THEN 16 ELSE ( a30.c1 + 16 ) / 9223372036854775807 END ) AS y, count ( * ) FROM v13 AS a30 GROUP BY y ( a30.c1 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a31 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v13 ( c33 ) AS ( WITH v21 AS ( SELECT ( SELECT min ( a34.c24 ) OVER ( ORDER BY 2147483647 ) ORDER BY 18446744073709551615 ) FROM v21 AS a34 GROUP BY a34.c23 ORDER BY 255 ) SELECT 16 ORDER BY 255 ) SELECT * FROM v13 AS a32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a35 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a36 WHERE ( a36.c2 + 9223372036854775807 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v37 ( c39 ) AS ( WITH v37 ( c40 ) AS ( WITH v41 AS ( WITH v42 AS ( SELECT 100 y ORDER BY 16 ) SELECT avg ( c39 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 2147483647 ) SELECT 255 ORDER BY 18446744073709551488 ) SELECT 16 ORDER BY 16 ) SELECT c39, count ( * ), avg ( c39 ), max ( c39 + c39 * 16 ) FROM v37 AS a38 GROUP BY y ( c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c2 FROM v0 AS a43 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in index i5 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+  ECT * FROM v21 AS a25 WHERE a25.c23 = 16 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such column: a27.c11
+  ( 127, ( a27.c9 + 16 ), a27.c10 != 'v0' ) % 16 ), a27.c11 + ( SELECT max ( a27
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: ambiguous column name: c1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: ambiguous column name: c1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: ambiguous column name: c1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: ambiguous column name: c1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c1 ) ) WITHOUT ROWID; 
+ATTACH 'v1' AS sqlite_master; 
+; 
+; 
+; 
+CREATE TABLE v7 ( c8, c9 CHECK( 16 ), c10, c11, CHECK( c8 > 16 ) ); 
+ALTER TABLE v7 DROP c11; 
+ALTER TABLE v0 DROP c2; 
+; 
+CREATE VIEW v13 AS SELECT * FROM ( v0 AS a14 ), ( v0 AS a15 ), ( v7 AS a16 ), ( v0 AS a17, v0 AS a18 NATURAL JOIN v0 AS a19 ) WHERE c2 = c3 + 16 AND c3 = c1 + 127 AND c1 = c1 + 16 ORDER BY 16; 
+; 
+CREATE TABLE v21 ( c22, c23, c24 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a25 WHERE a25.c23 = 16 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a26 WHERE a26.c24 = a26.c23 != a26.c24 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 127, ( a27.c9 + 16 ), a27.c10 != 'v0' ) % 16 ), a27.c11 + ( SELECT max ( a27.c9 ) FROM v0 AS a29 ORDER BY 255 ), a27.c9 + ( SELECT max ( a27.c11 ) FROM v21 AS a28 ORDER BY 16 ) FROM v7 AS a27 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN a30.c7 = 16 THEN 16 ELSE ( a30.c1 + 16 ) / 9223372036854775807 END ) AS y, count ( * ) FROM v13 AS a30 GROUP BY y ( a30.c1 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a31 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v13 ( c33 ) AS ( WITH v21 AS ( SELECT ( SELECT min ( a34.c24 ) OVER ( ORDER BY 2147483647 ) ORDER BY 18446744073709551615 ) FROM v21 AS a34 GROUP BY a34.c23 ORDER BY 255 ) SELECT 16 ORDER BY 255 ) SELECT * FROM v13 AS a32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a35 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a36 WHERE ( a36.c2 + 9223372036854775807 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v37 ( c39 ) AS ( WITH v37 ( c40 ) AS ( WITH v41 AS ( WITH v42 AS ( SELECT 100 y ORDER BY 16 ) SELECT avg ( c39 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 2147483647 ) SELECT 255 ORDER BY 18446744073709551488 ) SELECT 16 ORDER BY 16 ) SELECT c39, count ( * ), avg ( c39 ), max ( c39 + c39 * 16 ) FROM v37 AS a38 GROUP BY y ( c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c2 FROM v0 AS a43 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+  ECT * FROM v21 AS a25 WHERE a25.c23 = 16 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such column: a27.c11
+  ( 127, ( a27.c9 + 16 ), a27.c10 != 'v0' ) % 16 ), a27.c11 + ( SELECT max ( a27
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: ambiguous column name: c1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: ambiguous column name: c1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: ambiguous column name: c1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: ambiguous column name: c1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a43.c2
+  SELECT a43.c2 FROM v0 AS a43 ORDER BY 127; 
+         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+  ECT * FROM v21 AS a25 WHERE a25.c23 = 16 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+  ECT * FROM v21 AS a25 WHERE a25.c23 = 16 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no such column: a27.c11
+  ( 127, ( a27.c9 + 16 ), a27.c10 != 'v0' ) % 16 ), a27.c11 + ( SELECT max ( a27
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: no such column: a27.c11
+  ( 127, ( a27.c9 + 16 ), a27.c10 != 'v0' ) % 16 ), a27.c11 + ( SELECT max ( a27
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: ambiguous column name: c1
+ 
+INT: 0 
+Str: 
+Parse error near line 23: ambiguous column name: c1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: ambiguous column name: c1
+ 
+INT: 0 
+Str: 
+Parse error near line 26: ambiguous column name: c1
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: ambiguous column name: c1
+ 
+INT: 0 
+Str: 
+Parse error near line 32: ambiguous column name: c1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: ambiguous column name: c1
+ 
+INT: 0 
+Str: 
+Parse error near line 35: ambiguous column name: c1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no such column: a43.c2
+  SELECT a43.c2 FROM v0 AS a43 ORDER BY 127; 
+         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

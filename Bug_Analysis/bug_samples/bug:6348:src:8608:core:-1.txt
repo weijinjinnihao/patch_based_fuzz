@@ -1,0 +1,298 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE VIEW v5 AS SELECT c1 COLLATE hex FROM v0 AS a6 ORDER BY 18446744073709551488; 
+CREATE INDEX i7 ON v0 ( c1 ); 
+CREATE VIEW v8 AS WITH v0 ( c10 ) AS ( WITH v5 ( c11, c12, c13, c14, c15, c16 ) AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551615 ) SELECT 0 ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a9 ORDER BY 18446744073709551488; 
+CREATE TABLE v17 ( c18, c19 UNIQUE ON CONFLICT REPLACE, c20, c21, c22 BLOB AS( c26 + c24 - c22 ), c23, c24, c25, c26 UNIQUE ); 
+CREATE TABLE v27 ( c28, c29, c30 ); 
+ALTER TABLE v8 DROP COLUMN c3; 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE INDEX i31 ON v5 ( c3 ); 
+CREATE INDEX i32 ON v0 ( c1 ); 
+CREATE VIRTUAL TABLE v33 USING fts5 ( c34, c35 ); 
+CREATE INDEX i36 ON v8 ( c10 ); 
+ALTER TABLE v27 DROP COLUMN c29; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.c34 FROM v33 AS a37 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a38 NATURAL JOIN v27 AS a39 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a40 NATURAL JOIN v27 AS a41 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a42.c3 FROM v0 AS a42 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 ( c44 ) AS ( WITH v45 AS ( SELECT ( SELECT min ( v5.c3 ) OVER ( ORDER BY 18446744073709551488 IN v45 ) ORDER BY 18446744073709551488 ) FROM v45 AS a46 GROUP BY c44 ORDER BY 4294967295 ) SELECT 18446744073709551615 ORDER BY 18446744073709551488 ) SELECT * FROM v8 AS a43 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v47 AS ( SELECT * FROM v47 AS a49 JOIN v47 AS a50 USING ( c3, c3, c18, c3, c3, c3, c28, c34 ) WHERE c34 = c10 >= 18446744073709551488 ORDER BY 18446744073709551488 ) SELECT * FROM v47 AS a48 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 ( c52 ) AS ( WITH v5 ( c53 ) AS ( WITH v8 ( c54 ) AS ( WITH v55 ( c56, c57, c58, c59, c60, c61 ) AS ( SELECT 18446744073709551488 y ORDER BY ( ( c58 + 18446744073709551615 ) % 18446744073709551488 ) < 18446744073709551488 ) SELECT 18446744073709551488 ORDER BY 18446744073709551488 ) SELECT 203 ORDER BY 18446744073709551488 ) SELECT 18446744073709551488 ORDER BY 203 ) SELECT * FROM v17 AS a51 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a62.c34 IS ( a62.c35 || a62.c35 || a62.c34 ), a62.c34 FROM v33 AS a62 GROUP BY a62.c35 HAVING automatic_index ( * ) >= 203 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v27 AS a63 ), ( v17 AS a64 ), ( v8 AS a65 ) NATURAL JOIN ( v17 AS a66 NATURAL JOIN v5 AS a67 ) WHERE a65.c10 = a66.c19 + 18446744073709551488 AND a63.c30 = a65.c10 + 18446744073709551488 AND a67.c3 = a63.c30 + 0 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop column from view "v8"
+Runtime error near line 9: error in index i4 after drop column: no such column: c3
+Parse error near line 10: views may not be indexed
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: views may not be indexed
+BEGIN VERI 0
+Parse error near line 16: no such table: v33
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no tables specified
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: circular reference: v47
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: generated column loop on "c22"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v33
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such column: a65.c10
+   JOIN ( v17 AS a66 NATURAL JOIN v5 AS a67 ) WHERE a65.c10 = a66.c19 + 18446744
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT c1 COLLATE hex FROM v0 AS a6 ORDER BY 18446744073709551488; 
+; 
+CREATE VIEW v8 AS WITH v0 ( c10 ) AS ( WITH v5 ( c11, c12, c13, c14, c15, c16 ) AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551615 ) SELECT 0 ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a9 ORDER BY 18446744073709551488; 
+CREATE TABLE v17 ( c18, c19 UNIQUE ON CONFLICT REPLACE, c20, c21, c22 BLOB AS( c26 + c24 - c22 ), c23, c24, c25, c26 UNIQUE ); 
+CREATE TABLE v27 ( c28, c29, c30 ); 
+ALTER TABLE v8 DROP COLUMN c3; 
+ALTER TABLE v0 DROP COLUMN c3; 
+; 
+; 
+CREATE VIRTUAL TABLE v33 USING fts5 ( c34, c35 ); 
+; 
+ALTER TABLE v27 DROP COLUMN c29; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.c34 FROM v33 AS a37 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a38 NATURAL JOIN v27 AS a39 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a40 NATURAL JOIN v27 AS a41 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a42.c3 FROM v0 AS a42 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 ( c44 ) AS ( WITH v45 AS ( SELECT ( SELECT min ( v5.c3 ) OVER ( ORDER BY 18446744073709551488 IN v45 ) ORDER BY 18446744073709551488 ) FROM v45 AS a46 GROUP BY c44 ORDER BY 4294967295 ) SELECT 18446744073709551615 ORDER BY 18446744073709551488 ) SELECT * FROM v8 AS a43 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v47 AS ( SELECT * FROM v47 AS a49 JOIN v47 AS a50 USING ( c3, c3, c18, c3, c3, c3, c28, c34 ) WHERE c34 = c10 >= 18446744073709551488 ORDER BY 18446744073709551488 ) SELECT * FROM v47 AS a48 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 ( c52 ) AS ( WITH v5 ( c53 ) AS ( WITH v8 ( c54 ) AS ( WITH v55 ( c56, c57, c58, c59, c60, c61 ) AS ( SELECT 18446744073709551488 y ORDER BY ( ( c58 + 18446744073709551615 ) % 18446744073709551488 ) < 18446744073709551488 ) SELECT 18446744073709551488 ORDER BY 18446744073709551488 ) SELECT 203 ORDER BY 18446744073709551488 ) SELECT 18446744073709551488 ORDER BY 203 ) SELECT * FROM v17 AS a51 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a62.c34 IS ( a62.c35 || a62.c35 || a62.c34 ), a62.c34 FROM v33 AS a62 GROUP BY a62.c35 HAVING automatic_index ( * ) >= 203 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v27 AS a63 ), ( v17 AS a64 ), ( v8 AS a65 ) NATURAL JOIN ( v17 AS a66 NATURAL JOIN v5 AS a67 ) WHERE a65.c10 = a66.c19 + 18446744073709551488 AND a63.c30 = a65.c10 + 18446744073709551488 AND a67.c3 = a63.c30 + 0 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop column from view "v8"
+Runtime error near line 12: no such module: fts5
+BEGIN VERI 0
+Parse error near line 16: no such table: v33
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: a42.c3
+  SELECT a42.c3 FROM v0 AS a42 ORDER BY 18446744073709551615; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no tables specified
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: circular reference: v47
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: generated column loop on "c22"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v33
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such column: a65.c10
+   JOIN ( v17 AS a66 NATURAL JOIN v5 AS a67 ) WHERE a65.c10 = a66.c19 + 18446744
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such table: v33
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such table: v33
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such collation sequence: hex
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such collation sequence: hex
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 25: no such column: a42.c3
+  SELECT a42.c3 FROM v0 AS a42 ORDER BY 18446744073709551615; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: circular reference: v47
+ 
+INT: 0 
+Str: 
+Parse error near line 34: circular reference: v47
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: generated column loop on "c22"
+ 
+INT: 0 
+Str: 
+Parse error near line 37: generated column loop on "c22"
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such table: v33
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no such table: v33
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: no such column: a65.c10
+   JOIN ( v17 AS a66 NATURAL JOIN v5 AS a67 ) WHERE a65.c10 = a66.c19 + 18446744
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 43: no such column: a65.c10
+   JOIN ( v17 AS a66 NATURAL JOIN v5 AS a67 ) WHERE a65.c10 = a66.c19 + 18446744
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

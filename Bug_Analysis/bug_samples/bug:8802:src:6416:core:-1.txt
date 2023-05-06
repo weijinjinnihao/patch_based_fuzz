@@ -1,0 +1,309 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2, c3 AS( c4 + c3 - c1 ) UNIQUE ON CONFLICT FAIL, c4 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 18446744073709551488; 
+CREATE INDEX i7 ON v0 ( c1 ); 
+CREATE INDEX i8 ON v0 ( c1 ); 
+CREATE INDEX i9 ON v0 ( c2 ); 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12, c13 UNIQUE ); 
+CREATE TABLE v14 ( c15, c16, c17 ); 
+CREATE INDEX i18 ON v14 ( c17 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE VIRTUAL TABLE v19 USING fts5 ( c20, c21 ); 
+CREATE INDEX i22 ON v19 ( c21 ); 
+ALTER TABLE v5 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c1, count ( ( NOT ( a24.c1 IS NULL ) ) AND ( NOT ( a23.c3 IS NULL ) ) ), count ( ( hex ( 18446744073709551488 ) ) % 9223372036854775807 AND ( NOT ( a24.c3 IS NULL ) ) ) FROM v0 AS a23 LEFT JOIN v5 AS a24 ON a23.c3 = a24.c4 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a25.c4 || a25.c2 ) FROM v5 AS a25 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c16 FROM v14 AS a26 WHERE ( 'x', a26.c17 > 18446744073709551488, '12345' ) < 18446744073709551488 + a26.c16 - a26.c15 NOT IN ( 'x', 'v0', 't1' ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a27 ORDER BY ( ( a27.c12 + 18446744073709551488 ) % 18446744073709551488 ) < 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c12, count ( a28.c11 ) FROM v10 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v19 AS ( WITH v31 AS ( SELECT 18446744073709551615 y ORDER BY 18446744073709551488 ) SELECT avg ( v19.c13 ) FROM ( SELECT * ORDER BY 9223372036854775807 ) AS y ORDER BY 18446744073709551488 ) SELECT * FROM v10 AS a29 JOIN v0 AS a30 USING ( a29.c11 ) WHERE max ( a29.c11 ) = ( a29.c12 ) AND a30.c1 = 18446744073709518848 ORDER BY 6; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551488, 18446744073709551488, 10, 0 ), ( 127, 127, 18446744073709551488, 18446744073709551615 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a32 ORDER BY a32.c16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a33 ORDER BY 255 IN ( SELECT * FROM v5 AS a34 ORDER BY 18446744073709551488 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c13, a36.c21 FROM v0 AS a35 RIGHT JOIN v19 AS a36 ON a35.c4 = a36.c21 != 255 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: error in index i9 after drop column: no such column: c2
+Parse error near line 10: cannot drop UNIQUE column: "c3"
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: no such table: main.v19
+Parse error near line 13: cannot drop column from view "v5"
+BEGIN VERI 0
+Parse error near line 15: generated column loop on "c3"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: row value misused
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  8.c12, count ( a28.c11 ) FROM v10 AS a28 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: near ".": syntax error
+  ELECT * FROM v10 AS a29 JOIN v0 AS a30 USING ( a29.c11 ) WHERE max ( a29.c11 )
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: near "ORDER": syntax error
+  127, 18446744073709551488, 18446744073709551615 ) ORDER BY 9223372036854775807
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v19
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2, c3 AS( c4 + c3 - c1 ) UNIQUE ON CONFLICT FAIL, c4 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 18446744073709551488; 
+; 
+; 
+; 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12, c13 UNIQUE ); 
+CREATE TABLE v14 ( c15, c16, c17 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE VIRTUAL TABLE v19 USING fts5 ( c20, c21 ); 
+; 
+ALTER TABLE v5 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c1, count ( ( NOT ( a24.c1 IS NULL ) ) AND ( NOT ( a23.c3 IS NULL ) ) ), count ( ( hex ( 18446744073709551488 ) ) % 9223372036854775807 AND ( NOT ( a24.c3 IS NULL ) ) ) FROM v0 AS a23 LEFT JOIN v5 AS a24 ON a23.c3 = a24.c4 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a25.c4 || a25.c2 ) FROM v5 AS a25 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c16 FROM v14 AS a26 WHERE ( 'x', a26.c17 > 18446744073709551488, '12345' ) < 18446744073709551488 + a26.c16 - a26.c15 NOT IN ( 'x', 'v0', 't1' ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a27 ORDER BY ( ( a27.c12 + 18446744073709551488 ) % 18446744073709551488 ) < 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c12, count ( a28.c11 ) FROM v10 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v19 AS ( WITH v31 AS ( SELECT 18446744073709551615 y ORDER BY 18446744073709551488 ) SELECT avg ( v19.c13 ) FROM ( SELECT * ORDER BY 9223372036854775807 ) AS y ORDER BY 18446744073709551488 ) SELECT * FROM v10 AS a29 JOIN v0 AS a30 USING ( a29.c11 ) WHERE max ( a29.c11 ) = ( a29.c12 ) AND a30.c1 = 18446744073709518848 ORDER BY 6; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551488, 18446744073709551488, 10, 0 ), ( 127, 127, 18446744073709551488, 18446744073709551615 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a32 ORDER BY a32.c16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a33 ORDER BY 255 IN ( SELECT * FROM v5 AS a34 ORDER BY 18446744073709551488 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c13, a36.c21 FROM v0 AS a35 RIGHT JOIN v19 AS a36 ON a35.c4 = a36.c21 != 255 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: cannot drop UNIQUE column: "c3"
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: cannot drop column from view "v5"
+BEGIN VERI 0
+Parse error near line 15: generated column loop on "c3"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: a25.c2
+  SELECT max ( a25.c4 || a25.c2 ) FROM v5 AS a25 ORDER BY 127; 
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: row value misused
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  8.c12, count ( a28.c11 ) FROM v10 AS a28 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: near ".": syntax error
+  ELECT * FROM v10 AS a29 JOIN v0 AS a30 USING ( a29.c11 ) WHERE max ( a29.c11 )
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: near "ORDER": syntax error
+  127, 18446744073709551488, 18446744073709551615 ) ORDER BY 9223372036854775807
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v19
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: generated column loop on "c3"
+ 
+INT: 0 
+Str: 
+Parse error near line 15: generated column loop on "c3"
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such column: a25.c2
+  SELECT max ( a25.c4 || a25.c2 ) FROM v5 AS a25 ORDER BY 127; 
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 21: row value misused
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  8.c12, count ( a28.c11 ) FROM v10 AS a28 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  8.c12, count ( a28.c11 ) FROM v10 AS a28 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: near ".": syntax error
+  ELECT * FROM v10 AS a29 JOIN v0 AS a30 USING ( a29.c11 ) WHERE max ( a29.c11 )
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: near ".": syntax error
+  ELECT * FROM v10 AS a29 JOIN v0 AS a30 USING ( a29.c11 ) WHERE max ( a29.c11 )
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 72577072
+Str: 
+Parse error near line 33: near "ORDER": syntax error
+  127, 18446744073709551488, 18446744073709551615 ) ORDER BY 9223372036854775807
+                                      error here ---^
+ 
+Str: 
+Parse error near line 33: near "ORDER": syntax error
+  127, 18446744073709551488, 18446744073709551615 ) ORDER BY 9223372036854775807
+                                      error here ---^
+ 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such table: v19
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such table: v19
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such table: v19
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such table: v19
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

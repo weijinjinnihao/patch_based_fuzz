@@ -1,0 +1,287 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 WHERE c1 = 9223372036854775807 ORDER BY 9223372036854775807; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9, c10 UNIQUE ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+CREATE INDEX i15 ON v11 ( c13 ); 
+ALTER TABLE v11 DROP COLUMN c14; 
+ALTER TABLE v11 DROP COLUMN c12; 
+CREATE INDEX i16 ON v11 ( c13 ); 
+CREATE VIRTUAL TABLE v17 USING fts5 ( c18, c19 ); 
+CREATE INDEX i20 ON v7 ( c9 ); 
+CREATE INDEX i21 ON v17 ( c18 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a22 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a23, v0 AS a24 NATURAL JOIN v17 AS a25 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c18 FROM v17 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a27 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 GROUP BY a28.c2, a28.c3 < a28.c1 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a29, v5 AS a30 NATURAL JOIN v5 AS a31 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c2, count ( ( NOT ( a32.c1 IS NULL ) ) AND ( NOT ( a32.c2 IS NULL ) ) ) FROM v0 AS a32 WHERE ( CASE WHEN a32.c1 != 'v0' THEN 18446744073709551488 ELSE 9223372036854775807 END ) GROUP BY 18446744073709551488 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a33 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c2, count ( ( NOT ( a34.c2 IS NULL ) ) AND ( NOT ( a34.c2 IS NULL ) ) ) FROM v5 AS a34 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a35 WHERE a35.c19 < a35.c19 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: no such module: fts5
+Parse error near line 12: no such table: main.v17
+Runtime error near line 13: error in index i4 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 15: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v17
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v17
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 WHERE c1 = 9223372036854775807 ORDER BY 9223372036854775807; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9, c10 UNIQUE ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+; 
+ALTER TABLE v11 DROP COLUMN c14; 
+ALTER TABLE v11 DROP COLUMN c12; 
+; 
+CREATE VIRTUAL TABLE v17 USING fts5 ( c18, c19 ); 
+; 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a22 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a23, v0 AS a24 NATURAL JOIN v17 AS a25 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c18 FROM v17 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a27 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 GROUP BY a28.c2, a28.c3 < a28.c1 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a29, v5 AS a30 NATURAL JOIN v5 AS a31 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c2, count ( ( NOT ( a32.c1 IS NULL ) ) AND ( NOT ( a32.c2 IS NULL ) ) ) FROM v0 AS a32 WHERE ( CASE WHEN a32.c1 != 'v0' THEN 18446744073709551488 ELSE 9223372036854775807 END ) GROUP BY 18446744073709551488 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a33 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c2, count ( ( NOT ( a34.c2 IS NULL ) ) AND ( NOT ( a34.c2 IS NULL ) ) ) FROM v5 AS a34 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a35 WHERE a35.c19 < a35.c19 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: no such module: fts5
+BEGIN VERI 0
+Parse error near line 15: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a28.c2
+  SELECT * FROM v0 AS a28 GROUP BY a28.c2, a28.c3 < a28.c1 ORDER BY 922337203685
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a32.c2
+  SELECT a32.c2, count ( ( NOT ( a32.c1 IS NULL ) ) AND ( NOT ( a32.c2 IS NULL )
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a34.c2
+  SELECT a34.c2, count ( ( NOT ( a34.c2 IS NULL ) ) AND ( NOT ( a34.c2 IS NULL )
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v17
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 27: no such column: a28.c2
+  SELECT * FROM v0 AS a28 GROUP BY a28.c2, a28.c3 < a28.c1 ORDER BY 922337203685
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 33: no such column: a32.c2
+  SELECT a32.c2, count ( ( NOT ( a32.c1 IS NULL ) ) AND ( NOT ( a32.c2 IS NULL )
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such column: a34.c2
+  SELECT a34.c2, count ( ( NOT ( a34.c2 IS NULL ) ) AND ( NOT ( a34.c2 IS NULL )
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such table: v17
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

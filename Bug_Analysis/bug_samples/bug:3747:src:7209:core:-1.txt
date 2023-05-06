@@ -1,0 +1,300 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709551488; 
+WITH v4 ( c6 ) AS ( SELECT 8 ORDER BY 9223372036854775807 ) UPDATE v4 SET c2 = '40000 400 1 1'; 
+CREATE INDEX i7 ON v0 ( c3 ); 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10 REFERENCES t1 ( c10, c10, c9, c10 ), c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+CREATE INDEX i16 ON v8 ( c9 ); 
+CREATE INDEX i17 ON v8 ( c9 ); 
+CREATE TABLE v18 ( c19 INTEGER PRIMARY KEY, c20 INTEGER REFERENCES t1 ON DELETE CASCADE REFERENCES t2, c21 TEXT, FOREIGN KEY ( c21, c20 ) REFERENCES encoding ( c20, c19 ) ON UPDATE CASCADE ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE INDEX i22 ON v18 ( c19 ); 
+ALTER TABLE v12 DROP COLUMN c13; 
+CREATE INDEX i23 ON v0 ( c3 ); 
+CREATE VIRTUAL TABLE v24 USING fts5 ( c25, c26 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c26, count ( ( NOT ( a27.c10 IS NULL ) ) AND ( NOT ( a27.c26 IS NULL ) ) ) FROM v24 AS a27 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v8 AS ( WITH v29 AS ( SELECT 100 y ORDER BY 8 ) SELECT avg ( a28.c2 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 8 ) SELECT * FROM v0 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a30 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a31 WHERE a31.c15 = a31.c15 > 9223372036854775807 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c26 FROM v24 AS a32 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551488, 18446744073709551488, 127, 100, 18446744073709551488 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v33 ( c35 ) AS ( WITH v33 AS ( SELECT ( SELECT min ( c35 ) OVER ( ORDER BY 8 ) ORDER BY 8 ) FROM v33 AS a36 GROUP BY c35 ORDER BY 18446744073709551615 ) SELECT 8 ORDER BY 18446744073709551488 ) SELECT * FROM v33 AS a34 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a37.c15 IS NULL ) ) AND ( NOT ( a37.c14 IS NULL ) ) ), count ( ( NOT ( a37.c13 IS NULL ) ) AND ( NOT ( a38.c9 IS NULL ) ) ), count ( ( NOT ( a38.c11 IS NULL ) ) AND ( NOT ( a38.c10 IS NULL ) ) ) FROM v12 AS a37 LEFT JOIN v8 AS a38 ON a38.c10 = a37.c15 WHERE a37.c14 < a38.c11 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 GROUP BY a39.c2, abs ( a39.c3 ) HAVING CASE WHEN a39.c2 != 'def' THEN 9223372036854775807 ELSE 100 END > 18446744073709551488 >= 0 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: cannot modify v4 because it is a view
+Parse error near line 5: foreign key on c10 should reference only one column of table t1
+  TABLE v8 ( c9 INTEGER PRIMARY KEY, c10 REFERENCES t1 ( c10, c10, c9, c10 ), c1
+                                      error here ---^
+Parse error near line 7: no such table: main.v8
+Parse error near line 8: no such table: main.v8
+Runtime error near line 10: error in index i7 after drop column: no such column: c3
+Runtime error near line 14: no such module: fts5
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v24
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v8
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such table: v24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: near "ORDER": syntax error
+  744073709551488, 127, 100, 18446744073709551488 ) ORDER BY 9223372036854775807
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such table: v8
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709551488; 
+WITH v4 ( c6 ) AS ( SELECT 8 ORDER BY 9223372036854775807 ) UPDATE v4 SET c2 = '40000 400 1 1'; 
+; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10 REFERENCES t1 ( c10, c10, c9, c10 ), c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+; 
+; 
+CREATE TABLE v18 ( c19 INTEGER PRIMARY KEY, c20 INTEGER REFERENCES t1 ON DELETE CASCADE REFERENCES t2, c21 TEXT, FOREIGN KEY ( c21, c20 ) REFERENCES encoding ( c20, c19 ) ON UPDATE CASCADE ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+; 
+ALTER TABLE v12 DROP COLUMN c13; 
+; 
+CREATE VIRTUAL TABLE v24 USING fts5 ( c25, c26 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c26, count ( ( NOT ( a27.c10 IS NULL ) ) AND ( NOT ( a27.c26 IS NULL ) ) ) FROM v24 AS a27 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v8 AS ( WITH v29 AS ( SELECT 100 y ORDER BY 8 ) SELECT avg ( a28.c2 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 8 ) SELECT * FROM v0 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a30 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a31 WHERE a31.c15 = a31.c15 > 9223372036854775807 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c26 FROM v24 AS a32 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551488, 18446744073709551488, 127, 100, 18446744073709551488 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v33 ( c35 ) AS ( WITH v33 AS ( SELECT ( SELECT min ( c35 ) OVER ( ORDER BY 8 ) ORDER BY 8 ) FROM v33 AS a36 GROUP BY c35 ORDER BY 18446744073709551615 ) SELECT 8 ORDER BY 18446744073709551488 ) SELECT * FROM v33 AS a34 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a37.c15 IS NULL ) ) AND ( NOT ( a37.c14 IS NULL ) ) ), count ( ( NOT ( a37.c13 IS NULL ) ) AND ( NOT ( a38.c9 IS NULL ) ) ), count ( ( NOT ( a38.c11 IS NULL ) ) AND ( NOT ( a38.c10 IS NULL ) ) ) FROM v12 AS a37 LEFT JOIN v8 AS a38 ON a38.c10 = a37.c15 WHERE a37.c14 < a38.c11 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 GROUP BY a39.c2, abs ( a39.c3 ) HAVING CASE WHEN a39.c2 != 'def' THEN 9223372036854775807 ELSE 100 END > 18446744073709551488 >= 0 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: cannot modify v4 because it is a view
+Parse error near line 5: foreign key on c10 should reference only one column of table t1
+  TABLE v8 ( c9 INTEGER PRIMARY KEY, c10 REFERENCES t1 ( c10, c10, c9, c10 ), c1
+                                      error here ---^
+Runtime error near line 14: no such module: fts5
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v24
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v8
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such table: v24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: near "ORDER": syntax error
+  744073709551488, 127, 100, 18446744073709551488 ) ORDER BY 9223372036854775807
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such table: v8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no such column: a39.c3
+  SELECT * FROM v0 AS a39 GROUP BY a39.c2, abs ( a39.c3 ) HAVING CASE WHEN a39.c
+                                   error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no such table: v24
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no such table: v24
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no such table: v8
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such table: v8
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such table: v24
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such table: v24
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 21138544
+Str: 
+Parse error near line 35: near "ORDER": syntax error
+  744073709551488, 127, 100, 18446744073709551488 ) ORDER BY 9223372036854775807
+                                      error here ---^
+ 
+Str: 
+Parse error near line 35: near "ORDER": syntax error
+  744073709551488, 127, 100, 18446744073709551488 ) ORDER BY 9223372036854775807
+                                      error here ---^
+ 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+8
+ 
+INT: 0 
+Str: 
+8
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no such table: v8
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no such table: v8
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 44: no such column: a39.c3
+  SELECT * FROM v0 AS a39 GROUP BY a39.c2, abs ( a39.c3 ) HAVING CASE WHEN a39.c
+                                   error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

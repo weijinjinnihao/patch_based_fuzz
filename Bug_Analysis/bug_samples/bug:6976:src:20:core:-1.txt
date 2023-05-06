@@ -1,0 +1,314 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2, c3 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 3, 3, 3 ), ( 3, 3, 3 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a5.c2, avg ( a5.c3 ) + 3 FROM v0 AS a5 GROUP BY y ( a5.c2 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+ALTER TABLE v0 DROP c1; 
+CREATE INDEX i6 ON v0 ( c2 ); 
+CREATE TABLE v7 ( c8, c9, c10 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i11 ON v0 ( c2 ); 
+CREATE INDEX i12 ON v7 ( c10 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a13, v7 AS a14 ORDER BY 3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a15 GROUP BY a15.c8, a15.c9 < y ( a15.c8 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16, v7 AS a17 ORDER BY 3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 ORDER BY 3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 WHERE a19.c3 = ( a19.c2 + 18446744073709518848 ) % count ( a19.c1 ) ORDER BY 3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c10, count ( ( NOT ( a20.c8 IS NULL ) ) AND ( NOT ( a20.c9 IS NULL ) ) ), count ( ( NOT ( a21.c8 IS NULL ) ) AND ( NOT ( a20.c10 IS NULL ) ) ) FROM v7 AS a20 LEFT JOIN v7 AS a21 ON a21.c10 = a21.c9 WHERE count ( * ) >= 0 = 'v1' ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a22.c2 ) FROM v0 AS a22 ORDER BY 3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a23 NATURAL JOIN v0 AS a24 ORDER BY 3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c3 FROM v0 AS a25 ORDER BY 3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a26 ORDER BY 3; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: UNIQUE constraint failed: v0.c2, v0.c3 (19)
+BEGIN VERI 0
+Parse error near line 5: no such function: y
+  T a5.c2, avg ( a5.c3 ) + 3 FROM v0 AS a5 GROUP BY y ( a5.c2 ) ORDER BY 1; 
+                                      error here ---^
+END VERI 0
+Runtime error near line 7: error in index i4 after drop column: no such column: c1
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 3
+  5 GROUP BY a15.c8, a15.c9 < y ( a15.c8 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: misuse of aggregate function count()
+  HERE a19.c3 = ( a19.c2 + 18446744073709518848 ) % count ( a19.c1 ) ORDER BY 3;
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+  0 = a21.c9 WHERE count ( * ) >= 0 = 'v1' ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2, c3 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 3, 3, 3 ), ( 3, 3, 3 ); 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a5.c2, avg ( a5.c3 ) + 3 FROM v0 AS a5 GROUP BY y ( a5.c2 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+ALTER TABLE v0 DROP c1; 
+; 
+CREATE TABLE v7 ( c8, c9, c10 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a13, v7 AS a14 ORDER BY 3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a15 GROUP BY a15.c8, a15.c9 < y ( a15.c8 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16, v7 AS a17 ORDER BY 3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 ORDER BY 3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 WHERE a19.c3 = ( a19.c2 + 18446744073709518848 ) % count ( a19.c1 ) ORDER BY 3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c10, count ( ( NOT ( a20.c8 IS NULL ) ) AND ( NOT ( a20.c9 IS NULL ) ) ), count ( ( NOT ( a21.c8 IS NULL ) ) AND ( NOT ( a20.c10 IS NULL ) ) ) FROM v7 AS a20 LEFT JOIN v7 AS a21 ON a21.c10 = a21.c9 WHERE count ( * ) >= 0 = 'v1' ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a22.c2 ) FROM v0 AS a22 ORDER BY 3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a23 NATURAL JOIN v0 AS a24 ORDER BY 3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c3 FROM v0 AS a25 ORDER BY 3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a26 ORDER BY 3; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: UNIQUE constraint failed: v0.c2, v0.c3 (19)
+BEGIN VERI 0
+Parse error near line 5: no such function: y
+  T a5.c2, avg ( a5.c3 ) + 3 FROM v0 AS a5 GROUP BY y ( a5.c2 ) ORDER BY 1; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 3
+  5 GROUP BY a15.c8, a15.c9 < y ( a15.c8 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: a19.c1
+  .c3 = ( a19.c2 + 18446744073709518848 ) % count ( a19.c1 ) ORDER BY 3; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+  0 = a21.c9 WHERE count ( * ) >= 0 = 'v1' ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 5: no such function: y
+  T a5.c2, avg ( a5.c3 ) + 3 FROM v0 AS a5 GROUP BY y ( a5.c2 ) ORDER BY 1; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 5: no such function: y
+  T a5.c2, avg ( a5.c3 ) + 3 FROM v0 AS a5 GROUP BY y ( a5.c2 ) ORDER BY 1; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 3
+  5 GROUP BY a15.c8, a15.c9 < y ( a15.c8 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 3
+  5 GROUP BY a15.c8, a15.c9 < y ( a15.c8 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: misuse of aggregate function count()
+  HERE a19.c3 = ( a19.c2 + 18446744073709518848 ) % count ( a19.c1 ) ORDER BY 3;
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 25: no such column: a19.c1
+  .c3 = ( a19.c2 + 18446744073709518848 ) % count ( a19.c1 ) ORDER BY 3; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+  0 = a21.c9 WHERE count ( * ) >= 0 = 'v1' ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+  0 = a21.c9 WHERE count ( * ) >= 0 = 'v1' ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

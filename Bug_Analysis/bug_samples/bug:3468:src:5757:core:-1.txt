@@ -1,0 +1,314 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45 INTEGER PRIMARY KEY, c46 ); 
+CREATE INDEX i47 ON v0 ( c2 ); 
+CREATE TABLE v48 ( c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62 PRIMARY KEY ON CONFLICT REPLACE, c63, c64, c65 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v66 USING rtree ( c67, c68, c69, c70, c71, c72, c73, c74, c75 ); 
+CREATE INDEX i76 ON v66 ( c69 ); 
+CREATE TABLE v77 ( c78, c79, c80, c81, c82, c83, c84, c85, c86, c87, c88, c89, c90, c91, c92, c93, c94 TEXT UNIQUE NOT NULL ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 'v0' ), ( 18446744073709551615, 'ghi' ), ( 127, 'd' ); 
+CREATE INDEX i95 ON v66 ( c75 ); 
+CREATE INDEX i96 ON v3 ( c33 ); 
+CREATE TABLE v97 ( c98 DEFAULT x'ABCD' DEFAULT 127, c99 NOT NULL DEFAULT 127, c100 NOT NULL ON CONFLICT REPLACE DEFAULT 18446744073709551615, c101 NOT NULL ON CONFLICT IGNORE DEFAULT 18446744073709551615, c102 NOT NULL ON CONFLICT ABORT DEFAULT 127 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v97 BEGIN DELETE FROM v66; END; 
+ALTER TABLE v0 DROP c2; 
+UPDATE v97 SET c100 = 'anx' WHERE c100 = 0; 
+CREATE INDEX i103 ON v77 ( c78 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( a104.c1 ), min ( a104.c1 ), max ( a104.c1 ), max ( a104.c2 ), sum ( a105.c100 ), sum ( a104.c1 ), avg ( a104.c2 ), avg ( a105.c100 ) FROM v0 AS a104 NATURAL JOIN v97 AS a105 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v97 AS a106 NATURAL JOIN v3 AS a107 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v97 AS a108 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a109.c46 FROM v3 AS a109 WHERE ( a109.c4, a109.c13 ) NOT IN ( SELECT * FROM v77 AS a110 ORDER BY 127 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT lower ( a111.c44 ) FROM v3 AS a111 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a112 WHERE a112.c2 = a112.c2 % 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v66 AS a113 WHERE a113.c67 = a113.c70 NOT NULL ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a114.c98, sum ( a114.c99 ) AS y FROM v97 AS a114 GROUP BY a114.c100 ORDER BY count ( * ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a115.c25 ) FROM v3 AS a115 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v116 ( c117 ) AS ( SELECT 'v1' ORDER BY 127 ) VALUES ( 'v0', 'x', 'four' ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: virtual tables may not be indexed
+Runtime error near line 8: datatype mismatch (20)
+Parse error near line 9: virtual tables may not be indexed
+Runtime error near line 13: error in index i47 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 48
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 5
+  SELECT * FROM v97 AS a108 ORDER BY 0; 
+                       error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 17
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 9
+   a113 WHERE a113.c67 = a113.c70 NOT NULL ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: near "ORDER": syntax error
+   'v1' ORDER BY 127 ) VALUES ( 'v0', 'x', 'four' ) ORDER BY 127; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45 INTEGER PRIMARY KEY, c46 ); 
+; 
+CREATE TABLE v48 ( c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62 PRIMARY KEY ON CONFLICT REPLACE, c63, c64, c65 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v66 USING rtree ( c67, c68, c69, c70, c71, c72, c73, c74, c75 ); 
+; 
+CREATE TABLE v77 ( c78, c79, c80, c81, c82, c83, c84, c85, c86, c87, c88, c89, c90, c91, c92, c93, c94 TEXT UNIQUE NOT NULL ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 'v0' ), ( 18446744073709551615, 'ghi' ), ( 127, 'd' ); 
+; 
+; 
+CREATE TABLE v97 ( c98 DEFAULT x'ABCD' DEFAULT 127, c99 NOT NULL DEFAULT 127, c100 NOT NULL ON CONFLICT REPLACE DEFAULT 18446744073709551615, c101 NOT NULL ON CONFLICT IGNORE DEFAULT 18446744073709551615, c102 NOT NULL ON CONFLICT ABORT DEFAULT 127 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v97 BEGIN DELETE FROM v66; END; 
+ALTER TABLE v0 DROP c2; 
+UPDATE v97 SET c100 = 'anx' WHERE c100 = 0; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( a104.c1 ), min ( a104.c1 ), max ( a104.c1 ), max ( a104.c2 ), sum ( a105.c100 ), sum ( a104.c1 ), avg ( a104.c2 ), avg ( a105.c100 ) FROM v0 AS a104 NATURAL JOIN v97 AS a105 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v97 AS a106 NATURAL JOIN v3 AS a107 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v97 AS a108 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a109.c46 FROM v3 AS a109 WHERE ( a109.c4, a109.c13 ) NOT IN ( SELECT * FROM v77 AS a110 ORDER BY 127 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT lower ( a111.c44 ) FROM v3 AS a111 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a112 WHERE a112.c2 = a112.c2 % 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v66 AS a113 WHERE a113.c67 = a113.c70 NOT NULL ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a114.c98, sum ( a114.c99 ) AS y FROM v97 AS a114 GROUP BY a114.c100 ORDER BY count ( * ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a115.c25 ) FROM v3 AS a115 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v116 ( c117 ) AS ( SELECT 'v1' ORDER BY 127 ) VALUES ( 'v0', 'x', 'four' ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: datatype mismatch (20)
+BEGIN VERI 0
+Parse error near line 17: no such column: a104.c2
+  104.c1 ), min ( a104.c1 ), max ( a104.c1 ), max ( a104.c2 ), sum ( a105.c100 )
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 48
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 5
+  SELECT * FROM v97 AS a108 ORDER BY 0; 
+                       error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 17
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a112.c2
+  SELECT * FROM v0 AS a112 WHERE a112.c2 = a112.c2 % 127 ORDER BY 127; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 9
+   a113 WHERE a113.c67 = a113.c70 NOT NULL ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: near "ORDER": syntax error
+   'v1' ORDER BY 127 ) VALUES ( 'v0', 'x', 'four' ) ORDER BY 127; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no such column: a104.c2
+  104.c1 ), min ( a104.c1 ), max ( a104.c1 ), max ( a104.c2 ), sum ( a105.c100 )
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 48
+ 
+INT: 0 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 48
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 5
+  SELECT * FROM v97 AS a108 ORDER BY 0; 
+                       error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 5
+  SELECT * FROM v97 AS a108 ORDER BY 0; 
+                       error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 17
+ 
+INT: 0 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 17
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such column: a112.c2
+  SELECT * FROM v0 AS a112 WHERE a112.c2 = a112.c2 % 127 ORDER BY 127; 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 9
+   a113 WHERE a113.c67 = a113.c70 NOT NULL ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 9
+   a113 WHERE a113.c67 = a113.c70 NOT NULL ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 44214016
+Str: 
+Parse error near line 44: near "ORDER": syntax error
+   'v1' ORDER BY 127 ) VALUES ( 'v0', 'x', 'four' ) ORDER BY 127; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 44: near "ORDER": syntax error
+   'v1' ORDER BY 127 ) VALUES ( 'v0', 'x', 'four' ) ORDER BY 127; 
+                                      error here ---^
+ 
+Compare_result_int: 
+0
+
+
+

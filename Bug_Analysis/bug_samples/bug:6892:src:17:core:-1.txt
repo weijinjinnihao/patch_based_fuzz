@@ -1,0 +1,296 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE VIEW v6 AS SELECT * FROM v0 AS a7 ORDER BY 9223372036854775807; 
+CREATE TABLE v8 ( c9, c10, c11, c12, c13, c14 INTEGER, c15, c16, c17, c18, c19, c20 BLOB, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46, c47, c48 PRIMARY KEY, c49, c50, c51 ); 
+CREATE TABLE v52 ( c53, c54, c55 ); 
+ALTER TABLE v8 DROP COLUMN c14; 
+CREATE INDEX i56 ON v6 ( c57 ); 
+ALTER TABLE v6 DROP COLUMN c20; 
+CREATE VIRTUAL TABLE v58 USING fts5 ( c59, c60 ); 
+CREATE INDEX i61 ON v0 ( c2 ); 
+CREATE INDEX i62 ON v6 ( c59 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a63.c55, count ( a63.c55 ) FROM v52 AS a63 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c14, count ( ( NOT ( c54 IS NULL ) ) AND ( NOT ( c1 IS NULL ) ) ) FROM v6 AS a64 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a65, v52 AS a66 NATURAL JOIN v0 AS a67 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a68.c1, a69.c2 FROM v0 AS a68 RIGHT JOIN v0 AS a69 ON a69.c1 = a68.c3 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v58 AS a70 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 9223372036854775807 ORDER BY 9223372036854775807 ) AS y, v6 AS a71 ON ( ( hex ( 18446744073709551488 ) ) % 9223372036854775807 ) != 9223372036854775807 OR 9223372036854775807 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a72.c60 IS NULL ) ) AND ( NOT ( a72.c59 IS NULL ) ) ) FROM v58 AS a72 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a73 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a74.c49, count ( a74.c44 ) FROM v8 AS a74 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: views may not be indexed
+Parse error near line 9: cannot drop column from view "v6"
+Runtime error near line 10: no such module: fts5
+Parse error near line 12: views may not be indexed
+Runtime error near line 13: error in index i4 after drop column: no such column: c2
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: c14
+  SELECT c14, count ( ( NOT ( c54 IS NULL ) ) AND ( NOT ( c1 IS NULL ) ) ) FROM 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v58
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v58
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 2
+  74.c49, count ( a74.c44 ) FROM v8 AS a74 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+; 
+CREATE VIEW v6 AS SELECT * FROM v0 AS a7 ORDER BY 9223372036854775807; 
+CREATE TABLE v8 ( c9, c10, c11, c12, c13, c14 INTEGER, c15, c16, c17, c18, c19, c20 BLOB, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46, c47, c48 PRIMARY KEY, c49, c50, c51 ); 
+CREATE TABLE v52 ( c53, c54, c55 ); 
+ALTER TABLE v8 DROP COLUMN c14; 
+; 
+ALTER TABLE v6 DROP COLUMN c20; 
+CREATE VIRTUAL TABLE v58 USING fts5 ( c59, c60 ); 
+; 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a63.c55, count ( a63.c55 ) FROM v52 AS a63 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c14, count ( ( NOT ( c54 IS NULL ) ) AND ( NOT ( c1 IS NULL ) ) ) FROM v6 AS a64 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a65, v52 AS a66 NATURAL JOIN v0 AS a67 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a68.c1, a69.c2 FROM v0 AS a68 RIGHT JOIN v0 AS a69 ON a69.c1 = a68.c3 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v58 AS a70 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 9223372036854775807 ORDER BY 9223372036854775807 ) AS y, v6 AS a71 ON ( ( hex ( 18446744073709551488 ) ) % 9223372036854775807 ) != 9223372036854775807 OR 9223372036854775807 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a72.c60 IS NULL ) ) AND ( NOT ( a72.c59 IS NULL ) ) ) FROM v58 AS a72 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a73 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a74.c49, count ( a74.c44 ) FROM v8 AS a74 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: cannot drop column from view "v6"
+Runtime error near line 10: no such module: fts5
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: c14
+  SELECT c14, count ( ( NOT ( c54 IS NULL ) ) AND ( NOT ( c1 IS NULL ) ) ) FROM 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a69.c2
+  SELECT a68.c1, a69.c2 FROM v0 AS a68 RIGHT JOIN v0 AS a69 ON a69.c1 = a68.c3 O
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v58
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v58
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 2
+  74.c49, count ( a74.c44 ) FROM v8 AS a74 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such column: c14
+  SELECT c14, count ( ( NOT ( c54 IS NULL ) ) AND ( NOT ( c1 IS NULL ) ) ) FROM 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 18: no such column: c14
+  SELECT c14, count ( ( NOT ( c54 IS NULL ) ) AND ( NOT ( c1 IS NULL ) ) ) FROM 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 24: no such column: a69.c2
+  SELECT a68.c1, a69.c2 FROM v0 AS a68 RIGHT JOIN v0 AS a69 ON a69.c1 = a68.c3 O
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such table: v58
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such table: v58
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such table: v58
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such table: v58
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 2
+  74.c49, count ( a74.c44 ) FROM v8 AS a74 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 2
+  74.c49, count ( a74.c44 ) FROM v8 AS a74 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

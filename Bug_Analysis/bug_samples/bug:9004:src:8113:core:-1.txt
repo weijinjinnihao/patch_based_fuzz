@@ -1,0 +1,302 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13 INTEGER DEFAULT 'v0', c14, c15, c16, c17, c18, c19, c20, c21 CHECK( x'b1' ), c22, c23, c24, c25, c26, c27 ); 
+CREATE VIEW v28 AS SELECT * FROM v0 AS a29 GROUP BY c6, c26 < c18 ORDER BY 18446744073709551488; 
+CREATE TABLE v30 ( c31 INTEGER PRIMARY KEY, c32, c33 UNIQUE ); 
+CREATE INDEX i34 ON v30 ( c32 ); 
+CREATE TABLE v35 ( c36, c37, c38 ); 
+CREATE INDEX i39 ON v30 ( c31 ); 
+CREATE INDEX i40 ON v28 ( c1 ); 
+ALTER TABLE v28 DROP COLUMN c3; 
+ALTER TABLE v30 DROP COLUMN c31; 
+CREATE INDEX i41 ON v28 ( c3 ); 
+CREATE INDEX i42 ON v30 ( c32 ); 
+CREATE VIRTUAL TABLE v43 USING fts5 ( c44, c45 ); 
+ALTER TABLE v30 DROP COLUMN c32; 
+SELECT 'BEGIN VERI 0'; 
+WITH v43 AS ( WITH v28 AS ( SELECT 18446744073709551488 y ORDER BY 18446744071562067968 ) SELECT avg ( a46.c3 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551488 ) SELECT * FROM v43 AS a46 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v28 AS a47, v30 AS a48 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v35 AS a49 GROUP BY a49.c38 HAVING automatic_index ( * ) >= 10 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551488, 18446744073709551488, - 18446744073709551488 ), ( 10, 18446744073709551488, 10 ), ( 18446744073709551615, 10, 4294967295 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 ORDER BY 'x'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a51.c31, max ( a51.c31 || a51.c32 ) FROM v30 AS a51 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a52 GROUP BY a52.c32 HAVING automatic_index ( * ) >= 100 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c3 % 18446744073709551488 >= 10 FROM v43 AS a53 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a54 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a55.c9 = + a55.c6 FROM v0 AS a55 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: views may not be indexed
+Parse error near line 8: cannot drop column from view "v28"
+Parse error near line 9: cannot drop PRIMARY KEY column: "c31"
+Parse error near line 10: views may not be indexed
+Runtime error near line 12: no such module: fts5
+Runtime error near line 13: error in index i34 after drop column: no such column: c32
+BEGIN VERI 0
+Parse error near line 15: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such function: automatic_index
+  SELECT * FROM v35 AS a49 GROUP BY a49.c38 HAVING automatic_index ( * ) >= 10 O
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: near "ORDER": syntax error
+  8, 10 ), ( 18446744073709551615, 10, 4294967295 ) ORDER BY 1844674407370955161
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such function: automatic_index
+  SELECT * FROM v30 AS a52 GROUP BY a52.c32 HAVING automatic_index ( * ) >= 100 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v43
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13 INTEGER DEFAULT 'v0', c14, c15, c16, c17, c18, c19, c20, c21 CHECK( x'b1' ), c22, c23, c24, c25, c26, c27 ); 
+CREATE VIEW v28 AS SELECT * FROM v0 AS a29 GROUP BY c6, c26 < c18 ORDER BY 18446744073709551488; 
+CREATE TABLE v30 ( c31 INTEGER PRIMARY KEY, c32, c33 UNIQUE ); 
+; 
+CREATE TABLE v35 ( c36, c37, c38 ); 
+; 
+; 
+ALTER TABLE v28 DROP COLUMN c3; 
+ALTER TABLE v30 DROP COLUMN c31; 
+; 
+; 
+CREATE VIRTUAL TABLE v43 USING fts5 ( c44, c45 ); 
+ALTER TABLE v30 DROP COLUMN c32; 
+SELECT 'BEGIN VERI 0'; 
+WITH v43 AS ( WITH v28 AS ( SELECT 18446744073709551488 y ORDER BY 18446744071562067968 ) SELECT avg ( a46.c3 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551488 ) SELECT * FROM v43 AS a46 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v28 AS a47, v30 AS a48 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v35 AS a49 GROUP BY a49.c38 HAVING automatic_index ( * ) >= 10 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551488, 18446744073709551488, - 18446744073709551488 ), ( 10, 18446744073709551488, 10 ), ( 18446744073709551615, 10, 4294967295 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 ORDER BY 'x'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a51.c31, max ( a51.c31 || a51.c32 ) FROM v30 AS a51 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a52 GROUP BY a52.c32 HAVING automatic_index ( * ) >= 100 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c3 % 18446744073709551488 >= 10 FROM v43 AS a53 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a54 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a55.c9 = + a55.c6 FROM v0 AS a55 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop column from view "v28"
+Parse error near line 9: cannot drop PRIMARY KEY column: "c31"
+Runtime error near line 12: no such module: fts5
+BEGIN VERI 0
+Parse error near line 15: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such function: automatic_index
+  SELECT * FROM v35 AS a49 GROUP BY a49.c38 HAVING automatic_index ( * ) >= 10 O
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: near "ORDER": syntax error
+  8, 10 ), ( 18446744073709551615, 10, 4294967295 ) ORDER BY 1844674407370955161
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a51.c32
+  SELECT a51.c31, max ( a51.c31 || a51.c32 ) FROM v30 AS a51 ORDER BY 1844674407
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such function: automatic_index
+  SELECT * FROM v30 AS a52 GROUP BY a52.c32 HAVING automatic_index ( * ) >= 100 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v43
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such function: automatic_index
+  SELECT * FROM v35 AS a49 GROUP BY a49.c38 HAVING automatic_index ( * ) >= 10 O
+                                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: no such function: automatic_index
+  SELECT * FROM v35 AS a49 GROUP BY a49.c38 HAVING automatic_index ( * ) >= 10 O
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 18107872
+Str: 
+Parse error near line 24: near "ORDER": syntax error
+  8, 10 ), ( 18446744073709551615, 10, 4294967295 ) ORDER BY 1844674407370955161
+                                      error here ---^
+ 
+Str: 
+Parse error near line 24: near "ORDER": syntax error
+  8, 10 ), ( 18446744073709551615, 10, 4294967295 ) ORDER BY 1844674407370955161
+                                      error here ---^
+ 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no such column: a51.c32
+  SELECT a51.c31, max ( a51.c31 || a51.c32 ) FROM v30 AS a51 ORDER BY 1844674407
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such function: automatic_index
+  SELECT * FROM v30 AS a52 GROUP BY a52.c32 HAVING automatic_index ( * ) >= 100 
+                                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: no such function: automatic_index
+  SELECT * FROM v30 AS a52 GROUP BY a52.c32 HAVING automatic_index ( * ) >= 100 
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v43
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v43
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

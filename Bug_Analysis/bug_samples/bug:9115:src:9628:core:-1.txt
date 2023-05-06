@@ -1,0 +1,353 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 NOT NULL DEFAULT 18446744073709551488, c2 NOT NULL AS( c5 + c2 - c1 ), c3 NOT NULL ON CONFLICT REPLACE DEFAULT 18446744073709551488, c4 AS( c5 + c1 - c3 ) NOT NULL, c5 INTEGER NOT NULL ON CONFLICT ABORT DEFAULT 18446744073709551488 ); 
+INSERT INTO v0 ( c1, c5, c4, c5, c4 ) VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709551488, 18446744073709551488, 18446744073709551488 ); 
+INSERT INTO v0 ( c1 ) VALUES ( 'v1' ), ( 'v0' ), ( 'v1' ); 
+INSERT INTO v0 ( c2, c3, c3, c3, c2 ) VALUES ( 18446744073709551615, 0, 18446744073709551488, 18446744073709551615, 18446744073709551488 ); 
+INSERT OR IGNORE INTO v0 ( c4, c3, c3, c1 ) VALUES ( 0, 0, 0, 100 ); 
+INSERT OR REPLACE INTO v0 ( c4, c5, c2, c5, c5 ) VALUES ( 0, 18446744073709551615, NULL, 0, 18446744073709551615 ); 
+CREATE INDEX i6 ON v0 ( c3 ); 
+CREATE INDEX i7 ON v0 ( c3 ); 
+INSERT OR ABORT INTO v0 ( c4, c5, c2, c1, c4, c2, c4, c4, c4, c1, c1, c4, c3, c2, c4 ) VALUES ( 0, 0, NULL, 18446744073709551488, 18446744073709551615 ); 
+CREATE INDEX i8 ON v0 ( c5 ); 
+UPDATE OR IGNORE v0 SET c3 = NULL, c2 = c1, c2 = c5; 
+PRAGMA quick_check ( 10 ); 
+UPDATE v0 SET c5 = NULL, c5 = c4, c4 = c3; 
+INSERT OR ABORT INTO v0 ( c2, c1, c1, c2 ) VALUES ( 18446744073709551615, 18446744073709551488, 255, 100 ); 
+CREATE INDEX i9 ON v0 ( c3 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a10.c3, sequence ( ) AS y FROM v0 AS a10 WHERE a10.c5 > 0 AND a10.c2 < 4294967295 AND a10.c2 != 18446744073709551615 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a11 NATURAL JOIN v0 AS a12 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a13 NATURAL JOIN v0 AS a14 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15, v0 AS a16 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a18.c3 || a18.c5 ) FROM v0 AS a18 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a19.c3 || a19.c3 ) FROM v0 AS a19 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c21 ) AS ( WITH v22 AS ( SELECT ( SELECT min ( a20.c4 ) OVER ( ORDER BY 18446744073709551488 ) ORDER BY a20.c2 ) FROM v22 AS a23 GROUP BY a20.c1 ORDER BY 18446744073709551488 ) SELECT 127 ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a20 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c4, a25.c3 FROM v0 AS a24, v0 AS a25 WHERE a25.c5 = 'v0' ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT hex ( ) ORDER BY CASE WHEN c4 != 'v1' THEN 18446744073709551488 ELSE 16 END; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: cannot INSERT into generated column "c4"
+Parse error near line 3: generated column loop on "c2"
+Parse error near line 4: cannot INSERT into generated column "c2"
+Parse error near line 5: cannot INSERT into generated column "c4"
+Parse error near line 6: cannot INSERT into generated column "c4"
+Parse error near line 9: cannot INSERT into generated column "c4"
+Parse error near line 11: cannot UPDATE generated column "c2"
+Parse error near line 12: generated column loop on "c2"
+Parse error near line 13: cannot UPDATE generated column "c4"
+Parse error near line 14: cannot INSERT into generated column "c2"
+BEGIN VERI 0
+Parse error near line 17: no such function: sequence
+  SELECT a10.c3, sequence ( ) AS y FROM v0 AS a10 WHERE a10.c5 > 0 AND a10.c2 < 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: generated column loop on "c2"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: generated column loop on "c2"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 10
+  SELECT * FROM v0 AS a15, v0 AS a16 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: generated column loop on "c2"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+   max ( a18.c3 || a18.c5 ) FROM v0 AS a18 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+   max ( a19.c3 || a19.c3 ) FROM v0 AS a19 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  44073709551488 ) SELECT * FROM v0 AS a20 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: wrong number of arguments to function hex()
+  SELECT hex ( ) ORDER BY CASE WHEN c4 != 'v1' THEN 18446744073709551488 ELSE 16
+         ^--- error here
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 NOT NULL DEFAULT 18446744073709551488, c2 NOT NULL AS( c5 + c2 - c1 ), c3 NOT NULL ON CONFLICT REPLACE DEFAULT 18446744073709551488, c4 AS( c5 + c1 - c3 ) NOT NULL, c5 INTEGER NOT NULL ON CONFLICT ABORT DEFAULT 18446744073709551488 ); 
+INSERT INTO v0 ( c1, c5, c4, c5, c4 ) VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709551488, 18446744073709551488, 18446744073709551488 ); 
+INSERT INTO v0 ( c1 ) VALUES ( 'v1' ), ( 'v0' ), ( 'v1' ); 
+INSERT INTO v0 ( c2, c3, c3, c3, c2 ) VALUES ( 18446744073709551615, 0, 18446744073709551488, 18446744073709551615, 18446744073709551488 ); 
+INSERT OR IGNORE INTO v0 ( c4, c3, c3, c1 ) VALUES ( 0, 0, 0, 100 ); 
+INSERT OR REPLACE INTO v0 ( c4, c5, c2, c5, c5 ) VALUES ( 0, 18446744073709551615, NULL, 0, 18446744073709551615 ); 
+; 
+; 
+INSERT OR ABORT INTO v0 ( c4, c5, c2, c1, c4, c2, c4, c4, c4, c1, c1, c4, c3, c2, c4 ) VALUES ( 0, 0, NULL, 18446744073709551488, 18446744073709551615 ); 
+; 
+UPDATE OR IGNORE v0 SET c3 = NULL, c2 = c1, c2 = c5; 
+PRAGMA quick_check ( 10 ); 
+UPDATE v0 SET c5 = NULL, c5 = c4, c4 = c3; 
+INSERT OR ABORT INTO v0 ( c2, c1, c1, c2 ) VALUES ( 18446744073709551615, 18446744073709551488, 255, 100 ); 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a10.c3, sequence ( ) AS y FROM v0 AS a10 WHERE a10.c5 > 0 AND a10.c2 < 4294967295 AND a10.c2 != 18446744073709551615 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a11 NATURAL JOIN v0 AS a12 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a13 NATURAL JOIN v0 AS a14 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15, v0 AS a16 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a18.c3 || a18.c5 ) FROM v0 AS a18 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a19.c3 || a19.c3 ) FROM v0 AS a19 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c21 ) AS ( WITH v22 AS ( SELECT ( SELECT min ( a20.c4 ) OVER ( ORDER BY 18446744073709551488 ) ORDER BY a20.c2 ) FROM v22 AS a23 GROUP BY a20.c1 ORDER BY 18446744073709551488 ) SELECT 127 ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a20 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c4, a25.c3 FROM v0 AS a24, v0 AS a25 WHERE a25.c5 = 'v0' ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT hex ( ) ORDER BY CASE WHEN c4 != 'v1' THEN 18446744073709551488 ELSE 16 END; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: cannot INSERT into generated column "c4"
+Parse error near line 3: generated column loop on "c2"
+Parse error near line 4: cannot INSERT into generated column "c2"
+Parse error near line 5: cannot INSERT into generated column "c4"
+Parse error near line 6: cannot INSERT into generated column "c4"
+Parse error near line 9: cannot INSERT into generated column "c4"
+Parse error near line 11: cannot UPDATE generated column "c2"
+Parse error near line 12: generated column loop on "c2"
+Parse error near line 13: cannot UPDATE generated column "c4"
+Parse error near line 14: cannot INSERT into generated column "c2"
+BEGIN VERI 0
+Parse error near line 17: no such function: sequence
+  SELECT a10.c3, sequence ( ) AS y FROM v0 AS a10 WHERE a10.c5 > 0 AND a10.c2 < 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: generated column loop on "c2"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: generated column loop on "c2"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 10
+  SELECT * FROM v0 AS a15, v0 AS a16 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: generated column loop on "c2"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+   max ( a18.c3 || a18.c5 ) FROM v0 AS a18 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+   max ( a19.c3 || a19.c3 ) FROM v0 AS a19 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  44073709551488 ) SELECT * FROM v0 AS a20 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: generated column loop on "c2"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: wrong number of arguments to function hex()
+  SELECT hex ( ) ORDER BY CASE WHEN c4 != 'v1' THEN 18446744073709551488 ELSE 16
+         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no such function: sequence
+  SELECT a10.c3, sequence ( ) AS y FROM v0 AS a10 WHERE a10.c5 > 0 AND a10.c2 < 
+                 ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 17: no such function: sequence
+  SELECT a10.c3, sequence ( ) AS y FROM v0 AS a10 WHERE a10.c5 > 0 AND a10.c2 < 
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: generated column loop on "c2"
+ 
+INT: 0 
+Str: 
+Parse error near line 20: generated column loop on "c2"
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: generated column loop on "c2"
+ 
+INT: 0 
+Str: 
+Parse error near line 23: generated column loop on "c2"
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 10
+  SELECT * FROM v0 AS a15, v0 AS a16 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 10
+  SELECT * FROM v0 AS a15, v0 AS a16 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: generated column loop on "c2"
+ 
+INT: 0 
+Str: 
+Parse error near line 29: generated column loop on "c2"
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+   max ( a18.c3 || a18.c5 ) FROM v0 AS a18 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+   max ( a18.c3 || a18.c5 ) FROM v0 AS a18 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+   max ( a19.c3 || a19.c3 ) FROM v0 AS a19 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+   max ( a19.c3 || a19.c3 ) FROM v0 AS a19 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  44073709551488 ) SELECT * FROM v0 AS a20 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  44073709551488 ) SELECT * FROM v0 AS a20 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 41: generated column loop on "c2"
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: wrong number of arguments to function hex()
+  SELECT hex ( ) ORDER BY CASE WHEN c4 != 'v1' THEN 18446744073709551488 ELSE 16
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 44: wrong number of arguments to function hex()
+  SELECT hex ( ) ORDER BY CASE WHEN c4 != 'v1' THEN 18446744073709551488 ELSE 16
+         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

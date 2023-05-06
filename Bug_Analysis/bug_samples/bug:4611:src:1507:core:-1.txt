@@ -1,0 +1,313 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE TABLE v5 ( c6, c7, c8, CHECK( c8 > 3175546974276630385 ) ); 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c11 < 3175546974276630385 ) ); 
+INSERT INTO v9 VALUES ( 3175546974276630385, 3175546974276630385, 3175546974276630385 ); 
+CREATE INDEX i13 ON v0 ( c1 ); 
+CREATE INDEX i14 ON v0 ( c1 ); 
+INSERT INTO v5 VALUES ( 100, 3175546974276630385, 18446744073709551488 ); 
+CREATE INDEX i15 ON v0 ( c3 ) WHERE count ( * ) >= 3175546974276630385 = 'abc1' != c1; 
+INSERT INTO v0 VALUES ( 3175546974276630385, 100, 100 ); 
+CREATE INDEX i16 ON v9 ( c12 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( count ( c12 ), 'v1' ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 NATURAL JOIN v9 AS a18 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 AS ( SELECT * FROM v5 AS a20 JOIN v9 AS a21 USING ( a20.c7, a21.c10, a20.c6, a19.c2, a21.c10, a21.c11, a21.c11, a21.c12 ) WHERE a21.c10 = a19.c1 >= 100 ORDER BY 3175546974276630385 ) SELECT * FROM v0 AS a19 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN c2 != 'v1' THEN 18446744073709551488 ELSE 100 END ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( - 100 IS NULL ) ) AND ( NOT ( a22.c3 IS NULL ) ) ), a22.c1 FROM v0 AS a22 LEFT JOIN v9 AS a23 ON a23.c12 = a23.c11 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a24 WHERE a24.c7 = a24.c7 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a25, v0 AS a26 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a27 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c6, a29.c7 FROM v5 AS a28, v5 AS a29 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v9 AS a30 ), ( v0 AS a31 NATURAL JOIN v0 AS a32 ), ( v5 AS a33 ), ( v5 AS a34 ) WHERE a33.c7 = a34.c8 + 100 AND a30.c11 = a32.c2 + 100 AND a34.c8 = a30.c11 + 100 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c11 < 3175546974276630385 (19)
+Parse error near line 9: misuse of aggregate function count()
+  CREATE INDEX i15 ON v0 ( c3 ) WHERE count ( * ) >= 3175546974276630385 = 'abc1
+                        error here ---^
+Runtime error near line 12: error in index i4 after drop column: no such column: c3
+BEGIN VERI 0
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c12 ), 'v1' ) ORDER BY 18446744073709551615; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: near ".": syntax error
+  SELECT * FROM v5 AS a20 JOIN v9 AS a21 USING ( a20.c7, a21.c10, a20.c6, a19.c2
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: c2
+  SELECT ( CASE WHEN c2 != 'v1' THEN 18446744073709551488 ELSE 100 END ) ORDER B
+                     ^--- error here
+END VERI 0
+BEGIN VERI 0
+1|3175546974276630385
+END VERI 0
+BEGIN VERI 0
+100|3175546974276630385|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+100|3175546974276630385
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: ambiguous column name: main.v5.c6
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+; 
+CREATE TABLE v5 ( c6, c7, c8, CHECK( c8 > 3175546974276630385 ) ); 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c11 < 3175546974276630385 ) ); 
+INSERT INTO v9 VALUES ( 3175546974276630385, 3175546974276630385, 3175546974276630385 ); 
+; 
+; 
+INSERT INTO v5 VALUES ( 100, 3175546974276630385, 18446744073709551488 ); 
+; 
+INSERT INTO v0 VALUES ( 3175546974276630385, 100, 100 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( count ( c12 ), 'v1' ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 NATURAL JOIN v9 AS a18 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 AS ( SELECT * FROM v5 AS a20 JOIN v9 AS a21 USING ( a20.c7, a21.c10, a20.c6, a19.c2, a21.c10, a21.c11, a21.c11, a21.c12 ) WHERE a21.c10 = a19.c1 >= 100 ORDER BY 3175546974276630385 ) SELECT * FROM v0 AS a19 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN c2 != 'v1' THEN 18446744073709551488 ELSE 100 END ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( - 100 IS NULL ) ) AND ( NOT ( a22.c3 IS NULL ) ) ), a22.c1 FROM v0 AS a22 LEFT JOIN v9 AS a23 ON a23.c12 = a23.c11 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a24 WHERE a24.c7 = a24.c7 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a25, v0 AS a26 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a27 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c6, a29.c7 FROM v5 AS a28, v5 AS a29 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v9 AS a30 ), ( v0 AS a31 NATURAL JOIN v0 AS a32 ), ( v5 AS a33 ), ( v5 AS a34 ) WHERE a33.c7 = a34.c8 + 100 AND a30.c11 = a32.c2 + 100 AND a34.c8 = a30.c11 + 100 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c11 < 3175546974276630385 (19)
+BEGIN VERI 0
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c12 ), 'v1' ) ORDER BY 18446744073709551615; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: near ".": syntax error
+  SELECT * FROM v5 AS a20 JOIN v9 AS a21 USING ( a20.c7, a21.c10, a20.c6, a19.c2
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: c2
+  SELECT ( CASE WHEN c2 != 'v1' THEN 18446744073709551488 ELSE 100 END ) ORDER B
+                     ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: a22.c3
+  ECT count ( ( NOT ( - 100 IS NULL ) ) AND ( NOT ( a22.c3 IS NULL ) ) ), a22.c1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+100|3175546974276630385|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+100|3175546974276630385
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: ambiguous column name: main.v5.c6
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 74554000
+Str: 
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c12 ), 'v1' ) ORDER BY 18446744073709551615; 
+                   error here ---^
+ 
+Str: 
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c12 ), 'v1' ) ORDER BY 18446744073709551615; 
+                   error here ---^
+ 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: near ".": syntax error
+  SELECT * FROM v5 AS a20 JOIN v9 AS a21 USING ( a20.c7, a21.c10, a20.c6, a19.c2
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: near ".": syntax error
+  SELECT * FROM v5 AS a20 JOIN v9 AS a21 USING ( a20.c7, a21.c10, a20.c6, a19.c2
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such column: c2
+  SELECT ( CASE WHEN c2 != 'v1' THEN 18446744073709551488 ELSE 100 END ) ORDER B
+                     ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 23: no such column: c2
+  SELECT ( CASE WHEN c2 != 'v1' THEN 18446744073709551488 ELSE 100 END ) ORDER B
+                     ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+1|3175546974276630385
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such column: a22.c3
+  ECT count ( ( NOT ( - 100 IS NULL ) ) AND ( NOT ( a22.c3 IS NULL ) ) ), a22.c1
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+100|3175546974276630385|1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+100|3175546974276630385|1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+100|3175546974276630385
+ 
+INT: 0 
+Str: 
+100|3175546974276630385
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: ambiguous column name: main.v5.c6
+ 
+INT: 0 
+Str: 
+Parse error near line 41: ambiguous column name: main.v5.c6
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

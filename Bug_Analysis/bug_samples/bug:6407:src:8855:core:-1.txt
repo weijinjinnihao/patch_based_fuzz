@@ -1,0 +1,285 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c1 ) ) WITHOUT ROWID; 
+ATTACH 'ccc' AS sqlite_master; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE TABLE v5 ( c6, c7 CHECK( 16 ), c8, c9, CHECK( c7 > 16 ) ); 
+CREATE INDEX i10 ON v0 ( c2 ); 
+ALTER TABLE v5 DROP c6; 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i11 ON v5 ( c6 ); 
+CREATE VIEW v12 AS SELECT * FROM ( v5 AS a13 ), ( v5 AS a14, v5 AS a15 NATURAL JOIN v5 AS a16 ), ( v0 AS a17 ), ( v5 AS a18 ) WHERE c6 = c6 + 16 AND c8 = c7 + 9223372036854775807 AND c8 = c2 + 16 ORDER BY 16; 
+CREATE INDEX i19 ON v0 ( c3 ); 
+CREATE TABLE v20 ( c21, c22, c23 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i24 ON v5 ( c8 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 16 IS NOT 2147483647 ) OR NOT ( 16 IS 16 OR ( a25.c21 = 16 ) ) ) IS 18446744071562067968 FROM v20 AS a25 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a26, v0 AS a27 NATURAL JOIN v5 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c2, max ( a30.c1 || a29.c2 ), count ( a29.c2 ) FROM v0 AS a29 LEFT JOIN v0 AS a30 ON a29.c1 = a30.c2 WHERE a29.c3 > 16 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a31 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c2, count ( a32.c1 ) FROM v12 AS a32 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a33 ORDER BY - hex ( 9223372036854775807 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c22, x'68617265' FROM v20 AS a34 LEFT JOIN v5 AS a35 ON a34.c23 = a35.c7 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a36, v12 AS a37 NATURAL JOIN v0 AS a38 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i4 after drop column: no such column: c2
+Parse error near line 8: no such column: c6
+  CREATE INDEX i11 ON v5 ( c6 ); 
+             error here ---^
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: ambiguous column name: c7
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+   LEFT JOIN v5 AS a35 ON a34.c23 = a35.c7 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: ambiguous column name: c7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c1 ) ) WITHOUT ROWID; 
+ATTACH 'ccc' AS sqlite_master; 
+; 
+CREATE TABLE v5 ( c6, c7 CHECK( 16 ), c8, c9, CHECK( c7 > 16 ) ); 
+; 
+ALTER TABLE v5 DROP c6; 
+ALTER TABLE v0 DROP c2; 
+; 
+CREATE VIEW v12 AS SELECT * FROM ( v5 AS a13 ), ( v5 AS a14, v5 AS a15 NATURAL JOIN v5 AS a16 ), ( v0 AS a17 ), ( v5 AS a18 ) WHERE c6 = c6 + 16 AND c8 = c7 + 9223372036854775807 AND c8 = c2 + 16 ORDER BY 16; 
+; 
+CREATE TABLE v20 ( c21, c22, c23 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 16 IS NOT 2147483647 ) OR NOT ( 16 IS 16 OR ( a25.c21 = 16 ) ) ) IS 18446744071562067968 FROM v20 AS a25 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a26, v0 AS a27 NATURAL JOIN v5 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c2, max ( a30.c1 || a29.c2 ), count ( a29.c2 ) FROM v0 AS a29 LEFT JOIN v0 AS a30 ON a29.c1 = a30.c2 WHERE a29.c3 > 16 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a31 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c2, count ( a32.c1 ) FROM v12 AS a32 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a33 ORDER BY - hex ( 9223372036854775807 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c22, x'68617265' FROM v20 AS a34 LEFT JOIN v5 AS a35 ON a34.c23 = a35.c7 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a36, v12 AS a37 NATURAL JOIN v0 AS a38 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such column: a30.c2
+  SELECT a30.c2, max ( a30.c1 || a29.c2 ), count ( a29.c2 ) FROM v0 AS a29 LEFT 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: ambiguous column name: c7
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+   LEFT JOIN v5 AS a35 ON a34.c23 = a35.c7 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: ambiguous column name: c7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no such column: a30.c2
+  SELECT a30.c2, max ( a30.c1 || a29.c2 ), count ( a29.c2 ) FROM v0 AS a29 LEFT 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: ambiguous column name: c7
+ 
+INT: 0 
+Str: 
+Parse error near line 26: ambiguous column name: c7
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+   LEFT JOIN v5 AS a35 ON a34.c23 = a35.c7 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+   LEFT JOIN v5 AS a35 ON a34.c23 = a35.c7 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: ambiguous column name: c7
+ 
+INT: 0 
+Str: 
+Parse error near line 38: ambiguous column name: c7
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

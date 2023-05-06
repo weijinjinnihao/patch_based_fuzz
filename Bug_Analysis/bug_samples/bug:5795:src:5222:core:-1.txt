@@ -1,0 +1,270 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c17 + 10 ) % 10 ) != 10 ) ) WITHOUT ROWID; 
+CREATE INDEX i28 ON v0 ( c9 ); 
+INSERT INTO v0 VALUES ( '1.10', ( ( c4 + 10 ) % 10 ) < 18446744071562067968, 'ten' ); 
+CREATE INDEX i29 ON v0 ( c15 ); 
+ALTER TABLE v0 DROP c15; 
+CREATE INDEX i30 ON v0 ( c26 ); 
+ALTER TABLE v0 ADD COLUMN c31 TEXT DEFAULT 'x' DEFAULT 10; 
+CREATE INDEX i32 ON v0 ( c16 ); 
+CREATE INDEX i33 ON v0 ( c12 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 ORDER BY x'616263'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36, v0 AS a37 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c6, count ( ( NOT ( a39.c15 IS NULL ) ) AND ( NOT ( a39.c3 IS NULL ) ) ), count ( ( NOT ( a39.c19 IS NULL ) ) AND ( NOT ( a38.c14 IS NULL ) ) ) FROM v0 AS a38 LEFT JOIN v0 AS a39 ON a39.c31 = a38.c17 GROUP BY a39.c9, a38.c21, count ( a38.c22 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 WHERE a40.c1 IS 18446744073709551615 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41, v0 AS a42 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 NATURAL JOIN v0 AS a44 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a45 GROUP BY a45.c10 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a46 WHERE ( a46.c1 = 10 OR a46.c25 = 18446744073709551615 ) AND a46.c22 IS ( SELECT a48.c4 FROM ( SELECT a48.c4 FROM v0 AS a49 ORDER BY 18446744073709551615 ) AS y, v0 AS a47 NATURAL JOIN v0 AS a48 WHERE a48.c15 = 10 ORDER BY 10 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: no such column: c4
+  INSERT INTO v0 VALUES ( '1.10', ( ( c4 + 10 ) % 10 ) < 18446744071562067968, '
+                        error here ---^
+Runtime error near line 5: error in index i29 after drop column: no such column: c15
+BEGIN VERI 0
+Parse error near line 11: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 28
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a48.c4
+  15 ) AND a46.c22 IS ( SELECT a48.c4 FROM ( SELECT a48.c4 FROM v0 AS a49 ORDER 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c17 + 10 ) % 10 ) != 10 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v0 VALUES ( '1.10', ( ( c4 + 10 ) % 10 ) < 18446744071562067968, 'ten' ); 
+; 
+ALTER TABLE v0 DROP c15; 
+; 
+ALTER TABLE v0 ADD COLUMN c31 TEXT DEFAULT 'x' DEFAULT 10; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 ORDER BY x'616263'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36, v0 AS a37 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c6, count ( ( NOT ( a39.c15 IS NULL ) ) AND ( NOT ( a39.c3 IS NULL ) ) ), count ( ( NOT ( a39.c19 IS NULL ) ) AND ( NOT ( a38.c14 IS NULL ) ) ) FROM v0 AS a38 LEFT JOIN v0 AS a39 ON a39.c31 = a38.c17 GROUP BY a39.c9, a38.c21, count ( a38.c22 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 WHERE a40.c1 IS 18446744073709551615 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41, v0 AS a42 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 NATURAL JOIN v0 AS a44 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a45 GROUP BY a45.c10 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a46 WHERE ( a46.c1 = 10 OR a46.c25 = 18446744073709551615 ) AND a46.c22 IS ( SELECT a48.c4 FROM ( SELECT a48.c4 FROM v0 AS a49 ORDER BY 18446744073709551615 ) AS y, v0 AS a47 NATURAL JOIN v0 AS a48 WHERE a48.c15 = 10 ORDER BY 10 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: no such column: c4
+  INSERT INTO v0 VALUES ( '1.10', ( ( c4 + 10 ) % 10 ) < 18446744071562067968, '
+                        error here ---^
+BEGIN VERI 0
+Parse error near line 11: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a39.c15
+  SELECT a39.c6, count ( ( NOT ( a39.c15 IS NULL ) ) AND ( NOT ( a39.c3 IS NULL 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 27
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a48.c4
+  15 ) AND a46.c22 IS ( SELECT a48.c4 FROM ( SELECT a48.c4 FROM v0 AS a49 ORDER 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 11: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 11: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no such column: a39.c15
+  SELECT a39.c6, count ( ( NOT ( a39.c15 IS NULL ) ) AND ( NOT ( a39.c3 IS NULL 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 28
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 27
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no such column: a48.c4
+  15 ) AND a46.c22 IS ( SELECT a48.c4 FROM ( SELECT a48.c4 FROM v0 AS a49 ORDER 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: no such column: a48.c4
+  15 ) AND a46.c22 IS ( SELECT a48.c4 FROM ( SELECT a48.c4 FROM v0 AS a49 ORDER 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

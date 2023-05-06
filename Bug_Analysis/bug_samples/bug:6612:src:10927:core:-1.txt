@@ -1,0 +1,290 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE TABLE v4 ( c5 REFERENCES t1 DEFAULT NULL, c6, c7, c8, c9, c10, c11, c12, c13, c14 INTEGER UNIQUE ON CONFLICT FAIL, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, PRIMARY KEY ( c31, c9, c14, c9, c5, c8, c8 ) ) WITHOUT ROWID; 
+CREATE TABLE v39 ( c40 TEXT, c41 REAL, c42 INT, PRIMARY KEY ( c40 COLLATE nocase, c42 ) ) WITHOUT ROWID; 
+CREATE INDEX i43 ON v4 ( c30 ); 
+CREATE TABLE v44 ( c45, c46 INTEGER UNIQUE ON CONFLICT FAIL, c47, c48 CHECK( c48 != 10 ), c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62, c63, c64, c65, c66, c67, c68, c69, c70, c71 PRIMARY KEY, CHECK( ( ( c56 + 18446744073709551488 ) % 18446744073709551488 ) != 18446744073709518848 ) ) WITHOUT ROWID; 
+CREATE INDEX i72 ON v39 ( c41 ); 
+CREATE INDEX i73 ON v0 ( c2 ); 
+CREATE INDEX i74 ON v39 ( c40 ); 
+CREATE INDEX i75 ON v0 ( c1 ); 
+CREATE VIEW v76 AS SELECT * FROM v44 AS a77 ORDER BY 10; 
+CREATE TABLE v78 ( c79, c80, c81, c82, c83, c84, c85, c86, c87, c88, c89, c90, c91, c92, c93, c94, c95, c96, c97, c98, c99, c100, c101, c102, c103, c104, c105, c106, c107, c108, c109, c110, c111, c112, c113, c114, c115, c116, c117 PRIMARY KEY, CHECK( ( ( c84 + 16 ) % 10 ) != 1 ) ) WITHOUT ROWID; 
+CREATE TABLE v118 ( c119, c120, c121 ); 
+ALTER TABLE v39 DROP COLUMN c40; 
+ALTER TABLE v44 DROP COLUMN c65; 
+CREATE VIRTUAL TABLE v122 USING fts5 ( c123, c124 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v44 AS a125 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a126 GROUP BY a126.c6 HAVING NULL ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a127.c41, count ( ( NOT ( a127.c41 IS NULL ) ) AND ( NOT ( a127.c40 IS NULL ) ) ) FROM v39 AS a127 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a128 WHERE a128.c1 = a128.c2 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v78 AS a129 NATURAL JOIN v78 AS a130 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v39 ( c132 ) AS ( SELECT 'x' ORDER BY 1 ) SELECT a131.c62, count ( * ), avg ( v39.c41 ), max ( v39.c40 + v39.c42 * 18446744073709518848 ) FROM v44 AS a131 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v76 AS a133, v118 AS a134 NATURAL JOIN v76 AS a135 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v76 AS a136 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a137 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v138 AS ( WITH RECURSIVE v138 ( c144 ) AS ( SELECT max ( c146 || c1 ) ORDER BY 1 ) SELECT * FROM ( v138 AS a139 ), ( v138 AS a140 ), ( v138 AS a141 ), ( v138 AS a142 NATURAL JOIN v138 AS a143 ) WHERE c1 = c41 + 0 AND c103 = 127 AND c145 = c56 + 18446744073709551615 ORDER BY 10 ) VALUES ( x'68617265', 'bbb', 'x' ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 13: cannot drop PRIMARY KEY column: "c40"
+Runtime error near line 15: no such module: fts5
+Runtime error near line 16: error in index i73 after drop column: no such column: c2
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 39
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: v39.c41
+   ORDER BY 1 ) SELECT a131.c62, count ( * ), avg ( v39.c41 ), max ( v39.c40 + v
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: near "ORDER": syntax error
+   ORDER BY 10 ) VALUES ( x'68617265', 'bbb', 'x' ) ORDER BY 16; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE TABLE v4 ( c5 REFERENCES t1 DEFAULT NULL, c6, c7, c8, c9, c10, c11, c12, c13, c14 INTEGER UNIQUE ON CONFLICT FAIL, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, PRIMARY KEY ( c31, c9, c14, c9, c5, c8, c8 ) ) WITHOUT ROWID; 
+CREATE TABLE v39 ( c40 TEXT, c41 REAL, c42 INT, PRIMARY KEY ( c40 COLLATE nocase, c42 ) ) WITHOUT ROWID; 
+; 
+CREATE TABLE v44 ( c45, c46 INTEGER UNIQUE ON CONFLICT FAIL, c47, c48 CHECK( c48 != 10 ), c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62, c63, c64, c65, c66, c67, c68, c69, c70, c71 PRIMARY KEY, CHECK( ( ( c56 + 18446744073709551488 ) % 18446744073709551488 ) != 18446744073709518848 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+CREATE VIEW v76 AS SELECT * FROM v44 AS a77 ORDER BY 10; 
+CREATE TABLE v78 ( c79, c80, c81, c82, c83, c84, c85, c86, c87, c88, c89, c90, c91, c92, c93, c94, c95, c96, c97, c98, c99, c100, c101, c102, c103, c104, c105, c106, c107, c108, c109, c110, c111, c112, c113, c114, c115, c116, c117 PRIMARY KEY, CHECK( ( ( c84 + 16 ) % 10 ) != 1 ) ) WITHOUT ROWID; 
+CREATE TABLE v118 ( c119, c120, c121 ); 
+ALTER TABLE v39 DROP COLUMN c40; 
+ALTER TABLE v44 DROP COLUMN c65; 
+CREATE VIRTUAL TABLE v122 USING fts5 ( c123, c124 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v44 AS a125 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a126 GROUP BY a126.c6 HAVING NULL ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a127.c41, count ( ( NOT ( a127.c41 IS NULL ) ) AND ( NOT ( a127.c40 IS NULL ) ) ) FROM v39 AS a127 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a128 WHERE a128.c1 = a128.c2 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v78 AS a129 NATURAL JOIN v78 AS a130 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v39 ( c132 ) AS ( SELECT 'x' ORDER BY 1 ) SELECT a131.c62, count ( * ), avg ( v39.c41 ), max ( v39.c40 + v39.c42 * 18446744073709518848 ) FROM v44 AS a131 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v76 AS a133, v118 AS a134 NATURAL JOIN v76 AS a135 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v76 AS a136 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a137 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v138 AS ( WITH RECURSIVE v138 ( c144 ) AS ( SELECT max ( c146 || c1 ) ORDER BY 1 ) SELECT * FROM ( v138 AS a139 ), ( v138 AS a140 ), ( v138 AS a141 ), ( v138 AS a142 NATURAL JOIN v138 AS a143 ) WHERE c1 = c41 + 0 AND c103 = 127 AND c145 = c56 + 18446744073709551615 ORDER BY 10 ) VALUES ( x'68617265', 'bbb', 'x' ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 13: cannot drop PRIMARY KEY column: "c40"
+Runtime error near line 15: no such module: fts5
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a128.c2
+  SELECT * FROM v0 AS a128 WHERE a128.c1 = a128.c2 ORDER BY 18446744073709551615
+                             error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 39
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: v39.c41
+   ORDER BY 1 ) SELECT a131.c62, count ( * ), avg ( v39.c41 ), max ( v39.c40 + v
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: near "ORDER": syntax error
+   ORDER BY 10 ) VALUES ( x'68617265', 'bbb', 'x' ) ORDER BY 16; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 27: no such column: a128.c2
+  SELECT * FROM v0 AS a128 WHERE a128.c1 = a128.c2 ORDER BY 18446744073709551615
+                             error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 39
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 39
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such column: v39.c41
+   ORDER BY 1 ) SELECT a131.c62, count ( * ), avg ( v39.c41 ), max ( v39.c40 + v
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: no such column: v39.c41
+   ORDER BY 1 ) SELECT a131.c62, count ( * ), avg ( v39.c41 ), max ( v39.c40 + v
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 92432560
+Str: 
+Parse error near line 45: near "ORDER": syntax error
+   ORDER BY 10 ) VALUES ( x'68617265', 'bbb', 'x' ) ORDER BY 16; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 45: near "ORDER": syntax error
+   ORDER BY 10 ) VALUES ( x'68617265', 'bbb', 'x' ) ORDER BY 16; 
+                                      error here ---^
+ 
+Compare_result_int: 
+0
+
+
+

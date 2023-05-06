@@ -1,0 +1,1483 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( x'616263', 'v0', 'v1' ); 
+INSERT INTO v0 VALUES ( 18446744071562067968, 'v1', 'x' ); 
+INSERT INTO v0 VALUES ( 'x', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT ( c2 IS NULL ) ) ), 'x' ); 
+INSERT INTO v0 VALUES ( 'two', 'v0', 'B' ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( x'616263', '', 'x' ); 
+CREATE TABLE v5 ( c6, c7, c8 COLLATE NOCASE ); 
+CREATE INDEX i9 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( NULL, 'v1', 'v0' ); 
+INSERT INTO v0 VALUES ( 'v1', 'a', 'x' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'DEF', 'v1' ); 
+INSERT INTO v0 VALUES ( 18446744071562067968, 't1b', 'v0' ); 
+ALTER TABLE v0 DROP c2; 
+INSERT INTO v0 VALUES ( - 18446744073709551488, 'v0', '1-one' ); 
+CREATE INDEX i10 ON v5 ( c7 ); 
+CREATE TABLE v11 ( c12, c13, c14 COLLATE NOCASE ); 
+INSERT INTO v0 SELECT * FROM v0 AS a15 ORDER BY 18446744073709551615; 
+INSERT INTO v5 SELECT * FROM v5 AS a16 ORDER BY 18446744073709551615; 
+CREATE INDEX i17 ON v0 ( c3 ); 
+INSERT INTO v11 SELECT * FROM v5 AS a18 ORDER BY 18446744071562067968; 
+INSERT INTO v0 SELECT c6 FROM v5 AS a19 WHERE ( c8, c7 ) NOT IN ( SELECT c8, x'68617265' FROM v5 AS a20 LEFT JOIN v0 AS a21 ON c1 = y ( c3, c6 ) ORDER BY 8 ) ORDER BY 18446744071562067968; 
+INSERT INTO v0 SELECT * FROM v5 AS a22 ORDER BY 18446744073709551615; 
+INSERT INTO v0 SELECT * FROM v5 AS a23 ORDER BY 18446744073709551615; 
+CREATE INDEX i24 ON v5 ( c6 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c2, a25.c8 FROM v5 AS a25 RIGHT JOIN v0 AS a26 ON a25.c8 = a25.c6 GROUP BY a26.c2 HAVING count ( * ) >= 18446744073709551615 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c2, a28.c7 FROM v0 AS a27 RIGHT JOIN v5 AS a28 ON a28.c6 = a28.c7 WHERE a28.c6 != a28.c8 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29, v0 AS a30 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a31, v0 AS a32 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a33 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a34 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a35.c6 ) FROM v5 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a36 ORDER BY ( 18446744073709551488, count ( * ) ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: misuse of aggregate function count()
+  INSERT INTO v0 VALUES ( 'x', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT ( c2 IS 
+                 error here ---^
+Runtime error near line 14: error in index i4 after drop column: no such column: c2
+Parse error near line 22: no such function: y
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  VING count ( * ) >= 18446744073709551615 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+abc|v0|v1|abc|v0|v1
+abc|v0|v1|1.84467440715621e+19|v1|x
+abc|v0|v1|two|v0|B
+abc|v0|v1|abc||x
+abc|v0|v1||v1|v0
+abc|v0|v1|v1|a|x
+abc|v0|v1|hare|DEF|v1
+abc|v0|v1|1.84467440715621e+19|t1b|v0
+abc|v0|v1|-1.84467440737096e+19|v0|1-one
+abc|v0|v1|abc|v0|v1
+abc|v0|v1|1.84467440715621e+19|v1|x
+abc|v0|v1|two|v0|B
+abc|v0|v1|abc||x
+abc|v0|v1||v1|v0
+abc|v0|v1|v1|a|x
+abc|v0|v1|hare|DEF|v1
+abc|v0|v1|1.84467440715621e+19|t1b|v0
+abc|v0|v1|-1.84467440737096e+19|v0|1-one
+1.84467440715621e+19|v1|x|abc|v0|v1
+1.84467440715621e+19|v1|x|1.84467440715621e+19|v1|x
+1.84467440715621e+19|v1|x|two|v0|B
+1.84467440715621e+19|v1|x|abc||x
+1.84467440715621e+19|v1|x||v1|v0
+1.84467440715621e+19|v1|x|v1|a|x
+1.84467440715621e+19|v1|x|hare|DEF|v1
+1.84467440715621e+19|v1|x|1.84467440715621e+19|t1b|v0
+1.84467440715621e+19|v1|x|-1.84467440737096e+19|v0|1-one
+1.84467440715621e+19|v1|x|abc|v0|v1
+1.84467440715621e+19|v1|x|1.84467440715621e+19|v1|x
+1.84467440715621e+19|v1|x|two|v0|B
+1.84467440715621e+19|v1|x|abc||x
+1.84467440715621e+19|v1|x||v1|v0
+1.84467440715621e+19|v1|x|v1|a|x
+1.84467440715621e+19|v1|x|hare|DEF|v1
+1.84467440715621e+19|v1|x|1.84467440715621e+19|t1b|v0
+1.84467440715621e+19|v1|x|-1.84467440737096e+19|v0|1-one
+two|v0|B|abc|v0|v1
+two|v0|B|1.84467440715621e+19|v1|x
+two|v0|B|two|v0|B
+two|v0|B|abc||x
+two|v0|B||v1|v0
+two|v0|B|v1|a|x
+two|v0|B|hare|DEF|v1
+two|v0|B|1.84467440715621e+19|t1b|v0
+two|v0|B|-1.84467440737096e+19|v0|1-one
+two|v0|B|abc|v0|v1
+two|v0|B|1.84467440715621e+19|v1|x
+two|v0|B|two|v0|B
+two|v0|B|abc||x
+two|v0|B||v1|v0
+two|v0|B|v1|a|x
+two|v0|B|hare|DEF|v1
+two|v0|B|1.84467440715621e+19|t1b|v0
+two|v0|B|-1.84467440737096e+19|v0|1-one
+abc||x|abc|v0|v1
+abc||x|1.84467440715621e+19|v1|x
+abc||x|two|v0|B
+abc||x|abc||x
+abc||x||v1|v0
+abc||x|v1|a|x
+abc||x|hare|DEF|v1
+abc||x|1.84467440715621e+19|t1b|v0
+abc||x|-1.84467440737096e+19|v0|1-one
+abc||x|abc|v0|v1
+abc||x|1.84467440715621e+19|v1|x
+abc||x|two|v0|B
+abc||x|abc||x
+abc||x||v1|v0
+abc||x|v1|a|x
+abc||x|hare|DEF|v1
+abc||x|1.84467440715621e+19|t1b|v0
+abc||x|-1.84467440737096e+19|v0|1-one
+|v1|v0|abc|v0|v1
+|v1|v0|1.84467440715621e+19|v1|x
+|v1|v0|two|v0|B
+|v1|v0|abc||x
+|v1|v0||v1|v0
+|v1|v0|v1|a|x
+|v1|v0|hare|DEF|v1
+|v1|v0|1.84467440715621e+19|t1b|v0
+|v1|v0|-1.84467440737096e+19|v0|1-one
+|v1|v0|abc|v0|v1
+|v1|v0|1.84467440715621e+19|v1|x
+|v1|v0|two|v0|B
+|v1|v0|abc||x
+|v1|v0||v1|v0
+|v1|v0|v1|a|x
+|v1|v0|hare|DEF|v1
+|v1|v0|1.84467440715621e+19|t1b|v0
+|v1|v0|-1.84467440737096e+19|v0|1-one
+v1|a|x|abc|v0|v1
+v1|a|x|1.84467440715621e+19|v1|x
+v1|a|x|two|v0|B
+v1|a|x|abc||x
+v1|a|x||v1|v0
+v1|a|x|v1|a|x
+v1|a|x|hare|DEF|v1
+v1|a|x|1.84467440715621e+19|t1b|v0
+v1|a|x|-1.84467440737096e+19|v0|1-one
+v1|a|x|abc|v0|v1
+v1|a|x|1.84467440715621e+19|v1|x
+v1|a|x|two|v0|B
+v1|a|x|abc||x
+v1|a|x||v1|v0
+v1|a|x|v1|a|x
+v1|a|x|hare|DEF|v1
+v1|a|x|1.84467440715621e+19|t1b|v0
+v1|a|x|-1.84467440737096e+19|v0|1-one
+hare|DEF|v1|abc|v0|v1
+hare|DEF|v1|1.84467440715621e+19|v1|x
+hare|DEF|v1|two|v0|B
+hare|DEF|v1|abc||x
+hare|DEF|v1||v1|v0
+hare|DEF|v1|v1|a|x
+hare|DEF|v1|hare|DEF|v1
+hare|DEF|v1|1.84467440715621e+19|t1b|v0
+hare|DEF|v1|-1.84467440737096e+19|v0|1-one
+hare|DEF|v1|abc|v0|v1
+hare|DEF|v1|1.84467440715621e+19|v1|x
+hare|DEF|v1|two|v0|B
+hare|DEF|v1|abc||x
+hare|DEF|v1||v1|v0
+hare|DEF|v1|v1|a|x
+hare|DEF|v1|hare|DEF|v1
+hare|DEF|v1|1.84467440715621e+19|t1b|v0
+hare|DEF|v1|-1.84467440737096e+19|v0|1-one
+1.84467440715621e+19|t1b|v0|abc|v0|v1
+1.84467440715621e+19|t1b|v0|1.84467440715621e+19|v1|x
+1.84467440715621e+19|t1b|v0|two|v0|B
+1.84467440715621e+19|t1b|v0|abc||x
+1.84467440715621e+19|t1b|v0||v1|v0
+1.84467440715621e+19|t1b|v0|v1|a|x
+1.84467440715621e+19|t1b|v0|hare|DEF|v1
+1.84467440715621e+19|t1b|v0|1.84467440715621e+19|t1b|v0
+1.84467440715621e+19|t1b|v0|-1.84467440737096e+19|v0|1-one
+1.84467440715621e+19|t1b|v0|abc|v0|v1
+1.84467440715621e+19|t1b|v0|1.84467440715621e+19|v1|x
+1.84467440715621e+19|t1b|v0|two|v0|B
+1.84467440715621e+19|t1b|v0|abc||x
+1.84467440715621e+19|t1b|v0||v1|v0
+1.84467440715621e+19|t1b|v0|v1|a|x
+1.84467440715621e+19|t1b|v0|hare|DEF|v1
+1.84467440715621e+19|t1b|v0|1.84467440715621e+19|t1b|v0
+1.84467440715621e+19|t1b|v0|-1.84467440737096e+19|v0|1-one
+-1.84467440737096e+19|v0|1-one|abc|v0|v1
+-1.84467440737096e+19|v0|1-one|1.84467440715621e+19|v1|x
+-1.84467440737096e+19|v0|1-one|two|v0|B
+-1.84467440737096e+19|v0|1-one|abc||x
+-1.84467440737096e+19|v0|1-one||v1|v0
+-1.84467440737096e+19|v0|1-one|v1|a|x
+-1.84467440737096e+19|v0|1-one|hare|DEF|v1
+-1.84467440737096e+19|v0|1-one|1.84467440715621e+19|t1b|v0
+-1.84467440737096e+19|v0|1-one|-1.84467440737096e+19|v0|1-one
+-1.84467440737096e+19|v0|1-one|abc|v0|v1
+-1.84467440737096e+19|v0|1-one|1.84467440715621e+19|v1|x
+-1.84467440737096e+19|v0|1-one|two|v0|B
+-1.84467440737096e+19|v0|1-one|abc||x
+-1.84467440737096e+19|v0|1-one||v1|v0
+-1.84467440737096e+19|v0|1-one|v1|a|x
+-1.84467440737096e+19|v0|1-one|hare|DEF|v1
+-1.84467440737096e+19|v0|1-one|1.84467440715621e+19|t1b|v0
+-1.84467440737096e+19|v0|1-one|-1.84467440737096e+19|v0|1-one
+abc|v0|v1|abc|v0|v1
+abc|v0|v1|1.84467440715621e+19|v1|x
+abc|v0|v1|two|v0|B
+abc|v0|v1|abc||x
+abc|v0|v1||v1|v0
+abc|v0|v1|v1|a|x
+abc|v0|v1|hare|DEF|v1
+abc|v0|v1|1.84467440715621e+19|t1b|v0
+abc|v0|v1|-1.84467440737096e+19|v0|1-one
+abc|v0|v1|abc|v0|v1
+abc|v0|v1|1.84467440715621e+19|v1|x
+abc|v0|v1|two|v0|B
+abc|v0|v1|abc||x
+abc|v0|v1||v1|v0
+abc|v0|v1|v1|a|x
+abc|v0|v1|hare|DEF|v1
+abc|v0|v1|1.84467440715621e+19|t1b|v0
+abc|v0|v1|-1.84467440737096e+19|v0|1-one
+1.84467440715621e+19|v1|x|abc|v0|v1
+1.84467440715621e+19|v1|x|1.84467440715621e+19|v1|x
+1.84467440715621e+19|v1|x|two|v0|B
+1.84467440715621e+19|v1|x|abc||x
+1.84467440715621e+19|v1|x||v1|v0
+1.84467440715621e+19|v1|x|v1|a|x
+1.84467440715621e+19|v1|x|hare|DEF|v1
+1.84467440715621e+19|v1|x|1.84467440715621e+19|t1b|v0
+1.84467440715621e+19|v1|x|-1.84467440737096e+19|v0|1-one
+1.84467440715621e+19|v1|x|abc|v0|v1
+1.84467440715621e+19|v1|x|1.84467440715621e+19|v1|x
+1.84467440715621e+19|v1|x|two|v0|B
+1.84467440715621e+19|v1|x|abc||x
+1.84467440715621e+19|v1|x||v1|v0
+1.84467440715621e+19|v1|x|v1|a|x
+1.84467440715621e+19|v1|x|hare|DEF|v1
+1.84467440715621e+19|v1|x|1.84467440715621e+19|t1b|v0
+1.84467440715621e+19|v1|x|-1.84467440737096e+19|v0|1-one
+two|v0|B|abc|v0|v1
+two|v0|B|1.84467440715621e+19|v1|x
+two|v0|B|two|v0|B
+two|v0|B|abc||x
+two|v0|B||v1|v0
+two|v0|B|v1|a|x
+two|v0|B|hare|DEF|v1
+two|v0|B|1.84467440715621e+19|t1b|v0
+two|v0|B|-1.84467440737096e+19|v0|1-one
+two|v0|B|abc|v0|v1
+two|v0|B|1.84467440715621e+19|v1|x
+two|v0|B|two|v0|B
+two|v0|B|abc||x
+two|v0|B||v1|v0
+two|v0|B|v1|a|x
+two|v0|B|hare|DEF|v1
+two|v0|B|1.84467440715621e+19|t1b|v0
+two|v0|B|-1.84467440737096e+19|v0|1-one
+abc||x|abc|v0|v1
+abc||x|1.84467440715621e+19|v1|x
+abc||x|two|v0|B
+abc||x|abc||x
+abc||x||v1|v0
+abc||x|v1|a|x
+abc||x|hare|DEF|v1
+abc||x|1.84467440715621e+19|t1b|v0
+abc||x|-1.84467440737096e+19|v0|1-one
+abc||x|abc|v0|v1
+abc||x|1.84467440715621e+19|v1|x
+abc||x|two|v0|B
+abc||x|abc||x
+abc||x||v1|v0
+abc||x|v1|a|x
+abc||x|hare|DEF|v1
+abc||x|1.84467440715621e+19|t1b|v0
+abc||x|-1.84467440737096e+19|v0|1-one
+|v1|v0|abc|v0|v1
+|v1|v0|1.84467440715621e+19|v1|x
+|v1|v0|two|v0|B
+|v1|v0|abc||x
+|v1|v0||v1|v0
+|v1|v0|v1|a|x
+|v1|v0|hare|DEF|v1
+|v1|v0|1.84467440715621e+19|t1b|v0
+|v1|v0|-1.84467440737096e+19|v0|1-one
+|v1|v0|abc|v0|v1
+|v1|v0|1.84467440715621e+19|v1|x
+|v1|v0|two|v0|B
+|v1|v0|abc||x
+|v1|v0||v1|v0
+|v1|v0|v1|a|x
+|v1|v0|hare|DEF|v1
+|v1|v0|1.84467440715621e+19|t1b|v0
+|v1|v0|-1.84467440737096e+19|v0|1-one
+v1|a|x|abc|v0|v1
+v1|a|x|1.84467440715621e+19|v1|x
+v1|a|x|two|v0|B
+v1|a|x|abc||x
+v1|a|x||v1|v0
+v1|a|x|v1|a|x
+v1|a|x|hare|DEF|v1
+v1|a|x|1.84467440715621e+19|t1b|v0
+v1|a|x|-1.84467440737096e+19|v0|1-one
+v1|a|x|abc|v0|v1
+v1|a|x|1.84467440715621e+19|v1|x
+v1|a|x|two|v0|B
+v1|a|x|abc||x
+v1|a|x||v1|v0
+v1|a|x|v1|a|x
+v1|a|x|hare|DEF|v1
+v1|a|x|1.84467440715621e+19|t1b|v0
+v1|a|x|-1.84467440737096e+19|v0|1-one
+hare|DEF|v1|abc|v0|v1
+hare|DEF|v1|1.84467440715621e+19|v1|x
+hare|DEF|v1|two|v0|B
+hare|DEF|v1|abc||x
+hare|DEF|v1||v1|v0
+hare|DEF|v1|v1|a|x
+hare|DEF|v1|hare|DEF|v1
+hare|DEF|v1|1.84467440715621e+19|t1b|v0
+hare|DEF|v1|-1.84467440737096e+19|v0|1-one
+hare|DEF|v1|abc|v0|v1
+hare|DEF|v1|1.84467440715621e+19|v1|x
+hare|DEF|v1|two|v0|B
+hare|DEF|v1|abc||x
+hare|DEF|v1||v1|v0
+hare|DEF|v1|v1|a|x
+hare|DEF|v1|hare|DEF|v1
+hare|DEF|v1|1.84467440715621e+19|t1b|v0
+hare|DEF|v1|-1.84467440737096e+19|v0|1-one
+1.84467440715621e+19|t1b|v0|abc|v0|v1
+1.84467440715621e+19|t1b|v0|1.84467440715621e+19|v1|x
+1.84467440715621e+19|t1b|v0|two|v0|B
+1.84467440715621e+19|t1b|v0|abc||x
+1.84467440715621e+19|t1b|v0||v1|v0
+1.84467440715621e+19|t1b|v0|v1|a|x
+1.84467440715621e+19|t1b|v0|hare|DEF|v1
+1.84467440715621e+19|t1b|v0|1.84467440715621e+19|t1b|v0
+1.84467440715621e+19|t1b|v0|-1.84467440737096e+19|v0|1-one
+1.84467440715621e+19|t1b|v0|abc|v0|v1
+1.84467440715621e+19|t1b|v0|1.84467440715621e+19|v1|x
+1.84467440715621e+19|t1b|v0|two|v0|B
+1.84467440715621e+19|t1b|v0|abc||x
+1.84467440715621e+19|t1b|v0||v1|v0
+1.84467440715621e+19|t1b|v0|v1|a|x
+1.84467440715621e+19|t1b|v0|hare|DEF|v1
+1.84467440715621e+19|t1b|v0|1.84467440715621e+19|t1b|v0
+1.84467440715621e+19|t1b|v0|-1.84467440737096e+19|v0|1-one
+-1.84467440737096e+19|v0|1-one|abc|v0|v1
+-1.84467440737096e+19|v0|1-one|1.84467440715621e+19|v1|x
+-1.84467440737096e+19|v0|1-one|two|v0|B
+-1.84467440737096e+19|v0|1-one|abc||x
+-1.84467440737096e+19|v0|1-one||v1|v0
+-1.84467440737096e+19|v0|1-one|v1|a|x
+-1.84467440737096e+19|v0|1-one|hare|DEF|v1
+-1.84467440737096e+19|v0|1-one|1.84467440715621e+19|t1b|v0
+-1.84467440737096e+19|v0|1-one|-1.84467440737096e+19|v0|1-one
+-1.84467440737096e+19|v0|1-one|abc|v0|v1
+-1.84467440737096e+19|v0|1-one|1.84467440715621e+19|v1|x
+-1.84467440737096e+19|v0|1-one|two|v0|B
+-1.84467440737096e+19|v0|1-one|abc||x
+-1.84467440737096e+19|v0|1-one||v1|v0
+-1.84467440737096e+19|v0|1-one|v1|a|x
+-1.84467440737096e+19|v0|1-one|hare|DEF|v1
+-1.84467440737096e+19|v0|1-one|1.84467440715621e+19|t1b|v0
+-1.84467440737096e+19|v0|1-one|-1.84467440737096e+19|v0|1-one
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v5 AS a31, v0 AS a32 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 54: row value misused
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( x'616263', 'v0', 'v1' ); 
+INSERT INTO v0 VALUES ( 18446744071562067968, 'v1', 'x' ); 
+INSERT INTO v0 VALUES ( 'x', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT ( c2 IS NULL ) ) ), 'x' ); 
+INSERT INTO v0 VALUES ( 'two', 'v0', 'B' ); 
+; 
+INSERT INTO v0 VALUES ( x'616263', '', 'x' ); 
+CREATE TABLE v5 ( c6, c7, c8 COLLATE NOCASE ); 
+; 
+INSERT INTO v0 VALUES ( NULL, 'v1', 'v0' ); 
+INSERT INTO v0 VALUES ( 'v1', 'a', 'x' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'DEF', 'v1' ); 
+INSERT INTO v0 VALUES ( 18446744071562067968, 't1b', 'v0' ); 
+ALTER TABLE v0 DROP c2; 
+INSERT INTO v0 VALUES ( - 18446744073709551488, 'v0', '1-one' ); 
+; 
+CREATE TABLE v11 ( c12, c13, c14 COLLATE NOCASE ); 
+INSERT INTO v0 SELECT * FROM v0 AS a15 ORDER BY 18446744073709551615; 
+INSERT INTO v5 SELECT * FROM v5 AS a16 ORDER BY 18446744073709551615; 
+; 
+INSERT INTO v11 SELECT * FROM v5 AS a18 ORDER BY 18446744071562067968; 
+INSERT INTO v0 SELECT c6 FROM v5 AS a19 WHERE ( c8, c7 ) NOT IN ( SELECT c8, x'68617265' FROM v5 AS a20 LEFT JOIN v0 AS a21 ON c1 = y ( c3, c6 ) ORDER BY 8 ) ORDER BY 18446744071562067968; 
+INSERT INTO v0 SELECT * FROM v5 AS a22 ORDER BY 18446744073709551615; 
+INSERT INTO v0 SELECT * FROM v5 AS a23 ORDER BY 18446744073709551615; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c2, a25.c8 FROM v5 AS a25 RIGHT JOIN v0 AS a26 ON a25.c8 = a25.c6 GROUP BY a26.c2 HAVING count ( * ) >= 18446744073709551615 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c2, a28.c7 FROM v0 AS a27 RIGHT JOIN v5 AS a28 ON a28.c6 = a28.c7 WHERE a28.c6 != a28.c8 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29, v0 AS a30 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a31, v0 AS a32 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a33 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a34 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a35.c6 ) FROM v5 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a36 ORDER BY ( 18446744073709551488, count ( * ) ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: misuse of aggregate function count()
+  INSERT INTO v0 VALUES ( 'x', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT ( c2 IS 
+                 error here ---^
+Parse error near line 15: table v0 has 2 columns but 3 values were supplied
+Parse error near line 22: no such function: y
+Parse error near line 23: table v0 has 2 columns but 3 values were supplied
+Parse error near line 24: table v0 has 2 columns but 3 values were supplied
+BEGIN VERI 0
+Parse error near line 27: no such column: a26.c2
+  SELECT a26.c2, a25.c8 FROM v5 AS a25 RIGHT JOIN v0 AS a26 ON a25.c8 = a25.c6 G
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a27.c2
+  SELECT a27.c2, a28.c7 FROM v0 AS a27 RIGHT JOIN v5 AS a28 ON a28.c6 = a28.c7 W
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+abc|v1|abc|v1
+abc|v1|1.84467440715621e+19|x
+abc|v1|two|B
+abc|v1|abc|x
+abc|v1||v0
+abc|v1|v1|x
+abc|v1|hare|v1
+abc|v1|1.84467440715621e+19|v0
+abc|v1|abc|v1
+abc|v1|1.84467440715621e+19|x
+abc|v1|two|B
+abc|v1|abc|x
+abc|v1||v0
+abc|v1|v1|x
+abc|v1|hare|v1
+abc|v1|1.84467440715621e+19|v0
+1.84467440715621e+19|x|abc|v1
+1.84467440715621e+19|x|1.84467440715621e+19|x
+1.84467440715621e+19|x|two|B
+1.84467440715621e+19|x|abc|x
+1.84467440715621e+19|x||v0
+1.84467440715621e+19|x|v1|x
+1.84467440715621e+19|x|hare|v1
+1.84467440715621e+19|x|1.84467440715621e+19|v0
+1.84467440715621e+19|x|abc|v1
+1.84467440715621e+19|x|1.84467440715621e+19|x
+1.84467440715621e+19|x|two|B
+1.84467440715621e+19|x|abc|x
+1.84467440715621e+19|x||v0
+1.84467440715621e+19|x|v1|x
+1.84467440715621e+19|x|hare|v1
+1.84467440715621e+19|x|1.84467440715621e+19|v0
+two|B|abc|v1
+two|B|1.84467440715621e+19|x
+two|B|two|B
+two|B|abc|x
+two|B||v0
+two|B|v1|x
+two|B|hare|v1
+two|B|1.84467440715621e+19|v0
+two|B|abc|v1
+two|B|1.84467440715621e+19|x
+two|B|two|B
+two|B|abc|x
+two|B||v0
+two|B|v1|x
+two|B|hare|v1
+two|B|1.84467440715621e+19|v0
+abc|x|abc|v1
+abc|x|1.84467440715621e+19|x
+abc|x|two|B
+abc|x|abc|x
+abc|x||v0
+abc|x|v1|x
+abc|x|hare|v1
+abc|x|1.84467440715621e+19|v0
+abc|x|abc|v1
+abc|x|1.84467440715621e+19|x
+abc|x|two|B
+abc|x|abc|x
+abc|x||v0
+abc|x|v1|x
+abc|x|hare|v1
+abc|x|1.84467440715621e+19|v0
+|v0|abc|v1
+|v0|1.84467440715621e+19|x
+|v0|two|B
+|v0|abc|x
+|v0||v0
+|v0|v1|x
+|v0|hare|v1
+|v0|1.84467440715621e+19|v0
+|v0|abc|v1
+|v0|1.84467440715621e+19|x
+|v0|two|B
+|v0|abc|x
+|v0||v0
+|v0|v1|x
+|v0|hare|v1
+|v0|1.84467440715621e+19|v0
+v1|x|abc|v1
+v1|x|1.84467440715621e+19|x
+v1|x|two|B
+v1|x|abc|x
+v1|x||v0
+v1|x|v1|x
+v1|x|hare|v1
+v1|x|1.84467440715621e+19|v0
+v1|x|abc|v1
+v1|x|1.84467440715621e+19|x
+v1|x|two|B
+v1|x|abc|x
+v1|x||v0
+v1|x|v1|x
+v1|x|hare|v1
+v1|x|1.84467440715621e+19|v0
+hare|v1|abc|v1
+hare|v1|1.84467440715621e+19|x
+hare|v1|two|B
+hare|v1|abc|x
+hare|v1||v0
+hare|v1|v1|x
+hare|v1|hare|v1
+hare|v1|1.84467440715621e+19|v0
+hare|v1|abc|v1
+hare|v1|1.84467440715621e+19|x
+hare|v1|two|B
+hare|v1|abc|x
+hare|v1||v0
+hare|v1|v1|x
+hare|v1|hare|v1
+hare|v1|1.84467440715621e+19|v0
+1.84467440715621e+19|v0|abc|v1
+1.84467440715621e+19|v0|1.84467440715621e+19|x
+1.84467440715621e+19|v0|two|B
+1.84467440715621e+19|v0|abc|x
+1.84467440715621e+19|v0||v0
+1.84467440715621e+19|v0|v1|x
+1.84467440715621e+19|v0|hare|v1
+1.84467440715621e+19|v0|1.84467440715621e+19|v0
+1.84467440715621e+19|v0|abc|v1
+1.84467440715621e+19|v0|1.84467440715621e+19|x
+1.84467440715621e+19|v0|two|B
+1.84467440715621e+19|v0|abc|x
+1.84467440715621e+19|v0||v0
+1.84467440715621e+19|v0|v1|x
+1.84467440715621e+19|v0|hare|v1
+1.84467440715621e+19|v0|1.84467440715621e+19|v0
+abc|v1|abc|v1
+abc|v1|1.84467440715621e+19|x
+abc|v1|two|B
+abc|v1|abc|x
+abc|v1||v0
+abc|v1|v1|x
+abc|v1|hare|v1
+abc|v1|1.84467440715621e+19|v0
+abc|v1|abc|v1
+abc|v1|1.84467440715621e+19|x
+abc|v1|two|B
+abc|v1|abc|x
+abc|v1||v0
+abc|v1|v1|x
+abc|v1|hare|v1
+abc|v1|1.84467440715621e+19|v0
+1.84467440715621e+19|x|abc|v1
+1.84467440715621e+19|x|1.84467440715621e+19|x
+1.84467440715621e+19|x|two|B
+1.84467440715621e+19|x|abc|x
+1.84467440715621e+19|x||v0
+1.84467440715621e+19|x|v1|x
+1.84467440715621e+19|x|hare|v1
+1.84467440715621e+19|x|1.84467440715621e+19|v0
+1.84467440715621e+19|x|abc|v1
+1.84467440715621e+19|x|1.84467440715621e+19|x
+1.84467440715621e+19|x|two|B
+1.84467440715621e+19|x|abc|x
+1.84467440715621e+19|x||v0
+1.84467440715621e+19|x|v1|x
+1.84467440715621e+19|x|hare|v1
+1.84467440715621e+19|x|1.84467440715621e+19|v0
+two|B|abc|v1
+two|B|1.84467440715621e+19|x
+two|B|two|B
+two|B|abc|x
+two|B||v0
+two|B|v1|x
+two|B|hare|v1
+two|B|1.84467440715621e+19|v0
+two|B|abc|v1
+two|B|1.84467440715621e+19|x
+two|B|two|B
+two|B|abc|x
+two|B||v0
+two|B|v1|x
+two|B|hare|v1
+two|B|1.84467440715621e+19|v0
+abc|x|abc|v1
+abc|x|1.84467440715621e+19|x
+abc|x|two|B
+abc|x|abc|x
+abc|x||v0
+abc|x|v1|x
+abc|x|hare|v1
+abc|x|1.84467440715621e+19|v0
+abc|x|abc|v1
+abc|x|1.84467440715621e+19|x
+abc|x|two|B
+abc|x|abc|x
+abc|x||v0
+abc|x|v1|x
+abc|x|hare|v1
+abc|x|1.84467440715621e+19|v0
+|v0|abc|v1
+|v0|1.84467440715621e+19|x
+|v0|two|B
+|v0|abc|x
+|v0||v0
+|v0|v1|x
+|v0|hare|v1
+|v0|1.84467440715621e+19|v0
+|v0|abc|v1
+|v0|1.84467440715621e+19|x
+|v0|two|B
+|v0|abc|x
+|v0||v0
+|v0|v1|x
+|v0|hare|v1
+|v0|1.84467440715621e+19|v0
+v1|x|abc|v1
+v1|x|1.84467440715621e+19|x
+v1|x|two|B
+v1|x|abc|x
+v1|x||v0
+v1|x|v1|x
+v1|x|hare|v1
+v1|x|1.84467440715621e+19|v0
+v1|x|abc|v1
+v1|x|1.84467440715621e+19|x
+v1|x|two|B
+v1|x|abc|x
+v1|x||v0
+v1|x|v1|x
+v1|x|hare|v1
+v1|x|1.84467440715621e+19|v0
+hare|v1|abc|v1
+hare|v1|1.84467440715621e+19|x
+hare|v1|two|B
+hare|v1|abc|x
+hare|v1||v0
+hare|v1|v1|x
+hare|v1|hare|v1
+hare|v1|1.84467440715621e+19|v0
+hare|v1|abc|v1
+hare|v1|1.84467440715621e+19|x
+hare|v1|two|B
+hare|v1|abc|x
+hare|v1||v0
+hare|v1|v1|x
+hare|v1|hare|v1
+hare|v1|1.84467440715621e+19|v0
+1.84467440715621e+19|v0|abc|v1
+1.84467440715621e+19|v0|1.84467440715621e+19|x
+1.84467440715621e+19|v0|two|B
+1.84467440715621e+19|v0|abc|x
+1.84467440715621e+19|v0||v0
+1.84467440715621e+19|v0|v1|x
+1.84467440715621e+19|v0|hare|v1
+1.84467440715621e+19|v0|1.84467440715621e+19|v0
+1.84467440715621e+19|v0|abc|v1
+1.84467440715621e+19|v0|1.84467440715621e+19|x
+1.84467440715621e+19|v0|two|B
+1.84467440715621e+19|v0|abc|x
+1.84467440715621e+19|v0||v0
+1.84467440715621e+19|v0|v1|x
+1.84467440715621e+19|v0|hare|v1
+1.84467440715621e+19|v0|1.84467440715621e+19|v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 5
+  SELECT * FROM v5 AS a31, v0 AS a32 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 54: row value misused
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  VING count ( * ) >= 18446744073709551615 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: no such column: a26.c2
+  SELECT a26.c2, a25.c8 FROM v5 AS a25 RIGHT JOIN v0 AS a26 ON a25.c8 = a25.c6 G
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 30: no such column: a27.c2
+  SELECT a27.c2, a28.c7 FROM v0 AS a27 RIGHT JOIN v5 AS a28 ON a28.c6 = a28.c7 W
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: -1
+Str: 
+abc|v0|v1|abc|v0|v1
+abc|v0|v1|1.84467440715621e+19|v1|x
+abc|v0|v1|two|v0|B
+abc|v0|v1|abc||x
+abc|v0|v1||v1|v0
+abc|v0|v1|v1|a|x
+abc|v0|v1|hare|DEF|v1
+abc|v0|v1|1.84467440715621e+19|t1b|v0
+abc|v0|v1|-1.84467440737096e+19|v0|1-one
+abc|v0|v1|abc|v0|v1
+abc|v0|v1|1.84467440715621e+19|v1|x
+abc|v0|v1|two|v0|B
+abc|v0|v1|abc||x
+abc|v0|v1||v1|v0
+abc|v0|v1|v1|a|x
+abc|v0|v1|hare|DEF|v1
+abc|v0|v1|1.84467440715621e+19|t1b|v0
+abc|v0|v1|-1.84467440737096e+19|v0|1-one
+1.84467440715621e+19|v1|x|abc|v0|v1
+1.84467440715621e+19|v1|x|1.84467440715621e+19|v1|x
+1.84467440715621e+19|v1|x|two|v0|B
+1.84467440715621e+19|v1|x|abc||x
+1.84467440715621e+19|v1|x||v1|v0
+1.84467440715621e+19|v1|x|v1|a|x
+1.84467440715621e+19|v1|x|hare|DEF|v1
+1.84467440715621e+19|v1|x|1.84467440715621e+19|t1b|v0
+1.84467440715621e+19|v1|x|-1.84467440737096e+19|v0|1-one
+1.84467440715621e+19|v1|x|abc|v0|v1
+1.84467440715621e+19|v1|x|1.84467440715621e+19|v1|x
+1.84467440715621e+19|v1|x|two|v0|B
+1.84467440715621e+19|v1|x|abc||x
+1.84467440715621e+19|v1|x||v1|v0
+1.84467440715621e+19|v1|x|v1|a|x
+1.84467440715621e+19|v1|x|hare|DEF|v1
+1.84467440715621e+19|v1|x|1.84467440715621e+19|t1b|v0
+1.84467440715621e+19|v1|x|-1.84467440737096e+19|v0|1-one
+two|v0|B|abc|v0|v1
+two|v0|B|1.84467440715621e+19|v1|x
+two|v0|B|two|v0|B
+two|v0|B|abc||x
+two|v0|B||v1|v0
+two|v0|B|v1|a|x
+two|v0|B|hare|DEF|v1
+two|v0|B|1.84467440715621e+19|t1b|v0
+two|v0|B|-1.84467440737096e+19|v0|1-one
+two|v0|B|abc|v0|v1
+two|v0|B|1.84467440715621e+19|v1|x
+two|v0|B|two|v0|B
+two|v0|B|abc||x
+two|v0|B||v1|v0
+two|v0|B|v1|a|x
+two|v0|B|hare|DEF|v1
+two|v0|B|1.84467440715621e+19|t1b|v0
+two|v0|B|-1.84467440737096e+19|v0|1-one
+abc||x|abc|v0|v1
+abc||x|1.84467440715621e+19|v1|x
+abc||x|two|v0|B
+abc||x|abc||x
+abc||x||v1|v0
+abc||x|v1|a|x
+abc||x|hare|DEF|v1
+abc||x|1.84467440715621e+19|t1b|v0
+abc||x|-1.84467440737096e+19|v0|1-one
+abc||x|abc|v0|v1
+abc||x|1.84467440715621e+19|v1|x
+abc||x|two|v0|B
+abc||x|abc||x
+abc||x||v1|v0
+abc||x|v1|a|x
+abc||x|hare|DEF|v1
+abc||x|1.84467440715621e+19|t1b|v0
+abc||x|-1.84467440737096e+19|v0|1-one
+|v1|v0|abc|v0|v1
+|v1|v0|1.84467440715621e+19|v1|x
+|v1|v0|two|v0|B
+|v1|v0|abc||x
+|v1|v0||v1|v0
+|v1|v0|v1|a|x
+|v1|v0|hare|DEF|v1
+|v1|v0|1.84467440715621e+19|t1b|v0
+|v1|v0|-1.84467440737096e+19|v0|1-one
+|v1|v0|abc|v0|v1
+|v1|v0|1.84467440715621e+19|v1|x
+|v1|v0|two|v0|B
+|v1|v0|abc||x
+|v1|v0||v1|v0
+|v1|v0|v1|a|x
+|v1|v0|hare|DEF|v1
+|v1|v0|1.84467440715621e+19|t1b|v0
+|v1|v0|-1.84467440737096e+19|v0|1-one
+v1|a|x|abc|v0|v1
+v1|a|x|1.84467440715621e+19|v1|x
+v1|a|x|two|v0|B
+v1|a|x|abc||x
+v1|a|x||v1|v0
+v1|a|x|v1|a|x
+v1|a|x|hare|DEF|v1
+v1|a|x|1.84467440715621e+19|t1b|v0
+v1|a|x|-1.84467440737096e+19|v0|1-one
+v1|a|x|abc|v0|v1
+v1|a|x|1.84467440715621e+19|v1|x
+v1|a|x|two|v0|B
+v1|a|x|abc||x
+v1|a|x||v1|v0
+v1|a|x|v1|a|x
+v1|a|x|hare|DEF|v1
+v1|a|x|1.84467440715621e+19|t1b|v0
+v1|a|x|-1.84467440737096e+19|v0|1-one
+hare|DEF|v1|abc|v0|v1
+hare|DEF|v1|1.84467440715621e+19|v1|x
+hare|DEF|v1|two|v0|B
+hare|DEF|v1|abc||x
+hare|DEF|v1||v1|v0
+hare|DEF|v1|v1|a|x
+hare|DEF|v1|hare|DEF|v1
+hare|DEF|v1|1.84467440715621e+19|t1b|v0
+hare|DEF|v1|-1.84467440737096e+19|v0|1-one
+hare|DEF|v1|abc|v0|v1
+hare|DEF|v1|1.84467440715621e+19|v1|x
+hare|DEF|v1|two|v0|B
+hare|DEF|v1|abc||x
+hare|DEF|v1||v1|v0
+hare|DEF|v1|v1|a|x
+hare|DEF|v1|hare|DEF|v1
+hare|DEF|v1|1.84467440715621e+19|t1b|v0
+hare|DEF|v1|-1.84467440737096e+19|v0|1-one
+1.84467440715621e+19|t1b|v0|abc|v0|v1
+1.84467440715621e+19|t1b|v0|1.84467440715621e+19|v1|x
+1.84467440715621e+19|t1b|v0|two|v0|B
+1.84467440715621e+19|t1b|v0|abc||x
+1.84467440715621e+19|t1b|v0||v1|v0
+1.84467440715621e+19|t1b|v0|v1|a|x
+1.84467440715621e+19|t1b|v0|hare|DEF|v1
+1.84467440715621e+19|t1b|v0|1.84467440715621e+19|t1b|v0
+1.84467440715621e+19|t1b|v0|-1.84467440737096e+19|v0|1-one
+1.84467440715621e+19|t1b|v0|abc|v0|v1
+1.84467440715621e+19|t1b|v0|1.84467440715621e+19|v1|x
+1.84467440715621e+19|t1b|v0|two|v0|B
+1.84467440715621e+19|t1b|v0|abc||x
+1.84467440715621e+19|t1b|v0||v1|v0
+1.84467440715621e+19|t1b|v0|v1|a|x
+1.84467440715621e+19|t1b|v0|hare|DEF|v1
+1.84467440715621e+19|t1b|v0|1.84467440715621e+19|t1b|v0
+1.84467440715621e+19|t1b|v0|-1.84467440737096e+19|v0|1-one
+-1.84467440737096e+19|v0|1-one|abc|v0|v1
+-1.84467440737096e+19|v0|1-one|1.84467440715621e+19|v1|x
+-1.84467440737096e+19|v0|1-one|two|v0|B
+-1.84467440737096e+19|v0|1-one|abc||x
+-1.84467440737096e+19|v0|1-one||v1|v0
+-1.84467440737096e+19|v0|1-one|v1|a|x
+-1.84467440737096e+19|v0|1-one|hare|DEF|v1
+-1.84467440737096e+19|v0|1-one|1.84467440715621e+19|t1b|v0
+-1.84467440737096e+19|v0|1-one|-1.84467440737096e+19|v0|1-one
+-1.84467440737096e+19|v0|1-one|abc|v0|v1
+-1.84467440737096e+19|v0|1-one|1.84467440715621e+19|v1|x
+-1.84467440737096e+19|v0|1-one|two|v0|B
+-1.84467440737096e+19|v0|1-one|abc||x
+-1.84467440737096e+19|v0|1-one||v1|v0
+-1.84467440737096e+19|v0|1-one|v1|a|x
+-1.84467440737096e+19|v0|1-one|hare|DEF|v1
+-1.84467440737096e+19|v0|1-one|1.84467440715621e+19|t1b|v0
+-1.84467440737096e+19|v0|1-one|-1.84467440737096e+19|v0|1-one
+abc|v0|v1|abc|v0|v1
+abc|v0|v1|1.84467440715621e+19|v1|x
+abc|v0|v1|two|v0|B
+abc|v0|v1|abc||x
+abc|v0|v1||v1|v0
+abc|v0|v1|v1|a|x
+abc|v0|v1|hare|DEF|v1
+abc|v0|v1|1.84467440715621e+19|t1b|v0
+abc|v0|v1|-1.84467440737096e+19|v0|1-one
+abc|v0|v1|abc|v0|v1
+abc|v0|v1|1.84467440715621e+19|v1|x
+abc|v0|v1|two|v0|B
+abc|v0|v1|abc||x
+abc|v0|v1||v1|v0
+abc|v0|v1|v1|a|x
+abc|v0|v1|hare|DEF|v1
+abc|v0|v1|1.84467440715621e+19|t1b|v0
+abc|v0|v1|-1.84467440737096e+19|v0|1-one
+1.84467440715621e+19|v1|x|abc|v0|v1
+1.84467440715621e+19|v1|x|1.84467440715621e+19|v1|x
+1.84467440715621e+19|v1|x|two|v0|B
+1.84467440715621e+19|v1|x|abc||x
+1.84467440715621e+19|v1|x||v1|v0
+1.84467440715621e+19|v1|x|v1|a|x
+1.84467440715621e+19|v1|x|hare|DEF|v1
+1.84467440715621e+19|v1|x|1.84467440715621e+19|t1b|v0
+1.84467440715621e+19|v1|x|-1.84467440737096e+19|v0|1-one
+1.84467440715621e+19|v1|x|abc|v0|v1
+1.84467440715621e+19|v1|x|1.84467440715621e+19|v1|x
+1.84467440715621e+19|v1|x|two|v0|B
+1.84467440715621e+19|v1|x|abc||x
+1.84467440715621e+19|v1|x||v1|v0
+1.84467440715621e+19|v1|x|v1|a|x
+1.84467440715621e+19|v1|x|hare|DEF|v1
+1.84467440715621e+19|v1|x|1.84467440715621e+19|t1b|v0
+1.84467440715621e+19|v1|x|-1.84467440737096e+19|v0|1-one
+two|v0|B|abc|v0|v1
+two|v0|B|1.84467440715621e+19|v1|x
+two|v0|B|two|v0|B
+two|v0|B|abc||x
+two|v0|B||v1|v0
+two|v0|B|v1|a|x
+two|v0|B|hare|DEF|v1
+two|v0|B|1.84467440715621e+19|t1b|v0
+two|v0|B|-1.84467440737096e+19|v0|1-one
+two|v0|B|abc|v0|v1
+two|v0|B|1.84467440715621e+19|v1|x
+two|v0|B|two|v0|B
+two|v0|B|abc||x
+two|v0|B||v1|v0
+two|v0|B|v1|a|x
+two|v0|B|hare|DEF|v1
+two|v0|B|1.84467440715621e+19|t1b|v0
+two|v0|B|-1.84467440737096e+19|v0|1-one
+abc||x|abc|v0|v1
+abc||x|1.84467440715621e+19|v1|x
+abc||x|two|v0|B
+abc||x|abc||x
+abc||x||v1|v0
+abc||x|v1|a|x
+abc||x|hare|DEF|v1
+abc||x|1.84467440715621e+19|t1b|v0
+abc||x|-1.84467440737096e+19|v0|1-one
+abc||x|abc|v0|v1
+abc||x|1.84467440715621e+19|v1|x
+abc||x|two|v0|B
+abc||x|abc||x
+abc||x||v1|v0
+abc||x|v1|a|x
+abc||x|hare|DEF|v1
+abc||x|1.84467440715621e+19|t1b|v0
+abc||x|-1.84467440737096e+19|v0|1-one
+|v1|v0|abc|v0|v1
+|v1|v0|1.84467440715621e+19|v1|x
+|v1|v0|two|v0|B
+|v1|v0|abc||x
+|v1|v0||v1|v0
+|v1|v0|v1|a|x
+|v1|v0|hare|DEF|v1
+|v1|v0|1.84467440715621e+19|t1b|v0
+|v1|v0|-1.84467440737096e+19|v0|1-one
+|v1|v0|abc|v0|v1
+|v1|v0|1.84467440715621e+19|v1|x
+|v1|v0|two|v0|B
+|v1|v0|abc||x
+|v1|v0||v1|v0
+|v1|v0|v1|a|x
+|v1|v0|hare|DEF|v1
+|v1|v0|1.84467440715621e+19|t1b|v0
+|v1|v0|-1.84467440737096e+19|v0|1-one
+v1|a|x|abc|v0|v1
+v1|a|x|1.84467440715621e+19|v1|x
+v1|a|x|two|v0|B
+v1|a|x|abc||x
+v1|a|x||v1|v0
+v1|a|x|v1|a|x
+v1|a|x|hare|DEF|v1
+v1|a|x|1.84467440715621e+19|t1b|v0
+v1|a|x|-1.84467440737096e+19|v0|1-one
+v1|a|x|abc|v0|v1
+v1|a|x|1.84467440715621e+19|v1|x
+v1|a|x|two|v0|B
+v1|a|x|abc||x
+v1|a|x||v1|v0
+v1|a|x|v1|a|x
+v1|a|x|hare|DEF|v1
+v1|a|x|1.84467440715621e+19|t1b|v0
+v1|a|x|-1.84467440737096e+19|v0|1-one
+hare|DEF|v1|abc|v0|v1
+hare|DEF|v1|1.84467440715621e+19|v1|x
+hare|DEF|v1|two|v0|B
+hare|DEF|v1|abc||x
+hare|DEF|v1||v1|v0
+hare|DEF|v1|v1|a|x
+hare|DEF|v1|hare|DEF|v1
+hare|DEF|v1|1.84467440715621e+19|t1b|v0
+hare|DEF|v1|-1.84467440737096e+19|v0|1-one
+hare|DEF|v1|abc|v0|v1
+hare|DEF|v1|1.84467440715621e+19|v1|x
+hare|DEF|v1|two|v0|B
+hare|DEF|v1|abc||x
+hare|DEF|v1||v1|v0
+hare|DEF|v1|v1|a|x
+hare|DEF|v1|hare|DEF|v1
+hare|DEF|v1|1.84467440715621e+19|t1b|v0
+hare|DEF|v1|-1.84467440737096e+19|v0|1-one
+1.84467440715621e+19|t1b|v0|abc|v0|v1
+1.84467440715621e+19|t1b|v0|1.84467440715621e+19|v1|x
+1.84467440715621e+19|t1b|v0|two|v0|B
+1.84467440715621e+19|t1b|v0|abc||x
+1.84467440715621e+19|t1b|v0||v1|v0
+1.84467440715621e+19|t1b|v0|v1|a|x
+1.84467440715621e+19|t1b|v0|hare|DEF|v1
+1.84467440715621e+19|t1b|v0|1.84467440715621e+19|t1b|v0
+1.84467440715621e+19|t1b|v0|-1.84467440737096e+19|v0|1-one
+1.84467440715621e+19|t1b|v0|abc|v0|v1
+1.84467440715621e+19|t1b|v0|1.84467440715621e+19|v1|x
+1.84467440715621e+19|t1b|v0|two|v0|B
+1.84467440715621e+19|t1b|v0|abc||x
+1.84467440715621e+19|t1b|v0||v1|v0
+1.84467440715621e+19|t1b|v0|v1|a|x
+1.84467440715621e+19|t1b|v0|hare|DEF|v1
+1.84467440715621e+19|t1b|v0|1.84467440715621e+19|t1b|v0
+1.84467440715621e+19|t1b|v0|-1.84467440737096e+19|v0|1-one
+-1.84467440737096e+19|v0|1-one|abc|v0|v1
+-1.84467440737096e+19|v0|1-one|1.84467440715621e+19|v1|x
+-1.84467440737096e+19|v0|1-one|two|v0|B
+-1.84467440737096e+19|v0|1-one|abc||x
+-1.84467440737096e+19|v0|1-one||v1|v0
+-1.84467440737096e+19|v0|1-one|v1|a|x
+-1.84467440737096e+19|v0|1-one|hare|DEF|v1
+-1.84467440737096e+19|v0|1-one|1.84467440715621e+19|t1b|v0
+-1.84467440737096e+19|v0|1-one|-1.84467440737096e+19|v0|1-one
+-1.84467440737096e+19|v0|1-one|abc|v0|v1
+-1.84467440737096e+19|v0|1-one|1.84467440715621e+19|v1|x
+-1.84467440737096e+19|v0|1-one|two|v0|B
+-1.84467440737096e+19|v0|1-one|abc||x
+-1.84467440737096e+19|v0|1-one||v1|v0
+-1.84467440737096e+19|v0|1-one|v1|a|x
+-1.84467440737096e+19|v0|1-one|hare|DEF|v1
+-1.84467440737096e+19|v0|1-one|1.84467440715621e+19|t1b|v0
+-1.84467440737096e+19|v0|1-one|-1.84467440737096e+19|v0|1-one
+ 
+Str: 
+abc|v1|abc|v1
+abc|v1|1.84467440715621e+19|x
+abc|v1|two|B
+abc|v1|abc|x
+abc|v1||v0
+abc|v1|v1|x
+abc|v1|hare|v1
+abc|v1|1.84467440715621e+19|v0
+abc|v1|abc|v1
+abc|v1|1.84467440715621e+19|x
+abc|v1|two|B
+abc|v1|abc|x
+abc|v1||v0
+abc|v1|v1|x
+abc|v1|hare|v1
+abc|v1|1.84467440715621e+19|v0
+1.84467440715621e+19|x|abc|v1
+1.84467440715621e+19|x|1.84467440715621e+19|x
+1.84467440715621e+19|x|two|B
+1.84467440715621e+19|x|abc|x
+1.84467440715621e+19|x||v0
+1.84467440715621e+19|x|v1|x
+1.84467440715621e+19|x|hare|v1
+1.84467440715621e+19|x|1.84467440715621e+19|v0
+1.84467440715621e+19|x|abc|v1
+1.84467440715621e+19|x|1.84467440715621e+19|x
+1.84467440715621e+19|x|two|B
+1.84467440715621e+19|x|abc|x
+1.84467440715621e+19|x||v0
+1.84467440715621e+19|x|v1|x
+1.84467440715621e+19|x|hare|v1
+1.84467440715621e+19|x|1.84467440715621e+19|v0
+two|B|abc|v1
+two|B|1.84467440715621e+19|x
+two|B|two|B
+two|B|abc|x
+two|B||v0
+two|B|v1|x
+two|B|hare|v1
+two|B|1.84467440715621e+19|v0
+two|B|abc|v1
+two|B|1.84467440715621e+19|x
+two|B|two|B
+two|B|abc|x
+two|B||v0
+two|B|v1|x
+two|B|hare|v1
+two|B|1.84467440715621e+19|v0
+abc|x|abc|v1
+abc|x|1.84467440715621e+19|x
+abc|x|two|B
+abc|x|abc|x
+abc|x||v0
+abc|x|v1|x
+abc|x|hare|v1
+abc|x|1.84467440715621e+19|v0
+abc|x|abc|v1
+abc|x|1.84467440715621e+19|x
+abc|x|two|B
+abc|x|abc|x
+abc|x||v0
+abc|x|v1|x
+abc|x|hare|v1
+abc|x|1.84467440715621e+19|v0
+|v0|abc|v1
+|v0|1.84467440715621e+19|x
+|v0|two|B
+|v0|abc|x
+|v0||v0
+|v0|v1|x
+|v0|hare|v1
+|v0|1.84467440715621e+19|v0
+|v0|abc|v1
+|v0|1.84467440715621e+19|x
+|v0|two|B
+|v0|abc|x
+|v0||v0
+|v0|v1|x
+|v0|hare|v1
+|v0|1.84467440715621e+19|v0
+v1|x|abc|v1
+v1|x|1.84467440715621e+19|x
+v1|x|two|B
+v1|x|abc|x
+v1|x||v0
+v1|x|v1|x
+v1|x|hare|v1
+v1|x|1.84467440715621e+19|v0
+v1|x|abc|v1
+v1|x|1.84467440715621e+19|x
+v1|x|two|B
+v1|x|abc|x
+v1|x||v0
+v1|x|v1|x
+v1|x|hare|v1
+v1|x|1.84467440715621e+19|v0
+hare|v1|abc|v1
+hare|v1|1.84467440715621e+19|x
+hare|v1|two|B
+hare|v1|abc|x
+hare|v1||v0
+hare|v1|v1|x
+hare|v1|hare|v1
+hare|v1|1.84467440715621e+19|v0
+hare|v1|abc|v1
+hare|v1|1.84467440715621e+19|x
+hare|v1|two|B
+hare|v1|abc|x
+hare|v1||v0
+hare|v1|v1|x
+hare|v1|hare|v1
+hare|v1|1.84467440715621e+19|v0
+1.84467440715621e+19|v0|abc|v1
+1.84467440715621e+19|v0|1.84467440715621e+19|x
+1.84467440715621e+19|v0|two|B
+1.84467440715621e+19|v0|abc|x
+1.84467440715621e+19|v0||v0
+1.84467440715621e+19|v0|v1|x
+1.84467440715621e+19|v0|hare|v1
+1.84467440715621e+19|v0|1.84467440715621e+19|v0
+1.84467440715621e+19|v0|abc|v1
+1.84467440715621e+19|v0|1.84467440715621e+19|x
+1.84467440715621e+19|v0|two|B
+1.84467440715621e+19|v0|abc|x
+1.84467440715621e+19|v0||v0
+1.84467440715621e+19|v0|v1|x
+1.84467440715621e+19|v0|hare|v1
+1.84467440715621e+19|v0|1.84467440715621e+19|v0
+abc|v1|abc|v1
+abc|v1|1.84467440715621e+19|x
+abc|v1|two|B
+abc|v1|abc|x
+abc|v1||v0
+abc|v1|v1|x
+abc|v1|hare|v1
+abc|v1|1.84467440715621e+19|v0
+abc|v1|abc|v1
+abc|v1|1.84467440715621e+19|x
+abc|v1|two|B
+abc|v1|abc|x
+abc|v1||v0
+abc|v1|v1|x
+abc|v1|hare|v1
+abc|v1|1.84467440715621e+19|v0
+1.84467440715621e+19|x|abc|v1
+1.84467440715621e+19|x|1.84467440715621e+19|x
+1.84467440715621e+19|x|two|B
+1.84467440715621e+19|x|abc|x
+1.84467440715621e+19|x||v0
+1.84467440715621e+19|x|v1|x
+1.84467440715621e+19|x|hare|v1
+1.84467440715621e+19|x|1.84467440715621e+19|v0
+1.84467440715621e+19|x|abc|v1
+1.84467440715621e+19|x|1.84467440715621e+19|x
+1.84467440715621e+19|x|two|B
+1.84467440715621e+19|x|abc|x
+1.84467440715621e+19|x||v0
+1.84467440715621e+19|x|v1|x
+1.84467440715621e+19|x|hare|v1
+1.84467440715621e+19|x|1.84467440715621e+19|v0
+two|B|abc|v1
+two|B|1.84467440715621e+19|x
+two|B|two|B
+two|B|abc|x
+two|B||v0
+two|B|v1|x
+two|B|hare|v1
+two|B|1.84467440715621e+19|v0
+two|B|abc|v1
+two|B|1.84467440715621e+19|x
+two|B|two|B
+two|B|abc|x
+two|B||v0
+two|B|v1|x
+two|B|hare|v1
+two|B|1.84467440715621e+19|v0
+abc|x|abc|v1
+abc|x|1.84467440715621e+19|x
+abc|x|two|B
+abc|x|abc|x
+abc|x||v0
+abc|x|v1|x
+abc|x|hare|v1
+abc|x|1.84467440715621e+19|v0
+abc|x|abc|v1
+abc|x|1.84467440715621e+19|x
+abc|x|two|B
+abc|x|abc|x
+abc|x||v0
+abc|x|v1|x
+abc|x|hare|v1
+abc|x|1.84467440715621e+19|v0
+|v0|abc|v1
+|v0|1.84467440715621e+19|x
+|v0|two|B
+|v0|abc|x
+|v0||v0
+|v0|v1|x
+|v0|hare|v1
+|v0|1.84467440715621e+19|v0
+|v0|abc|v1
+|v0|1.84467440715621e+19|x
+|v0|two|B
+|v0|abc|x
+|v0||v0
+|v0|v1|x
+|v0|hare|v1
+|v0|1.84467440715621e+19|v0
+v1|x|abc|v1
+v1|x|1.84467440715621e+19|x
+v1|x|two|B
+v1|x|abc|x
+v1|x||v0
+v1|x|v1|x
+v1|x|hare|v1
+v1|x|1.84467440715621e+19|v0
+v1|x|abc|v1
+v1|x|1.84467440715621e+19|x
+v1|x|two|B
+v1|x|abc|x
+v1|x||v0
+v1|x|v1|x
+v1|x|hare|v1
+v1|x|1.84467440715621e+19|v0
+hare|v1|abc|v1
+hare|v1|1.84467440715621e+19|x
+hare|v1|two|B
+hare|v1|abc|x
+hare|v1||v0
+hare|v1|v1|x
+hare|v1|hare|v1
+hare|v1|1.84467440715621e+19|v0
+hare|v1|abc|v1
+hare|v1|1.84467440715621e+19|x
+hare|v1|two|B
+hare|v1|abc|x
+hare|v1||v0
+hare|v1|v1|x
+hare|v1|hare|v1
+hare|v1|1.84467440715621e+19|v0
+1.84467440715621e+19|v0|abc|v1
+1.84467440715621e+19|v0|1.84467440715621e+19|x
+1.84467440715621e+19|v0|two|B
+1.84467440715621e+19|v0|abc|x
+1.84467440715621e+19|v0||v0
+1.84467440715621e+19|v0|v1|x
+1.84467440715621e+19|v0|hare|v1
+1.84467440715621e+19|v0|1.84467440715621e+19|v0
+1.84467440715621e+19|v0|abc|v1
+1.84467440715621e+19|v0|1.84467440715621e+19|x
+1.84467440715621e+19|v0|two|B
+1.84467440715621e+19|v0|abc|x
+1.84467440715621e+19|v0||v0
+1.84467440715621e+19|v0|v1|x
+1.84467440715621e+19|v0|hare|v1
+1.84467440715621e+19|v0|1.84467440715621e+19|v0
+ 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v5 AS a31, v0 AS a32 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 5
+  SELECT * FROM v5 AS a31, v0 AS a32 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 54: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 54: row value misused
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

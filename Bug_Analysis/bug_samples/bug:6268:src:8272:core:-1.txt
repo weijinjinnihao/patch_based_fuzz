@@ -1,0 +1,305 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 DEFAULT 'x2', c2, c3 AS( c3 + c1 - c2 ) REFERENCES fts5, c4 ); 
+CREATE INDEX i5 ON v0 ( c4 ); 
+CREATE INDEX i6 ON v0 ( c1 ); 
+CREATE INDEX i7 ON v0 ( c3 ); 
+CREATE VIEW v8 AS SELECT * FROM v0 AS a9 ORDER BY 18446744073709551488; 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12, c13 UNIQUE ); 
+CREATE TABLE v14 ( c15, c16, c17 ); 
+ALTER TABLE v0 DROP COLUMN c4; 
+CREATE INDEX i18 ON v10 ( c12 ); 
+ALTER TABLE v10 DROP COLUMN c13; 
+CREATE VIRTUAL TABLE v19 USING fts5 ( c20, c21 ); 
+CREATE INDEX i22 ON v19 ( c11 ); 
+ALTER TABLE v10 DROP COLUMN c12; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a23 ORDER BY max ( NULL, - x'68617265', 'real' ) + 18446744073709551488, min ( a23.c20, avg ( a23.c21 ) ) + NULL >= 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c16, count ( ( NOT ( a24.c17 IS NULL ) ) AND ( NOT ( a24.c15 IS NULL ) ) ) FROM v14 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( NULL, 'v0', 'Z' ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a25 WHERE a25.c13 = a25.c11 NOT NULL ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a26, v19 AS a27 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a28 WHERE a28.c20 % 18446744073709551615 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a29.c2 IS NULL ) ) AND ( NOT ( a29.c2 IS NULL ) ) ) FROM v8 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 NATURAL JOIN v19 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a32 ORDER BY ( a32.c1 || a32.c1 || a32.c4 ) != 'cantaloupe'; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: generated column loop on "c3"
+Runtime error near line 8: error in index i5 after drop column: no such column: c4
+Parse error near line 10: cannot drop UNIQUE column: "c13"
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: no such table: main.v19
+Runtime error near line 13: error in index i18 after drop column: no such column: c12
+BEGIN VERI 0
+Parse error near line 15: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: near "ORDER": syntax error
+  VALUES ( NULL, 'v0', 'Z' ) ORDER BY 2147483647; 
+               error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+  OT ( a29.c2 IS NULL ) ) ) FROM v8 AS a29 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: generated column loop on "c3"
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 DEFAULT 'x2', c2, c3 AS( c3 + c1 - c2 ) REFERENCES fts5, c4 ); 
+; 
+; 
+; 
+CREATE VIEW v8 AS SELECT * FROM v0 AS a9 ORDER BY 18446744073709551488; 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12, c13 UNIQUE ); 
+CREATE TABLE v14 ( c15, c16, c17 ); 
+ALTER TABLE v0 DROP COLUMN c4; 
+; 
+ALTER TABLE v10 DROP COLUMN c13; 
+CREATE VIRTUAL TABLE v19 USING fts5 ( c20, c21 ); 
+; 
+ALTER TABLE v10 DROP COLUMN c12; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a23 ORDER BY max ( NULL, - x'68617265', 'real' ) + 18446744073709551488, min ( a23.c20, avg ( a23.c21 ) ) + NULL >= 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c16, count ( ( NOT ( a24.c17 IS NULL ) ) AND ( NOT ( a24.c15 IS NULL ) ) ) FROM v14 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( NULL, 'v0', 'Z' ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a25 WHERE a25.c13 = a25.c11 NOT NULL ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a26, v19 AS a27 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a28 WHERE a28.c20 % 18446744073709551615 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a29.c2 IS NULL ) ) AND ( NOT ( a29.c2 IS NULL ) ) ) FROM v8 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 NATURAL JOIN v19 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a32 ORDER BY ( a32.c1 || a32.c1 || a32.c4 ) != 'cantaloupe'; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: cannot drop UNIQUE column: "c13"
+Runtime error near line 11: no such module: fts5
+BEGIN VERI 0
+Parse error near line 15: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: near "ORDER": syntax error
+  VALUES ( NULL, 'v0', 'Z' ) ORDER BY 2147483647; 
+               error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+  OT ( a29.c2 IS NULL ) ) ) FROM v8 AS a29 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a32.c4
+  T * FROM v8 AS a32 ORDER BY ( a32.c1 || a32.c1 || a32.c4 ) != 'cantaloupe'; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such table: v19
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such table: v19
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 53270080
+Str: 
+Parse error near line 24: near "ORDER": syntax error
+  VALUES ( NULL, 'v0', 'Z' ) ORDER BY 2147483647; 
+               error here ---^
+ 
+Str: 
+Parse error near line 24: near "ORDER": syntax error
+  VALUES ( NULL, 'v0', 'Z' ) ORDER BY 2147483647; 
+               error here ---^
+ 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such table: v19
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no such table: v19
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such table: v19
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such table: v19
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+  OT ( a29.c2 IS NULL ) ) ) FROM v8 AS a29 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+  OT ( a29.c2 IS NULL ) ) ) FROM v8 AS a29 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such table: v19
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such table: v19
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 42: generated column loop on "c3"
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such column: a32.c4
+  T * FROM v8 AS a32 ORDER BY ( a32.c1 || a32.c1 || a32.c4 ) != 'cantaloupe'; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

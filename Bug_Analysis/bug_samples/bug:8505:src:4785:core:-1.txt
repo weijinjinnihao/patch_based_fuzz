@@ -1,0 +1,296 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 TEXT, c2 INTEGER, c3 INT, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 TEXT DEFAULT - 255, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42 PRIMARY KEY, CHECK( ( ( c6 + 255 ) % 255 ) != 255 ) ); 
+CREATE INDEX i43 ON v0 ( c16 ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c17 = c30 || c32 WHERE c40 = c26 || c12; END; 
+CREATE TABLE v44 ( c45, c46, c47, c48, PRIMARY KEY ( c46, c45 ) ) WITHOUT ROWID; 
+CREATE INDEX i49 ON v44 ( c48 ); 
+INSERT INTO v44 VALUES ( 255, 255, 255, 0 ); 
+CREATE INDEX i50 ON v0 ( c34 ); 
+ALTER TABLE v44 DROP COLUMN c48; 
+CREATE INDEX i51 ON v44 ( c45 ); 
+INSERT OR REPLACE INTO v0 ( c12, c16, c25, c41, c31 ) VALUES ( 255, 255, NULL, 255, 18446744073709551615 ); 
+CREATE INDEX i52 ON v44 ( c47 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v44 AS a53 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a54.c2 + ( SELECT max ( a57.c48 ) FROM v44 AS a57 ORDER BY 255 ), a54.c12 + ( SELECT max ( a56.c41 || a56.c17 ) FROM v0 AS a56 ORDER BY 0 ), a54.c7 + ( SELECT max ( a54.c35 ) FROM v0 AS a55 ORDER BY 255 ) FROM v0 AS a54 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v44 AS a58 ORDER BY a58.c46 + 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v59 ( c61 ) AS ( SELECT ( ( c47 + - 0 ) % 255 ) ORDER BY 255 ) SELECT * FROM v59 AS a60 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a62.c4, max ( a62.c4 || a62.c13 ) FROM v0 AS a62 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a63.c32, max ( a63.c30 || a63.c24 ) FROM v0 AS a63 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a64 WHERE ( a64.c2 = 0 OR a64.c23 = 18446744073709518848 ) AND a64.c5 IN ( SELECT a64.c8 FROM ( SELECT *, 'x' FROM v44 AS a65 LEFT JOIN v44 AS a66 ON a65.c45 = 255 AND ( ( SELECT * FROM v44 AS a67 WHERE a64.c13 = a64.c7 || a66.c47 ORDER BY 18446744073709518848 ) % 18446744073709518848 ) != 0 ORDER BY 18446744073709551488 ) AS y WHERE a64.c22 = 0 ORDER BY 9223372036854775807 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v44 AS a68 WHERE ( a68.c45 || a68.c48 || a68.c45 ) != 'v1' ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v69 ( c71 ) AS ( WITH v72 ( c73 ) AS ( WITH v72 ( c74 ) AS ( WITH v69 ( c75 ) AS ( WITH v76 ( c77, c78, c79, c80, c81, c82 ) AS ( SELECT 18446744073709551615 y ORDER BY ( ( c77 + 18446744073709551615 ) % 255 ) < 9223372036854775807 ) SELECT 10 ORDER BY 255 ) SELECT 255 ORDER BY 255 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT 0 ORDER BY 18446744071562067968 ) SELECT * FROM v69 AS a70 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a83.c47 FROM v44 AS a83 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in index i49 after drop column: no such column: c48
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+255|255|255|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: c47
+  WITH v59 ( c61 ) AS ( SELECT ( ( c47 + - 0 ) % 255 ) ORDER BY 255 ) SELECT * F
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: sub-select returns 4 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+255
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 TEXT, c2 INTEGER, c3 INT, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 TEXT DEFAULT - 255, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42 PRIMARY KEY, CHECK( ( ( c6 + 255 ) % 255 ) != 255 ) ); 
+; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c17 = c30 || c32 WHERE c40 = c26 || c12; END; 
+CREATE TABLE v44 ( c45, c46, c47, c48, PRIMARY KEY ( c46, c45 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v44 VALUES ( 255, 255, 255, 0 ); 
+; 
+ALTER TABLE v44 DROP COLUMN c48; 
+; 
+INSERT OR REPLACE INTO v0 ( c12, c16, c25, c41, c31 ) VALUES ( 255, 255, NULL, 255, 18446744073709551615 ); 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v44 AS a53 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a54.c2 + ( SELECT max ( a57.c48 ) FROM v44 AS a57 ORDER BY 255 ), a54.c12 + ( SELECT max ( a56.c41 || a56.c17 ) FROM v0 AS a56 ORDER BY 0 ), a54.c7 + ( SELECT max ( a54.c35 ) FROM v0 AS a55 ORDER BY 255 ) FROM v0 AS a54 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v44 AS a58 ORDER BY a58.c46 + 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v59 ( c61 ) AS ( SELECT ( ( c47 + - 0 ) % 255 ) ORDER BY 255 ) SELECT * FROM v59 AS a60 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a62.c4, max ( a62.c4 || a62.c13 ) FROM v0 AS a62 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a63.c32, max ( a63.c30 || a63.c24 ) FROM v0 AS a63 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a64 WHERE ( a64.c2 = 0 OR a64.c23 = 18446744073709518848 ) AND a64.c5 IN ( SELECT a64.c8 FROM ( SELECT *, 'x' FROM v44 AS a65 LEFT JOIN v44 AS a66 ON a65.c45 = 255 AND ( ( SELECT * FROM v44 AS a67 WHERE a64.c13 = a64.c7 || a66.c47 ORDER BY 18446744073709518848 ) % 18446744073709518848 ) != 0 ORDER BY 18446744073709551488 ) AS y WHERE a64.c22 = 0 ORDER BY 9223372036854775807 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v44 AS a68 WHERE ( a68.c45 || a68.c48 || a68.c45 ) != 'v1' ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v69 ( c71 ) AS ( WITH v72 ( c73 ) AS ( WITH v72 ( c74 ) AS ( WITH v69 ( c75 ) AS ( WITH v76 ( c77, c78, c79, c80, c81, c82 ) AS ( SELECT 18446744073709551615 y ORDER BY ( ( c77 + 18446744073709551615 ) % 255 ) < 9223372036854775807 ) SELECT 10 ORDER BY 255 ) SELECT 255 ORDER BY 255 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT 0 ORDER BY 18446744071562067968 ) SELECT * FROM v69 AS a70 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a83.c47 FROM v44 AS a83 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: a57.c48
+  SELECT a54.c2 + ( SELECT max ( a57.c48 ) FROM v44 AS a57 ORDER BY 255 ), a54.c
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+255|255|255
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: c47
+  WITH v59 ( c61 ) AS ( SELECT ( ( c47 + - 0 ) % 255 ) ORDER BY 255 ) SELECT * F
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: sub-select returns 3 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a68.c48
+  SELECT * FROM v44 AS a68 WHERE ( a68.c45 || a68.c48 || a68.c45 ) != 'v1' ORDER
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+255
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such column: a57.c48
+  SELECT a54.c2 + ( SELECT max ( a57.c48 ) FROM v44 AS a57 ORDER BY 255 ), a54.c
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+255|255|255|0
+ 
+INT: 0 
+Str: 
+255|255|255
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such column: c47
+  WITH v59 ( c61 ) AS ( SELECT ( ( c47 + - 0 ) % 255 ) ORDER BY 255 ) SELECT * F
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 22: no such column: c47
+  WITH v59 ( c61 ) AS ( SELECT ( ( c47 + - 0 ) % 255 ) ORDER BY 255 ) SELECT * F
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: sub-select returns 4 columns - expected 1
+ 
+INT: 0 
+Str: 
+Parse error near line 31: sub-select returns 3 columns - expected 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such column: a68.c48
+  SELECT * FROM v44 AS a68 WHERE ( a68.c45 || a68.c48 || a68.c45 ) != 'v1' ORDER
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+255
+ 
+INT: 0 
+Str: 
+255
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

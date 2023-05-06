@@ -1,0 +1,290 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 UNIQUE ON CONFLICT FAIL, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 INTEGER CHECK( x'b1' ), c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36 PRIMARY KEY, CHECK( ( ( c33 + 18446744073709551615 ) % 18446744073709551615 ) != 18446744073709551615 ) ) WITHOUT ROWID; 
+CREATE INDEX i37 ON v0 ( c33 ); 
+CREATE INDEX i38 ON v0 ( c35 ); 
+CREATE INDEX i39 ON v0 ( c9 ); 
+ALTER TABLE v0 DROP c35; 
+CREATE INDEX i40 ON v0 ( c29 ); 
+CREATE INDEX i41 ON v0 ( c10 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a42.c14, count ( a42.c29 ) FROM v0 AS a42 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c27, max ( a43.c4 || a43.c15 ) FROM v0 AS a43 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v44 ( c46 ) AS ( SELECT max ( c46 || c46 ) ORDER BY 18446744073709551615 ) SELECT * FROM v44 AS a45 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a47.c29, max ( a48.c21 || a48.c14 ), count ( a47.c11 ) FROM v0 AS a47 LEFT JOIN v0 AS a48 ON a48.c12 = a48.c17 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 GROUP BY a50.c30 HAVING count ( * ) >= 4294967295 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a51, v0 AS a52 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c26, max ( a53.c25 || a53.c12 ) FROM v0 AS a53 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a54.c35 FROM v0 AS a54 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a55 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: error in index i38 after drop column: no such column: c35
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such column: c46
+  WITH RECURSIVE v44 ( c46 ) AS ( SELECT max ( c46 || c46 ) ORDER BY 18446744073
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+||0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 36
+  SELECT * FROM v0 AS a49 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 36
+  a50.c30 HAVING count ( * ) >= 4294967295 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 UNIQUE ON CONFLICT FAIL, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 INTEGER CHECK( x'b1' ), c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36 PRIMARY KEY, CHECK( ( ( c33 + 18446744073709551615 ) % 18446744073709551615 ) != 18446744073709551615 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c35; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a42.c14, count ( a42.c29 ) FROM v0 AS a42 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c27, max ( a43.c4 || a43.c15 ) FROM v0 AS a43 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v44 ( c46 ) AS ( SELECT max ( c46 || c46 ) ORDER BY 18446744073709551615 ) SELECT * FROM v44 AS a45 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a47.c29, max ( a48.c21 || a48.c14 ), count ( a47.c11 ) FROM v0 AS a47 LEFT JOIN v0 AS a48 ON a48.c12 = a48.c17 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 GROUP BY a50.c30 HAVING count ( * ) >= 4294967295 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a51, v0 AS a52 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c26, max ( a53.c25 || a53.c12 ) FROM v0 AS a53 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a54.c35 FROM v0 AS a54 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a55 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such column: c46
+  WITH RECURSIVE v44 ( c46 ) AS ( SELECT max ( c46 || c46 ) ORDER BY 18446744073
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+||0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 35
+  SELECT * FROM v0 AS a49 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 35
+  a50.c30 HAVING count ( * ) >= 4294967295 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a54.c35
+  SELECT a54.c35 FROM v0 AS a54 ORDER BY 18446744073709551615; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such column: c46
+  WITH RECURSIVE v44 ( c46 ) AS ( SELECT max ( c46 || c46 ) ORDER BY 18446744073
+                                 error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: no such column: c46
+  WITH RECURSIVE v44 ( c46 ) AS ( SELECT max ( c46 || c46 ) ORDER BY 18446744073
+                                 error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+||0
+ 
+INT: 0 
+Str: 
+||0
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 36
+  SELECT * FROM v0 AS a49 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 35
+  SELECT * FROM v0 AS a49 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 36
+  a50.c30 HAVING count ( * ) >= 4294967295 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 35
+  a50.c30 HAVING count ( * ) >= 4294967295 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 33: no such column: a54.c35
+  SELECT a54.c35 FROM v0 AS a54 ORDER BY 18446744073709551615; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,300 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16 INTEGER, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c6 + 16 ) % 16 ) != 16 ) ) WITHOUT ROWID; 
+INSERT INTO v0 ( c12, c18, c12 ) VALUES ( x'68617265', 'v0', '1.2' ); 
+CREATE INDEX i28 ON v0 ( c16 ); 
+CREATE INDEX i29 ON v0 ( c23 ); 
+CREATE INDEX i30 ON v0 ( c27 ); 
+ALTER TABLE v0 DROP c23; 
+ALTER TABLE v0 ADD COLUMN c31 TEXT DEFAULT 'v0' DEFAULT 127; 
+CREATE INDEX i32 ON v0 ( c8 ); 
+CREATE INDEX i33 ON v0 ( c25 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34, v0 AS a35 WHERE a35.c23 = a34.c11 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c37 ) AS ( SELECT a36.c3 + ( SELECT max ( a39.c14 ) FROM v0 AS a41 ORDER BY 127 ), a36.c22 + ( SELECT a36.c16 FROM v0 AS a40 ORDER BY 127 ), c37 + ( SELECT max ( a36.c16 ) FROM v0 AS a39 ORDER BY 127 ) FROM v0 AS a38 ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a36 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a42.c17 IS NULL ) ) AND ( NOT ( a42.c27 IS NULL ) ) ) FROM v0 AS a42 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a44 WHERE hex ( 18446744073709551488 ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c1, c11, lower ( ( SELECT a46.c19 FROM v0 AS a46 WHERE a46.c19 = a46.c6 ORDER BY 127 ) ), 'x' FROM ( SELECT count ( * ) AS y, a45.c19 AS y FROM v0 AS a45 GROUP BY 16 ORDER BY 9223372036854775807 ) AS y ORDER BY c4, c18; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT * FROM v0 AS a48 ORDER BY a47.c11, a48.c10 ) SELECT * FROM v0 AS a47 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49, v0 AS a50 NATURAL JOIN v0 AS a51 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a52.c20, count ( ( NOT ( a52.c27 IS NULL ) ) AND ( NOT ( a52.c14 IS NULL ) ) ) FROM v0 AS a52 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c18, typeof ( a53.c3 ) FROM v0 AS a53 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: NOT NULL constraint failed: v0.c27 (19)
+Runtime error near line 6: error in index i29 after drop column: no such column: c23
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+  T ( a42.c27 IS NULL ) ) ) FROM v0 AS a42 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 28
+  SELECT * FROM v0 AS a43 ORDER BY 2147483647; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 28
+  S a44 WHERE hex ( 18446744073709551488 ) ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st GROUP BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16 INTEGER, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c6 + 16 ) % 16 ) != 16 ) ) WITHOUT ROWID; 
+INSERT INTO v0 ( c12, c18, c12 ) VALUES ( x'68617265', 'v0', '1.2' ); 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c23; 
+ALTER TABLE v0 ADD COLUMN c31 TEXT DEFAULT 'v0' DEFAULT 127; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34, v0 AS a35 WHERE a35.c23 = a34.c11 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c37 ) AS ( SELECT a36.c3 + ( SELECT max ( a39.c14 ) FROM v0 AS a41 ORDER BY 127 ), a36.c22 + ( SELECT a36.c16 FROM v0 AS a40 ORDER BY 127 ), c37 + ( SELECT max ( a36.c16 ) FROM v0 AS a39 ORDER BY 127 ) FROM v0 AS a38 ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a36 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a42.c17 IS NULL ) ) AND ( NOT ( a42.c27 IS NULL ) ) ) FROM v0 AS a42 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a44 WHERE hex ( 18446744073709551488 ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c1, c11, lower ( ( SELECT a46.c19 FROM v0 AS a46 WHERE a46.c19 = a46.c6 ORDER BY 127 ) ), 'x' FROM ( SELECT count ( * ) AS y, a45.c19 AS y FROM v0 AS a45 GROUP BY 16 ORDER BY 9223372036854775807 ) AS y ORDER BY c4, c18; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT * FROM v0 AS a48 ORDER BY a47.c11, a48.c10 ) SELECT * FROM v0 AS a47 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49, v0 AS a50 NATURAL JOIN v0 AS a51 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a52.c20, count ( ( NOT ( a52.c27 IS NULL ) ) AND ( NOT ( a52.c14 IS NULL ) ) ) FROM v0 AS a52 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c18, typeof ( a53.c3 ) FROM v0 AS a53 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: NOT NULL constraint failed: v0.c27 (19)
+BEGIN VERI 0
+Parse error near line 11: no such column: a35.c23
+  SELECT * FROM v0 AS a34, v0 AS a35 WHERE a35.c23 = a34.c11 ORDER BY 16; 
+                             error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+  T ( a42.c27 IS NULL ) ) ) FROM v0 AS a42 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a43 ORDER BY 2147483647; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 27
+  S a44 WHERE hex ( 18446744073709551488 ) ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st GROUP BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 11: no such column: a35.c23
+  SELECT * FROM v0 AS a34, v0 AS a35 WHERE a35.c23 = a34.c11 ORDER BY 16; 
+                             error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: circular reference: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 14: circular reference: v0
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+  T ( a42.c27 IS NULL ) ) ) FROM v0 AS a42 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+  T ( a42.c27 IS NULL ) ) ) FROM v0 AS a42 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 28
+  SELECT * FROM v0 AS a43 ORDER BY 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a43 ORDER BY 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 28
+  S a44 WHERE hex ( 18446744073709551488 ) ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 27
+  S a44 WHERE hex ( 18446744073709551488 ) ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st GROUP BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 26: 1st GROUP BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: circular reference: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 29: circular reference: v0
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

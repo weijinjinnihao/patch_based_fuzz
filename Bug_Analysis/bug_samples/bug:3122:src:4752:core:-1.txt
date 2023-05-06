@@ -1,0 +1,266 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 TEXT, c2 INTEGER, c3 INT, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c19 + 18446744073709551488 ) > 18446744073709551488 ) != 18446744073709551488 ) ) WITHOUT ROWID; 
+CREATE INDEX i28 ON v0 ( c23 ); 
+CREATE INDEX i29 ON v0 ( c7 ); 
+CREATE INDEX i30 ON v0 ( c1 ); 
+CREATE INDEX i31 ON v0 ( c19 ); 
+CREATE INDEX i32 ON v0 ( c22 ); 
+ALTER TABLE v0 DROP c23; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a33.c23 || a33.c9 ) FROM v0 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 LEFT JOIN v0 AS a36 ON ( a37.c26 = + a36.c7 ) LEFT JOIN v0 AS a37 ON ( a37.c1 IS NULL ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c2, typeof ( a38.c23 ) FROM v0 AS a38 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c21, count ( ( NOT ( a39.c8 IS NULL ) ) AND ( NOT ( a39.c8 IS NULL ) ) ) FROM v0 AS a39 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 GROUP BY a40.c2, a40.c26, count ( a40.c7 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41 GROUP BY a41.c21 HAVING NULL ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 WHERE CASE WHEN a43.c12 != 'two' THEN 18446744073709551488 ELSE 0 END > 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a44, v0 AS a45 NATURAL JOIN v0 AS a46 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i28 after drop column: no such column: c23
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: ON clause references tables to its right
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 27
+  OUP BY a40.c2, a40.c26, count ( a40.c7 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 TEXT, c2 INTEGER, c3 INT, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c19 + 18446744073709551488 ) > 18446744073709551488 ) != 18446744073709551488 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c23; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a33.c23 || a33.c9 ) FROM v0 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 LEFT JOIN v0 AS a36 ON ( a37.c26 = + a36.c7 ) LEFT JOIN v0 AS a37 ON ( a37.c1 IS NULL ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c2, typeof ( a38.c23 ) FROM v0 AS a38 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c21, count ( ( NOT ( a39.c8 IS NULL ) ) AND ( NOT ( a39.c8 IS NULL ) ) ) FROM v0 AS a39 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 GROUP BY a40.c2, a40.c26, count ( a40.c7 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41 GROUP BY a41.c21 HAVING NULL ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43 WHERE CASE WHEN a43.c12 != 'two' THEN 18446744073709551488 ELSE 0 END > 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a44, v0 AS a45 NATURAL JOIN v0 AS a46 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 9: no such column: a33.c23
+  SELECT max ( a33.c23 || a33.c9 ) FROM v0 AS a33 ORDER BY 18446744073709551488;
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: ON clause references tables to its right
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: a38.c23
+  SELECT a38.c2, typeof ( a38.c23 ) FROM v0 AS a38 ORDER BY 18446744073709551615
+                          ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 26
+  OUP BY a40.c2, a40.c26, count ( a40.c7 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+Parse error near line 9: no such column: a33.c23
+  SELECT max ( a33.c23 || a33.c9 ) FROM v0 AS a33 ORDER BY 18446744073709551488;
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: ON clause references tables to its right
+ 
+INT: 0 
+Str: 
+Parse error near line 15: ON clause references tables to its right
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 18: no such column: a38.c23
+  SELECT a38.c2, typeof ( a38.c23 ) FROM v0 AS a38 ORDER BY 18446744073709551615
+                          ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 27
+  OUP BY a40.c2, a40.c26, count ( a40.c7 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 26
+  OUP BY a40.c2, a40.c26, count ( a40.c7 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

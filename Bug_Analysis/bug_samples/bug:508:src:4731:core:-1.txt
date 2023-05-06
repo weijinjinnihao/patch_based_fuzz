@@ -1,0 +1,288 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c3 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( NULL, NULL ), ( 18446744073709551488, 18446744073709551488, 9223372036854775807 ); 
+ALTER TABLE v0 DROP c3; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+ALTER TABLE v0 DROP c1; 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE TABLE v6 ( c7, c8, c9 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i10 ON v6 ( c9 ); 
+CREATE INDEX i11 ON v6 ( c7 ); 
+CREATE INDEX i12 ON v6 ( c7 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a13 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a14.c2, max ( a14.c2 || a14.c1 ) FROM v0 AS a14 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 GROUP BY y ( a15.c3 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a16.c1 FROM v0 AS a16 LEFT JOIN v0 AS a17 ON a17.c3 = a17.c3 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709518848, 18446744071562067968 ), ( 255, 18446744073709518848 ), ( 18446744071562067968, 18446744073709551488 ), ( 25, 9223372036854775807 ), ( 18446744071562067968, 0 ), ( 9223372036854775807, 100 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 GROUP BY y ( a18.c1 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a19 ORDER BY CASE WHEN a19.c7 != '1' THEN 18446744071562067968 ELSE 18446744073709518848 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20, v0 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 GROUP BY a23.c3, a23.c1 < a23.c3 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: all VALUES must have the same number of terms
+Parse error near line 3: cannot drop PRIMARY KEY column: "c3"
+Runtime error near line 5: error in index i4 after drop column: no such column: c1
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such function: y
+  SELECT * FROM v0 AS a15 GROUP BY y ( a15.c3 ) ORDER BY 9223372036854775807; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: near "ORDER": syntax error
+  44071562067968, 0 ), ( 9223372036854775807, 100 ) ORDER BY 1844674407370955148
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c3 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( NULL, NULL ), ( 18446744073709551488, 18446744073709551488, 9223372036854775807 ); 
+ALTER TABLE v0 DROP c3; 
+; 
+ALTER TABLE v0 DROP c1; 
+; 
+CREATE TABLE v6 ( c7, c8, c9 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a13 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a14.c2, max ( a14.c2 || a14.c1 ) FROM v0 AS a14 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 GROUP BY y ( a15.c3 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a16.c1 FROM v0 AS a16 LEFT JOIN v0 AS a17 ON a17.c3 = a17.c3 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709518848, 18446744071562067968 ), ( 255, 18446744073709518848 ), ( 18446744071562067968, 18446744073709551488 ), ( 25, 9223372036854775807 ), ( 18446744071562067968, 0 ), ( 9223372036854775807, 100 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 GROUP BY y ( a18.c1 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a19 ORDER BY CASE WHEN a19.c7 != '1' THEN 18446744071562067968 ELSE 18446744073709518848 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20, v0 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 GROUP BY a23.c3, a23.c1 < a23.c3 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: all VALUES must have the same number of terms
+Parse error near line 3: cannot drop PRIMARY KEY column: "c3"
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such column: a14.c1
+  SELECT a14.c2, max ( a14.c2 || a14.c1 ) FROM v0 AS a14 ORDER BY 18446744073709
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such function: y
+  SELECT * FROM v0 AS a15 GROUP BY y ( a15.c3 ) ORDER BY 9223372036854775807; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: a16.c1
+  SELECT a16.c1 FROM v0 AS a16 LEFT JOIN v0 AS a17 ON a17.c3 = a17.c3 ORDER BY 9
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: near "ORDER": syntax error
+  44071562067968, 0 ), ( 9223372036854775807, 100 ) ORDER BY 1844674407370955148
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a23.c1
+  SELECT * FROM v0 AS a23 GROUP BY a23.c3, a23.c1 < a23.c3 ORDER BY 922337203685
+                             error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such column: a14.c1
+  SELECT a14.c2, max ( a14.c2 || a14.c1 ) FROM v0 AS a14 ORDER BY 18446744073709
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such function: y
+  SELECT * FROM v0 AS a15 GROUP BY y ( a15.c3 ) ORDER BY 9223372036854775807; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 18: no such function: y
+  SELECT * FROM v0 AS a15 GROUP BY y ( a15.c3 ) ORDER BY 9223372036854775807; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 21: no such column: a16.c1
+  SELECT a16.c1 FROM v0 AS a16 LEFT JOIN v0 AS a17 ON a17.c3 = a17.c3 ORDER BY 9
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 35093968
+Str: 
+Parse error near line 24: near "ORDER": syntax error
+  44071562067968, 0 ), ( 9223372036854775807, 100 ) ORDER BY 1844674407370955148
+                                      error here ---^
+ 
+Str: 
+Parse error near line 24: near "ORDER": syntax error
+  44071562067968, 0 ), ( 9223372036854775807, 100 ) ORDER BY 1844674407370955148
+                                      error here ---^
+ 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 39: no such column: a23.c1
+  SELECT * FROM v0 AS a23 GROUP BY a23.c3, a23.c1 < a23.c3 ORDER BY 922337203685
+                             error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

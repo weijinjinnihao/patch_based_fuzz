@@ -1,0 +1,299 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 255; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c10, c9, c9, c9 ), c10 UNIQUE ); 
+CREATE INDEX i11 ON v7 ( c10 ); 
+CREATE TABLE v12 ( c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28 DEFAULT x'ABCD', c29, c30, c31, c32, c33, c34 BLOB DEFAULT x'b2b2b2', c35, c36, c37, c38, c39, c40, FOREIGN KEY ( c35, c19, c31, c36, c34, c30, c32, c19, c31, c30, c31, c13 ) REFERENCES t4 ); 
+CREATE TABLE v41 ( c42 INTEGER PRIMARY KEY, c43 INTEGER REFERENCES t1 ON DELETE CASCADE REFERENCES t2, c44 TEXT, FOREIGN KEY ( c44, c43 ) REFERENCES encoding ( c43, c43 ) ON UPDATE CASCADE ); 
+ALTER TABLE v5 DROP COLUMN c2; 
+ALTER TABLE v7 DROP COLUMN c8; 
+CREATE INDEX i45 ON v12 ( c20 ); 
+CREATE INDEX i46 ON v0 ( c3 ); 
+CREATE INDEX i47 ON v0 ( c3 ); 
+CREATE VIRTUAL TABLE v48 USING fts5 ( c49, c50 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a51, v5 AS a52 NATURAL JOIN v0 AS a53 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a54 NATURAL JOIN v12 AS a55 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v48 AS a56, v41 AS a57 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a58 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a59.c3, count ( a59.c1 ) FROM v0 AS a59 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a60 NATURAL JOIN v48 AS a61 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a62 NATURAL JOIN v5 AS a63 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a64.c19, count ( ( NOT ( a64.c27 IS NULL ) ) AND ( NOT ( a64.c13 IS NULL ) ) ) FROM v12 AS a64 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a65.c49 % 255, a65.c49 / 4294967295, a65.c50, printf ( 'y', a65.c49 ) FROM v48 AS a65 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT *, 'maggy' FROM v0 AS a66 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: foreign key on c9 should reference only one column of table t1
+   TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c10, c9, c9, c9 ), c10 
+                                      error here ---^
+Parse error near line 5: no such table: main.v7
+Parse error near line 8: cannot drop column from view "v5"
+Parse error near line 9: no such table: v7
+Runtime error near line 13: no such module: fts5
+Runtime error near line 14: error in index i46 after drop column: no such column: c3
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 31
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v48
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v48
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v48
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 255; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c10, c9, c9, c9 ), c10 UNIQUE ); 
+; 
+CREATE TABLE v12 ( c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28 DEFAULT x'ABCD', c29, c30, c31, c32, c33, c34 BLOB DEFAULT x'b2b2b2', c35, c36, c37, c38, c39, c40, FOREIGN KEY ( c35, c19, c31, c36, c34, c30, c32, c19, c31, c30, c31, c13 ) REFERENCES t4 ); 
+CREATE TABLE v41 ( c42 INTEGER PRIMARY KEY, c43 INTEGER REFERENCES t1 ON DELETE CASCADE REFERENCES t2, c44 TEXT, FOREIGN KEY ( c44, c43 ) REFERENCES encoding ( c43, c43 ) ON UPDATE CASCADE ); 
+ALTER TABLE v5 DROP COLUMN c2; 
+ALTER TABLE v7 DROP COLUMN c8; 
+; 
+; 
+; 
+CREATE VIRTUAL TABLE v48 USING fts5 ( c49, c50 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a51, v5 AS a52 NATURAL JOIN v0 AS a53 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a54 NATURAL JOIN v12 AS a55 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v48 AS a56, v41 AS a57 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a58 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a59.c3, count ( a59.c1 ) FROM v0 AS a59 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a60 NATURAL JOIN v48 AS a61 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a62 NATURAL JOIN v5 AS a63 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a64.c19, count ( ( NOT ( a64.c27 IS NULL ) ) AND ( NOT ( a64.c13 IS NULL ) ) ) FROM v12 AS a64 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a65.c49 % 255, a65.c49 / 4294967295, a65.c50, printf ( 'y', a65.c49 ) FROM v48 AS a65 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT *, 'maggy' FROM v0 AS a66 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: foreign key on c9 should reference only one column of table t1
+   TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c10, c9, c9, c9 ), c10 
+                                      error here ---^
+Parse error near line 8: cannot drop column from view "v5"
+Parse error near line 9: no such table: v7
+Runtime error near line 13: no such module: fts5
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 30
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v48
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a59.c3
+  SELECT a59.c3, count ( a59.c1 ) FROM v0 AS a59 ORDER BY 255; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v48
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v48
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 31
+ 
+INT: 0 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 30
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such table: v48
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such table: v48
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such column: a59.c3
+  SELECT a59.c3, count ( a59.c1 ) FROM v0 AS a59 ORDER BY 255; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no such table: v48
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no such table: v48
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such table: v48
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no such table: v48
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

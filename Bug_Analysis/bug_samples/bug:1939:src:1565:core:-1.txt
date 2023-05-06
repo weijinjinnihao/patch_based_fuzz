@@ -1,0 +1,282 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2, c3 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709551488, 8 ), ( 18446744073709551488, 18446744073709551488, 18446744073709551488 ) ON CONFLICT ( c1 ) DO UPDATE SET c2 = c1, c2 = c3; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( 'Y', 'v0', ( c2 + 18446744073709551488 ) ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+ALTER TABLE v0 DROP c1; 
+CREATE TABLE v6 ( c7, c8, c9 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i10 ON v0 ( c1 ); 
+CREATE INDEX i11 ON v6 ( c9 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a12 WHERE CASE WHEN a12.c8 != 'v0' THEN 18446744073709551488 ELSE 18446744073709551488 END > 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( * ) ORDER BY c9, c7; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a13 WHERE a13.c9 % 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v6 ( c15 ) AS ( SELECT 0 ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a14 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a16 GROUP BY a16.c8, abs ( a16.c8 ) HAVING count ( * ) >= 0 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY a17.c3 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 WHERE a18.c2 = + a18.c2 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a19 ORDER BY 0 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 ORDER BY a20.c2, a20.c2, a20.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 GROUP BY a21.c2, abs ( a21.c2 ) HAVING count ( * ) >= 255 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: ON CONFLICT clause does not match any PRIMARY KEY or UNIQUE constraint
+Parse error near line 4: no such column: c2
+  INSERT INTO v0 VALUES ( 'Y', 'v0', ( c2 + 18446744073709551488 ) ); 
+                         error here ---^
+Runtime error near line 6: error in index i5 after drop column: no such column: c1
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: no such column: c9
+  SELECT count ( * ) ORDER BY c9, c7; 
+                error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v6 AS a19 ORDER BY 0 COLLATE hex; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2, c3 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709551488, 8 ), ( 18446744073709551488, 18446744073709551488, 18446744073709551488 ) ON CONFLICT ( c1 ) DO UPDATE SET c2 = c1, c2 = c3; 
+; 
+INSERT INTO v0 VALUES ( 'Y', 'v0', ( c2 + 18446744073709551488 ) ); 
+; 
+ALTER TABLE v0 DROP c1; 
+CREATE TABLE v6 ( c7, c8, c9 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a12 WHERE CASE WHEN a12.c8 != 'v0' THEN 18446744073709551488 ELSE 18446744073709551488 END > 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( * ) ORDER BY c9, c7; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a13 WHERE a13.c9 % 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v6 ( c15 ) AS ( SELECT 0 ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a14 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a16 GROUP BY a16.c8, abs ( a16.c8 ) HAVING count ( * ) >= 0 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY a17.c3 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 WHERE a18.c2 = + a18.c2 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a19 ORDER BY 0 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 ORDER BY a20.c2, a20.c2, a20.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 GROUP BY a21.c2, abs ( a21.c2 ) HAVING count ( * ) >= 255 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: ON CONFLICT clause does not match any PRIMARY KEY or UNIQUE constraint
+Parse error near line 4: no such column: c2
+  INSERT INTO v0 VALUES ( 'Y', 'v0', ( c2 + 18446744073709551488 ) ); 
+                         error here ---^
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: no such column: c9
+  SELECT count ( * ) ORDER BY c9, c7; 
+                error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v6 AS a19 ORDER BY 0 COLLATE hex; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a20.c1
+  SELECT * FROM v0 AS a20 ORDER BY a20.c2, a20.c2, a20.c1; 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no such column: c9
+  SELECT count ( * ) ORDER BY c9, c7; 
+                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 14: no such column: c9
+  SELECT count ( * ) ORDER BY c9, c7; 
+                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v6 AS a19 ORDER BY 0 COLLATE hex; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v6 AS a19 ORDER BY 0 COLLATE hex; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 35: no such column: a20.c1
+  SELECT * FROM v0 AS a20 ORDER BY a20.c2, a20.c2, a20.c1; 
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

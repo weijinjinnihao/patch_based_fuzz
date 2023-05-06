@@ -1,0 +1,272 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c3 > 18446744073709551488 ), c4 ); 
+CREATE TABLE v5 ( c6 INTEGER CHECK( typeof ( coalesce ( c8, 18446744073709551488 ) ) == c8 ), c7 REAL CHECK( typeof ( coalesce ( c6, 127 ) ) == 'x' ), c8 TEXT CHECK( typeof ( coalesce ( c8, 'v1' ) ) == 'x' ) ); 
+CREATE INDEX i9 ON v5 ( c8 ); 
+CREATE TABLE v10 ( c11, c12, c13, c14, CHECK( c12 > 0 ) ); 
+CREATE INDEX i15 ON v10 ( c13 ); 
+INSERT INTO v5 VALUES ( 18446744073709551488, 18446744073709551488, 100, 18446744073709551488 ), ( 18446744073709551488, 18446744073709551488, 127, 9223372036854775807 ); 
+INSERT INTO v5 VALUES ( 18446744073709551488, 18446744073709551488, 18446744073709551488, 18446744073709551615 ); 
+ALTER TABLE v10 DROP c13; 
+CREATE INDEX i16 ON v0 ( c3 ); 
+CREATE INDEX i17 ON v10 ( c14 ); 
+CREATE INDEX i18 ON v0 ( c3 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a19 ORDER BY a19.c7 = + a19.c6; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a20, v0 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a22.c3 ) FROM v0 AS a22 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( a23.c2, a24.c1 ), max ( a24.c2, a23.c3 ) FROM v0 AS a23, v0 AS a24 ON x ( a23.c2 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a25.c12 || a25.c13 ) FROM v10 AS a25 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a26 NATURAL JOIN v0 AS a27 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a28 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a29, v5 AS a30 NATURAL JOIN v0 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a32, v5 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a34 GROUP BY NULL, 'v1', 'x', 18446744073709551488, abs ( a34.c11 ) HAVING count ( * ) >= 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: table v5 has 3 columns but 4 values were supplied
+Parse error near line 7: table v5 has 3 columns but 4 values were supplied
+Runtime error near line 8: error in index i15 after drop column: no such column: c13
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such function: x
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 7
+   * FROM v5 AS a26 NATURAL JOIN v0 AS a27 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c3 > 18446744073709551488 ), c4 ); 
+CREATE TABLE v5 ( c6 INTEGER CHECK( typeof ( coalesce ( c8, 18446744073709551488 ) ) == c8 ), c7 REAL CHECK( typeof ( coalesce ( c6, 127 ) ) == 'x' ), c8 TEXT CHECK( typeof ( coalesce ( c8, 'v1' ) ) == 'x' ) ); 
+; 
+CREATE TABLE v10 ( c11, c12, c13, c14, CHECK( c12 > 0 ) ); 
+; 
+INSERT INTO v5 VALUES ( 18446744073709551488, 18446744073709551488, 100, 18446744073709551488 ), ( 18446744073709551488, 18446744073709551488, 127, 9223372036854775807 ); 
+INSERT INTO v5 VALUES ( 18446744073709551488, 18446744073709551488, 18446744073709551488, 18446744073709551615 ); 
+ALTER TABLE v10 DROP c13; 
+; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a19 ORDER BY a19.c7 = + a19.c6; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a20, v0 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a22.c3 ) FROM v0 AS a22 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( a23.c2, a24.c1 ), max ( a24.c2, a23.c3 ) FROM v0 AS a23, v0 AS a24 ON x ( a23.c2 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a25.c12 || a25.c13 ) FROM v10 AS a25 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a26 NATURAL JOIN v0 AS a27 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a28 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a29, v5 AS a30 NATURAL JOIN v0 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a32, v5 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a34 GROUP BY NULL, 'v1', 'x', 18446744073709551488, abs ( a34.c11 ) HAVING count ( * ) >= 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: table v5 has 3 columns but 4 values were supplied
+Parse error near line 7: table v5 has 3 columns but 4 values were supplied
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such function: x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: a25.c13
+  SELECT max ( a25.c12 || a25.c13 ) FROM v10 AS a25 ORDER BY 1844674407370955148
+                          ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 7
+   * FROM v5 AS a26 NATURAL JOIN v0 AS a27 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such function: x
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such function: x
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+Parse error near line 25: no such column: a25.c13
+  SELECT max ( a25.c12 || a25.c13 ) FROM v10 AS a25 ORDER BY 1844674407370955148
+                          ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 7
+   * FROM v5 AS a26 NATURAL JOIN v0 AS a27 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 7
+   * FROM v5 AS a26 NATURAL JOIN v0 AS a27 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

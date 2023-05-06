@@ -1,0 +1,297 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9 DEFAULT 'x' DEFAULT 9223372036854775807, PRIMARY KEY ( c5, c6 ) ) WITHOUT ROWID; 
+ATTACH 'v0' AS sqlite_master; 
+CREATE INDEX i10 ON v0 ( c3 ); 
+CREATE TABLE v11 ( c12, c13 CHECK( 9223372036854775807 ), c14, c15, CHECK( c14 > 10 ) ); 
+CREATE INDEX i16 ON v0 ( c2 ); 
+CREATE INDEX i17 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP c3; 
+CREATE INDEX i18 ON v11 ( c13 ); 
+ALTER TABLE v11 DROP c13; 
+CREATE TABLE v19 ( c20, c21, c22 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i23 ON v11 ( 18446744073709518848 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24, v19 AS a25 NATURAL JOIN v19 AS a26 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a27 WHERE a27.c13 != a27.c15 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a28 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a29 WHERE a29.c21 = + a29.c20 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 AS ( SELECT 9223372036854775807 y ORDER BY 9223372036854775807 ) SELECT c21, c15 FROM v30 AS a31 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a32, v11 AS a33 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 9223372036854775807 IS NOT 18446744073709551615 ) OR NOT ( 18446744073709551615 IS 9223372036854775807 OR ( a34.c22 = 9223372036854775807 ) ) ) IS 10 FROM v19 AS a34 GROUP BY a34.c20 HAVING NULL ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a35 WHERE count ( a35.c20 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c22, a37.c20 FROM v19 AS a36 RIGHT JOIN v19 AS a37 ON a37.c21 + a37.c22 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i10 after drop column: no such column: c3
+Runtime error near line 9: error in index i18 after drop column: no such column: c13
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+  ROM v19 AS a29 WHERE a29.c21 = + a29.c20 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: c21
+  854775807 y ORDER BY 9223372036854775807 ) SELECT c21, c15 FROM v30 AS a31 ORD
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: misuse of aggregate function count()
+  SELECT * FROM v19 AS a35 WHERE count ( a35.c20 ) ORDER BY 8; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9 DEFAULT 'x' DEFAULT 9223372036854775807, PRIMARY KEY ( c5, c6 ) ) WITHOUT ROWID; 
+ATTACH 'v0' AS sqlite_master; 
+; 
+CREATE TABLE v11 ( c12, c13 CHECK( 9223372036854775807 ), c14, c15, CHECK( c14 > 10 ) ); 
+; 
+; 
+ALTER TABLE v0 DROP c3; 
+; 
+ALTER TABLE v11 DROP c13; 
+CREATE TABLE v19 ( c20, c21, c22 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24, v19 AS a25 NATURAL JOIN v19 AS a26 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a27 WHERE a27.c13 != a27.c15 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a28 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a29 WHERE a29.c21 = + a29.c20 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 AS ( SELECT 9223372036854775807 y ORDER BY 9223372036854775807 ) SELECT c21, c15 FROM v30 AS a31 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a32, v11 AS a33 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 9223372036854775807 IS NOT 18446744073709551615 ) OR NOT ( 18446744073709551615 IS 9223372036854775807 OR ( a34.c22 = 9223372036854775807 ) ) ) IS 10 FROM v19 AS a34 GROUP BY a34.c20 HAVING NULL ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a35 WHERE count ( a35.c20 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c22, a37.c20 FROM v19 AS a36 RIGHT JOIN v19 AS a37 ON a37.c21 + a37.c22 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: a27.c13
+  SELECT * FROM v11 AS a27 WHERE a27.c13 != a27.c15 ORDER BY 10; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+  ROM v19 AS a29 WHERE a29.c21 = + a29.c20 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: c21
+  854775807 y ORDER BY 9223372036854775807 ) SELECT c21, c15 FROM v30 AS a31 ORD
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: misuse of aggregate function count()
+  SELECT * FROM v19 AS a35 WHERE count ( a35.c20 ) ORDER BY 8; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such column: a27.c13
+  SELECT * FROM v11 AS a27 WHERE a27.c13 != a27.c15 ORDER BY 10; 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+  ROM v19 AS a29 WHERE a29.c21 = + a29.c20 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+  ROM v19 AS a29 WHERE a29.c21 = + a29.c20 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such column: c21
+  854775807 y ORDER BY 9223372036854775807 ) SELECT c21, c15 FROM v30 AS a31 ORD
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 28: no such column: c21
+  854775807 y ORDER BY 9223372036854775807 ) SELECT c21, c15 FROM v30 AS a31 ORD
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: misuse of aggregate function count()
+  SELECT * FROM v19 AS a35 WHERE count ( a35.c20 ) ORDER BY 8; 
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: misuse of aggregate function count()
+  SELECT * FROM v19 AS a35 WHERE count ( a35.c20 ) ORDER BY 8; 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

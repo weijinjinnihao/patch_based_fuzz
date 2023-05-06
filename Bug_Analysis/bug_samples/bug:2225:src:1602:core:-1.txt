@@ -1,0 +1,318 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c4 > 9 ), c4 ); 
+INSERT INTO v0 VALUES ( 9, 9, 255, 9 ), ( 9, 9, 9, 16 ); 
+CREATE TABLE v5 ( c6, c7, c8, c9, CHECK( c6 > 4294967295 ) ); 
+INSERT INTO v5 VALUES ( 9, 9, 9, 16 ), ( 16, 9, 18446744073709518848, 9 ); 
+CREATE INDEX i10 ON v5 ( c8 ); 
+CREATE INDEX i11 ON v0 ( c2 ); 
+INSERT INTO v5 VALUES ( 'v0', NULL ); 
+INSERT INTO v0 VALUES ( 4294967295, 4294967295, 16, 4294967295 ); 
+INSERT INTO v0 VALUES ( 4294967295, 4294967295, 4294967295, 4294967295 ); 
+ALTER TABLE v5 DROP c8; 
+CREATE INDEX i12 ON v5 ( c6 ); 
+CREATE INDEX i13 ON v0 ( c3 ); 
+CREATE INDEX i14 ON v0 ( c3 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a15.c8, max ( a15.c7 || a15.c9 ) FROM v5 AS a15 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16, v5 AS a17 ORDER BY 9; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c9 COLLATE binary FROM v5 AS a18, v5 AS a19 NATURAL JOIN v0 AS a20 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 ( c23 ) AS ( SELECT 9 ORDER BY 18446744073709518848 ) SELECT c23, a22.c2 IS NOT NULL FROM v0 AS a21 LEFT JOIN v0 AS a22 ON c23 = y ( v5.c9 ) ORDER BY 9; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25, v5 AS a26 NATURAL JOIN v0 AS a27 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 9 IN ( SELECT a28.c2, a29.c1 FROM v0 AS a29 ORDER BY 4294967295 ) FROM v0 AS a28 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 AS ( SELECT a30.c6 FROM v0 AS a31 WHERE a31.c1 LIKE 'x' ORDER BY 2147483647 ) SELECT * FROM v5 AS a30 ORDER BY 9; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: CHECK constraint failed: c4 > 9 (19)
+Runtime error near line 4: CHECK constraint failed: c6 > 4294967295 (19)
+Parse error near line 7: table v5 has 4 columns but 2 values were supplied
+Runtime error near line 10: error in index i10 after drop column: no such column: c8
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: c23
+  ( SELECT 9 ORDER BY 18446744073709518848 ) SELECT c23, a22.c2 IS NOT NULL FROM
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+4294967295|4294967295|16|4294967295
+4294967295|4294967295|4294967295|4294967295
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: sub-select returns 2 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a30.c6
+  WITH v5 AS ( SELECT a30.c6 FROM v0 AS a31 WHERE a31.c1 LIKE 'x' ORDER BY 21474
+                      ^--- error here
+END VERI 0
+BEGIN VERI 0
+4294967295|4294967295|16|4294967295
+4294967295|4294967295|4294967295|4294967295
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c4 > 9 ), c4 ); 
+INSERT INTO v0 VALUES ( 9, 9, 255, 9 ), ( 9, 9, 9, 16 ); 
+CREATE TABLE v5 ( c6, c7, c8, c9, CHECK( c6 > 4294967295 ) ); 
+INSERT INTO v5 VALUES ( 9, 9, 9, 16 ), ( 16, 9, 18446744073709518848, 9 ); 
+; 
+; 
+INSERT INTO v5 VALUES ( 'v0', NULL ); 
+INSERT INTO v0 VALUES ( 4294967295, 4294967295, 16, 4294967295 ); 
+INSERT INTO v0 VALUES ( 4294967295, 4294967295, 4294967295, 4294967295 ); 
+ALTER TABLE v5 DROP c8; 
+; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a15.c8, max ( a15.c7 || a15.c9 ) FROM v5 AS a15 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16, v5 AS a17 ORDER BY 9; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c9 COLLATE binary FROM v5 AS a18, v5 AS a19 NATURAL JOIN v0 AS a20 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 ( c23 ) AS ( SELECT 9 ORDER BY 18446744073709518848 ) SELECT c23, a22.c2 IS NOT NULL FROM v0 AS a21 LEFT JOIN v0 AS a22 ON c23 = y ( v5.c9 ) ORDER BY 9; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25, v5 AS a26 NATURAL JOIN v0 AS a27 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 9 IN ( SELECT a28.c2, a29.c1 FROM v0 AS a29 ORDER BY 4294967295 ) FROM v0 AS a28 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 AS ( SELECT a30.c6 FROM v0 AS a31 WHERE a31.c1 LIKE 'x' ORDER BY 2147483647 ) SELECT * FROM v5 AS a30 ORDER BY 9; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: CHECK constraint failed: c4 > 9 (19)
+Runtime error near line 4: CHECK constraint failed: c6 > 4294967295 (19)
+Parse error near line 7: table v5 has 4 columns but 2 values were supplied
+BEGIN VERI 0
+Parse error near line 15: no such column: a15.c8
+  SELECT a15.c8, max ( a15.c7 || a15.c9 ) FROM v5 AS a15 ORDER BY 16; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: c23
+  ( SELECT 9 ORDER BY 18446744073709518848 ) SELECT c23, a22.c2 IS NOT NULL FROM
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+4294967295|4294967295|16|4294967295
+4294967295|4294967295|4294967295|4294967295
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: sub-select returns 2 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a30.c6
+  WITH v5 AS ( SELECT a30.c6 FROM v0 AS a31 WHERE a31.c1 LIKE 'x' ORDER BY 21474
+                      ^--- error here
+END VERI 0
+BEGIN VERI 0
+4294967295|4294967295|16|4294967295
+4294967295|4294967295|4294967295|4294967295
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such column: a15.c8
+  SELECT a15.c8, max ( a15.c7 || a15.c9 ) FROM v5 AS a15 ORDER BY 16; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such column: c23
+  ( SELECT 9 ORDER BY 18446744073709518848 ) SELECT c23, a22.c2 IS NOT NULL FROM
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: no such column: c23
+  ( SELECT 9 ORDER BY 18446744073709518848 ) SELECT c23, a22.c2 IS NOT NULL FROM
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+4294967295|4294967295|16|4294967295
+4294967295|4294967295|4294967295|4294967295
+ 
+INT: 1 
+Str: 
+4294967295|4294967295|16|4294967295
+4294967295|4294967295|4294967295|4294967295
+ 
+INT: 1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: sub-select returns 2 columns - expected 1
+ 
+INT: 0 
+Str: 
+Parse error near line 36: sub-select returns 2 columns - expected 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such column: a30.c6
+  WITH v5 AS ( SELECT a30.c6 FROM v0 AS a31 WHERE a31.c1 LIKE 'x' ORDER BY 21474
+                      ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 39: no such column: a30.c6
+  WITH v5 AS ( SELECT a30.c6 FROM v0 AS a31 WHERE a31.c1 LIKE 'x' ORDER BY 21474
+                      ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+4294967295|4294967295|16|4294967295
+4294967295|4294967295|4294967295|4294967295
+ 
+INT: 1 
+Str: 
+4294967295|4294967295|16|4294967295
+4294967295|4294967295|4294967295|4294967295
+ 
+INT: 1 
+Compare_result_int: 
+0
+
+
+

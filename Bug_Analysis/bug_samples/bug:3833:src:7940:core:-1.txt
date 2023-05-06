@@ -1,0 +1,276 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17 ); 
+ATTACH NULL >= 2147483647 AS sqlite_master; 
+CREATE TABLE v18 ( c19, c20 CHECK( 9223372036854775807 ), c21, c22, CHECK( c22 > 9223372036854775807 ) ); 
+CREATE INDEX i23 ON v18 ( c19 ); 
+CREATE INDEX i24 ON v18 ( c22 ); 
+CREATE INDEX i25 ON v18 ( c20 ); 
+ALTER TABLE v18 DROP c22; 
+ALTER TABLE v18 DROP c19; 
+CREATE TABLE v26 ( c27, c28, c29 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i30 ON v18 ( c21 ); 
+CREATE INDEX i31 ON v18 ( c20 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a32 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a33.c6 || a33.c2 ) FROM v0 AS a33 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a34, v18 AS a35 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a36 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a37 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a38 WHERE ( a38.c21 || a38.c19 || a38.c20 ) != 'v0' ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39, v18 AS a40 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c10, max ( a41.c16 || a41.c10 ) FROM v0 AS a41 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v42 ( c43 ) AS ( SELECT 'v1' ORDER BY 100 ) SELECT * FROM ( SELECT 18446744073709551488 ORDER BY 18446744073709551488 ) AS y, ( SELECT c43, avg ( c43 ) + 0 FROM v42 AS a44 GROUP BY c43 HAVING c43 > c43 % 9223372036854775807 >= 9223372036854775807 ORDER BY 18446744073709551615 ) AS y ON hex ( 9223372036854775807 ) OR 8 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in table v18 after drop column: no such column: c22
+Runtime error near line 8: error in index i23 after drop column: no such column: c19
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v26 AS a36 ORDER BY 2147483647; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17 ); 
+ATTACH NULL >= 2147483647 AS sqlite_master; 
+CREATE TABLE v18 ( c19, c20 CHECK( 9223372036854775807 ), c21, c22, CHECK( c22 > 9223372036854775807 ) ); 
+; 
+; 
+; 
+ALTER TABLE v18 DROP c22; 
+ALTER TABLE v18 DROP c19; 
+CREATE TABLE v26 ( c27, c28, c29 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a32 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a33.c6 || a33.c2 ) FROM v0 AS a33 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a34, v18 AS a35 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a36 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a37 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a38 WHERE ( a38.c21 || a38.c19 || a38.c20 ) != 'v0' ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39, v18 AS a40 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c10, max ( a41.c16 || a41.c10 ) FROM v0 AS a41 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v42 ( c43 ) AS ( SELECT 'v1' ORDER BY 100 ) SELECT * FROM ( SELECT 18446744073709551488 ORDER BY 18446744073709551488 ) AS y, ( SELECT c43, avg ( c43 ) + 0 FROM v42 AS a44 GROUP BY c43 HAVING c43 > c43 % 9223372036854775807 >= 9223372036854775807 ORDER BY 18446744073709551615 ) AS y ON hex ( 9223372036854775807 ) OR 8 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in table v18 after drop column: no such column: c22
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v26 AS a36 ORDER BY 2147483647; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a38.c19
+  SELECT * FROM v18 AS a38 WHERE ( a38.c21 || a38.c19 || a38.c20 ) != 'v0' ORDER
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+
+ 
+INT: -1 
+Str: 
+
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v26 AS a36 ORDER BY 2147483647; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v26 AS a36 ORDER BY 2147483647; 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 28: no such column: a38.c19
+  SELECT * FROM v18 AS a38 WHERE ( a38.c21 || a38.c19 || a38.c20 ) != 'v0' ORDER
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

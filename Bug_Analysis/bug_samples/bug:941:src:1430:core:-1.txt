@@ -1,0 +1,306 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INT DEFAULT - 18446744071562067968, c2 REAL ); 
+CREATE VIEW v3 AS SELECT * FROM v0 AS a4 ORDER BY 18446744071562067968; 
+CREATE TABLE v5 ( c6 INTEGER REFERENCES t1 ( c7, c6, c8, c8 ), c7, c8 UNIQUE ); 
+CREATE INDEX i9 ON v0 ( c1 ); 
+CREATE TABLE v10 ( c11, c12, c13 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i14 ON v5 ( c6 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE VIRTUAL TABLE v15 USING fts5 ( c16, c17 ); 
+CREATE INDEX i18 ON v0 ( c2 ); 
+CREATE INDEX i19 ON v5 ( c8 ); 
+CREATE INDEX i20 ON v10 ( c11 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c1 FROM ( SELECT a21.c16, a21.c16 FROM v15 AS a21 ORDER BY 18446744073709518848 ) AS y ORDER BY 1.300000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a22, v0 AS a23 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a24, v3 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c27, c28, c29, c30, c31, c32 ) AS ( SELECT 0 y ORDER BY 2.000000 ) SELECT * FROM v15 AS a26 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v33 AS ( SELECT 18446744071562067968 y ORDER BY 18446744073709518848 ) SELECT * FROM v33 AS a34 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a35.c2 ) FROM v3 AS a35 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: foreign key on c6 should reference only one column of table t1
+  CREATE TABLE v5 ( c6 INTEGER REFERENCES t1 ( c7, c6, c8, c8 ), c7, c8 UNIQUE )
+                            error here ---^
+Runtime error near line 6: error in index i9 after drop column: no such column: c1
+Parse error near line 7: no such table: main.v5
+Runtime error near line 9: no such module: fts5
+Parse error near line 10: no such column: c2
+  CREATE INDEX i18 ON v0 ( c2 ); 
+             error here ---^
+Parse error near line 11: no such table: main.v5
+Parse error near line 13: no such column: "c2"
+  ALTER TABLE v0 DROP COLUMN c2; 
+               error here ---^
+BEGIN VERI 0
+Parse error near line 15: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v15
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a35.c2
+  SELECT count ( a35.c2 ) FROM v3 AS a35 ORDER BY 18446744071562067968; 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INT DEFAULT - 18446744071562067968, c2 REAL ); 
+CREATE VIEW v3 AS SELECT * FROM v0 AS a4 ORDER BY 18446744071562067968; 
+CREATE TABLE v5 ( c6 INTEGER REFERENCES t1 ( c7, c6, c8, c8 ), c7, c8 UNIQUE ); 
+; 
+CREATE TABLE v10 ( c11, c12, c13 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE VIRTUAL TABLE v15 USING fts5 ( c16, c17 ); 
+; 
+; 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c1 FROM ( SELECT a21.c16, a21.c16 FROM v15 AS a21 ORDER BY 18446744073709518848 ) AS y ORDER BY 1.300000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a22, v0 AS a23 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a24, v3 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c27, c28, c29, c30, c31, c32 ) AS ( SELECT 0 y ORDER BY 2.000000 ) SELECT * FROM v15 AS a26 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v33 AS ( SELECT 18446744071562067968 y ORDER BY 18446744073709518848 ) SELECT * FROM v33 AS a34 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a35.c2 ) FROM v3 AS a35 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: foreign key on c6 should reference only one column of table t1
+  CREATE TABLE v5 ( c6 INTEGER REFERENCES t1 ( c7, c6, c8, c8 ), c7, c8 UNIQUE )
+                            error here ---^
+Parse error near line 8: cannot drop column "c2": no other columns exist
+Runtime error near line 9: no such module: fts5
+Parse error near line 13: cannot drop column "c2": no other columns exist
+BEGIN VERI 0
+Parse error near line 15: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v15
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v15
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v15
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such table: v5
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such table: v5
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such table: v5
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no such table: v5
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such table: v15
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such table: v15
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+1.84467440715621e+19
+ 
+INT: 0 
+Str: 
+1.84467440715621e+19
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 39: no such column: a35.c2
+  SELECT count ( a35.c2 ) FROM v3 AS a35 ORDER BY 18446744071562067968; 
+                 ^--- error here
+ 
+INT: 2 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

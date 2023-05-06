@@ -1,0 +1,316 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4, c5, c6, c7, c8, c9, c10 REFERENCES t1 DEFAULT NULL, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 INTEGER PRIMARY KEY, c24 ); 
+CREATE INDEX i25 ON v3 ( c15 ); 
+CREATE INDEX i26 ON v0 ( c2 ); 
+CREATE INDEX i27 ON v3 ( c17 ); 
+CREATE TABLE v28 ( c29 INTEGER, c30 TEXT, c31 BLOB, PRIMARY KEY ( c31 ), CHECK( c30 != c31 ) ); 
+CREATE TABLE v32 ( c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46 PRIMARY KEY ON CONFLICT REPLACE, c47, c48, c49 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v50 USING rtree ( c51, c52, c53, c54, c55, c56, c57, c58, c59 ); 
+CREATE TABLE v60 ( c61, c62, c63, c64, c65, c66, c67, c68, c69, c70, c71, c72, c73, c74, c75, c76, c77 TEXT UNIQUE NOT NULL ); 
+INSERT INTO v28 VALUES ( 127, 'v1' ), ( 127, 'x' ), ( 127, 'id.3' ); 
+CREATE INDEX i78 ON v0 ( c2 ); 
+CREATE INDEX i79 ON v32 ( c40 ); 
+CREATE TABLE v80 ( c81, c82, c83, c84, c85, c86, c87, c88, c89, c90 INT UNIQUE ON CONFLICT IGNORE, c91, c92, c93, c94, c95, c96, c97, c98, c99, c100, c101, c102, c103, c104, c105 INTEGER UNIQUE ON CONFLICT FAIL, c106 NOT NULL ON CONFLICT ABORT DEFAULT 127 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v60 BEGIN DELETE FROM v32; END; 
+ALTER TABLE v0 DROP c2; 
+UPDATE v80 SET c98 = '%t2%' WHERE ( SELECT * FROM v32 AS a107 WHERE c94 = c45 || c86 ORDER BY 127 ) = 127; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v28 AS a108 ORDER BY ( hex ( 9223372036854775807 ) ) % 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v50 AS a109 NATURAL JOIN v60 AS a110 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v32 AS a111 WHERE a111.c35 IS 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( c65 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a112, v28 AS a113 NATURAL JOIN v60 AS a114 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT *, 'v0' FROM v0 AS a115, v60 AS a116 WHERE a115.c2 = 0 AND a116.c63 = 18446744073709551615 ORDER BY + a115.c2; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 4294967295 AS y, 127 AS y ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v28 AS a117 GROUP BY a117.c31 HAVING NULL ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v80 AS a118 GROUP BY count ( ( NOT ( a118.c91 IS NULL ) ) AND ( NOT ( a118.c102 IS NULL ) ) ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v3 ( c119 ) AS ( SELECT v3.c4, max ( v3.c20 || v3.c16 ) ORDER BY 9223372036854775807 ) SELECT ( ( v3.c7 + 127 ) % 18446744073709551615 ) != 9223372036854775807 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: table v28 has 3 columns but 2 values were supplied
+Runtime error near line 15: error in index i26 after drop column: no such column: c2
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 17
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 26
+  ROM v50 AS a109 NATURAL JOIN v60 AS a110 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: c65
+  SELECT count ( c65 ) ORDER BY 127; 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 41
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 26
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: no such column: v3.c7
+  3.c16 ) ORDER BY 9223372036854775807 ) SELECT ( ( v3.c7 + 127 ) % 184467440737
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4, c5, c6, c7, c8, c9, c10 REFERENCES t1 DEFAULT NULL, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 INTEGER PRIMARY KEY, c24 ); 
+; 
+; 
+; 
+CREATE TABLE v28 ( c29 INTEGER, c30 TEXT, c31 BLOB, PRIMARY KEY ( c31 ), CHECK( c30 != c31 ) ); 
+CREATE TABLE v32 ( c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46 PRIMARY KEY ON CONFLICT REPLACE, c47, c48, c49 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v50 USING rtree ( c51, c52, c53, c54, c55, c56, c57, c58, c59 ); 
+CREATE TABLE v60 ( c61, c62, c63, c64, c65, c66, c67, c68, c69, c70, c71, c72, c73, c74, c75, c76, c77 TEXT UNIQUE NOT NULL ); 
+INSERT INTO v28 VALUES ( 127, 'v1' ), ( 127, 'x' ), ( 127, 'id.3' ); 
+; 
+; 
+CREATE TABLE v80 ( c81, c82, c83, c84, c85, c86, c87, c88, c89, c90 INT UNIQUE ON CONFLICT IGNORE, c91, c92, c93, c94, c95, c96, c97, c98, c99, c100, c101, c102, c103, c104, c105 INTEGER UNIQUE ON CONFLICT FAIL, c106 NOT NULL ON CONFLICT ABORT DEFAULT 127 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v60 BEGIN DELETE FROM v32; END; 
+ALTER TABLE v0 DROP c2; 
+UPDATE v80 SET c98 = '%t2%' WHERE ( SELECT * FROM v32 AS a107 WHERE c94 = c45 || c86 ORDER BY 127 ) = 127; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v28 AS a108 ORDER BY ( hex ( 9223372036854775807 ) ) % 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v50 AS a109 NATURAL JOIN v60 AS a110 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v32 AS a111 WHERE a111.c35 IS 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( c65 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a112, v28 AS a113 NATURAL JOIN v60 AS a114 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT *, 'v0' FROM v0 AS a115, v60 AS a116 WHERE a115.c2 = 0 AND a116.c63 = 18446744073709551615 ORDER BY + a115.c2; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 4294967295 AS y, 127 AS y ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v28 AS a117 GROUP BY a117.c31 HAVING NULL ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v80 AS a118 GROUP BY count ( ( NOT ( a118.c91 IS NULL ) ) AND ( NOT ( a118.c102 IS NULL ) ) ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v3 ( c119 ) AS ( SELECT v3.c4, max ( v3.c20 || v3.c16 ) ORDER BY 9223372036854775807 ) SELECT ( ( v3.c7 + 127 ) % 18446744073709551615 ) != 9223372036854775807 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: table v28 has 3 columns but 2 values were supplied
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 17
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 26
+  ROM v50 AS a109 NATURAL JOIN v60 AS a110 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: c65
+  SELECT count ( c65 ) ORDER BY 127; 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 41
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a115.c2
+  SELECT *, 'v0' FROM v0 AS a115, v60 AS a116 WHERE a115.c2 = 0 AND a116.c63 = 1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 26
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: no such column: v3.c7
+  3.c16 ) ORDER BY 9223372036854775807 ) SELECT ( ( v3.c7 + 127 ) % 184467440737
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 26
+  ROM v50 AS a109 NATURAL JOIN v60 AS a110 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 26
+  ROM v50 AS a109 NATURAL JOIN v60 AS a110 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 17
+ 
+INT: 0 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 17
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such column: c65
+  SELECT count ( c65 ) ORDER BY 127; 
+                 ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 27: no such column: c65
+  SELECT count ( c65 ) ORDER BY 127; 
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 41
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 41
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 33: no such column: a115.c2
+  SELECT *, 'v0' FROM v0 AS a115, v60 AS a116 WHERE a115.c2 = 0 AND a116.c63 = 1
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 26
+ 
+INT: 0 
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 26
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 45: no such column: v3.c7
+  3.c16 ) ORDER BY 9223372036854775807 ) SELECT ( ( v3.c7 + 127 ) % 184467440737
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 45: no such column: v3.c7
+  3.c16 ) ORDER BY 9223372036854775807 ) SELECT ( ( v3.c7 + 127 ) % 184467440737
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

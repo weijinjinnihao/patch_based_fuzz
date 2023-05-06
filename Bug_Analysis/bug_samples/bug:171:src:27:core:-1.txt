@@ -1,0 +1,294 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE INDEX i1 ON t0 ( c3 ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v2 BEGIN UPDATE v2 SET c4 = c5 || c6 WHERE c7 = c8 || c9; END; 
+CREATE TABLE v10 ( c11, c12, c13, c14, PRIMARY KEY ( c12, c13 ) ) WITHOUT ROWID; 
+INSERT INTO v10 VALUES ( 18446744073709551488, 16, 18446744073709551488, 18446744073709551488 ); 
+CREATE INDEX i15 ON v2 ( c14 ); 
+CREATE INDEX i16 ON v10 ( c11 ); 
+ALTER TABLE v10 DROP COLUMN c11; 
+CREATE INDEX i17 ON v2 ( c12 ); 
+CREATE INDEX i18 ON v2 ( c19 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a20 GROUP BY y ( c12 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v10 AS ( SELECT 18446744073709551488 y ORDER BY 16 ) SELECT * FROM v10 AS a21 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a22 GROUP BY 16 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c11 FROM v10 AS a23 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a24, v10 AS a25 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c11, c13 NOT NULL FROM v10 AS a26 RIGHT JOIN v2 AS a27 ON a26.c11 = a26.c13 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a28 GROUP BY y ( a28.c12 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a29, v10 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a31, v2 AS a32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c12, a33.c13 FROM v10 AS a33 RIGHT JOIN v10 AS a34 ON a33.c12 = a33.c13 != 0 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: no such table: main.t0
+Parse error near line 2: no such table: v2
+Parse error near line 5: no such table: main.v2
+Runtime error near line 7: error in index i16 after drop column: no such column: c11
+Parse error near line 8: no such table: main.v2
+Parse error near line 9: no such table: main.v2
+BEGIN VERI 0
+Parse error near line 11: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v10 AS a22 GROUP BY 16 ORDER BY 0; 
+                                  error here ---^
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such table: v2
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+
+Query: 1: 
+; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v2 BEGIN UPDATE v2 SET c4 = c5 || c6 WHERE c7 = c8 || c9; END; 
+CREATE TABLE v10 ( c11, c12, c13, c14, PRIMARY KEY ( c12, c13 ) ) WITHOUT ROWID; 
+INSERT INTO v10 VALUES ( 18446744073709551488, 16, 18446744073709551488, 18446744073709551488 ); 
+; 
+; 
+ALTER TABLE v10 DROP COLUMN c11; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a20 GROUP BY y ( c12 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v10 AS ( SELECT 18446744073709551488 y ORDER BY 16 ) SELECT * FROM v10 AS a21 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a22 GROUP BY 16 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c11 FROM v10 AS a23 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a24, v10 AS a25 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c11, c13 NOT NULL FROM v10 AS a26 RIGHT JOIN v2 AS a27 ON a26.c11 = a26.c13 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a28 GROUP BY y ( a28.c12 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v2 AS a29, v10 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a31, v2 AS a32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c12, a33.c13 FROM v10 AS a33 RIGHT JOIN v10 AS a34 ON a33.c12 = a33.c13 != 0 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: no such table: v2
+BEGIN VERI 0
+Parse error near line 11: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v10 AS a22 GROUP BY 16 ORDER BY 0; 
+                                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such column: a23.c11
+  SELECT a23.c11 FROM v10 AS a23 ORDER BY 18446744073709551488; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such table: v2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such table: v2
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 11: no such table: v2
+ 
+INT: 0 
+Str: 
+Parse error near line 11: no such table: v2
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v10 AS a22 GROUP BY 16 ORDER BY 0; 
+                                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v10 AS a22 GROUP BY 16 ORDER BY 0; 
+                                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no such column: a23.c11
+  SELECT a23.c11 FROM v10 AS a23 ORDER BY 18446744073709551488; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such table: v2
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no such table: v2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no such table: v2
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such table: v2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such table: v2
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such table: v2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no such table: v2
+ 
+INT: 0 
+Str: 
+Parse error near line 35: no such table: v2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

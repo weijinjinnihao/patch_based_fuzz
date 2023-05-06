@@ -1,0 +1,306 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c3 > 18446744073709551615 ), c4 ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709551615, 18446744073709551615 ), ( 18446744073709551615, 18446744073709551488, 0, 255 ); 
+CREATE TABLE v5 ( c6, c7, c8, c9, CHECK( c7 > 100 ) ); 
+CREATE INDEX i10 ON v0 ( c3 ); 
+CREATE INDEX i11 ON v0 ( c3 ); 
+CREATE INDEX i12 ON v5 ( c7 ); 
+CREATE VIEW v13 AS SELECT * FROM ( v5 AS a14 ) ORDER BY 100; 
+INSERT INTO v13 VALUES ( 100, 18446744073709551615, 8, 9223372036854775807 ), ( 255, 18446744073709551615, 18446744073709551615, 100 ); 
+INSERT INTO v5 VALUES ( 100, 18446744073709518848, 100, 100 ); 
+CREATE INDEX i15 ON v5 ( c9 ); 
+INSERT INTO v5 VALUES ( 8, 18446744073709551615, 18446744073709551615, 18446744073709551615 ); 
+CREATE INDEX i16 ON v5 ( c6 ); 
+ALTER TABLE v5 DROP c6; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 WHERE count ( * ) >= 8 = 'x' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a18 WHERE c19 = 'x' ORDER BY c6; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a20 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551615, x'b1' ), ( 18446744073709551615, 21 ), ( 18446744073709551615, 100 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a21 NATURAL JOIN v13 AS a22 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a23, v13 AS a24 NATURAL JOIN v5 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a26 CROSS JOIN v5 AS a27 ON ( a27.c7 = a26.c8 ) WHERE a27.c6 >= ( SELECT a26.c7 FROM v5 AS a28 WHERE a28.c6 IN ( SELECT a28.c7, a26.c6 NOT NULL FROM v5 AS a29 RIGHT JOIN v0 AS a30 ON a26.c8 = a29.c8 ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615 ) ORDER BY - hex ( 18446744073709551615 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c8, count ( a31.c6 ) FROM v5 AS a31 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 GROUP BY a32.c1 HAVING a32.c3 > a32.c1 % 18446744073709551615 >= 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a33.c1 ) FROM v0 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: CHECK constraint failed: c3 > 18446744073709551615 (19)
+Parse error near line 8: 1st ORDER BY term out of range - should be between 1 and 4
+Runtime error near line 13: error in index i16 after drop column: no such column: c6
+BEGIN VERI 0
+Parse error near line 15: misuse of aggregate function count()
+  SELECT * FROM v0 AS a17 WHERE count ( * ) >= 8 = 'x' ORDER BY 0; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: near "ORDER": syntax error
+  073709551615, 21 ), ( 18446744073709551615, 100 ) ORDER BY 1844674407370955161
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: sub-select returns 2 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c3 > 18446744073709551615 ), c4 ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709551615, 18446744073709551615 ), ( 18446744073709551615, 18446744073709551488, 0, 255 ); 
+CREATE TABLE v5 ( c6, c7, c8, c9, CHECK( c7 > 100 ) ); 
+; 
+; 
+; 
+CREATE VIEW v13 AS SELECT * FROM ( v5 AS a14 ) ORDER BY 100; 
+INSERT INTO v13 VALUES ( 100, 18446744073709551615, 8, 9223372036854775807 ), ( 255, 18446744073709551615, 18446744073709551615, 100 ); 
+INSERT INTO v5 VALUES ( 100, 18446744073709518848, 100, 100 ); 
+; 
+INSERT INTO v5 VALUES ( 8, 18446744073709551615, 18446744073709551615, 18446744073709551615 ); 
+; 
+ALTER TABLE v5 DROP c6; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 WHERE count ( * ) >= 8 = 'x' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a18 WHERE c19 = 'x' ORDER BY c6; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a20 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551615, x'b1' ), ( 18446744073709551615, 21 ), ( 18446744073709551615, 100 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a21 NATURAL JOIN v13 AS a22 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a23, v13 AS a24 NATURAL JOIN v5 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a26 CROSS JOIN v5 AS a27 ON ( a27.c7 = a26.c8 ) WHERE a27.c6 >= ( SELECT a26.c7 FROM v5 AS a28 WHERE a28.c6 IN ( SELECT a28.c7, a26.c6 NOT NULL FROM v5 AS a29 RIGHT JOIN v0 AS a30 ON a26.c8 = a29.c8 ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615 ) ORDER BY - hex ( 18446744073709551615 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c8, count ( a31.c6 ) FROM v5 AS a31 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 GROUP BY a32.c1 HAVING a32.c3 > a32.c1 % 18446744073709551615 >= 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a33.c1 ) FROM v0 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: CHECK constraint failed: c3 > 18446744073709551615 (19)
+Parse error near line 8: 1st ORDER BY term out of range - should be between 1 and 4
+BEGIN VERI 0
+Parse error near line 15: misuse of aggregate function count()
+  SELECT * FROM v0 AS a17 WHERE count ( * ) >= 8 = 'x' ORDER BY 0; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: near "ORDER": syntax error
+  073709551615, 21 ), ( 18446744073709551615, 100 ) ORDER BY 1844674407370955161
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a27.c6
+  CROSS JOIN v5 AS a27 ON ( a27.c7 = a26.c8 ) WHERE a27.c6 >= ( SELECT a26.c7 FR
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a31.c6
+  SELECT a31.c8, count ( a31.c6 ) FROM v5 AS a31 ORDER BY 100; 
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: misuse of aggregate function count()
+  SELECT * FROM v0 AS a17 WHERE count ( * ) >= 8 = 'x' ORDER BY 0; 
+                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: misuse of aggregate function count()
+  SELECT * FROM v0 AS a17 WHERE count ( * ) >= 8 = 'x' ORDER BY 0; 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 56304688
+Str: 
+Parse error near line 24: near "ORDER": syntax error
+  073709551615, 21 ), ( 18446744073709551615, 100 ) ORDER BY 1844674407370955161
+                                      error here ---^
+ 
+Str: 
+Parse error near line 24: near "ORDER": syntax error
+  073709551615, 21 ), ( 18446744073709551615, 100 ) ORDER BY 1844674407370955161
+                                      error here ---^
+ 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 33: sub-select returns 2 columns - expected 1
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such column: a27.c6
+  CROSS JOIN v5 AS a27 ON ( a27.c7 = a26.c8 ) WHERE a27.c6 >= ( SELECT a26.c7 FR
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such column: a31.c6
+  SELECT a31.c8, count ( a31.c6 ) FROM v5 AS a31 ORDER BY 100; 
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

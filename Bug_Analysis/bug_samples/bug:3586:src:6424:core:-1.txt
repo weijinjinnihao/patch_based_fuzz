@@ -1,0 +1,319 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 UNIQUE ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE VIEW v6 AS SELECT c3 * 100 + 4294967295 AS y, count ( * ) AS y FROM v0 AS a7 GROUP BY c3 ORDER BY 100; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+CREATE INDEX i16 ON v8 ( c10 ); 
+ALTER TABLE v8 DROP COLUMN c11; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i17 ON v8 ( c11 ); 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+ALTER TABLE v12 DROP COLUMN c15; 
+CREATE INDEX i21 ON v6 ( c1 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a22 WHERE a22.c14 = CASE WHEN a22.c15 != 'x' THEN 100 ELSE 127 END > 127 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY a23.c2, a23.c2; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c20, c14 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v8 AS ( SELECT * FROM v0 AS a25 ORDER BY a25.c3, a24.c10 ) SELECT a24.c11, max ( a24.c10 || a24.c9 ) FROM v8 AS a24 WHERE ( a24.c9 || a24.c11 || a24.c11 ) != '_m_' GROUP BY a24.c11 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a26 ORDER BY a26.c19 COLLATE NOCASE, a26.c20; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c1, a28.c13 FROM v6 AS a27 RIGHT JOIN v12 AS a28 ON a27.c1 = a27.c1 WHERE a28.c13 IS 100 ORDER BY 'x'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a29 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c1, max ( a30.c1 || a30.c1 ) FROM v6 AS a30 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a31 WHERE a31.c13 = ( a31.c13 + 4294967295 ) % count ( a31.c13 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a32, v0 AS a33 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop UNIQUE column: "c11"
+Runtime error near line 9: error in index i5 after drop column: no such column: c2
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: views may not be indexed
+BEGIN VERI 0
+Parse error near line 15: no such column: a22.c15
+  ELECT * FROM v12 AS a22 WHERE a22.c14 = CASE WHEN a22.c15 != 'x' THEN 100 ELSE
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: c20
+  SELECT c20, c14 ORDER BY 8; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a24.c10
+   v8 AS ( SELECT * FROM v0 AS a25 ORDER BY a25.c3, a24.c10 ) SELECT a24.c11, ma
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: misuse of aggregate function count()
+  AS a31 WHERE a31.c13 = ( a31.c13 + 4294967295 ) % count ( a31.c13 ) ORDER BY 9
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v18
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 UNIQUE ); 
+; 
+; 
+CREATE VIEW v6 AS SELECT c3 * 100 + 4294967295 AS y, count ( * ) AS y FROM v0 AS a7 GROUP BY c3 ORDER BY 100; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+; 
+ALTER TABLE v8 DROP COLUMN c11; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+ALTER TABLE v12 DROP COLUMN c15; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a22 WHERE a22.c14 = CASE WHEN a22.c15 != 'x' THEN 100 ELSE 127 END > 127 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY a23.c2, a23.c2; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c20, c14 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v8 AS ( SELECT * FROM v0 AS a25 ORDER BY a25.c3, a24.c10 ) SELECT a24.c11, max ( a24.c10 || a24.c9 ) FROM v8 AS a24 WHERE ( a24.c9 || a24.c11 || a24.c11 ) != '_m_' GROUP BY a24.c11 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a26 ORDER BY a26.c19 COLLATE NOCASE, a26.c20; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c1, a28.c13 FROM v6 AS a27 RIGHT JOIN v12 AS a28 ON a27.c1 = a27.c1 WHERE a28.c13 IS 100 ORDER BY 'x'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a29 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c1, max ( a30.c1 || a30.c1 ) FROM v6 AS a30 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a31 WHERE a31.c13 = ( a31.c13 + 4294967295 ) % count ( a31.c13 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a32, v0 AS a33 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop UNIQUE column: "c11"
+Runtime error near line 11: no such module: fts5
+BEGIN VERI 0
+Parse error near line 15: no such column: a22.c15
+  ELECT * FROM v12 AS a22 WHERE a22.c14 = CASE WHEN a22.c15 != 'x' THEN 100 ELSE
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: a23.c2
+  SELECT * FROM v0 AS a23 ORDER BY a23.c2, a23.c2; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: c20
+  SELECT c20, c14 ORDER BY 8; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a24.c10
+   v8 AS ( SELECT * FROM v0 AS a25 ORDER BY a25.c3, a24.c10 ) SELECT a24.c11, ma
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: misuse of aggregate function count()
+  AS a31 WHERE a31.c13 = ( a31.c13 + 4294967295 ) % count ( a31.c13 ) ORDER BY 9
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v18
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such column: a22.c15
+  ELECT * FROM v12 AS a22 WHERE a22.c14 = CASE WHEN a22.c15 != 'x' THEN 100 ELSE
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: no such column: a22.c15
+  ELECT * FROM v12 AS a22 WHERE a22.c14 = CASE WHEN a22.c15 != 'x' THEN 100 ELSE
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 18: no such column: a23.c2
+  SELECT * FROM v0 AS a23 ORDER BY a23.c2, a23.c2; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such column: c20
+  SELECT c20, c14 ORDER BY 8; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 21: no such column: c20
+  SELECT c20, c14 ORDER BY 8; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such column: a24.c10
+   v8 AS ( SELECT * FROM v0 AS a25 ORDER BY a25.c3, a24.c10 ) SELECT a24.c11, ma
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: no such column: a24.c10
+   v8 AS ( SELECT * FROM v0 AS a25 ORDER BY a25.c3, a24.c10 ) SELECT a24.c11, ma
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: misuse of aggregate function count()
+  AS a31 WHERE a31.c13 = ( a31.c13 + 4294967295 ) % count ( a31.c13 ) ORDER BY 9
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: misuse of aggregate function count()
+  AS a31 WHERE a31.c13 = ( a31.c13 + 4294967295 ) % count ( a31.c13 ) ORDER BY 9
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such table: v18
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

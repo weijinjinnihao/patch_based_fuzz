@@ -1,0 +1,316 @@
+Multiple execution of SQLite: 
+Query: 0: 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM t0 AS y WHERE ( c2 = 0 OR c3 IS 0 ) AND c4 IS ( SELECT c7 FROM ( SELECT c10 FROM v1 AS a9 ORDER BY 100 ) AS y, v1 AS a5 NATURAL JOIN v1 AS a6 WHERE c8 = 100 ORDER BY 9223372036854775807 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+CREATE VIEW v11 AS WITH v1 ( c15 ) AS ( WITH v1 AS ( SELECT ( SELECT min ( c18 ) OVER ( ORDER BY 9223372036854775807 IN v1 ) ORDER BY 4294967295 ) FROM v1 AS a16 GROUP BY c17 ORDER BY 4294967295 ) SELECT 9223372036854775807 ORDER BY 18446744073709551615 ) SELECT * FROM v1 AS a12, v1 AS a13 NATURAL JOIN v1 AS a14 ORDER BY 18446744073709551615; 
+CREATE TABLE v19 ( c20 INTEGER PRIMARY KEY, c21, c22 UNIQUE ); 
+CREATE INDEX i23 ON v1 ( c21 ); 
+CREATE INDEX i24 ON v11 ( c9 ); 
+CREATE TABLE v25 ( c26, c27, c28 ); 
+ALTER TABLE v11 DROP COLUMN c9; 
+CREATE INDEX i29 ON v19 ( c22 ); 
+CREATE INDEX i30 ON v25 ( c28 ); 
+ALTER TABLE v25 DROP COLUMN c28; 
+CREATE VIRTUAL TABLE v31 USING fts5 ( c32, c33 ); 
+CREATE INDEX i34 ON v19 ( c21 ); 
+ALTER TABLE v1 DROP COLUMN c35; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a36 ORDER BY ( a36.c26 || a36.c27 || a36.c26 ) != 'three'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v1 AS a37 WHERE c38 != c26 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( NULL, 't2d' ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a39, v11 AS a40 NATURAL JOIN v25 AS a41 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a42.c21, count ( a42.c21 ) FROM v19 AS a42 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a43 WHERE a43.c28 = - 4294967295 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v44 AS ( WITH v44 AS ( SELECT 9223372036854775807 y ORDER BY 0 ) SELECT avg ( c28 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 100 ) SELECT * FROM v44 AS a45 WHERE ( c33 = 0 OR c22 = 255 ) AND c32 IN ( SELECT c20 FROM ( SELECT *, 'x' FROM v44 AS a48 LEFT JOIN v44 AS a49 ON c33 = 0 AND c1 = 18446744073709551488 ORDER BY 18446744073709551488 ) AS y, v44 AS a46 NATURAL JOIN v44 AS a47 WHERE c28 = 0 ORDER BY 18446744073709551615 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a50.c20 FROM v19 AS a50 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a51, v31 AS a52 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a53 WHERE a53.c20 < a53.c20 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 2: no such table: t0
+END VERI 0
+Parse error near line 6: no such table: main.v1
+Parse error near line 7: views may not be indexed
+Parse error near line 9: cannot drop column from view "v11"
+Runtime error near line 12: error in index i30 after drop column: no such column: c28
+Runtime error near line 13: no such module: fts5
+Parse error near line 15: no such table: v1
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: near "ORDER": syntax error
+  VALUES ( NULL, 't2d' ) ORDER BY 4294967295; 
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  2.c21, count ( a42.c21 ) FROM v19 AS a42 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such table: v31
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM t0 AS y WHERE ( c2 = 0 OR c3 IS 0 ) AND c4 IS ( SELECT c7 FROM ( SELECT c10 FROM v1 AS a9 ORDER BY 100 ) AS y, v1 AS a5 NATURAL JOIN v1 AS a6 WHERE c8 = 100 ORDER BY 9223372036854775807 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+CREATE VIEW v11 AS WITH v1 ( c15 ) AS ( WITH v1 AS ( SELECT ( SELECT min ( c18 ) OVER ( ORDER BY 9223372036854775807 IN v1 ) ORDER BY 4294967295 ) FROM v1 AS a16 GROUP BY c17 ORDER BY 4294967295 ) SELECT 9223372036854775807 ORDER BY 18446744073709551615 ) SELECT * FROM v1 AS a12, v1 AS a13 NATURAL JOIN v1 AS a14 ORDER BY 18446744073709551615; 
+CREATE TABLE v19 ( c20 INTEGER PRIMARY KEY, c21, c22 UNIQUE ); 
+; 
+; 
+CREATE TABLE v25 ( c26, c27, c28 ); 
+ALTER TABLE v11 DROP COLUMN c9; 
+; 
+; 
+ALTER TABLE v25 DROP COLUMN c28; 
+CREATE VIRTUAL TABLE v31 USING fts5 ( c32, c33 ); 
+; 
+ALTER TABLE v1 DROP COLUMN c35; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a36 ORDER BY ( a36.c26 || a36.c27 || a36.c26 ) != 'three'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v1 AS a37 WHERE c38 != c26 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( NULL, 't2d' ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a39, v11 AS a40 NATURAL JOIN v25 AS a41 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a42.c21, count ( a42.c21 ) FROM v19 AS a42 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a43 WHERE a43.c28 = - 4294967295 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v44 AS ( WITH v44 AS ( SELECT 9223372036854775807 y ORDER BY 0 ) SELECT avg ( c28 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 100 ) SELECT * FROM v44 AS a45 WHERE ( c33 = 0 OR c22 = 255 ) AND c32 IN ( SELECT c20 FROM ( SELECT *, 'x' FROM v44 AS a48 LEFT JOIN v44 AS a49 ON c33 = 0 AND c1 = 18446744073709551488 ORDER BY 18446744073709551488 ) AS y, v44 AS a46 NATURAL JOIN v44 AS a47 WHERE c28 = 0 ORDER BY 18446744073709551615 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a50.c20 FROM v19 AS a50 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a51, v31 AS a52 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a53 WHERE a53.c20 < a53.c20 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 2: no such table: t0
+END VERI 0
+Parse error near line 9: cannot drop column from view "v11"
+Runtime error near line 13: no such module: fts5
+Parse error near line 15: no such table: v1
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: near "ORDER": syntax error
+  VALUES ( NULL, 't2d' ) ORDER BY 4294967295; 
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  2.c21, count ( a42.c21 ) FROM v19 AS a42 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a43.c28
+  SELECT * FROM v25 AS a43 WHERE a43.c28 = - 4294967295 ORDER BY 100; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such table: v31
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 2: no such table: t0
+ 
+INT: 0 
+Str: 
+Parse error near line 2: no such table: t0
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no such table: v1
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no such table: v1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 69551008
+Str: 
+Parse error near line 23: near "ORDER": syntax error
+  VALUES ( NULL, 't2d' ) ORDER BY 4294967295; 
+                         ^--- error here
+ 
+Str: 
+Parse error near line 23: near "ORDER": syntax error
+  VALUES ( NULL, 't2d' ) ORDER BY 4294967295; 
+                         ^--- error here
+ 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  2.c21, count ( a42.c21 ) FROM v19 AS a42 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  2.c21, count ( a42.c21 ) FROM v19 AS a42 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such column: a43.c28
+  SELECT * FROM v25 AS a43 WHERE a43.c28 = - 4294967295 ORDER BY 100; 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 35: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no such table: v31
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no such table: v31
+ 
+INT: 0 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,300 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 UNIQUE, c2, c3 UNIQUE ON CONFLICT IGNORE, c4 UNIQUE ON CONFLICT FAIL, c5 UNIQUE ON CONFLICT REPLACE DEFAULT 8, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15 TEXT UNIQUE ON CONFLICT FAIL DEFAULT 8, c16, PRIMARY KEY ( c6, c3 ), UNIQUE ( c14 ) ) WITHOUT ROWID; 
+CREATE TABLE v17 ( c18 TEXT, c19 ); 
+CREATE INDEX i20 ON v0 ( c11 ); 
+CREATE INDEX i21 ON v17 ( c19 ); 
+CREATE INDEX i22 ON v0 ( c1 ); 
+CREATE INDEX i23 ON v17 ( c18 ); 
+ALTER TABLE v17 DROP c19; 
+CREATE INDEX i24 ON v17 ( c18 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c19, max ( a25.c19 || a25.c18 ) FROM v17 AS a25 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v26 AS ( SELECT ( SELECT min ( c19 ) OVER ( ORDER BY 8 ) ORDER BY 8 ) FROM v26 AS a28 GROUP BY c19 ORDER BY 8 ) SELECT c18 + ( SELECT max ( c19 ) FROM v26 AS a31 ORDER BY 8 ), c5 + ( SELECT max ( c18 ) FROM v26 AS a30 ORDER BY 8 ), c7 + ( SELECT max ( c10 ) FROM v26 AS a29 ORDER BY 100 ) FROM v26 AS a27 y ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a32 WHERE a32.c19 = a32.c19 || a32.c19 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a33, v0 AS a34 NATURAL JOIN v0 AS a35 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a36, v17 AS a37 NATURAL JOIN v0 AS a38 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a39.c19 IS NULL ) ) AND ( NOT ( a39.c19 IS NULL ) ) ) FROM v17 AS a39 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a40, v17 AS a41 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a42 GROUP BY x'616263', 'fizzle', a42.c18 = + a42.c18 HAVING count ( * ) >= 50 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c6, max ( a43.c8 || a43.c8 ) FROM v0 AS a43 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v44 AS ( SELECT 4294967295 y ORDER BY 8 ) VALUES ( NULL, 'goodbye' ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i21 after drop column: no such column: c19
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: near "y": syntax error
+   ) FROM v26 AS a29 ORDER BY 100 ) FROM v26 AS a27 y ORDER BY 8; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+  c18 = + a42.c18 HAVING count ( * ) >= 50 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: near "ORDER": syntax error
+  4967295 y ORDER BY 8 ) VALUES ( NULL, 'goodbye' ) ORDER BY 8; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 UNIQUE, c2, c3 UNIQUE ON CONFLICT IGNORE, c4 UNIQUE ON CONFLICT FAIL, c5 UNIQUE ON CONFLICT REPLACE DEFAULT 8, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15 TEXT UNIQUE ON CONFLICT FAIL DEFAULT 8, c16, PRIMARY KEY ( c6, c3 ), UNIQUE ( c14 ) ) WITHOUT ROWID; 
+CREATE TABLE v17 ( c18 TEXT, c19 ); 
+; 
+; 
+; 
+; 
+ALTER TABLE v17 DROP c19; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c19, max ( a25.c19 || a25.c18 ) FROM v17 AS a25 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v26 AS ( SELECT ( SELECT min ( c19 ) OVER ( ORDER BY 8 ) ORDER BY 8 ) FROM v26 AS a28 GROUP BY c19 ORDER BY 8 ) SELECT c18 + ( SELECT max ( c19 ) FROM v26 AS a31 ORDER BY 8 ), c5 + ( SELECT max ( c18 ) FROM v26 AS a30 ORDER BY 8 ), c7 + ( SELECT max ( c10 ) FROM v26 AS a29 ORDER BY 100 ) FROM v26 AS a27 y ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a32 WHERE a32.c19 = a32.c19 || a32.c19 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a33, v0 AS a34 NATURAL JOIN v0 AS a35 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a36, v17 AS a37 NATURAL JOIN v0 AS a38 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a39.c19 IS NULL ) ) AND ( NOT ( a39.c19 IS NULL ) ) ) FROM v17 AS a39 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a40, v17 AS a41 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a42 GROUP BY x'616263', 'fizzle', a42.c18 = + a42.c18 HAVING count ( * ) >= 50 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c6, max ( a43.c8 || a43.c8 ) FROM v0 AS a43 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v44 AS ( SELECT 4294967295 y ORDER BY 8 ) VALUES ( NULL, 'goodbye' ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 10: no such column: a25.c19
+  SELECT a25.c19, max ( a25.c19 || a25.c18 ) FROM v17 AS a25 ORDER BY 8; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: near "y": syntax error
+   ) FROM v26 AS a29 ORDER BY 100 ) FROM v26 AS a27 y ORDER BY 8; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: a32.c19
+  SELECT * FROM v17 AS a32 WHERE a32.c19 = a32.c19 || a32.c19 ORDER BY 100; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: a39.c19
+  SELECT count ( ( NOT ( a39.c19 IS NULL ) ) AND ( NOT ( a39.c19 IS NULL ) ) ) F
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  c18 = + a42.c18 HAVING count ( * ) >= 50 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: near "ORDER": syntax error
+  4967295 y ORDER BY 8 ) VALUES ( NULL, 'goodbye' ) ORDER BY 8; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 10: no such column: a25.c19
+  SELECT a25.c19, max ( a25.c19 || a25.c18 ) FROM v17 AS a25 ORDER BY 8; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: near "y": syntax error
+   ) FROM v26 AS a29 ORDER BY 100 ) FROM v26 AS a27 y ORDER BY 8; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 13: near "y": syntax error
+   ) FROM v26 AS a29 ORDER BY 100 ) FROM v26 AS a27 y ORDER BY 8; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such column: a32.c19
+  SELECT * FROM v17 AS a32 WHERE a32.c19 = a32.c19 || a32.c19 ORDER BY 100; 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such column: a39.c19
+  SELECT count ( ( NOT ( a39.c19 IS NULL ) ) AND ( NOT ( a39.c19 IS NULL ) ) ) F
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+  c18 = + a42.c18 HAVING count ( * ) >= 50 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  c18 = + a42.c18 HAVING count ( * ) >= 50 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 83130256
+Str: 
+Parse error near line 37: near "ORDER": syntax error
+  4967295 y ORDER BY 8 ) VALUES ( NULL, 'goodbye' ) ORDER BY 8; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 37: near "ORDER": syntax error
+  4967295 y ORDER BY 8 ) VALUES ( NULL, 'goodbye' ) ORDER BY 8; 
+                                      error here ---^
+ 
+Compare_result_int: 
+0
+
+
+

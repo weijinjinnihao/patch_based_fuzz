@@ -1,0 +1,272 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c3 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709551488, 18446744073709551488 ), ( 18446744073709551488, 18446744073709551488, 18446744073709551488 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i6 ON v0 ( c1 ); 
+ALTER TABLE v0 DROP c3; 
+CREATE INDEX i7 ON v0 ( c1 ); 
+CREATE TABLE v8 ( c9, c10, c11 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i12 ON v0 ( c3 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a13.c2 || a13.c3 || a13.c2 FROM v0 AS a13 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14, v8 AS a15 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v16 ( c18 ) AS ( WITH v19 AS ( WITH v19 AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551488 ) SELECT avg ( c18 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 100 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM ( SELECT 255 AS y FROM v16 AS a20 ORDER BY 10 ) AS y LEFT JOIN v16 AS a17 ON c18 IS NULL GROUP BY c18 HAVING c18 > c18 % 8 >= 18446744073709551488 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a21 GROUP BY a21.c11, a21.c11 < y ( a21.c9 ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a22 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c1 FROM v0 AS a23 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a25 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a26, v8 AS a27 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: UNIQUE constraint failed: v0.c1, v0.c3 (19)
+Runtime error near line 5: error in index i4 after drop column: no such column: c2
+Parse error near line 7: cannot drop PRIMARY KEY column: "c3"
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+  DER BY 100 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM ( SELECT 2
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c3 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709551488, 18446744073709551488 ), ( 18446744073709551488, 18446744073709551488, 18446744073709551488 ); 
+; 
+; 
+ALTER TABLE v0 DROP c2; 
+; 
+ALTER TABLE v0 DROP c3; 
+; 
+CREATE TABLE v8 ( c9, c10, c11 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a13.c2 || a13.c3 || a13.c2 FROM v0 AS a13 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14, v8 AS a15 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v16 ( c18 ) AS ( WITH v19 AS ( WITH v19 AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551488 ) SELECT avg ( c18 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 100 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM ( SELECT 255 AS y FROM v16 AS a20 ORDER BY 10 ) AS y LEFT JOIN v16 AS a17 ON c18 IS NULL GROUP BY c18 HAVING c18 > c18 % 8 >= 18446744073709551488 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a21 GROUP BY a21.c11, a21.c11 < y ( a21.c9 ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a22 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c1 FROM v0 AS a23 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a25 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a26, v8 AS a27 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: UNIQUE constraint failed: v0.c1, v0.c3 (19)
+Parse error near line 7: cannot drop PRIMARY KEY column: "c3"
+BEGIN VERI 0
+Parse error near line 12: no such column: a13.c2
+  SELECT a13.c2 || a13.c3 || a13.c2 FROM v0 AS a13 ORDER BY 18446744073709551488
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+  DER BY 100 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM ( SELECT 2
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 12: no such column: a13.c2
+  SELECT a13.c2 || a13.c3 || a13.c2 FROM v0 AS a13 ORDER BY 18446744073709551488
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+  DER BY 100 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM ( SELECT 2
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+  DER BY 100 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM ( SELECT 2
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

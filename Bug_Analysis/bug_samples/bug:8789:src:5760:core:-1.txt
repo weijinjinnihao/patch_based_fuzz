@@ -1,0 +1,289 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE INDEX i3 ON v0 ( c2 ); 
+CREATE TABLE v4 ( c5, c6, c7, c8, c9, c10, c11 REFERENCES t1 DEFAULT NULL, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24 INTEGER PRIMARY KEY, c25 ); 
+CREATE TABLE v26 ( c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40 PRIMARY KEY ON CONFLICT REPLACE, c41, c42, c43 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v44 USING rtree ( c45, c46, c47, c48, c49, c50, c51, c52, c53 ); 
+CREATE TABLE v54 ( c55, c56, c57, c58, c59, c60, c61, c62, c63, c64, c65, c66, c67, c68, c69, c70, c71 TEXT UNIQUE NOT NULL ); 
+CREATE INDEX i72 ON v26 ( c40 ); 
+INSERT INTO v26 VALUES ( 'v1', ( CASE WHEN c43 != 'v0' THEN 100 ELSE 100 END ) ), ( 100, 'x' ), ( 18446744073709551488, 'v0' ); 
+CREATE TABLE v73 ( c74 DEFAULT x'ABCD' DEFAULT 18446744073709551488, c75 NOT NULL DEFAULT 100, c76 NOT NULL ON CONFLICT REPLACE DEFAULT 18446744073709551488, c77 NOT NULL ON CONFLICT IGNORE DEFAULT 18446744073709551615, c78 NOT NULL ON CONFLICT ABORT DEFAULT 100 ); 
+CREATE INDEX i79 ON v26 ( c29 ); 
+CREATE INDEX i80 ON v73 ( c74 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v4 BEGIN DELETE FROM v54; END; 
+CREATE INDEX i81 ON v44 ( c51 ); 
+ALTER TABLE v73 DROP c74; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a82.c74, count ( a82.c75 ) FROM v73 AS a82 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a84.c2, count ( ( NOT ( x'b2b2b2' > NULL ) ) AND ( NOT ( a83.c66 IS NULL ) ) ), count ( ( NOT ( a84.c1 IS NULL ) ) AND ( NOT ( a84.c1 IS NULL ) ) ) FROM v54 AS a83 LEFT JOIN v0 AS a84 ON a83.c56 = a84.c2 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a85.c43 IS NULL ) ) AND ( NOT ( a85.c39 IS NULL ) ) ) FROM v26 AS a85 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a86.c1 || a86.c1 ) FROM v0 AS a86 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a87 WHERE a87.c2 != a87.c2 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v26 AS ( SELECT ( SELECT min ( a89.c30 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY a89.c53 ) FROM v44 AS a89 GROUP BY v26.c37 ORDER BY 0 ) SELECT * FROM v44 AS a88 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a91.c19, x'68617265' FROM v44 AS a90 LEFT JOIN v4 AS a91 ON a90.c46 = y ( a91.c16, a91.c19, a90.c53 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a92 NATURAL JOIN v0 AS a93 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a94 WHERE ( a94.c36 = 18446744073709551488 OR a94.c42 = 0 ) AND a94.c38 IN ( WITH v95 AS ( SELECT ( SELECT min ( a94.c38 ) OVER ( ORDER BY 18446744073709551615 IN v95 ) ORDER BY 18446744071562067968 ) FROM v95 AS a96 GROUP BY a94.c38 ORDER BY 18446744073709551488 ) SELECT 18446744073709551488 ORDER BY 100 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a97 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: no such column: c43
+  INSERT INTO v26 VALUES ( 'v1', ( CASE WHEN c43 != 'v0' THEN 100 ELSE 100 END )
+                               error here ---^
+Parse error near line 13: virtual tables may not be indexed
+Runtime error near line 14: error in index i80 after drop column: no such column: c74
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+|0|0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such function: y
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 21
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+; 
+CREATE TABLE v4 ( c5, c6, c7, c8, c9, c10, c11 REFERENCES t1 DEFAULT NULL, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24 INTEGER PRIMARY KEY, c25 ); 
+CREATE TABLE v26 ( c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40 PRIMARY KEY ON CONFLICT REPLACE, c41, c42, c43 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v44 USING rtree ( c45, c46, c47, c48, c49, c50, c51, c52, c53 ); 
+CREATE TABLE v54 ( c55, c56, c57, c58, c59, c60, c61, c62, c63, c64, c65, c66, c67, c68, c69, c70, c71 TEXT UNIQUE NOT NULL ); 
+; 
+INSERT INTO v26 VALUES ( 'v1', ( CASE WHEN c43 != 'v0' THEN 100 ELSE 100 END ) ), ( 100, 'x' ), ( 18446744073709551488, 'v0' ); 
+CREATE TABLE v73 ( c74 DEFAULT x'ABCD' DEFAULT 18446744073709551488, c75 NOT NULL DEFAULT 100, c76 NOT NULL ON CONFLICT REPLACE DEFAULT 18446744073709551488, c77 NOT NULL ON CONFLICT IGNORE DEFAULT 18446744073709551615, c78 NOT NULL ON CONFLICT ABORT DEFAULT 100 ); 
+; 
+; 
+CREATE TRIGGER r1 AFTER UPDATE ON v4 BEGIN DELETE FROM v54; END; 
+; 
+ALTER TABLE v73 DROP c74; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a82.c74, count ( a82.c75 ) FROM v73 AS a82 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a84.c2, count ( ( NOT ( x'b2b2b2' > NULL ) ) AND ( NOT ( a83.c66 IS NULL ) ) ), count ( ( NOT ( a84.c1 IS NULL ) ) AND ( NOT ( a84.c1 IS NULL ) ) ) FROM v54 AS a83 LEFT JOIN v0 AS a84 ON a83.c56 = a84.c2 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a85.c43 IS NULL ) ) AND ( NOT ( a85.c39 IS NULL ) ) ) FROM v26 AS a85 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a86.c1 || a86.c1 ) FROM v0 AS a86 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a87 WHERE a87.c2 != a87.c2 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v26 AS ( SELECT ( SELECT min ( a89.c30 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY a89.c53 ) FROM v44 AS a89 GROUP BY v26.c37 ORDER BY 0 ) SELECT * FROM v44 AS a88 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a91.c19, x'68617265' FROM v44 AS a90 LEFT JOIN v4 AS a91 ON a90.c46 = y ( a91.c16, a91.c19, a90.c53 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a92 NATURAL JOIN v0 AS a93 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a94 WHERE ( a94.c36 = 18446744073709551488 OR a94.c42 = 0 ) AND a94.c38 IN ( WITH v95 AS ( SELECT ( SELECT min ( a94.c38 ) OVER ( ORDER BY 18446744073709551615 IN v95 ) ORDER BY 18446744071562067968 ) FROM v95 AS a96 GROUP BY a94.c38 ORDER BY 18446744073709551488 ) SELECT 18446744073709551488 ORDER BY 100 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a97 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: no such column: c43
+  INSERT INTO v26 VALUES ( 'v1', ( CASE WHEN c43 != 'v0' THEN 100 ELSE 100 END )
+                               error here ---^
+BEGIN VERI 0
+Parse error near line 16: no such column: a82.c74
+  SELECT a82.c74, count ( a82.c75 ) FROM v73 AS a82 ORDER BY 1844674407370955161
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+|0|0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such function: y
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 21
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such column: a82.c74
+  SELECT a82.c74, count ( a82.c75 ) FROM v73 AS a82 ORDER BY 1844674407370955161
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+|0|0
+ 
+INT: 0 
+Str: 
+|0|0
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such function: y
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such function: y
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 19
+ 
+INT: 0 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 19
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 21
+ 
+INT: 0 
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 21
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

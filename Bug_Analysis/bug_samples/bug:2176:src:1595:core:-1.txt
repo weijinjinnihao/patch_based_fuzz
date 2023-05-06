@@ -1,0 +1,284 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c1 > 127 ), c4 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE INDEX i6 ON v0 ( c2 ); 
+CREATE INDEX i7 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( 127, 18446744073709551488, 18446744073709551488, 18446744073709551488 ), ( 18446744073709551488, 255, 127, 127 ); 
+CREATE TABLE v8 ( c9, c10, c11, c12, CHECK( c12 > x'b2b2b2' ) ); 
+CREATE INDEX i13 ON v8 ( c9 ); 
+INSERT INTO v8 VALUES ( 0, 18446744073709551488, 255, 18446744073709551488 ), ( 18446744073709551488, 18446744073709551488, 8, 0 ); 
+INSERT INTO v8 VALUES ( 18446744073709551488, 18446744073709551488, 255, 18446744073709551488 ); 
+ALTER TABLE v0 DROP c3; 
+CREATE INDEX i14 ON v8 ( c11 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a15.c3, count ( a15.c3 ), quote ( a15.c1 ), 'x' FROM v0 AS a15 GROUP BY a15.c3, abs ( a15.c2 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( x'68617265', 'v1', 'x' ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a17 ORDER BY ( ( a17.c12 + 127 ) % 255 ) != 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18, v0 AS a19 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c12, max ( a20.c9 || a20.c11 ) FROM v8 AS a20 WHERE ( a20.c12 || a20.c11 || a20.c12 ) != 'v1' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c4 FROM v0 AS a21 WHERE ( a21.c3, a21.c1 ) NOT IN ( SELECT * FROM v0 AS a22 ORDER BY 16 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24, v8 AS a25 NATURAL JOIN v8 AS a26 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c1 > 127 (19)
+Runtime error near line 8: CHECK constraint failed: c12 > x'b2b2b2' (19)
+Runtime error near line 9: CHECK constraint failed: c12 > x'b2b2b2' (19)
+Runtime error near line 10: error in index i5 after drop column: no such column: c3
+BEGIN VERI 0
+Parse error near line 13: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: near "ORDER": syntax error
+  VALUES ( x'68617265', 'v1', 'x' ) ORDER BY 2147483647; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+   a20.c12 || a20.c11 || a20.c12 ) != 'v1' ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c1 > 127 ), c4 ); 
+; 
+; 
+; 
+INSERT INTO v0 VALUES ( 127, 18446744073709551488, 18446744073709551488, 18446744073709551488 ), ( 18446744073709551488, 255, 127, 127 ); 
+CREATE TABLE v8 ( c9, c10, c11, c12, CHECK( c12 > x'b2b2b2' ) ); 
+; 
+INSERT INTO v8 VALUES ( 0, 18446744073709551488, 255, 18446744073709551488 ), ( 18446744073709551488, 18446744073709551488, 8, 0 ); 
+INSERT INTO v8 VALUES ( 18446744073709551488, 18446744073709551488, 255, 18446744073709551488 ); 
+ALTER TABLE v0 DROP c3; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a15.c3, count ( a15.c3 ), quote ( a15.c1 ), 'x' FROM v0 AS a15 GROUP BY a15.c3, abs ( a15.c2 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( x'68617265', 'v1', 'x' ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a17 ORDER BY ( ( a17.c12 + 127 ) % 255 ) != 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18, v0 AS a19 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c12, max ( a20.c9 || a20.c11 ) FROM v8 AS a20 WHERE ( a20.c12 || a20.c11 || a20.c12 ) != 'v1' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c4 FROM v0 AS a21 WHERE ( a21.c3, a21.c1 ) NOT IN ( SELECT * FROM v0 AS a22 ORDER BY 16 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24, v8 AS a25 NATURAL JOIN v8 AS a26 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c1 > 127 (19)
+Runtime error near line 8: CHECK constraint failed: c12 > x'b2b2b2' (19)
+Runtime error near line 9: CHECK constraint failed: c12 > x'b2b2b2' (19)
+BEGIN VERI 0
+Parse error near line 13: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: a15.c3
+  SELECT a15.c3, count ( a15.c3 ), quote ( a15.c1 ), 'x' FROM v0 AS a15 GROUP BY
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: near "ORDER": syntax error
+  VALUES ( x'68617265', 'v1', 'x' ) ORDER BY 2147483647; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+   a20.c12 || a20.c11 || a20.c12 ) != 'v1' ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 13: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 16: no such column: a15.c3
+  SELECT a15.c3, count ( a15.c3 ), quote ( a15.c1 ), 'x' FROM v0 AS a15 GROUP BY
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 49812256
+Str: 
+Parse error near line 19: near "ORDER": syntax error
+  VALUES ( x'68617265', 'v1', 'x' ) ORDER BY 2147483647; 
+                      error here ---^
+ 
+Str: 
+Parse error near line 19: near "ORDER": syntax error
+  VALUES ( x'68617265', 'v1', 'x' ) ORDER BY 2147483647; 
+                      error here ---^
+ 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+   a20.c12 || a20.c11 || a20.c12 ) != 'v1' ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+   a20.c12 || a20.c11 || a20.c12 ) != 'v1' ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

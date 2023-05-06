@@ -1,0 +1,377 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( 77, 'x', 'v1' ); 
+INSERT INTO v0 VALUES ( 77, '1.1', 'v0' ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( NULL, 'v0', 'v1' ); 
+INSERT INTO v0 VALUES ( 'v0', 'v0', 'v0' ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE INDEX i6 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( x'616263', '10000 500', 'v0' ); 
+CREATE TABLE v7 ( c8, c9, c10 COLLATE NOCASE ); 
+INSERT INTO v7 VALUES ( NULL, 'def', 'v1' ); 
+INSERT INTO v7 VALUES ( 'D', 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'aaa', 'x' ); 
+CREATE INDEX i11 ON v7 ( c9 ); 
+CREATE INDEX i12 ON v7 ( c10 ); 
+INSERT INTO v7 VALUES ( 77, 'a', 'x' ); 
+INSERT INTO v7 VALUES ( - 77, 'v0', 'v1' ); 
+CREATE VIEW v13 AS SELECT c3, avg ( c8 ) + 0 FROM v0 AS a14, v7 AS a15 GROUP BY c8 ORDER BY ( ( hex ( 77 ) ) % 77 ); 
+INSERT INTO v0 SELECT * FROM v13 AS a16 ORDER BY 77; 
+INSERT INTO v13 SELECT * FROM v13 AS a17 ORDER BY 77; 
+INSERT INTO v13 SELECT * FROM v7 AS a18 ORDER BY 77; 
+INSERT INTO v7 SELECT * FROM v0 AS a19 ORDER BY 0; 
+INSERT INTO v13 SELECT * ORDER BY 0; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20, v0 AS a21 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v0 AS a23 NATURAL JOIN v0 AS a24 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v25 AS ( SELECT ( SELECT min ( c1 ) OVER ( ORDER BY 77 ) ORDER BY c7 ) FROM v25 AS a27 GROUP BY c7 ORDER BY 4294967295 ) SELECT * FROM v25 AS a26 ORDER BY 77; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c7 FROM v13 AS a28 ORDER BY 77; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a29 WHERE ( a29.c7 || a29.c1 || a29.c7 ) != '2-two' ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 10 ORDER BY 18446744073709551488 ) AS y, ( SELECT 77 ORDER BY 77 ) AS y ON likely ( 77 OR 77 ) OR 18446744073709551488 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c7 FROM v13 AS a30 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a31, v13 AS a32 NATURAL JOIN v7 AS a33 ORDER BY 77; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 NATURAL JOIN v13 AS a35 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+Parse error near line 20: cannot modify v13 because it is a view
+Parse error near line 21: cannot modify v13 because it is a view
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v7 SELECT * FROM v0 AS a19 ORDER BY 0; 
+                                    error here ---^
+Parse error near line 23: cannot modify v13 because it is a view
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: circular reference: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a28.c7
+  SELECT a28.c7 FROM v13 AS a28 ORDER BY 77; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a29.c7
+  SELECT * FROM v13 AS a29 WHERE ( a29.c7 || a29.c1 || a29.c7 ) != '2-two' ORDER
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 46: no such column: a30.c7
+  SELECT a30.c7 FROM v13 AS a30 ORDER BY 2147483647; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 49: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+77|1.1|v0|
+v0|v0|v0|
+abc|10000 500|v0|
+77|1.1|v0|-77.0
+v0|v0|v0|-77.0
+abc|10000 500|v0|-77.0
+77|1.1|v0|77.0
+v0|v0|v0|77.0
+abc|10000 500|v0|77.0
+77|1.1|v0|0.0
+v0|v0|v0|0.0
+abc|10000 500|v0|0.0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( 77, 'x', 'v1' ); 
+INSERT INTO v0 VALUES ( 77, '1.1', 'v0' ); 
+; 
+INSERT INTO v0 VALUES ( NULL, 'v0', 'v1' ); 
+INSERT INTO v0 VALUES ( 'v0', 'v0', 'v0' ); 
+; 
+; 
+INSERT INTO v0 VALUES ( x'616263', '10000 500', 'v0' ); 
+CREATE TABLE v7 ( c8, c9, c10 COLLATE NOCASE ); 
+INSERT INTO v7 VALUES ( NULL, 'def', 'v1' ); 
+INSERT INTO v7 VALUES ( 'D', 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'aaa', 'x' ); 
+; 
+; 
+INSERT INTO v7 VALUES ( 77, 'a', 'x' ); 
+INSERT INTO v7 VALUES ( - 77, 'v0', 'v1' ); 
+CREATE VIEW v13 AS SELECT c3, avg ( c8 ) + 0 FROM v0 AS a14, v7 AS a15 GROUP BY c8 ORDER BY ( ( hex ( 77 ) ) % 77 ); 
+INSERT INTO v0 SELECT * FROM v13 AS a16 ORDER BY 77; 
+INSERT INTO v13 SELECT * FROM v13 AS a17 ORDER BY 77; 
+INSERT INTO v13 SELECT * FROM v7 AS a18 ORDER BY 77; 
+INSERT INTO v7 SELECT * FROM v0 AS a19 ORDER BY 0; 
+INSERT INTO v13 SELECT * ORDER BY 0; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20, v0 AS a21 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v0 AS a23 NATURAL JOIN v0 AS a24 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v25 AS ( SELECT ( SELECT min ( c1 ) OVER ( ORDER BY 77 ) ORDER BY c7 ) FROM v25 AS a27 GROUP BY c7 ORDER BY 4294967295 ) SELECT * FROM v25 AS a26 ORDER BY 77; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c7 FROM v13 AS a28 ORDER BY 77; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a29 WHERE ( a29.c7 || a29.c1 || a29.c7 ) != '2-two' ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 10 ORDER BY 18446744073709551488 ) AS y, ( SELECT 77 ORDER BY 77 ) AS y ON likely ( 77 OR 77 ) OR 18446744073709551488 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c7 FROM v13 AS a30 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a31, v13 AS a32 NATURAL JOIN v7 AS a33 ORDER BY 77; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 NATURAL JOIN v13 AS a35 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+Parse error near line 20: cannot modify v13 because it is a view
+Parse error near line 21: cannot modify v13 because it is a view
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v7 SELECT * FROM v0 AS a19 ORDER BY 0; 
+                                    error here ---^
+Parse error near line 23: cannot modify v13 because it is a view
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: circular reference: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a28.c7
+  SELECT a28.c7 FROM v13 AS a28 ORDER BY 77; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a29.c7
+  SELECT * FROM v13 AS a29 WHERE ( a29.c7 || a29.c1 || a29.c7 ) != '2-two' ORDER
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 46: no such column: a30.c7
+  SELECT a30.c7 FROM v13 AS a30 ORDER BY 2147483647; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 49: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+77|x|v1|
+77|x|v1|-77.0
+77|x|v1|0.0
+77|x|v1|77.0
+|v0|v1|
+|v0|v1|-77.0
+|v0|v1|0.0
+|v0|v1|77.0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: circular reference: v25
+ 
+INT: 0 
+Str: 
+Parse error near line 31: circular reference: v25
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such column: a28.c7
+  SELECT a28.c7 FROM v13 AS a28 ORDER BY 77; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 34: no such column: a28.c7
+  SELECT a28.c7 FROM v13 AS a28 ORDER BY 77; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such column: a29.c7
+  SELECT * FROM v13 AS a29 WHERE ( a29.c7 || a29.c1 || a29.c7 ) != '2-two' ORDER
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: no such column: a29.c7
+  SELECT * FROM v13 AS a29 WHERE ( a29.c7 || a29.c1 || a29.c7 ) != '2-two' ORDER
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 46: no such column: a30.c7
+  SELECT a30.c7 FROM v13 AS a30 ORDER BY 2147483647; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 46: no such column: a30.c7
+  SELECT a30.c7 FROM v13 AS a30 ORDER BY 2147483647; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 49: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+Str: 
+Parse error near line 49: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+77|1.1|v0|
+v0|v0|v0|
+abc|10000 500|v0|
+77|1.1|v0|-77.0
+v0|v0|v0|-77.0
+abc|10000 500|v0|-77.0
+77|1.1|v0|77.0
+v0|v0|v0|77.0
+abc|10000 500|v0|77.0
+77|1.1|v0|0.0
+v0|v0|v0|0.0
+abc|10000 500|v0|0.0
+ 
+INT: 11 
+Str: 
+77|x|v1|
+77|x|v1|-77.0
+77|x|v1|0.0
+77|x|v1|77.0
+|v0|v1|
+|v0|v1|-77.0
+|v0|v1|0.0
+|v0|v1|77.0
+ 
+INT: 7 
+Compare_result_int: 
+0
+
+
+

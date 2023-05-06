@@ -1,0 +1,284 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c1 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 18446744071562067968, 18446744073709551615, 18446744071562067968 ), ( 18446744071562067968, 18446744071562067968, 18446744071562067968 ); 
+INSERT INTO v0 ( c1, c3, c3, c1, c1 ) SELECT CASE WHEN c1 % 18446744073709551615 != 18446744071562067968 THEN c1 END, c2, c1 FROM v0 AS a4 WHERE c2 <= 18446744071562067968 ORDER BY CASE WHEN c1 != 'x' THEN 18446744071562067968 ELSE 18446744071562067968 END; 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE INDEX i6 ON v0 ( c1 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i7 ON v0 ( c2 ); 
+CREATE INDEX i8 ON v0 ( c1 ); 
+CREATE TABLE v9 ( c10, c11, c12 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+WITH v9 AS ( SELECT * FROM v9 AS a14 ORDER BY a14.c12, a14.c10 ) SELECT * FROM v0 AS a13 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT avg ( c11 ) FROM ( SELECT * FROM v0 AS a15 RIGHT JOIN v0 AS a16 ON a15.c2 ORDER BY 18446744071562067968 ) AS y ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a17.c3 IS NULL ) ) AND ( NOT ( a17.c3 IS NULL ) ) ) FROM v0 AS a17 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c1 FROM v0 AS a18 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 ORDER BY ( ( a19.c3 + - 18446744073709551615 ) % 2147483647 ) != 18446744071562067968 + 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c1 FROM v9 AS a20 RIGHT JOIN v0 AS a21 ON a20.c11 = a20.c12 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c3 FROM v0 AS a22 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a23 WHERE ( a23.c10 = 0 OR a23.c12 = 18446744071562067968 ) AND a23.c12 IN ( SELECT * FROM v9 AS a24, v9 AS a25 NATURAL JOIN v9 AS a26 ORDER BY x'616263' ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY - 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c11, count ( ( NOT ( a28.c10 IS NULL ) ) AND ( NOT ( a28.c10 IS NULL ) ) ) FROM v9 AS a28 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: UNIQUE constraint failed: v0.c3, v0.c1 (19)
+Parse error near line 3: 3 values for 5 columns
+Runtime error near line 6: error in index i5 after drop column: no such column: c2
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: no such column: c11
+  SELECT avg ( c11 ) FROM ( SELECT * FROM v0 AS a15 RIGHT JOIN v0 AS a16 ON a15.
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a18.c1 FROM v0 AS a18 ORDER BY 0; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: sub-select returns 6 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a27 ORDER BY - 10; 
+                       error here ---^
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c1 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 18446744071562067968, 18446744073709551615, 18446744071562067968 ), ( 18446744071562067968, 18446744071562067968, 18446744071562067968 ); 
+INSERT INTO v0 ( c1, c3, c3, c1, c1 ) SELECT CASE WHEN c1 % 18446744073709551615 != 18446744071562067968 THEN c1 END, c2, c1 FROM v0 AS a4 WHERE c2 <= 18446744071562067968 ORDER BY CASE WHEN c1 != 'x' THEN 18446744071562067968 ELSE 18446744071562067968 END; 
+; 
+; 
+ALTER TABLE v0 DROP c2; 
+; 
+; 
+CREATE TABLE v9 ( c10, c11, c12 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+WITH v9 AS ( SELECT * FROM v9 AS a14 ORDER BY a14.c12, a14.c10 ) SELECT * FROM v0 AS a13 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT avg ( c11 ) FROM ( SELECT * FROM v0 AS a15 RIGHT JOIN v0 AS a16 ON a15.c2 ORDER BY 18446744071562067968 ) AS y ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a17.c3 IS NULL ) ) AND ( NOT ( a17.c3 IS NULL ) ) ) FROM v0 AS a17 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c1 FROM v0 AS a18 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 ORDER BY ( ( a19.c3 + - 18446744073709551615 ) % 2147483647 ) != 18446744071562067968 + 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c1 FROM v9 AS a20 RIGHT JOIN v0 AS a21 ON a20.c11 = a20.c12 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c3 FROM v0 AS a22 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a23 WHERE ( a23.c10 = 0 OR a23.c12 = 18446744071562067968 ) AND a23.c12 IN ( SELECT * FROM v9 AS a24, v9 AS a25 NATURAL JOIN v9 AS a26 ORDER BY x'616263' ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY - 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c11, count ( ( NOT ( a28.c10 IS NULL ) ) AND ( NOT ( a28.c10 IS NULL ) ) ) FROM v9 AS a28 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: UNIQUE constraint failed: v0.c3, v0.c1 (19)
+Parse error near line 3: 3 values for 5 columns
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: no such column: a15.c2
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a18.c1 FROM v0 AS a18 ORDER BY 0; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: sub-select returns 6 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a27 ORDER BY - 10; 
+                       error here ---^
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 14: no such column: c11
+  SELECT avg ( c11 ) FROM ( SELECT * FROM v0 AS a15 RIGHT JOIN v0 AS a16 ON a15.
+               ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 14: no such column: a15.c2
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a18.c1 FROM v0 AS a18 ORDER BY 0; 
+                          error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a18.c1 FROM v0 AS a18 ORDER BY 0; 
+                          error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: sub-select returns 6 columns - expected 1
+ 
+INT: 0 
+Str: 
+Parse error near line 32: sub-select returns 6 columns - expected 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a27 ORDER BY - 10; 
+                       error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a27 ORDER BY - 10; 
+                       error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

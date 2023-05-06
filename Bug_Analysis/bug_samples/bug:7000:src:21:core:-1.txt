@@ -1,0 +1,282 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 PRIMARY KEY, CHECK( ( ( c1 + 18446744073709551615 ) % 18446744073709551615 ) != 4294967295 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i6 ON v0 ( c1 ); 
+CREATE INDEX i7 ON v0 ( c3 ); 
+CREATE INDEX i8 ON v0 ( c1 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a9 WHERE NOT NULL >= 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c11 ) AS ( WITH v0 ( c12 ) AS ( WITH v0 AS ( SELECT ( SELECT min ( c12 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615 ) FROM v0 AS a13 GROUP BY a13.c2 ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a10 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14 WHERE a14.c1 % 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 ORDER BY count ( * ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16 GROUP BY a16.c1, abs ( a16.c2 ) HAVING CASE WHEN a16.c3 != 't1b' THEN 18446744073709551488 ELSE 8 END > 18446744073709551615 >= 18446744073709551488 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c1, count ( a17.c1 ) FROM v0 AS a17 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c2 FROM v0 AS a18 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c2, max ( a19.c11 || a19.c3 ) FROM v0 AS a19 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20, v0 AS a21 NATURAL JOIN v0 AS a22 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 4: error in index i4 after drop column: no such column: c2
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: misuse of aggregate: count()
+  SELECT * FROM v0 AS a15 ORDER BY count ( * ); 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a19.c11
+  SELECT a19.c2, max ( a19.c11 || a19.c3 ) FROM v0 AS a19 ORDER BY 4294967295; 
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 PRIMARY KEY, CHECK( ( ( c1 + 18446744073709551615 ) % 18446744073709551615 ) != 4294967295 ) ) WITHOUT ROWID; 
+; 
+; 
+ALTER TABLE v0 DROP c2; 
+; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a9 WHERE NOT NULL >= 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c11 ) AS ( WITH v0 ( c12 ) AS ( WITH v0 AS ( SELECT ( SELECT min ( c12 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615 ) FROM v0 AS a13 GROUP BY a13.c2 ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a10 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14 WHERE a14.c1 % 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 ORDER BY count ( * ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16 GROUP BY a16.c1, abs ( a16.c2 ) HAVING CASE WHEN a16.c3 != 't1b' THEN 18446744073709551488 ELSE 8 END > 18446744073709551615 >= 18446744073709551488 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c1, count ( a17.c1 ) FROM v0 AS a17 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c2 FROM v0 AS a18 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c2, max ( a19.c11 || a19.c3 ) FROM v0 AS a19 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20, v0 AS a21 NATURAL JOIN v0 AS a22 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: misuse of aggregate: count()
+  SELECT * FROM v0 AS a15 ORDER BY count ( * ); 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a16.c2
+  SELECT * FROM v0 AS a16 GROUP BY a16.c1, abs ( a16.c2 ) HAVING CASE WHEN a16.c
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a18.c2
+  SELECT a18.c2 FROM v0 AS a18 ORDER BY 16; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a19.c2
+  SELECT a19.c2, max ( a19.c11 || a19.c3 ) FROM v0 AS a19 ORDER BY 4294967295; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: misuse of aggregate: count()
+  SELECT * FROM v0 AS a15 ORDER BY count ( * ); 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: misuse of aggregate: count()
+  SELECT * FROM v0 AS a15 ORDER BY count ( * ); 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 24: no such column: a16.c2
+  SELECT * FROM v0 AS a16 GROUP BY a16.c1, abs ( a16.c2 ) HAVING CASE WHEN a16.c
+                                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no such column: a18.c2
+  SELECT a18.c2 FROM v0 AS a18 ORDER BY 16; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such column: a19.c11
+  SELECT a19.c2, max ( a19.c11 || a19.c3 ) FROM v0 AS a19 ORDER BY 4294967295; 
+                       ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 33: no such column: a19.c2
+  SELECT a19.c2, max ( a19.c11 || a19.c3 ) FROM v0 AS a19 ORDER BY 4294967295; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

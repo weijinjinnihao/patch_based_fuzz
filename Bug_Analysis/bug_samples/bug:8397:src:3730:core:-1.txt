@@ -1,0 +1,280 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18 INTEGER CHECK( c9 != 18446744071562067968 ), c19 PRIMARY KEY, CHECK( ( ( c8 + 18446744071562067968 ) % 4294967295 ) != 4294967295 ) ) WITHOUT ROWID; 
+CREATE INDEX i20 ON v0 ( c19 ); 
+CREATE INDEX i21 ON v0 ( c3 ); 
+CREATE INDEX i22 ON v0 ( c18 ); 
+CREATE INDEX i23 ON v0 ( c16 ); 
+CREATE INDEX i24 ON v0 ( c18 ); 
+ALTER TABLE v0 DROP c18; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c26 ) AS ( WITH v0 AS ( SELECT ( SELECT min ( a25.c4 ) OVER ( ORDER BY 0 ) ORDER BY 18446744071562067968 ) FROM v0 AS a27 GROUP BY a25.c14 ORDER BY 31 ) SELECT 8 ORDER BY 4294967295 ) SELECT * FROM v0 AS a25 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 WHERE count ( * ) >= 18446744071562067968 = 'xxx' ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29, v0 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a32.c19 || a32.c18 ) FROM v0 AS a32 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33, v0 AS a34 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a35.c12 IS NULL ) ) AND ( NOT ( a35.c4 IS NULL ) ) ) FROM v0 AS a35 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 WHERE ( ( SELECT * FROM v0 AS a37 WHERE a36.c6 = a37.c4 || a36.c19 ORDER BY 8 ) % 4294967295 ) > 31 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c15, count ( a38.c14 ) FROM v0 AS a38, v0 AS a39 WHERE a39.c6 = a39.c2 GROUP BY a39.c4 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i22 after drop column: no such column: c18
+BEGIN VERI 0
+Parse error near line 9: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: misuse of aggregate function count()
+  SELECT * FROM v0 AS a28 WHERE count ( * ) >= 18446744071562067968 = 'xxx' ORDE
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 38
+  SELECT * FROM v0 AS a29, v0 AS a30 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: sub-select returns 19 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18 INTEGER CHECK( c9 != 18446744071562067968 ), c19 PRIMARY KEY, CHECK( ( ( c8 + 18446744071562067968 ) % 4294967295 ) != 4294967295 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c18; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c26 ) AS ( WITH v0 AS ( SELECT ( SELECT min ( a25.c4 ) OVER ( ORDER BY 0 ) ORDER BY 18446744071562067968 ) FROM v0 AS a27 GROUP BY a25.c14 ORDER BY 31 ) SELECT 8 ORDER BY 4294967295 ) SELECT * FROM v0 AS a25 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 WHERE count ( * ) >= 18446744071562067968 = 'xxx' ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29, v0 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a32.c19 || a32.c18 ) FROM v0 AS a32 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33, v0 AS a34 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a35.c12 IS NULL ) ) AND ( NOT ( a35.c4 IS NULL ) ) ) FROM v0 AS a35 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 WHERE ( ( SELECT * FROM v0 AS a37 WHERE a36.c6 = a37.c4 || a36.c19 ORDER BY 8 ) % 4294967295 ) > 31 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c15, count ( a38.c14 ) FROM v0 AS a38, v0 AS a39 WHERE a39.c6 = a39.c2 GROUP BY a39.c4 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 9: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: misuse of aggregate function count()
+  SELECT * FROM v0 AS a28 WHERE count ( * ) >= 18446744071562067968 = 'xxx' ORDE
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 36
+  SELECT * FROM v0 AS a29, v0 AS a30 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a32.c18
+  SELECT max ( a32.c19 || a32.c18 ) FROM v0 AS a32 ORDER BY 18446744071562067968
+                          ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: sub-select returns 18 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 9: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 9: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: misuse of aggregate function count()
+  SELECT * FROM v0 AS a28 WHERE count ( * ) >= 18446744071562067968 = 'xxx' ORDE
+                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: misuse of aggregate function count()
+  SELECT * FROM v0 AS a28 WHERE count ( * ) >= 18446744071562067968 = 'xxx' ORDE
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 38
+  SELECT * FROM v0 AS a29, v0 AS a30 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 36
+  SELECT * FROM v0 AS a29, v0 AS a30 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+Parse error near line 24: no such column: a32.c18
+  SELECT max ( a32.c19 || a32.c18 ) FROM v0 AS a32 ORDER BY 18446744071562067968
+                          ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: sub-select returns 19 columns - expected 1
+ 
+INT: 0 
+Str: 
+Parse error near line 33: sub-select returns 18 columns - expected 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

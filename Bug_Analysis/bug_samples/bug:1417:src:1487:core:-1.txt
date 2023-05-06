@@ -1,0 +1,336 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE TABLE v4 ( c5, c6, c7, CHECK( c5 > 4294967295 ) ); 
+CREATE INDEX i8 ON v0 ( c2 ); 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c11 > 4294967295 ) ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a13 JOIN v9 AS a14 USING ( a13.c6, a13.c6, a13.c6, a13.c7, a14.c11, a14.c11, a14.c11, a13.c6 ) WHERE a13.c7 = a13.c5 >= 4294967295 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+CREATE INDEX i15 ON v4 ( c6 ); 
+INSERT INTO v0 VALUES ( 4294967295, 4294967295, 4294967295 ); 
+CREATE INDEX i16 ON v9 ( c12 ); 
+INSERT INTO v0 VALUES ( 4294967295, 4294967295, 18446744073709551488 ); 
+ALTER TABLE v4 DROP COLUMN c6; 
+CREATE INDEX i17 ON v4 ( c7 ); 
+CREATE INDEX i18 ON v9 ( c10 ); 
+CREATE TABLE v19 ( c20, c21, c22 PRIMARY KEY, c23 BLOB, CHECK( coalesce ( c20, c23 ) ) ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT 4294967295 - ( c7 + c12 ) WHERE CASE WHEN c1 != 'v0' THEN 4294967295 ELSE 4294967295 END > 18446744073709551615 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c23, max ( a24.c22 || a24.c21 ) FROM v19 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c21 FROM v19 AS a25 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c6 FROM v4 AS a26 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c21, a28.c5 FROM v19 AS a27, v4 AS a28 ON a28.c6 = a27.c21 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v4 ( c30 ) AS ( SELECT v4.c5 + ( SELECT max ( a33.c6 ) FROM v9 AS a34 ORDER BY 4294967295 ), v4.c5 + ( SELECT c30 FROM v4 AS a33 ORDER BY 100 ), a31.c1 + ( SELECT max ( a31.c1 ) FROM v0 AS a32 ORDER BY 4294967295 ) FROM v0 AS a31 ORDER BY 4294967295 ) SELECT ( SELECT min ( v4.c6 ) OVER ( ORDER BY 0 ) ORDER BY 4294967295 ) FROM v0 AS a29 GROUP BY a29.c1 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a35.c3 || a35.c2 ) FROM v0 AS a35 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a36 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v4 AS ( SELECT hex ( ) y ORDER BY 4294967295 ) SELECT a37.c6, a38.c5 FROM v4 AS a37 RIGHT JOIN v4 AS a38 ON a37.c7 = a37.c6 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c11, sum ( a39.c10 ) FROM v9 AS a39 GROUP BY a39.c12 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 6: near ".": syntax error
+  SELECT * FROM v4 AS a13 JOIN v9 AS a14 USING ( a13.c6, a13.c6, a13.c6, a13.c7,
+                                      error here ---^
+END VERI 0
+Runtime error near line 11: UNIQUE constraint failed: v0.c2 (19)
+Runtime error near line 12: error in index i15 after drop column: no such column: c6
+BEGIN VERI 0
+Parse error near line 17: no such column: c7
+  SELECT 4294967295 - ( c7 + c12 ) WHERE CASE WHEN c1 != 'v0' THEN 4294967295 EL
+                        ^--- error here
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  19 AS a27, v4 AS a28 ON a28.c6 = a27.c21 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: v4.c6
+  S a31 ORDER BY 4294967295 ) SELECT ( SELECT min ( v4.c6 ) OVER ( ORDER BY 0 ) 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+42949672954294967295
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: wrong number of arguments to function hex()
+  WITH v4 AS ( SELECT hex ( ) y ORDER BY 4294967295 ) SELECT a37.c6, a38.c5 FROM
+                      ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE TABLE v4 ( c5, c6, c7, CHECK( c5 > 4294967295 ) ); 
+; 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c11 > 4294967295 ) ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a13 JOIN v9 AS a14 USING ( a13.c6, a13.c6, a13.c6, a13.c7, a14.c11, a14.c11, a14.c11, a13.c6 ) WHERE a13.c7 = a13.c5 >= 4294967295 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+; 
+INSERT INTO v0 VALUES ( 4294967295, 4294967295, 4294967295 ); 
+; 
+INSERT INTO v0 VALUES ( 4294967295, 4294967295, 18446744073709551488 ); 
+ALTER TABLE v4 DROP COLUMN c6; 
+; 
+; 
+CREATE TABLE v19 ( c20, c21, c22 PRIMARY KEY, c23 BLOB, CHECK( coalesce ( c20, c23 ) ) ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT 4294967295 - ( c7 + c12 ) WHERE CASE WHEN c1 != 'v0' THEN 4294967295 ELSE 4294967295 END > 18446744073709551615 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c23, max ( a24.c22 || a24.c21 ) FROM v19 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c21 FROM v19 AS a25 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c6 FROM v4 AS a26 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c21, a28.c5 FROM v19 AS a27, v4 AS a28 ON a28.c6 = a27.c21 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v4 ( c30 ) AS ( SELECT v4.c5 + ( SELECT max ( a33.c6 ) FROM v9 AS a34 ORDER BY 4294967295 ), v4.c5 + ( SELECT c30 FROM v4 AS a33 ORDER BY 100 ), a31.c1 + ( SELECT max ( a31.c1 ) FROM v0 AS a32 ORDER BY 4294967295 ) FROM v0 AS a31 ORDER BY 4294967295 ) SELECT ( SELECT min ( v4.c6 ) OVER ( ORDER BY 0 ) ORDER BY 4294967295 ) FROM v0 AS a29 GROUP BY a29.c1 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a35.c3 || a35.c2 ) FROM v0 AS a35 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a36 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v4 AS ( SELECT hex ( ) y ORDER BY 4294967295 ) SELECT a37.c6, a38.c5 FROM v4 AS a37 RIGHT JOIN v4 AS a38 ON a37.c7 = a37.c6 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c11, sum ( a39.c10 ) FROM v9 AS a39 GROUP BY a39.c12 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 6: near ".": syntax error
+  SELECT * FROM v4 AS a13 JOIN v9 AS a14 USING ( a13.c6, a13.c6, a13.c6, a13.c7,
+                                      error here ---^
+END VERI 0
+Runtime error near line 11: UNIQUE constraint failed: v0.c2 (19)
+BEGIN VERI 0
+Parse error near line 17: no such column: c7
+  SELECT 4294967295 - ( c7 + c12 ) WHERE CASE WHEN c1 != 'v0' THEN 4294967295 EL
+                        ^--- error here
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: a26.c6
+  SELECT a26.c6 FROM v4 AS a26 ORDER BY 127; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a28.c6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: v4.c6
+  S a31 ORDER BY 4294967295 ) SELECT ( SELECT min ( v4.c6 ) OVER ( ORDER BY 0 ) 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+42949672954294967295
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: wrong number of arguments to function hex()
+  WITH v4 AS ( SELECT hex ( ) y ORDER BY 4294967295 ) SELECT a37.c6, a38.c5 FROM
+                      ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 6: near ".": syntax error
+  SELECT * FROM v4 AS a13 JOIN v9 AS a14 USING ( a13.c6, a13.c6, a13.c6, a13.c7,
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 6: near ".": syntax error
+  SELECT * FROM v4 AS a13 JOIN v9 AS a14 USING ( a13.c6, a13.c6, a13.c6, a13.c7,
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no such column: c7
+  SELECT 4294967295 - ( c7 + c12 ) WHERE CASE WHEN c1 != 'v0' THEN 4294967295 EL
+                        ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 17: no such column: c7
+  SELECT 4294967295 - ( c7 + c12 ) WHERE CASE WHEN c1 != 'v0' THEN 4294967295 EL
+                        ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such column: a26.c6
+  SELECT a26.c6 FROM v4 AS a26 ORDER BY 127; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  19 AS a27, v4 AS a28 ON a28.c6 = a27.c21 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: no such column: a28.c6
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such column: v4.c6
+  S a31 ORDER BY 4294967295 ) SELECT ( SELECT min ( v4.c6 ) OVER ( ORDER BY 0 ) 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: no such column: v4.c6
+  S a31 ORDER BY 4294967295 ) SELECT ( SELECT min ( v4.c6 ) OVER ( ORDER BY 0 ) 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+42949672954294967295
+ 
+INT: 0 
+Str: 
+42949672954294967295
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: wrong number of arguments to function hex()
+  WITH v4 AS ( SELECT hex ( ) y ORDER BY 4294967295 ) SELECT a37.c6, a38.c5 FROM
+                      ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 41: wrong number of arguments to function hex()
+  WITH v4 AS ( SELECT hex ( ) y ORDER BY 4294967295 ) SELECT a37.c6, a38.c5 FROM
+                      ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,304 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6 INTEGER, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38 ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 18446744073709551615, 10, 18446744071562067968 ), ( 10, 10, 10, 127 ); 
+CREATE TABLE v39 ( c40, c41, c42, c43, CHECK( c43 > c40 = c40 >= 127 ) ); 
+INSERT INTO v0 VALUES ( 10, 10, 10, 18446744073709551615 ), ( 127, 0, 10, 18446744073709551615 ); 
+CREATE INDEX i44 ON v39 ( c40 ); 
+INSERT INTO v0 VALUES ( 9223372036854775807, 18446744073709551615, 127, 127 ); 
+CREATE INDEX i45 ON v39 ( c43 ); 
+CREATE INDEX i46 ON v0 ( c38 ); 
+CREATE INDEX i47 ON v39 ( c41 ); 
+INSERT INTO v39 VALUES ( 10, 100, 0, 255 ); 
+ALTER TABLE v39 DROP c41; 
+CREATE INDEX i48 ON v0 ( c35 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49 GROUP BY y ( a49.c7 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v39 AS a50, v0 AS a51 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a52 GROUP BY a52.c24 HAVING count ( * ) >= 10 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c43, count ( ( NOT ( a53.c43 IS NULL ) ) AND ( NOT ( a53.c41 IS NULL ) ) ) FROM v39 AS a53 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v39 AS a54 WHERE a54.c42 IS 0 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a55 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v56 AS ( SELECT * FROM v56 AS a58 ORDER BY c11, c42 ) SELECT * FROM v56 AS a57 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a59.c41, max ( a59.c40 || a59.c40 ) FROM v39 AS a59 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v39 AS a60, v39 AS a61 WHERE a60.c42 > a60.c40 AND a61.c41 = a61.c42 ORDER BY a60.c41 COLLATE binary; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: table v0 has 38 columns but 4 values were supplied
+Parse error near line 4: table v0 has 38 columns but 4 values were supplied
+Parse error near line 6: table v0 has 38 columns but 4 values were supplied
+Runtime error near line 10: CHECK constraint failed: c43 > c40 = c40 >= 127 (19)
+Runtime error near line 11: error in index i47 after drop column: no such column: c41
+BEGIN VERI 0
+Parse error near line 14: no such function: y
+  SELECT * FROM v0 AS a49 GROUP BY y ( a49.c7 ) ORDER BY 10; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 42
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 38
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: circular reference: v56
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6 INTEGER, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38 ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 18446744073709551615, 10, 18446744071562067968 ), ( 10, 10, 10, 127 ); 
+CREATE TABLE v39 ( c40, c41, c42, c43, CHECK( c43 > c40 = c40 >= 127 ) ); 
+INSERT INTO v0 VALUES ( 10, 10, 10, 18446744073709551615 ), ( 127, 0, 10, 18446744073709551615 ); 
+; 
+INSERT INTO v0 VALUES ( 9223372036854775807, 18446744073709551615, 127, 127 ); 
+; 
+; 
+; 
+INSERT INTO v39 VALUES ( 10, 100, 0, 255 ); 
+ALTER TABLE v39 DROP c41; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49 GROUP BY y ( a49.c7 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v39 AS a50, v0 AS a51 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a52 GROUP BY a52.c24 HAVING count ( * ) >= 10 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c43, count ( ( NOT ( a53.c43 IS NULL ) ) AND ( NOT ( a53.c41 IS NULL ) ) ) FROM v39 AS a53 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v39 AS a54 WHERE a54.c42 IS 0 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a55 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v56 AS ( SELECT * FROM v56 AS a58 ORDER BY c11, c42 ) SELECT * FROM v56 AS a57 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a59.c41, max ( a59.c40 || a59.c40 ) FROM v39 AS a59 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v39 AS a60, v39 AS a61 WHERE a60.c42 > a60.c40 AND a61.c41 = a61.c42 ORDER BY a60.c41 COLLATE binary; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 2: table v0 has 38 columns but 4 values were supplied
+Parse error near line 4: table v0 has 38 columns but 4 values were supplied
+Parse error near line 6: table v0 has 38 columns but 4 values were supplied
+Runtime error near line 10: CHECK constraint failed: c43 > c40 = c40 >= 127 (19)
+BEGIN VERI 0
+Parse error near line 14: no such function: y
+  SELECT * FROM v0 AS a49 GROUP BY y ( a49.c7 ) ORDER BY 10; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 41
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a53.c41
+  , count ( ( NOT ( a53.c43 IS NULL ) ) AND ( NOT ( a53.c41 IS NULL ) ) ) FROM v
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 38
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: circular reference: v56
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a59.c41
+  SELECT a59.c41, max ( a59.c40 || a59.c40 ) FROM v39 AS a59 ORDER BY 127; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a61.c41
+  39 AS a60, v39 AS a61 WHERE a60.c42 > a60.c40 AND a61.c41 = a61.c42 ORDER BY a
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no such function: y
+  SELECT * FROM v0 AS a49 GROUP BY y ( a49.c7 ) ORDER BY 10; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 14: no such function: y
+  SELECT * FROM v0 AS a49 GROUP BY y ( a49.c7 ) ORDER BY 10; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 42
+ 
+INT: 0 
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 41
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no such column: a53.c41
+  , count ( ( NOT ( a53.c43 IS NULL ) ) AND ( NOT ( a53.c41 IS NULL ) ) ) FROM v
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 38
+ 
+INT: 0 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 38
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: circular reference: v56
+ 
+INT: 0 
+Str: 
+Parse error near line 32: circular reference: v56
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 35: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 38: no such column: a59.c41
+  SELECT a59.c41, max ( a59.c40 || a59.c40 ) FROM v39 AS a59 ORDER BY 127; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 41: no such column: a61.c41
+  39 AS a60, v39 AS a61 WHERE a60.c42 > a60.c40 AND a61.c41 = a61.c42 ORDER BY a
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

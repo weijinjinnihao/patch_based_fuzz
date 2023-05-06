@@ -1,0 +1,308 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4 UNIQUE, c5 UNIQUE ON CONFLICT IGNORE, c6 UNIQUE ON CONFLICT FAIL, c7 UNIQUE ON CONFLICT REPLACE DEFAULT 0, c8, c9 INTEGER UNIQUE ON CONFLICT FAIL, c10, c11, c12, c13, c14, c15, c16, c17, c18 TEXT UNIQUE ON CONFLICT FAIL DEFAULT 0, c19, c20, c21, c22, c23 REFERENCES t1, c24 DEFAULT 'x' DEFAULT 0, PRIMARY KEY ( c12, c23 ) ) WITHOUT ROWID; 
+CREATE TABLE v25 ( c26 UNIQUE, c27, c28 UNIQUE ON CONFLICT IGNORE, c29 UNIQUE ON CONFLICT FAIL, c30 UNIQUE ON CONFLICT REPLACE DEFAULT 2147483647, c31, c32 REFERENCES t1 UNIQUE ON CONFLICT IGNORE, c33, c34, c35, c36, c37, c38 TEXT DEFAULT x'ABCD', c39, c40, c41, c42 UNIQUE ON CONFLICT IGNORE, c43 UNIQUE ON CONFLICT FAIL, c44 UNIQUE ON CONFLICT REPLACE DEFAULT 0, c45, c46 UNIQUE ON CONFLICT REPLACE DEFAULT 4294967295, c47, c48, c49, c50, c51 UNIQUE ON CONFLICT ABORT, c52, c53 INTEGER UNIQUE ON CONFLICT IGNORE, c54 TEXT UNIQUE ON CONFLICT FAIL DEFAULT 0, c55, PRIMARY KEY ( c48, c46 ), UNIQUE ( c48 ) ); 
+ATTACH '3' AS sqlite_master; 
+CREATE INDEX i56 ON v25 ( c39 ); 
+CREATE TABLE v57 ( c58, c59 TEXT, c60, PRIMARY KEY ( c59 ), CHECK( c60 != c60 ), CHECK( c59 != c59 ), UNIQUE ( c58 ) ); 
+CREATE INDEX i61 ON v0 ( c7 ); 
+CREATE TABLE v62 ( c63, c64 CHECK( 4294967295 ), c65, c66, CHECK( c66 > 0 ) ); 
+ALTER TABLE v57 DROP c59; 
+CREATE INDEX i67 ON v0 ( c19 ); 
+CREATE INDEX i68 ON v62 ( c65 ); 
+ALTER TABLE v62 DROP c65; 
+CREATE TABLE v69 ( c70, c71, c72 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v73 ( c77 ) AS ( SELECT max ( c77 || c77 ) ORDER BY 0 ) SELECT c77, max ( c77 || c77 ) FROM v73 AS a74, v73 AS a75 NATURAL JOIN v73 AS a76 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v69 AS a78 WHERE ( hex ( 0 ) ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a79 WHERE ( a79.c48 || a79.c54 || a79.c37 ) != 'v0' ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a80.c65 IS NULL ) ) AND ( NOT ( a81.c60 IS NULL ) ) ), a81.c59 + 0, count ( ( NOT ( a80.c66 IS NULL ) ) AND ( NOT ( a81.c58 IS NULL ) ) ) FROM v62 AS a80 LEFT JOIN v57 AS a81 ON a80.c65 = a80.c64 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a82.c21 ) FROM v0 AS a82 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v62 AS a83 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v62 AS a84 NATURAL JOIN v57 AS a85 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v69 AS a86 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a87.c71 IS NULL ) ) AND ( NOT ( a87.c72 IS NULL ) ) ) FROM v69 AS a87 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop PRIMARY KEY column: "c59"
+Runtime error near line 11: error in index i68 after drop column: no such column: c65
+BEGIN VERI 0
+Parse error near line 14: no such column: c77
+  WITH RECURSIVE v73 ( c77 ) AS ( SELECT max ( c77 || c77 ) ORDER BY 0 ) SELECT 
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0||0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a82.c21 ) FROM v0 AS a82 ORDER BY 2147483647; 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 7
+   FROM v62 AS a84 NATURAL JOIN v57 AS a85 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v69 AS a86 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no tables specified
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4 UNIQUE, c5 UNIQUE ON CONFLICT IGNORE, c6 UNIQUE ON CONFLICT FAIL, c7 UNIQUE ON CONFLICT REPLACE DEFAULT 0, c8, c9 INTEGER UNIQUE ON CONFLICT FAIL, c10, c11, c12, c13, c14, c15, c16, c17, c18 TEXT UNIQUE ON CONFLICT FAIL DEFAULT 0, c19, c20, c21, c22, c23 REFERENCES t1, c24 DEFAULT 'x' DEFAULT 0, PRIMARY KEY ( c12, c23 ) ) WITHOUT ROWID; 
+CREATE TABLE v25 ( c26 UNIQUE, c27, c28 UNIQUE ON CONFLICT IGNORE, c29 UNIQUE ON CONFLICT FAIL, c30 UNIQUE ON CONFLICT REPLACE DEFAULT 2147483647, c31, c32 REFERENCES t1 UNIQUE ON CONFLICT IGNORE, c33, c34, c35, c36, c37, c38 TEXT DEFAULT x'ABCD', c39, c40, c41, c42 UNIQUE ON CONFLICT IGNORE, c43 UNIQUE ON CONFLICT FAIL, c44 UNIQUE ON CONFLICT REPLACE DEFAULT 0, c45, c46 UNIQUE ON CONFLICT REPLACE DEFAULT 4294967295, c47, c48, c49, c50, c51 UNIQUE ON CONFLICT ABORT, c52, c53 INTEGER UNIQUE ON CONFLICT IGNORE, c54 TEXT UNIQUE ON CONFLICT FAIL DEFAULT 0, c55, PRIMARY KEY ( c48, c46 ), UNIQUE ( c48 ) ); 
+ATTACH '3' AS sqlite_master; 
+; 
+CREATE TABLE v57 ( c58, c59 TEXT, c60, PRIMARY KEY ( c59 ), CHECK( c60 != c60 ), CHECK( c59 != c59 ), UNIQUE ( c58 ) ); 
+; 
+CREATE TABLE v62 ( c63, c64 CHECK( 4294967295 ), c65, c66, CHECK( c66 > 0 ) ); 
+ALTER TABLE v57 DROP c59; 
+; 
+; 
+ALTER TABLE v62 DROP c65; 
+CREATE TABLE v69 ( c70, c71, c72 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v73 ( c77 ) AS ( SELECT max ( c77 || c77 ) ORDER BY 0 ) SELECT c77, max ( c77 || c77 ) FROM v73 AS a74, v73 AS a75 NATURAL JOIN v73 AS a76 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v69 AS a78 WHERE ( hex ( 0 ) ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a79 WHERE ( a79.c48 || a79.c54 || a79.c37 ) != 'v0' ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a80.c65 IS NULL ) ) AND ( NOT ( a81.c60 IS NULL ) ) ), a81.c59 + 0, count ( ( NOT ( a80.c66 IS NULL ) ) AND ( NOT ( a81.c58 IS NULL ) ) ) FROM v62 AS a80 LEFT JOIN v57 AS a81 ON a80.c65 = a80.c64 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a82.c21 ) FROM v0 AS a82 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v62 AS a83 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v62 AS a84 NATURAL JOIN v57 AS a85 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v69 AS a86 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a87.c71 IS NULL ) ) AND ( NOT ( a87.c72 IS NULL ) ) ) FROM v69 AS a87 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop PRIMARY KEY column: "c59"
+BEGIN VERI 0
+Parse error near line 14: no such column: c77
+  WITH RECURSIVE v73 ( c77 ) AS ( SELECT max ( c77 || c77 ) ORDER BY 0 ) SELECT 
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a80.c65
+  SELECT count ( ( NOT ( a80.c65 IS NULL ) ) AND ( NOT ( a81.c60 IS NULL ) ) ), 
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a82.c21 ) FROM v0 AS a82 ORDER BY 2147483647; 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+   FROM v62 AS a84 NATURAL JOIN v57 AS a85 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v69 AS a86 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no tables specified
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no such column: c77
+  WITH RECURSIVE v73 ( c77 ) AS ( SELECT max ( c77 || c77 ) ORDER BY 0 ) SELECT 
+                                 error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 14: no such column: c77
+  WITH RECURSIVE v73 ( c77 ) AS ( SELECT max ( c77 || c77 ) ORDER BY 0 ) SELECT 
+                                 error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+0||0
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no such column: a80.c65
+  SELECT count ( ( NOT ( a80.c65 IS NULL ) ) AND ( NOT ( a81.c60 IS NULL ) ) ), 
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a82.c21 ) FROM v0 AS a82 ORDER BY 2147483647; 
+                                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a82.c21 ) FROM v0 AS a82 ORDER BY 2147483647; 
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 7
+   FROM v62 AS a84 NATURAL JOIN v57 AS a85 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+   FROM v62 AS a84 NATURAL JOIN v57 AS a85 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v69 AS a86 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v69 AS a86 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 38: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

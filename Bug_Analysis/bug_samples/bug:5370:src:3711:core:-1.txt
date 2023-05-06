@@ -1,0 +1,288 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE TABLE v5 ( c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32 CHECK( c11 IS NOT NULL >= 8 ), CHECK( ( ( c24 + 8 ) % 18446744073709551615 ) != 8 ) ); 
+CREATE TABLE v33 ( c34 INTEGER PRIMARY KEY, c35, c36 UNIQUE ); 
+CREATE INDEX i37 ON v33 ( c34 ); 
+CREATE TABLE v38 ( c39, c40 INTEGER PRIMARY KEY, c41 ); 
+ALTER TABLE v38 ADD COLUMN c42 TEXT DEFAULT 'four'; 
+CREATE INDEX i43 ON v33 ( c35 ); 
+CREATE INDEX i44 ON v38 ( c40 ); 
+ALTER TABLE v33 DROP COLUMN c35; 
+CREATE INDEX i45 ON v5 ( c22 ); 
+CREATE VIRTUAL TABLE v46 USING fts5 ( c47, c48 ); 
+ALTER TABLE v5 DROP COLUMN c29; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v46 AS a49 WHERE NOT NULL >= 8 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a50 WHERE a50.c35 = CASE WHEN a50.c36 != 'mad' THEN 18446744073709551615 ELSE 8 END > 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a51.c40, count ( ( NOT ( a51.c41 IS NULL ) ) AND ( NOT ( a51.c39 IS NULL ) ) ) FROM v38 AS a51 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a52.c1, count ( a52.c1 ) FROM v0 AS a52 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c34 FROM v33 AS a53 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v46 ( c55 ) AS ( WITH v56 ( c57 ) AS ( WITH v58 AS ( WITH v59 AS ( SELECT 18446744073709551488 y ORDER BY 8 ) SELECT avg ( c57 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551615 ) SELECT 10 ORDER BY 8 ) SELECT 18446744073709551488 ORDER BY 18446744073709551615 ) SELECT * FROM v46 AS a54 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 ( c61 ) AS ( WITH v5 ( c62 ) AS ( WITH v5 ( c64, c65, c66, c67, c68, c69 ) AS ( SELECT 18446744073709551488 y ORDER BY ( ( v5.c24 + 18446744073709551488 ) % 4294967295 ) < 18446744073709551615 ) SELECT 127 ORDER BY 8 ) SELECT 8 ORDER BY 255 ) SELECT * FROM v38 AS a60 WHERE ( c61 = 8 OR v5.c29 = 8 ) AND c61 IN ( SELECT * FROM v0 AS a63 WHERE ( CASE WHEN v5.c13 != 'x' THEN 0 ELSE 18446744073709551488 END ) ORDER BY 8 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a70.c47 FROM v46 AS a70 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a71 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a72, v38 AS a73 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: error in index i43 after drop column: no such column: c35
+Runtime error near line 12: no such module: fts5
+BEGIN VERI 0
+Parse error near line 15: no such table: v46
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: c61
+  8 ORDER BY 255 ) SELECT * FROM v38 AS a60 WHERE ( c61 = 8 OR v5.c29 = 8 ) AND 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v46
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE TABLE v5 ( c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32 CHECK( c11 IS NOT NULL >= 8 ), CHECK( ( ( c24 + 8 ) % 18446744073709551615 ) != 8 ) ); 
+CREATE TABLE v33 ( c34 INTEGER PRIMARY KEY, c35, c36 UNIQUE ); 
+; 
+CREATE TABLE v38 ( c39, c40 INTEGER PRIMARY KEY, c41 ); 
+ALTER TABLE v38 ADD COLUMN c42 TEXT DEFAULT 'four'; 
+; 
+; 
+ALTER TABLE v33 DROP COLUMN c35; 
+; 
+CREATE VIRTUAL TABLE v46 USING fts5 ( c47, c48 ); 
+ALTER TABLE v5 DROP COLUMN c29; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v46 AS a49 WHERE NOT NULL >= 8 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a50 WHERE a50.c35 = CASE WHEN a50.c36 != 'mad' THEN 18446744073709551615 ELSE 8 END > 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a51.c40, count ( ( NOT ( a51.c41 IS NULL ) ) AND ( NOT ( a51.c39 IS NULL ) ) ) FROM v38 AS a51 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a52.c1, count ( a52.c1 ) FROM v0 AS a52 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c34 FROM v33 AS a53 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v46 ( c55 ) AS ( WITH v56 ( c57 ) AS ( WITH v58 AS ( WITH v59 AS ( SELECT 18446744073709551488 y ORDER BY 8 ) SELECT avg ( c57 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551615 ) SELECT 10 ORDER BY 8 ) SELECT 18446744073709551488 ORDER BY 18446744073709551615 ) SELECT * FROM v46 AS a54 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 ( c61 ) AS ( WITH v5 ( c62 ) AS ( WITH v5 ( c64, c65, c66, c67, c68, c69 ) AS ( SELECT 18446744073709551488 y ORDER BY ( ( v5.c24 + 18446744073709551488 ) % 4294967295 ) < 18446744073709551615 ) SELECT 127 ORDER BY 8 ) SELECT 8 ORDER BY 255 ) SELECT * FROM v38 AS a60 WHERE ( c61 = 8 OR v5.c29 = 8 ) AND c61 IN ( SELECT * FROM v0 AS a63 WHERE ( CASE WHEN v5.c13 != 'x' THEN 0 ELSE 18446744073709551488 END ) ORDER BY 8 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a70.c47 FROM v46 AS a70 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a71 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a72, v38 AS a73 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 12: no such module: fts5
+BEGIN VERI 0
+Parse error near line 15: no such table: v46
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: a50.c35
+  SELECT * FROM v33 AS a50 WHERE a50.c35 = CASE WHEN a50.c36 != 'mad' THEN 18446
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: c61
+  8 ORDER BY 255 ) SELECT * FROM v38 AS a60 WHERE ( c61 = 8 OR v5.c29 = 8 ) AND 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v46
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such table: v46
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such table: v46
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 18: no such column: a50.c35
+  SELECT * FROM v33 AS a50 WHERE a50.c35 = CASE WHEN a50.c36 != 'mad' THEN 18446
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such column: c61
+  8 ORDER BY 255 ) SELECT * FROM v38 AS a60 WHERE ( c61 = 8 OR v5.c29 = 8 ) AND 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: no such column: c61
+  8 ORDER BY 255 ) SELECT * FROM v38 AS a60 WHERE ( c61 = 8 OR v5.c29 = 8 ) AND 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v46
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v46
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

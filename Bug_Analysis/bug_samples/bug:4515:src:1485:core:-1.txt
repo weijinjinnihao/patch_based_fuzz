@@ -1,0 +1,300 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE TABLE v5 ( c6, c7, c8, CHECK( c6 > 100 ) ); 
+CREATE INDEX i9 ON v0 ( c1 ); 
+CREATE VIEW v10 AS SELECT c8 = + c2, c2 FROM v5 AS a11 LEFT JOIN v0 AS a12 ON c3 = c3 ORDER BY 4294967295; 
+CREATE TABLE v13 ( c14, c15, c16 CHECK( c15 > 100 ) ); 
+CREATE INDEX i17 ON v13 ( c16 ); 
+INSERT INTO v0 VALUES ( 100, 4294967295, 127 ); 
+INSERT INTO v0 VALUES ( 100, 4294967295, 100 ); 
+INSERT INTO v13 VALUES ( 0, 100, 4294967295 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i18 ON v13 ( c15 ); 
+CREATE INDEX i19 ON v13 ( c16 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 NATURAL JOIN v0 AS a21 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v10 AS a23 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a24 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 WHERE a25.c1 = a25.c2 >= 203 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a26 NATURAL JOIN v5 AS a27 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 CROSS JOIN v13 AS a29 ON ( a29.c16 = a29.c15 ) WHERE a28.c1 IN ( SELECT a29.c15 FROM v10 AS a30 WHERE a28.c3 IN ( SELECT a28.c2 FROM ( SELECT a29.c16 FROM v5 AS a31 ORDER BY 4294967295 ) AS y WHERE a30.c2 = 18446744073709551488 ORDER BY ( 18446744073709518848, ( * ) ) ) ORDER BY 18446744073709551488 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a32 NATURAL JOIN v5 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c15, a34.c15, a34.c15 COLLATE nocase FROM v13 AS a34 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a35 NATURAL JOIN v0 AS a36 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: UNIQUE constraint failed: v0.c2 (19)
+Runtime error near line 10: CHECK constraint failed: c15 > 100 (19)
+Runtime error near line 11: error in index i4 after drop column: no such column: c1
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: near "*": syntax error
+  44073709551488 ORDER BY ( 18446744073709518848, ( * ) ) ) ORDER BY 18446744073
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+  , a34.c15 COLLATE nocase FROM v13 AS a34 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+; 
+CREATE TABLE v5 ( c6, c7, c8, CHECK( c6 > 100 ) ); 
+; 
+CREATE VIEW v10 AS SELECT c8 = + c2, c2 FROM v5 AS a11 LEFT JOIN v0 AS a12 ON c3 = c3 ORDER BY 4294967295; 
+CREATE TABLE v13 ( c14, c15, c16 CHECK( c15 > 100 ) ); 
+; 
+INSERT INTO v0 VALUES ( 100, 4294967295, 127 ); 
+INSERT INTO v0 VALUES ( 100, 4294967295, 100 ); 
+INSERT INTO v13 VALUES ( 0, 100, 4294967295 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 NATURAL JOIN v0 AS a21 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v10 AS a23 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a24 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 WHERE a25.c1 = a25.c2 >= 203 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a26 NATURAL JOIN v5 AS a27 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 CROSS JOIN v13 AS a29 ON ( a29.c16 = a29.c15 ) WHERE a28.c1 IN ( SELECT a29.c15 FROM v10 AS a30 WHERE a28.c3 IN ( SELECT a28.c2 FROM ( SELECT a29.c16 FROM v5 AS a31 ORDER BY 4294967295 ) AS y WHERE a30.c2 = 18446744073709551488 ORDER BY ( 18446744073709518848, ( * ) ) ) ORDER BY 18446744073709551488 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a32 NATURAL JOIN v5 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c15, a34.c15, a34.c15 COLLATE nocase FROM v13 AS a34 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a35 NATURAL JOIN v0 AS a36 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: UNIQUE constraint failed: v0.c2 (19)
+Runtime error near line 10: CHECK constraint failed: c15 > 100 (19)
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a25.c1
+  SELECT * FROM v0 AS a25 WHERE a25.c1 = a25.c2 >= 203 ORDER BY 100; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: near "*": syntax error
+  44073709551488 ORDER BY ( 18446744073709518848, ( * ) ) ) ORDER BY 18446744073
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+  , a34.c15 COLLATE nocase FROM v13 AS a34 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such column: a25.c1
+  SELECT * FROM v0 AS a25 WHERE a25.c1 = a25.c2 >= 203 ORDER BY 100; 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: near "*": syntax error
+  44073709551488 ORDER BY ( 18446744073709518848, ( * ) ) ) ORDER BY 18446744073
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: near "*": syntax error
+  44073709551488 ORDER BY ( 18446744073709518848, ( * ) ) ) ORDER BY 18446744073
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+  , a34.c15 COLLATE nocase FROM v13 AS a34 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+  , a34.c15 COLLATE nocase FROM v13 AS a34 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

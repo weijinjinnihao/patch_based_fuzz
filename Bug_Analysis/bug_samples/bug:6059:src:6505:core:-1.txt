@@ -1,0 +1,274 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1 ), CHECK( c2 != c3 ), CHECK( c1 != c1 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c2 = c3 || c3 WHERE c3 = c3 || c2; END; 
+CREATE TABLE v5 ( c6, c7, c8, c9, PRIMARY KEY ( c9, c9 ) ) WITHOUT ROWID; 
+CREATE INDEX i10 ON v5 ( c8 ); 
+INSERT INTO v0 VALUES ( 4294967295, 255, 4294967295, 255 ); 
+CREATE INDEX i11 ON v0 ( c3 ); 
+CREATE TABLE v12 ( c13 INTEGER DEFAULT x'ABCD', c14, c15 ); 
+CREATE INDEX i16 ON v5 ( c7 ); 
+CREATE INDEX i17 ON v12 ( c15 ); 
+ALTER TABLE v5 DROP COLUMN c7; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 255 < a18.c13 FROM v12 AS a18 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a19 ORDER BY CASE WHEN a19.c7 != 'v0' THEN 255 ELSE 18446744073709551488 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c3 FROM v0 AS a20 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c2 FROM v0 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a22 NATURAL JOIN v0 AS a23 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY a24.c1 COLLATE NOCASE, a24.c3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a25 WHERE CASE WHEN a25.c14 != '**%s**' THEN 18446744073709551615 ELSE 4294967295 END > 18446744073709518848 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c8, ( + a28.c7 ) y, ( + a28.c8 ) y, ( + a27.c9 ) y, NOT EXISTS ( SELECT NULL FROM v12 AS a29 ORDER BY 4294967295 ), CASE a27.c8 WHEN 255 THEN 18446744073709518848 WHEN 18446744073709518848 THEN 18446744073709518848 WHEN 18446744073709518848 THEN 'x' END, 'v1' FROM v5 AS a27 LEFT JOIN v5 AS a28 ON a27.c7 = a28.c6 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: table v0 has 3 columns but 4 values were supplied
+Runtime error near line 11: error in index i16 after drop column: no such column: c7
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT 255 < a18.c13 FROM v12 AS a18 ORDER BY 0; 
+                                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1 ), CHECK( c2 != c3 ), CHECK( c1 != c1 ) ) WITHOUT ROWID; 
+; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c2 = c3 || c3 WHERE c3 = c3 || c2; END; 
+CREATE TABLE v5 ( c6, c7, c8, c9, PRIMARY KEY ( c9, c9 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v0 VALUES ( 4294967295, 255, 4294967295, 255 ); 
+; 
+CREATE TABLE v12 ( c13 INTEGER DEFAULT x'ABCD', c14, c15 ); 
+; 
+; 
+ALTER TABLE v5 DROP COLUMN c7; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 255 < a18.c13 FROM v12 AS a18 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a19 ORDER BY CASE WHEN a19.c7 != 'v0' THEN 255 ELSE 18446744073709551488 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c3 FROM v0 AS a20 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c2 FROM v0 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a22 NATURAL JOIN v0 AS a23 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY a24.c1 COLLATE NOCASE, a24.c3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a25 WHERE CASE WHEN a25.c14 != '**%s**' THEN 18446744073709551615 ELSE 4294967295 END > 18446744073709518848 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c8, ( + a28.c7 ) y, ( + a28.c8 ) y, ( + a27.c9 ) y, NOT EXISTS ( SELECT NULL FROM v12 AS a29 ORDER BY 4294967295 ), CASE a27.c8 WHEN 255 THEN 18446744073709518848 WHEN 18446744073709518848 THEN 18446744073709518848 WHEN 18446744073709518848 THEN 'x' END, 'v1' FROM v5 AS a27 LEFT JOIN v5 AS a28 ON a27.c7 = a28.c6 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: table v0 has 3 columns but 4 values were supplied
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT 255 < a18.c13 FROM v12 AS a18 ORDER BY 0; 
+                                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: a19.c7
+  SELECT * FROM v5 AS a19 ORDER BY CASE WHEN a19.c7 != 'v0' THEN 255 ELSE 184467
+                               error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a28.c7
+  SELECT a27.c8, ( + a28.c7 ) y, ( + a28.c8 ) y, ( + a27.c9 ) y, NOT EXISTS ( SE
+                     ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT 255 < a18.c13 FROM v12 AS a18 ORDER BY 0; 
+                                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT 255 < a18.c13 FROM v12 AS a18 ORDER BY 0; 
+                                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 19: no such column: a19.c7
+  SELECT * FROM v5 AS a19 ORDER BY CASE WHEN a19.c7 != 'v0' THEN 255 ELSE 184467
+                               error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 40: no such column: a28.c7
+  SELECT a27.c8, ( + a28.c7 ) y, ( + a28.c8 ) y, ( + a27.c9 ) y, NOT EXISTS ( SE
+                     ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

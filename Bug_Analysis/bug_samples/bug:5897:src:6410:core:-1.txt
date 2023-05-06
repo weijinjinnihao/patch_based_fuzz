@@ -1,0 +1,291 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 REFERENCES t1 DEFAULT NULL, c2, c3, c4 UNIQUE ON CONFLICT FAIL DEFAULT 127, c5, c6 ); 
+CREATE VIEW v7 AS SELECT * FROM v0 AS a8 WHERE c3 = c3 NOT NULL ORDER BY 127; 
+CREATE TABLE v9 ( c10 INTEGER PRIMARY KEY, c11, c12 UNIQUE ); 
+CREATE INDEX i13 ON v7 ( c2 ); 
+CREATE INDEX i14 ON v9 ( c10 ); 
+CREATE TABLE v15 ( c16, c17, c18 ); 
+ALTER TABLE v9 DROP COLUMN c10; 
+ALTER TABLE v7 DROP COLUMN c1; 
+CREATE INDEX i19 ON v0 ( c4 ); 
+CREATE INDEX i20 ON v15 ( c16 ); 
+CREATE TABLE v21 ( c22, c23, c24, c25, c26, c27, c28, c29 ); 
+CREATE VIRTUAL TABLE v30 USING fts5 ( c31, c32 ); 
+ALTER TABLE v15 DROP COLUMN c16; 
+CREATE INDEX i33 ON v21 ( c29 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a34, v15 AS a35 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c18, sum ( a36.c16 ) AS y FROM v15 AS a36 GROUP BY a36.c17 ORDER BY count ( * ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a37, v9 AS a38 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c2 FROM v7 AS a39 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 ( c41 ) AS ( SELECT * ORDER BY 2147483647 ) SELECT * FROM v0 AS a40 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a42 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c1, count ( ( NOT ( a43.c2 IS NULL ) ) AND ( NOT ( a43.c2 IS NULL ) ) ) FROM v7 AS a43 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a44.c17 IS NULL ) ) AND ( NOT ( a44.c18 IS NULL ) ) ) FROM v15 AS a44 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a45 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: views may not be indexed
+Parse error near line 7: cannot drop PRIMARY KEY column: "c10"
+Parse error near line 8: cannot drop column from view "v7"
+Runtime error near line 12: no such module: fts5
+Runtime error near line 13: error in index i20 after drop column: no such column: c16
+BEGIN VERI 0
+Parse error near line 16: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v30
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 REFERENCES t1 DEFAULT NULL, c2, c3, c4 UNIQUE ON CONFLICT FAIL DEFAULT 127, c5, c6 ); 
+CREATE VIEW v7 AS SELECT * FROM v0 AS a8 WHERE c3 = c3 NOT NULL ORDER BY 127; 
+CREATE TABLE v9 ( c10 INTEGER PRIMARY KEY, c11, c12 UNIQUE ); 
+; 
+; 
+CREATE TABLE v15 ( c16, c17, c18 ); 
+ALTER TABLE v9 DROP COLUMN c10; 
+ALTER TABLE v7 DROP COLUMN c1; 
+; 
+; 
+CREATE TABLE v21 ( c22, c23, c24, c25, c26, c27, c28, c29 ); 
+CREATE VIRTUAL TABLE v30 USING fts5 ( c31, c32 ); 
+ALTER TABLE v15 DROP COLUMN c16; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v30 AS a34, v15 AS a35 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c18, sum ( a36.c16 ) AS y FROM v15 AS a36 GROUP BY a36.c17 ORDER BY count ( * ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a37, v9 AS a38 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c2 FROM v7 AS a39 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 ( c41 ) AS ( SELECT * ORDER BY 2147483647 ) SELECT * FROM v0 AS a40 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a42 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c1, count ( ( NOT ( a43.c2 IS NULL ) ) AND ( NOT ( a43.c2 IS NULL ) ) ) FROM v7 AS a43 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a44.c17 IS NULL ) ) AND ( NOT ( a44.c18 IS NULL ) ) ) FROM v15 AS a44 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a45 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: cannot drop PRIMARY KEY column: "c10"
+Parse error near line 8: cannot drop column from view "v7"
+Runtime error near line 12: no such module: fts5
+BEGIN VERI 0
+Parse error near line 16: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v30
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a36.c16
+  SELECT a36.c18, sum ( a36.c16 ) AS y FROM v15 AS a36 GROUP BY a36.c17 ORDER BY
+                        ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such table: v30
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such table: v30
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 22: no such column: a36.c16
+  SELECT a36.c18, sum ( a36.c16 ) AS y FROM v15 AS a36 GROUP BY a36.c17 ORDER BY
+                        ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

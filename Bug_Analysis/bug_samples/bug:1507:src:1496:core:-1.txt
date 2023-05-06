@@ -1,0 +1,309 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8 PRIMARY KEY ON CONFLICT REPLACE, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20 INTEGER PRIMARY KEY, c21 ) WITHOUT ROWID; 
+CREATE INDEX i22 ON v0 ( c16 ); 
+CREATE TABLE v23 ( c24, c25, c26, CHECK( c24 > 255 ) ); 
+CREATE INDEX i27 ON v23 ( c26 ); 
+CREATE INDEX i28 ON v23 ( c25 ); 
+CREATE TABLE v29 ( c30, c31, c32 CHECK( c30 > 255 ) ); 
+INSERT INTO v23 VALUES ( 255, 255, 0 ); 
+CREATE INDEX i33 ON v23 ( c24 ); 
+INSERT INTO v23 VALUES ( 255, 255, 18446744073709551615 ); 
+CREATE INDEX i34 ON v23 ( c24 ); 
+INSERT INTO v23 VALUES ( 0, 4294967295, 18446744073709551615 ); 
+ALTER TABLE v23 DROP COLUMN c26; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 AS ( SELECT hex ( ) y ORDER BY 0 ) SELECT * FROM v35 AS a36 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a38, v29 AS a39 NATURAL JOIN v0 AS a40 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c26, max ( a41.c26 || a41.c24 ) FROM v23 AS a41 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a42 GROUP BY a42.c25, a42.c25, count ( a42.c26 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a43 GROUP BY a43.c26, abs ( a43.c26 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a44 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a45 WHERE a45.c1 IS NOT NULL >= 255 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: table "v0" has more than one primary key
+Parse error near line 2: no such table: main.v0
+Runtime error near line 7: CHECK constraint failed: c24 > 255 (19)
+Runtime error near line 9: CHECK constraint failed: c24 > 255 (19)
+Runtime error near line 11: CHECK constraint failed: c24 > 255 (19)
+Runtime error near line 12: error in index i27 after drop column: no such column: c26
+BEGIN VERI 0
+Parse error near line 14: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: wrong number of arguments to function hex()
+  WITH v35 AS ( SELECT hex ( ) y ORDER BY 0 ) SELECT * FROM v35 AS a36 ORDER BY 
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such table: v0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8 PRIMARY KEY ON CONFLICT REPLACE, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20 INTEGER PRIMARY KEY, c21 ) WITHOUT ROWID; 
+; 
+CREATE TABLE v23 ( c24, c25, c26, CHECK( c24 > 255 ) ); 
+; 
+; 
+CREATE TABLE v29 ( c30, c31, c32 CHECK( c30 > 255 ) ); 
+INSERT INTO v23 VALUES ( 255, 255, 0 ); 
+; 
+INSERT INTO v23 VALUES ( 255, 255, 18446744073709551615 ); 
+; 
+INSERT INTO v23 VALUES ( 0, 4294967295, 18446744073709551615 ); 
+ALTER TABLE v23 DROP COLUMN c26; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 AS ( SELECT hex ( ) y ORDER BY 0 ) SELECT * FROM v35 AS a36 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a38, v29 AS a39 NATURAL JOIN v0 AS a40 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c26, max ( a41.c26 || a41.c24 ) FROM v23 AS a41 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a42 GROUP BY a42.c25, a42.c25, count ( a42.c26 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a43 GROUP BY a43.c26, abs ( a43.c26 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a44 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a45 WHERE a45.c1 IS NOT NULL >= 255 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: table "v0" has more than one primary key
+Runtime error near line 7: CHECK constraint failed: c24 > 255 (19)
+Runtime error near line 9: CHECK constraint failed: c24 > 255 (19)
+Runtime error near line 11: CHECK constraint failed: c24 > 255 (19)
+BEGIN VERI 0
+Parse error near line 14: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: wrong number of arguments to function hex()
+  WITH v35 AS ( SELECT hex ( ) y ORDER BY 0 ) SELECT * FROM v35 AS a36 ORDER BY 
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a41.c26
+  SELECT a41.c26, max ( a41.c26 || a41.c24 ) FROM v23 AS a41 ORDER BY 10; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a42.c26
+  ROM v23 AS a42 GROUP BY a42.c25, a42.c25, count ( a42.c26 ) ORDER BY 184467440
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a43.c26
+  SELECT * FROM v23 AS a43 GROUP BY a43.c26, abs ( a43.c26 ) ORDER BY 1844674407
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such table: v0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 14: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: wrong number of arguments to function hex()
+  WITH v35 AS ( SELECT hex ( ) y ORDER BY 0 ) SELECT * FROM v35 AS a36 ORDER BY 
+                       ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 20: wrong number of arguments to function hex()
+  WITH v35 AS ( SELECT hex ( ) y ORDER BY 0 ) SELECT * FROM v35 AS a36 ORDER BY 
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 29: no such column: a41.c26
+  SELECT a41.c26, max ( a41.c26 || a41.c24 ) FROM v23 AS a41 ORDER BY 10; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 32: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such column: a42.c26
+  ROM v23 AS a42 GROUP BY a42.c25, a42.c25, count ( a42.c26 ) ORDER BY 184467440
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 35: no such column: a43.c26
+  SELECT * FROM v23 AS a43 GROUP BY a43.c26, abs ( a43.c26 ) ORDER BY 1844674407
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no such table: v0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

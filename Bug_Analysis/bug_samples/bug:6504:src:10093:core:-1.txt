@@ -1,0 +1,279 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 UNIQUE, c2, c3 UNIQUE ON CONFLICT IGNORE, c4 UNIQUE ON CONFLICT FAIL, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22 UNIQUE, c23, PRIMARY KEY ( c2, c9 ) ON CONFLICT REPLACE ); 
+CREATE INDEX i24 ON v0 ( c13 ); 
+BEGIN; 
+UPDATE v0 SET c12 = c4 || c23 FROM v0 AS a25, v0 AS a26 NATURAL JOIN v0 AS a27 WHERE c15 = c14 || c10; 
+END; 
+CREATE INDEX i28 ON v0 ( c12 ); 
+CREATE TABLE v29 ( c30 TEXT, c31 REAL ); 
+INSERT INTO v0 VALUES ( 4294967295, 4294967295, 4294967295, 16 ); 
+CREATE INDEX i32 ON v29 ( c30 ); 
+CREATE INDEX i33 ON v29 ( c30 ); 
+CREATE VIEW v34 AS SELECT * FROM v0 AS a35 WHERE ( c2 = 16 OR c1 = 4294967295 ) AND c11 IN ( SELECT c21 FROM ( SELECT *, 'xyz' FROM v29 AS a36 LEFT JOIN v29 AS a37 ORDER BY 4294967295 ) AS y WHERE c20 = 9223372036854775807 ORDER BY 127 ) ORDER BY 4294967295; 
+CREATE INDEX i38 ON v0 ( c9 ); 
+ALTER TABLE v29 DROP COLUMN c30; 
+INSERT OR REPLACE INTO v29 ( c31, c30, c30, c30, c30 ) VALUES ( 9223372036854775807, 1.250000, NULL, 4294967295, 9223372036854775807 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c31, count ( a39.c31 ) FROM v29 AS a39 ORDER BY 1.250000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41, v34 AS a42 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a43.c33 ) FROM v34 AS a43 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a44 ORDER BY CASE WHEN a44.c5 != 'v0' THEN 16 ELSE 4294967295 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v45 AS ( SELECT 9223372036854775807 y ORDER BY 4294967295 ) SELECT * FROM v45 AS a46 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a47 GROUP BY a47.c30, abs ( a47.c30 ) HAVING count ( * ) >= 4294967295 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a49 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: ambiguous column name: c1
+Parse error near line 8: table v0 has 23 columns but 4 values were supplied
+Runtime error near line 13: error in index i32 after drop column: no such column: c30
+BEGIN VERI 0
+9.22337203685478e+18|1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+1.25|9.22337203685478e+18
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 UNIQUE, c2, c3 UNIQUE ON CONFLICT IGNORE, c4 UNIQUE ON CONFLICT FAIL, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22 UNIQUE, c23, PRIMARY KEY ( c2, c9 ) ON CONFLICT REPLACE ); 
+; 
+BEGIN; 
+UPDATE v0 SET c12 = c4 || c23 FROM v0 AS a25, v0 AS a26 NATURAL JOIN v0 AS a27 WHERE c15 = c14 || c10; 
+END; 
+; 
+CREATE TABLE v29 ( c30 TEXT, c31 REAL ); 
+INSERT INTO v0 VALUES ( 4294967295, 4294967295, 4294967295, 16 ); 
+; 
+; 
+CREATE VIEW v34 AS SELECT * FROM v0 AS a35 WHERE ( c2 = 16 OR c1 = 4294967295 ) AND c11 IN ( SELECT c21 FROM ( SELECT *, 'xyz' FROM v29 AS a36 LEFT JOIN v29 AS a37 ORDER BY 4294967295 ) AS y WHERE c20 = 9223372036854775807 ORDER BY 127 ) ORDER BY 4294967295; 
+; 
+ALTER TABLE v29 DROP COLUMN c30; 
+INSERT OR REPLACE INTO v29 ( c31, c30, c30, c30, c30 ) VALUES ( 9223372036854775807, 1.250000, NULL, 4294967295, 9223372036854775807 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c31, count ( a39.c31 ) FROM v29 AS a39 ORDER BY 1.250000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41, v34 AS a42 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a43.c33 ) FROM v34 AS a43 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a44 ORDER BY CASE WHEN a44.c5 != 'v0' THEN 16 ELSE 4294967295 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v45 AS ( SELECT 9223372036854775807 y ORDER BY 4294967295 ) SELECT * FROM v45 AS a46 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a47 GROUP BY a47.c30, abs ( a47.c30 ) HAVING count ( * ) >= 4294967295 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a49 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: ambiguous column name: c1
+Parse error near line 8: table v0 has 23 columns but 4 values were supplied
+Parse error near line 14: table v29 has no column named c30
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a47.c30
+  SELECT * FROM v29 AS a47 GROUP BY a47.c30, abs ( a47.c30 ) HAVING count ( * ) 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+9.22337203685478e+18|1
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 37: no such column: a47.c30
+  SELECT * FROM v29 AS a47 GROUP BY a47.c30, abs ( a47.c30 ) HAVING count ( * ) 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+1.25|9.22337203685478e+18
+ 
+INT: 0 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

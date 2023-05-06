@@ -1,0 +1,358 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INT, c2 INT ); 
+CREATE INDEX i3 ON v0 ( c2 ); 
+BEGIN; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( 9223372036854775807, 9223372036854775807 ); 
+ALTER TABLE v0 ADD COLUMN c6 CHECK( x'b1' ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 9223372036854775807 ); 
+CREATE INDEX i7 ON v0 ( c6 ); 
+INSERT INTO v0 VALUES ( 9223372036854775807, 18446744073709551615 ); 
+INSERT INTO v0 VALUES ( 16, 18446744073709551615 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a8.c2, a8.c1 FROM v0 AS a8 LEFT JOIN v0 AS a9 ON a9.c6 = a8.c1 WHERE a9.c2 = + a9.c2 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a10.c1 IS NULL ) ) AND ( NOT ( a10.c6 IS NULL ) ) ) FROM v0 AS a10 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a11 ORDER BY ( ( hex ( 18446744073709551615 ) ) % 18446744073709551615 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c13, c14, c15, c16, c17, c18 ) AS ( SELECT 18446744073709551615 y ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a12 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c6, a19.c16 FROM v0 AS a19 JOIN v0 AS a20 ON a19.c1 = hex ( ) GROUP BY a19.c16 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a21.c6 || a21.c14 ) FROM v0 AS a21 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 ORDER BY - x'68617265'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c14, count ( a24.c16 ) FROM v0 AS a24 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: CHECK constraint failed
+Parse error near line 8: table v0 has 3 columns but 2 values were supplied
+Runtime error near line 9: no such column: c6
+BEGIN VERI 0
+Parse error near line 13: no such column: a9.c6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: a10.c6
+  CT count ( ( NOT ( a10.c1 IS NULL ) ) AND ( NOT ( a10.c6 IS NULL ) ) ) FROM v0
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+9223372036854775807|9223372036854775807
+9223372036854775807|1.84467440737096e+19
+16|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: table v0 has 1 values for 6 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a20.c6
+  SELECT a20.c6, a19.c16 FROM v0 AS a19 JOIN v0 AS a20 ON a19.c1 = hex ( ) GROUP
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a21.c6
+  SELECT max ( a21.c6 || a21.c14 ) FROM v0 AS a21 ORDER BY 255; 
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+9223372036854775807|9223372036854775807
+9223372036854775807|1.84467440737096e+19
+16|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+9223372036854775807|9223372036854775807
+9223372036854775807|1.84467440737096e+19
+16|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a24.c14
+  SELECT a24.c14, count ( a24.c16 ) FROM v0 AS a24 ORDER BY 4294967295; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+9223372036854775807|9223372036854775807
+9223372036854775807|1.84467440737096e+19
+16|1.84467440737096e+19
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INT, c2 INT ); 
+; 
+BEGIN; 
+; 
+; 
+INSERT INTO v0 VALUES ( 9223372036854775807, 9223372036854775807 ); 
+ALTER TABLE v0 ADD COLUMN c6 CHECK( x'b1' ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 9223372036854775807 ); 
+; 
+INSERT INTO v0 VALUES ( 9223372036854775807, 18446744073709551615 ); 
+INSERT INTO v0 VALUES ( 16, 18446744073709551615 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a8.c2, a8.c1 FROM v0 AS a8 LEFT JOIN v0 AS a9 ON a9.c6 = a8.c1 WHERE a9.c2 = + a9.c2 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a10.c1 IS NULL ) ) AND ( NOT ( a10.c6 IS NULL ) ) ) FROM v0 AS a10 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a11 ORDER BY ( ( hex ( 18446744073709551615 ) ) % 18446744073709551615 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c13, c14, c15, c16, c17, c18 ) AS ( SELECT 18446744073709551615 y ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a12 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c6, a19.c16 FROM v0 AS a19 JOIN v0 AS a20 ON a19.c1 = hex ( ) GROUP BY a19.c16 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a21.c6 || a21.c14 ) FROM v0 AS a21 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 ORDER BY - x'68617265'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c14, count ( a24.c16 ) FROM v0 AS a24 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: CHECK constraint failed
+Parse error near line 8: table v0 has 3 columns but 2 values were supplied
+Parse error near line 10: table v0 has 3 columns but 2 values were supplied
+Parse error near line 11: table v0 has 3 columns but 2 values were supplied
+BEGIN VERI 0
+Runtime error near line 13: no such column: a9.c6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: a10.c6
+  CT count ( ( NOT ( a10.c1 IS NULL ) ) AND ( NOT ( a10.c6 IS NULL ) ) ) FROM v0
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+9223372036854775807|9223372036854775807
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: table v0 has 1 values for 6 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a20.c6
+  SELECT a20.c6, a19.c16 FROM v0 AS a19 JOIN v0 AS a20 ON a19.c1 = hex ( ) GROUP
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a21.c6
+  SELECT max ( a21.c6 || a21.c14 ) FROM v0 AS a21 ORDER BY 255; 
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+9223372036854775807|9223372036854775807
+END VERI 0
+BEGIN VERI 0
+9223372036854775807|9223372036854775807
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a24.c14
+  SELECT a24.c14, count ( a24.c16 ) FROM v0 AS a24 ORDER BY 4294967295; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+9223372036854775807|9223372036854775807
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: no such column: a9.c6
+ 
+INT: 0 
+Str: 
+Runtime error near line 13: no such column: a9.c6
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such column: a10.c6
+  CT count ( ( NOT ( a10.c1 IS NULL ) ) AND ( NOT ( a10.c6 IS NULL ) ) ) FROM v0
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: no such column: a10.c6
+  CT count ( ( NOT ( a10.c1 IS NULL ) ) AND ( NOT ( a10.c6 IS NULL ) ) ) FROM v0
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+9223372036854775807|9223372036854775807
+9223372036854775807|1.84467440737096e+19
+16|1.84467440737096e+19
+ 
+INT: 2 
+Str: 
+9223372036854775807|9223372036854775807
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: table v0 has 1 values for 6 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 25: table v0 has 1 values for 6 columns
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such column: a20.c6
+  SELECT a20.c6, a19.c16 FROM v0 AS a19 JOIN v0 AS a20 ON a19.c1 = hex ( ) GROUP
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 28: no such column: a20.c6
+  SELECT a20.c6, a19.c16 FROM v0 AS a19 JOIN v0 AS a20 ON a19.c1 = hex ( ) GROUP
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no such column: a21.c6
+  SELECT max ( a21.c6 || a21.c14 ) FROM v0 AS a21 ORDER BY 255; 
+               ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 31: no such column: a21.c6
+  SELECT max ( a21.c6 || a21.c14 ) FROM v0 AS a21 ORDER BY 255; 
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+9223372036854775807|9223372036854775807
+9223372036854775807|1.84467440737096e+19
+16|1.84467440737096e+19
+ 
+INT: 2 
+Str: 
+9223372036854775807|9223372036854775807
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+9223372036854775807|9223372036854775807
+9223372036854775807|1.84467440737096e+19
+16|1.84467440737096e+19
+ 
+INT: 2 
+Str: 
+9223372036854775807|9223372036854775807
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such column: a24.c14
+  SELECT a24.c14, count ( a24.c16 ) FROM v0 AS a24 ORDER BY 4294967295; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 40: no such column: a24.c14
+  SELECT a24.c14, count ( a24.c16 ) FROM v0 AS a24 ORDER BY 4294967295; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 10 
+RESULT FLAGS: 0
+Str: 
+9223372036854775807|9223372036854775807
+9223372036854775807|1.84467440737096e+19
+16|1.84467440737096e+19
+ 
+INT: 2 
+Str: 
+9223372036854775807|9223372036854775807
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

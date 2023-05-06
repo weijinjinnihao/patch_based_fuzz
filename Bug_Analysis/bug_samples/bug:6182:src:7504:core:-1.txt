@@ -1,0 +1,305 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE INDEX i3 ON v0 ( c1 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE VIRTUAL TABLE v6 USING rtree ( c7, c8, c9 ); 
+INSERT INTO v6 VALUES ( 'x', 255, 255 ); 
+CREATE INDEX i10 ON v6 ( c7 ); 
+INSERT INTO v6 VALUES ( 0, c1 % 255 >= 255 = 'bbb', 18446744073709551615 ), ( 255, 18446744073709551615, 255 ), ( 255, 18446744073709551615, 255 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v6 BEGIN DELETE FROM v6 WHERE c1 = c2; END; 
+ALTER TABLE v0 DROP c2; 
+UPDATE v6 SET c7 = 'v1' WHERE c1 = 18446744073709551488; 
+CREATE INDEX i11 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a12.c1 IS NULL ) ) AND ( NOT ( a12.c2 IS NULL ) ) ) FROM v0 AS a12 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v6 ( c14 ) AS ( SELECT 255 GROUP BY a13.c1 HAVING automatic_index ( * ) >= 255 ORDER BY 127 ) SELECT * FROM v0 AS a13 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a15 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a16, v6 AS a17 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c8, count ( ( NOT ( x'b2b2b2' > NULL ) ) AND ( ( a19.c1 IS NULL ) ) ), count ( ( NOT ( a19.c8 IS NULL ) ) AND ( NOT ( a19.c7 IS NULL ) ) ) FROM v6 AS a18 LEFT JOIN v6 AS a19 ON a19.c9 = a19.c1 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a20, v6 AS a21 NATURAL JOIN v0 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v6 ( c26 ) AS ( SELECT a24.c1 + ( SELECT max ( a29.c2 ) FROM v0 AS a30 ORDER BY 18446744073709551615 ), a27.c9 + ( SELECT a27.c1 FROM v0 AS a29 ORDER BY 18446744073709551615 ), a24.c8 + ( SELECT max ( a23.c2 ) FROM v0 AS a28 ORDER BY 8 ) FROM v6 AS a27 ORDER BY 18446744073709551615 ) SELECT a24.c8, max ( a25.c1 || a23.c1 ) FROM v0 AS a23, v6 AS a24 NATURAL JOIN v6 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c2, max ( a31.c1 || a31.c2 ) FROM v0 AS a31 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: virtual tables may not be indexed
+Parse error near line 8: no such column: c1
+  INSERT INTO v6 VALUES ( 0, c1 % 255 >= 255 = 'bbb', 18446744073709551615 ), ( 
+               error here ---^
+Parse error near line 9: cannot create triggers on virtual tables
+Runtime error near line 10: error in index i4 after drop column: no such column: c2
+Parse error near line 11: no such column: c1
+  UPDATE v6 SET c7 = 'v1' WHERE c1 = 18446744073709551488; 
+                  error here ---^
+BEGIN VERI 0
+Parse error near line 14: no tables specified
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0|255.0|255.0
+END VERI 0
+BEGIN VERI 0
+0|255.0|255.0|0|255.0|255.0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a19.c1
+  .c8, count ( ( NOT ( x'b2b2b2' > NULL ) ) AND ( ( a19.c1 IS NULL ) ) ), count 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: circular reference: v6
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+; 
+; 
+; 
+CREATE VIRTUAL TABLE v6 USING rtree ( c7, c8, c9 ); 
+INSERT INTO v6 VALUES ( 'x', 255, 255 ); 
+; 
+INSERT INTO v6 VALUES ( 0, c1 % 255 >= 255 = 'bbb', 18446744073709551615 ), ( 255, 18446744073709551615, 255 ), ( 255, 18446744073709551615, 255 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v6 BEGIN DELETE FROM v6 WHERE c1 = c2; END; 
+ALTER TABLE v0 DROP c2; 
+UPDATE v6 SET c7 = 'v1' WHERE c1 = 18446744073709551488; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a12.c1 IS NULL ) ) AND ( NOT ( a12.c2 IS NULL ) ) ) FROM v0 AS a12 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v6 ( c14 ) AS ( SELECT 255 GROUP BY a13.c1 HAVING automatic_index ( * ) >= 255 ORDER BY 127 ) SELECT * FROM v0 AS a13 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a15 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a16, v6 AS a17 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c8, count ( ( NOT ( x'b2b2b2' > NULL ) ) AND ( ( a19.c1 IS NULL ) ) ), count ( ( NOT ( a19.c8 IS NULL ) ) AND ( NOT ( a19.c7 IS NULL ) ) ) FROM v6 AS a18 LEFT JOIN v6 AS a19 ON a19.c9 = a19.c1 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a20, v6 AS a21 NATURAL JOIN v0 AS a22 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v6 ( c26 ) AS ( SELECT a24.c1 + ( SELECT max ( a29.c2 ) FROM v0 AS a30 ORDER BY 18446744073709551615 ), a27.c9 + ( SELECT a27.c1 FROM v0 AS a29 ORDER BY 18446744073709551615 ), a24.c8 + ( SELECT max ( a23.c2 ) FROM v0 AS a28 ORDER BY 8 ) FROM v6 AS a27 ORDER BY 18446744073709551615 ) SELECT a24.c8, max ( a25.c1 || a23.c1 ) FROM v0 AS a23, v6 AS a24 NATURAL JOIN v6 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c2, max ( a31.c1 || a31.c2 ) FROM v0 AS a31 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: no such column: c1
+  INSERT INTO v6 VALUES ( 0, c1 % 255 >= 255 = 'bbb', 18446744073709551615 ), ( 
+               error here ---^
+Parse error near line 9: cannot create triggers on virtual tables
+Parse error near line 11: no such column: c1
+  UPDATE v6 SET c7 = 'v1' WHERE c1 = 18446744073709551488; 
+                  error here ---^
+BEGIN VERI 0
+Parse error near line 14: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a12.c2
+  CT count ( ( NOT ( a12.c1 IS NULL ) ) AND ( NOT ( a12.c2 IS NULL ) ) ) FROM v0
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0|255.0|255.0
+END VERI 0
+BEGIN VERI 0
+0|255.0|255.0|0|255.0|255.0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a19.c1
+  .c8, count ( ( NOT ( x'b2b2b2' > NULL ) ) AND ( ( a19.c1 IS NULL ) ) ), count 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: circular reference: v6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a31.c2
+  SELECT a31.c2, max ( a31.c1 || a31.c2 ) FROM v0 AS a31 ORDER BY 18446744073709
+         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 14: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+0
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no such column: a12.c2
+  CT count ( ( NOT ( a12.c1 IS NULL ) ) AND ( NOT ( a12.c2 IS NULL ) ) ) FROM v0
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+0|255.0|255.0
+ 
+INT: 0 
+Str: 
+0|255.0|255.0
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+0|255.0|255.0|0|255.0|255.0
+ 
+INT: 0 
+Str: 
+0|255.0|255.0|0|255.0|255.0
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: no such column: a19.c1
+  .c8, count ( ( NOT ( x'b2b2b2' > NULL ) ) AND ( ( a19.c1 IS NULL ) ) ), count 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: no such column: a19.c1
+  .c8, count ( ( NOT ( x'b2b2b2' > NULL ) ) AND ( ( a19.c1 IS NULL ) ) ), count 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: circular reference: v6
+ 
+INT: 0 
+Str: 
+Parse error near line 38: circular reference: v6
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no such column: a31.c2
+  SELECT a31.c2, max ( a31.c1 || a31.c2 ) FROM v0 AS a31 ORDER BY 18446744073709
+         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

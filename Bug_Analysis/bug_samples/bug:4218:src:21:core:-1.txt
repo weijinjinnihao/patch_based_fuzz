@@ -1,0 +1,294 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 PRIMARY KEY, CHECK( ( ( c3 + 0 ) % 7 ) != 7 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE INDEX i6 ON v0 ( c1 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i7 ON v0 ( c3 ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c9 ) AS ( SELECT 'x' ORDER BY 0 ) SELECT * FROM v0 AS a8 ORDER BY 7; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a10, v0 AS a11 NATURAL JOIN v0 AS a12 ORDER BY 7; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a13 ORDER BY a13.c2 COLLATE nocase; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14 GROUP BY NULL, 'cantaloupe', 'x', 7, abs ( a14.c1 ) HAVING count ( * ) >= 0 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c17 ) AS ( SELECT * ORDER BY 0 ) SELECT * FROM v0 AS a16 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 0, hex ( 18446744073709551615 ) ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v0 AS ( SELECT 127 y ORDER BY 0 ) SELECT * FROM v0 AS a18 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19, v0 AS a20 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: error in index i5 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 8: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v0 ( c9 ) AS ( SELECT 'x' ORDER BY 0 ) SELECT * FROM v0 AS a8 ORDER BY 7;
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 4th GROUP BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a15 ORDER BY 2147483647; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: near "ORDER": syntax error
+  VALUES ( 0, hex ( 18446744073709551615 ) ) ORDER BY 9223372036854775807; 
+                               error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH RECURSIVE v0 AS ( SELECT 127 y ORDER BY 0 ) SELECT * FROM v0 AS a18 ORDER
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 PRIMARY KEY, CHECK( ( ( c3 + 0 ) % 7 ) != 7 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c2; 
+; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c9 ) AS ( SELECT 'x' ORDER BY 0 ) SELECT * FROM v0 AS a8 ORDER BY 7; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a10, v0 AS a11 NATURAL JOIN v0 AS a12 ORDER BY 7; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a13 ORDER BY a13.c2 COLLATE nocase; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14 GROUP BY NULL, 'cantaloupe', 'x', 7, abs ( a14.c1 ) HAVING count ( * ) >= 0 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c17 ) AS ( SELECT * ORDER BY 0 ) SELECT * FROM v0 AS a16 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 0, hex ( 18446744073709551615 ) ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v0 AS ( SELECT 127 y ORDER BY 0 ) SELECT * FROM v0 AS a18 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19, v0 AS a20 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 8: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v0 ( c9 ) AS ( SELECT 'x' ORDER BY 0 ) SELECT * FROM v0 AS a8 ORDER BY 7;
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: no such column: a13.c2
+  SELECT * FROM v0 AS a13 ORDER BY a13.c2 COLLATE nocase; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 4th GROUP BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a15 ORDER BY 2147483647; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: near "ORDER": syntax error
+  VALUES ( 0, hex ( 18446744073709551615 ) ) ORDER BY 9223372036854775807; 
+                               error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH RECURSIVE v0 AS ( SELECT 127 y ORDER BY 0 ) SELECT * FROM v0 AS a18 ORDER
+                                 error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 8: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v0 ( c9 ) AS ( SELECT 'x' ORDER BY 0 ) SELECT * FROM v0 AS a8 ORDER BY 7;
+                            error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 8: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v0 ( c9 ) AS ( SELECT 'x' ORDER BY 0 ) SELECT * FROM v0 AS a8 ORDER BY 7;
+                            error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 14: no such column: a13.c2
+  SELECT * FROM v0 AS a13 ORDER BY a13.c2 COLLATE nocase; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 4th GROUP BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 17: 4th GROUP BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a15 ORDER BY 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a15 ORDER BY 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 16915600
+Str: 
+Parse error near line 26: near "ORDER": syntax error
+  VALUES ( 0, hex ( 18446744073709551615 ) ) ORDER BY 9223372036854775807; 
+                               error here ---^
+ 
+Str: 
+Parse error near line 26: near "ORDER": syntax error
+  VALUES ( 0, hex ( 18446744073709551615 ) ) ORDER BY 9223372036854775807; 
+                               error here ---^
+ 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH RECURSIVE v0 AS ( SELECT 127 y ORDER BY 0 ) SELECT * FROM v0 AS a18 ORDER
+                                 error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH RECURSIVE v0 AS ( SELECT 127 y ORDER BY 0 ) SELECT * FROM v0 AS a18 ORDER
+                                 error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

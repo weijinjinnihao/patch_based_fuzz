@@ -1,0 +1,294 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE TABLE v4 ( c5, c6, c7, CHECK( c5 > 100 ) ); 
+CREATE TABLE v8 ( c9, c10, c11 CHECK( c10 > 9223372036854775807 ) ); 
+CREATE INDEX i12 ON v4 ( c6 ); 
+CREATE TABLE v13 ( c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30 TEXT, c31 BLOB, CHECK( coalesce ( c15, c16 ) ) ); 
+INSERT INTO v0 VALUES ( 9223372036854775807, 100, 9223372036854775807 ); 
+INSERT INTO v4 VALUES ( 9223372036854775807, 9223372036854775807, 9223372036854775807 ); 
+CREATE INDEX i32 ON v0 ( c3 ); 
+CREATE INDEX i33 ON v0 ( c1 + c2 ); 
+CREATE INDEX i34 ON v8 ( c9 ); 
+CREATE INDEX i35 ON v4 ( c6 ); 
+INSERT INTO v4 VALUES ( 9223372036854775807, 18446744073709551488, 127 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a36 ORDER BY ( ( ( a36.c14 + 9223372036854775807 ) % 100 ) == 100 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a37, v0 AS a38 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a39 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40, v13 AS a41 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a43 WHERE a43.c9 > ( a43.c9 + - 100 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c11 y, a45.c1 FROM v8 AS a44 LEFT JOIN v0 AS a45 ON a45.c3 = a44.c10 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v46 ( c48 ) AS ( WITH v49 ( c50 ) AS ( WITH v51 ( c52, c53, c54, c55, c56, c57 ) AS ( SELECT 100 y ORDER BY ( ( c56 + 127 ) % 9223372036854775807 ) < 100 ) SELECT 5.2e6 ORDER BY 9223372036854775807 ) SELECT 9223372036854775807 ORDER BY 487 ) SELECT * FROM v46 AS a47 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a58 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 13: error in index i33 after drop column: no such column: c1
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v4 AS a39 ORDER BY 2147483647; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 21
+END VERI 0
+BEGIN VERI 0
+9223372036854775807|100|9223372036854775807
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+9223372036854775807|9223372036854775807|9223372036854775807
+9223372036854775807|1.84467440737096e+19|127
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE TABLE v4 ( c5, c6, c7, CHECK( c5 > 100 ) ); 
+CREATE TABLE v8 ( c9, c10, c11 CHECK( c10 > 9223372036854775807 ) ); 
+; 
+CREATE TABLE v13 ( c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30 TEXT, c31 BLOB, CHECK( coalesce ( c15, c16 ) ) ); 
+INSERT INTO v0 VALUES ( 9223372036854775807, 100, 9223372036854775807 ); 
+INSERT INTO v4 VALUES ( 9223372036854775807, 9223372036854775807, 9223372036854775807 ); 
+; 
+; 
+; 
+; 
+INSERT INTO v4 VALUES ( 9223372036854775807, 18446744073709551488, 127 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a36 ORDER BY ( ( ( a36.c14 + 9223372036854775807 ) % 100 ) == 100 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a37, v0 AS a38 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a39 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40, v13 AS a41 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a43 WHERE a43.c9 > ( a43.c9 + - 100 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c11 y, a45.c1 FROM v8 AS a44 LEFT JOIN v0 AS a45 ON a45.c3 = a44.c10 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v46 ( c48 ) AS ( WITH v49 ( c50 ) AS ( WITH v51 ( c52, c53, c54, c55, c56, c57 ) AS ( SELECT 100 y ORDER BY ( ( c56 + 127 ) % 9223372036854775807 ) < 100 ) SELECT 5.2e6 ORDER BY 9223372036854775807 ) SELECT 9223372036854775807 ORDER BY 487 ) SELECT * FROM v46 AS a47 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a58 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v4 AS a39 ORDER BY 2147483647; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 20
+END VERI 0
+BEGIN VERI 0
+100|9223372036854775807
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a45.c1
+  SELECT a44.c11 y, a45.c1 FROM v8 AS a44 LEFT JOIN v0 AS a45 ON a45.c3 = a44.c1
+                    ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+9223372036854775807|9223372036854775807|9223372036854775807
+9223372036854775807|1.84467440737096e+19|127
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v4 AS a39 ORDER BY 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v4 AS a39 ORDER BY 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 21
+ 
+INT: 0 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 20
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+9223372036854775807|100|9223372036854775807
+ 
+INT: 0 
+Str: 
+100|9223372036854775807
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 33: no such column: a45.c1
+  SELECT a44.c11 y, a45.c1 FROM v8 AS a44 LEFT JOIN v0 AS a45 ON a45.c3 = a44.c1
+                    ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+9223372036854775807|9223372036854775807|9223372036854775807
+9223372036854775807|1.84467440737096e+19|127
+ 
+INT: 1 
+Str: 
+9223372036854775807|9223372036854775807|9223372036854775807
+9223372036854775807|1.84467440737096e+19|127
+ 
+INT: 1 
+Compare_result_int: 
+0
+
+
+

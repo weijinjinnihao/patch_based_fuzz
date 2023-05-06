@@ -1,0 +1,302 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 DEFAULT 'x', c2, c3 AS( c2 + c1 - c4 ) REFERENCES fts5, c4 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 16; 
+CREATE INDEX i7 ON v0 ( c4 ); 
+CREATE VIEW v8 AS SELECT c2, sum ( c1 ) AS y FROM v0 AS a9 NATURAL JOIN v0 AS a10 GROUP BY c1 ORDER BY 127; 
+CREATE TABLE v11 ( c12 INTEGER PRIMARY KEY, c13, c14 UNIQUE ); 
+CREATE INDEX i15 ON v11 ( c13 ); 
+CREATE TABLE v16 ( c17, c18, c19 ); 
+ALTER TABLE v11 DROP COLUMN c13; 
+ALTER TABLE v11 DROP COLUMN c12; 
+CREATE INDEX i20 ON v0 ( c4 ); 
+CREATE INDEX i21 ON v11 ( c13 ); 
+CREATE VIRTUAL TABLE v22 USING fts5 ( c23, c24 ); 
+CREATE INDEX i25 ON v0 ( c3 ); 
+ALTER TABLE v11 DROP COLUMN c13; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a26 WHERE a26.c24 = - 16 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( * ) >= 127 GROUP BY ( ( SELECT * FROM v8 AS a27 WHERE a27.c4 = a27.c1 || a27.c4 ORDER BY 18446744071562067968 ) % 127 ), abs ( c14 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a28 GROUP BY a28.c1 HAVING automatic_index ( * ) >= 18446744073709551488 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a29 ORDER BY a29.c17; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 ( c32 ) AS ( WITH RECURSIVE v30 AS ( WITH v30 AS ( SELECT 127 y ORDER BY 18446744073709551615 ) SELECT avg ( c4 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 0 ) SELECT 127 ORDER BY 18446744073709551488 ) SELECT * FROM v30 AS a31 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33, v16 AS a34 NATURAL JOIN v16 AS a35 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c4, count ( ( NOT ( a37.c13 IS NULL ) ) AND ( NOT ( a36.c2 IS NULL ) ) ), count ( ( NOT ( a36.c2 IS NULL ) ) AND ( NOT ( a36.c1 IS NULL ) ) ) FROM v0 AS a36 LEFT JOIN v11 AS a37 ON a36.c3 = a37.c12 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a38, v11 AS a39 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a40 ORDER BY 9223372036854775807 NOT IN v8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a41 WHERE ( a41.c1 + 18446744073709551488 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in index i15 after drop column: no such column: c13
+Parse error near line 9: cannot drop PRIMARY KEY column: "c12"
+Runtime error near line 12: no such module: fts5
+Runtime error near line 14: error in index i15 after drop column: no such column: c13
+BEGIN VERI 0
+Parse error near line 16: no such table: v22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such column: a41.c1
+  SELECT * FROM v16 AS a41 WHERE ( a41.c1 + 18446744073709551488 ) ORDER BY 1844
+                     error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 DEFAULT 'x', c2, c3 AS( c2 + c1 - c4 ) REFERENCES fts5, c4 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 16; 
+; 
+CREATE VIEW v8 AS SELECT c2, sum ( c1 ) AS y FROM v0 AS a9 NATURAL JOIN v0 AS a10 GROUP BY c1 ORDER BY 127; 
+CREATE TABLE v11 ( c12 INTEGER PRIMARY KEY, c13, c14 UNIQUE ); 
+; 
+CREATE TABLE v16 ( c17, c18, c19 ); 
+ALTER TABLE v11 DROP COLUMN c13; 
+ALTER TABLE v11 DROP COLUMN c12; 
+; 
+; 
+CREATE VIRTUAL TABLE v22 USING fts5 ( c23, c24 ); 
+; 
+ALTER TABLE v11 DROP COLUMN c13; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a26 WHERE a26.c24 = - 16 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( * ) >= 127 GROUP BY ( ( SELECT * FROM v8 AS a27 WHERE a27.c4 = a27.c1 || a27.c4 ORDER BY 18446744071562067968 ) % 127 ), abs ( c14 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a28 GROUP BY a28.c1 HAVING automatic_index ( * ) >= 18446744073709551488 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a29 ORDER BY a29.c17; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 ( c32 ) AS ( WITH RECURSIVE v30 AS ( WITH v30 AS ( SELECT 127 y ORDER BY 18446744073709551615 ) SELECT avg ( c4 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 0 ) SELECT 127 ORDER BY 18446744073709551488 ) SELECT * FROM v30 AS a31 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33, v16 AS a34 NATURAL JOIN v16 AS a35 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c4, count ( ( NOT ( a37.c13 IS NULL ) ) AND ( NOT ( a36.c2 IS NULL ) ) ), count ( ( NOT ( a36.c2 IS NULL ) ) AND ( NOT ( a36.c1 IS NULL ) ) ) FROM v0 AS a36 LEFT JOIN v11 AS a37 ON a36.c3 = a37.c12 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a38, v11 AS a39 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a40 ORDER BY 9223372036854775807 NOT IN v8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a41 WHERE ( a41.c1 + 18446744073709551488 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: cannot drop PRIMARY KEY column: "c12"
+Runtime error near line 12: no such module: fts5
+Parse error near line 14: no such column: "c13"
+  ALTER TABLE v11 DROP COLUMN c13; 
+                error here ---^
+BEGIN VERI 0
+Parse error near line 16: no such table: v22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a37.c13
+  SELECT a36.c4, count ( ( NOT ( a37.c13 IS NULL ) ) AND ( NOT ( a36.c2 IS NULL 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such column: a41.c1
+  SELECT * FROM v16 AS a41 WHERE ( a41.c1 + 18446744073709551488 ) ORDER BY 1844
+                     error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such table: v22
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such table: v22
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such column: a37.c13
+  SELECT a36.c4, count ( ( NOT ( a37.c13 IS NULL ) ) AND ( NOT ( a36.c2 IS NULL 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: no such column: a41.c1
+  SELECT * FROM v16 AS a41 WHERE ( a41.c1 + 18446744073709551488 ) ORDER BY 1844
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 43: no such column: a41.c1
+  SELECT * FROM v16 AS a41 WHERE ( a41.c1 + 18446744073709551488 ) ORDER BY 1844
+                     error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

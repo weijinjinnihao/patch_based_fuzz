@@ -1,0 +1,477 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 DEFAULT 'x' ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 'x3', 'x' ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 'v1', 'v0' ); 
+INSERT INTO v0 VALUES ( NULL, 'x', 'first' ); 
+INSERT INTO v0 VALUES ( 'aB%', 'v1', 'v1' ); 
+INSERT INTO v0 VALUES ( x'616263', 'x', 'x' ); 
+CREATE TABLE v4 ( c5, c6, c7 COLLATE NOCASE ); 
+INSERT INTO v4 VALUES ( NULL, 'two', 'x' ); 
+CREATE INDEX i8 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 'xyz', 'v0', 'abc1' ); 
+INSERT INTO v4 VALUES ( x'68617265', 'x', 'V345FMP' ); 
+CREATE INDEX i9 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 'x', 'v1' ); 
+CREATE INDEX i10 ON v4 ( c5 ); 
+CREATE INDEX i11 ON v4 ( c6 ); 
+INSERT INTO v0 VALUES ( - 18446744073709551488, 'v1', 'ddd' ); 
+CREATE TABLE v12 ( c13, c14, c15 COLLATE NOCASE ); 
+INSERT INTO v12 SELECT * FROM v12 AS a16 ORDER BY 18446744073709551615; 
+INSERT INTO v4 SELECT * FROM v12 AS a17 ORDER BY 18446744073709551488; 
+CREATE INDEX i18 ON v4 ( c5 ); 
+INSERT INTO v0 SELECT * FROM v12 AS a19 ORDER BY 18446744073709551488; 
+INSERT INTO v4 SELECT * FROM v4 AS a20 ORDER BY 18446744073709551615; 
+INSERT INTO v4 SELECT * FROM v4 AS a21 ORDER BY 18446744073709551488; 
+INSERT INTO v4 SELECT * FROM v4 AS a22 ORDER BY 18446744073709551488; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c6 FROM v4 AS a23 WHERE a23.c6 LIKE 'v1' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c2 FROM v0 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c1 FROM v0 AS a26 GROUP BY 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c6 FROM v4 AS a27 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 GROUP BY a29.c1, a29.c3, count ( a29.c2 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c6, count ( ( NOT ( a30.c7 IS NULL ) ) AND ( NOT ( a30.c6 IS NULL ) ) ), count ( ( NOT ( a30.c6 IS NULL ) ) AND ( NOT ( a30.c7 IS NULL ) ) ) FROM v4 AS a30 LEFT JOIN v0 AS a31 ON a31.c1 = 'v0' ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+v0
+v1
+v1
+v1
+x
+x
+x
+x3
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|x3|x
+1.84467440737096e+19|v1|v0
+|x|first
+aB%|v1|v1
+abc|x|x
+xyz|v0|abc1
+1.84467440737096e+19|x|v1
+-1.84467440737096e+19|v1|ddd
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no tables specified
+END VERI 0
+BEGIN VERI 0
+two
+two
+two
+two
+two
+two
+two
+two
+x
+x
+x
+x
+x
+x
+x
+x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no tables specified
+END VERI 0
+BEGIN VERI 0
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+END VERI 0
+BEGIN VERI 0
+Parse error near line 50: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+two|16|16
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 DEFAULT 'x' ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 'x3', 'x' ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 'v1', 'v0' ); 
+INSERT INTO v0 VALUES ( NULL, 'x', 'first' ); 
+INSERT INTO v0 VALUES ( 'aB%', 'v1', 'v1' ); 
+INSERT INTO v0 VALUES ( x'616263', 'x', 'x' ); 
+CREATE TABLE v4 ( c5, c6, c7 COLLATE NOCASE ); 
+INSERT INTO v4 VALUES ( NULL, 'two', 'x' ); 
+; 
+INSERT INTO v0 VALUES ( 'xyz', 'v0', 'abc1' ); 
+INSERT INTO v4 VALUES ( x'68617265', 'x', 'V345FMP' ); 
+; 
+INSERT INTO v0 VALUES ( 18446744073709551488, 'x', 'v1' ); 
+; 
+; 
+INSERT INTO v0 VALUES ( - 18446744073709551488, 'v1', 'ddd' ); 
+CREATE TABLE v12 ( c13, c14, c15 COLLATE NOCASE ); 
+INSERT INTO v12 SELECT * FROM v12 AS a16 ORDER BY 18446744073709551615; 
+INSERT INTO v4 SELECT * FROM v12 AS a17 ORDER BY 18446744073709551488; 
+; 
+INSERT INTO v0 SELECT * FROM v12 AS a19 ORDER BY 18446744073709551488; 
+INSERT INTO v4 SELECT * FROM v4 AS a20 ORDER BY 18446744073709551615; 
+INSERT INTO v4 SELECT * FROM v4 AS a21 ORDER BY 18446744073709551488; 
+INSERT INTO v4 SELECT * FROM v4 AS a22 ORDER BY 18446744073709551488; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c6 FROM v4 AS a23 WHERE a23.c6 LIKE 'v1' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c2 FROM v0 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c1 FROM v0 AS a26 GROUP BY 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c6 FROM v4 AS a27 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 GROUP BY a29.c1, a29.c3, count ( a29.c2 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c6, count ( ( NOT ( a30.c7 IS NULL ) ) AND ( NOT ( a30.c6 IS NULL ) ) ), count ( ( NOT ( a30.c6 IS NULL ) ) AND ( NOT ( a30.c7 IS NULL ) ) ) FROM v4 AS a30 LEFT JOIN v0 AS a31 ON a31.c1 = 'v0' ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+x3
+v1
+x
+v1
+x
+v0
+x
+v1
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|x3|x
+1.84467440737096e+19|v1|v0
+|x|first
+aB%|v1|v1
+abc|x|x
+xyz|v0|abc1
+1.84467440737096e+19|x|v1
+-1.84467440737096e+19|v1|ddd
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no tables specified
+END VERI 0
+BEGIN VERI 0
+two
+x
+two
+x
+two
+x
+two
+x
+two
+x
+two
+x
+two
+x
+two
+x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no tables specified
+END VERI 0
+BEGIN VERI 0
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+END VERI 0
+BEGIN VERI 0
+Parse error near line 50: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+two|16|16
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+v0
+v1
+v1
+v1
+x
+x
+x
+x3
+ 
+INT: 7 
+Str: 
+x3
+v1
+x
+v1
+x
+v0
+x
+v1
+ 
+INT: 7 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19|x3|x
+1.84467440737096e+19|v1|v0
+|x|first
+aB%|v1|v1
+abc|x|x
+xyz|v0|abc1
+1.84467440737096e+19|x|v1
+-1.84467440737096e+19|v1|ddd
+ 
+INT: 7 
+Str: 
+1.84467440737096e+19|x3|x
+1.84467440737096e+19|v1|v0
+|x|first
+aB%|v1|v1
+abc|x|x
+xyz|v0|abc1
+1.84467440737096e+19|x|v1
+-1.84467440737096e+19|v1|ddd
+ 
+INT: 7 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 38: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+two
+two
+two
+two
+two
+two
+two
+two
+x
+x
+x
+x
+x
+x
+x
+x
+ 
+INT: 15 
+Str: 
+two
+x
+two
+x
+two
+x
+two
+x
+two
+x
+two
+x
+two
+x
+two
+x
+ 
+INT: 15 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 44: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+ 
+INT: 15 
+Str: 
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+|two|x
+hare|x|V345FMP
+ 
+INT: 15 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 50: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+Str: 
+Parse error near line 50: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+two|16|16
+ 
+INT: 0 
+Str: 
+two|16|16
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

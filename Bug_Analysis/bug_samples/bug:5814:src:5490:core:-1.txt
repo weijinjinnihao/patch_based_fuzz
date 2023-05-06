@@ -1,0 +1,283 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9 DEFAULT 'v0' DEFAULT 4294967295, PRIMARY KEY ( c8, c8 ) ) WITHOUT ROWID; 
+ATTACH 'x' AS sqlite_master; 
+CREATE INDEX i10 ON v0 ( c4 ); 
+CREATE TABLE v11 ( c12, c13 CHECK( 127 ), c14, c15, CHECK( c13 > 127 ) ); 
+CREATE INDEX i16 ON v11 ( c14 IS NOT NULL ); 
+CREATE INDEX i17 ON v11 ( c14 ); 
+ALTER TABLE v11 DROP c14; 
+CREATE INDEX i18 ON v11 ( c15 ); 
+ALTER TABLE v11 DROP c15; 
+CREATE TABLE v19 ( c20, c21, c22 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i23 ON v19 ( c21 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a24, v11 AS a25 NATURAL JOIN v11 AS a26 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a27 WHERE a27.c20 != a27.c22 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a28 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 WHERE a29.c1 = + a29.c8 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 AS ( SELECT 9223372036854775807 y ORDER BY 127 ) SELECT c5, c20 FROM v30 AS a31 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32, v11 AS a33 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 127 IS NOT 127 ) OR NOT ( 127 IS 18446744073709551488 OR ( a34.c4 = 4294967295 ) ) ) IS 9223372036854775807 FROM v0 AS a34 GROUP BY a34.c9 HAVING NULL ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a35 WHERE count ( a35.c15 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c21, a37.c14 FROM v19 AS a36 RIGHT JOIN v11 AS a37 ON a36.c21 + a37.c14 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i16 after drop column: no such column: c14
+Runtime error near line 9: error in index i18 after drop column: no such column: c15
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 13
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: misuse of aggregate function count()
+  SELECT * FROM v11 AS a35 WHERE count ( a35.c15 ) ORDER BY 127; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9 DEFAULT 'v0' DEFAULT 4294967295, PRIMARY KEY ( c8, c8 ) ) WITHOUT ROWID; 
+ATTACH 'x' AS sqlite_master; 
+; 
+CREATE TABLE v11 ( c12, c13 CHECK( 127 ), c14, c15, CHECK( c13 > 127 ) ); 
+; 
+; 
+ALTER TABLE v11 DROP c14; 
+; 
+ALTER TABLE v11 DROP c15; 
+CREATE TABLE v19 ( c20, c21, c22 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a24, v11 AS a25 NATURAL JOIN v11 AS a26 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a27 WHERE a27.c20 != a27.c22 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a28 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 WHERE a29.c1 = + a29.c8 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 AS ( SELECT 9223372036854775807 y ORDER BY 127 ) SELECT c5, c20 FROM v30 AS a31 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32, v11 AS a33 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 127 IS NOT 127 ) OR NOT ( 127 IS 18446744073709551488 OR ( a34.c4 = 4294967295 ) ) ) IS 9223372036854775807 FROM v0 AS a34 GROUP BY a34.c9 HAVING NULL ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a35 WHERE count ( a35.c15 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c21, a37.c14 FROM v19 AS a36 RIGHT JOIN v11 AS a37 ON a36.c21 + a37.c14 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 11
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a35.c15
+  SELECT * FROM v11 AS a35 WHERE count ( a35.c15 ) ORDER BY 127; 
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a37.c14
+  SELECT a36.c21, a37.c14 FROM v19 AS a36 RIGHT JOIN v11 AS a37 ON a36.c21 + a37
+                  ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 9
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 9
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 13
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 11
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: misuse of aggregate function count()
+  SELECT * FROM v11 AS a35 WHERE count ( a35.c15 ) ORDER BY 127; 
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: no such column: a35.c15
+  SELECT * FROM v11 AS a35 WHERE count ( a35.c15 ) ORDER BY 127; 
+                           error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 40: no such column: a37.c14
+  SELECT a36.c21, a37.c14 FROM v19 AS a36 RIGHT JOIN v11 AS a37 ON a36.c21 + a37
+                  ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

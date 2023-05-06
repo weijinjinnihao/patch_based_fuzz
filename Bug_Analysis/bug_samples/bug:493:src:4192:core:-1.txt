@@ -1,0 +1,337 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 DEFAULT 'v0' ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 'x', 'v1' ); 
+INSERT INTO v0 VALUES ( 0, 'v1', 'v1' ); 
+INSERT INTO v0 VALUES ( NULL, 'v0', 'v1' ); 
+INSERT INTO v0 VALUES ( '$long', 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( x'616263', 'cantaloupe', 'v0' ); 
+CREATE TABLE v4 ( c5, c6, c7 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( NULL, 'v1', 'v0' ); 
+CREATE INDEX i8 ON v4 ( c7 ); 
+INSERT INTO v0 VALUES ( 'v1', 'f', 'v0' ); 
+INSERT INTO v4 VALUES ( x'68617265', 'x3', 'x' ); 
+CREATE INDEX i9 ON v4 ( c5 ); 
+INSERT INTO v0 VALUES ( 0, 'v0', 'x' ); 
+CREATE INDEX i10 ON v0 ( c1 ); 
+CREATE INDEX i11 ON v0 ( c1 ); 
+INSERT INTO v4 VALUES ( - 0, 'v1', 'ten' ); 
+CREATE TABLE v12 ( c13, c14, c15 COLLATE NOCASE ); 
+INSERT INTO v0 SELECT c3, c1 FROM v0 AS a16 RIGHT JOIN v0 AS a17 ON c2 = 0 WHERE hex ( 0 ) ORDER BY 4294967295; 
+INSERT INTO v12 SELECT * FROM v12 AS a18 ORDER BY 4294967295; 
+CREATE INDEX i19 ON v0 ( c1 ); 
+INSERT INTO v4 SELECT * FROM v4 AS a20 ORDER BY 18446744073709551615; 
+INSERT INTO v12 SELECT * FROM v12 AS a21 ORDER BY 4294967295; 
+INSERT INTO v4 SELECT * FROM v4 AS a22 ORDER BY 18446744073709551615; 
+INSERT INTO v0 SELECT * FROM v0 AS a23 ORDER BY 0; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c7 FROM v4 AS a24 WHERE a24.c6 LIKE 'x' ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c1 FROM v0 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c1 FROM v0 AS a27 GROUP BY 18446744073709551615 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c5 FROM v4 AS a28 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a29 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a30 GROUP BY a30.c5, a30.c5, count ( a30.c6 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c15, count ( ( NOT ( a32.c7 IS NULL ) ) AND ( NOT ( a32.c6 IS NULL ) ) ), count ( ( NOT ( a32.c5 IS NULL ) ) AND ( NOT ( a31.c13 IS NULL ) ) ) FROM v12 AS a31 LEFT JOIN v4 AS a32 ON a31.c14 = 'x' ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 18: ambiguous column name: c3
+  INSERT INTO v0 SELECT c3, c1 FROM v0 AS a16 RIGHT JOIN v0 AS a17 ON c2 = 0 WHE
+                        ^--- error here
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v0 SELECT * FROM v0 AS a23 ORDER BY 0; 
+                                    error here ---^
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a25.c1 FROM v0 AS a25 ORDER BY 0; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a26 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 50: 1st ORDER BY term out of range - should be between 1 and 3
+  ROUP BY a30.c5, a30.c5, count ( a30.c6 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|0|0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 DEFAULT 'v0' ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 'x', 'v1' ); 
+INSERT INTO v0 VALUES ( 0, 'v1', 'v1' ); 
+INSERT INTO v0 VALUES ( NULL, 'v0', 'v1' ); 
+INSERT INTO v0 VALUES ( '$long', 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( x'616263', 'cantaloupe', 'v0' ); 
+CREATE TABLE v4 ( c5, c6, c7 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( NULL, 'v1', 'v0' ); 
+; 
+INSERT INTO v0 VALUES ( 'v1', 'f', 'v0' ); 
+INSERT INTO v4 VALUES ( x'68617265', 'x3', 'x' ); 
+; 
+INSERT INTO v0 VALUES ( 0, 'v0', 'x' ); 
+; 
+; 
+INSERT INTO v4 VALUES ( - 0, 'v1', 'ten' ); 
+CREATE TABLE v12 ( c13, c14, c15 COLLATE NOCASE ); 
+INSERT INTO v0 SELECT c3, c1 FROM v0 AS a16 RIGHT JOIN v0 AS a17 ON c2 = 0 WHERE hex ( 0 ) ORDER BY 4294967295; 
+INSERT INTO v12 SELECT * FROM v12 AS a18 ORDER BY 4294967295; 
+; 
+INSERT INTO v4 SELECT * FROM v4 AS a20 ORDER BY 18446744073709551615; 
+INSERT INTO v12 SELECT * FROM v12 AS a21 ORDER BY 4294967295; 
+INSERT INTO v4 SELECT * FROM v4 AS a22 ORDER BY 18446744073709551615; 
+INSERT INTO v0 SELECT * FROM v0 AS a23 ORDER BY 0; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c7 FROM v4 AS a24 WHERE a24.c6 LIKE 'x' ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c1 FROM v0 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c1 FROM v0 AS a27 GROUP BY 18446744073709551615 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c5 FROM v4 AS a28 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a29 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a30 GROUP BY a30.c5, a30.c5, count ( a30.c6 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c15, count ( ( NOT ( a32.c7 IS NULL ) ) AND ( NOT ( a32.c6 IS NULL ) ) ), count ( ( NOT ( a32.c5 IS NULL ) ) AND ( NOT ( a31.c13 IS NULL ) ) ) FROM v12 AS a31 LEFT JOIN v4 AS a32 ON a31.c14 = 'x' ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 18: ambiguous column name: c3
+  INSERT INTO v0 SELECT c3, c1 FROM v0 AS a16 RIGHT JOIN v0 AS a17 ON c2 = 0 WHE
+                        ^--- error here
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v0 SELECT * FROM v0 AS a23 ORDER BY 0; 
+                                    error here ---^
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a25.c1 FROM v0 AS a25 ORDER BY 0; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a26 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 50: 1st ORDER BY term out of range - should be between 1 and 3
+  ROUP BY a30.c5, a30.c5, count ( a30.c6 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|0|0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a25.c1 FROM v0 AS a25 ORDER BY 0; 
+                          error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a25.c1 FROM v0 AS a25 ORDER BY 0; 
+                          error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a26 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a26 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 38: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 44: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 50: 1st ORDER BY term out of range - should be between 1 and 3
+  ROUP BY a30.c5, a30.c5, count ( a30.c6 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 50: 1st ORDER BY term out of range - should be between 1 and 3
+  ROUP BY a30.c5, a30.c5, count ( a30.c6 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+|0|0
+ 
+INT: 0 
+Str: 
+|0|0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,330 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 100; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v10 ( c13 ) AS ( SELECT 100 ORDER BY 18446744073709518848 ) SELECT * FROM v10 AS a11, v10 AS a12 WHERE NOT min ( c13, c13 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+CREATE INDEX i14 ON v6 ( c9 ); 
+CREATE INDEX i15 ON v6 ( c7 ); 
+ALTER TABLE v4 DROP COLUMN c3; 
+ALTER TABLE v4 DROP COLUMN c1; 
+UPDATE v6 SET c8 = ( SELECT c3 FROM v0 AS a16 WHERE c3 = 'v0' ORDER BY 100 ); 
+CREATE INDEX i17 ON v0 ( c1 ); 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+CREATE INDEX i21 ON v4 ( c2 ); 
+CREATE INDEX i22 ON v4 ( c1 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a23, v18 AS a24 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a25 GROUP BY count ( ( NOT ( a25.c1 IS NULL ) ) AND ( NOT ( a25.c3 IS NULL ) ) ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c2, a26.c3 FROM v0 AS a26 RIGHT JOIN v4 AS a27 ON a27.c3 = x'b1' ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28, v4 AS a29 NATURAL JOIN v4 AS a30 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a31 WHERE a31.c19 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c3 FROM v0 AS a32 WHERE a32.c1 = a32.c2 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a33, v6 AS a34 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v36 AS ( SELECT c8 FROM v36 AS a38 WHERE c2 LIKE 'v1' ORDER BY 10 ) SELECT * FROM v36 AS a37 WHERE ( c2 = 18446744073709551488 OR c7 = 8 ) AND c20 IN ( ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 5: ambiguous column name: c13
+  ECT * FROM v10 AS a11, v10 AS a12 WHERE NOT min ( c13, c13 ) ORDER BY 1; 
+                                      error here ---^
+END VERI 0
+Parse error near line 9: cannot drop column from view "v4"
+Parse error near line 10: cannot drop column from view "v4"
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 1
+Runtime error near line 13: no such module: fts5
+Parse error near line 14: views may not be indexed
+Parse error near line 15: views may not be indexed
+Runtime error near line 16: error in index i17 after drop column: no such column: c1
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: circular reference: v36
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 100; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v10 ( c13 ) AS ( SELECT 100 ORDER BY 18446744073709518848 ) SELECT * FROM v10 AS a11, v10 AS a12 WHERE NOT min ( c13, c13 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+; 
+; 
+ALTER TABLE v4 DROP COLUMN c3; 
+ALTER TABLE v4 DROP COLUMN c1; 
+UPDATE v6 SET c8 = ( SELECT c3 FROM v0 AS a16 WHERE c3 = 'v0' ORDER BY 100 ); 
+; 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+; 
+; 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a23, v18 AS a24 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a25 GROUP BY count ( ( NOT ( a25.c1 IS NULL ) ) AND ( NOT ( a25.c3 IS NULL ) ) ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c2, a26.c3 FROM v0 AS a26 RIGHT JOIN v4 AS a27 ON a27.c3 = x'b1' ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28, v4 AS a29 NATURAL JOIN v4 AS a30 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a31 WHERE a31.c19 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c3 FROM v0 AS a32 WHERE a32.c1 = a32.c2 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a33, v6 AS a34 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v36 AS ( SELECT c8 FROM v36 AS a38 WHERE c2 LIKE 'v1' ORDER BY 10 ) SELECT * FROM v36 AS a37 WHERE ( c2 = 18446744073709551488 OR c7 = 8 ) AND c20 IN ( ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 5: ambiguous column name: c13
+  ECT * FROM v10 AS a11, v10 AS a12 WHERE NOT min ( c13, c13 ) ORDER BY 1; 
+                                      error here ---^
+END VERI 0
+Parse error near line 9: cannot drop column from view "v4"
+Parse error near line 10: cannot drop column from view "v4"
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 1
+Runtime error near line 13: no such module: fts5
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a32.c1
+  SELECT a32.c3 FROM v0 AS a32 WHERE a32.c1 = a32.c2 ORDER BY 10; 
+                       error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: circular reference: v36
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 5: ambiguous column name: c13
+  ECT * FROM v10 AS a11, v10 AS a12 WHERE NOT min ( c13, c13 ) ORDER BY 1; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 5: ambiguous column name: c13
+  ECT * FROM v10 AS a11, v10 AS a12 WHERE NOT min ( c13, c13 ) ORDER BY 1; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such column: a32.c1
+  SELECT a32.c3 FROM v0 AS a32 WHERE a32.c1 = a32.c2 ORDER BY 10; 
+                       error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: circular reference: v36
+ 
+INT: 0 
+Str: 
+Parse error near line 42: circular reference: v36
+ 
+INT: 0 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 45: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 45: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

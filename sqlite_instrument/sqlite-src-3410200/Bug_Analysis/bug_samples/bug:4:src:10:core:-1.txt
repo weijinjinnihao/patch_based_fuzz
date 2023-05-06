@@ -1,0 +1,348 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( 127, 2147483647, 18446744073709551488 ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 2147483647, 127 ); 
+CREATE INDEX i6 ON v0 ( c3 ); 
+CREATE INDEX i7 ON v0 ( c1 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i8 ON v0 ( c1 ); 
+PRAGMA integrity_check; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a9.c3, ( a9.c3 / 0 ), typeof ( a9.c1 ) y FROM v0 AS a9 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a10, v0 AS a11 WHERE CASE WHEN a10.c3 = a10.c1 - 2147483647 THEN 18446744073709551488 ELSE 2147483647 END ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a12 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v13 ( c15 ) AS ( SELECT 18446744073709551488 ORDER BY 2147483647 ) SELECT * FROM v13 AS a14 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY a17.c15; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c2, max ( a18.c2 || a18.c1 ) FROM v0 AS a18 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 WHERE a19.c1 < a19.c2 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c2, count ( ( NOT ( a20.c15 IS NULL ) ) AND ( NOT ( a20.c2 IS NULL ) ) ) FROM v0 AS a20 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c2, a21.c2, a21.c15 COLLATE nocase FROM v0 AS a21 GROUP BY y ( a21.c2 || 2147483647 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in index i4 after drop column: no such column: c2
+ok
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 3
+   / 0 ), typeof ( a9.c1 ) y FROM v0 AS a9 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 6
+  18446744073709551488 ELSE 2147483647 END ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+127|2147483647|1.84467440737096e+19
+1.84467440737096e+19|2147483647|127
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  ( c15 ) AS ( SELECT 18446744073709551488 ORDER BY 2147483647 ) SELECT * FROM v
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a16 ORDER BY 2147483647; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a17.c15
+  SELECT * FROM v0 AS a17 ORDER BY a17.c15; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+2147483647|2147483647127
+END VERI 0
+BEGIN VERI 0
+127|2147483647|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a20.c15
+  SELECT a20.c2, count ( ( NOT ( a20.c15 IS NULL ) ) AND ( NOT ( a20.c2 IS NULL 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a21.c15
+  SELECT a21.c2, a21.c2, a21.c15 COLLATE nocase FROM v0 AS a21 GROUP BY y ( a21.
+                         ^--- error here
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+; 
+INSERT INTO v0 VALUES ( 127, 2147483647, 18446744073709551488 ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 2147483647, 127 ); 
+; 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+PRAGMA integrity_check; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a9.c3, ( a9.c3 / 0 ), typeof ( a9.c1 ) y FROM v0 AS a9 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a10, v0 AS a11 WHERE CASE WHEN a10.c3 = a10.c1 - 2147483647 THEN 18446744073709551488 ELSE 2147483647 END ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a12 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v13 ( c15 ) AS ( SELECT 18446744073709551488 ORDER BY 2147483647 ) SELECT * FROM v13 AS a14 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY a17.c15; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c2, max ( a18.c2 || a18.c1 ) FROM v0 AS a18 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 WHERE a19.c1 < a19.c2 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c2, count ( ( NOT ( a20.c15 IS NULL ) ) AND ( NOT ( a20.c2 IS NULL ) ) ) FROM v0 AS a20 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c2, a21.c2, a21.c15 COLLATE nocase FROM v0 AS a21 GROUP BY y ( a21.c2 || 2147483647 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+ok
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 3
+   / 0 ), typeof ( a9.c1 ) y FROM v0 AS a9 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 4
+  18446744073709551488 ELSE 2147483647 END ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+127|1.84467440737096e+19
+1.84467440737096e+19|127
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  ( c15 ) AS ( SELECT 18446744073709551488 ORDER BY 2147483647 ) SELECT * FROM v
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a16 ORDER BY 2147483647; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a17.c15
+  SELECT * FROM v0 AS a17 ORDER BY a17.c15; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a18.c2
+  SELECT a18.c2, max ( a18.c2 || a18.c1 ) FROM v0 AS a18 ORDER BY 18446744073709
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a19.c2
+  SELECT * FROM v0 AS a19 WHERE a19.c1 < a19.c2 ORDER BY 18446744073709551488; 
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a20.c2
+  SELECT a20.c2, count ( ( NOT ( a20.c15 IS NULL ) ) AND ( NOT ( a20.c2 IS NULL 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a21.c2
+  SELECT a21.c2, a21.c2, a21.c15 COLLATE nocase FROM v0 AS a21 GROUP BY y ( a21.
+         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 3
+   / 0 ), typeof ( a9.c1 ) y FROM v0 AS a9 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 3
+   / 0 ), typeof ( a9.c1 ) y FROM v0 AS a9 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 6
+  18446744073709551488 ELSE 2147483647 END ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 4
+  18446744073709551488 ELSE 2147483647 END ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+127|2147483647|1.84467440737096e+19
+1.84467440737096e+19|2147483647|127
+ 
+INT: 1 
+Str: 
+127|1.84467440737096e+19
+1.84467440737096e+19|127
+ 
+INT: 1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  ( c15 ) AS ( SELECT 18446744073709551488 ORDER BY 2147483647 ) SELECT * FROM v
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+  ( c15 ) AS ( SELECT 18446744073709551488 ORDER BY 2147483647 ) SELECT * FROM v
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a16 ORDER BY 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a16 ORDER BY 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such column: a17.c15
+  SELECT * FROM v0 AS a17 ORDER BY a17.c15; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: no such column: a17.c15
+  SELECT * FROM v0 AS a17 ORDER BY a17.c15; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+2147483647|2147483647127
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no such column: a18.c2
+  SELECT a18.c2, max ( a18.c2 || a18.c1 ) FROM v0 AS a18 ORDER BY 18446744073709
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+127|2147483647|1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such column: a19.c2
+  SELECT * FROM v0 AS a19 WHERE a19.c1 < a19.c2 ORDER BY 18446744073709551488; 
+                           error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such column: a20.c15
+  SELECT a20.c2, count ( ( NOT ( a20.c15 IS NULL ) ) AND ( NOT ( a20.c2 IS NULL 
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: no such column: a20.c2
+  SELECT a20.c2, count ( ( NOT ( a20.c15 IS NULL ) ) AND ( NOT ( a20.c2 IS NULL 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such column: a21.c15
+  SELECT a21.c2, a21.c2, a21.c15 COLLATE nocase FROM v0 AS a21 GROUP BY y ( a21.
+                         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 39: no such column: a21.c2
+  SELECT a21.c2, a21.c2, a21.c15 COLLATE nocase FROM v0 AS a21 GROUP BY y ( a21.
+         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

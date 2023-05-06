@@ -1,0 +1,300 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 PRIMARY KEY NOT NULL, c2 NOT NULL ); 
+CREATE INDEX i3 ON v0 ( c1 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE TABLE v5 ( c6, c7, c8 REFERENCES p1 ( c6 ) ); 
+CREATE TABLE v9 ( c10, c11, c12, c13 REFERENCES p1 ( c11 ) ); 
+CREATE INDEX i14 ON v9 ( c12 ); 
+CREATE INDEX i15 ON v9 ( c10 ); 
+ALTER TABLE v9 DROP COLUMN c12; 
+ALTER TABLE v9 DROP COLUMN c13; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a17.c11 IS NULL ) ) AND ( NOT ( a17.c12 IS NULL ) ) ) FROM v9 AS a17 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a18 GROUP BY x'616263', 'v0', a18.c6 = + a18.c7 HAVING count ( * ) >= 10 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 AS ( SELECT a19.c6 FROM v0 AS a20 WHERE a20.c1 NOT LIKE 'x' ORDER BY 10 ) SELECT * FROM v5 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v21 ( c23 ) AS ( WITH v24 ( c25 ) AS ( WITH v26 ( c27 ) AS ( WITH v28 AS ( SELECT ( SELECT min ( c23 ) OVER ( ORDER BY 8 IN v24 ) ORDER BY 0 ) FROM v24 AS a29 GROUP BY c27 ORDER BY 18446744073709551615 ) SELECT 0 ORDER BY 10 ) SELECT 10 ORDER BY 10 ) SELECT 9223372036854775807 ORDER BY 10 ) SELECT * FROM v21 AS a22 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c2, max ( a30.c2 || a30.c1 ) FROM v0 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a32 WHERE a32.c7 > ( a32.c8 + - 0 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 AS ( SELECT 10 y ORDER BY 10 ) SELECT * FROM v0 AS a33 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in index i14 after drop column: no such column: c12
+BEGIN VERI 0
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a19.c6
+  WITH v5 AS ( SELECT a19.c6 FROM v0 AS a20 WHERE a20.c1 NOT LIKE 'x' ORDER BY 1
+                      ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+   max ( a30.c2 || a30.c1 ) FROM v0 AS a30 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a31 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 PRIMARY KEY NOT NULL, c2 NOT NULL ); 
+; 
+; 
+CREATE TABLE v5 ( c6, c7, c8 REFERENCES p1 ( c6 ) ); 
+CREATE TABLE v9 ( c10, c11, c12, c13 REFERENCES p1 ( c11 ) ); 
+; 
+; 
+ALTER TABLE v9 DROP COLUMN c12; 
+ALTER TABLE v9 DROP COLUMN c13; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a17.c11 IS NULL ) ) AND ( NOT ( a17.c12 IS NULL ) ) ) FROM v9 AS a17 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a18 GROUP BY x'616263', 'v0', a18.c6 = + a18.c7 HAVING count ( * ) >= 10 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 AS ( SELECT a19.c6 FROM v0 AS a20 WHERE a20.c1 NOT LIKE 'x' ORDER BY 10 ) SELECT * FROM v5 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v21 ( c23 ) AS ( WITH v24 ( c25 ) AS ( WITH v26 ( c27 ) AS ( WITH v28 AS ( SELECT ( SELECT min ( c23 ) OVER ( ORDER BY 8 IN v24 ) ORDER BY 0 ) FROM v24 AS a29 GROUP BY c27 ORDER BY 18446744073709551615 ) SELECT 0 ORDER BY 10 ) SELECT 10 ORDER BY 10 ) SELECT 9223372036854775807 ORDER BY 10 ) SELECT * FROM v21 AS a22 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c2, max ( a30.c2 || a30.c1 ) FROM v0 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a32 WHERE a32.c7 > ( a32.c8 + - 0 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 AS ( SELECT 10 y ORDER BY 10 ) SELECT * FROM v0 AS a33 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: no such column: a17.c12
+  T count ( ( NOT ( a17.c11 IS NULL ) ) AND ( NOT ( a17.c12 IS NULL ) ) ) FROM v
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a19.c6
+  WITH v5 AS ( SELECT a19.c6 FROM v0 AS a20 WHERE a20.c1 NOT LIKE 'x' ORDER BY 1
+                      ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+   max ( a30.c2 || a30.c1 ) FROM v0 AS a30 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a31 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 14: no such column: a17.c12
+  T count ( ( NOT ( a17.c11 IS NULL ) ) AND ( NOT ( a17.c12 IS NULL ) ) ) FROM v
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such column: a19.c6
+  WITH v5 AS ( SELECT a19.c6 FROM v0 AS a20 WHERE a20.c1 NOT LIKE 'x' ORDER BY 1
+                      ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 23: no such column: a19.c6
+  WITH v5 AS ( SELECT a19.c6 FROM v0 AS a20 WHERE a20.c1 NOT LIKE 'x' ORDER BY 1
+                      ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+   max ( a30.c2 || a30.c1 ) FROM v0 AS a30 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+   max ( a30.c2 || a30.c1 ) FROM v0 AS a30 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a31 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a31 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

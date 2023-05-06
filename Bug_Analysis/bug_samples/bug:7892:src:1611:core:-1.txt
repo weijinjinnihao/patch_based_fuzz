@@ -1,0 +1,328 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 UNIQUE ON CONFLICT IGNORE, c2, c3 CHECK( c4 > 0 ), c4 ); 
+INSERT INTO v0 VALUES ( 0, 0, 100, 0 ), ( 100, 18446744071562067968, 18446744073709551488, 18446744073709551488 ); 
+CREATE TABLE v5 ( c6, c7 INTEGER UNIQUE ON CONFLICT FAIL, c8, c9 UNIQUE, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, CHECK( c21 > 0 ) ); 
+INSERT INTO v5 VALUES ( 100, 0, 0, 0 ), ( 0, 0, 100, 2147483647 ); 
+INSERT INTO v0 VALUES ( 0, 18446744073709551615, 18446744073709551615, 127 ); 
+CREATE INDEX i22 ON v0 ( c2 ); 
+CREATE INDEX i23 ON v0 ( c1 ); 
+CREATE INDEX i24 ON v0 ( c1 ); 
+CREATE INDEX i25 ON v5 ( c18 ); 
+CREATE INDEX i26 ON v5 ( c19 ); 
+INSERT INTO v0 VALUES ( 16, 0, 0, 18446744073709551615 ); 
+ALTER TABLE v0 DROP c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 NATURAL JOIN v0 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v0 ( c31 ) AS ( SELECT max ( c8 ( 0, ( a29.c2 + 0 ), a30.c8 != 'x' ) || a29.c2 ) ORDER BY 0 ) SELECT a30.c18 = + a30.c9, a29.c2 FROM v0 AS a29 LEFT JOIN v5 AS a30 ON c31 = a29.c2 WHERE a29.c1 = c31 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 WHERE a32.c2 > ( a32.c2 + - 0 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 NATURAL JOIN v5 AS a34 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 GROUP BY y ( a35.c1 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a36 NATURAL JOIN v0 AS a37 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a38 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a40.c19 FROM v5 AS a40 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41, v0 AS a42 NATURAL JOIN v0 AS a43 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: CHECK constraint failed: c4 > 0 (19)
+Parse error near line 4: table v5 has 16 columns but 4 values were supplied
+Runtime error near line 12: error in index i22 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 4
+   * FROM v0 AS a27 NATURAL JOIN v0 AS a28 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a29.c2
+   max ( c8 ( 0, ( a29.c2 + 0 ), a30.c8 != 'x' ) || a29.c2 ) ORDER BY 0 ) SELECT
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such function: y
+  SELECT * FROM v0 AS a35 GROUP BY y ( a35.c1 ) ORDER BY 18446744071562067968; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 16
+END VERI 0
+BEGIN VERI 0
+0|1.84467440737096e+19|1.84467440737096e+19|127
+16|0|0|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a40.c19 FROM v5 AS a40 ORDER BY 2147483647; 
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 8
+  AS a41, v0 AS a42 NATURAL JOIN v0 AS a43 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 UNIQUE ON CONFLICT IGNORE, c2, c3 CHECK( c4 > 0 ), c4 ); 
+INSERT INTO v0 VALUES ( 0, 0, 100, 0 ), ( 100, 18446744071562067968, 18446744073709551488, 18446744073709551488 ); 
+CREATE TABLE v5 ( c6, c7 INTEGER UNIQUE ON CONFLICT FAIL, c8, c9 UNIQUE, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, CHECK( c21 > 0 ) ); 
+INSERT INTO v5 VALUES ( 100, 0, 0, 0 ), ( 0, 0, 100, 2147483647 ); 
+INSERT INTO v0 VALUES ( 0, 18446744073709551615, 18446744073709551615, 127 ); 
+; 
+; 
+; 
+; 
+; 
+INSERT INTO v0 VALUES ( 16, 0, 0, 18446744073709551615 ); 
+ALTER TABLE v0 DROP c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 NATURAL JOIN v0 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v0 ( c31 ) AS ( SELECT max ( c8 ( 0, ( a29.c2 + 0 ), a30.c8 != 'x' ) || a29.c2 ) ORDER BY 0 ) SELECT a30.c18 = + a30.c9, a29.c2 FROM v0 AS a29 LEFT JOIN v5 AS a30 ON c31 = a29.c2 WHERE a29.c1 = c31 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 WHERE a32.c2 > ( a32.c2 + - 0 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 NATURAL JOIN v5 AS a34 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 GROUP BY y ( a35.c1 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a36 NATURAL JOIN v0 AS a37 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a38 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a40.c19 FROM v5 AS a40 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41, v0 AS a42 NATURAL JOIN v0 AS a43 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: CHECK constraint failed: c4 > 0 (19)
+Parse error near line 4: table v5 has 16 columns but 4 values were supplied
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+   * FROM v0 AS a27 NATURAL JOIN v0 AS a28 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a29.c2
+   max ( c8 ( 0, ( a29.c2 + 0 ), a30.c8 != 'x' ) || a29.c2 ) ORDER BY 0 ) SELECT
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such column: a32.c2
+  SELECT * FROM v0 AS a32 WHERE a32.c2 > ( a32.c2 + - 0 ) ORDER BY 1844674407370
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such function: y
+  SELECT * FROM v0 AS a35 GROUP BY y ( a35.c1 ) ORDER BY 18446744071562067968; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 16
+END VERI 0
+BEGIN VERI 0
+0|1.84467440737096e+19|127
+16|0|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a40.c19 FROM v5 AS a40 ORDER BY 2147483647; 
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 6
+  AS a41, v0 AS a42 NATURAL JOIN v0 AS a43 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 4
+   * FROM v0 AS a27 NATURAL JOIN v0 AS a28 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+   * FROM v0 AS a27 NATURAL JOIN v0 AS a28 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no such column: a29.c2
+   max ( c8 ( 0, ( a29.c2 + 0 ), a30.c8 != 'x' ) || a29.c2 ) ORDER BY 0 ) SELECT
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 17: no such column: a29.c2
+   max ( c8 ( 0, ( a29.c2 + 0 ), a30.c8 != 'x' ) || a29.c2 ) ORDER BY 0 ) SELECT
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 20: no such column: a32.c2
+  SELECT * FROM v0 AS a32 WHERE a32.c2 > ( a32.c2 + - 0 ) ORDER BY 1844674407370
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no such function: y
+  SELECT * FROM v0 AS a35 GROUP BY y ( a35.c1 ) ORDER BY 18446744071562067968; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: no such function: y
+  SELECT * FROM v0 AS a35 GROUP BY y ( a35.c1 ) ORDER BY 18446744071562067968; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 20
+ 
+INT: 0 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 19
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 16
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 16
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+0|1.84467440737096e+19|1.84467440737096e+19|127
+16|0|0|1.84467440737096e+19
+ 
+INT: 1 
+Str: 
+0|1.84467440737096e+19|127
+16|0|1.84467440737096e+19
+ 
+INT: 1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a40.c19 FROM v5 AS a40 ORDER BY 2147483647; 
+                           error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a40.c19 FROM v5 AS a40 ORDER BY 2147483647; 
+                           error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 8
+  AS a41, v0 AS a42 NATURAL JOIN v0 AS a43 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 6
+  AS a41, v0 AS a42 NATURAL JOIN v0 AS a43 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

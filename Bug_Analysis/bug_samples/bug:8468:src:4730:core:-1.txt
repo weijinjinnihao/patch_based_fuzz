@@ -1,0 +1,289 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c3 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 100, 100, 18446744073709551488 ), ( 100, 18446744073709551615, 100 ); 
+CREATE INDEX i6 ON v0 ( c1 ); 
+CREATE INDEX i7 ON v0 ( c1 ); 
+CREATE TABLE v8 ( c9 AS( typeof ( c9 ) ), c10 ); 
+CREATE INDEX i11 ON v8 ( c9 ); 
+ALTER TABLE v8 DROP c10; 
+ALTER TABLE v0 DROP c1; 
+CREATE TABLE v12 ( c13, c14 TEXT REFERENCES t1 DEFAULT NULL, c15, c16, c17, c18, c19, c20, c21, c22, c23, PRIMARY KEY ( c16, c19, c16, c20, c23, c23, c18 ) ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+WITH v24 ( c26 ) AS ( WITH v27 ( c28 ) AS ( WITH v27 AS ( WITH v29 AS ( SELECT 100 y ORDER BY 100 ) SELECT avg ( c26 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551488 ) SELECT 100 ORDER BY 18446744073709551488 ) SELECT 100 ORDER BY 18446744073709551488 ) SELECT * FROM v24 AS a25 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a30 GROUP BY x'b2b2b2', 18446744073709551488, 0, 100, 100, 100 HAVING CASE WHEN a30.c9 != 'x' THEN 18446744073709551488 ELSE 18446744071562067968 END > 0 >= 18446744071562067968 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a31 GROUP BY a31.c17, a31.c14 < a31.c21 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c10, count ( ( NOT ( a32.c9 IS NULL ) ) AND ( NOT ( a32.c9 IS NULL ) ) ) FROM v8 AS a32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a33 NATURAL JOIN v0 AS a34 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a35, v8 AS a36 NATURAL JOIN v12 AS a37 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c2, avg ( a38.c1 ) + 100 FROM v0 AS a38 GROUP BY a38.c3 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a39 GROUP BY a39.c21, a39.c20 < y ( a39.c19 ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c10 = 0 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a40 ORDER BY 18446744073709551615, 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: generated column loop on "c9"
+Runtime error near line 9: error in table v8 after drop column: must have at least one non-generated column
+Runtime error near line 10: error in index i5 after drop column: no such column: c1
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: generated column loop on "c9"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 15
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|200.0
+100|200.0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 11
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: c10
+  SELECT c10 = 0 ORDER BY 18446744073709551488; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c3 ) ) WITHOUT ROWID; 
+; 
+; 
+INSERT INTO v0 VALUES ( 100, 100, 18446744073709551488 ), ( 100, 18446744073709551615, 100 ); 
+; 
+; 
+CREATE TABLE v8 ( c9 AS( typeof ( c9 ) ), c10 ); 
+; 
+ALTER TABLE v8 DROP c10; 
+ALTER TABLE v0 DROP c1; 
+CREATE TABLE v12 ( c13, c14 TEXT REFERENCES t1 DEFAULT NULL, c15, c16, c17, c18, c19, c20, c21, c22, c23, PRIMARY KEY ( c16, c19, c16, c20, c23, c23, c18 ) ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+WITH v24 ( c26 ) AS ( WITH v27 ( c28 ) AS ( WITH v27 AS ( WITH v29 AS ( SELECT 100 y ORDER BY 100 ) SELECT avg ( c26 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551488 ) SELECT 100 ORDER BY 18446744073709551488 ) SELECT 100 ORDER BY 18446744073709551488 ) SELECT * FROM v24 AS a25 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a30 GROUP BY x'b2b2b2', 18446744073709551488, 0, 100, 100, 100 HAVING CASE WHEN a30.c9 != 'x' THEN 18446744073709551488 ELSE 18446744071562067968 END > 0 >= 18446744071562067968 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a31 GROUP BY a31.c17, a31.c14 < a31.c21 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c10, count ( ( NOT ( a32.c9 IS NULL ) ) AND ( NOT ( a32.c9 IS NULL ) ) ) FROM v8 AS a32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a33 NATURAL JOIN v0 AS a34 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a35, v8 AS a36 NATURAL JOIN v12 AS a37 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c2, avg ( a38.c1 ) + 100 FROM v0 AS a38 GROUP BY a38.c3 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a39 GROUP BY a39.c21, a39.c20 < y ( a39.c19 ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c10 = 0 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a40 ORDER BY 18446744073709551615, 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: error in table v8 after drop column: must have at least one non-generated column
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: generated column loop on "c9"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a38.c1
+  SELECT a38.c2, avg ( a38.c1 ) + 100 FROM v0 AS a38 GROUP BY a38.c3 ORDER BY 18
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 11
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: c10
+  SELECT c10 = 0 ORDER BY 18446744073709551488; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: generated column loop on "c9"
+ 
+INT: 0 
+Str: 
+Parse error near line 22: generated column loop on "c9"
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 15
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 15
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+1.84467440737096e+19|200.0
+100|200.0
+ 
+INT: 1 
+Str: 
+Parse error near line 31: no such column: a38.c1
+  SELECT a38.c2, avg ( a38.c1 ) + 100 FROM v0 AS a38 GROUP BY a38.c3 ORDER BY 18
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 11
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 11
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such column: c10
+  SELECT c10 = 0 ORDER BY 18446744073709551488; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 37: no such column: c10
+  SELECT c10 = 0 ORDER BY 18446744073709551488; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

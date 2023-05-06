@@ -1,0 +1,371 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE INDEX i3 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a4, ( SELECT 8 FROM v0 AS a5 ORDER BY 8 ) AS y, ( VALUES ( 8 ) ORDER BY 0 ) AS y WHERE 8 IN ( a4.c1 ) GROUP BY a4.c2 HAVING count ( * ) >= 0 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+INSERT INTO v0 VALUES ( 8, 'b' ), ( 8, 4294967295, hex ( 0 ) ), ( 8, 'x' ); 
+CREATE INDEX i6 ON v0 ( c1 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i7 ON v0 ( c1 ); 
+BEGIN; 
+INSERT INTO v0 VALUES ( 8, 8, 0 ), ( 0, 0, 0 ), ( 8, 0, 4294967295 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v0 BEGIN DELETE FROM v0 WHERE c1 = c2; END; 
+ALTER TABLE v0 ADD COLUMN c8 TEXT CHECK( c37 ( ( ( ( c2 + 9223372036854775807 ) % 0 ) == 8 ) % 8 ) != 0 ) DEFAULT 0; 
+UPDATE v0 SET c2 = 'v0' WHERE c8 = 8; 
+CREATE INDEX i9 ON v0 ( c8 ); 
+CREATE INDEX i10 ON v0 ( c8 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a11.c2 = + a12.c8, a12.c8 FROM v0 AS a11 LEFT JOIN v0 AS a12 ON a12.c2 = a12.c2 WHERE a11.c1 = a12.c1 GROUP BY y ( a12.c2, a11.c1, a12.c2, a11.c2, a12.c1, a12.c8, a11.c8, a11.c1, a11.c2, a11.c8, a12.c2, a11.c1, a12.c2, a11.c8, a12.c8, a11.c2, a12.c8 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a13, v0 AS a14 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 0 IN ( SELECT * FROM v0 AS a15 ORDER BY 100 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16 WHERE a16.c8 != 8 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 WHERE a17.c8 % 0 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c18 ) AS ( SELECT * ORDER BY 8 ) VALUES ( 4294967295 ), ( 0 ), ( 18446744071562067968 ), ( 0 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19, v0 AS a20 NATURAL JOIN v0 AS a21 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 WHERE ( a22.c8 = 0 OR a22.c2 = 0 ) AND a22.c1 IN ( SELECT a22.c1 FROM ( SELECT a23.c8 FROM v0 AS a23 ORDER BY 0 ) AS y WHERE a22.c1 = 0 ORDER BY 0 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 WHERE ( a24.c1 = 18446744073709551488 OR a24.c1 = 255 ) AND a24.c1 IN ( SELECT count ( ( NOT ( a24.c2 IS NULL ) ) AND ( NOT ( a24.c8 IS NULL ) ) ) FROM ( SELECT *, 'x' FROM v0 AS a25 LEFT JOIN v0 AS a26 ON a25.c1 = 8 AND 18446744073709551615 ORDER BY 4294967295 ) AS y WHERE a24.c2 = 18446744073709551615 ORDER BY 18446744073709551488 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 4: near "ORDER": syntax error
+  8 FROM v0 AS a5 ORDER BY 8 ) AS y, ( VALUES ( 8 ) ORDER BY 0 ) AS y WHERE 8 IN
+                                      error here ---^
+END VERI 0
+Parse error near line 6: all VALUES must have the same number of terms
+Parse error near line 8: cannot drop PRIMARY KEY column: "c1"
+Parse error near line 11: table v0 has 2 columns but 3 values were supplied
+Runtime error near line 13: unknown function: c37()
+Parse error near line 14: unknown function: c37()
+Runtime error near line 15: no such column: c8
+Parse error near line 16: no such column: c8
+  CREATE INDEX i10 ON v0 ( c8 ); 
+             error here ---^
+BEGIN VERI 0
+Parse error near line 18: no such column: a12.c8
+  SELECT a11.c2 = + a12.c8, a12.c8 FROM v0 AS a11 LEFT JOIN v0 AS a12 ON a12.c2 
+                    ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a16.c8
+  SELECT * FROM v0 AS a16 WHERE a16.c8 != 8 ORDER BY 18446744073709551615; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a17.c8
+  SELECT * FROM v0 AS a17 WHERE a17.c8 % 0 ORDER BY 8; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: near "ORDER": syntax error
+  4967295 ), ( 0 ), ( 18446744071562067968 ), ( 0 ) ORDER BY 8; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a22.c8
+  SELECT * FROM v0 AS a22 WHERE ( a22.c8 = 0 OR a22.c2 = 0 ) AND a22.c1 IN ( SEL
+                    error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: no such column: a24.c8
+  CT count ( ( NOT ( a24.c2 IS NULL ) ) AND ( NOT ( a24.c8 IS NULL ) ) ) FROM ( 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a4, ( SELECT 8 FROM v0 AS a5 ORDER BY 8 ) AS y, ( VALUES ( 8 ) ORDER BY 0 ) AS y WHERE 8 IN ( a4.c1 ) GROUP BY a4.c2 HAVING count ( * ) >= 0 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+INSERT INTO v0 VALUES ( 8, 'b' ), ( 8, 4294967295, hex ( 0 ) ), ( 8, 'x' ); 
+; 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+BEGIN; 
+INSERT INTO v0 VALUES ( 8, 8, 0 ), ( 0, 0, 0 ), ( 8, 0, 4294967295 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v0 BEGIN DELETE FROM v0 WHERE c1 = c2; END; 
+ALTER TABLE v0 ADD COLUMN c8 TEXT CHECK( c37 ( ( ( ( c2 + 9223372036854775807 ) % 0 ) == 8 ) % 8 ) != 0 ) DEFAULT 0; 
+UPDATE v0 SET c2 = 'v0' WHERE c8 = 8; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a11.c2 = + a12.c8, a12.c8 FROM v0 AS a11 LEFT JOIN v0 AS a12 ON a12.c2 = a12.c2 WHERE a11.c1 = a12.c1 GROUP BY y ( a12.c2, a11.c1, a12.c2, a11.c2, a12.c1, a12.c8, a11.c8, a11.c1, a11.c2, a11.c8, a12.c2, a11.c1, a12.c2, a11.c8, a12.c8, a11.c2, a12.c8 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a13, v0 AS a14 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 0 IN ( SELECT * FROM v0 AS a15 ORDER BY 100 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16 WHERE a16.c8 != 8 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 WHERE a17.c8 % 0 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c18 ) AS ( SELECT * ORDER BY 8 ) VALUES ( 4294967295 ), ( 0 ), ( 18446744071562067968 ), ( 0 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19, v0 AS a20 NATURAL JOIN v0 AS a21 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 WHERE ( a22.c8 = 0 OR a22.c2 = 0 ) AND a22.c1 IN ( SELECT a22.c1 FROM ( SELECT a23.c8 FROM v0 AS a23 ORDER BY 0 ) AS y WHERE a22.c1 = 0 ORDER BY 0 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 WHERE ( a24.c1 = 18446744073709551488 OR a24.c1 = 255 ) AND a24.c1 IN ( SELECT count ( ( NOT ( a24.c2 IS NULL ) ) AND ( NOT ( a24.c8 IS NULL ) ) ) FROM ( SELECT *, 'x' FROM v0 AS a25 LEFT JOIN v0 AS a26 ON a25.c1 = 8 AND 18446744073709551615 ORDER BY 4294967295 ) AS y WHERE a24.c2 = 18446744073709551615 ORDER BY 18446744073709551488 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 4: near "ORDER": syntax error
+  8 FROM v0 AS a5 ORDER BY 8 ) AS y, ( VALUES ( 8 ) ORDER BY 0 ) AS y WHERE 8 IN
+                                      error here ---^
+END VERI 0
+Parse error near line 6: all VALUES must have the same number of terms
+Parse error near line 8: cannot drop PRIMARY KEY column: "c1"
+Parse error near line 11: table v0 has 2 columns but 3 values were supplied
+Runtime error near line 13: unknown function: c37()
+Parse error near line 14: unknown function: c37()
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+  a12.c2, a11.c8, a12.c8, a11.c2, a12.c8 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Runtime error near line 27: no such column: a16.c8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a17.c8
+  SELECT * FROM v0 AS a17 WHERE a17.c8 % 0 ORDER BY 8; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: near "ORDER": syntax error
+  4967295 ), ( 0 ), ( 18446744071562067968 ), ( 0 ) ORDER BY 8; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a22.c8
+  SELECT * FROM v0 AS a22 WHERE ( a22.c8 = 0 OR a22.c2 = 0 ) AND a22.c1 IN ( SEL
+                    error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: no such column: a24.c8
+  CT count ( ( NOT ( a24.c2 IS NULL ) ) AND ( NOT ( a24.c8 IS NULL ) ) ) FROM ( 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 4: near "ORDER": syntax error
+  8 FROM v0 AS a5 ORDER BY 8 ) AS y, ( VALUES ( 8 ) ORDER BY 0 ) AS y WHERE 8 IN
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 4: near "ORDER": syntax error
+  8 FROM v0 AS a5 ORDER BY 8 ) AS y, ( VALUES ( 8 ) ORDER BY 0 ) AS y WHERE 8 IN
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such column: a12.c8
+  SELECT a11.c2 = + a12.c8, a12.c8 FROM v0 AS a11 LEFT JOIN v0 AS a12 ON a12.c2 
+                    ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+  a12.c2, a11.c8, a12.c8, a11.c2, a12.c8 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 27: no such column: a16.c8
+  SELECT * FROM v0 AS a16 WHERE a16.c8 != 8 ORDER BY 18446744073709551615; 
+                  error here ---^
+ 
+INT: 2 
+Str: 
+Runtime error near line 27: no such column: a16.c8
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such column: a17.c8
+  SELECT * FROM v0 AS a17 WHERE a17.c8 % 0 ORDER BY 8; 
+                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: no such column: a17.c8
+  SELECT * FROM v0 AS a17 WHERE a17.c8 % 0 ORDER BY 8; 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 16180288
+Str: 
+Parse error near line 33: near "ORDER": syntax error
+  4967295 ), ( 0 ), ( 18446744071562067968 ), ( 0 ) ORDER BY 8; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 33: near "ORDER": syntax error
+  4967295 ), ( 0 ), ( 18446744071562067968 ), ( 0 ) ORDER BY 8; 
+                                      error here ---^
+ 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such column: a22.c8
+  SELECT * FROM v0 AS a22 WHERE ( a22.c8 = 0 OR a22.c2 = 0 ) AND a22.c1 IN ( SEL
+                    error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 42: no such column: a22.c8
+  SELECT * FROM v0 AS a22 WHERE ( a22.c8 = 0 OR a22.c2 = 0 ) AND a22.c1 IN ( SEL
+                    error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 45: no such column: a24.c8
+  CT count ( ( NOT ( a24.c2 IS NULL ) ) AND ( NOT ( a24.c8 IS NULL ) ) ) FROM ( 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 45: no such column: a24.c8
+  CT count ( ( NOT ( a24.c2 IS NULL ) ) AND ( NOT ( a24.c8 IS NULL ) ) ) FROM ( 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

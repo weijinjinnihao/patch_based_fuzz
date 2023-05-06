@@ -1,0 +1,309 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE TABLE v4 ( c5 REFERENCES t1 DEFAULT NULL, c6, c7, c8, c9, c10, c11, c12, c13, c14 INTEGER UNIQUE ON CONFLICT FAIL, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, PRIMARY KEY ( c23, c7, c14, c31, c6, c7, c19 ) ) WITHOUT ROWID; 
+CREATE INDEX i39 ON v4 ( c15 ); 
+CREATE TABLE v40 ( c41 TEXT, c42 REAL, c43 INT, PRIMARY KEY ( c41 COLLATE nocase, c43 ) ) WITHOUT ROWID; 
+CREATE VIEW v44 AS SELECT * FROM v40 AS a45 ORDER BY 18446744073709551488; 
+CREATE TABLE v46 ( c47, c48, c49 ); 
+CREATE INDEX i50 ON v40 ( c42 ); 
+ALTER TABLE v44 DROP COLUMN c42; 
+ALTER TABLE v4 DROP COLUMN c31; 
+CREATE INDEX i51 ON v44 ( c41 ); 
+CREATE VIRTUAL TABLE v52 USING fts5 ( c53, c54 ); 
+CREATE INDEX i55 ON v0 ( c2 ); 
+ALTER TABLE v40 DROP COLUMN c42; 
+CREATE INDEX i56 ON v40 ( c41 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a57 WHERE a57.c20 = a57.c13 || a57.c19 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a58.c53 FROM v52 AS a58 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v44 ( c60 ) AS ( WITH v0 ( c61 ) AS ( WITH v52 AS ( WITH v0 AS ( SELECT 0 y ORDER BY 18446744073709551488 ) SELECT avg ( v0.c2 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 0 ) SELECT 0 ORDER BY 0 ) SELECT 0 ORDER BY 0 ) SELECT * FROM v52 AS a59 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a62 WHERE ( a62.c42 = 0 OR a62.c3 = 0 ) AND a62.c3 IS ( SELECT a63.c41 FROM ( SELECT a62.c2 FROM v52 AS a65 ORDER BY 100 ) AS y, v44 AS a63 NATURAL JOIN v4 AS a64 WHERE a63.c42 = 2147483647 GROUP BY a62.c1 HAVING NULL ORDER BY 18446744073709551615 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a66.c42 ) FROM v0 AS a66 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v44 AS a67 WHERE ( a67.c43 = 10 OR a67.c42 > 0 ) AND a67.c42 IN ( SELECT a67.c43 FROM ( SELECT *, 'v1' FROM v46 AS a68 ORDER BY 100 ) AS y WHERE a67.c43 = 18446744073709551488 ORDER BY 18446744073709551488 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v52 AS a69 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a70 GROUP BY x'b2b2b2', 18446744073709551488, 18446744073709551615, 127, 18446744073709551488, 0 HAVING CASE WHEN a70.c16 != 'v0' THEN 18446744073709551488 ELSE 18446744071562067968 END > 18446744073709551488 >= 100 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop column from view "v44"
+Parse error near line 9: cannot drop PRIMARY KEY column: "c31"
+Parse error near line 10: views may not be indexed
+Runtime error near line 11: no such module: fts5
+Runtime error near line 13: error in index i50 after drop column: no such column: c42
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v52
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v52
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v52
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a66.c42
+  SELECT count ( a66.c42 ) FROM v0 AS a66 ORDER BY 0; 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v52
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 6th GROUP BY term out of range - should be between 1 and 34
+   18446744073709551615, 127, 18446744073709551488, 0 HAVING CASE WHEN a70.c16 !
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE TABLE v4 ( c5 REFERENCES t1 DEFAULT NULL, c6, c7, c8, c9, c10, c11, c12, c13, c14 INTEGER UNIQUE ON CONFLICT FAIL, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, PRIMARY KEY ( c23, c7, c14, c31, c6, c7, c19 ) ) WITHOUT ROWID; 
+; 
+CREATE TABLE v40 ( c41 TEXT, c42 REAL, c43 INT, PRIMARY KEY ( c41 COLLATE nocase, c43 ) ) WITHOUT ROWID; 
+CREATE VIEW v44 AS SELECT * FROM v40 AS a45 ORDER BY 18446744073709551488; 
+CREATE TABLE v46 ( c47, c48, c49 ); 
+; 
+ALTER TABLE v44 DROP COLUMN c42; 
+ALTER TABLE v4 DROP COLUMN c31; 
+; 
+CREATE VIRTUAL TABLE v52 USING fts5 ( c53, c54 ); 
+; 
+ALTER TABLE v40 DROP COLUMN c42; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a57 WHERE a57.c20 = a57.c13 || a57.c19 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a58.c53 FROM v52 AS a58 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v44 ( c60 ) AS ( WITH v0 ( c61 ) AS ( WITH v52 AS ( WITH v0 AS ( SELECT 0 y ORDER BY 18446744073709551488 ) SELECT avg ( v0.c2 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 0 ) SELECT 0 ORDER BY 0 ) SELECT 0 ORDER BY 0 ) SELECT * FROM v52 AS a59 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a62 WHERE ( a62.c42 = 0 OR a62.c3 = 0 ) AND a62.c3 IS ( SELECT a63.c41 FROM ( SELECT a62.c2 FROM v52 AS a65 ORDER BY 100 ) AS y, v44 AS a63 NATURAL JOIN v4 AS a64 WHERE a63.c42 = 2147483647 GROUP BY a62.c1 HAVING NULL ORDER BY 18446744073709551615 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a66.c42 ) FROM v0 AS a66 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v44 AS a67 WHERE ( a67.c43 = 10 OR a67.c42 > 0 ) AND a67.c42 IN ( SELECT a67.c43 FROM ( SELECT *, 'v1' FROM v46 AS a68 ORDER BY 100 ) AS y WHERE a67.c43 = 18446744073709551488 ORDER BY 18446744073709551488 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v52 AS a69 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a70 GROUP BY x'b2b2b2', 18446744073709551488, 18446744073709551615, 127, 18446744073709551488, 0 HAVING CASE WHEN a70.c16 != 'v0' THEN 18446744073709551488 ELSE 18446744071562067968 END > 18446744073709551488 >= 100 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop column from view "v44"
+Parse error near line 9: cannot drop PRIMARY KEY column: "c31"
+Runtime error near line 11: no such module: fts5
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v52
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v52
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v52
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a66.c42
+  SELECT count ( a66.c42 ) FROM v0 AS a66 ORDER BY 0; 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a67.c42
+  SELECT * FROM v44 AS a67 WHERE ( a67.c43 = 10 OR a67.c42 > 0 ) AND a67.c42 IN 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v52
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 6th GROUP BY term out of range - should be between 1 and 34
+   18446744073709551615, 127, 18446744073709551488, 0 HAVING CASE WHEN a70.c16 !
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such table: v52
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such table: v52
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such table: v52
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such table: v52
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such table: v52
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such table: v52
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no such column: a66.c42
+  SELECT count ( a66.c42 ) FROM v0 AS a66 ORDER BY 0; 
+                 ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 31: no such column: a66.c42
+  SELECT count ( a66.c42 ) FROM v0 AS a66 ORDER BY 0; 
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such column: a67.c42
+  SELECT * FROM v44 AS a67 WHERE ( a67.c43 = 10 OR a67.c42 > 0 ) AND a67.c42 IN 
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such table: v52
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no such table: v52
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: 6th GROUP BY term out of range - should be between 1 and 34
+   18446744073709551615, 127, 18446744073709551488, 0 HAVING CASE WHEN a70.c16 !
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 43: 6th GROUP BY term out of range - should be between 1 and 34
+   18446744073709551615, 127, 18446744073709551488, 0 HAVING CASE WHEN a70.c16 !
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

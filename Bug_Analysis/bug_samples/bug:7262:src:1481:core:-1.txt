@@ -1,0 +1,292 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+CREATE INDEX i10 ON v0 ( c1 ); 
+CREATE INDEX i11 ON v0 ( c2 ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+ALTER TABLE v12 DROP COLUMN c15; 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i16 ON v12 ( c14 ); 
+ALTER TABLE v6 DROP COLUMN c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a17 WHERE a17.c7 % 4294967295 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 4294967295, 4294967295, 4294967295 ), ( 4294967295, 4294967295, 4294967295 ), ( 4294967295, x'b1', 0 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( WITH v12 ( c20 ) AS ( SELECT '1' ORDER BY 10 ) SELECT * FROM v0 AS a19 LEFT JOIN ( SELECT count ( * ) AS y, a21.c15 FROM ( v12 AS a21, v6 AS a22 NATURAL JOIN v0 AS a23 ) AS y WHERE a21.c14 > 4294967295 GROUP BY a19.c2 ORDER BY 0 ) AS y ON a19.c3 = y ( a19.c2 ) ORDER BY 4294967295 ) ) FROM v12 AS a18 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c8, max ( a24.c7 || a24.c8 ) FROM v6 AS a24 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a26 ORDER BY a26.c13 = + a26.c14; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY 18446744073709551615 - ( a27.c1 + a27.c3 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v12 ( c29 ) AS ( SELECT * ORDER BY 2.000000 ) SELECT * FROM v12 AS a28 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a30 GROUP BY a30.c15, a30.c15 < a30.c20 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: error in index i10 after drop column: no such column: c1
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: near "ORDER": syntax error
+  294967295, 4294967295 ), ( 4294967295, x'b1', 0 ) ORDER BY 4294967295; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a24.c8
+  SELECT a24.c8, max ( a24.c7 || a24.c8 ) FROM v6 AS a24 ORDER BY 16; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a30.c15
+  SELECT * FROM v12 AS a30 GROUP BY a30.c15, a30.c15 < a30.c20 ORDER BY 42949672
+                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+; 
+; 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+ALTER TABLE v12 DROP COLUMN c15; 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+ALTER TABLE v6 DROP COLUMN c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a17 WHERE a17.c7 % 4294967295 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 4294967295, 4294967295, 4294967295 ), ( 4294967295, 4294967295, 4294967295 ), ( 4294967295, x'b1', 0 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( WITH v12 ( c20 ) AS ( SELECT '1' ORDER BY 10 ) SELECT * FROM v0 AS a19 LEFT JOIN ( SELECT count ( * ) AS y, a21.c15 FROM ( v12 AS a21, v6 AS a22 NATURAL JOIN v0 AS a23 ) AS y WHERE a21.c14 > 4294967295 GROUP BY a19.c2 ORDER BY 0 ) AS y ON a19.c3 = y ( a19.c2 ) ORDER BY 4294967295 ) ) FROM v12 AS a18 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c8, max ( a24.c7 || a24.c8 ) FROM v6 AS a24 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a26 ORDER BY a26.c13 = + a26.c14; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY 18446744073709551615 - ( a27.c1 + a27.c3 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v12 ( c29 ) AS ( SELECT * ORDER BY 2.000000 ) SELECT * FROM v12 AS a28 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a30 GROUP BY a30.c15, a30.c15 < a30.c20 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: near "ORDER": syntax error
+  294967295, 4294967295 ), ( 4294967295, x'b1', 0 ) ORDER BY 4294967295; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a24.c8
+  SELECT a24.c8, max ( a24.c7 || a24.c8 ) FROM v6 AS a24 ORDER BY 16; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a27.c1
+   FROM v0 AS a27 ORDER BY 18446744073709551615 - ( a27.c1 + a27.c3 ); 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a30.c15
+  SELECT * FROM v12 AS a30 GROUP BY a30.c15, a30.c15 < a30.c20 ORDER BY 42949672
+                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 36757936
+Str: 
+Parse error near line 16: near "ORDER": syntax error
+  294967295, 4294967295 ), ( 4294967295, x'b1', 0 ) ORDER BY 4294967295; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 16: near "ORDER": syntax error
+  294967295, 4294967295 ), ( 4294967295, x'b1', 0 ) ORDER BY 4294967295; 
+                                      error here ---^
+ 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such column: a24.c8
+  SELECT a24.c8, max ( a24.c7 || a24.c8 ) FROM v6 AS a24 ORDER BY 16; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 22: no such column: a24.c8
+  SELECT a24.c8, max ( a24.c7 || a24.c8 ) FROM v6 AS a24 ORDER BY 16; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 34: no such column: a27.c1
+   FROM v0 AS a27 ORDER BY 18446744073709551615 - ( a27.c1 + a27.c3 ); 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such column: a30.c15
+  SELECT * FROM v12 AS a30 GROUP BY a30.c15, a30.c15 < a30.c20 ORDER BY 42949672
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 40: no such column: a30.c15
+  SELECT * FROM v12 AS a30 GROUP BY a30.c15, a30.c15 < a30.c20 ORDER BY 42949672
+                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

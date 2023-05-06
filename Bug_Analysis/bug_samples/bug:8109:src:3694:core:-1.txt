@@ -1,0 +1,322 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709551615; 
+CREATE TABLE v6 ( c7 INT, c8 INTEGER, c9 TEXT, c10 REAL PRIMARY KEY, c11 BLOB ) STRICT; 
+CREATE TABLE v12 ( c13 INTEGER PRIMARY KEY, c14, c15 UNIQUE ); 
+CREATE INDEX i16 ON v0 ( c1 ); 
+CREATE INDEX i17 ON v4 ( c3 ); 
+CREATE TABLE v18 ( c19, c20 INTEGER PRIMARY KEY, c21 ); 
+ALTER TABLE v4 DROP COLUMN c1; 
+ALTER TABLE v18 DROP COLUMN c20; 
+CREATE VIRTUAL TABLE v22 USING fts5 ( c23, c24 ); 
+CREATE INDEX i25 ON v22 ( c23 ); 
+CREATE INDEX i26 ON v22 ( c23 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i27 ON v22 ( c24 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c3 FROM v0 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a29.c2 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615 ) FROM v4 AS a29 WHERE count ( * ) >= 18446744073709551615 = 'v0' ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 GROUP BY a30.c2, a30.c2 < y ( a30.c1 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a31 WHERE CASE WHEN a31.c23 != 'apple' THEN 18446744073709551615 ELSE 18446744073709551615 END > 100 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a32 GROUP BY a32.c15, a32.c13 < y ( a32.c13 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c13, max ( a33.c13 || a33.c14 ) FROM v12 AS a33 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a34 ORDER BY a34.c8 = + a34.c10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 'anx', 'GHI', 'id.2' ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c1, count ( a35.c2 ) FROM v0 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c2, count ( a36.c2 ) FROM v0 AS a36 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: views may not be indexed
+Parse error near line 8: cannot drop column from view "v4"
+Parse error near line 9: cannot drop PRIMARY KEY column: "c20"
+Runtime error near line 10: no such module: fts5
+Parse error near line 11: no such table: main.v22
+Parse error near line 12: no such table: main.v22
+Runtime error near line 13: error in index i16 after drop column: no such column: c1
+Parse error near line 14: no such table: main.v22
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: misuse of aggregate function count()
+  ER BY 18446744073709551615 ) FROM v4 AS a29 WHERE count ( * ) >= 1844674407370
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such function: y
+  SELECT * FROM v0 AS a30 GROUP BY a30.c2, a30.c2 < y ( a30.c1 ) ORDER BY 184467
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+  ROUP BY a32.c15, a32.c13 < y ( a32.c13 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: near "ORDER": syntax error
+  VALUES ( 'anx', 'GHI', 'id.2' ) ORDER BY 18446744073709551615; 
+                    error here ---^
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709551615; 
+CREATE TABLE v6 ( c7 INT, c8 INTEGER, c9 TEXT, c10 REAL PRIMARY KEY, c11 BLOB ) STRICT; 
+CREATE TABLE v12 ( c13 INTEGER PRIMARY KEY, c14, c15 UNIQUE ); 
+; 
+; 
+CREATE TABLE v18 ( c19, c20 INTEGER PRIMARY KEY, c21 ); 
+ALTER TABLE v4 DROP COLUMN c1; 
+ALTER TABLE v18 DROP COLUMN c20; 
+CREATE VIRTUAL TABLE v22 USING fts5 ( c23, c24 ); 
+; 
+; 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c3 FROM v0 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a29.c2 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615 ) FROM v4 AS a29 WHERE count ( * ) >= 18446744073709551615 = 'v0' ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 GROUP BY a30.c2, a30.c2 < y ( a30.c1 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a31 WHERE CASE WHEN a31.c23 != 'apple' THEN 18446744073709551615 ELSE 18446744073709551615 END > 100 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a32 GROUP BY a32.c15, a32.c13 < y ( a32.c13 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c13, max ( a33.c13 || a33.c14 ) FROM v12 AS a33 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a34 ORDER BY a34.c8 = + a34.c10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 'anx', 'GHI', 'id.2' ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c1, count ( a35.c2 ) FROM v0 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c2, count ( a36.c2 ) FROM v0 AS a36 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop column from view "v4"
+Parse error near line 9: cannot drop PRIMARY KEY column: "c20"
+Runtime error near line 10: no such module: fts5
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: misuse of aggregate function count()
+  ER BY 18446744073709551615 ) FROM v4 AS a29 WHERE count ( * ) >= 1844674407370
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a30.c1
+  CT * FROM v0 AS a30 GROUP BY a30.c2, a30.c2 < y ( a30.c1 ) ORDER BY 1844674407
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+  ROUP BY a32.c15, a32.c13 < y ( a32.c13 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: near "ORDER": syntax error
+  VALUES ( 'anx', 'GHI', 'id.2' ) ORDER BY 18446744073709551615; 
+                    error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a35.c1
+  SELECT a35.c1, count ( a35.c2 ) FROM v0 AS a35 ORDER BY 18446744073709551615; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: misuse of aggregate function count()
+  ER BY 18446744073709551615 ) FROM v4 AS a29 WHERE count ( * ) >= 1844674407370
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 19: misuse of aggregate function count()
+  ER BY 18446744073709551615 ) FROM v4 AS a29 WHERE count ( * ) >= 1844674407370
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such function: y
+  SELECT * FROM v0 AS a30 GROUP BY a30.c2, a30.c2 < y ( a30.c1 ) ORDER BY 184467
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 22: no such column: a30.c1
+  CT * FROM v0 AS a30 GROUP BY a30.c2, a30.c2 < y ( a30.c1 ) ORDER BY 1844674407
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no such table: v22
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such table: v22
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+  ROUP BY a32.c15, a32.c13 < y ( a32.c13 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+  ROUP BY a32.c15, a32.c13 < y ( a32.c13 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 10233136
+Str: 
+Parse error near line 37: near "ORDER": syntax error
+  VALUES ( 'anx', 'GHI', 'id.2' ) ORDER BY 18446744073709551615; 
+                    error here ---^
+ 
+Str: 
+Parse error near line 37: near "ORDER": syntax error
+  VALUES ( 'anx', 'GHI', 'id.2' ) ORDER BY 18446744073709551615; 
+                    error here ---^
+ 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no such column: a35.c1
+  SELECT a35.c1, count ( a35.c2 ) FROM v0 AS a35 ORDER BY 18446744073709551615; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

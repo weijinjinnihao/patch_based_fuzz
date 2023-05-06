@@ -1,0 +1,276 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22 REAL, c23 NOT NULL DEFAULT 18446744073709551488, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c10 + 18446744073709551488 ) % 18446744073709551488 ) != 18446744073709551488 ) ) WITHOUT ROWID; 
+CREATE INDEX i28 ON v0 ( c22 ); 
+CREATE INDEX i29 ON v0 ( c2 ); 
+CREATE INDEX i30 ON v0 ( c14 ); 
+CREATE INDEX i31 ON v0 ( c19 ); 
+ALTER TABLE v0 DROP c19; 
+CREATE INDEX i32 ON v0 ( c17 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 NATURAL JOIN v0 AS a34 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 WHERE a35.c16 IS NOT NULL >= abs ( a35.c26 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 WHERE a36.c4 = - 18446744073709551615 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c37 ) AS ( WITH v38 AS ( SELECT ( SELECT min ( v0.c27 ) OVER ( ORDER BY 18446744073709551488 ) ORDER BY v0.c20 ) FROM v38 AS a39 GROUP BY v0.c8 ORDER BY 0 ) SELECT 0 ORDER BY 10 ) VALUES ( 0 ), ( 18446744073709551488 ), ( 18446744073709551615 ), ( NULL ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v42 ( c45 ) AS ( SELECT 18446744073709551488 ORDER BY 0 ) SELECT c45, c45 FROM v42 AS a43 RIGHT JOIN v42 AS a44 ON c45 = c45 y ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a46, v0 AS a47 NATURAL JOIN v0 AS a48 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 ORDER BY 18446744073709551488 - ( a50.c19 + a50.c21 ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: error in index i31 after drop column: no such column: c19
+BEGIN VERI 0
+Parse error near line 9: 1st ORDER BY term out of range - should be between 1 and 27
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: near "ORDER": syntax error
+  73709551488 ), ( 18446744073709551615 ), ( NULL ) ORDER BY 1844674407370955148
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a40 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: near "y": syntax error
+  ROM v42 AS a43 RIGHT JOIN v42 AS a44 ON c45 = c45 y ORDER BY 10; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22 REAL, c23 NOT NULL DEFAULT 18446744073709551488, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c10 + 18446744073709551488 ) % 18446744073709551488 ) != 18446744073709551488 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c19; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 NATURAL JOIN v0 AS a34 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 WHERE a35.c16 IS NOT NULL >= abs ( a35.c26 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 WHERE a36.c4 = - 18446744073709551615 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c37 ) AS ( WITH v38 AS ( SELECT ( SELECT min ( v0.c27 ) OVER ( ORDER BY 18446744073709551488 ) ORDER BY v0.c20 ) FROM v38 AS a39 GROUP BY v0.c8 ORDER BY 0 ) SELECT 0 ORDER BY 10 ) VALUES ( 0 ), ( 18446744073709551488 ), ( 18446744073709551615 ), ( NULL ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v42 ( c45 ) AS ( SELECT 18446744073709551488 ORDER BY 0 ) SELECT c45, c45 FROM v42 AS a43 RIGHT JOIN v42 AS a44 ON c45 = c45 y ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a46, v0 AS a47 NATURAL JOIN v0 AS a48 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 ORDER BY 18446744073709551488 - ( a50.c19 + a50.c21 ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 9: 1st ORDER BY term out of range - should be between 1 and 26
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: near "ORDER": syntax error
+  73709551488 ), ( 18446744073709551615 ), ( NULL ) ORDER BY 1844674407370955148
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 26
+  SELECT * FROM v0 AS a40 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: near "y": syntax error
+  ROM v42 AS a43 RIGHT JOIN v42 AS a44 ON c45 = c45 y ORDER BY 10; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a50.c19
+   FROM v0 AS a50 ORDER BY 18446744073709551488 - ( a50.c19 + a50.c21 ); 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 9: 1st ORDER BY term out of range - should be between 1 and 27
+ 
+INT: 0 
+Str: 
+Parse error near line 9: 1st ORDER BY term out of range - should be between 1 and 26
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 38016064
+Str: 
+Parse error near line 18: near "ORDER": syntax error
+  73709551488 ), ( 18446744073709551615 ), ( NULL ) ORDER BY 1844674407370955148
+                                      error here ---^
+ 
+Str: 
+Parse error near line 18: near "ORDER": syntax error
+  73709551488 ), ( 18446744073709551615 ), ( NULL ) ORDER BY 1844674407370955148
+                                      error here ---^
+ 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a40 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 26
+  SELECT * FROM v0 AS a40 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: near "y": syntax error
+  ROM v42 AS a43 RIGHT JOIN v42 AS a44 ON c45 = c45 y ORDER BY 10; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: near "y": syntax error
+  ROM v42 AS a43 RIGHT JOIN v42 AS a44 ON c45 = c45 y ORDER BY 10; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 36: no such column: a50.c19
+   FROM v0 AS a50 ORDER BY 18446744073709551488 - ( a50.c19 + a50.c21 ); 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

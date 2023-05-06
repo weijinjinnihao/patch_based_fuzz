@@ -1,0 +1,342 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c4 > 18446744073709551488 ), c4 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a5.c2 FROM v0 AS a5 WHERE ( a5.c3, a5.c1 ) NOT IN ( SELECT a5.c3, x'68617265' FROM v0 AS a6 LEFT JOIN v0 AS a7 ON a6.c3 = y ( a7.c1, a7.c2 ) ORDER BY 18446744073709551488 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551488, 0, 18446744073709551488, 18446744073709551488 ), ( 18446744073709551488, 18446744073709551488, 18446744073709551488, 18446744073709551488 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+CREATE TABLE v8 ( c9, c10, c11, c12, CHECK( c9 > 18446744073709551488 ) ); 
+CREATE INDEX i13 ON v0 ( c1 ); 
+CREATE INDEX i14 ON v0 ( c2 ); 
+CREATE INDEX i15 ON v8 ( c11 ); 
+INSERT INTO v0 VALUES ( 0, 0, 18446744073709551488, 18446744073709551488 ), ( 18446744073709551488, 18446744073709551488, 16, 18446744073709551488 ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 4294967295, 0, 18446744073709551488 ); 
+CREATE INDEX i16 ON v8 ( c11 ); 
+INSERT INTO v8 VALUES ( 18446744073709551488, 0, 18446744073709551488, 18446744073709551488 ); 
+CREATE INDEX i17 ON v8 ( c12 ); 
+ALTER TABLE v8 DROP c12; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a18 WHERE count ( * ) >= 18446744073709518848 = 'v0' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a19 WHERE a19.c10 = '$long' ORDER BY a19.c10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a20 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 255, x'b1' ), ( 18446744073709551488, 18446744073709551488 ), ( 18446744073709551488, 18446744073709551488 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 NATURAL JOIN v0 AS a22 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a23, v0 AS a24 NATURAL JOIN v8 AS a25 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a26 CROSS JOIN v8 AS a27 ON ( a27.c9 = a26.c12 ) WHERE a26.c9 >= ( SELECT a28.c12 FROM v8 AS a28 WHERE a28.c12 IN ( SELECT a28.c10, a30.c4 NOT NULL FROM v0 AS a29 RIGHT JOIN v0 AS a30 ON a28.c9 = a28.c12 ORDER BY 18446744073709518848 ) ORDER BY 18446744073709551615 ) ORDER BY - hex ( 0 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c11, count ( a31.c10 ) FROM v8 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a32 GROUP BY a32.c11 HAVING a32.c11 > a32.c11 % 127 >= 18446744073709551615 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a33.c9 ) FROM v8 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 3: no such function: y
+END VERI 0
+BEGIN VERI 0
+Parse error near line 6: near "ORDER": syntax error
+  488, 18446744073709551488, 18446744073709551488 ) ORDER BY 1; 
+                                      error here ---^
+END VERI 0
+Runtime error near line 12: CHECK constraint failed: c4 > 18446744073709551488 (19)
+Runtime error near line 13: CHECK constraint failed: c4 > 18446744073709551488 (19)
+Runtime error near line 15: CHECK constraint failed: c9 > 18446744073709551488 (19)
+Runtime error near line 17: error in index i17 after drop column: no such column: c12
+BEGIN VERI 0
+Parse error near line 19: misuse of aggregate function count()
+  SELECT * FROM v8 AS a18 WHERE count ( * ) >= 18446744073709518848 = 'v0' ORDER
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: near "ORDER": syntax error
+  ), ( 18446744073709551488, 18446744073709551488 ) ORDER BY 1844674407370955161
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: sub-select returns 2 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c4 > 18446744073709551488 ), c4 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a5.c2 FROM v0 AS a5 WHERE ( a5.c3, a5.c1 ) NOT IN ( SELECT a5.c3, x'68617265' FROM v0 AS a6 LEFT JOIN v0 AS a7 ON a6.c3 = y ( a7.c1, a7.c2 ) ORDER BY 18446744073709551488 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551488, 0, 18446744073709551488, 18446744073709551488 ), ( 18446744073709551488, 18446744073709551488, 18446744073709551488, 18446744073709551488 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+CREATE TABLE v8 ( c9, c10, c11, c12, CHECK( c9 > 18446744073709551488 ) ); 
+; 
+; 
+; 
+INSERT INTO v0 VALUES ( 0, 0, 18446744073709551488, 18446744073709551488 ), ( 18446744073709551488, 18446744073709551488, 16, 18446744073709551488 ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 4294967295, 0, 18446744073709551488 ); 
+; 
+INSERT INTO v8 VALUES ( 18446744073709551488, 0, 18446744073709551488, 18446744073709551488 ); 
+; 
+ALTER TABLE v8 DROP c12; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a18 WHERE count ( * ) >= 18446744073709518848 = 'v0' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a19 WHERE a19.c10 = '$long' ORDER BY a19.c10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a20 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 255, x'b1' ), ( 18446744073709551488, 18446744073709551488 ), ( 18446744073709551488, 18446744073709551488 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 NATURAL JOIN v0 AS a22 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a23, v0 AS a24 NATURAL JOIN v8 AS a25 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a26 CROSS JOIN v8 AS a27 ON ( a27.c9 = a26.c12 ) WHERE a26.c9 >= ( SELECT a28.c12 FROM v8 AS a28 WHERE a28.c12 IN ( SELECT a28.c10, a30.c4 NOT NULL FROM v0 AS a29 RIGHT JOIN v0 AS a30 ON a28.c9 = a28.c12 ORDER BY 18446744073709518848 ) ORDER BY 18446744073709551615 ) ORDER BY - hex ( 0 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c11, count ( a31.c10 ) FROM v8 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a32 GROUP BY a32.c11 HAVING a32.c11 > a32.c11 % 127 >= 18446744073709551615 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a33.c9 ) FROM v8 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 3: no such function: y
+END VERI 0
+BEGIN VERI 0
+Parse error near line 6: near "ORDER": syntax error
+  488, 18446744073709551488, 18446744073709551488 ) ORDER BY 1; 
+                                      error here ---^
+END VERI 0
+Runtime error near line 12: CHECK constraint failed: c4 > 18446744073709551488 (19)
+Runtime error near line 13: CHECK constraint failed: c4 > 18446744073709551488 (19)
+Runtime error near line 15: CHECK constraint failed: c9 > 18446744073709551488 (19)
+BEGIN VERI 0
+Parse error near line 19: misuse of aggregate function count()
+  SELECT * FROM v8 AS a18 WHERE count ( * ) >= 18446744073709518848 = 'v0' ORDER
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: near "ORDER": syntax error
+  ), ( 18446744073709551488, 18446744073709551488 ) ORDER BY 1844674407370955161
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a28.c12
+   ON ( a27.c9 = a26.c12 ) WHERE a26.c9 >= ( SELECT a28.c12 FROM v8 AS a28 WHERE
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 3: no such function: y
+ 
+INT: 0 
+Str: 
+Parse error near line 3: no such function: y
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 5331808
+Str: 
+Parse error near line 6: near "ORDER": syntax error
+  488, 18446744073709551488, 18446744073709551488 ) ORDER BY 1; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 6: near "ORDER": syntax error
+  488, 18446744073709551488, 18446744073709551488 ) ORDER BY 1; 
+                                      error here ---^
+ 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: misuse of aggregate function count()
+  SELECT * FROM v8 AS a18 WHERE count ( * ) >= 18446744073709518848 = 'v0' ORDER
+                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 19: misuse of aggregate function count()
+  SELECT * FROM v8 AS a18 WHERE count ( * ) >= 18446744073709518848 = 'v0' ORDER
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 5331808
+Str: 
+Parse error near line 28: near "ORDER": syntax error
+  ), ( 18446744073709551488, 18446744073709551488 ) ORDER BY 1844674407370955161
+                                      error here ---^
+ 
+Str: 
+Parse error near line 28: near "ORDER": syntax error
+  ), ( 18446744073709551488, 18446744073709551488 ) ORDER BY 1844674407370955161
+                                      error here ---^
+ 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 37: sub-select returns 2 columns - expected 1
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no such column: a28.c12
+   ON ( a27.c9 = a26.c12 ) WHERE a26.c9 >= ( SELECT a28.c12 FROM v8 AS a28 WHERE
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 11 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

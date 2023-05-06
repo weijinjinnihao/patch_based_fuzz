@@ -1,0 +1,294 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, CHECK( ( ( 18446744073709551615 ) % 10 ) != 18446744073709551615 ), CHECK( c1 != c2 ), CHECK( c2 != c3 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c1 = c1 || c2 WHERE c3 = c2 || c2; END; 
+CREATE TABLE v5 ( c6, c7, c8, c9, PRIMARY KEY ( c9, c9 ) ) WITHOUT ROWID; 
+CREATE INDEX i10 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 10, 10, 10 ); 
+CREATE INDEX i11 ON v5 ( c6 ); 
+CREATE VIRTUAL TABLE v12 USING rtree ( c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 ); 
+CREATE INDEX i24 ON v12 ( c14 ); 
+CREATE INDEX i25 ON v12 ( c22 ); 
+ALTER TABLE v5 DROP COLUMN c6; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709551615 < a26.c7 FROM v5 AS a26 ORDER BY 24; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY CASE WHEN a27.c3 != 'a__' THEN 10 ELSE 10 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c3 FROM v0 AS a28 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c6 FROM v5 AS a29 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a30 NATURAL JOIN v0 AS a31 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 ORDER BY a32.c3 COLLATE NOCASE, a32.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 WHERE CASE WHEN a33.c1 != 'v0' THEN 0 ELSE 18446744073709551615 END > 0 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a34 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c3, ( + a35.c8 ) y, ( + a36.c2 ) y, ( + a35.c7 ) y, NOT EXISTS ( SELECT NULL FROM v12 AS a37 ORDER BY 0 ), CASE a36.c2 WHEN 18446744073709551615 THEN 18446744073709551488 WHEN 18446744073709551615 THEN 255 WHEN 10 THEN 'v0' END, 'v0' FROM v5 AS a35 LEFT JOIN v0 AS a36 ON a36.c2 = a36.c2 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: PRIMARY KEY missing on table v0
+Parse error near line 2: no such table: main.v0
+Parse error near line 3: no such table: v0
+Parse error near line 5: no such table: main.v0
+Parse error near line 6: no such table: v0
+Parse error near line 9: virtual tables may not be indexed
+Parse error near line 10: virtual tables may not be indexed
+Runtime error near line 11: error in index i11 after drop column: no such column: c6
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, CHECK( ( ( 18446744073709551615 ) % 10 ) != 18446744073709551615 ), CHECK( c1 != c2 ), CHECK( c2 != c3 ) ) WITHOUT ROWID; 
+; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c1 = c1 || c2 WHERE c3 = c2 || c2; END; 
+CREATE TABLE v5 ( c6, c7, c8, c9, PRIMARY KEY ( c9, c9 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v0 VALUES ( 18446744073709551615, 10, 10, 10 ); 
+; 
+CREATE VIRTUAL TABLE v12 USING rtree ( c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 ); 
+; 
+; 
+ALTER TABLE v5 DROP COLUMN c6; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709551615 < a26.c7 FROM v5 AS a26 ORDER BY 24; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY CASE WHEN a27.c3 != 'a__' THEN 10 ELSE 10 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c3 FROM v0 AS a28 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c6 FROM v5 AS a29 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a30 NATURAL JOIN v0 AS a31 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 ORDER BY a32.c3 COLLATE NOCASE, a32.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 WHERE CASE WHEN a33.c1 != 'v0' THEN 0 ELSE 18446744073709551615 END > 0 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a34 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c3, ( + a35.c8 ) y, ( + a36.c2 ) y, ( + a35.c7 ) y, NOT EXISTS ( SELECT NULL FROM v12 AS a37 ORDER BY 0 ), CASE a36.c2 WHEN 18446744073709551615 THEN 18446744073709551488 WHEN 18446744073709551615 THEN 255 WHEN 10 THEN 'v0' END, 'v0' FROM v5 AS a35 LEFT JOIN v0 AS a36 ON a36.c2 = a36.c2 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: PRIMARY KEY missing on table v0
+Parse error near line 3: no such table: v0
+Parse error near line 6: no such table: v0
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: a29.c6
+  SELECT a29.c6 FROM v5 AS a29 ORDER BY 10; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such column: a29.c6
+  SELECT a29.c6 FROM v5 AS a29 ORDER BY 10; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no such table: v0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

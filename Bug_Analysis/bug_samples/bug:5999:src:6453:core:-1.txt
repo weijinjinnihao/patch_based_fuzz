@@ -1,0 +1,312 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+UPDATE v0 SET c1 = 'v0' FROM v0 AS a5, v0 AS a6; 
+CREATE TABLE v7 ( c8, c9 INT, c10 CHECK( c9 > 16 ) ); 
+CREATE INDEX i11 ON v7 ( c8 ); 
+INSERT INTO v7 VALUES ( 16, 0, 255 ); 
+CREATE INDEX i12 ON v0 ( c1 ); 
+INSERT INTO v7 VALUES ( 255, 18446744071562067968, 18446744071562067968 ); 
+CREATE INDEX i13 ON v0 ( c2 ); 
+INSERT INTO v7 VALUES ( x'b1', 255, 255 ); 
+CREATE INDEX i14 ON v0 ( c3 ); 
+ALTER TABLE v7 DROP COLUMN c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a15 GROUP BY y ( a15.c9, a15.c8, a15.c9, a15.c8, a15.c10, a15.c8, a15.c9, a15.c8, a15.c9, a15.c9, a15.c9, a15.c8, a15.c9, a15.c9, a15.c9, a15.c9, a15.c8 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( WITH v0 AS ( SELECT 18446744071562067968 y ORDER BY 255 ) SELECT avg ( a16.c3 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 0 ) SELECT CASE WHEN a16.c3 % 255 != count ( * ) >= 16 THEN a16.c1 END, a16.c1, a16.c3 FROM v0 AS a16 WHERE a16.c1 <= 255 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v17 ( c19 ) AS ( WITH v17 ( c20, c21, c22, c23, c24, c25 ) AS ( SELECT 255 y ORDER BY ( ( c25 + 16 ) % 255 ) < 255 ) SELECT 255 ORDER BY 8 ) SELECT * FROM v17 AS a18 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26, v0 AS a27 NATURAL JOIN v7 AS a28 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c9, sum ( a30.c2 ) AS y FROM v7 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 NATURAL JOIN v7 AS a32 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c20, count ( ( NOT ( a33.c20 IS NULL ) ) AND ( NOT ( a33.c1 IS NULL ) ) ) FROM v0 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c8, count ( a34.c10 ) FROM v7 AS a34 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a35 NATURAL JOIN v7 AS a36 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 GROUP BY ( ( SELECT * FROM v0 AS a38 WHERE a38.c21 = a37.c1 || a38.c20 ORDER BY 18446744073709518848 ) % 18446744073709551615 ), abs ( a37.c2 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: CHECK constraint failed: c9 > 16 (19)
+Runtime error near line 12: error in index i11 after drop column: no such column: c8
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 6
+   * FROM v0 AS a31 NATURAL JOIN v7 AS a32 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a33.c20
+  SELECT a33.c20, count ( ( NOT ( a33.c20 IS NULL ) ) AND ( NOT ( a33.c1 IS NULL
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a38.c21
+  AS a37 GROUP BY ( ( SELECT * FROM v0 AS a38 WHERE a38.c21 = a37.c1 || a38.c20 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+; 
+UPDATE v0 SET c1 = 'v0' FROM v0 AS a5, v0 AS a6; 
+CREATE TABLE v7 ( c8, c9 INT, c10 CHECK( c9 > 16 ) ); 
+; 
+INSERT INTO v7 VALUES ( 16, 0, 255 ); 
+; 
+INSERT INTO v7 VALUES ( 255, 18446744071562067968, 18446744071562067968 ); 
+; 
+INSERT INTO v7 VALUES ( x'b1', 255, 255 ); 
+; 
+ALTER TABLE v7 DROP COLUMN c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a15 GROUP BY y ( a15.c9, a15.c8, a15.c9, a15.c8, a15.c10, a15.c8, a15.c9, a15.c8, a15.c9, a15.c9, a15.c9, a15.c8, a15.c9, a15.c9, a15.c9, a15.c9, a15.c8 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( WITH v0 AS ( SELECT 18446744071562067968 y ORDER BY 255 ) SELECT avg ( a16.c3 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 0 ) SELECT CASE WHEN a16.c3 % 255 != count ( * ) >= 16 THEN a16.c1 END, a16.c1, a16.c3 FROM v0 AS a16 WHERE a16.c1 <= 255 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v17 ( c19 ) AS ( WITH v17 ( c20, c21, c22, c23, c24, c25 ) AS ( SELECT 255 y ORDER BY ( ( c25 + 16 ) % 255 ) < 255 ) SELECT 255 ORDER BY 8 ) SELECT * FROM v17 AS a18 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26, v0 AS a27 NATURAL JOIN v7 AS a28 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c9, sum ( a30.c2 ) AS y FROM v7 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 NATURAL JOIN v7 AS a32 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c20, count ( ( NOT ( a33.c20 IS NULL ) ) AND ( NOT ( a33.c1 IS NULL ) ) ) FROM v0 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c8, count ( a34.c10 ) FROM v7 AS a34 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a35 NATURAL JOIN v7 AS a36 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 GROUP BY ( ( SELECT * FROM v0 AS a38 WHERE a38.c21 = a37.c1 || a38.c20 ORDER BY 18446744073709518848 ) % 18446744073709551615 ), abs ( a37.c2 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: CHECK constraint failed: c9 > 16 (19)
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 5
+   * FROM v0 AS a31 NATURAL JOIN v7 AS a32 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a33.c20
+  SELECT a33.c20, count ( ( NOT ( a33.c20 IS NULL ) ) AND ( NOT ( a33.c1 IS NULL
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a34.c8
+  SELECT a34.c8, count ( a34.c10 ) FROM v7 AS a34 ORDER BY 255; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a38.c21
+  AS a37 GROUP BY ( ( SELECT * FROM v0 AS a38 WHERE a38.c21 = a37.c1 || a38.c20 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 9
+ 
+INT: 0 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 6
+   * FROM v0 AS a31 NATURAL JOIN v7 AS a32 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 5
+   * FROM v0 AS a31 NATURAL JOIN v7 AS a32 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such column: a33.c20
+  SELECT a33.c20, count ( ( NOT ( a33.c20 IS NULL ) ) AND ( NOT ( a33.c1 IS NULL
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 32: no such column: a33.c20
+  SELECT a33.c20, count ( ( NOT ( a33.c20 IS NULL ) ) AND ( NOT ( a33.c1 IS NULL
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 35: no such column: a34.c8
+  SELECT a34.c8, count ( a34.c10 ) FROM v7 AS a34 ORDER BY 255; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no such column: a38.c21
+  AS a37 GROUP BY ( ( SELECT * FROM v0 AS a38 WHERE a38.c21 = a37.c1 || a38.c20 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: no such column: a38.c21
+  AS a37 GROUP BY ( ( SELECT * FROM v0 AS a38 WHERE a38.c21 = a37.c1 || a38.c20 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

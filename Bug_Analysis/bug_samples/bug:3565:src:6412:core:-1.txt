@@ -1,0 +1,289 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 ( c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15 ) AS SELECT * FROM v0 AS a16 ORDER BY 18446744073709551615; 
+CREATE VIEW v17 ( c18, c19, c20, c21, c22 ) AS SELECT 18446744073709551615 COLLATE hex ORDER BY 18446744071562067968; 
+CREATE TABLE v23 ( c24 INTEGER PRIMARY KEY, c25, c26 UNIQUE ); 
+CREATE TABLE v27 ( c28, c29, c30 ); 
+ALTER TABLE v27 DROP COLUMN c28; 
+CREATE INDEX i31 ON v0 ( c2 ); 
+ALTER TABLE v17 DROP COLUMN c20; 
+CREATE INDEX i32 ON v27 ( c30 ); 
+CREATE VIRTUAL TABLE v33 USING fts5 ( c34, c35 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i36 ON v4 ( c9 ); 
+CREATE INDEX i37 ON v17 ( c19 ); 
+CREATE INDEX i38 ON v4 ( c10 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a39, v0 AS a40 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41, v4 AS a42 NATURAL JOIN v27 AS a43 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a44 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a45 ORDER BY ( 18446744073709551615, count ( * ) ) != 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a46 NATURAL JOIN v17 AS a47 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a48, v4 AS a49 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a50 NATURAL JOIN v4 AS a51 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a52.c10, a53.c1 FROM v4 AS a52 LEFT JOIN v0 AS a53 ON a52.c9 = a52.c3 WHERE a53.c2 != a52.c6 ORDER BY a52.c9 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a54 GROUP BY a54.c29 HAVING NULL ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop column from view "v17"
+Runtime error near line 10: no such module: fts5
+Runtime error near line 11: error in index i31 after drop column: no such column: c2
+Parse error near line 12: views may not be indexed
+Parse error near line 13: views may not be indexed
+Parse error near line 14: views may not be indexed
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: expected 11 columns for 'v4' but got 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v33
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: expected 11 columns for 'v4' but got 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a52.c3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 ( c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15 ) AS SELECT * FROM v0 AS a16 ORDER BY 18446744073709551615; 
+CREATE VIEW v17 ( c18, c19, c20, c21, c22 ) AS SELECT 18446744073709551615 COLLATE hex ORDER BY 18446744071562067968; 
+CREATE TABLE v23 ( c24 INTEGER PRIMARY KEY, c25, c26 UNIQUE ); 
+CREATE TABLE v27 ( c28, c29, c30 ); 
+ALTER TABLE v27 DROP COLUMN c28; 
+; 
+ALTER TABLE v17 DROP COLUMN c20; 
+; 
+CREATE VIRTUAL TABLE v33 USING fts5 ( c34, c35 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a39, v0 AS a40 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41, v4 AS a42 NATURAL JOIN v27 AS a43 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a44 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a45 ORDER BY ( 18446744073709551615, count ( * ) ) != 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a46 NATURAL JOIN v17 AS a47 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a48, v4 AS a49 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a50 NATURAL JOIN v4 AS a51 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a52.c10, a53.c1 FROM v4 AS a52 LEFT JOIN v0 AS a53 ON a52.c9 = a52.c3 WHERE a53.c2 != a52.c6 ORDER BY a52.c9 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a54 GROUP BY a54.c29 HAVING NULL ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop column from view "v17"
+Runtime error near line 10: no such module: fts5
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: expected 11 columns for 'v4' but got 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v33
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: expected 11 columns for 'v4' but got 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a53.c2
+   a52 LEFT JOIN v0 AS a53 ON a52.c9 = a52.c3 WHERE a53.c2 != a52.c6 ORDER BY a5
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: expected 11 columns for 'v4' but got 3
+ 
+INT: 0 
+Str: 
+Parse error near line 19: expected 11 columns for 'v4' but got 2
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no such table: v33
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such table: v33
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such collation sequence: hex
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such collation sequence: hex
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no such collation sequence: hex
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no such collation sequence: hex
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such collation sequence: hex
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such collation sequence: hex
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: expected 11 columns for 'v4' but got 3
+ 
+INT: 0 
+Str: 
+Parse error near line 37: expected 11 columns for 'v4' but got 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 40: no such column: a52.c3
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no such column: a53.c2
+   a52 LEFT JOIN v0 AS a53 ON a52.c9 = a52.c3 WHERE a53.c2 != a52.c6 ORDER BY a5
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

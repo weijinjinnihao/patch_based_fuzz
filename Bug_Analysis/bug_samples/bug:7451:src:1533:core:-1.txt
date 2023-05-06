@@ -1,0 +1,302 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19 REFERENCES t1 DEFAULT 18446744071562067968 DEFAULT 18446744071562067968 ); 
+CREATE TABLE v20 ( c21, c22, c23 REFERENCES p1 ( c21 ) ); 
+CREATE INDEX i24 ON v0 ( c18 ); 
+CREATE TABLE v25 ( c26, c27, c28, c29 REFERENCES p1 ( c28 ) ); 
+ALTER TABLE v0 DROP COLUMN c17; 
+CREATE INDEX i30 ON v25 ( c26 ); 
+CREATE INDEX i31 ON v20 ( c23 ); 
+CREATE INDEX i32 ON v0 ( c8 ); 
+CREATE INDEX i33 ON v0 ( c5 ); 
+ALTER TABLE v20 DROP COLUMN c23; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( SELECT a35.c21 WHERE a35.c23 = NULL AND a35.c21 >= a35.c22 ORDER BY 18446744073709551488 ) ) FROM v20 AS a35 WHERE ( CASE WHEN a35.c21 != 'wvu' THEN 18446744071562067968 ELSE 18446744073709551615 END ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 GROUP BY y ( a36.c2 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 GROUP BY a37.c12 HAVING a37.c15 > a37.c10 % 18446744071562067968 >= 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a38, v25 AS a39 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a40.c11 || a40.c5 ) FROM v0 AS a40 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c29, a41.c27 FROM v25 AS a41 JOIN v0 AS a42 ON a42.c15 = hex ( ) GROUP BY a42.c17 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v25 ( c44 ) AS ( SELECT max ( v25.c29 || a43.c23 ) ORDER BY 18446744071562067968 ) SELECT * FROM v20 AS a43 WHERE ( v25.c29 = 18446744071562067968 OR v25.c27 > 0 ) AND a43.c23 IN ( SELECT a43.c21 FROM ( SELECT a45.c27 FROM v25 AS a45 ORDER BY 18446744071562067968 ) AS y WHERE a43.c22 = 18446744071562067968 ORDER BY 0 ) GROUP BY v25.c27, abs ( a43.c44 ) HAVING count ( * ) >= 18446744071562067968 ORDER BY 0 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a46 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a47 ORDER BY max ( a47.c16 + a47.c9 * 18446744071562067968 ) + 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: error in index i31 after drop column: no such column: c23
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such function: y
+  SELECT * FROM v0 AS a36 GROUP BY y ( a36.c2 ) ORDER BY 18446744071562067968; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  max ( a40.c11 || a40.c5 ) FROM v0 AS a40 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: wrong number of arguments to function hex()
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: v25.c29
+  44071562067968 ) SELECT * FROM v20 AS a43 WHERE ( v25.c29 = 184467440715620679
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: misuse of aggregate: max()
+  SELECT * FROM v0 AS a47 ORDER BY max ( a47.c16 + a47.c9 * 18446744071562067968
+                     error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19 REFERENCES t1 DEFAULT 18446744071562067968 DEFAULT 18446744071562067968 ); 
+CREATE TABLE v20 ( c21, c22, c23 REFERENCES p1 ( c21 ) ); 
+; 
+CREATE TABLE v25 ( c26, c27, c28, c29 REFERENCES p1 ( c28 ) ); 
+ALTER TABLE v0 DROP COLUMN c17; 
+; 
+; 
+; 
+; 
+ALTER TABLE v20 DROP COLUMN c23; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( SELECT a35.c21 WHERE a35.c23 = NULL AND a35.c21 >= a35.c22 ORDER BY 18446744073709551488 ) ) FROM v20 AS a35 WHERE ( CASE WHEN a35.c21 != 'wvu' THEN 18446744071562067968 ELSE 18446744073709551615 END ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 GROUP BY y ( a36.c2 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 GROUP BY a37.c12 HAVING a37.c15 > a37.c10 % 18446744071562067968 >= 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a38, v25 AS a39 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a40.c11 || a40.c5 ) FROM v0 AS a40 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c29, a41.c27 FROM v25 AS a41 JOIN v0 AS a42 ON a42.c15 = hex ( ) GROUP BY a42.c17 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v25 ( c44 ) AS ( SELECT max ( v25.c29 || a43.c23 ) ORDER BY 18446744071562067968 ) SELECT * FROM v20 AS a43 WHERE ( v25.c29 = 18446744071562067968 OR v25.c27 > 0 ) AND a43.c23 IN ( SELECT a43.c21 FROM ( SELECT a45.c27 FROM v25 AS a45 ORDER BY 18446744071562067968 ) AS y WHERE a43.c22 = 18446744071562067968 ORDER BY 0 ) GROUP BY v25.c27, abs ( a43.c44 ) HAVING count ( * ) >= 18446744071562067968 ORDER BY 0 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a46 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a47 ORDER BY max ( a47.c16 + a47.c9 * 18446744071562067968 ) + 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such column: a35.c23
+  SELECT count ( ( SELECT a35.c21 WHERE a35.c23 = NULL AND a35.c21 >= a35.c22 OR
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such function: y
+  SELECT * FROM v0 AS a36 GROUP BY y ( a36.c2 ) ORDER BY 18446744071562067968; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  max ( a40.c11 || a40.c5 ) FROM v0 AS a40 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: wrong number of arguments to function hex()
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: v25.c29
+  44071562067968 ) SELECT * FROM v20 AS a43 WHERE ( v25.c29 = 184467440715620679
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: misuse of aggregate: max()
+  SELECT * FROM v0 AS a47 ORDER BY max ( a47.c16 + a47.c9 * 18446744071562067968
+                     error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+0
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such column: a35.c23
+  SELECT count ( ( SELECT a35.c21 WHERE a35.c23 = NULL AND a35.c21 >= a35.c22 OR
+                          error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such function: y
+  SELECT * FROM v0 AS a36 GROUP BY y ( a36.c2 ) ORDER BY 18446744071562067968; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 18: no such function: y
+  SELECT * FROM v0 AS a36 GROUP BY y ( a36.c2 ) ORDER BY 18446744071562067968; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  max ( a40.c11 || a40.c5 ) FROM v0 AS a40 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  max ( a40.c11 || a40.c5 ) FROM v0 AS a40 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: wrong number of arguments to function hex()
+ 
+INT: 0 
+Str: 
+Parse error near line 30: wrong number of arguments to function hex()
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such column: v25.c29
+  44071562067968 ) SELECT * FROM v20 AS a43 WHERE ( v25.c29 = 184467440715620679
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: no such column: v25.c29
+  44071562067968 ) SELECT * FROM v20 AS a43 WHERE ( v25.c29 = 184467440715620679
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 18
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 18
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: misuse of aggregate: max()
+  SELECT * FROM v0 AS a47 ORDER BY max ( a47.c16 + a47.c9 * 18446744071562067968
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: misuse of aggregate: max()
+  SELECT * FROM v0 AS a47 ORDER BY max ( a47.c16 + a47.c9 * 18446744071562067968
+                     error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

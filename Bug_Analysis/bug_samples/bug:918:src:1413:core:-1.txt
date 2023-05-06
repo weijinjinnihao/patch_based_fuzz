@@ -1,0 +1,310 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 9223372036854775807; 
+CREATE INDEX i7 ON v0 ( c2 ); 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+ALTER TABLE v5 DROP COLUMN c3; 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i16 ON v0 ( c2 ); 
+CREATE TABLE v17 ( c18, c19 NOT NULL, c20 NOT NULL, c21 NOT NULL ); 
+CREATE INDEX i22 ON v12 ( c15 ); 
+CREATE VIRTUAL TABLE v23 USING fts5 ( c24, c25 ); 
+ALTER TABLE v23 DROP COLUMN c10; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c11, count ( ( NOT ( a27.c10 IS NULL ) ) AND ( NOT ( a27.c11 IS NULL ) ) ) FROM v12 AS a26 RIGHT JOIN v8 AS a27 ON a27.c10 = a27.c11 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c15, count ( a28.c14 ) FROM v12 AS a28 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v29 ( c31 ) AS ( SELECT 9223372036854775807 ORDER BY 18446744073709551488 ) SELECT * FROM v29 AS a30 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 ( c34, c35, c36, c37, c38, c39 ) AS ( SELECT 9223372036854775807 y ORDER BY 18446744071562067968 ) SELECT a32.c1, a32.c10 FROM v5 AS a32 RIGHT JOIN v0 AS a33 ON a32.c10 = c34 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 WHERE a40.c3 = + a40.c1 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a41.c3, a41.c1 ), min ( a41.c2, a41.c2 ) FROM v0 AS a41, v0 AS a42 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a43.c10 || a43.c11 ) FROM v8 AS a43 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a44, v5 AS a45 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v23 ( c46 ) AS ( WITH v12 ( c47, c48, c49, c50, c51, c52 ) AS ( SELECT 9223372036854775807 y ORDER BY 9223372036854775807 ) SELECT 9223372036854775807 ORDER BY 4294967295 ) VALUES ( 9223372036854775807, 18446744071562067968 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: cannot drop column from view "v5"
+Runtime error near line 8: error in index i4 after drop column: no such column: c1
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: no such table: v23
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: table v5 has 1 values for 6 columns
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+  1.c2, a41.c2 ) FROM v0 AS a41, v0 AS a42 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+  ax ( a43.c10 || a43.c11 ) FROM v8 AS a43 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: near "ORDER": syntax error
+  UES ( 9223372036854775807, 18446744071562067968 ) ORDER BY 9223372036854775807
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 9223372036854775807; 
+; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+ALTER TABLE v5 DROP COLUMN c3; 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+CREATE TABLE v17 ( c18, c19 NOT NULL, c20 NOT NULL, c21 NOT NULL ); 
+; 
+CREATE VIRTUAL TABLE v23 USING fts5 ( c24, c25 ); 
+ALTER TABLE v23 DROP COLUMN c10; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c11, count ( ( NOT ( a27.c10 IS NULL ) ) AND ( NOT ( a27.c11 IS NULL ) ) ) FROM v12 AS a26 RIGHT JOIN v8 AS a27 ON a27.c10 = a27.c11 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c15, count ( a28.c14 ) FROM v12 AS a28 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v29 ( c31 ) AS ( SELECT 9223372036854775807 ORDER BY 18446744073709551488 ) SELECT * FROM v29 AS a30 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 ( c34, c35, c36, c37, c38, c39 ) AS ( SELECT 9223372036854775807 y ORDER BY 18446744071562067968 ) SELECT a32.c1, a32.c10 FROM v5 AS a32 RIGHT JOIN v0 AS a33 ON a32.c10 = c34 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 WHERE a40.c3 = + a40.c1 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a41.c3, a41.c1 ), min ( a41.c2, a41.c2 ) FROM v0 AS a41, v0 AS a42 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a43.c10 || a43.c11 ) FROM v8 AS a43 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a44, v5 AS a45 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v23 ( c46 ) AS ( WITH v12 ( c47, c48, c49, c50, c51, c52 ) AS ( SELECT 9223372036854775807 y ORDER BY 9223372036854775807 ) SELECT 9223372036854775807 ORDER BY 4294967295 ) VALUES ( 9223372036854775807, 18446744071562067968 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: cannot drop column from view "v5"
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: no such table: v23
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: table v5 has 1 values for 6 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a40.c1
+  SELECT * FROM v0 AS a40 WHERE a40.c3 = + a40.c1 ORDER BY 18446744073709551488;
+                             error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a41.c1
+  SELECT max ( a41.c3, a41.c1 ), min ( a41.c2, a41.c2 ) FROM v0 AS a41, v0 AS a4
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+  ax ( a43.c10 || a43.c11 ) FROM v8 AS a43 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: near "ORDER": syntax error
+  UES ( 9223372036854775807, 18446744071562067968 ) ORDER BY 9223372036854775807
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: table v5 has 1 values for 6 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 24: table v5 has 1 values for 6 columns
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 27: no such column: a40.c1
+  SELECT * FROM v0 AS a40 WHERE a40.c3 = + a40.c1 ORDER BY 18446744073709551488;
+                             error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+  1.c2, a41.c2 ) FROM v0 AS a41, v0 AS a42 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: no such column: a41.c1
+  SELECT max ( a41.c3, a41.c1 ), min ( a41.c2, a41.c2 ) FROM v0 AS a41, v0 AS a4
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+  ax ( a43.c10 || a43.c11 ) FROM v8 AS a43 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+  ax ( a43.c10 || a43.c11 ) FROM v8 AS a43 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 19720192
+Str: 
+Parse error near line 42: near "ORDER": syntax error
+  UES ( 9223372036854775807, 18446744071562067968 ) ORDER BY 9223372036854775807
+                                      error here ---^
+ 
+Str: 
+Parse error near line 42: near "ORDER": syntax error
+  UES ( 9223372036854775807, 18446744071562067968 ) ORDER BY 9223372036854775807
+                                      error here ---^
+ 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,326 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 UNIQUE ); 
+CREATE INDEX i3 ON v0 ( c1 ); 
+CREATE TABLE v4 ( c5, c6, c7 REFERENCES p1 ( c5 ) ); 
+CREATE INDEX i8 ON v4 ( c7 ); 
+CREATE TABLE v9 ( c10, c11, c12, c13 REFERENCES p1 ( c12 ) ); 
+CREATE INDEX i14 ON v9 ( c13, c12 ) WHERE c11 != 4294967295; 
+CREATE INDEX i15 ON v0 ( c2 ); 
+CREATE INDEX i16 ON v9 ( c11 ); 
+ALTER TABLE v9 DROP COLUMN c12; 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 WHERE a17.c2 = a17.c1 > 4294967295 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 WHERE ( a18.c2 + 4294967295 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v19 ( c23 ) AS ( WITH v19 ( c27 ) AS ( WITH v28 AS ( WITH v28 AS ( SELECT 4294967295 y ORDER BY 2147483647 ) SELECT avg ( c23 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 4294967295 ) SELECT 4294967295 ORDER BY 18446744073709518848 ) SELECT 4294967295 FROM v19 AS a24, v19 AS a25 NATURAL JOIN v19 AS a26 ORDER BY 4294967295 ) SELECT c23 FROM v19 AS a20 LEFT JOIN v19 AS a21 ON ( c23 = c23 AND c23 = 'v1' ) LEFT JOIN v19 AS a22 ON ( c23 = c23 ) WHERE c23 = 'x' ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a30.c2 IS NULL ) ) AND ( NOT ( a30.c1 IS NULL ) ) ), count ( ( NOT ( a30.c1 IS NULL ) ) AND ( NOT ( a30.c1 IS NULL ) ) ), count ( ( NOT ( a30.c2 IS NULL ) ) AND ( NOT ( a31.c12 IS NULL ) ) ) FROM v0 AS a30 LEFT JOIN v9 AS a31 ON a31.c12 = a31.c11 WHERE a30.c27 < y ( a30.c2 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a32 ORDER BY count ( ( NOT ( a32.c12 IS NULL ) ) AND ( NOT ( a32.c11 IS NULL ) ) ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c11, ( + a33.c13 ) y, ( + a34.c12 ) y, ( + a34.c11 ) y, NOT EXISTS ( SELECT NULL FROM v4 AS a35 ORDER BY 4294967295 ), CASE a34.c13 WHEN 18446744073709551615 THEN 4294967295 WHEN 4294967295 THEN 18446744073709551615 WHEN 4294967295 THEN 'id.2' END, 'v0' FROM v9 AS a33 LEFT JOIN v9 AS a34 ON a33.c11 = a34.c11 WHERE a33.c10 < a34.c13 GROUP BY a34.c13, abs ( a34.c13 ) HAVING count ( * ) >= 18446744073709551615 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c11 + ( SELECT max ( a36.c11 ) FROM v4 AS a39 ORDER BY 0 ), a36.c10 + ( SELECT max ( a37.c2 ) FROM v9 AS a38 ORDER BY 8 ), a36.c11 + ( SELECT max ( a36.c13 ) FROM v0 AS a37 ORDER BY 18446744073709551615 ) FROM v9 AS a36 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a40.c2, count ( a40.c2 ) FROM v0 AS a40 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41 ORDER BY max ( a41.c2 + a41.c1 * 0 ) + 8, min ( a41.c2, avg ( a41.c2 ) ) + NULL >= 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: error in index i14 after drop column: no such column: c12
+Parse error near line 10: cannot drop PRIMARY KEY column: "c1"
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 2
+  S a17 WHERE a17.c2 = a17.c1 > 4294967295 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: ambiguous column name: c23
+  URAL JOIN v19 AS a26 ORDER BY 4294967295 ) SELECT c23 FROM v19 AS a20 LEFT JOI
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a30.c27
+  30 LEFT JOIN v9 AS a31 ON a31.c12 = a31.c11 WHERE a30.c27 < y ( a30.c2 ) ORDER
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: misuse of aggregate: count()
+  SELECT * FROM v9 AS a32 ORDER BY count ( ( NOT ( a32.c12 IS NULL ) ) AND ( NOT
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+   ( SELECT max ( a36.c11 ) FROM v4 AS a39 ORDER BY 0 ), a36.c10 + ( SELECT max 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: misuse of aggregate: avg()
+  BY max ( a41.c2 + a41.c1 * 0 ) + 8, min ( a41.c2, avg ( a41.c2 ) ) + NULL >= 4
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 UNIQUE ); 
+; 
+CREATE TABLE v4 ( c5, c6, c7 REFERENCES p1 ( c5 ) ); 
+; 
+CREATE TABLE v9 ( c10, c11, c12, c13 REFERENCES p1 ( c12 ) ); 
+; 
+; 
+; 
+ALTER TABLE v9 DROP COLUMN c12; 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 WHERE a17.c2 = a17.c1 > 4294967295 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 WHERE ( a18.c2 + 4294967295 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v19 ( c23 ) AS ( WITH v19 ( c27 ) AS ( WITH v28 AS ( WITH v28 AS ( SELECT 4294967295 y ORDER BY 2147483647 ) SELECT avg ( c23 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 4294967295 ) SELECT 4294967295 ORDER BY 18446744073709518848 ) SELECT 4294967295 FROM v19 AS a24, v19 AS a25 NATURAL JOIN v19 AS a26 ORDER BY 4294967295 ) SELECT c23 FROM v19 AS a20 LEFT JOIN v19 AS a21 ON ( c23 = c23 AND c23 = 'v1' ) LEFT JOIN v19 AS a22 ON ( c23 = c23 ) WHERE c23 = 'x' ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a30.c2 IS NULL ) ) AND ( NOT ( a30.c1 IS NULL ) ) ), count ( ( NOT ( a30.c1 IS NULL ) ) AND ( NOT ( a30.c1 IS NULL ) ) ), count ( ( NOT ( a30.c2 IS NULL ) ) AND ( NOT ( a31.c12 IS NULL ) ) ) FROM v0 AS a30 LEFT JOIN v9 AS a31 ON a31.c12 = a31.c11 WHERE a30.c27 < y ( a30.c2 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a32 ORDER BY count ( ( NOT ( a32.c12 IS NULL ) ) AND ( NOT ( a32.c11 IS NULL ) ) ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c11, ( + a33.c13 ) y, ( + a34.c12 ) y, ( + a34.c11 ) y, NOT EXISTS ( SELECT NULL FROM v4 AS a35 ORDER BY 4294967295 ), CASE a34.c13 WHEN 18446744073709551615 THEN 4294967295 WHEN 4294967295 THEN 18446744073709551615 WHEN 4294967295 THEN 'id.2' END, 'v0' FROM v9 AS a33 LEFT JOIN v9 AS a34 ON a33.c11 = a34.c11 WHERE a33.c10 < a34.c13 GROUP BY a34.c13, abs ( a34.c13 ) HAVING count ( * ) >= 18446744073709551615 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c11 + ( SELECT max ( a36.c11 ) FROM v4 AS a39 ORDER BY 0 ), a36.c10 + ( SELECT max ( a37.c2 ) FROM v9 AS a38 ORDER BY 8 ), a36.c11 + ( SELECT max ( a36.c13 ) FROM v0 AS a37 ORDER BY 18446744073709551615 ) FROM v9 AS a36 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a40.c2, count ( a40.c2 ) FROM v0 AS a40 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a41 ORDER BY max ( a41.c2 + a41.c1 * 0 ) + 8, min ( a41.c2, avg ( a41.c2 ) ) + NULL >= 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: cannot drop PRIMARY KEY column: "c1"
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 2
+  S a17 WHERE a17.c2 = a17.c1 > 4294967295 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: ambiguous column name: c23
+  URAL JOIN v19 AS a26 ORDER BY 4294967295 ) SELECT c23 FROM v19 AS a20 LEFT JOI
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a31.c12
+  ), count ( ( NOT ( a30.c2 IS NULL ) ) AND ( NOT ( a31.c12 IS NULL ) ) ) FROM v
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a32.c12
+  SELECT * FROM v9 AS a32 ORDER BY count ( ( NOT ( a32.c12 IS NULL ) ) AND ( NOT
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a34.c12
+  SELECT a34.c11, ( + a33.c13 ) y, ( + a34.c12 ) y, ( + a34.c11 ) y, NOT EXISTS 
+                         error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+   ( SELECT max ( a36.c11 ) FROM v4 AS a39 ORDER BY 0 ), a36.c10 + ( SELECT max 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: misuse of aggregate: avg()
+  BY max ( a41.c2 + a41.c1 * 0 ) + 8, min ( a41.c2, avg ( a41.c2 ) ) + NULL >= 4
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 2
+  S a17 WHERE a17.c2 = a17.c1 > 4294967295 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 2
+  S a17 WHERE a17.c2 = a17.c1 > 4294967295 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: ambiguous column name: c23
+  URAL JOIN v19 AS a26 ORDER BY 4294967295 ) SELECT c23 FROM v19 AS a20 LEFT JOI
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 18: ambiguous column name: c23
+  URAL JOIN v19 AS a26 ORDER BY 4294967295 ) SELECT c23 FROM v19 AS a20 LEFT JOI
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such column: a30.c27
+  30 LEFT JOIN v9 AS a31 ON a31.c12 = a31.c11 WHERE a30.c27 < y ( a30.c2 ) ORDER
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: no such column: a31.c12
+  ), count ( ( NOT ( a30.c2 IS NULL ) ) AND ( NOT ( a31.c12 IS NULL ) ) ) FROM v
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: misuse of aggregate: count()
+  SELECT * FROM v9 AS a32 ORDER BY count ( ( NOT ( a32.c12 IS NULL ) ) AND ( NOT
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: no such column: a32.c12
+  SELECT * FROM v9 AS a32 ORDER BY count ( ( NOT ( a32.c12 IS NULL ) ) AND ( NOT
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 30: no such column: a34.c12
+  SELECT a34.c11, ( + a33.c13 ) y, ( + a34.c12 ) y, ( + a34.c11 ) y, NOT EXISTS 
+                         error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+   ( SELECT max ( a36.c11 ) FROM v4 AS a39 ORDER BY 0 ), a36.c10 + ( SELECT max 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+   ( SELECT max ( a36.c11 ) FROM v4 AS a39 ORDER BY 0 ), a36.c10 + ( SELECT max 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: misuse of aggregate: avg()
+  BY max ( a41.c2 + a41.c1 * 0 ) + 8, min ( a41.c2, avg ( a41.c2 ) ) + NULL >= 4
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: misuse of aggregate: avg()
+  BY max ( a41.c2 + a41.c1 * 0 ) + 8, min ( a41.c2, avg ( a41.c2 ) ) + NULL >= 4
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

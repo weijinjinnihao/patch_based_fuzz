@@ -1,0 +1,302 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE TABLE v5 ( c6, c7, c8, CHECK( c7 > 123 ) ); 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c10 > 123 ) ); 
+INSERT INTO v9 VALUES ( 123, 123, 123 ); 
+CREATE INDEX i13 ON v5 ( c6 ); 
+INSERT INTO v5 VALUES ( 18446744073709551615, 18446744073709551615, 123 ); 
+INSERT INTO v5 VALUES ( 123, 18446744071562067968, 123 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE TABLE v14 ( c15, c16, c17 PRIMARY KEY, c18 BLOB, CHECK( coalesce ( c18, c18 ) ) ); 
+CREATE INDEX i19 ON v14 ( c15 ); 
+CREATE INDEX i20 ON v14 ( c15 ); 
+CREATE INDEX i21 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a22 NATURAL JOIN v0 AS a23 ORDER BY 123; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v0 AS ( SELECT 123 y ORDER BY 18446744073709551615 ) SELECT * FROM v5 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a25 WHERE count ( * ) >= 123 = 'v1' ORDER BY 123; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c8, count ( a26.c6 ) FROM v5 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a27 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a28.c1 ) OVER ( ORDER BY min ( a28.c3, avg ( a28.c3 ) ) + NULL >= 10 ) ORDER BY 123 ) FROM v0 AS a28 GROUP BY a28.c2 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a29 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a30 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c7, count ( ( NOT ( a31.c6 IS NULL ) ) AND ( NOT ( a31.c6 IS NULL ) ) ) FROM v5 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c10 > 123 (19)
+Runtime error near line 9: error in index i4 after drop column: no such column: c3
+BEGIN VERI 0
+Parse error near line 15: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1.84467440737096e+19|123
+123|1.84467440715621e+19|123
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: misuse of aggregate function count()
+  SELECT * FROM v9 AS a25 WHERE count ( * ) >= 123 = 'v1' ORDER BY 123; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+123|2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v5 AS a27 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|2
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+; 
+CREATE TABLE v5 ( c6, c7, c8, CHECK( c7 > 123 ) ); 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c10 > 123 ) ); 
+INSERT INTO v9 VALUES ( 123, 123, 123 ); 
+; 
+INSERT INTO v5 VALUES ( 18446744073709551615, 18446744073709551615, 123 ); 
+INSERT INTO v5 VALUES ( 123, 18446744071562067968, 123 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE TABLE v14 ( c15, c16, c17 PRIMARY KEY, c18 BLOB, CHECK( coalesce ( c18, c18 ) ) ); 
+; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a22 NATURAL JOIN v0 AS a23 ORDER BY 123; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v0 AS ( SELECT 123 y ORDER BY 18446744073709551615 ) SELECT * FROM v5 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a25 WHERE count ( * ) >= 123 = 'v1' ORDER BY 123; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c8, count ( a26.c6 ) FROM v5 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a27 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a28.c1 ) OVER ( ORDER BY min ( a28.c3, avg ( a28.c3 ) ) + NULL >= 10 ) ORDER BY 123 ) FROM v0 AS a28 GROUP BY a28.c2 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a29 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a30 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c7, count ( ( NOT ( a31.c6 IS NULL ) ) AND ( NOT ( a31.c6 IS NULL ) ) ) FROM v5 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c10 > 123 (19)
+BEGIN VERI 0
+Parse error near line 15: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1.84467440737096e+19|123
+123|1.84467440715621e+19|123
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: misuse of aggregate function count()
+  SELECT * FROM v9 AS a25 WHERE count ( * ) >= 123 = 'v1' ORDER BY 123; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+123|2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v5 AS a27 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a28.c3
+  ECT ( SELECT min ( a28.c1 ) OVER ( ORDER BY min ( a28.c3, avg ( a28.c3 ) ) + N
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|2
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19|1.84467440737096e+19|123
+123|1.84467440715621e+19|123
+ 
+INT: 1 
+Str: 
+1.84467440737096e+19|1.84467440737096e+19|123
+123|1.84467440715621e+19|123
+ 
+INT: 1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: misuse of aggregate function count()
+  SELECT * FROM v9 AS a25 WHERE count ( * ) >= 123 = 'v1' ORDER BY 123; 
+                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: misuse of aggregate function count()
+  SELECT * FROM v9 AS a25 WHERE count ( * ) >= 123 = 'v1' ORDER BY 123; 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+123|2
+ 
+INT: 0 
+Str: 
+123|2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v5 AS a27 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v5 AS a27 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such column: a28.c3
+  ECT ( SELECT min ( a28.c1 ) OVER ( ORDER BY min ( a28.c3, avg ( a28.c3 ) ) + N
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19|2
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19|2
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

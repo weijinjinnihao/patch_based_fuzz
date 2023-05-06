@@ -1,0 +1,308 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, PRIMARY KEY ( c2 ), CHECK( c3 != c3 ), CHECK( c2 != c1 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c3 = c3 || c1 WHERE c1 = c3 || c1; END; 
+CREATE TABLE v6 ( c7 REFERENCES t1 DEFAULT 18446744073709551488 DEFAULT 18446744073709551488, c8 INTEGER PRIMARY KEY, c9 BLOB, FOREIGN KEY ( c8 ) REFERENCES t2 ); 
+CREATE INDEX i10 ON v6 ( c7 ); 
+CREATE INDEX i11 ON v0 ( c1 ); 
+CREATE INDEX i12 ON v0 ( c3 ); 
+CREATE TABLE v13 ( c14, c15, c16, c17 DEFAULT 127 DEFAULT 18446744073709551488, PRIMARY KEY ( c14, c17 ) ) WITHOUT ROWID; 
+INSERT INTO v13 VALUES ( 18446744073709551488, 0, 127, 18446744071562067968 ); 
+ALTER TABLE v6 DROP COLUMN c7; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a18, v13 AS a19 NATURAL JOIN v13 AS a20 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT hex ( ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c8, max ( a21.c8 || a21.c7 ) FROM v6 AS a21 WHERE ( a21.c7 || a21.c9 || a21.c9 ) != 'x' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v22 ( c24 ) AS ( SELECT c14, max ( c3 || c9 ) ORDER BY 0 ) SELECT * FROM v22 AS a23 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a25 ORDER BY a25.c14 COLLATE NOCASE, a25.c17; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v26 ( c28 ) AS ( SELECT 18446744073709551488 ORDER BY 18446744073709518848 ) SELECT * FROM v26 AS a27 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 0 ORDER BY 18446744073709551488 ) AS y, v0 AS a29 ON likely ( 18446744073709551488 < 18446744073709551488 ) OR 10 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c7, max ( a30.c3 || a30.c8 ) FROM v6 AS a30 WHERE a30.c8 > y ( ( a30.c3 + 18446744073709551488 ) ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 11: error in index i10 after drop column: no such column: c7
+BEGIN VERI 0
+1.84467440737096e+19|0|127|1.84467440715621e+19|1.84467440737096e+19|0|127|1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: wrong number of arguments to function hex()
+  SELECT hex ( ) ORDER BY 127; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: table v22 has 2 values for 1 columns
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|0|127|1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+  709551488 < 18446744073709551488 ) OR 10 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a30.c3
+  SELECT a30.c7, max ( a30.c3 || a30.c8 ) FROM v6 AS a30 WHERE a30.c8 > y ( ( a3
+                       ^--- error here
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, PRIMARY KEY ( c2 ), CHECK( c3 != c3 ), CHECK( c2 != c1 ) ) WITHOUT ROWID; 
+; 
+; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c3 = c3 || c1 WHERE c1 = c3 || c1; END; 
+CREATE TABLE v6 ( c7 REFERENCES t1 DEFAULT 18446744073709551488 DEFAULT 18446744073709551488, c8 INTEGER PRIMARY KEY, c9 BLOB, FOREIGN KEY ( c8 ) REFERENCES t2 ); 
+; 
+; 
+; 
+CREATE TABLE v13 ( c14, c15, c16, c17 DEFAULT 127 DEFAULT 18446744073709551488, PRIMARY KEY ( c14, c17 ) ) WITHOUT ROWID; 
+INSERT INTO v13 VALUES ( 18446744073709551488, 0, 127, 18446744071562067968 ); 
+ALTER TABLE v6 DROP COLUMN c7; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a18, v13 AS a19 NATURAL JOIN v13 AS a20 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT hex ( ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c8, max ( a21.c8 || a21.c7 ) FROM v6 AS a21 WHERE ( a21.c7 || a21.c9 || a21.c9 ) != 'x' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v22 ( c24 ) AS ( SELECT c14, max ( c3 || c9 ) ORDER BY 0 ) SELECT * FROM v22 AS a23 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a25 ORDER BY a25.c14 COLLATE NOCASE, a25.c17; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v26 ( c28 ) AS ( SELECT 18446744073709551488 ORDER BY 18446744073709518848 ) SELECT * FROM v26 AS a27 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 0 ORDER BY 18446744073709551488 ) AS y, v0 AS a29 ON likely ( 18446744073709551488 < 18446744073709551488 ) OR 10 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c7, max ( a30.c3 || a30.c8 ) FROM v6 AS a30 WHERE a30.c8 > y ( ( a30.c3 + 18446744073709551488 ) ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+1.84467440737096e+19|0|127|1.84467440715621e+19|1.84467440737096e+19|0|127|1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: wrong number of arguments to function hex()
+  SELECT hex ( ) ORDER BY 127; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: a21.c7
+  SELECT a21.c8, max ( a21.c8 || a21.c7 ) FROM v6 AS a21 WHERE ( a21.c7 || a21.c
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: table v22 has 2 values for 1 columns
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|0|127|1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+  709551488 < 18446744073709551488 ) OR 10 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a30.c7
+  SELECT a30.c7, max ( a30.c3 || a30.c8 ) FROM v6 AS a30 WHERE a30.c8 > y ( ( a3
+         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19|0|127|1.84467440715621e+19|1.84467440737096e+19|0|127|1.84467440715621e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19|0|127|1.84467440715621e+19|1.84467440737096e+19|0|127|1.84467440715621e+19
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: wrong number of arguments to function hex()
+  SELECT hex ( ) ORDER BY 127; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 16: wrong number of arguments to function hex()
+  SELECT hex ( ) ORDER BY 127; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such column: a21.c7
+  SELECT a21.c8, max ( a21.c8 || a21.c7 ) FROM v6 AS a21 WHERE ( a21.c7 || a21.c
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: table v22 has 2 values for 1 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 22: table v22 has 2 values for 1 columns
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19|0|127|1.84467440715621e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19|0|127|1.84467440715621e+19
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+  709551488 < 18446744073709551488 ) OR 10 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 4
+  709551488 < 18446744073709551488 ) OR 10 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such column: a30.c3
+  SELECT a30.c7, max ( a30.c3 || a30.c8 ) FROM v6 AS a30 WHERE a30.c8 > y ( ( a3
+                       ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 40: no such column: a30.c7
+  SELECT a30.c7, max ( a30.c3 || a30.c8 ) FROM v6 AS a30 WHERE a30.c8 > y ( ( a3
+         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

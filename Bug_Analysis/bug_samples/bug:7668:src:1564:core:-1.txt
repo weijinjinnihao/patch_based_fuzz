@@ -1,0 +1,298 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c1 ) ) WITHOUT ROWID; 
+WITH v0 ( c4 ) AS ( WITH v5 ( c6 ) AS ( WITH v5 ( c7, c8, c9, c10, c11, c12 ) AS ( SELECT 8 y ORDER BY 8 ) SELECT 8 ORDER BY 18446744073709551615 ) SELECT 18446744073709518848 ORDER BY 0 ) INSERT INTO v0 VALUES ( 8, 0, 8 ), ( 0, 2, 18446744073709551488 ); 
+CREATE INDEX i13 ON v0 ( c3 ); 
+CREATE INDEX i14 ON v0 ( c10 ); 
+CREATE INDEX i15 ON v0 ( c1 ); 
+CREATE INDEX i16 ON v0 ( c4 ); 
+ALTER TABLE v0 DROP c3; 
+CREATE TABLE v17 ( c18, c19, c20 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i21 ON v17 ( c20 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c3, count ( a22.c3 ) FROM v0 AS a22 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c19 FROM v17 AS a23 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v17 ( c24 ) AS ( WITH v17 ( c28 ) AS ( WITH v0 AS ( WITH v30 AS ( SELECT 2147483647 y ORDER BY 10 ) SELECT avg ( a26.c18 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551615 ) SELECT 10 ORDER BY 8 ) SELECT 0 FROM v17 AS a25, v17 AS a26 NATURAL JOIN v0 AS a27 ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 IN ( SELECT * FROM v17 AS a29 ORDER BY 18446744073709518848 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31, v0 AS a32 NATURAL JOIN v0 AS a33 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c19, count ( ( NOT ( a34.c18 IS NULL ) ) AND ( NOT ( a34.c19 IS NULL ) ) ) FROM v17 AS a34 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 0 IN ( SELECT a36.c4 = ( a36.c3 + 18446744073709551488 ) % count ( a37.c18 ) FROM v17 AS a37 ORDER BY 0 ) FROM v17 AS a35, v0 AS a36 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a38, v17 AS a39 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c18, count ( c3 ) GROUP BY c2 HAVING count ( * ) >= 0 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: no such column: c10
+  CREATE INDEX i14 ON v0 ( c10 ); 
+             error here ---^
+Parse error near line 6: no such column: c4
+  CREATE INDEX i16 ON v0 ( c4 ); 
+             error here ---^
+Runtime error near line 7: error in index i13 after drop column: no such column: c3
+BEGIN VERI 0
+Parse error near line 11: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a36.c4
+  SELECT 0 IN ( SELECT a36.c4 = ( a36.c3 + 18446744073709551488 ) % count ( a37.
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: c18
+  SELECT c18, count ( c3 ) GROUP BY c2 HAVING count ( * ) >= 0 ORDER BY 8; 
+         ^--- error here
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c1 ) ) WITHOUT ROWID; 
+WITH v0 ( c4 ) AS ( WITH v5 ( c6 ) AS ( WITH v5 ( c7, c8, c9, c10, c11, c12 ) AS ( SELECT 8 y ORDER BY 8 ) SELECT 8 ORDER BY 18446744073709551615 ) SELECT 18446744073709518848 ORDER BY 0 ) INSERT INTO v0 VALUES ( 8, 0, 8 ), ( 0, 2, 18446744073709551488 ); 
+; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c3; 
+CREATE TABLE v17 ( c18, c19, c20 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c3, count ( a22.c3 ) FROM v0 AS a22 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c19 FROM v17 AS a23 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v17 ( c24 ) AS ( WITH v17 ( c28 ) AS ( WITH v0 AS ( WITH v30 AS ( SELECT 2147483647 y ORDER BY 10 ) SELECT avg ( a26.c18 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551615 ) SELECT 10 ORDER BY 8 ) SELECT 0 FROM v17 AS a25, v17 AS a26 NATURAL JOIN v0 AS a27 ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 IN ( SELECT * FROM v17 AS a29 ORDER BY 18446744073709518848 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31, v0 AS a32 NATURAL JOIN v0 AS a33 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c19, count ( ( NOT ( a34.c18 IS NULL ) ) AND ( NOT ( a34.c19 IS NULL ) ) ) FROM v17 AS a34 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 0 IN ( SELECT a36.c4 = ( a36.c3 + 18446744073709551488 ) % count ( a37.c18 ) FROM v17 AS a37 ORDER BY 0 ) FROM v17 AS a35, v0 AS a36 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a38, v17 AS a39 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c18, count ( c3 ) GROUP BY c2 HAVING count ( * ) >= 0 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 11: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: no such column: a22.c3
+  SELECT a22.c3, count ( a22.c3 ) FROM v0 AS a22 ORDER BY 8; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a36.c4
+  SELECT 0 IN ( SELECT a36.c4 = ( a36.c3 + 18446744073709551488 ) % count ( a37.
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: c18
+  SELECT c18, count ( c3 ) GROUP BY c2 HAVING count ( * ) >= 0 ORDER BY 8; 
+         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 11: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 11: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 14: no such column: a22.c3
+  SELECT a22.c3, count ( a22.c3 ) FROM v0 AS a22 ORDER BY 8; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: no such column: a36.c4
+  SELECT 0 IN ( SELECT a36.c4 = ( a36.c3 + 18446744073709551488 ) % count ( a37.
+                       ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 29: no such column: a36.c4
+  SELECT 0 IN ( SELECT a36.c4 = ( a36.c3 + 18446744073709551488 ) % count ( a37.
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no such column: c18
+  SELECT c18, count ( c3 ) GROUP BY c2 HAVING count ( * ) >= 0 ORDER BY 8; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 38: no such column: c18
+  SELECT c18, count ( c3 ) GROUP BY c2 HAVING count ( * ) >= 0 ORDER BY 8; 
+         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,310 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+INSERT INTO v0 ( c1, c1 ) VALUES ( 255, 255 ); 
+PRAGMA foreign_keys = 3; 
+CREATE INDEX i3 ON v0 ( c2 ); 
+ALTER TABLE v0 DROP c2; 
+ALTER TABLE v0 ADD COLUMN c4 REFERENCES t1; 
+CREATE INDEX i5 ON v0 ( c2 ); 
+ALTER TABLE v0 ADD COLUMN c6 REFERENCES t1 DEFAULT 18446744073709551488; 
+CREATE INDEX i7 ON v0 ( c2 ); 
+CREATE INDEX i8 ON v0 ( c1 ); 
+CREATE INDEX i9 ON v0 ( c1 ); 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12 UNIQUE ); 
+ALTER TABLE v10 ADD COLUMN c13; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a15 WHERE a15.c11 > a15.c11 % 255 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a16 ORDER BY max ( a16.c11 + a16.c13 * 18446744073709551615 ) + 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709551615 AS y, 18446744073709551615 AS y ORDER BY c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17, v10 AS a18 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c1 FROM v0 AS a19 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20, v0 AS a21 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c12, count ( a22.c12 ) FROM v10 AS a22 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c2, a24.c1 FROM v0 AS a23 LEFT JOIN v0 AS a24 ON a23.c4 IS a23.c2 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a25 ORDER BY a25.c13 COLLATE NOCASE; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: error in index i3 after drop column: no such column: c2
+Runtime error near line 8: Cannot add a REFERENCES column with non-NULL default value
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: misuse of aggregate: max()
+  SELECT * FROM v10 AS a16 ORDER BY max ( a16.c11 + a16.c13 * 184467440737095516
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: c1
+  09551615 AS y, 18446744073709551615 AS y ORDER BY c1; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a19.c1 FROM v0 AS a19 ORDER BY 0; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+|255
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+INSERT INTO v0 ( c1, c1 ) VALUES ( 255, 255 ); 
+PRAGMA foreign_keys = 3; 
+; 
+ALTER TABLE v0 DROP c2; 
+ALTER TABLE v0 ADD COLUMN c4 REFERENCES t1; 
+; 
+ALTER TABLE v0 ADD COLUMN c6 REFERENCES t1 DEFAULT 18446744073709551488; 
+; 
+; 
+; 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12 UNIQUE ); 
+ALTER TABLE v10 ADD COLUMN c13; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a15 WHERE a15.c11 > a15.c11 % 255 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a16 ORDER BY max ( a16.c11 + a16.c13 * 18446744073709551615 ) + 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709551615 AS y, 18446744073709551615 AS y ORDER BY c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17, v10 AS a18 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c1 FROM v0 AS a19 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20, v0 AS a21 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c12, count ( a22.c12 ) FROM v10 AS a22 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c2, a24.c1 FROM v0 AS a23 LEFT JOIN v0 AS a24 ON a23.c4 IS a23.c2 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a25 ORDER BY a25.c13 COLLATE NOCASE; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: Cannot add a REFERENCES column with non-NULL default value
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: misuse of aggregate: max()
+  SELECT * FROM v10 AS a16 ORDER BY max ( a16.c11 + a16.c13 * 184467440737095516
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: c1
+  09551615 AS y, 18446744073709551615 AS y ORDER BY c1; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a19.c1 FROM v0 AS a19 ORDER BY 0; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a24.c2
+  SELECT a24.c2, a24.c1 FROM v0 AS a23 LEFT JOIN v0 AS a24 ON a23.c4 IS a23.c2 O
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: misuse of aggregate: max()
+  SELECT * FROM v10 AS a16 ORDER BY max ( a16.c11 + a16.c13 * 184467440737095516
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: misuse of aggregate: max()
+  SELECT * FROM v10 AS a16 ORDER BY max ( a16.c11 + a16.c13 * 184467440737095516
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such column: c1
+  09551615 AS y, 18446744073709551615 AS y ORDER BY c1; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: no such column: c1
+  09551615 AS y, 18446744073709551615 AS y ORDER BY c1; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a19.c1 FROM v0 AS a19 ORDER BY 0; 
+                          error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a19.c1 FROM v0 AS a19 ORDER BY 0; 
+                          error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+|255
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such column: a24.c2
+  SELECT a24.c2, a24.c1 FROM v0 AS a23 LEFT JOIN v0 AS a24 ON a23.c4 IS a23.c2 O
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

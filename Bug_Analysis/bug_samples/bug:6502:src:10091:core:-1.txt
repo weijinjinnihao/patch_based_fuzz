@@ -1,0 +1,318 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 UNIQUE, c2, c3 UNIQUE ON CONFLICT IGNORE, c4 UNIQUE ON CONFLICT FAIL, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22 UNIQUE, c23, PRIMARY KEY ( c19, c17 ) ON CONFLICT REPLACE ); 
+BEGIN; 
+END; 
+CREATE INDEX i24 ON v0 ( c14 ); 
+CREATE TABLE v25 ( c26, c27, c28, c29, PRIMARY KEY ( c26, c26 ) ) WITHOUT ROWID; 
+CREATE INDEX i30 ON v0 ( c21 ); 
+INSERT INTO v25 VALUES ( 18446744071562067968, 18446744071562067968, 2147483647, 18446744071562067968 ); 
+CREATE INDEX i31 ON v25 ( c28 ); 
+CREATE VIEW v32 AS SELECT * FROM v0 AS a33 WHERE ( c17 = 18446744071562067968 OR 18446744071562067968 ) AND c10 IN ( SELECT c11 FROM ( SELECT *, 'ghi' FROM v25 AS a34 LEFT JOIN v0 AS a35 ORDER BY 18446744071562067968 ) AS y WHERE c12 = 0 ORDER BY 18446744071562067968 ) ORDER BY 18446744071562067968; 
+ALTER TABLE v25 DROP COLUMN c28; 
+INSERT OR REPLACE INTO v0 ( c22, c19, c7, c7, c18 ) VALUES ( 18446744071562067968, 4294967295, NULL, 18446744071562067968, 18446744071562067968 ); 
+CREATE INDEX i36 ON v25 ( c26 ); 
+CREATE INDEX i37 ON v25 ( c29 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v32 AS a38 GROUP BY a38.c27 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c9, count ( ( NOT ( a39.c18 IS NULL ) ) AND ( NOT ( a39.c13 IS NULL ) ) ) FROM v0 AS a39 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT - x'68617265' ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a40 GROUP BY NULL, 'v1', 'v1', 18446744071562067968, abs ( a40.c26 ) HAVING count ( * ) >= 2147483647 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a41 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a42 WHERE a42.c28 = a42.c27 % 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v43 ( c45 ) AS ( WITH v46 ( c50 ) AS ( WITH v46 AS ( WITH v51 AS ( SELECT 18446744071562067968 y ORDER BY 18446744071562067968 ) SELECT avg ( c50 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 127 ) SELECT 18446744071562067968 ORDER BY 18446744071562067968 ) SELECT 0 FROM v46 AS a47, v43 AS a48 NATURAL JOIN v46 AS a49 ORDER BY 18446744071562067968 ) SELECT * FROM v43 AS a44 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v52 ( c54 ) AS ( WITH v55 ( c56, c57, c58, c59, c60, c61 ) AS ( SELECT 4294967295 y ORDER BY ( ( c61 + 18446744071562067968 ) % 4294967295 ) < 18446744071562067968 ) SELECT 18446744071562067968 ORDER BY 4294967295 ) SELECT c54 FROM ( SELECT c54, max ( c56 ) AS y FROM v52 AS a62 WHERE c56 >= 2147483647 GROUP BY c61 ORDER BY 0 ) AS y JOIN v52 AS a53 WHERE c54 = c54 AND c54 = c54 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a63.c29 ) FROM v32 AS a63 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a64 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: error in index i31 after drop column: no such column: c28
+BEGIN VERI 0
+Parse error near line 15: no such column: a38.c27
+  SELECT * FROM v32 AS a38 GROUP BY a38.c27 ORDER BY 18446744071562067968; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|1
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v25 AS a41 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: circular reference: v43
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: c56
+   4294967295 ) SELECT c54 FROM ( SELECT c54, max ( c56 ) AS y FROM v52 AS a62 W
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a63.c29
+  SELECT count ( a63.c29 ) FROM v32 AS a63 ORDER BY 18446744071562067968; 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 UNIQUE, c2, c3 UNIQUE ON CONFLICT IGNORE, c4 UNIQUE ON CONFLICT FAIL, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22 UNIQUE, c23, PRIMARY KEY ( c19, c17 ) ON CONFLICT REPLACE ); 
+BEGIN; 
+END; 
+; 
+CREATE TABLE v25 ( c26, c27, c28, c29, PRIMARY KEY ( c26, c26 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v25 VALUES ( 18446744071562067968, 18446744071562067968, 2147483647, 18446744071562067968 ); 
+; 
+CREATE VIEW v32 AS SELECT * FROM v0 AS a33 WHERE ( c17 = 18446744071562067968 OR 18446744071562067968 ) AND c10 IN ( SELECT c11 FROM ( SELECT *, 'ghi' FROM v25 AS a34 LEFT JOIN v0 AS a35 ORDER BY 18446744071562067968 ) AS y WHERE c12 = 0 ORDER BY 18446744071562067968 ) ORDER BY 18446744071562067968; 
+ALTER TABLE v25 DROP COLUMN c28; 
+INSERT OR REPLACE INTO v0 ( c22, c19, c7, c7, c18 ) VALUES ( 18446744071562067968, 4294967295, NULL, 18446744071562067968, 18446744071562067968 ); 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v32 AS a38 GROUP BY a38.c27 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c9, count ( ( NOT ( a39.c18 IS NULL ) ) AND ( NOT ( a39.c13 IS NULL ) ) ) FROM v0 AS a39 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT - x'68617265' ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a40 GROUP BY NULL, 'v1', 'v1', 18446744071562067968, abs ( a40.c26 ) HAVING count ( * ) >= 2147483647 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a41 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a42 WHERE a42.c28 = a42.c27 % 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v43 ( c45 ) AS ( WITH v46 ( c50 ) AS ( WITH v46 AS ( WITH v51 AS ( SELECT 18446744071562067968 y ORDER BY 18446744071562067968 ) SELECT avg ( c50 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 127 ) SELECT 18446744071562067968 ORDER BY 18446744071562067968 ) SELECT 0 FROM v46 AS a47, v43 AS a48 NATURAL JOIN v46 AS a49 ORDER BY 18446744071562067968 ) SELECT * FROM v43 AS a44 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v52 ( c54 ) AS ( WITH v55 ( c56, c57, c58, c59, c60, c61 ) AS ( SELECT 4294967295 y ORDER BY ( ( c61 + 18446744071562067968 ) % 4294967295 ) < 18446744071562067968 ) SELECT 18446744071562067968 ORDER BY 4294967295 ) SELECT c54 FROM ( SELECT c54, max ( c56 ) AS y FROM v52 AS a62 WHERE c56 >= 2147483647 GROUP BY c61 ORDER BY 0 ) AS y JOIN v52 AS a53 WHERE c54 = c54 AND c54 = c54 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a63.c29 ) FROM v32 AS a63 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a64 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 15: no such column: a38.c27
+  SELECT * FROM v32 AS a38 GROUP BY a38.c27 ORDER BY 18446744071562067968; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|1
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v25 AS a41 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a42.c28
+  SELECT * FROM v25 AS a42 WHERE a42.c28 = a42.c27 % 18446744071562067968 ORDER 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: circular reference: v43
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: c56
+   4294967295 ) SELECT c54 FROM ( SELECT c54, max ( c56 ) AS y FROM v52 AS a62 W
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a63.c29
+  SELECT count ( a63.c29 ) FROM v32 AS a63 ORDER BY 18446744071562067968; 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such column: a38.c27
+  SELECT * FROM v32 AS a38 GROUP BY a38.c27 ORDER BY 18446744071562067968; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: no such column: a38.c27
+  SELECT * FROM v32 AS a38 GROUP BY a38.c27 ORDER BY 18446744071562067968; 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+|1
+ 
+INT: 0 
+Str: 
+|1
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v25 AS a41 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v25 AS a41 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 30: no such column: a42.c28
+  SELECT * FROM v25 AS a42 WHERE a42.c28 = a42.c27 % 18446744071562067968 ORDER 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: circular reference: v43
+ 
+INT: 0 
+Str: 
+Parse error near line 33: circular reference: v43
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such column: c56
+   4294967295 ) SELECT c54 FROM ( SELECT c54, max ( c56 ) AS y FROM v52 AS a62 W
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: no such column: c56
+   4294967295 ) SELECT c54 FROM ( SELECT c54, max ( c56 ) AS y FROM v52 AS a62 W
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such column: a63.c29
+  SELECT count ( a63.c29 ) FROM v32 AS a63 ORDER BY 18446744071562067968; 
+                 ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 39: no such column: a63.c29
+  SELECT count ( a63.c29 ) FROM v32 AS a63 ORDER BY 18446744071562067968; 
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

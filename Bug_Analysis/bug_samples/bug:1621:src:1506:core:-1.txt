@@ -1,0 +1,288 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE TABLE v4 ( c5, c6, c7, CHECK( c5 > 9223372036854775807 ) ); 
+CREATE TABLE v8 ( c9, c10 INT, c11 CHECK( c9 > 9223372036854775807 ) ); 
+CREATE INDEX i12 ON v4 ( c6 ); 
+CREATE INDEX i13 ON v4 ( c7 ); 
+CREATE INDEX i14 ON v0 ( c3 ); 
+INSERT INTO v4 VALUES ( 0, 9223372036854775807, 9223372036854775807 ); 
+CREATE INDEX i15 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 0, 9223372036854775807, 0 ); 
+INSERT INTO v0 VALUES ( 9223372036854775807, 9223372036854775807, 9223372036854775807 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE TABLE v16 ( c17, c18, c19 INTEGER COLLATE NOCASE ); 
+CREATE INDEX i20 ON v0 ( c3 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a22 WHERE a22.c19 = 'i1' ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a23 ORDER BY - x'68617265'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a24, v16 AS a25 NATURAL JOIN v16 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a27 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a31.c3 ) FROM v0 AS a31 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: CHECK constraint failed: c5 > 9223372036854775807 (19)
+Runtime error near line 10: UNIQUE constraint failed: v0.c2 (19)
+Runtime error near line 11: error in index i14 after drop column: no such column: c3
+BEGIN VERI 0
+0|9223372036854775807|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a28 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v16 AS a29 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+BEGIN VERI 0
+1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE TABLE v4 ( c5, c6, c7, CHECK( c5 > 9223372036854775807 ) ); 
+CREATE TABLE v8 ( c9, c10 INT, c11 CHECK( c9 > 9223372036854775807 ) ); 
+; 
+; 
+; 
+INSERT INTO v4 VALUES ( 0, 9223372036854775807, 9223372036854775807 ); 
+; 
+INSERT INTO v0 VALUES ( 0, 9223372036854775807, 0 ); 
+INSERT INTO v0 VALUES ( 9223372036854775807, 9223372036854775807, 9223372036854775807 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE TABLE v16 ( c17, c18, c19 INTEGER COLLATE NOCASE ); 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a22 WHERE a22.c19 = 'i1' ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a23 ORDER BY - x'68617265'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a24, v16 AS a25 NATURAL JOIN v16 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a27 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a31.c3 ) FROM v0 AS a31 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: CHECK constraint failed: c5 > 9223372036854775807 (19)
+Runtime error near line 10: UNIQUE constraint failed: v0.c2 (19)
+BEGIN VERI 0
+0|9223372036854775807
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a28 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v16 AS a29 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a31.c3
+  SELECT count ( a31.c3 ) FROM v0 AS a31 ORDER BY 9223372036854775807; 
+                 ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+0|9223372036854775807|0
+ 
+INT: 0 
+Str: 
+0|9223372036854775807
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a28 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a28 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v16 AS a29 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v16 AS a29 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+1
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such column: a31.c3
+  SELECT count ( a31.c3 ) FROM v0 AS a31 ORDER BY 9223372036854775807; 
+                 ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

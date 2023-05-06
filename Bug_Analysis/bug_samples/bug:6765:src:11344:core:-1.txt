@@ -1,0 +1,321 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 UNIQUE, c2, c3 UNIQUE ON CONFLICT IGNORE, c4 UNIQUE ON CONFLICT FAIL, c5 UNIQUE ON CONFLICT REPLACE DEFAULT 18446744073709551488, c6, c7 BLOB AS( c5 + c8 - c13 ), c8 REAL, c9, c10, c11, c12, c13, PRIMARY KEY ( c2, c10, c2, c1, c13, c5, c13 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 INSERT ON v0 BEGIN UPDATE v0 SET c4 = c4 || c8 WHERE c13 = c2 || c4; END; 
+CREATE TABLE v14 ( c15, c16, c17, c18, PRIMARY KEY ( c18, c18 ) ) WITHOUT ROWID; 
+CREATE INDEX i19 ON v14 ( c15 ); 
+CREATE INDEX i20 ON v0 ( c6 ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT ( SELECT min ( a21.c6 ) OVER ( ORDER BY 18446744073709551488 IN v0 ) ORDER BY 18446744073709551488 ) FROM v14 AS a22 NATURAL JOIN v0 AS a23 GROUP BY a23.c8 ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a21 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551615, 18446744073709551488, 18446744073709551488, 18446744073709551488 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+CREATE INDEX i24 ON v14 ( c17 ); 
+CREATE INDEX i25 ON v14 ( c18 ); 
+ALTER TABLE v14 DROP COLUMN c15; 
+CREATE INDEX i26 ON v14 ( c15 ); 
+INSERT OR REPLACE INTO v14 ( c18, c15, c17, c15, c18 ) VALUES ( 0, 127, NULL, 18446744073709551488, 0 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27, v14 AS a28 NATURAL JOIN v14 AS a29 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c7 FROM v0 AS a30 WHERE ( a30.c12, a30.c4 ) NOT IN ( SELECT * FROM v14 AS a31 ORDER BY 18446744073709551488 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 GROUP BY a34.c10 HAVING count ( * ) >= 127 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a35.c4 ) FROM v0 AS a35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c13 FROM v0 AS a36 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 NATURAL JOIN v14 AS a38 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a39.c13 || a39.c1 ) FROM v0 AS a39 ORDER BY 24; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a40 ORDER BY a40.c16, a40.c18, a40.c15; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 7: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 10: near "ORDER": syntax error
+  488, 18446744073709551488, 18446744073709551488 ) ORDER BY 1; 
+                                      error here ---^
+END VERI 0
+Runtime error near line 14: error in index i19 after drop column: no such column: c15
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a35.c4 ) FROM v0 AS a35 ORDER BY 0; 
+                                    error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+127|||0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 UNIQUE, c2, c3 UNIQUE ON CONFLICT IGNORE, c4 UNIQUE ON CONFLICT FAIL, c5 UNIQUE ON CONFLICT REPLACE DEFAULT 18446744073709551488, c6, c7 BLOB AS( c5 + c8 - c13 ), c8 REAL, c9, c10, c11, c12, c13, PRIMARY KEY ( c2, c10, c2, c1, c13, c5, c13 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 INSERT ON v0 BEGIN UPDATE v0 SET c4 = c4 || c8 WHERE c13 = c2 || c4; END; 
+CREATE TABLE v14 ( c15, c16, c17, c18, PRIMARY KEY ( c18, c18 ) ) WITHOUT ROWID; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT ( SELECT min ( a21.c6 ) OVER ( ORDER BY 18446744073709551488 IN v0 ) ORDER BY 18446744073709551488 ) FROM v14 AS a22 NATURAL JOIN v0 AS a23 GROUP BY a23.c8 ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a21 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551615, 18446744073709551488, 18446744073709551488, 18446744073709551488 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+; 
+; 
+ALTER TABLE v14 DROP COLUMN c15; 
+; 
+INSERT OR REPLACE INTO v14 ( c18, c15, c17, c15, c18 ) VALUES ( 0, 127, NULL, 18446744073709551488, 0 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27, v14 AS a28 NATURAL JOIN v14 AS a29 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c7 FROM v0 AS a30 WHERE ( a30.c12, a30.c4 ) NOT IN ( SELECT * FROM v14 AS a31 ORDER BY 18446744073709551488 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34 GROUP BY a34.c10 HAVING count ( * ) >= 127 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a35.c4 ) FROM v0 AS a35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c13 FROM v0 AS a36 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 NATURAL JOIN v14 AS a38 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a39.c13 || a39.c1 ) FROM v0 AS a39 ORDER BY 24; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a40 ORDER BY a40.c16, a40.c18, a40.c15; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 7: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 10: near "ORDER": syntax error
+  488, 18446744073709551488, 18446744073709551488 ) ORDER BY 1; 
+                                      error here ---^
+END VERI 0
+Parse error near line 16: table v14 has no column named c15
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a35.c4 ) FROM v0 AS a35 ORDER BY 0; 
+                                    error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: no such column: a40.c15
+  LECT * FROM v14 AS a40 ORDER BY a40.c16, a40.c18, a40.c15; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 7: circular reference: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 7: circular reference: v0
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 57125584
+Str: 
+Parse error near line 10: near "ORDER": syntax error
+  488, 18446744073709551488, 18446744073709551488 ) ORDER BY 1; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 10: near "ORDER": syntax error
+  488, 18446744073709551488, 18446744073709551488 ) ORDER BY 1; 
+                                      error here ---^
+ 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a35.c4 ) FROM v0 AS a35 ORDER BY 0; 
+                                    error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a35.c4 ) FROM v0 AS a35 ORDER BY 0; 
+                                    error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 11 
+RESULT FLAGS: 0
+Str: 
+127|||0
+ 
+INT: 0 
+Str: 
+Parse error near line 45: no such column: a40.c15
+  LECT * FROM v14 AS a40 ORDER BY a40.c16, a40.c18, a40.c15; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

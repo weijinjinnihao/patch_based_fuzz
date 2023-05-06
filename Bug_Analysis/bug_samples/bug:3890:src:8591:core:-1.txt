@@ -1,0 +1,326 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE TABLE v5 ( c6 INT GENERATED ALWAYS, c7 TEXT, c8 TEXT, c9 INT, c10 TEXT, c11 ANY ) WITHOUT ROWID; 
+CREATE TABLE v12 ( c13 TEXT, c14 REAL, c15 INT, PRIMARY KEY ( c13 COLLATE nocase, c13 ) ) WITHOUT ROWID; 
+UPDATE v0 SET c1 = ( SELECT c3 FROM v0 AS a16 WHERE c2 = 've' GROUP BY c1 HAVING ( 18446744073709551488, count ( * ) ) != 127 >= 127 ORDER BY 18446744073709551488 ); 
+CREATE TABLE v17 ( c18 INTEGER PRIMARY KEY, c19, c20 UNIQUE ); 
+CREATE INDEX i21 ON v5 ( c10 ); 
+CREATE INDEX i22 ON v5 ( c7 ); 
+CREATE INDEX i23 ON v17 ( c19 ); 
+CREATE TABLE v24 ( c25, c26, c27 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v17 DROP COLUMN c20; 
+CREATE VIRTUAL TABLE v28 USING fts5 ( c29, c30 ); 
+CREATE INDEX i31 ON v12 ( c15 ); 
+ALTER TABLE v12 DROP COLUMN c15; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 WHERE x'616263' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v33 AS ( SELECT 127 y ORDER BY 18446744073709551488 ) SELECT c11, count ( * ) FROM v33 AS a34 GROUP BY c29 HAVING count ( * ) >= 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a35 NATURAL JOIN v28 AS a36 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v5 AS a37 ), ( v17 AS a38, v24 AS a39 NATURAL JOIN v28 AS a40 ), ( v5 AS a41 ), ( v28 AS a42 ) WHERE a38.c18 = a38.c20 + 18446744073709551488 AND a38.c18 = a37.c10 + 2147483647 AND a42.c30 = a38.c18 + 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v24 AS a43 NATURAL JOIN v24 AS a44 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT avg ( c2 ) FROM ( SELECT * FROM v24 AS a45 RIGHT JOIN v17 AS a46 ON a45.c25 ORDER BY 18446744073709551488 ) AS y ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a47.c27 FROM v24 AS a47 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 ORDER BY ( ( a48.c2 + 18446744073709551615 ) % 2147483647 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a49.c14 || a49.c15 ) FROM v12 AS a49 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: PRIMARY KEY missing on table v5
+Parse error near line 5: row value misused
+Parse error near line 7: no such table: main.v5
+Parse error near line 8: no such table: main.v5
+Parse error near line 12: cannot drop UNIQUE column: "c20"
+Runtime error near line 13: no such module: fts5
+Runtime error near line 15: error in index i31 after drop column: no such column: c15
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such column: c11
+  LECT 127 y ORDER BY 18446744073709551488 ) SELECT c11, count ( * ) FROM v33 AS
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v28
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v5
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: c2
+  SELECT avg ( c2 ) FROM ( SELECT * FROM v24 AS a45 RIGHT JOIN v17 AS a46 ON a45
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a47.c27 FROM v24 AS a47 ORDER BY 2147483647; 
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a48.c2
+  SELECT * FROM v0 AS a48 ORDER BY ( ( a48.c2 + 18446744073709551615 ) % 2147483
+                         error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE TABLE v5 ( c6 INT GENERATED ALWAYS, c7 TEXT, c8 TEXT, c9 INT, c10 TEXT, c11 ANY ) WITHOUT ROWID; 
+CREATE TABLE v12 ( c13 TEXT, c14 REAL, c15 INT, PRIMARY KEY ( c13 COLLATE nocase, c13 ) ) WITHOUT ROWID; 
+UPDATE v0 SET c1 = ( SELECT c3 FROM v0 AS a16 WHERE c2 = 've' GROUP BY c1 HAVING ( 18446744073709551488, count ( * ) ) != 127 >= 127 ORDER BY 18446744073709551488 ); 
+CREATE TABLE v17 ( c18 INTEGER PRIMARY KEY, c19, c20 UNIQUE ); 
+; 
+; 
+; 
+CREATE TABLE v24 ( c25, c26, c27 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v17 DROP COLUMN c20; 
+CREATE VIRTUAL TABLE v28 USING fts5 ( c29, c30 ); 
+; 
+ALTER TABLE v12 DROP COLUMN c15; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 WHERE x'616263' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v33 AS ( SELECT 127 y ORDER BY 18446744073709551488 ) SELECT c11, count ( * ) FROM v33 AS a34 GROUP BY c29 HAVING count ( * ) >= 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a35 NATURAL JOIN v28 AS a36 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v5 AS a37 ), ( v17 AS a38, v24 AS a39 NATURAL JOIN v28 AS a40 ), ( v5 AS a41 ), ( v28 AS a42 ) WHERE a38.c18 = a38.c20 + 18446744073709551488 AND a38.c18 = a37.c10 + 2147483647 AND a42.c30 = a38.c18 + 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v24 AS a43 NATURAL JOIN v24 AS a44 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT avg ( c2 ) FROM ( SELECT * FROM v24 AS a45 RIGHT JOIN v17 AS a46 ON a45.c25 ORDER BY 18446744073709551488 ) AS y ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a47.c27 FROM v24 AS a47 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 ORDER BY ( ( a48.c2 + 18446744073709551615 ) % 2147483647 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a49.c14 || a49.c15 ) FROM v12 AS a49 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: PRIMARY KEY missing on table v5
+Parse error near line 5: row value misused
+Parse error near line 12: cannot drop UNIQUE column: "c20"
+Runtime error near line 13: no such module: fts5
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such column: c11
+  LECT 127 y ORDER BY 18446744073709551488 ) SELECT c11, count ( * ) FROM v33 AS
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v28
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v5
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: c2
+  SELECT avg ( c2 ) FROM ( SELECT * FROM v24 AS a45 RIGHT JOIN v17 AS a46 ON a45
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a47.c27 FROM v24 AS a47 ORDER BY 2147483647; 
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a48.c2
+  SELECT * FROM v0 AS a48 ORDER BY ( ( a48.c2 + 18446744073709551615 ) % 2147483
+                         error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a49.c15
+  SELECT max ( a49.c14 || a49.c15 ) FROM v12 AS a49 ORDER BY 100; 
+                          ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no such column: c11
+  LECT 127 y ORDER BY 18446744073709551488 ) SELECT c11, count ( * ) FROM v33 AS
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: no such column: c11
+  LECT 127 y ORDER BY 18446744073709551488 ) SELECT c11, count ( * ) FROM v33 AS
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such table: v28
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no such table: v28
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no such table: v5
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such table: v5
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such column: c2
+  SELECT avg ( c2 ) FROM ( SELECT * FROM v24 AS a45 RIGHT JOIN v17 AS a46 ON a45
+               ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 32: no such column: c2
+  SELECT avg ( c2 ) FROM ( SELECT * FROM v24 AS a45 RIGHT JOIN v17 AS a46 ON a45
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a47.c27 FROM v24 AS a47 ORDER BY 2147483647; 
+                            error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a47.c27 FROM v24 AS a47 ORDER BY 2147483647; 
+                            error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no such column: a48.c2
+  SELECT * FROM v0 AS a48 ORDER BY ( ( a48.c2 + 18446744073709551615 ) % 2147483
+                         error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: no such column: a48.c2
+  SELECT * FROM v0 AS a48 ORDER BY ( ( a48.c2 + 18446744073709551615 ) % 2147483
+                         error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no such column: a49.c15
+  SELECT max ( a49.c14 || a49.c15 ) FROM v12 AS a49 ORDER BY 100; 
+                          ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 44: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

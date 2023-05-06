@@ -1,0 +1,297 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 UNIQUE, c2, c3 UNIQUE ON CONFLICT IGNORE, c4 UNIQUE ON CONFLICT FAIL, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22 UNIQUE, c23, PRIMARY KEY ( c12, c11 ) ON CONFLICT REPLACE ); 
+CREATE INDEX i24 ON v0 ( c7 ); 
+CREATE INDEX i25 ON v0 ( c6 ); 
+CREATE TABLE v26 ( c27, c28, c29, c30, c31, c32, c33, c34, c35 INTEGER DEFAULT NULL, c36 BLOB, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46, c47, c48, c49, c50, c51, c52, c53, c54, c55 UNIQUE ON CONFLICT IGNORE, c56, c57, c58, c59, c60, c61, c62, c63, c64 PRIMARY KEY, c65, c66, c67, c68 BLOB, FOREIGN KEY ( c44 ) REFERENCES t2 ); 
+CREATE INDEX i69 ON v0 ( c23 ); 
+CREATE TABLE v70 ( c71, c72, c73, c74, PRIMARY KEY ( c72, c74 ) ) WITHOUT ROWID; 
+INSERT INTO v26 VALUES ( 9223372036854775807, 18446744073709551615, 18446744073709551615, 8 ); 
+CREATE INDEX i75 ON v70 ( c73 ); 
+CREATE VIEW v76 AS SELECT * FROM v0 AS a77 WHERE ( c20 = 18446744073709551488 OR c7 = 18446744073709551488 ) AND c22 IN ( SELECT c23 FROM ( SELECT *, 'v1' FROM v0 AS a78 LEFT JOIN v70 AS a79 ORDER BY 18446744073709551488 ) AS y WHERE c20 = 255 ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615; 
+ALTER TABLE v70 DROP COLUMN c73; 
+INSERT OR REPLACE INTO v0 ( c16, c9, c10, c14, c9 ) VALUES ( 18446744073709551488, 255, NULL, 255, 18446744073709551488 ); 
+CREATE INDEX i80 ON v76 ( c4 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a81.c72, max ( a81.c74 || a81.c73 ) FROM v70 AS a81 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v82 ( c84 ) AS ( WITH v82 ( c85 ) AS ( WITH v86 AS ( WITH v82 AS ( SELECT 127 y ORDER BY 18446744073709551615 ) SELECT avg ( c85 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 10 ) SELECT 8 ORDER BY 0 ) SELECT 8 ORDER BY 18446744073709551488 ) SELECT * FROM v82 AS a83 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v76 AS a87 ORDER BY ( ( ( a87.c13 + 18446744073709551615 ) % 18446744073709551488 ) == 4294967295 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a88 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT count ( * ) FROM v0 AS a90, v26 AS a91 WHERE a91.c58 = a91.c62 AND a90.c20 = a90.c9 ORDER BY 0 ), a89.c17, a89.c22, 'v0' FROM v0 AS a89 GROUP BY a89.c3, a89.c7 < a89.c18 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a92 JOIN v0 AS a93 USING ( a93.c18 ) WHERE max ( a93.c7 ) = ( a93.c5 ) AND a93.c8 = 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a94.c9 || a94.c13 ), a95.c10 FROM v0 AS a94 LEFT JOIN v76 AS a95 ON a95.c4 = a94.c5 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v70 AS a96, v76 AS a97 NATURAL JOIN v76 AS a98 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v76 AS a99 WHERE a99.c23 < a99.c4 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a100 WHERE a100.c53 > 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: table v26 has 42 columns but 4 values were supplied
+Runtime error near line 10: error in index i75 after drop column: no such column: c73
+Parse error near line 12: views may not be indexed
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+8
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+||||||||255|||||255||1.84467440737096e+19|||||||
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+  E a91.c58 = a91.c62 AND a90.c20 = a90.c9 ORDER BY 0 ), a89.c17, a89.c22, 'v0' 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: near ".": syntax error
+  ELECT * FROM v26 AS a92 JOIN v0 AS a93 USING ( a93.c18 ) WHERE max ( a93.c7 ) 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 27
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 23
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 UNIQUE, c2, c3 UNIQUE ON CONFLICT IGNORE, c4 UNIQUE ON CONFLICT FAIL, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22 UNIQUE, c23, PRIMARY KEY ( c12, c11 ) ON CONFLICT REPLACE ); 
+; 
+; 
+CREATE TABLE v26 ( c27, c28, c29, c30, c31, c32, c33, c34, c35 INTEGER DEFAULT NULL, c36 BLOB, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46, c47, c48, c49, c50, c51, c52, c53, c54, c55 UNIQUE ON CONFLICT IGNORE, c56, c57, c58, c59, c60, c61, c62, c63, c64 PRIMARY KEY, c65, c66, c67, c68 BLOB, FOREIGN KEY ( c44 ) REFERENCES t2 ); 
+; 
+CREATE TABLE v70 ( c71, c72, c73, c74, PRIMARY KEY ( c72, c74 ) ) WITHOUT ROWID; 
+INSERT INTO v26 VALUES ( 9223372036854775807, 18446744073709551615, 18446744073709551615, 8 ); 
+; 
+CREATE VIEW v76 AS SELECT * FROM v0 AS a77 WHERE ( c20 = 18446744073709551488 OR c7 = 18446744073709551488 ) AND c22 IN ( SELECT c23 FROM ( SELECT *, 'v1' FROM v0 AS a78 LEFT JOIN v70 AS a79 ORDER BY 18446744073709551488 ) AS y WHERE c20 = 255 ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615; 
+ALTER TABLE v70 DROP COLUMN c73; 
+INSERT OR REPLACE INTO v0 ( c16, c9, c10, c14, c9 ) VALUES ( 18446744073709551488, 255, NULL, 255, 18446744073709551488 ); 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a81.c72, max ( a81.c74 || a81.c73 ) FROM v70 AS a81 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v82 ( c84 ) AS ( WITH v82 ( c85 ) AS ( WITH v86 AS ( WITH v82 AS ( SELECT 127 y ORDER BY 18446744073709551615 ) SELECT avg ( c85 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 10 ) SELECT 8 ORDER BY 0 ) SELECT 8 ORDER BY 18446744073709551488 ) SELECT * FROM v82 AS a83 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v76 AS a87 ORDER BY ( ( ( a87.c13 + 18446744073709551615 ) % 18446744073709551488 ) == 4294967295 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a88 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT count ( * ) FROM v0 AS a90, v26 AS a91 WHERE a91.c58 = a91.c62 AND a90.c20 = a90.c9 ORDER BY 0 ), a89.c17, a89.c22, 'v0' FROM v0 AS a89 GROUP BY a89.c3, a89.c7 < a89.c18 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a92 JOIN v0 AS a93 USING ( a93.c18 ) WHERE max ( a93.c7 ) = ( a93.c5 ) AND a93.c8 = 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a94.c9 || a94.c13 ), a95.c10 FROM v0 AS a94 LEFT JOIN v76 AS a95 ON a95.c4 = a94.c5 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v70 AS a96, v76 AS a97 NATURAL JOIN v76 AS a98 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v76 AS a99 WHERE a99.c23 < a99.c4 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a100 WHERE a100.c53 > 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: table v26 has 42 columns but 4 values were supplied
+BEGIN VERI 0
+Parse error near line 14: no such column: a81.c73
+  SELECT a81.c72, max ( a81.c74 || a81.c73 ) FROM v70 AS a81 ORDER BY 10; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+8
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+||||||||255|||||255||1.84467440737096e+19|||||||
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+  E a91.c58 = a91.c62 AND a90.c20 = a90.c9 ORDER BY 0 ), a89.c17, a89.c22, 'v0' 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: near ".": syntax error
+  ELECT * FROM v26 AS a92 JOIN v0 AS a93 USING ( a93.c18 ) WHERE max ( a93.c7 ) 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 26
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 23
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 14: no such column: a81.c73
+  SELECT a81.c72, max ( a81.c74 || a81.c73 ) FROM v70 AS a81 ORDER BY 10; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+8
+ 
+INT: 0 
+Str: 
+8
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+||||||||255|||||255||1.84467440737096e+19|||||||
+ 
+INT: 0 
+Str: 
+||||||||255|||||255||1.84467440737096e+19|||||||
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+  E a91.c58 = a91.c62 AND a90.c20 = a90.c9 ORDER BY 0 ), a89.c17, a89.c22, 'v0' 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 1
+  E a91.c58 = a91.c62 AND a90.c20 = a90.c9 ORDER BY 0 ), a89.c17, a89.c22, 'v0' 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: near ".": syntax error
+  ELECT * FROM v26 AS a92 JOIN v0 AS a93 USING ( a93.c18 ) WHERE max ( a93.c7 ) 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: near ".": syntax error
+  ELECT * FROM v26 AS a92 JOIN v0 AS a93 USING ( a93.c18 ) WHERE max ( a93.c7 ) 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 27
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 26
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 23
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 23
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

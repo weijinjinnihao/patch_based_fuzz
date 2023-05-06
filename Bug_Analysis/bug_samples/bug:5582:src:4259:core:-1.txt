@@ -1,0 +1,519 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( 127, 'x', 'v1' ); 
+INSERT INTO v0 VALUES ( 127, 'abc', 'v1' ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( NULL, 'x', 'x' ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( 'x', 'x', 'x' ); 
+INSERT INTO v0 VALUES ( x'616263', 'v1', '%t3%' ); 
+CREATE TABLE v6 ( c7, c8, c9 ); 
+INSERT INTO v6 VALUES ( NULL, 'x', 'B' ); 
+INSERT INTO v0 VALUES ( 'v1', 'x', 'x' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( 127, 'fig', 'x' ); 
+INSERT INTO v6 VALUES ( - 18446744073709551615, 'v0', 'v0' ); 
+CREATE TABLE v10 ( c11, c12, c13 COLLATE NOCASE ); 
+INSERT INTO v6 SELECT * FROM v0 AS a14 ORDER BY 18446744073709551615; 
+INSERT INTO v0 SELECT * FROM v0 AS a15 ORDER BY 127; 
+INSERT INTO v6 SELECT * FROM v0 AS a16 ORDER BY 16; 
+INSERT INTO v0 SELECT * FROM v10 AS a17 ORDER BY 18446744073709551488; 
+INSERT INTO v6 SELECT * FROM v0 AS a18 ORDER BY 127; 
+INSERT INTO v6 SELECT * FROM v6 AS a19 ORDER BY 18446744073709551615; 
+CREATE INDEX i20 ON v0 ( c1 ); 
+CREATE INDEX i21 ON v10 ( c12 ); 
+CREATE INDEX i22 ON v10 ( c13 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a23 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a25, v10 AS a26 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a27, v6 AS a28 NATURAL JOIN v10 AS a29 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 ( c32 ) AS ( WITH v33 ( c34 ) AS ( WITH v35 AS ( SELECT ( SELECT min ( c32 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 127 ) FROM v30 AS a36 GROUP BY c34 ORDER BY 18446744073709551615 ) SELECT 18446744073709551488 ORDER BY 2.250000 ) SELECT 2.250000 ORDER BY 127 ) SELECT * FROM v30 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 18446744071562067968 ORDER BY 18446744073709551615 ) AS y, v0 AS a37 ON a37.c3 = a37.c1 || a37.c2 OR 127 WHERE hex ( 2147483647 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c1 FROM v0 AS a38 GROUP BY 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a39, v10 AS a40 NATURAL JOIN v10 AS a41 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 NATURAL JOIN v0 AS a43 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a44, v10 AS a45 NATURAL JOIN v0 AS a46 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+BEGIN VERI 0
+|x|B
+-1.84467440737096e+19|v0|v0
+127|x|v1
+127|abc|v1
+|x|x
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+|x|B
+-1.84467440737096e+19|v0|v0
+127|x|v1
+127|abc|v1
+|x|x
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+END VERI 0
+BEGIN VERI 0
+|x|B
+-1.84467440737096e+19|v0|v0
+127|x|v1
+127|abc|v1
+|x|x
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+|x|B
+-1.84467440737096e+19|v0|v0
+127|x|v1
+127|abc|v1
+|x|x
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|127|x|v1
+1.84467440715621e+19|127|abc|v1
+1.84467440715621e+19||x|x
+1.84467440715621e+19|x|x|x
+1.84467440715621e+19|abc|v1|%t3%
+1.84467440715621e+19|v1|x|x
+1.84467440715621e+19|hare|x|v0
+1.84467440715621e+19|127|fig|x
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+127|x|v1
+127|abc|v1
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 53: 1st ORDER BY term out of range - should be between 1 and 9
+  S a44, v10 AS a45 NATURAL JOIN v0 AS a46 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( 127, 'x', 'v1' ); 
+INSERT INTO v0 VALUES ( 127, 'abc', 'v1' ); 
+; 
+INSERT INTO v0 VALUES ( NULL, 'x', 'x' ); 
+; 
+INSERT INTO v0 VALUES ( 'x', 'x', 'x' ); 
+INSERT INTO v0 VALUES ( x'616263', 'v1', '%t3%' ); 
+CREATE TABLE v6 ( c7, c8, c9 ); 
+INSERT INTO v6 VALUES ( NULL, 'x', 'B' ); 
+INSERT INTO v0 VALUES ( 'v1', 'x', 'x' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( 127, 'fig', 'x' ); 
+INSERT INTO v6 VALUES ( - 18446744073709551615, 'v0', 'v0' ); 
+CREATE TABLE v10 ( c11, c12, c13 COLLATE NOCASE ); 
+INSERT INTO v6 SELECT * FROM v0 AS a14 ORDER BY 18446744073709551615; 
+INSERT INTO v0 SELECT * FROM v0 AS a15 ORDER BY 127; 
+INSERT INTO v6 SELECT * FROM v0 AS a16 ORDER BY 16; 
+INSERT INTO v0 SELECT * FROM v10 AS a17 ORDER BY 18446744073709551488; 
+INSERT INTO v6 SELECT * FROM v0 AS a18 ORDER BY 127; 
+INSERT INTO v6 SELECT * FROM v6 AS a19 ORDER BY 18446744073709551615; 
+; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a23 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a25, v10 AS a26 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a27, v6 AS a28 NATURAL JOIN v10 AS a29 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 ( c32 ) AS ( WITH v33 ( c34 ) AS ( WITH v35 AS ( SELECT ( SELECT min ( c32 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 127 ) FROM v30 AS a36 GROUP BY c34 ORDER BY 18446744073709551615 ) SELECT 18446744073709551488 ORDER BY 2.250000 ) SELECT 2.250000 ORDER BY 127 ) SELECT * FROM v30 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 18446744071562067968 ORDER BY 18446744073709551615 ) AS y, v0 AS a37 ON a37.c3 = a37.c1 || a37.c2 OR 127 WHERE hex ( 2147483647 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c1 FROM v0 AS a38 GROUP BY 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a39, v10 AS a40 NATURAL JOIN v10 AS a41 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 NATURAL JOIN v0 AS a43 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a44, v10 AS a45 NATURAL JOIN v0 AS a46 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+BEGIN VERI 0
+|x|B
+-1.84467440737096e+19|v0|v0
+127|x|v1
+127|abc|v1
+|x|x
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+|x|B
+-1.84467440737096e+19|v0|v0
+127|x|v1
+127|abc|v1
+|x|x
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+END VERI 0
+BEGIN VERI 0
+|x|B
+-1.84467440737096e+19|v0|v0
+127|x|v1
+127|abc|v1
+|x|x
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+|x|B
+-1.84467440737096e+19|v0|v0
+127|x|v1
+127|abc|v1
+|x|x
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|127|x|v1
+1.84467440715621e+19|127|abc|v1
+1.84467440715621e+19||x|x
+1.84467440715621e+19|x|x|x
+1.84467440715621e+19|abc|v1|%t3%
+1.84467440715621e+19|v1|x|x
+1.84467440715621e+19|hare|x|v0
+1.84467440715621e+19|127|fig|x
+END VERI 0
+BEGIN VERI 0
+127
+END VERI 0
+BEGIN VERI 0
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+127|x|v1
+127|abc|v1
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 53: 1st ORDER BY term out of range - should be between 1 and 9
+  S a44, v10 AS a45 NATURAL JOIN v0 AS a46 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+|x|B
+-1.84467440737096e+19|v0|v0
+127|x|v1
+127|abc|v1
+|x|x
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+|x|B
+-1.84467440737096e+19|v0|v0
+127|x|v1
+127|abc|v1
+|x|x
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+ 
+INT: 19 
+Str: 
+|x|B
+-1.84467440737096e+19|v0|v0
+127|x|v1
+127|abc|v1
+|x|x
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+|x|B
+-1.84467440737096e+19|v0|v0
+127|x|v1
+127|abc|v1
+|x|x
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+ 
+INT: 19 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+|x|B
+-1.84467440737096e+19|v0|v0
+127|x|v1
+127|abc|v1
+|x|x
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+|x|B
+-1.84467440737096e+19|v0|v0
+127|x|v1
+127|abc|v1
+|x|x
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+ 
+INT: 19 
+Str: 
+|x|B
+-1.84467440737096e+19|v0|v0
+127|x|v1
+127|abc|v1
+|x|x
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+|x|B
+-1.84467440737096e+19|v0|v0
+127|x|v1
+127|abc|v1
+|x|x
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+ 
+INT: 19 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+1.84467440715621e+19|127|x|v1
+1.84467440715621e+19|127|abc|v1
+1.84467440715621e+19||x|x
+1.84467440715621e+19|x|x|x
+1.84467440715621e+19|abc|v1|%t3%
+1.84467440715621e+19|v1|x|x
+1.84467440715621e+19|hare|x|v0
+1.84467440715621e+19|127|fig|x
+ 
+INT: 7 
+Str: 
+1.84467440715621e+19|127|x|v1
+1.84467440715621e+19|127|abc|v1
+1.84467440715621e+19||x|x
+1.84467440715621e+19|x|x|x
+1.84467440715621e+19|abc|v1|%t3%
+1.84467440715621e+19|v1|x|x
+1.84467440715621e+19|hare|x|v0
+1.84467440715621e+19|127|fig|x
+ 
+INT: 7 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+127
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+127|x|v1
+127|abc|v1
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+ 
+INT: 6 
+Str: 
+127|x|v1
+127|abc|v1
+x|x|x
+abc|v1|%t3%
+v1|x|x
+hare|x|v0
+127|fig|x
+ 
+INT: 6 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 53: 1st ORDER BY term out of range - should be between 1 and 9
+  S a44, v10 AS a45 NATURAL JOIN v0 AS a46 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 53: 1st ORDER BY term out of range - should be between 1 and 9
+  S a44, v10 AS a45 NATURAL JOIN v0 AS a46 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

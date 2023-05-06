@@ -1,0 +1,303 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744071562067968; 
+CREATE INDEX i6 ON v4 ( c3 ) WHERE c3 = c3 >= 18446744071562067968; 
+CREATE INDEX i7 ON v0 ( c3 ); 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE INDEX i12 ON v0 ( c2 ); 
+CREATE INDEX i13 ON v0 ( c2 ); 
+CREATE TABLE v14 ( c15, c16, c17 ); 
+ALTER TABLE v8 DROP COLUMN c10; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i18 ON v8 ( c11 ); 
+ALTER TABLE v14 DROP COLUMN c17; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a19 WHERE a19.c15 % 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744071562067968, 18446744071562067968, 18446744071562067968 ), ( 18446744073709551488, 18446744071562067968, 4 ), ( 18446744071562067968, x'b1', 18446744071562067968 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( WITH v4 ( c22 ) AS ( SELECT 'x' ORDER BY 18446744071562067968 ) SELECT * FROM v14 AS a21 LEFT JOIN ( SELECT count ( * ) AS y, a24.c3 FROM ( v0 AS a23, v4 AS a24 NATURAL JOIN v4 AS a25 ) AS y WHERE a25.c3 > 18446744073709551488 GROUP BY a24.c1 ORDER BY 18446744071562067968 ) AS y ON a21.c17 = y ( a21.c3 ) ORDER BY 4 ) ) FROM v14 AS a20 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c22, max ( a26.c16 || a26.c3 ) FROM v14 AS a26 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a27 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a28 ORDER BY a28.c15 = + a28.c15; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a29 ORDER BY 18446744073709551488 - ( a29.c1 + a29.c2 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v8 ( c31 ) AS ( SELECT * ORDER BY 16 ) SELECT * FROM v8 AS a30 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 GROUP BY a32.c3, a32.c1 < a32.c2 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: views may not be indexed
+Runtime error near line 10: error in index i12 after drop column: no such column: c2
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: near "ORDER": syntax error
+  446744071562067968, x'b1', 18446744071562067968 ) ORDER BY 1844674407156206796
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such column: a24.c3
+  M v14 AS a21 LEFT JOIN ( SELECT count ( * ) AS y, a24.c3 FROM ( v0 AS a23, v4 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a26.c22
+  SELECT a26.c22, max ( a26.c16 || a26.c3 ) FROM v14 AS a26 ORDER BY 18446744071
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+   AS a32 GROUP BY a32.c3, a32.c1 < a32.c2 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744071562067968; 
+; 
+; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+; 
+; 
+CREATE TABLE v14 ( c15, c16, c17 ); 
+ALTER TABLE v8 DROP COLUMN c10; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+ALTER TABLE v14 DROP COLUMN c17; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a19 WHERE a19.c15 % 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744071562067968, 18446744071562067968, 18446744071562067968 ), ( 18446744073709551488, 18446744071562067968, 4 ), ( 18446744071562067968, x'b1', 18446744071562067968 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( WITH v4 ( c22 ) AS ( SELECT 'x' ORDER BY 18446744071562067968 ) SELECT * FROM v14 AS a21 LEFT JOIN ( SELECT count ( * ) AS y, a24.c3 FROM ( v0 AS a23, v4 AS a24 NATURAL JOIN v4 AS a25 ) AS y WHERE a25.c3 > 18446744073709551488 GROUP BY a24.c1 ORDER BY 18446744071562067968 ) AS y ON a21.c17 = y ( a21.c3 ) ORDER BY 4 ) ) FROM v14 AS a20 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c22, max ( a26.c16 || a26.c3 ) FROM v14 AS a26 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a27 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a28 ORDER BY a28.c15 = + a28.c15; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a29 ORDER BY 18446744073709551488 - ( a29.c1 + a29.c2 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v8 ( c31 ) AS ( SELECT * ORDER BY 16 ) SELECT * FROM v8 AS a30 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 GROUP BY a32.c3, a32.c1 < a32.c2 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: near "ORDER": syntax error
+  446744071562067968, x'b1', 18446744071562067968 ) ORDER BY 1844674407156206796
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such column: a24.c3
+  M v14 AS a21 LEFT JOIN ( SELECT count ( * ) AS y, a24.c3 FROM ( v0 AS a23, v4 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a26.c22
+  SELECT a26.c22, max ( a26.c16 || a26.c3 ) FROM v14 AS a26 ORDER BY 18446744071
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a29.c2
+  AS a29 ORDER BY 18446744073709551488 - ( a29.c1 + a29.c2 ); 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 2
+   AS a32 GROUP BY a32.c3, a32.c1 < a32.c2 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 9113200
+Str: 
+Parse error near line 17: near "ORDER": syntax error
+  446744071562067968, x'b1', 18446744071562067968 ) ORDER BY 1844674407156206796
+                                      error here ---^
+ 
+Str: 
+Parse error near line 17: near "ORDER": syntax error
+  446744071562067968, x'b1', 18446744071562067968 ) ORDER BY 1844674407156206796
+                                      error here ---^
+ 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no such column: a24.c3
+  M v14 AS a21 LEFT JOIN ( SELECT count ( * ) AS y, a24.c3 FROM ( v0 AS a23, v4 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: no such column: a24.c3
+  M v14 AS a21 LEFT JOIN ( SELECT count ( * ) AS y, a24.c3 FROM ( v0 AS a23, v4 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such column: a26.c22
+  SELECT a26.c22, max ( a26.c16 || a26.c3 ) FROM v14 AS a26 ORDER BY 18446744071
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 23: no such column: a26.c22
+  SELECT a26.c22, max ( a26.c16 || a26.c3 ) FROM v14 AS a26 ORDER BY 18446744071
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 29: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 35: no such column: a29.c2
+  AS a29 ORDER BY 18446744073709551488 - ( a29.c1 + a29.c2 ); 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 38: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+   AS a32 GROUP BY a32.c3, a32.c1 < a32.c2 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 2
+   AS a32 GROUP BY a32.c3, a32.c1 < a32.c2 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

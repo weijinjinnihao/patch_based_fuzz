@@ -1,0 +1,294 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE VIRTUAL TABLE v0 USING fts5 ( c1, c2, c3, c4 ) WITHOUT ROWID; 
+CREATE TABLE v5 ( c6, c7, c8 ); 
+CREATE INDEX i9 ON v5 ( c7 ); 
+CREATE INDEX i10 ON v0 ( c1 ); 
+CREATE INDEX i11 ON v5 ( c6 ); 
+ANALYZE v0; 
+INSERT INTO v0 VALUES ( 'v1', 'x', 'v1' ); 
+ALTER TABLE v5 DROP c6; 
+INSERT INTO v0 VALUES ( 'v1', 'x', 'x' ); 
+ANALYZE v0; 
+CREATE INDEX i12 ON v0 ( c3 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a13 ORDER BY - 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a14, v5 AS a15 NATURAL JOIN v0 AS a16 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT ( SELECT min ( v0.c1 ) OVER ( ORDER BY 18446744073709551488 IN v0 ) ORDER BY 18446744073709551488 ) FROM v5 AS a17 GROUP BY a17.c8 ORDER BY 18446744073709551488 ) SELECT * FROM ( SELECT 18446744073709551615 ORDER BY 16 ) AS y, ( SELECT 18446744073709551615 ORDER BY 8 ) AS y ON likely ( 18446744073709551615 OR 16 ) < 18446744073709551488 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c3 FROM v0 AS a18 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 ( c20 ) AS ( WITH RECURSIVE v21 AS ( WITH v22 AS ( SELECT 10 y ORDER BY 18446744073709551615 ) SELECT avg ( a19.c2 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 16 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a19 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a23 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a24 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a25 WHERE a25.c6 = a25.c6 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c8, max ( a27.c8 || a27.c6 ) FROM v5 AS a27 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: near "WITHOUT": syntax error
+  TE VIRTUAL TABLE v0 USING fts5 ( c1, c2, c3, c4 ) WITHOUT ROWID; 
+                                      error here ---^
+Parse error near line 4: no such table: main.v0
+Parse error near line 6: no such table: v0
+Parse error near line 7: no such table: v0
+Runtime error near line 8: error in index i11 after drop column: no such column: c6
+Parse error near line 9: no such table: v0
+Parse error near line 10: no such table: v0
+Parse error near line 11: no such table: main.v0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v0
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+
+Query: 1: 
+CREATE VIRTUAL TABLE v0 USING fts5 ( c1, c2, c3, c4 ) WITHOUT ROWID; 
+CREATE TABLE v5 ( c6, c7, c8 ); 
+; 
+; 
+; 
+ANALYZE v0; 
+INSERT INTO v0 VALUES ( 'v1', 'x', 'v1' ); 
+ALTER TABLE v5 DROP c6; 
+INSERT INTO v0 VALUES ( 'v1', 'x', 'x' ); 
+ANALYZE v0; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a13 ORDER BY - 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a14, v5 AS a15 NATURAL JOIN v0 AS a16 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT ( SELECT min ( v0.c1 ) OVER ( ORDER BY 18446744073709551488 IN v0 ) ORDER BY 18446744073709551488 ) FROM v5 AS a17 GROUP BY a17.c8 ORDER BY 18446744073709551488 ) SELECT * FROM ( SELECT 18446744073709551615 ORDER BY 16 ) AS y, ( SELECT 18446744073709551615 ORDER BY 8 ) AS y ON likely ( 18446744073709551615 OR 16 ) < 18446744073709551488 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c3 FROM v0 AS a18 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 ( c20 ) AS ( WITH RECURSIVE v21 AS ( WITH v22 AS ( SELECT 10 y ORDER BY 18446744073709551615 ) SELECT avg ( a19.c2 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 16 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a19 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a23 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a24 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a25 WHERE a25.c6 = a25.c6 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c8, max ( a27.c8 || a27.c6 ) FROM v5 AS a27 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: near "WITHOUT": syntax error
+  TE VIRTUAL TABLE v0 USING fts5 ( c1, c2, c3, c4 ) WITHOUT ROWID; 
+                                      error here ---^
+Parse error near line 6: no such table: v0
+Parse error near line 7: no such table: v0
+Parse error near line 9: no such table: v0
+Parse error near line 10: no such table: v0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a25.c6
+  SELECT * FROM v5 AS a25 WHERE a25.c6 = a25.c6 ORDER BY 18446744073709551488; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a27.c6
+  SELECT a27.c8, max ( a27.c8 || a27.c6 ) FROM v5 AS a27 ORDER BY 18446744073709
+                   error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 34: no such column: a25.c6
+  SELECT * FROM v5 AS a25 WHERE a25.c6 = a25.c6 ORDER BY 18446744073709551488; 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no such column: a27.c6
+  SELECT a27.c8, max ( a27.c8 || a27.c6 ) FROM v5 AS a27 ORDER BY 18446744073709
+                   error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

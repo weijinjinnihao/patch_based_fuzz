@@ -1,0 +1,292 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE TABLE v5 ( c6 PRIMARY KEY, c7, c8 AS( c7 + c9 - c7 ) REFERENCES t0, c9 ) WITHOUT ROWID; 
+CREATE INDEX i10 ON v0 ( c1 ); 
+CREATE INDEX i11 ON v5 ( c8 ); 
+CREATE TABLE v12 ( c13 INTEGER PRIMARY KEY, c14, c15 UNIQUE ); 
+CREATE TABLE v16 ( c17 AS( ( - 18446744073709551615 + 18446744073709551615, 'x', 'v0', 18446744073709551488, 18446744073709551615, 9223372036854775807 ) % 18446744073709551615 != 18446744073709551488 ), c18 ); 
+CREATE INDEX i19 ON v0 ( c2 ); 
+ALTER TABLE v12 DROP COLUMN c13; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i20 ON v12 ( c13 ); 
+CREATE VIRTUAL TABLE v21 USING fts5 ( c22, c23 ); 
+ALTER TABLE v5 DROP COLUMN c7; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c14, count ( ( NOT ( a24.c15 IS NULL ) ) AND ( NOT ( a24.c13 IS NULL ) ) ) FROM v12 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a25, v5 AS a26 NATURAL JOIN v12 AS a27 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a28 ORDER BY max ( NULL, - x'68617265', 've' ) + 18446744073709551615, min ( a28.c15, avg ( a28.c15 ) ) + NULL >= 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a29 GROUP BY a29.c9 HAVING automatic_index ( * ) >= 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 NATURAL JOIN v0 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a34 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 ORDER BY a36.c3, a36.c2; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: cannot drop PRIMARY KEY column: "c13"
+Runtime error near line 10: error in index i4 after drop column: no such column: c2
+Runtime error near line 12: no such module: fts5
+Runtime error near line 13: error in table v5 after drop column: no such column: c7
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: row value misused
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: misuse of aggregate: avg()
+  5', 've' ) + 18446744073709551615, min ( a28.c15, avg ( a28.c15 ) ) + NULL >= 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such function: automatic_index
+  SELECT * FROM v5 AS a29 GROUP BY a29.c9 HAVING automatic_index ( * ) >= 184467
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v21
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE TABLE v5 ( c6 PRIMARY KEY, c7, c8 AS( c7 + c9 - c7 ) REFERENCES t0, c9 ) WITHOUT ROWID; 
+; 
+; 
+CREATE TABLE v12 ( c13 INTEGER PRIMARY KEY, c14, c15 UNIQUE ); 
+CREATE TABLE v16 ( c17 AS( ( - 18446744073709551615 + 18446744073709551615, 'x', 'v0', 18446744073709551488, 18446744073709551615, 9223372036854775807 ) % 18446744073709551615 != 18446744073709551488 ), c18 ); 
+; 
+ALTER TABLE v12 DROP COLUMN c13; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+CREATE VIRTUAL TABLE v21 USING fts5 ( c22, c23 ); 
+ALTER TABLE v5 DROP COLUMN c7; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c14, count ( ( NOT ( a24.c15 IS NULL ) ) AND ( NOT ( a24.c13 IS NULL ) ) ) FROM v12 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a25, v5 AS a26 NATURAL JOIN v12 AS a27 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a28 ORDER BY max ( NULL, - x'68617265', 've' ) + 18446744073709551615, min ( a28.c15, avg ( a28.c15 ) ) + NULL >= 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a29 GROUP BY a29.c9 HAVING automatic_index ( * ) >= 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 NATURAL JOIN v0 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a34 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 ORDER BY a36.c3, a36.c2; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: cannot drop PRIMARY KEY column: "c13"
+Runtime error near line 12: no such module: fts5
+Runtime error near line 13: error in table v5 after drop column: no such column: c7
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: row value misused
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: misuse of aggregate: avg()
+  5', 've' ) + 18446744073709551615, min ( a28.c15, avg ( a28.c15 ) ) + NULL >= 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such function: automatic_index
+  SELECT * FROM v5 AS a29 GROUP BY a29.c9 HAVING automatic_index ( * ) >= 184467
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v21
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a36.c2
+  SELECT * FROM v0 AS a36 ORDER BY a36.c3, a36.c2; 
+                             error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 18: row value misused
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: misuse of aggregate: avg()
+  5', 've' ) + 18446744073709551615, min ( a28.c15, avg ( a28.c15 ) ) + NULL >= 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: misuse of aggregate: avg()
+  5', 've' ) + 18446744073709551615, min ( a28.c15, avg ( a28.c15 ) ) + NULL >= 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such function: automatic_index
+  SELECT * FROM v5 AS a29 GROUP BY a29.c9 HAVING automatic_index ( * ) >= 184467
+                                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: no such function: automatic_index
+  SELECT * FROM v5 AS a29 GROUP BY a29.c9 HAVING automatic_index ( * ) >= 184467
+                                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v21
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v21
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 42: no such column: a36.c2
+  SELECT * FROM v0 AS a36 ORDER BY a36.c3, a36.c2; 
+                             error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

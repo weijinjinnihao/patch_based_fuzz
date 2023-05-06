@@ -1,0 +1,288 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 TEXT REFERENCES t1 DEFAULT NULL, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29 PRIMARY KEY, CHECK( ( ( c12 + 4294967295 ) % 4294967295 ) != 4294967295 ) ) WITHOUT ROWID; 
+CREATE TABLE v30 ( c31 TEXT, c32 ); 
+CREATE INDEX i33 ON v30 ( c31 ); 
+CREATE INDEX i34 ON v30 ( c31 ); 
+CREATE INDEX i35 ON v30 ( c31 ); 
+CREATE INDEX i36 ON v30 ( c32 ); 
+ALTER TABLE v30 DROP c32; 
+CREATE INDEX i37 ON v30 ( c31 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c15, max ( a38.c17 || a38.c20 ) FROM v0 AS a38 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v39 AS ( SELECT ( SELECT min ( c9 ) OVER ( ORDER BY 4294967295 ) ORDER BY 18446744073709551488 ) FROM v39 AS a41 GROUP BY c32 ORDER BY 4294967295 ) SELECT c16 + ( SELECT max ( c15 ) FROM v39 AS a44 ORDER BY 4294967295 ), c20 + ( SELECT max ( c32 ) FROM v39 AS a43 ORDER BY 4294967295 ), c31 + ( SELECT max ( c19 ) FROM v39 AS a42 ORDER BY 4294967295 ) FROM v39 AS a40 y ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a45 WHERE a45.c29 = a45.c29 || a45.c17 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a46, v30 AS a47 NATURAL JOIN v0 AS a48 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49, v30 AS a50 NATURAL JOIN v0 AS a51 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a52.c31 IS NULL ) ) AND ( NOT ( a52.c32 IS NULL ) ) ) FROM v30 AS a52 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a53, v0 AS a54 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a55 GROUP BY x'616263', 'Abc2', a55.c16 = + a55.c23 HAVING count ( * ) >= 4294967295 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a56.c31, max ( a56.c32 || a56.c32 ) FROM v30 AS a56 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v57 AS ( SELECT 18446744073709551488 y ORDER BY 4294967295 ) VALUES ( NULL, 'v0' ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i36 after drop column: no such column: c32
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: near "y": syntax error
+   v39 AS a42 ORDER BY 4294967295 ) FROM v39 AS a40 y ORDER BY 18446744073709551
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 31
+  S a46, v30 AS a47 NATURAL JOIN v0 AS a48 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: near "ORDER": syntax error
+  488 y ORDER BY 4294967295 ) VALUES ( NULL, 'v0' ) ORDER BY 1844674407370951884
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 TEXT REFERENCES t1 DEFAULT NULL, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29 PRIMARY KEY, CHECK( ( ( c12 + 4294967295 ) % 4294967295 ) != 4294967295 ) ) WITHOUT ROWID; 
+CREATE TABLE v30 ( c31 TEXT, c32 ); 
+; 
+; 
+; 
+; 
+ALTER TABLE v30 DROP c32; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c15, max ( a38.c17 || a38.c20 ) FROM v0 AS a38 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v39 AS ( SELECT ( SELECT min ( c9 ) OVER ( ORDER BY 4294967295 ) ORDER BY 18446744073709551488 ) FROM v39 AS a41 GROUP BY c32 ORDER BY 4294967295 ) SELECT c16 + ( SELECT max ( c15 ) FROM v39 AS a44 ORDER BY 4294967295 ), c20 + ( SELECT max ( c32 ) FROM v39 AS a43 ORDER BY 4294967295 ), c31 + ( SELECT max ( c19 ) FROM v39 AS a42 ORDER BY 4294967295 ) FROM v39 AS a40 y ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a45 WHERE a45.c29 = a45.c29 || a45.c17 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a46, v30 AS a47 NATURAL JOIN v0 AS a48 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49, v30 AS a50 NATURAL JOIN v0 AS a51 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a52.c31 IS NULL ) ) AND ( NOT ( a52.c32 IS NULL ) ) ) FROM v30 AS a52 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a53, v0 AS a54 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a55 GROUP BY x'616263', 'Abc2', a55.c16 = + a55.c23 HAVING count ( * ) >= 4294967295 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a56.c31, max ( a56.c32 || a56.c32 ) FROM v30 AS a56 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v57 AS ( SELECT 18446744073709551488 y ORDER BY 4294967295 ) VALUES ( NULL, 'v0' ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: near "y": syntax error
+   v39 AS a42 ORDER BY 4294967295 ) FROM v39 AS a40 y ORDER BY 18446744073709551
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 30
+  S a46, v30 AS a47 NATURAL JOIN v0 AS a48 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: a52.c32
+  T count ( ( NOT ( a52.c31 IS NULL ) ) AND ( NOT ( a52.c32 IS NULL ) ) ) FROM v
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a56.c32
+  SELECT a56.c31, max ( a56.c32 || a56.c32 ) FROM v30 AS a56 ORDER BY 4294967295
+                        ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: near "ORDER": syntax error
+  488 y ORDER BY 4294967295 ) VALUES ( NULL, 'v0' ) ORDER BY 1844674407370951884
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: near "y": syntax error
+   v39 AS a42 ORDER BY 4294967295 ) FROM v39 AS a40 y ORDER BY 18446744073709551
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 13: near "y": syntax error
+   v39 AS a42 ORDER BY 4294967295 ) FROM v39 AS a40 y ORDER BY 18446744073709551
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 31
+  S a46, v30 AS a47 NATURAL JOIN v0 AS a48 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 30
+  S a46, v30 AS a47 NATURAL JOIN v0 AS a48 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such column: a52.c32
+  T count ( ( NOT ( a52.c31 IS NULL ) ) AND ( NOT ( a52.c32 IS NULL ) ) ) FROM v
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such column: a56.c32
+  SELECT a56.c31, max ( a56.c32 || a56.c32 ) FROM v30 AS a56 ORDER BY 4294967295
+                        ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 24200512
+Str: 
+Parse error near line 37: near "ORDER": syntax error
+  488 y ORDER BY 4294967295 ) VALUES ( NULL, 'v0' ) ORDER BY 1844674407370951884
+                                      error here ---^
+ 
+Str: 
+Parse error near line 37: near "ORDER": syntax error
+  488 y ORDER BY 4294967295 ) VALUES ( NULL, 'v0' ) ORDER BY 1844674407370951884
+                                      error here ---^
+ 
+Compare_result_int: 
+0
+
+
+

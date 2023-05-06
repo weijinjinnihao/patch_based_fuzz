@@ -1,0 +1,312 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY ON CONFLICT REPLACE, c2 UNIQUE ON CONFLICT IGNORE, c3 UNIQUE ON CONFLICT REPLACE, c4 ); 
+CREATE VIEW v5 AS SELECT c2 COLLATE hex FROM v0 AS a6 ORDER BY 9223372036854775807; 
+CREATE VIEW v7 AS WITH v5 ( c9 ) AS ( WITH v5 ( c10 ) AS ( WITH v5 ( c11, c12, c13, c14, c15, c16 ) AS ( SELECT 9223372036854775807 y ORDER BY ( ( c3 + 9223372036854775807 ) % 18446744073709551488 ) < 18446744073709551488 ) SELECT 9223372036854775807 ORDER BY 9223372036854775807 ) SELECT 9223372036854775807 ORDER BY 8 ) SELECT * FROM v0 AS a8 ORDER BY 18446744073709551488; 
+CREATE TABLE v17 ( c18 INTEGER PRIMARY KEY, c19, c20 UNIQUE ); 
+CREATE INDEX i21 ON v17 ( c20 ); 
+CREATE TABLE v22 ( c23, c24, c25 ); 
+CREATE INDEX i26 ON v22 ( c25 ); 
+CREATE INDEX i27 ON v0 ( c3 ); 
+ALTER TABLE v7 DROP COLUMN c1; 
+ALTER TABLE v22 DROP COLUMN c25; 
+CREATE VIRTUAL TABLE v28 USING fts5 ( c29, c30 ); 
+CREATE INDEX i31 ON v7 ( c1 ); 
+ALTER TABLE v7 DROP COLUMN c1; 
+CREATE INDEX i32 ON v5 ( c3 ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 ( c33 ) AS ( WITH v0 ( c34 ) AS ( WITH v35 AS ( WITH v36 AS ( SELECT 9223372036854775807 y ORDER BY 18446744073709551488 ) SELECT avg ( v7.c1 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 9223372036854775807 ) SELECT 9223372036854775807 ORDER BY 9223372036854775807 ) SELECT 0 ORDER BY 255 ) VALUES ( 2147483647, 0 ), ( 18446744073709551488, 10 ), ( 18446744073709551488, 10 ), ( 2147483647, 18446744073709551615 ), ( 8, 18446744073709551488 ), ( 18446744073709551488, 18446744073709518848 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c29, a38.c29 NOT NULL FROM v7 AS a37 RIGHT JOIN v28 AS a38 ON a38.c30 = a37.c1 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v39 AS ( SELECT c19 FROM v39 AS a41 WHERE c24 NOT LIKE 'one' ORDER BY 255 ) SELECT * FROM v39 AS a40 WHERE c20 > 2147483647 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a42.c24, max ( a42.c24 || a42.c24 ) FROM v22 AS a42 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a43 GROUP BY ( ( SELECT * FROM v7 AS a44 WHERE a43.c3 = a44.c1 || a43.c3 ORDER BY 255 ) % 9223372036854775807 ), abs ( a43.c3 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v5 ( c46 ) AS ( SELECT 9223372036854775807 ORDER BY 0 ) SELECT * FROM v17 AS a45 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a47.c25 ) FROM v22 AS a47 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a48 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a49.c30, count ( a49.c29 ) FROM v28 AS a49 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v28 AS a50, v0 AS a51 NATURAL JOIN v17 AS a52 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: cannot drop column from view "v7"
+Runtime error near line 10: error in index i26 after drop column: no such column: c25
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: views may not be indexed
+Parse error near line 13: cannot drop column from view "v7"
+Parse error near line 14: views may not be indexed
+BEGIN VERI 0
+Parse error near line 16: near "ORDER": syntax error
+  ), ( 18446744073709551488, 18446744073709518848 ) ORDER BY 1844674407370955148
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v28
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: circular reference: v39
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 3
+  07 ORDER BY 0 ) SELECT * FROM v17 AS a45 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v28
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such table: v28
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY ON CONFLICT REPLACE, c2 UNIQUE ON CONFLICT IGNORE, c3 UNIQUE ON CONFLICT REPLACE, c4 ); 
+CREATE VIEW v5 AS SELECT c2 COLLATE hex FROM v0 AS a6 ORDER BY 9223372036854775807; 
+CREATE VIEW v7 AS WITH v5 ( c9 ) AS ( WITH v5 ( c10 ) AS ( WITH v5 ( c11, c12, c13, c14, c15, c16 ) AS ( SELECT 9223372036854775807 y ORDER BY ( ( c3 + 9223372036854775807 ) % 18446744073709551488 ) < 18446744073709551488 ) SELECT 9223372036854775807 ORDER BY 9223372036854775807 ) SELECT 9223372036854775807 ORDER BY 8 ) SELECT * FROM v0 AS a8 ORDER BY 18446744073709551488; 
+CREATE TABLE v17 ( c18 INTEGER PRIMARY KEY, c19, c20 UNIQUE ); 
+; 
+CREATE TABLE v22 ( c23, c24, c25 ); 
+; 
+; 
+ALTER TABLE v7 DROP COLUMN c1; 
+ALTER TABLE v22 DROP COLUMN c25; 
+CREATE VIRTUAL TABLE v28 USING fts5 ( c29, c30 ); 
+; 
+ALTER TABLE v7 DROP COLUMN c1; 
+; 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 ( c33 ) AS ( WITH v0 ( c34 ) AS ( WITH v35 AS ( WITH v36 AS ( SELECT 9223372036854775807 y ORDER BY 18446744073709551488 ) SELECT avg ( v7.c1 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 9223372036854775807 ) SELECT 9223372036854775807 ORDER BY 9223372036854775807 ) SELECT 0 ORDER BY 255 ) VALUES ( 2147483647, 0 ), ( 18446744073709551488, 10 ), ( 18446744073709551488, 10 ), ( 2147483647, 18446744073709551615 ), ( 8, 18446744073709551488 ), ( 18446744073709551488, 18446744073709518848 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c29, a38.c29 NOT NULL FROM v7 AS a37 RIGHT JOIN v28 AS a38 ON a38.c30 = a37.c1 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v39 AS ( SELECT c19 FROM v39 AS a41 WHERE c24 NOT LIKE 'one' ORDER BY 255 ) SELECT * FROM v39 AS a40 WHERE c20 > 2147483647 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a42.c24, max ( a42.c24 || a42.c24 ) FROM v22 AS a42 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a43 GROUP BY ( ( SELECT * FROM v7 AS a44 WHERE a43.c3 = a44.c1 || a43.c3 ORDER BY 255 ) % 9223372036854775807 ), abs ( a43.c3 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v5 ( c46 ) AS ( SELECT 9223372036854775807 ORDER BY 0 ) SELECT * FROM v17 AS a45 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a47.c25 ) FROM v22 AS a47 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a48 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a49.c30, count ( a49.c29 ) FROM v28 AS a49 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v28 AS a50, v0 AS a51 NATURAL JOIN v17 AS a52 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: cannot drop column from view "v7"
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: cannot drop column from view "v7"
+BEGIN VERI 0
+Parse error near line 16: near "ORDER": syntax error
+  ), ( 18446744073709551488, 18446744073709518848 ) ORDER BY 1844674407370955148
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v28
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: circular reference: v39
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 3
+  07 ORDER BY 0 ) SELECT * FROM v17 AS a45 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a47.c25
+  SELECT count ( a47.c25 ) FROM v22 AS a47 ORDER BY 18446744073709551488; 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v28
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such table: v28
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 76190992
+Str: 
+Parse error near line 16: near "ORDER": syntax error
+  ), ( 18446744073709551488, 18446744073709518848 ) ORDER BY 1844674407370955148
+                                      error here ---^
+ 
+Str: 
+Parse error near line 16: near "ORDER": syntax error
+  ), ( 18446744073709551488, 18446744073709518848 ) ORDER BY 1844674407370955148
+                                      error here ---^
+ 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such table: v28
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such table: v28
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: circular reference: v39
+ 
+INT: 0 
+Str: 
+Parse error near line 22: circular reference: v39
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such collation sequence: hex
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such collation sequence: hex
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 3
+  07 ORDER BY 0 ) SELECT * FROM v17 AS a45 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 3
+  07 ORDER BY 0 ) SELECT * FROM v17 AS a45 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+0
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such column: a47.c25
+  SELECT count ( a47.c25 ) FROM v22 AS a47 ORDER BY 18446744073709551488; 
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such collation sequence: hex
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no such collation sequence: hex
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such table: v28
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no such table: v28
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: no such table: v28
+ 
+INT: 0 
+Str: 
+Parse error near line 43: no such table: v28
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

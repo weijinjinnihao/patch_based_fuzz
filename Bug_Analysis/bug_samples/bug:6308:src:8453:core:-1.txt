@@ -1,0 +1,332 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY ON CONFLICT IGNORE, c2 UNIQUE ON CONFLICT IGNORE, c3 UNIQUE ON CONFLICT FAIL ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 18446744073709551488, 'x', 'v1' ); 
+INSERT INTO v0 VALUES ( 'x' ), ( abs ( c1 ) ); 
+INSERT INTO v0 VALUES ( NULL, 'b', 'x' ); 
+INSERT INTO v0 VALUES ( 'x', 'v0', 'x' ); 
+INSERT INTO v0 VALUES ( x'616263', 'id.2', '?k<D Q' ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+UPDATE OR IGNORE v0 SET c3 = NULL, c3 = c2, c3 = c2; 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE INDEX i6 ON v0 ( c3 ); 
+CREATE INDEX i7 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( NULL, 'v0', 'three-a' ); 
+INSERT INTO v0 VALUES ( 'x3', 'x', 'yyy' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'GHI', 'x' ); 
+INSERT INTO v0 VALUES ( 10, 'x', '40000 21' ); 
+INSERT INTO v0 VALUES ( - 18446744073709551488, 'v0', 'x' ); 
+CREATE TABLE v8 ( c9, c10, c11 COLLATE NOCASE ); 
+INSERT INTO v0 SELECT * FROM v8 AS a12 ORDER BY 10; 
+INSERT INTO v8 SELECT * FROM v0 AS a13 ORDER BY 10; 
+INSERT INTO v8 SELECT * FROM v8 AS a14 ORDER BY 127; 
+CREATE INDEX i15 ON v8 ( c10 ); 
+INSERT INTO v8 SELECT * FROM v0 AS a16 ORDER BY 127; 
+INSERT INTO v0 SELECT * FROM v8 AS a17 ORDER BY 18446744073709551488; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 ORDER BY a20.c2; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c2, count ( ( NOT ( a21.c3 IS NULL ) ) AND ( NOT ( a21.c1 IS NULL ) ) ), a21.c3, a21.c2 FROM v0 AS a21 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a22 ORDER BY ( ( a22.c11 + 18446744073709551488 ) % 127 ) == 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a23 NATURAL JOIN v8 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c1 FROM v0 AS a25 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a26, v8 AS a27 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a29 GROUP BY a29.c9 HAVING count ( * ) >= 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: no such column: c1
+  INSERT INTO v0 VALUES ( 'x' ), ( abs ( c1 ) ); 
+                           error here ---^
+Runtime error near line 4: NOT NULL constraint failed: v0.c1 (19)
+Runtime error near line 12: NOT NULL constraint failed: v0.c1 (19)
+Runtime error near line 14: UNIQUE constraint failed: v0.c3 (19)
+Runtime error near line 16: UNIQUE constraint failed: v0.c3 (19)
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+abc|id.2|id.2
+x|v0|v0
+1.84467440737096e+19|x|x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|x|x
+x|v0|v0
+abc|id.2|id.2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 52: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY ON CONFLICT IGNORE, c2 UNIQUE ON CONFLICT IGNORE, c3 UNIQUE ON CONFLICT FAIL ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 18446744073709551488, 'x', 'v1' ); 
+INSERT INTO v0 VALUES ( 'x' ), ( abs ( c1 ) ); 
+INSERT INTO v0 VALUES ( NULL, 'b', 'x' ); 
+INSERT INTO v0 VALUES ( 'x', 'v0', 'x' ); 
+INSERT INTO v0 VALUES ( x'616263', 'id.2', '?k<D Q' ); 
+; 
+UPDATE OR IGNORE v0 SET c3 = NULL, c3 = c2, c3 = c2; 
+; 
+; 
+; 
+INSERT INTO v0 VALUES ( NULL, 'v0', 'three-a' ); 
+INSERT INTO v0 VALUES ( 'x3', 'x', 'yyy' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'GHI', 'x' ); 
+INSERT INTO v0 VALUES ( 10, 'x', '40000 21' ); 
+INSERT INTO v0 VALUES ( - 18446744073709551488, 'v0', 'x' ); 
+CREATE TABLE v8 ( c9, c10, c11 COLLATE NOCASE ); 
+INSERT INTO v0 SELECT * FROM v8 AS a12 ORDER BY 10; 
+INSERT INTO v8 SELECT * FROM v0 AS a13 ORDER BY 10; 
+INSERT INTO v8 SELECT * FROM v8 AS a14 ORDER BY 127; 
+; 
+INSERT INTO v8 SELECT * FROM v0 AS a16 ORDER BY 127; 
+INSERT INTO v0 SELECT * FROM v8 AS a17 ORDER BY 18446744073709551488; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 ORDER BY a20.c2; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c2, count ( ( NOT ( a21.c3 IS NULL ) ) AND ( NOT ( a21.c1 IS NULL ) ) ), a21.c3, a21.c2 FROM v0 AS a21 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a22 ORDER BY ( ( a22.c11 + 18446744073709551488 ) % 127 ) == 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a23 NATURAL JOIN v8 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c1 FROM v0 AS a25 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a26, v8 AS a27 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a29 GROUP BY a29.c9 HAVING count ( * ) >= 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: no such column: c1
+  INSERT INTO v0 VALUES ( 'x' ), ( abs ( c1 ) ); 
+                           error here ---^
+Runtime error near line 4: NOT NULL constraint failed: v0.c1 (19)
+Runtime error near line 12: NOT NULL constraint failed: v0.c1 (19)
+Runtime error near line 16: UNIQUE constraint failed: v0.c3 (19)
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+hare|GHI|x
+abc|id.2|id.2
+x|v0|v0
+1.84467440737096e+19|x|v1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|x|v1
+x|v0|v0
+abc|id.2|id.2
+hare|GHI|x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 52: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+abc|id.2|id.2
+x|v0|v0
+1.84467440737096e+19|x|x
+ 
+INT: 2 
+Str: 
+hare|GHI|x
+abc|id.2|id.2
+x|v0|v0
+1.84467440737096e+19|x|v1
+ 
+INT: 3 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+1.84467440737096e+19|x|x
+x|v0|v0
+abc|id.2|id.2
+ 
+INT: 2 
+Str: 
+1.84467440737096e+19|x|v1
+x|v0|v0
+abc|id.2|id.2
+hare|GHI|x
+ 
+INT: 3 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 52: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 52: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

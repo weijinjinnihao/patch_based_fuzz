@@ -1,0 +1,311 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 DEFAULT 'v0', c2, c3 AS( c2 + c1 - c3 ) REFERENCES fts5, c4 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE INDEX i6 ON v0 ( c1 ); 
+CREATE INDEX i7 ON v0 ( c4 ); 
+CREATE VIEW v8 AS SELECT * FROM v0 AS a9 ORDER BY 4294967295; 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12, c13 UNIQUE ); 
+CREATE TABLE v14 ( c15, c16, c17 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i18 ON v8 ( c1 ); 
+ALTER TABLE v0 DROP COLUMN c4; 
+INSERT OR ABORT INTO v14 ( c15, c17, c15, c15 ) VALUES ( 18446744073709551615, 4294967295, 4294967295, 18446744071562067968 ) ON CONFLICT DO UPDATE SET c15 = c16, c16 = c17, c16 = ( ( ( ( c17 + 127 ) % 255 ) == 18446744071562067968 ) % 4294967295 ); 
+CREATE INDEX i19 ON v0 ( c2 ); 
+ALTER TABLE v8 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a20 ORDER BY max ( NULL, - x'68617265', 'jkl' ) + 4294967295, min ( a20.c3, avg ( a20.c2 ) ) + NULL >= 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c3, count ( ( NOT ( a21.c4 IS NULL ) ) AND ( NOT ( a21.c1 IS NULL ) ) ) FROM v0 AS a21 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( NULL, 'x', 'v0' ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a22 WHERE a22.c2 = a22.c1 NOT NULL ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a23, v14 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a25 WHERE a25.c12 % 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a26.c2 IS NULL ) ) AND ( NOT ( a26.c4 IS NULL ) ) ) FROM v0 AS a26 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a27 NATURAL JOIN v8 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 ORDER BY ( a29.c2 || a29.c1 || a29.c4 ) != 'x'; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in table v0 after drop column: no such column: c1
+Parse error near line 9: views may not be indexed
+Runtime error near line 10: error in index i7 after drop column: no such column: c4
+Parse error near line 13: cannot drop column from view "v8"
+BEGIN VERI 0
+Parse error near line 15: misuse of aggregate: avg()
+   x'68617265', 'jkl' ) + 4294967295, min ( a20.c3, avg ( a20.c2 ) ) + NULL >= 2
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: generated column loop on "c3"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: near "ORDER": syntax error
+  VALUES ( NULL, 'x', 'v0' ) ORDER BY 18446744073709551615; 
+               error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19||4294967295|1.84467440737096e+19||4294967295
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: generated column loop on "c3"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: generated column loop on "c3"
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 DEFAULT 'v0', c2, c3 AS( c2 + c1 - c3 ) REFERENCES fts5, c4 ); 
+; 
+; 
+; 
+CREATE VIEW v8 AS SELECT * FROM v0 AS a9 ORDER BY 4294967295; 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12, c13 UNIQUE ); 
+CREATE TABLE v14 ( c15, c16, c17 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+ALTER TABLE v0 DROP COLUMN c4; 
+INSERT OR ABORT INTO v14 ( c15, c17, c15, c15 ) VALUES ( 18446744073709551615, 4294967295, 4294967295, 18446744071562067968 ) ON CONFLICT DO UPDATE SET c15 = c16, c16 = c17, c16 = ( ( ( ( c17 + 127 ) % 255 ) == 18446744071562067968 ) % 4294967295 ); 
+; 
+ALTER TABLE v8 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a20 ORDER BY max ( NULL, - x'68617265', 'jkl' ) + 4294967295, min ( a20.c3, avg ( a20.c2 ) ) + NULL >= 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c3, count ( ( NOT ( a21.c4 IS NULL ) ) AND ( NOT ( a21.c1 IS NULL ) ) ) FROM v0 AS a21 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( NULL, 'x', 'v0' ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a22 WHERE a22.c2 = a22.c1 NOT NULL ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a23, v14 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a25 WHERE a25.c12 % 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a26.c2 IS NULL ) ) AND ( NOT ( a26.c4 IS NULL ) ) ) FROM v0 AS a26 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a27 NATURAL JOIN v8 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 ORDER BY ( a29.c2 || a29.c1 || a29.c4 ) != 'x'; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in table v0 after drop column: no such column: c1
+Parse error near line 13: cannot drop column from view "v8"
+BEGIN VERI 0
+Parse error near line 15: misuse of aggregate: avg()
+   x'68617265', 'jkl' ) + 4294967295, min ( a20.c3, avg ( a20.c2 ) ) + NULL >= 2
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: a21.c4
+  SELECT a21.c3, count ( ( NOT ( a21.c4 IS NULL ) ) AND ( NOT ( a21.c1 IS NULL )
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: near "ORDER": syntax error
+  VALUES ( NULL, 'x', 'v0' ) ORDER BY 18446744073709551615; 
+               error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19||4294967295|1.84467440737096e+19||4294967295
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a26.c4
+  CT count ( ( NOT ( a26.c2 IS NULL ) ) AND ( NOT ( a26.c4 IS NULL ) ) ) FROM v0
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: generated column loop on "c3"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a29.c4
+  T * FROM v0 AS a29 ORDER BY ( a29.c2 || a29.c1 || a29.c4 ) != 'x'; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: misuse of aggregate: avg()
+   x'68617265', 'jkl' ) + 4294967295, min ( a20.c3, avg ( a20.c2 ) ) + NULL >= 2
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: misuse of aggregate: avg()
+   x'68617265', 'jkl' ) + 4294967295, min ( a20.c3, avg ( a20.c2 ) ) + NULL >= 2
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 21: generated column loop on "c3"
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no such column: a21.c4
+  SELECT a21.c3, count ( ( NOT ( a21.c4 IS NULL ) ) AND ( NOT ( a21.c1 IS NULL )
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 38797360
+Str: 
+Parse error near line 24: near "ORDER": syntax error
+  VALUES ( NULL, 'x', 'v0' ) ORDER BY 18446744073709551615; 
+               error here ---^
+ 
+Str: 
+Parse error near line 24: near "ORDER": syntax error
+  VALUES ( NULL, 'x', 'v0' ) ORDER BY 18446744073709551615; 
+               error here ---^
+ 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19||4294967295|1.84467440737096e+19||4294967295
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19||4294967295|1.84467440737096e+19||4294967295
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such column: a26.c4
+  CT count ( ( NOT ( a26.c2 IS NULL ) ) AND ( NOT ( a26.c4 IS NULL ) ) ) FROM v0
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: generated column loop on "c3"
+ 
+INT: 0 
+Str: 
+Parse error near line 39: generated column loop on "c3"
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 42: generated column loop on "c3"
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such column: a29.c4
+  T * FROM v0 AS a29 ORDER BY ( a29.c2 || a29.c1 || a29.c4 ) != 'x'; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

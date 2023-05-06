@@ -1,0 +1,308 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4, c5, c6, c7, c8, c9, c10 REFERENCES t1 DEFAULT NULL, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 INTEGER PRIMARY KEY, c24 ); 
+CREATE TABLE v25 ( c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39 PRIMARY KEY ON CONFLICT REPLACE, c40, c41, c42 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v43 USING rtree ( c44, c45, c46, c47, c48, c49, c50, c51, c52 ); 
+CREATE TABLE v53 ( c54, c55, c56, c57, c58, c59 TEXT CHECK( c70 != 444 ) DEFAULT 18446744073709551488, c60, c61, c62, c63, c64, c65, c66, c67, c68, c69, c70 TEXT UNIQUE NOT NULL ); 
+CREATE INDEX i71 ON v43 ( c27 ); 
+CREATE INDEX i72 ON v0 ( c2 ); 
+INSERT INTO v53 VALUES ( 8, 'x' ), ( 8, 'v0' ), ( 8, 'v1' ); 
+CREATE INDEX i73 ON v43 ( c51 ); 
+CREATE TABLE v74 ( c75 DEFAULT x'ABCD' DEFAULT 8, c76 NOT NULL DEFAULT 18446744073709551488, c77 NOT NULL ON CONFLICT REPLACE DEFAULT 10, c78 NOT NULL ON CONFLICT IGNORE DEFAULT 8, c79 NOT NULL ON CONFLICT ABORT DEFAULT 8 ); 
+CREATE INDEX i80 ON v25 ( c30 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v25 BEGIN DELETE FROM v25; END; 
+ALTER TABLE v0 DROP c2; 
+UPDATE v25 SET c32 = 'v1' WHERE c38 = 123; 
+CREATE INDEX i81 ON v74 ( c79 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v53 AS a82 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v53 AS a83, v74 AS a84 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a85, v74 AS a86 ORDER BY 123; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a87.c8, count ( ( NOT ( a87.c14 IS NULL ) ) AND ( NOT ( a87.c7 IS NULL ) ) ) FROM v3 AS a87 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a88.c49, a88.c52 FROM v43 AS a88 WHERE a88.c50 = 18446744073709551488 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a89.c1, count ( ( NOT ( a89.c2 IS NULL ) ) AND ( NOT ( a89.c1 IS NULL ) ) ) FROM v0 AS a89 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a90 WHERE a90.c1 > 8 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v43 AS a91, v25 AS a92 NATURAL JOIN v74 AS a93 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a94, v25 AS a95 NATURAL JOIN v25 AS a96 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a97.c38, max ( a97.c33 || a97.c41 ) FROM v25 AS a97 WHERE a97.c31 > y ( ( a97.c37 + 123 ) ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: virtual tables may not be indexed
+Parse error near line 8: table v53 has 17 columns but 2 values were supplied
+Parse error near line 9: virtual tables may not be indexed
+Runtime error near line 13: error in index i72 after drop column: no such column: c2
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  a88 WHERE a88.c50 = 18446744073709551488 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 34
+   a94, v25 AS a95 NATURAL JOIN v25 AS a96 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no such function: y
+  .c33 || a97.c41 ) FROM v25 AS a97 WHERE a97.c31 > y ( ( a97.c37 + 123 ) ) ORDE
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4, c5, c6, c7, c8, c9, c10 REFERENCES t1 DEFAULT NULL, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 INTEGER PRIMARY KEY, c24 ); 
+CREATE TABLE v25 ( c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39 PRIMARY KEY ON CONFLICT REPLACE, c40, c41, c42 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v43 USING rtree ( c44, c45, c46, c47, c48, c49, c50, c51, c52 ); 
+CREATE TABLE v53 ( c54, c55, c56, c57, c58, c59 TEXT CHECK( c70 != 444 ) DEFAULT 18446744073709551488, c60, c61, c62, c63, c64, c65, c66, c67, c68, c69, c70 TEXT UNIQUE NOT NULL ); 
+; 
+; 
+INSERT INTO v53 VALUES ( 8, 'x' ), ( 8, 'v0' ), ( 8, 'v1' ); 
+; 
+CREATE TABLE v74 ( c75 DEFAULT x'ABCD' DEFAULT 8, c76 NOT NULL DEFAULT 18446744073709551488, c77 NOT NULL ON CONFLICT REPLACE DEFAULT 10, c78 NOT NULL ON CONFLICT IGNORE DEFAULT 8, c79 NOT NULL ON CONFLICT ABORT DEFAULT 8 ); 
+; 
+CREATE TRIGGER r1 AFTER UPDATE ON v25 BEGIN DELETE FROM v25; END; 
+ALTER TABLE v0 DROP c2; 
+UPDATE v25 SET c32 = 'v1' WHERE c38 = 123; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v53 AS a82 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v53 AS a83, v74 AS a84 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a85, v74 AS a86 ORDER BY 123; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a87.c8, count ( ( NOT ( a87.c14 IS NULL ) ) AND ( NOT ( a87.c7 IS NULL ) ) ) FROM v3 AS a87 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a88.c49, a88.c52 FROM v43 AS a88 WHERE a88.c50 = 18446744073709551488 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a89.c1, count ( ( NOT ( a89.c2 IS NULL ) ) AND ( NOT ( a89.c1 IS NULL ) ) ) FROM v0 AS a89 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a90 WHERE a90.c1 > 8 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v43 AS a91, v25 AS a92 NATURAL JOIN v74 AS a93 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a94, v25 AS a95 NATURAL JOIN v25 AS a96 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a97.c38, max ( a97.c33 || a97.c41 ) FROM v25 AS a97 WHERE a97.c31 > y ( ( a97.c37 + 123 ) ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: table v53 has 17 columns but 2 values were supplied
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  a88 WHERE a88.c50 = 18446744073709551488 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a89.c2
+  SELECT a89.c1, count ( ( NOT ( a89.c2 IS NULL ) ) AND ( NOT ( a89.c1 IS NULL )
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 34
+   a94, v25 AS a95 NATURAL JOIN v25 AS a96 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no such function: y
+  .c33 || a97.c41 ) FROM v25 AS a97 WHERE a97.c31 > y ( ( a97.c37 + 123 ) ) ORDE
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  a88 WHERE a88.c50 = 18446744073709551488 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+  a88 WHERE a88.c50 = 18446744073709551488 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such column: a89.c2
+  SELECT a89.c1, count ( ( NOT ( a89.c2 IS NULL ) ) AND ( NOT ( a89.c1 IS NULL )
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 34
+   a94, v25 AS a95 NATURAL JOIN v25 AS a96 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 34
+   a94, v25 AS a95 NATURAL JOIN v25 AS a96 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: no such function: y
+  .c33 || a97.c41 ) FROM v25 AS a97 WHERE a97.c31 > y ( ( a97.c37 + 123 ) ) ORDE
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 44: no such function: y
+  .c33 || a97.c41 ) FROM v25 AS a97 WHERE a97.c31 > y ( ( a97.c37 + 123 ) ) ORDE
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

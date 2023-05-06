@@ -1,0 +1,289 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY ( ( c1 + - 127 ) % 127 ); 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+CREATE TABLE v10 ( c11, c12, c13 ); 
+CREATE INDEX i14 ON v10 ( c13 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i15 ON v10 ( c13 ); 
+CREATE INDEX i16 ON v0 ( c1 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i17 ON v0 ( c3 ); 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+CREATE INDEX i21 ON v4 ( y ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v0 AS a23 WHERE CASE WHEN a23.c1 = a22.c1 - 127 THEN 127 ELSE 127 END ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a25 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v26 ( c28 ) AS ( WITH v29 ( c30, c31, c32, c33, c34, c35 ) AS ( SELECT 18446744073709551615 y ORDER BY 127 ) SELECT 127 ORDER BY 8 ) SELECT * FROM v26 AS a27 GROUP BY c28 HAVING count ( * ) >= 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 GROUP BY a36.c3, abs ( a36.c3 ) HAVING count ( * ) >= 127 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v37 AS ( SELECT y FROM v37 AS a39 WHERE c9 LIKE 'x' ORDER BY 127 ) SELECT * FROM v37 AS a38 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a40 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a41.c19 IS NULL ) ) AND ( NOT ( a41.c19 IS NULL ) ) ) FROM v18 AS a41 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a42.c20, count ( a42.c19 ) FROM v18 AS a42 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: error in view v4 after drop column: no such column: c1
+Runtime error near line 9: error in index i16 after drop column: no such column: c1
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: views may not be indexed
+Runtime error near line 13: error in index i17 after drop column: no such column: c3
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: circular reference: v37
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v18
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY ( ( c1 + - 127 ) % 127 ); 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+CREATE TABLE v10 ( c11, c12, c13 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+; 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v0 AS a23 WHERE CASE WHEN a23.c1 = a22.c1 - 127 THEN 127 ELSE 127 END ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a25 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v26 ( c28 ) AS ( WITH v29 ( c30, c31, c32, c33, c34, c35 ) AS ( SELECT 18446744073709551615 y ORDER BY 127 ) SELECT 127 ORDER BY 8 ) SELECT * FROM v26 AS a27 GROUP BY c28 HAVING count ( * ) >= 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 GROUP BY a36.c3, abs ( a36.c3 ) HAVING count ( * ) >= 127 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v37 AS ( SELECT y FROM v37 AS a39 WHERE c9 LIKE 'x' ORDER BY 127 ) SELECT * FROM v37 AS a38 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a40 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a41.c19 IS NULL ) ) AND ( NOT ( a41.c19 IS NULL ) ) ) FROM v18 AS a41 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a42.c20, count ( a42.c19 ) FROM v18 AS a42 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: error in view v4 after drop column: no such column: c1
+Runtime error near line 9: error in view v4 after drop column: no such column: c1
+Runtime error near line 11: no such module: fts5
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a36.c3
+  SELECT * FROM v0 AS a36 GROUP BY a36.c3, abs ( a36.c3 ) HAVING count ( * ) >= 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: circular reference: v37
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v18
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 27: no such column: a36.c3
+  SELECT * FROM v0 AS a36 GROUP BY a36.c3, abs ( a36.c3 ) HAVING count ( * ) >= 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: circular reference: v37
+ 
+INT: 0 
+Str: 
+Parse error near line 33: circular reference: v37
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such table: v18
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

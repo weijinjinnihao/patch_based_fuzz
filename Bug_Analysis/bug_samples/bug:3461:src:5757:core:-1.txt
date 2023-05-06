@@ -1,0 +1,320 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45 INTEGER PRIMARY KEY, c46 ); 
+CREATE INDEX i47 ON v0 ( c2 ); 
+CREATE TABLE v48 ( c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62 PRIMARY KEY ON CONFLICT REPLACE, c63, c64, c65 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v66 USING rtree ( c67, c68, c69, c70, c71, c72 ); 
+CREATE INDEX i73 ON v48 ( c49 ); 
+CREATE TABLE v74 ( c75, c76, c77, c78, c79, c80, c81, c82, c83, c84, c85, c86, c87, c88, c89, c90, c91 TEXT UNIQUE NOT NULL ); 
+INSERT INTO v66 VALUES ( 18446744073709551615, 'v0' ), ( 18446744073709551615, 'v0' ), ( 18446744073709551615, 'x' ); 
+CREATE INDEX i92 ON v0 ( c1 ); 
+CREATE INDEX i93 ON v3 ( c24 ); 
+CREATE TABLE v94 ( c95 DEFAULT x'ABCD' DEFAULT 2147483647, c96 NOT NULL DEFAULT 18446744073709551615, c97 NOT NULL ON CONFLICT REPLACE DEFAULT 18446744073709551615, c98 NOT NULL ON CONFLICT IGNORE DEFAULT 2147483647, c99 NOT NULL ON CONFLICT ABORT DEFAULT 18446744073709551615 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v94 BEGIN DELETE FROM v3; END; 
+ALTER TABLE v0 DROP c2; 
+UPDATE v48 SET c63 = 'v1' WHERE c58 = 18446744073709551615; 
+CREATE INDEX i100 ON v0 ( c1 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( a101.c49 ), min ( a101.c60 ), max ( a101.c62 ), max ( a102.c52 ), sum ( a101.c51 ), sum ( a102.c64 ), avg ( a102.c54 ), avg ( a101.c57 ) FROM v48 AS a101 NATURAL JOIN v48 AS a102 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a103 NATURAL JOIN v3 AS a104 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v48 AS a105 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a106.c2 FROM v0 AS a106 WHERE ( a106.c1, a106.c1 ) NOT IN ( SELECT * FROM v74 AS a107 ORDER BY 18446744073709551615 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT lower ( a108.c65 ) FROM v48 AS a108 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v66 AS a109 WHERE a109.c67 = a109.c71 % 18446744073709551615 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a110 WHERE a110.c2 = a110.c2 NOT NULL ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a111.c56, sum ( a111.c60 ) AS y FROM v48 AS a111 GROUP BY a111.c62 ORDER BY count ( * ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a112.c52 ) FROM v48 AS a112 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v113 ( c114 ) AS ( SELECT 'v1' ORDER BY 16 ) VALUES ( 'v1', 'v0', 'x' ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: Wrong number of columns for an rtree table
+Parse error near line 8: no such table: v66
+Runtime error near line 13: error in index i47 after drop column: no such column: c2
+BEGIN VERI 0
+|||||||
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 17
+  SELECT * FROM v48 AS a105 ORDER BY 2147483647; 
+                       error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: sub-select returns 17 columns - expected 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+  LECT lower ( a108.c65 ) FROM v48 AS a108 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such table: v66
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+  LECT count ( a112.c52 ) FROM v48 AS a112 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: near "ORDER": syntax error
+  ECT 'v1' ORDER BY 16 ) VALUES ( 'v1', 'v0', 'x' ) ORDER BY 1844674407370955161
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45 INTEGER PRIMARY KEY, c46 ); 
+; 
+CREATE TABLE v48 ( c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62 PRIMARY KEY ON CONFLICT REPLACE, c63, c64, c65 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v66 USING rtree ( c67, c68, c69, c70, c71, c72 ); 
+; 
+CREATE TABLE v74 ( c75, c76, c77, c78, c79, c80, c81, c82, c83, c84, c85, c86, c87, c88, c89, c90, c91 TEXT UNIQUE NOT NULL ); 
+INSERT INTO v66 VALUES ( 18446744073709551615, 'v0' ), ( 18446744073709551615, 'v0' ), ( 18446744073709551615, 'x' ); 
+; 
+; 
+CREATE TABLE v94 ( c95 DEFAULT x'ABCD' DEFAULT 2147483647, c96 NOT NULL DEFAULT 18446744073709551615, c97 NOT NULL ON CONFLICT REPLACE DEFAULT 18446744073709551615, c98 NOT NULL ON CONFLICT IGNORE DEFAULT 2147483647, c99 NOT NULL ON CONFLICT ABORT DEFAULT 18446744073709551615 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v94 BEGIN DELETE FROM v3; END; 
+ALTER TABLE v0 DROP c2; 
+UPDATE v48 SET c63 = 'v1' WHERE c58 = 18446744073709551615; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( a101.c49 ), min ( a101.c60 ), max ( a101.c62 ), max ( a102.c52 ), sum ( a101.c51 ), sum ( a102.c64 ), avg ( a102.c54 ), avg ( a101.c57 ) FROM v48 AS a101 NATURAL JOIN v48 AS a102 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a103 NATURAL JOIN v3 AS a104 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v48 AS a105 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a106.c2 FROM v0 AS a106 WHERE ( a106.c1, a106.c1 ) NOT IN ( SELECT * FROM v74 AS a107 ORDER BY 18446744073709551615 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT lower ( a108.c65 ) FROM v48 AS a108 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v66 AS a109 WHERE a109.c67 = a109.c71 % 18446744073709551615 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a110 WHERE a110.c2 = a110.c2 NOT NULL ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a111.c56, sum ( a111.c60 ) AS y FROM v48 AS a111 GROUP BY a111.c62 ORDER BY count ( * ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a112.c52 ) FROM v48 AS a112 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v113 ( c114 ) AS ( SELECT 'v1' ORDER BY 16 ) VALUES ( 'v1', 'v0', 'x' ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: Wrong number of columns for an rtree table
+Parse error near line 8: no such table: v66
+BEGIN VERI 0
+|||||||
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 17
+  SELECT * FROM v48 AS a105 ORDER BY 2147483647; 
+                       error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: a106.c2
+  SELECT a106.c2 FROM v0 AS a106 WHERE ( a106.c1, a106.c1 ) NOT IN ( SELECT * FR
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+  LECT lower ( a108.c65 ) FROM v48 AS a108 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such table: v66
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a110.c2
+  SELECT * FROM v0 AS a110 WHERE a110.c2 = a110.c2 NOT NULL ORDER BY 18446744073
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+  LECT count ( a112.c52 ) FROM v48 AS a112 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: near "ORDER": syntax error
+  ECT 'v1' ORDER BY 16 ) VALUES ( 'v1', 'v0', 'x' ) ORDER BY 1844674407370955161
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+|||||||
+ 
+INT: 0 
+Str: 
+|||||||
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 17
+  SELECT * FROM v48 AS a105 ORDER BY 2147483647; 
+                       error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 17
+  SELECT * FROM v48 AS a105 ORDER BY 2147483647; 
+                       error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 26: sub-select returns 17 columns - expected 2
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such column: a106.c2
+  SELECT a106.c2 FROM v0 AS a106 WHERE ( a106.c1, a106.c1 ) NOT IN ( SELECT * FR
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+  LECT lower ( a108.c65 ) FROM v48 AS a108 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+  LECT lower ( a108.c65 ) FROM v48 AS a108 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such table: v66
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such table: v66
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 35: no such column: a110.c2
+  SELECT * FROM v0 AS a110 WHERE a110.c2 = a110.c2 NOT NULL ORDER BY 18446744073
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+  LECT count ( a112.c52 ) FROM v48 AS a112 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+  LECT count ( a112.c52 ) FROM v48 AS a112 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 18519616
+Str: 
+Parse error near line 44: near "ORDER": syntax error
+  ECT 'v1' ORDER BY 16 ) VALUES ( 'v1', 'v0', 'x' ) ORDER BY 1844674407370955161
+                                      error here ---^
+ 
+Str: 
+Parse error near line 44: near "ORDER": syntax error
+  ECT 'v1' ORDER BY 16 ) VALUES ( 'v1', 'v0', 'x' ) ORDER BY 1844674407370955161
+                                      error here ---^
+ 
+Compare_result_int: 
+0
+
+
+

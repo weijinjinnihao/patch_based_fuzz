@@ -1,0 +1,296 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 UNIQUE ); 
+CREATE TABLE v3 ( c4, c5, c6 REFERENCES p1 ( c5 ) ); 
+CREATE TABLE IF NOT EXISTS v7 ( c8 INT, c9 ); 
+CREATE INDEX i10 ON v0 ( c2 ); 
+CREATE INDEX i11 ON v3 ( c5 ); 
+ALTER TABLE v7 DROP COLUMN c9; 
+CREATE INDEX i12 ON v3 ( c6 ); 
+CREATE INDEX i13 ON v7 ( c9 ); 
+CREATE INDEX i14 ON v7 ( c9 ); 
+ALTER TABLE v3 DROP COLUMN c5; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a16, v0 AS a17 NATURAL JOIN v3 AS a18 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a19 WHERE ( ( a19.c4 + 18446744073709551488 ) % 18446744073709551615 ) == 50 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c1, a20.c5 IS NOT NULL FROM v3 AS a20 LEFT JOIN v0 AS a21 ON a21.c2 = a21.c1 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c6, a22.c6 = a22.c5 NOT NULL FROM v3 AS a22 GROUP BY a22.c6 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a23, v0 AS a24 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c5 FROM v3 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 WHERE a26.c2 = CASE WHEN a26.c1 != 'v1' THEN 0 ELSE 18446744073709551488 END > 0 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v27 ( c29 ) AS ( SELECT 18446744073709551488 ORDER BY 0 ) SELECT x'616263' FROM v27 AS a28 y ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: no such column: c9
+  CREATE INDEX i13 ON v7 ( c9 ); 
+             error here ---^
+Parse error near line 9: no such column: c9
+  CREATE INDEX i14 ON v7 ( c9 ); 
+             error here ---^
+Runtime error near line 10: error in index i11 after drop column: no such column: c5
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a15 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a25.c5 FROM v3 AS a25 ORDER BY 0; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: near "y": syntax error
+  488 ORDER BY 0 ) SELECT x'616263' FROM v27 AS a28 y ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 UNIQUE ); 
+CREATE TABLE v3 ( c4, c5, c6 REFERENCES p1 ( c5 ) ); 
+CREATE TABLE IF NOT EXISTS v7 ( c8 INT, c9 ); 
+; 
+; 
+ALTER TABLE v7 DROP COLUMN c9; 
+; 
+; 
+; 
+ALTER TABLE v3 DROP COLUMN c5; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a16, v0 AS a17 NATURAL JOIN v3 AS a18 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a19 WHERE ( ( a19.c4 + 18446744073709551488 ) % 18446744073709551615 ) == 50 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c1, a20.c5 IS NOT NULL FROM v3 AS a20 LEFT JOIN v0 AS a21 ON a21.c2 = a21.c1 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c6, a22.c6 = a22.c5 NOT NULL FROM v3 AS a22 GROUP BY a22.c6 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a23, v0 AS a24 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c5 FROM v3 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 WHERE a26.c2 = CASE WHEN a26.c1 != 'v1' THEN 0 ELSE 18446744073709551488 END > 0 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v27 ( c29 ) AS ( SELECT 18446744073709551488 ORDER BY 0 ) SELECT x'616263' FROM v27 AS a28 y ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a15 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a20.c5
+  SELECT a21.c1, a20.c5 IS NOT NULL FROM v3 AS a20 LEFT JOIN v0 AS a21 ON a21.c2
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a22.c5
+  SELECT a22.c6, a22.c6 = a22.c5 NOT NULL FROM v3 AS a22 GROUP BY a22.c6 ORDER B
+                          ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a25.c5
+  SELECT a25.c5 FROM v3 AS a25 ORDER BY 0; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: near "y": syntax error
+  488 ORDER BY 0 ) SELECT x'616263' FROM v27 AS a28 y ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a15 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a15 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 24: no such column: a20.c5
+  SELECT a21.c1, a20.c5 IS NOT NULL FROM v3 AS a20 LEFT JOIN v0 AS a21 ON a21.c2
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 27: no such column: a22.c5
+  SELECT a22.c6, a22.c6 = a22.c5 NOT NULL FROM v3 AS a22 GROUP BY a22.c6 ORDER B
+                          ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a25.c5 FROM v3 AS a25 ORDER BY 0; 
+                          error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: no such column: a25.c5
+  SELECT a25.c5 FROM v3 AS a25 ORDER BY 0; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: near "y": syntax error
+  488 ORDER BY 0 ) SELECT x'616263' FROM v27 AS a28 y ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: near "y": syntax error
+  488 ORDER BY 0 ) SELECT x'616263' FROM v27 AS a28 y ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

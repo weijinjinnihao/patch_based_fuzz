@@ -1,0 +1,321 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INT, c2 ); 
+CREATE INDEX i3 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 18446744071562067968, 'v0' ); 
+CREATE TABLE v4 ( c5 TEXT, c6 ); 
+CREATE INDEX i7 ON v0 ( c2 ); 
+CREATE INDEX i8 ON v4 ( c5 ); 
+ALTER TABLE v0 DROP c1; 
+CREATE INDEX i9 ON v4 ( c6 ); 
+CREATE TABLE v10 ( c11 TEXT, c12 ); 
+INSERT INTO v10 VALUES ( 18446744071562067968, 'v1' ); 
+CREATE INDEX i13 ON v4 ( c5 ); 
+INSERT INTO v0 VALUES ( 'bmy', 't2d' ); 
+CREATE VIEW v14 AS SELECT * FROM v10 AS a15 ORDER BY 1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a16 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+CREATE TABLE v17 AS SELECT * FROM v14 AS a18 ORDER BY 18446744071562067968; 
+PRAGMA automatic_index = 8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 WHERE ( CASE WHEN a19.c1 != 'z' THEN 16 ELSE 18446744071562067968 END ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a20 ORDER BY 18446744071562067968 COLLATE binary, 18446744071562067968 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a21, v4 AS a22 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a23 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT *, 'v0' FROM v10 AS a24, v17 AS a25 WHERE c11 = 18446744071562067968 AND c26 = 18446744071562067968 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 GROUP BY a27.c1 HAVING count ( * ) >= 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a28 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c5 FROM v4 AS a29 WHERE a29.c6 IN ( 18446744073709518848, 18446744071562067968 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c1, max ( a30.c1 || a30.c2 ) FROM v0 AS a30 WHERE ( a30.c1 || a30.c2 || a30.c1 ) != 'v1' ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i3 after drop column: no such column: c1
+BEGIN VERI 0
+1.84467440715621e+19|v1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no tables specified
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|v0
+bmy|t2d
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: ambiguous column name: c11
+  SELECT *, 'v0' FROM v10 AS a24, v17 AS a25 WHERE c11 = 18446744071562067968 AN
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+bmy|bmyt2d
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INT, c2 ); 
+; 
+INSERT INTO v0 VALUES ( 18446744071562067968, 'v0' ); 
+CREATE TABLE v4 ( c5 TEXT, c6 ); 
+; 
+; 
+ALTER TABLE v0 DROP c1; 
+; 
+CREATE TABLE v10 ( c11 TEXT, c12 ); 
+INSERT INTO v10 VALUES ( 18446744071562067968, 'v1' ); 
+; 
+INSERT INTO v0 VALUES ( 'bmy', 't2d' ); 
+CREATE VIEW v14 AS SELECT * FROM v10 AS a15 ORDER BY 1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a16 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+CREATE TABLE v17 AS SELECT * FROM v14 AS a18 ORDER BY 18446744071562067968; 
+PRAGMA automatic_index = 8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a19 WHERE ( CASE WHEN a19.c1 != 'z' THEN 16 ELSE 18446744071562067968 END ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a20 ORDER BY 18446744071562067968 COLLATE binary, 18446744071562067968 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a21, v4 AS a22 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a23 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT *, 'v0' FROM v10 AS a24, v17 AS a25 WHERE c11 = 18446744071562067968 AND c26 = 18446744071562067968 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 GROUP BY a27.c1 HAVING count ( * ) >= 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a28 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c5 FROM v4 AS a29 WHERE a29.c6 IN ( 18446744073709518848, 18446744071562067968 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c1, max ( a30.c1 || a30.c2 ) FROM v0 AS a30 WHERE ( a30.c1 || a30.c2 || a30.c1 ) != 'v1' ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 12: table v0 has 1 columns but 2 values were supplied
+BEGIN VERI 0
+1.84467440715621e+19|v1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a19.c1
+  SELECT * FROM v0 AS a19 WHERE ( CASE WHEN a19.c1 != 'z' THEN 16 ELSE 184467440
+                              error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: ambiguous column name: c11
+  SELECT *, 'v0' FROM v10 AS a24, v17 AS a25 WHERE c11 = 18446744071562067968 AN
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a27.c1
+  SELECT * FROM v0 AS a27 GROUP BY a27.c1 HAVING count ( * ) >= 1844674407156206
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 47: no such column: a30.c1
+  SELECT a30.c1, max ( a30.c1 || a30.c2 ) FROM v0 AS a30 WHERE ( a30.c1 || a30.c
+         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+1.84467440715621e+19|v1
+ 
+INT: 0 
+Str: 
+1.84467440715621e+19|v1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+1.84467440715621e+19|v0
+bmy|t2d
+ 
+INT: 1 
+Str: 
+Parse error near line 23: no such column: a19.c1
+  SELECT * FROM v0 AS a19 WHERE ( CASE WHEN a19.c1 != 'z' THEN 16 ELSE 184467440
+                              error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no such collation sequence: hex
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such collation sequence: hex
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: ambiguous column name: c11
+  SELECT *, 'v0' FROM v10 AS a24, v17 AS a25 WHERE c11 = 18446744071562067968 AN
+                                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: ambiguous column name: c11
+  SELECT *, 'v0' FROM v10 AS a24, v17 AS a25 WHERE c11 = 18446744071562067968 AN
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 38: no such column: a27.c1
+  SELECT * FROM v0 AS a27 GROUP BY a27.c1 HAVING count ( * ) >= 1844674407156206
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 10 
+RESULT FLAGS: 0
+Str: 
+bmy|bmyt2d
+ 
+INT: 0 
+Str: 
+Parse error near line 47: no such column: a30.c1
+  SELECT a30.c1, max ( a30.c1 || a30.c2 ) FROM v0 AS a30 WHERE ( a30.c1 || a30.c
+         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

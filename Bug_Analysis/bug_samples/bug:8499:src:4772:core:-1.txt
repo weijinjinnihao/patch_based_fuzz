@@ -1,0 +1,324 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( 0, count ( * ) ) != 0 ) ) WITHOUT ROWID; 
+CREATE TABLE v28 ( c29 PRIMARY KEY, c30, c31 AS( c29 + c32 - c30 ), c32 ); 
+CREATE INDEX i33 ON v0 ( c4 ); 
+CREATE INDEX i34 ON v28 ( c32 ); 
+CREATE INDEX i35 ON v28 ( c31 ); 
+ALTER TABLE v28 DROP c31; 
+CREATE INDEX i36 ON v28 ( c32 ); 
+CREATE INDEX i37 ON v0 ( c20 ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v38 ( c41 ) AS ( SELECT c41, max ( c41 || c41 ) ORDER BY 2147483647 ) SELECT c41, max ( c41 || c41 ), count ( c41 ) FROM v38 AS a39 LEFT JOIN v38 AS a40 ON c41 = c41 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c29 FROM v28 AS a43 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 'v1', 2147483647 ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v28 AS a44 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a45.c31, max ( a45.c29 || a45.c32 ) FROM v28 AS a45 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v46 ( c48 ) AS ( WITH v49 ( c50 ) AS ( WITH v49 ( c51 ) AS ( WITH v52 ( c53, c54, c55, c56, c57, c58 ) AS ( SELECT 2147483647 y ORDER BY ( ( c50 + 2147483647 ) % 18446744071562067968 ) < 56.000000 ) SELECT 0 ORDER BY 0 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM v46 AS a47 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a59.c15 || a59.c31 ) FROM v28 AS a59 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a60.c15, max ( a60.c30 || a60.c15 ) FROM v28 AS a60 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a61.c56 FROM v28 AS a61 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: row value misused
+Parse error near line 3: no such table: main.v0
+Runtime error near line 6: error in index i35 after drop column: no such column: c31
+Parse error near line 8: no such table: main.v0
+BEGIN VERI 0
+Parse error near line 10: table v38 has 2 values for 1 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a43.c29 FROM v28 AS a43 ORDER BY 2147483647; 
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: near "ORDER": syntax error
+  VALUES ( 'v1', 2147483647 ) ORDER BY 2147483647; 
+                error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+  ORDER BY 0 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM v46 AS a47
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a59.c15
+  SELECT max ( a59.c15 || a59.c31 ) FROM v28 AS a59 ORDER BY 1844674407370955161
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a60.c15
+  SELECT a60.c15, max ( a60.c30 || a60.c15 ) FROM v28 AS a60 ORDER BY 1844674407
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a61.c56
+  SELECT a61.c56 FROM v28 AS a61 ORDER BY 18446744073709551615; 
+         ^--- error here
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( 0, count ( * ) ) != 0 ) ) WITHOUT ROWID; 
+CREATE TABLE v28 ( c29 PRIMARY KEY, c30, c31 AS( c29 + c32 - c30 ), c32 ); 
+; 
+; 
+; 
+ALTER TABLE v28 DROP c31; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+WITH v38 ( c41 ) AS ( SELECT c41, max ( c41 || c41 ) ORDER BY 2147483647 ) SELECT c41, max ( c41 || c41 ), count ( c41 ) FROM v38 AS a39 LEFT JOIN v38 AS a40 ON c41 = c41 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c29 FROM v28 AS a43 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 'v1', 2147483647 ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v28 AS a44 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a45.c31, max ( a45.c29 || a45.c32 ) FROM v28 AS a45 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v46 ( c48 ) AS ( WITH v49 ( c50 ) AS ( WITH v49 ( c51 ) AS ( WITH v52 ( c53, c54, c55, c56, c57, c58 ) AS ( SELECT 2147483647 y ORDER BY ( ( c50 + 2147483647 ) % 18446744071562067968 ) < 56.000000 ) SELECT 0 ORDER BY 0 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM v46 AS a47 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a59.c15 || a59.c31 ) FROM v28 AS a59 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a60.c15, max ( a60.c30 || a60.c15 ) FROM v28 AS a60 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a61.c56 FROM v28 AS a61 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: row value misused
+BEGIN VERI 0
+Parse error near line 10: table v38 has 2 values for 1 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a43.c29 FROM v28 AS a43 ORDER BY 2147483647; 
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: near "ORDER": syntax error
+  VALUES ( 'v1', 2147483647 ) ORDER BY 2147483647; 
+                error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: a45.c31
+  SELECT a45.c31, max ( a45.c29 || a45.c32 ) FROM v28 AS a45 ORDER BY 1844674407
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+  ORDER BY 0 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM v46 AS a47
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a59.c15
+  SELECT max ( a59.c15 || a59.c31 ) FROM v28 AS a59 ORDER BY 1844674407370955161
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a60.c15
+  SELECT a60.c15, max ( a60.c30 || a60.c15 ) FROM v28 AS a60 ORDER BY 1844674407
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a61.c56
+  SELECT a61.c56 FROM v28 AS a61 ORDER BY 18446744073709551615; 
+         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 10: table v38 has 2 values for 1 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 10: table v38 has 2 values for 1 columns
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 13: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a43.c29 FROM v28 AS a43 ORDER BY 2147483647; 
+                            error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a43.c29 FROM v28 AS a43 ORDER BY 2147483647; 
+                            error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 86323504
+Str: 
+Parse error near line 19: near "ORDER": syntax error
+  VALUES ( 'v1', 2147483647 ) ORDER BY 2147483647; 
+                error here ---^
+ 
+Str: 
+Parse error near line 19: near "ORDER": syntax error
+  VALUES ( 'v1', 2147483647 ) ORDER BY 2147483647; 
+                error here ---^
+ 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such column: a45.c31
+  SELECT a45.c31, max ( a45.c29 || a45.c32 ) FROM v28 AS a45 ORDER BY 1844674407
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+  ORDER BY 0 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM v46 AS a47
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+  ORDER BY 0 ) SELECT 18446744073709551488 ORDER BY 0 ) SELECT * FROM v46 AS a47
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no such column: a59.c15
+  SELECT max ( a59.c15 || a59.c31 ) FROM v28 AS a59 ORDER BY 1844674407370955161
+               ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 31: no such column: a59.c15
+  SELECT max ( a59.c15 || a59.c31 ) FROM v28 AS a59 ORDER BY 1844674407370955161
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such column: a60.c15
+  SELECT a60.c15, max ( a60.c30 || a60.c15 ) FROM v28 AS a60 ORDER BY 1844674407
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 34: no such column: a60.c15
+  SELECT a60.c15, max ( a60.c30 || a60.c15 ) FROM v28 AS a60 ORDER BY 1844674407
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such column: a61.c56
+  SELECT a61.c56 FROM v28 AS a61 ORDER BY 18446744073709551615; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 37: no such column: a61.c56
+  SELECT a61.c56 FROM v28 AS a61 ORDER BY 18446744073709551615; 
+         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

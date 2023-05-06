@@ -1,0 +1,324 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE TABLE v5 ( c6, c7, c8, CHECK( c8 > 6500 ) ); 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c11 < 18446744073709551488 ) ); 
+INSERT INTO v9 VALUES ( 18446744073709551615, 6500, 18446744073709551615 ); 
+CREATE INDEX i13 ON v0 ( c3 ); 
+CREATE INDEX i14 ON v5 ( c7 ); 
+INSERT INTO v9 VALUES ( 6500, 127, 6500 ); 
+CREATE INDEX i15 ON v5 ( c8 ); 
+INSERT INTO v5 VALUES ( 6500, 18446744073709551488, 6500 ); 
+CREATE TABLE v16 ( c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30 AS( c28 BETWEEN c38 AND c33 ) NOT NULL, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41 TEXT, c42, PRIMARY KEY ( c37, c31 ), UNIQUE ( c42 ) ); 
+CREATE INDEX i43 ON v9 ( c11 ); 
+ALTER TABLE v5 DROP COLUMN c7; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( count ( c38 ), 'y' ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a44 NATURAL JOIN v5 AS a45 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT * FROM v5 AS a47 JOIN v16 AS a48 USING ( a47.c8, a47.c8, a48.c19, a46.c10, v0.c2, v0.c3, v0.c1, a48.c28 ) WHERE v0.c2 = a48.c37 >= 18446744073709551615 ORDER BY 6500 ) SELECT * FROM v9 AS a46 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN c6 != 'abc' THEN 0 ELSE 0 END ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( - 18446744073709551615 IS NULL ) ) AND ( NOT ( a50.c3 IS NULL ) ) ), a50.c2 FROM v9 AS a49 LEFT JOIN v0 AS a50 ON a50.c1 = a50.c1 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a51 WHERE a51.c12 = a51.c11 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a52, v5 AS a53 ORDER BY 6500; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a54 ORDER BY 6500; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a55.c7, a55.c7 FROM v5 AS a55, v0 AS a56 ORDER BY 6500; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v16 AS a57 ), ( v0 AS a58 NATURAL JOIN v9 AS a59 ), ( v9 AS a60 ), ( v9 AS a61 ) WHERE a60.c11 = a57.c20 + 18446744073709551488 AND a59.c11 = a57.c39 + 8 AND a61.c10 = a61.c12 + 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: CHECK constraint failed: c8 > 6500 (19)
+Runtime error near line 13: error in index i14 after drop column: no such column: c7
+BEGIN VERI 0
+Parse error near line 15: near "ORDER": syntax error
+  VALUES ( count ( c38 ), 'y' ) ORDER BY 127; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: near ".": syntax error
+  ELECT * FROM v5 AS a47 JOIN v16 AS a48 USING ( a47.c8, a47.c8, a48.c19, a46.c1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: c6
+  SELECT ( CASE WHEN c6 != 'abc' THEN 0 ELSE 0 END ) ORDER BY 127; 
+                     ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  9 LEFT JOIN v0 AS a50 ON a50.c1 = a50.c1 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  * FROM v9 AS a51 WHERE a51.c12 = a51.c11 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: ambiguous column name: main.v9.c10
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+; 
+CREATE TABLE v5 ( c6, c7, c8, CHECK( c8 > 6500 ) ); 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c11 < 18446744073709551488 ) ); 
+INSERT INTO v9 VALUES ( 18446744073709551615, 6500, 18446744073709551615 ); 
+; 
+; 
+INSERT INTO v9 VALUES ( 6500, 127, 6500 ); 
+; 
+INSERT INTO v5 VALUES ( 6500, 18446744073709551488, 6500 ); 
+CREATE TABLE v16 ( c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30 AS( c28 BETWEEN c38 AND c33 ) NOT NULL, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41 TEXT, c42, PRIMARY KEY ( c37, c31 ), UNIQUE ( c42 ) ); 
+; 
+ALTER TABLE v5 DROP COLUMN c7; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( count ( c38 ), 'y' ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a44 NATURAL JOIN v5 AS a45 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT * FROM v5 AS a47 JOIN v16 AS a48 USING ( a47.c8, a47.c8, a48.c19, a46.c10, v0.c2, v0.c3, v0.c1, a48.c28 ) WHERE v0.c2 = a48.c37 >= 18446744073709551615 ORDER BY 6500 ) SELECT * FROM v9 AS a46 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN c6 != 'abc' THEN 0 ELSE 0 END ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( - 18446744073709551615 IS NULL ) ) AND ( NOT ( a50.c3 IS NULL ) ) ), a50.c2 FROM v9 AS a49 LEFT JOIN v0 AS a50 ON a50.c1 = a50.c1 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a51 WHERE a51.c12 = a51.c11 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a52, v5 AS a53 ORDER BY 6500; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a54 ORDER BY 6500; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a55.c7, a55.c7 FROM v5 AS a55, v0 AS a56 ORDER BY 6500; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v16 AS a57 ), ( v0 AS a58 NATURAL JOIN v9 AS a59 ), ( v9 AS a60 ), ( v9 AS a61 ) WHERE a60.c11 = a57.c20 + 18446744073709551488 AND a59.c11 = a57.c39 + 8 AND a61.c10 = a61.c12 + 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: CHECK constraint failed: c8 > 6500 (19)
+BEGIN VERI 0
+Parse error near line 15: near "ORDER": syntax error
+  VALUES ( count ( c38 ), 'y' ) ORDER BY 127; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: near ".": syntax error
+  ELECT * FROM v5 AS a47 JOIN v16 AS a48 USING ( a47.c8, a47.c8, a48.c19, a46.c1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: c6
+  SELECT ( CASE WHEN c6 != 'abc' THEN 0 ELSE 0 END ) ORDER BY 127; 
+                     ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  9 LEFT JOIN v0 AS a50 ON a50.c1 = a50.c1 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  * FROM v9 AS a51 WHERE a51.c12 = a51.c11 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a55.c7
+  SELECT a55.c7, a55.c7 FROM v5 AS a55, v0 AS a56 ORDER BY 6500; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: ambiguous column name: main.v9.c10
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 10903408
+Str: 
+Parse error near line 15: near "ORDER": syntax error
+  VALUES ( count ( c38 ), 'y' ) ORDER BY 127; 
+                  error here ---^
+ 
+Str: 
+Parse error near line 15: near "ORDER": syntax error
+  VALUES ( count ( c38 ), 'y' ) ORDER BY 127; 
+                  error here ---^
+ 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: near ".": syntax error
+  ELECT * FROM v5 AS a47 JOIN v16 AS a48 USING ( a47.c8, a47.c8, a48.c19, a46.c1
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: near ".": syntax error
+  ELECT * FROM v5 AS a47 JOIN v16 AS a48 USING ( a47.c8, a47.c8, a48.c19, a46.c1
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such column: c6
+  SELECT ( CASE WHEN c6 != 'abc' THEN 0 ELSE 0 END ) ORDER BY 127; 
+                     ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 24: no such column: c6
+  SELECT ( CASE WHEN c6 != 'abc' THEN 0 ELSE 0 END ) ORDER BY 127; 
+                     ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  9 LEFT JOIN v0 AS a50 ON a50.c1 = a50.c1 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  9 LEFT JOIN v0 AS a50 ON a50.c1 = a50.c1 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  * FROM v9 AS a51 WHERE a51.c12 = a51.c11 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  * FROM v9 AS a51 WHERE a51.c12 = a51.c11 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such column: a55.c7
+  SELECT a55.c7, a55.c7 FROM v5 AS a55, v0 AS a56 ORDER BY 6500; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: ambiguous column name: main.v9.c10
+ 
+INT: 0 
+Str: 
+Parse error near line 42: ambiguous column name: main.v9.c10
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

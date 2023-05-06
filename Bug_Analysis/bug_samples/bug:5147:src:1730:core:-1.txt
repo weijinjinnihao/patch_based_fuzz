@@ -1,0 +1,302 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3 ), CHECK( c2 != c3 ), CHECK( c2 != c2 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE INDEX i6 ON v0 ( c3 ); 
+CREATE INDEX i7 ON v0 ( c1 ); 
+BEGIN; 
+CREATE INDEX i8 ON v0 ( c1 ); 
+UPDATE v0 SET c2 = c1 || c1 WHERE c2 = c1 || c2; 
+END; 
+CREATE TABLE v9 ( c10 INTEGER DEFAULT 100 DEFAULT 100, c11, c12, c13, PRIMARY KEY ( c11, c11 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 100, 100, 100, 100 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a14.c10 ) OVER ( ORDER BY 100 ) ORDER BY a14.c10 ) FROM v9 AS a14 GROUP BY a14.c13 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a15 GROUP BY a15.c10 HAVING automatic_index ( * ) >= 100 ORDER BY 22; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a16.c12, max ( a16.c11 || a16.c12 ) FROM v9 AS a16 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a18 ORDER BY 100 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c1, max ( a19.c1 || a19.c1 ) FROM v0 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 ORDER BY 22; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v9 ( c22 ) AS ( WITH v23 ( c24, c25, c26, c27, c28, c29 ) AS ( SELECT 100 y ORDER BY 100 ) SELECT 100 ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a21 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( x'68617265', 'v1', 'x' ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 11: table v0 has 3 columns but 4 values were supplied
+Runtime error near line 12: error in index i7 after drop column: no such column: c1
+BEGIN VERI 0
+Parse error near line 14: no such column: a14.c10
+  CT min ( a14.c10 ) OVER ( ORDER BY 100 ) ORDER BY a14.c10 ) FROM v9 AS a14 GRO
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such function: automatic_index
+  SELECT * FROM v9 AS a15 GROUP BY a15.c10 HAVING automatic_index ( * ) >= 100 O
+                                    error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: near "ORDER": syntax error
+  VALUES ( x'68617265', 'v1', 'x' ) ORDER BY 100; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3 ), CHECK( c2 != c3 ), CHECK( c2 != c2 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+BEGIN; 
+; 
+UPDATE v0 SET c2 = c1 || c1 WHERE c2 = c1 || c2; 
+END; 
+CREATE TABLE v9 ( c10 INTEGER DEFAULT 100 DEFAULT 100, c11, c12, c13, PRIMARY KEY ( c11, c11 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 100, 100, 100, 100 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a14.c10 ) OVER ( ORDER BY 100 ) ORDER BY a14.c10 ) FROM v9 AS a14 GROUP BY a14.c13 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a15 GROUP BY a15.c10 HAVING automatic_index ( * ) >= 100 ORDER BY 22; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a16.c12, max ( a16.c11 || a16.c12 ) FROM v9 AS a16 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a18 ORDER BY 100 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c1, max ( a19.c1 || a19.c1 ) FROM v0 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 ORDER BY 22; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v9 ( c22 ) AS ( WITH v23 ( c24, c25, c26, c27, c28, c29 ) AS ( SELECT 100 y ORDER BY 100 ) SELECT 100 ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a21 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( x'68617265', 'v1', 'x' ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a30 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 11: table v0 has 3 columns but 4 values were supplied
+BEGIN VERI 0
+Parse error near line 14: no such column: a14.c10
+  CT min ( a14.c10 ) OVER ( ORDER BY 100 ) ORDER BY a14.c10 ) FROM v9 AS a14 GRO
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such function: automatic_index
+  SELECT * FROM v9 AS a15 GROUP BY a15.c10 HAVING automatic_index ( * ) >= 100 O
+                                    error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a19.c1
+  SELECT a19.c1, max ( a19.c1 || a19.c1 ) FROM v0 AS a19 ORDER BY 18446744073709
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: near "ORDER": syntax error
+  VALUES ( x'68617265', 'v1', 'x' ) ORDER BY 100; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no such column: a14.c10
+  CT min ( a14.c10 ) OVER ( ORDER BY 100 ) ORDER BY a14.c10 ) FROM v9 AS a14 GRO
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 14: no such column: a14.c10
+  CT min ( a14.c10 ) OVER ( ORDER BY 100 ) ORDER BY a14.c10 ) FROM v9 AS a14 GRO
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no such function: automatic_index
+  SELECT * FROM v9 AS a15 GROUP BY a15.c10 HAVING automatic_index ( * ) >= 100 O
+                                    error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 17: no such function: automatic_index
+  SELECT * FROM v9 AS a15 GROUP BY a15.c10 HAVING automatic_index ( * ) >= 100 O
+                                    error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 29: no such column: a19.c1
+  SELECT a19.c1, max ( a19.c1 || a19.c1 ) FROM v0 AS a19 ORDER BY 18446744073709
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 28337584
+Str: 
+Parse error near line 38: near "ORDER": syntax error
+  VALUES ( x'68617265', 'v1', 'x' ) ORDER BY 100; 
+                      error here ---^
+ 
+Str: 
+Parse error near line 38: near "ORDER": syntax error
+  VALUES ( x'68617265', 'v1', 'x' ) ORDER BY 100; 
+                      error here ---^
+ 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

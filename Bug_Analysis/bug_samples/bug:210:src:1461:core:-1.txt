@@ -1,0 +1,315 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 9223372036854775807; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c10, c9, c10, c9 ), c10 UNIQUE ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+CREATE INDEX i15 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i16 ON v5 ( c1 ); 
+ALTER TABLE v5 DROP COLUMN c1; 
+CREATE VIRTUAL TABLE v17 USING fts5 ( c18, c19 ); 
+CREATE INDEX i20 ON v17 ( c19 ); 
+CREATE INDEX i21 ON v5 ( c2 ); 
+ALTER TABLE v7 DROP COLUMN c10; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a22.c2 || a22.c2 ) FROM v0 AS a22 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c14 FROM v11 AS a23 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a24 ORDER BY 18446744073709551488 COLLATE binary, 18446744073709551488 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v25 AS ( SELECT hex ( ) y ORDER BY 4294967295 ) SELECT * FROM v25 AS a26 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 GROUP BY a27.c2, abs ( a27.c2 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c14, a29.c14 FROM v0 AS a28 RIGHT JOIN v11 AS a29 ON a29.c14 = a28.c2 WHERE a29.c12 = + y ( a28.c3 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 ORDER BY a30.c2 COLLATE NOCASE, a30.c3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a31.c3 IS NULL ) ) AND ( NOT ( a31.c1 IS NULL ) ) ) FROM v5 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32, v11 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: foreign key on c9 should reference only one column of table t1
+   TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c10, c9, c10, c9 ), c10
+                                      error here ---^
+Runtime error near line 7: error in index i4 after drop column: no such column: c2
+Parse error near line 8: views may not be indexed
+Parse error near line 9: cannot drop column from view "v5"
+Runtime error near line 10: no such module: fts5
+Parse error near line 11: no such table: main.v17
+Parse error near line 12: views may not be indexed
+Parse error near line 13: no such table: v7
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: wrong number of arguments to function hex()
+  WITH v25 AS ( SELECT hex ( ) y ORDER BY 4294967295 ) SELECT * FROM v25 AS a26 
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such function: y
+   v11 AS a29 ON a29.c14 = a28.c2 WHERE a29.c12 = + y ( a28.c3 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 9223372036854775807; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c10, c9, c10, c9 ), c10 UNIQUE ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+ALTER TABLE v5 DROP COLUMN c1; 
+CREATE VIRTUAL TABLE v17 USING fts5 ( c18, c19 ); 
+; 
+; 
+ALTER TABLE v7 DROP COLUMN c10; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a22.c2 || a22.c2 ) FROM v0 AS a22 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c14 FROM v11 AS a23 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a24 ORDER BY 18446744073709551488 COLLATE binary, 18446744073709551488 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v25 AS ( SELECT hex ( ) y ORDER BY 4294967295 ) SELECT * FROM v25 AS a26 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 GROUP BY a27.c2, abs ( a27.c2 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c14, a29.c14 FROM v0 AS a28 RIGHT JOIN v11 AS a29 ON a29.c14 = a28.c2 WHERE a29.c12 = + y ( a28.c3 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 ORDER BY a30.c2 COLLATE NOCASE, a30.c3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a31.c3 IS NULL ) ) AND ( NOT ( a31.c1 IS NULL ) ) ) FROM v5 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32, v11 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: foreign key on c9 should reference only one column of table t1
+   TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c10, c9, c10, c9 ), c10
+                                      error here ---^
+Parse error near line 9: cannot drop column from view "v5"
+Runtime error near line 10: no such module: fts5
+Parse error near line 13: no such table: v7
+BEGIN VERI 0
+Parse error near line 15: no such column: a22.c2
+  SELECT max ( a22.c2 || a22.c2 ) FROM v0 AS a22 ORDER BY 9223372036854775807; 
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: wrong number of arguments to function hex()
+  WITH v25 AS ( SELECT hex ( ) y ORDER BY 4294967295 ) SELECT * FROM v25 AS a26 
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a27.c2
+  SELECT * FROM v0 AS a27 GROUP BY a27.c2, abs ( a27.c2 ) ORDER BY 1844674407370
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such function: y
+   v11 AS a29 ON a29.c14 = a28.c2 WHERE a29.c12 = + y ( a28.c3 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a30.c2
+  SELECT * FROM v0 AS a30 ORDER BY a30.c2 COLLATE NOCASE, a30.c3; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+Parse error near line 15: no such column: a22.c2
+  SELECT max ( a22.c2 || a22.c2 ) FROM v0 AS a22 ORDER BY 9223372036854775807; 
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: wrong number of arguments to function hex()
+  WITH v25 AS ( SELECT hex ( ) y ORDER BY 4294967295 ) SELECT * FROM v25 AS a26 
+                       ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 27: wrong number of arguments to function hex()
+  WITH v25 AS ( SELECT hex ( ) y ORDER BY 4294967295 ) SELECT * FROM v25 AS a26 
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 30: no such column: a27.c2
+  SELECT * FROM v0 AS a27 GROUP BY a27.c2, abs ( a27.c2 ) ORDER BY 1844674407370
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such function: y
+   v11 AS a29 ON a29.c14 = a28.c2 WHERE a29.c12 = + y ( a28.c3 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: no such function: y
+   v11 AS a29 ON a29.c14 = a28.c2 WHERE a29.c12 = + y ( a28.c3 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 36: no such column: a30.c2
+  SELECT * FROM v0 AS a30 ORDER BY a30.c2 COLLATE NOCASE, a30.c3; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,292 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c1 > 9223372036854775807 ), c4 ); 
+INSERT INTO v0 VALUES ( 8, 8, 8, 8 ), ( 8, 9223372036854775807, 9223372036854775807, 127 ); 
+CREATE TABLE v5 ( c6, c7, c8, c9, CHECK( c7 > 8 ) ); 
+CREATE INDEX i10 ON v0 ( c1 ); 
+CREATE INDEX i11 ON v0 ( c1 ); 
+CREATE INDEX i12 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( 127, 8, 8, 9223372036854775807 ), ( 127, 127, 8, 8 ); 
+INSERT INTO v5 VALUES ( 8, 0, - 127 + 9223372036854775807, 0 ); 
+CREATE INDEX i13 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 18446744073709518848, 0, 8, 127 ); 
+CREATE INDEX i14 ON v0 ( c2 ); 
+ALTER TABLE v0 DROP c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 WHERE count ( * ) >= 18446744073709518848 = '2GAT123' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a16 WHERE a16.c9 = 'one' ORDER BY a16.c8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 9223372036854775807, x'b1' ), ( 127, 8 ), ( 18446744071562067968, 0 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a20, v5 AS a21 NATURAL JOIN v0 AS a22 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 CROSS JOIN v0 AS a24 ON ( a23.c2 = a24.c3 ) WHERE a23.c3 >= ( SELECT a24.c3 FROM v0 AS a25 WHERE a24.c1 IN ( SELECT a24.c4, a27.c1 NOT NULL FROM v0 AS a26 RIGHT JOIN v0 AS a27 ON a27.c4 = a24.c3 ORDER BY 8 ) ORDER BY 8 ) ORDER BY - hex ( 8 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c9, count ( a28.c8 ) FROM v5 AS a28 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 GROUP BY a29.c2 HAVING a29.c4 > a29.c4 % 0 >= 127 ORDER BY 123.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a30.c8 ) FROM v5 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: CHECK constraint failed: c1 > 9223372036854775807 (19)
+Runtime error near line 7: CHECK constraint failed: c1 > 9223372036854775807 (19)
+Runtime error near line 8: CHECK constraint failed: c7 > 8 (19)
+Runtime error near line 12: error in index i14 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 14: misuse of aggregate function count()
+  SELECT * FROM v0 AS a15 WHERE count ( * ) >= 18446744073709518848 = '2GAT123' 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: near "ORDER": syntax error
+   x'b1' ), ( 127, 8 ), ( 18446744071562067968, 0 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c1 > 9223372036854775807 ), c4 ); 
+INSERT INTO v0 VALUES ( 8, 8, 8, 8 ), ( 8, 9223372036854775807, 9223372036854775807, 127 ); 
+CREATE TABLE v5 ( c6, c7, c8, c9, CHECK( c7 > 8 ) ); 
+; 
+; 
+; 
+INSERT INTO v0 VALUES ( 127, 8, 8, 9223372036854775807 ), ( 127, 127, 8, 8 ); 
+INSERT INTO v5 VALUES ( 8, 0, - 127 + 9223372036854775807, 0 ); 
+; 
+INSERT INTO v0 VALUES ( 18446744073709518848, 0, 8, 127 ); 
+; 
+ALTER TABLE v0 DROP c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 WHERE count ( * ) >= 18446744073709518848 = '2GAT123' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a16 WHERE a16.c9 = 'one' ORDER BY a16.c8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 9223372036854775807, x'b1' ), ( 127, 8 ), ( 18446744071562067968, 0 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a20, v5 AS a21 NATURAL JOIN v0 AS a22 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 CROSS JOIN v0 AS a24 ON ( a23.c2 = a24.c3 ) WHERE a23.c3 >= ( SELECT a24.c3 FROM v0 AS a25 WHERE a24.c1 IN ( SELECT a24.c4, a27.c1 NOT NULL FROM v0 AS a26 RIGHT JOIN v0 AS a27 ON a27.c4 = a24.c3 ORDER BY 8 ) ORDER BY 8 ) ORDER BY - hex ( 8 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c9, count ( a28.c8 ) FROM v5 AS a28 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 GROUP BY a29.c2 HAVING a29.c4 > a29.c4 % 0 >= 127 ORDER BY 123.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a30.c8 ) FROM v5 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: CHECK constraint failed: c1 > 9223372036854775807 (19)
+Runtime error near line 7: CHECK constraint failed: c1 > 9223372036854775807 (19)
+Runtime error near line 8: CHECK constraint failed: c7 > 8 (19)
+BEGIN VERI 0
+Parse error near line 14: misuse of aggregate function count()
+  SELECT * FROM v0 AS a15 WHERE count ( * ) >= 18446744073709518848 = '2GAT123' 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: near "ORDER": syntax error
+   x'b1' ), ( 127, 8 ), ( 18446744071562067968, 0 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a29.c2
+  SELECT * FROM v0 AS a29 GROUP BY a29.c2 HAVING a29.c4 > a29.c4 % 0 >= 127 ORDE
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: misuse of aggregate function count()
+  SELECT * FROM v0 AS a15 WHERE count ( * ) >= 18446744073709518848 = '2GAT123' 
+                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 14: misuse of aggregate function count()
+  SELECT * FROM v0 AS a15 WHERE count ( * ) >= 18446744073709518848 = '2GAT123' 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 70377808
+Str: 
+Parse error near line 23: near "ORDER": syntax error
+   x'b1' ), ( 127, 8 ), ( 18446744071562067968, 0 ) ORDER BY 0; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 23: near "ORDER": syntax error
+   x'b1' ), ( 127, 8 ), ( 18446744071562067968, 0 ) ORDER BY 0; 
+                                      error here ---^
+ 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 38: no such column: a29.c2
+  SELECT * FROM v0 AS a29 GROUP BY a29.c2 HAVING a29.c4 > a29.c4 % 0 >= 127 ORDE
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

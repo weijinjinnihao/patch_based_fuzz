@@ -1,0 +1,286 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c3 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+ATTACH 'v1' AS sqlite_master; 
+CREATE TABLE v5 ( c6, c7 CHECK( 8 ), c8, c9, CHECK( c8 > 8 ) ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i10 ON v0 ( c1 ); 
+CREATE INDEX i11 ON v0 ( x'616263' ); 
+ALTER TABLE v0 DROP c1; 
+CREATE INDEX i12 ON v5 ( c8 ); 
+CREATE VIEW v13 AS SELECT * FROM ( v5 AS a14 ), ( v0 AS a15 ), ( v5 AS a16 ), ( v0 AS a17 ) WHERE c9 = c2 + 8 AND c1 = c9 + 4294967295 AND c9 = c3 + 8 ORDER BY 8; 
+CREATE INDEX i18 ON v5 ( c7 ); 
+CREATE TABLE v19 ( c20, c21, c22 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a23 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a24 WHERE a24.c7 = 8 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c7, count ( ( NOT ( a25.c7 IS NULL ) ) AND ( NOT ( a25.c7 IS NULL ) ) ) FROM v13 AS a25 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a26 GROUP BY y ( a26.c6 ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( SELECT a28.c3 WHERE a28.c3 = NULL AND a28.c1 >= a28.c3 ORDER BY 4294967295 ) ) FROM v0 AS a28 WHERE ( CASE WHEN a28.c3 != 'x' THEN 4294967295 ELSE 18446744073709551615 END ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a29, v0 AS a30 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a31 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 WHERE ( CASE WHEN a32.c2 != 'fizzle' THEN 8 ELSE 8 END ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a33, v5 AS a34 NATURAL JOIN v5 AS a35 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in index i10 after drop column: no such column: c1
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: ambiguous column name: main.v0.c1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: ambiguous column name: main.v0.c1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: ambiguous column name: main.v0.c1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a32.c2
+  SELECT * FROM v0 AS a32 WHERE ( CASE WHEN a32.c2 != 'fizzle' THEN 8 ELSE 8 END
+                              error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c3 ) ) WITHOUT ROWID; 
+; 
+ATTACH 'v1' AS sqlite_master; 
+CREATE TABLE v5 ( c6, c7 CHECK( 8 ), c8, c9, CHECK( c8 > 8 ) ); 
+ALTER TABLE v0 DROP c2; 
+; 
+; 
+ALTER TABLE v0 DROP c1; 
+; 
+CREATE VIEW v13 AS SELECT * FROM ( v5 AS a14 ), ( v0 AS a15 ), ( v5 AS a16 ), ( v0 AS a17 ) WHERE c9 = c2 + 8 AND c1 = c9 + 4294967295 AND c9 = c3 + 8 ORDER BY 8; 
+; 
+CREATE TABLE v19 ( c20, c21, c22 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a23 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a24 WHERE a24.c7 = 8 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c7, count ( ( NOT ( a25.c7 IS NULL ) ) AND ( NOT ( a25.c7 IS NULL ) ) ) FROM v13 AS a25 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a26 GROUP BY y ( a26.c6 ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( SELECT a28.c3 WHERE a28.c3 = NULL AND a28.c1 >= a28.c3 ORDER BY 4294967295 ) ) FROM v0 AS a28 WHERE ( CASE WHEN a28.c3 != 'x' THEN 4294967295 ELSE 18446744073709551615 END ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a29, v0 AS a30 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a31 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 WHERE ( CASE WHEN a32.c2 != 'fizzle' THEN 8 ELSE 8 END ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a33, v5 AS a34 NATURAL JOIN v5 AS a35 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: ambiguous column name: main.v0.c3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: ambiguous column name: main.v0.c3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a28.c1
+  T count ( ( SELECT a28.c3 WHERE a28.c3 = NULL AND a28.c1 >= a28.c3 ORDER BY 42
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: ambiguous column name: main.v0.c3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a32.c2
+  SELECT * FROM v0 AS a32 WHERE ( CASE WHEN a32.c2 != 'fizzle' THEN 8 ELSE 8 END
+                              error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: ambiguous column name: main.v0.c1
+ 
+INT: 0 
+Str: 
+Parse error near line 17: ambiguous column name: main.v0.c3
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: ambiguous column name: main.v0.c1
+ 
+INT: 0 
+Str: 
+Parse error near line 20: ambiguous column name: main.v0.c3
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 29: no such column: a28.c1
+  T count ( ( SELECT a28.c3 WHERE a28.c3 = NULL AND a28.c1 >= a28.c3 ORDER BY 42
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: ambiguous column name: main.v0.c1
+ 
+INT: 0 
+Str: 
+Parse error near line 32: ambiguous column name: main.v0.c3
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no such column: a32.c2
+  SELECT * FROM v0 AS a32 WHERE ( CASE WHEN a32.c2 != 'fizzle' THEN 8 ELSE 8 END
+                              error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: no such column: a32.c2
+  SELECT * FROM v0 AS a32 WHERE ( CASE WHEN a32.c2 != 'fizzle' THEN 8 ELSE 8 END
+                              error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

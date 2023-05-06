@@ -1,0 +1,321 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 PRIMARY KEY, CHECK( ( ( SELECT * FROM v0 AS a4 WHERE c1 = c3 || c2 ORDER BY 2147483647 ) % 10 ) != 10 ) ) WITHOUT ROWID; 
+CREATE TABLE v5 ( c6, c7, c8, CHECK( c8 > 2147483647 ) ); 
+CREATE INDEX i9 ON v5 ( c6 ); 
+CREATE INDEX i10 ON v0 ( c3 ); 
+CREATE TABLE v11 ( c12, c13, c14 CHECK( c12 > 10 ) ); 
+CREATE INDEX i15 ON v11 ( c14 ); 
+CREATE INDEX i16 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 4294967295, 0, 10 ); 
+CREATE INDEX i17 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 10, 18446744073709551615, 10 ); 
+INSERT INTO v11 VALUES ( 18446744073709551615, 10, 10 ); 
+ALTER TABLE v5 DROP COLUMN c6; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c13, count ( a18.c13 ) FROM v11 AS a18 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c13, count ( a19.c13 ) FROM v11 AS a19 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a20 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a21.c7 || a21.c6 ) FROM v5 AS a21 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 NATURAL JOIN v0 AS a23 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 10, 'one-a', 10 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24, v5 AS a25 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a26 WHERE a26.c6 = a26.c8 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a27 GROUP BY y ( a27.c6, a27.c8, a27.c6, a27.c7, a27.c6, a27.c8, a27.c7, a27.c8, a27.c7, a27.c8, a27.c8, a27.c6, a27.c8, a27.c6, a27.c8, a27.c7, a27.c7 ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a28.c7 ) FROM v5 AS a28 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: subqueries prohibited in CHECK constraints
+Parse error near line 4: no such table: main.v0
+Parse error near line 7: no such table: main.v0
+Parse error near line 8: no such table: v0
+Parse error near line 9: no such table: main.v0
+Parse error near line 10: no such table: v0
+Runtime error near line 12: error in index i9 after drop column: no such column: c6
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v11 AS a20 ORDER BY 2147483647; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: near "ORDER": syntax error
+  VALUES ( 10, 'one-a', 10 ) ORDER BY 18446744073709518848; 
+               error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+  a27.c8, a27.c6, a27.c8, a27.c7, a27.c7 ) ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 PRIMARY KEY, CHECK( ( ( SELECT * FROM v0 AS a4 WHERE c1 = c3 || c2 ORDER BY 2147483647 ) % 10 ) != 10 ) ) WITHOUT ROWID; 
+CREATE TABLE v5 ( c6, c7, c8, CHECK( c8 > 2147483647 ) ); 
+; 
+; 
+CREATE TABLE v11 ( c12, c13, c14 CHECK( c12 > 10 ) ); 
+; 
+; 
+INSERT INTO v0 VALUES ( 4294967295, 0, 10 ); 
+; 
+INSERT INTO v0 VALUES ( 10, 18446744073709551615, 10 ); 
+INSERT INTO v11 VALUES ( 18446744073709551615, 10, 10 ); 
+ALTER TABLE v5 DROP COLUMN c6; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c13, count ( a18.c13 ) FROM v11 AS a18 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c13, count ( a19.c13 ) FROM v11 AS a19 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a20 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a21.c7 || a21.c6 ) FROM v5 AS a21 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 NATURAL JOIN v0 AS a23 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 10, 'one-a', 10 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24, v5 AS a25 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a26 WHERE a26.c6 = a26.c8 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a27 GROUP BY y ( a27.c6, a27.c8, a27.c6, a27.c7, a27.c6, a27.c8, a27.c7, a27.c8, a27.c7, a27.c8, a27.c8, a27.c6, a27.c8, a27.c6, a27.c8, a27.c7, a27.c7 ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a28.c7 ) FROM v5 AS a28 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: subqueries prohibited in CHECK constraints
+Parse error near line 8: no such table: v0
+Parse error near line 10: no such table: v0
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v11 AS a20 ORDER BY 2147483647; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a21.c6
+  SELECT max ( a21.c7 || a21.c6 ) FROM v5 AS a21 ORDER BY 18446744073709551615; 
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: near "ORDER": syntax error
+  VALUES ( 10, 'one-a', 10 ) ORDER BY 18446744073709518848; 
+               error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a26.c6
+  SELECT * FROM v5 AS a26 WHERE a26.c6 = a26.c8 ORDER BY 100; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  a27.c8, a27.c6, a27.c8, a27.c7, a27.c7 ) ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v11 AS a20 ORDER BY 2147483647; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v11 AS a20 ORDER BY 2147483647; 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+Parse error near line 23: no such column: a21.c6
+  SELECT max ( a21.c7 || a21.c6 ) FROM v5 AS a21 ORDER BY 18446744073709551615; 
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 68801344
+Str: 
+Parse error near line 29: near "ORDER": syntax error
+  VALUES ( 10, 'one-a', 10 ) ORDER BY 18446744073709518848; 
+               error here ---^
+ 
+Str: 
+Parse error near line 29: near "ORDER": syntax error
+  VALUES ( 10, 'one-a', 10 ) ORDER BY 18446744073709518848; 
+               error here ---^
+ 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 35: no such column: a26.c6
+  SELECT * FROM v5 AS a26 WHERE a26.c6 = a26.c8 ORDER BY 100; 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+  a27.c8, a27.c6, a27.c8, a27.c7, a27.c7 ) ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  a27.c8, a27.c6, a27.c8, a27.c7, a27.c7 ) ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

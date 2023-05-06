@@ -1,0 +1,308 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( x'616263', 'v1', '4' ); 
+INSERT INTO v0 VALUES ( 0, 'two', 'x' ); 
+INSERT INTO v0 VALUES ( 'v0', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT ( c2 IS NULL ) ) ), 'ghi' ); 
+INSERT INTO v0 VALUES ( 'v0', 'v0', 'v1' ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( x'616263', 'v0', 'v1' ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( NULL, 'count.test cases for NOT INDEXED', 'v1' ); 
+INSERT INTO v0 VALUES ( 'v0', 'C', 'maggy' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'x', 'x' ); 
+INSERT INTO v0 VALUES ( 0, '1.10', '?k<D Q' ); 
+ALTER TABLE v0 DROP c2; 
+INSERT INTO v0 VALUES ( - 8, 'v0', 'x' ); 
+CREATE INDEX i6 ON v0 ( c1 ); 
+CREATE TABLE v7 ( c8, c9, c10 COLLATE NOCASE ); 
+INSERT INTO v7 SELECT * FROM v7 AS a11 ORDER BY 18446744073709518848; 
+INSERT INTO v0 SELECT * FROM v7 AS a12 ORDER BY 18446744071562067968; 
+CREATE INDEX i13 ON v7 ( c9 ); 
+INSERT INTO v7 SELECT * FROM v0 AS a14 ORDER BY 8; 
+INSERT INTO v7 SELECT * FROM v0 AS a15 ORDER BY 16; 
+INSERT INTO v7 SELECT * FROM v0 AS a16 ORDER BY 8; 
+INSERT INTO v7 SELECT * FROM v7 AS a17 ORDER BY 18446744071562067968; 
+CREATE INDEX i18 ON v0 ( c3 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c9, a20.c9 FROM v7 AS a19 RIGHT JOIN v7 AS a20 ON a19.c9 = a19.c10 GROUP BY a19.c9 HAVING count ( * ) >= 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c2, a21.c10 FROM v7 AS a21 RIGHT JOIN v0 AS a22 ON a21.c8 = a22.c3 WHERE a21.c10 != a22.c3 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23, v7 AS a24 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a25, v0 AS a26 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a27 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a29.c10 ) FROM v7 AS a29 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 ORDER BY ( 255, count ( * ) ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: misuse of aggregate function count()
+  INSERT INTO v0 VALUES ( 'v0', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT ( c2 IS
+                  error here ---^
+Runtime error near line 13: error in index i4 after drop column: no such column: c2
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 3
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 53: row value misused
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( x'616263', 'v1', '4' ); 
+INSERT INTO v0 VALUES ( 0, 'two', 'x' ); 
+INSERT INTO v0 VALUES ( 'v0', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT ( c2 IS NULL ) ) ), 'ghi' ); 
+INSERT INTO v0 VALUES ( 'v0', 'v0', 'v1' ); 
+; 
+INSERT INTO v0 VALUES ( x'616263', 'v0', 'v1' ); 
+; 
+INSERT INTO v0 VALUES ( NULL, 'count.test cases for NOT INDEXED', 'v1' ); 
+INSERT INTO v0 VALUES ( 'v0', 'C', 'maggy' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'x', 'x' ); 
+INSERT INTO v0 VALUES ( 0, '1.10', '?k<D Q' ); 
+ALTER TABLE v0 DROP c2; 
+INSERT INTO v0 VALUES ( - 8, 'v0', 'x' ); 
+; 
+CREATE TABLE v7 ( c8, c9, c10 COLLATE NOCASE ); 
+INSERT INTO v7 SELECT * FROM v7 AS a11 ORDER BY 18446744073709518848; 
+INSERT INTO v0 SELECT * FROM v7 AS a12 ORDER BY 18446744071562067968; 
+; 
+INSERT INTO v7 SELECT * FROM v0 AS a14 ORDER BY 8; 
+INSERT INTO v7 SELECT * FROM v0 AS a15 ORDER BY 16; 
+INSERT INTO v7 SELECT * FROM v0 AS a16 ORDER BY 8; 
+INSERT INTO v7 SELECT * FROM v7 AS a17 ORDER BY 18446744071562067968; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c9, a20.c9 FROM v7 AS a19 RIGHT JOIN v7 AS a20 ON a19.c9 = a19.c10 GROUP BY a19.c9 HAVING count ( * ) >= 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c2, a21.c10 FROM v7 AS a21 RIGHT JOIN v0 AS a22 ON a21.c8 = a22.c3 WHERE a21.c10 != a22.c3 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23, v7 AS a24 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a25, v0 AS a26 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a27 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a29.c10 ) FROM v7 AS a29 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 ORDER BY ( 255, count ( * ) ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: misuse of aggregate function count()
+  INSERT INTO v0 VALUES ( 'v0', count ( ( NOT ( c1 IS NULL ) ) AND ( NOT ( c2 IS
+                  error here ---^
+Parse error near line 14: table v0 has 2 columns but 3 values were supplied
+Parse error near line 18: table v0 has 2 columns but 3 values were supplied
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 2
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a22.c2
+  SELECT a22.c2, a21.c10 FROM v7 AS a21 RIGHT JOIN v0 AS a22 ON a21.c8 = a22.c3 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 53: row value misused
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 29: no such column: a22.c2
+  SELECT a22.c2, a21.c10 FROM v7 AS a21 RIGHT JOIN v0 AS a22 ON a21.c8 = a22.c3 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 35: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 53: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 53: row value misused
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

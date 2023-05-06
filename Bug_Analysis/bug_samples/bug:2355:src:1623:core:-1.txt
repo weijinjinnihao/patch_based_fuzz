@@ -1,0 +1,300 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c1 > 9223372036854775807 ), c4 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE INDEX i6 ON v0 ( c4 ); 
+INSERT INTO v0 VALUES ( 9223372036854775807, 0, 9223372036854775807, 9223372036854775807 ), ( 4294967295, 4294967295, 4294967295, 0 ); 
+CREATE INDEX i7 ON v0 ( c2 ); 
+CREATE INDEX i8 ON v0 ( NOT NULL ); 
+CREATE TABLE v9 ( c10, c11, c12, c13, CHECK( abs ( c13 ) >= 9223372036854775807 ) ); 
+INSERT INTO v9 VALUES ( 4294967295, 4294967295, 9223372036854775807, 18446744073709551615 ), ( 255, 0, 16, 16 ); 
+INSERT INTO v9 VALUES ( 0, 127, 127, 4294967295 ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 9223372036854775807, 9223372036854775807, 127 ); 
+CREATE INDEX i14 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT sum ( a15.c13 ) FROM v9 AS a16 WHERE a16.c12 = '1' ORDER BY 127 ) FROM v9 AS a15 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c11 = + a18.c11, a18.c10 FROM v0 AS a17 LEFT JOIN v9 AS a18 ON a17.c2 = a18.c13 GROUP BY y ( a17.c2 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a19, v9 AS a20 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT *, 'v0' FROM v0 AS a21, v0 AS a22 WHERE a21.c4 = 18446744073709551615 AND a22.c4 = 127 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c10 COLLATE binary ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c12 FROM v9 AS a24 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a25 WHERE a25.c13 > 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 4: CHECK constraint failed: c1 > 9223372036854775807 (19)
+Runtime error near line 8: CHECK constraint failed: abs ( c13 ) >= 9223372036854775807 (19)
+Runtime error near line 9: CHECK constraint failed: abs ( c13 ) >= 9223372036854775807 (19)
+Runtime error near line 12: error in index i5 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such function: y
+   LEFT JOIN v9 AS a18 ON a17.c2 = a18.c13 GROUP BY y ( a17.c2 ) ORDER BY 922337
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 9
+   = 18446744073709551615 AND a22.c4 = 127 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: c10
+  SELECT c10 COLLATE binary ORDER BY 18446744073709551488; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c1 > 9223372036854775807 ), c4 ); 
+; 
+; 
+INSERT INTO v0 VALUES ( 9223372036854775807, 0, 9223372036854775807, 9223372036854775807 ), ( 4294967295, 4294967295, 4294967295, 0 ); 
+; 
+; 
+CREATE TABLE v9 ( c10, c11, c12, c13, CHECK( abs ( c13 ) >= 9223372036854775807 ) ); 
+INSERT INTO v9 VALUES ( 4294967295, 4294967295, 9223372036854775807, 18446744073709551615 ), ( 255, 0, 16, 16 ); 
+INSERT INTO v9 VALUES ( 0, 127, 127, 4294967295 ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 9223372036854775807, 9223372036854775807, 127 ); 
+; 
+ALTER TABLE v0 DROP c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT sum ( a15.c13 ) FROM v9 AS a16 WHERE a16.c12 = '1' ORDER BY 127 ) FROM v9 AS a15 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c11 = + a18.c11, a18.c10 FROM v0 AS a17 LEFT JOIN v9 AS a18 ON a17.c2 = a18.c13 GROUP BY y ( a17.c2 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a19, v9 AS a20 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT *, 'v0' FROM v0 AS a21, v0 AS a22 WHERE a21.c4 = 18446744073709551615 AND a22.c4 = 127 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c10 COLLATE binary ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c12 FROM v9 AS a24 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a25 WHERE a25.c13 > 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 4: CHECK constraint failed: c1 > 9223372036854775807 (19)
+Runtime error near line 8: CHECK constraint failed: abs ( c13 ) >= 9223372036854775807 (19)
+Runtime error near line 9: CHECK constraint failed: abs ( c13 ) >= 9223372036854775807 (19)
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such column: a17.c2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 7
+   = 18446744073709551615 AND a22.c4 = 127 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: c10
+  SELECT c10 COLLATE binary ORDER BY 18446744073709551488; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 20: no such function: y
+   LEFT JOIN v9 AS a18 ON a17.c2 = a18.c13 GROUP BY y ( a17.c2 ) ORDER BY 922337
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: no such column: a17.c2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 9
+   = 18446744073709551615 AND a22.c4 = 127 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 7
+   = 18446744073709551615 AND a22.c4 = 127 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such column: c10
+  SELECT c10 COLLATE binary ORDER BY 18446744073709551488; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 32: no such column: c10
+  SELECT c10 COLLATE binary ORDER BY 18446744073709551488; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

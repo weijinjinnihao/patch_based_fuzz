@@ -1,0 +1,322 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE TABLE v5 ( c6, c7, c8, PRIMARY KEY ( c6 ) ); 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c12 < 18446744071562067968 ) ); 
+INSERT INTO v0 VALUES ( 18446744071562067968, 0, 18446744071562067968 ); 
+CREATE INDEX i13 ON v0 ( c3 ); 
+CREATE INDEX i14 ON v5 ( c7 ); 
+INSERT INTO v5 VALUES ( 18446744071562067968, 0, 18446744071562067968 ); 
+CREATE INDEX i15 ON v5 ( c8 ); 
+INSERT INTO v9 VALUES ( 18446744071562067968, 18446744073709551615, 10 ); 
+CREATE INDEX i16 ON v9 ( c12 ); 
+ALTER TABLE v9 DROP COLUMN c12; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( count ( c10 ), 'v0' ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 NATURAL JOIN v5 AS a18 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 AS ( SELECT * FROM v0 AS a20 JOIN v5 AS a21 USING ( a20.c2, a21.c6, a20.c2, a19.c10, a20.c3, a21.c7, a21.c8, a21.c8 ) WHERE a21.c6 = a21.c8 >= 10 ORDER BY 0 ) SELECT * FROM v9 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN c2 != 'x' THEN 18446744073709551615 ELSE 4294967295 END ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( - 18446744071562067968 IS NULL ) ) AND ( NOT ( a23.c11 IS NULL ) ) ), a23.c10 FROM v0 AS a22 LEFT JOIN v9 AS a23 ON a23.c11 = a22.c3 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a24 WHERE a24.c12 = a24.c11 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25, v5 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a27 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c2, a29.c6 FROM v0 AS a28, v5 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v5 AS a30 ), ( v0 AS a31 NATURAL JOIN v5 AS a32 ), ( v5 AS a33 ), ( v9 AS a34 ) WHERE a33.c6 = a32.c8 + 0 AND a30.c6 = a31.c3 + 18446744073709551615 AND a32.c8 = a32.c7 + 18446744073709551615 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 12: error in index i16 after drop column: no such column: c12
+BEGIN VERI 0
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c10 ), 'v0' ) ORDER BY 18446744073709551615; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|0|1.84467440715621e+19|1.84467440715621e+19|0|1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: near ".": syntax error
+  SELECT * FROM v0 AS a20 JOIN v5 AS a21 USING ( a20.c2, a21.c6, a20.c2, a19.c10
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: c2
+  SELECT ( CASE WHEN c2 != 'x' THEN 18446744073709551615 ELSE 4294967295 END ) O
+                     ^--- error here
+END VERI 0
+BEGIN VERI 0
+1|
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|0|1.84467440715621e+19|1.84467440715621e+19|0|1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|1.84467440737096e+19|10
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  a28.c2, a29.c6 FROM v0 AS a28, v5 AS a29 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a33.c6
+  N v5 AS a32 ), ( v5 AS a33 ), ( v9 AS a34 ) WHERE a33.c6 = a32.c8 + 0 AND a30.
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+; 
+CREATE TABLE v5 ( c6, c7, c8, PRIMARY KEY ( c6 ) ); 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c12 < 18446744071562067968 ) ); 
+INSERT INTO v0 VALUES ( 18446744071562067968, 0, 18446744071562067968 ); 
+; 
+; 
+INSERT INTO v5 VALUES ( 18446744071562067968, 0, 18446744071562067968 ); 
+; 
+INSERT INTO v9 VALUES ( 18446744071562067968, 18446744073709551615, 10 ); 
+; 
+ALTER TABLE v9 DROP COLUMN c12; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( count ( c10 ), 'v0' ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 NATURAL JOIN v5 AS a18 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 AS ( SELECT * FROM v0 AS a20 JOIN v5 AS a21 USING ( a20.c2, a21.c6, a20.c2, a19.c10, a20.c3, a21.c7, a21.c8, a21.c8 ) WHERE a21.c6 = a21.c8 >= 10 ORDER BY 0 ) SELECT * FROM v9 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN c2 != 'x' THEN 18446744073709551615 ELSE 4294967295 END ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( - 18446744071562067968 IS NULL ) ) AND ( NOT ( a23.c11 IS NULL ) ) ), a23.c10 FROM v0 AS a22 LEFT JOIN v9 AS a23 ON a23.c11 = a22.c3 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a24 WHERE a24.c12 = a24.c11 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25, v5 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a27 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c2, a29.c6 FROM v0 AS a28, v5 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v5 AS a30 ), ( v0 AS a31 NATURAL JOIN v5 AS a32 ), ( v5 AS a33 ), ( v9 AS a34 ) WHERE a33.c6 = a32.c8 + 0 AND a30.c6 = a31.c3 + 18446744073709551615 AND a32.c8 = a32.c7 + 18446744073709551615 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c10 ), 'v0' ) ORDER BY 18446744073709551615; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|0|1.84467440715621e+19|1.84467440715621e+19|0|1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: near ".": syntax error
+  SELECT * FROM v0 AS a20 JOIN v5 AS a21 USING ( a20.c2, a21.c6, a20.c2, a19.c10
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: c2
+  SELECT ( CASE WHEN c2 != 'x' THEN 18446744073709551615 ELSE 4294967295 END ) O
+                     ^--- error here
+END VERI 0
+BEGIN VERI 0
+1|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a24.c12
+  SELECT * FROM v9 AS a24 WHERE a24.c12 = a24.c11 ORDER BY 18446744073709551488;
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|0|1.84467440715621e+19|1.84467440715621e+19|0|1.84467440715621e+19
+END VERI 0
+BEGIN VERI 0
+1.84467440715621e+19|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  a28.c2, a29.c6 FROM v0 AS a28, v5 AS a29 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a33.c6
+  N v5 AS a32 ), ( v5 AS a33 ), ( v9 AS a34 ) WHERE a33.c6 = a32.c8 + 0 AND a30.
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 79313056
+Str: 
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c10 ), 'v0' ) ORDER BY 18446744073709551615; 
+                   error here ---^
+ 
+Str: 
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c10 ), 'v0' ) ORDER BY 18446744073709551615; 
+                   error here ---^
+ 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+1.84467440715621e+19|0|1.84467440715621e+19|1.84467440715621e+19|0|1.84467440715621e+19
+ 
+INT: 0 
+Str: 
+1.84467440715621e+19|0|1.84467440715621e+19|1.84467440715621e+19|0|1.84467440715621e+19
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: near ".": syntax error
+  SELECT * FROM v0 AS a20 JOIN v5 AS a21 USING ( a20.c2, a21.c6, a20.c2, a19.c10
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: near ".": syntax error
+  SELECT * FROM v0 AS a20 JOIN v5 AS a21 USING ( a20.c2, a21.c6, a20.c2, a19.c10
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such column: c2
+  SELECT ( CASE WHEN c2 != 'x' THEN 18446744073709551615 ELSE 4294967295 END ) O
+                     ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 23: no such column: c2
+  SELECT ( CASE WHEN c2 != 'x' THEN 18446744073709551615 ELSE 4294967295 END ) O
+                     ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+1|
+ 
+INT: 0 
+Str: 
+1|
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 29: no such column: a24.c12
+  SELECT * FROM v9 AS a24 WHERE a24.c12 = a24.c11 ORDER BY 18446744073709551488;
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+1.84467440715621e+19|0|1.84467440715621e+19|1.84467440715621e+19|0|1.84467440715621e+19
+ 
+INT: 0 
+Str: 
+1.84467440715621e+19|0|1.84467440715621e+19|1.84467440715621e+19|0|1.84467440715621e+19
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+1.84467440715621e+19|1.84467440737096e+19|10
+ 
+INT: 0 
+Str: 
+1.84467440715621e+19|1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  a28.c2, a29.c6 FROM v0 AS a28, v5 AS a29 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  a28.c2, a29.c6 FROM v0 AS a28, v5 AS a29 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no such column: a33.c6
+  N v5 AS a32 ), ( v5 AS a33 ), ( v9 AS a34 ) WHERE a33.c6 = a32.c8 + 0 AND a30.
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: no such column: a33.c6
+  N v5 AS a32 ), ( v5 AS a33 ), ( v9 AS a34 ) WHERE a33.c6 = a32.c8 + 0 AND a30.
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

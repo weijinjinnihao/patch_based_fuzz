@@ -1,0 +1,293 @@
+Multiple execution of SQLite: 
+Query: 0: 
+INSERT INTO t0 ( c2, c3, c4 ) SELECT CASE WHEN c6 % 127 != count ( * ) >= 127 THEN c7 END, c8, c9 FROM v1 AS a5 WHERE c10 <= 127 ORDER BY 2147483647; 
+CREATE TABLE v11 ( c12, c13, c14 REFERENCES p1 ( c12 ) ); 
+CREATE INDEX i15 ON v1 ( c12 ); 
+CREATE INDEX i16 ON v1 ( c17 ); 
+CREATE INDEX i18 ON v11 ( c13 ); 
+CREATE TABLE v19 ( c20, c21, c22, c23 REFERENCES p1 ( c20 ) ); 
+CREATE INDEX i24 ON v19 ( c22 ); 
+CREATE INDEX i25 ON v1 ( c26 ); 
+ALTER TABLE v19 DROP COLUMN c22; 
+ALTER TABLE v1 DROP COLUMN c14; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 127, 127 ), ( 127, 18446744073709551488 ), ( 127, 127 ), ( 127, 2147483647 ), ( 2147483647, 2147483647 ), ( 127, 2147483647 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a27 WHERE a27.c23 = + a27.c22 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a28 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v1 AS a29 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a30 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c14 FROM v11 AS a32 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a34 GROUP BY y ( a34.c23 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: no such table: t0
+Parse error near line 3: no such table: main.v1
+Parse error near line 4: no such table: main.v1
+Parse error near line 8: no such table: main.v1
+Runtime error near line 9: error in index i24 after drop column: no such column: c22
+Parse error near line 10: no such table: v1
+BEGIN VERI 0
+Parse error near line 12: near "ORDER": syntax error
+  , ( 2147483647, 2147483647 ), ( 127, 2147483647 ) ORDER BY 1844674407370955161
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a32.c14 FROM v11 AS a32 ORDER BY 2147483647; 
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+
+Query: 1: 
+INSERT INTO t0 ( c2, c3, c4 ) SELECT CASE WHEN c6 % 127 != count ( * ) >= 127 THEN c7 END, c8, c9 FROM v1 AS a5 WHERE c10 <= 127 ORDER BY 2147483647; 
+CREATE TABLE v11 ( c12, c13, c14 REFERENCES p1 ( c12 ) ); 
+; 
+; 
+; 
+CREATE TABLE v19 ( c20, c21, c22, c23 REFERENCES p1 ( c20 ) ); 
+; 
+; 
+ALTER TABLE v19 DROP COLUMN c22; 
+ALTER TABLE v1 DROP COLUMN c14; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 127, 127 ), ( 127, 18446744073709551488 ), ( 127, 127 ), ( 127, 2147483647 ), ( 2147483647, 2147483647 ), ( 127, 2147483647 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a27 WHERE a27.c23 = + a27.c22 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a28 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v1 AS a29 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a30 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c14 FROM v11 AS a32 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a34 GROUP BY y ( a34.c23 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: no such table: t0
+Parse error near line 10: no such table: v1
+BEGIN VERI 0
+Parse error near line 12: near "ORDER": syntax error
+  , ( 2147483647, 2147483647 ), ( 127, 2147483647 ) ORDER BY 1844674407370955161
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: no such column: a27.c22
+  SELECT * FROM v19 AS a27 WHERE a27.c23 = + a27.c22 ORDER BY 184467440737095514
+                               error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a32.c14 FROM v11 AS a32 ORDER BY 2147483647; 
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 5927296
+Str: 
+Parse error near line 12: near "ORDER": syntax error
+  , ( 2147483647, 2147483647 ), ( 127, 2147483647 ) ORDER BY 1844674407370955161
+                                      error here ---^
+ 
+Str: 
+Parse error near line 12: near "ORDER": syntax error
+  , ( 2147483647, 2147483647 ), ( 127, 2147483647 ) ORDER BY 1844674407370955161
+                                      error here ---^
+ 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 15: no such column: a27.c22
+  SELECT * FROM v19 AS a27 WHERE a27.c23 = + a27.c22 ORDER BY 184467440737095514
+                               error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such table: v1
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no such table: v1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a32.c14 FROM v11 AS a32 ORDER BY 2147483647; 
+                            error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a32.c14 FROM v11 AS a32 ORDER BY 2147483647; 
+                            error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

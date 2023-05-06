@@ -1,0 +1,303 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+CREATE TABLE v6 ( c7 REFERENCES t1 DEFAULT NULL, c8, c9, c10, c11, c12, c13, c14, c15, c16 INTEGER UNIQUE ON CONFLICT FAIL, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, PRIMARY KEY ( c34, c20, c35, c16, c10, c36, c18 ) ) WITHOUT ROWID; 
+CREATE TABLE v41 ( c42 TEXT, c43 REAL, c44 INT, PRIMARY KEY ( c44 COLLATE nocase, c43 ) ) WITHOUT ROWID; 
+CREATE INDEX i45 ON v0 ( c2 ); 
+CREATE TABLE v46 ( c47, c48 INTEGER UNIQUE ON CONFLICT FAIL, c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62, c63, c64, c65, c66, c67, c68, c69, c70, c71, c72, c73 PRIMARY KEY, CHECK( ( ( c67 + 2147483647 ) % 2147483647 ) != 2147483647 ) ) WITHOUT ROWID; 
+CREATE VIEW v74 AS SELECT * FROM v6 AS a75 ORDER BY 10; 
+CREATE INDEX i76 ON v74 ( c77 ); 
+CREATE INDEX i78 ON v0 ( c1 ); 
+CREATE TABLE v79 ( c80 INTEGER PRIMARY KEY, c81, c82 UNIQUE ); 
+CREATE TABLE v83 ( c84, c85, c86 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v79 DROP COLUMN c81; 
+CREATE VIRTUAL TABLE v87 USING fts5 ( c88, c89 ); 
+ALTER TABLE v74 DROP COLUMN c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v74 AS a90 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a91.c2 ) OVER ( ORDER BY ( ( a91.c3 + 2147483647 ) % 18446744073709551615 ) ) ORDER BY 9223372036854775807 ) FROM v0 AS a91 GROUP BY a91.c2 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v92 ( c94 ) AS ( SELECT c94, max ( c94 || c94 ) ORDER BY 18446744073709551615 ) SELECT * FROM v92 AS a93 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a95.c1, a96.c86 ), min ( a96.c86, a95.c2 ) FROM v0 AS a95, v83 AS a96 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v87 AS a97, v83 AS a98 NATURAL JOIN v79 AS a99 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a100, v46 AS a101 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v87 AS a102 GROUP BY a102.c89, a102.c89, count ( a102.c69 ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a103, v87 AS a104 NATURAL JOIN v79 AS a105 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: views may not be indexed
+Runtime error near line 13: error in index i4 after drop column: no such column: c2
+Runtime error near line 15: no such module: fts5
+Parse error near line 16: cannot drop column from view "v74"
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: table v92 has 2 values for 1 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v87
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 30
+  SELECT * FROM v0 AS a100, v46 AS a101 ORDER BY 2147483647; 
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v87
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: no such table: v87
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+; 
+CREATE TABLE v6 ( c7 REFERENCES t1 DEFAULT NULL, c8, c9, c10, c11, c12, c13, c14, c15, c16 INTEGER UNIQUE ON CONFLICT FAIL, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, PRIMARY KEY ( c34, c20, c35, c16, c10, c36, c18 ) ) WITHOUT ROWID; 
+CREATE TABLE v41 ( c42 TEXT, c43 REAL, c44 INT, PRIMARY KEY ( c44 COLLATE nocase, c43 ) ) WITHOUT ROWID; 
+; 
+CREATE TABLE v46 ( c47, c48 INTEGER UNIQUE ON CONFLICT FAIL, c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62, c63, c64, c65, c66, c67, c68, c69, c70, c71, c72, c73 PRIMARY KEY, CHECK( ( ( c67 + 2147483647 ) % 2147483647 ) != 2147483647 ) ) WITHOUT ROWID; 
+CREATE VIEW v74 AS SELECT * FROM v6 AS a75 ORDER BY 10; 
+; 
+; 
+CREATE TABLE v79 ( c80 INTEGER PRIMARY KEY, c81, c82 UNIQUE ); 
+CREATE TABLE v83 ( c84, c85, c86 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v79 DROP COLUMN c81; 
+CREATE VIRTUAL TABLE v87 USING fts5 ( c88, c89 ); 
+ALTER TABLE v74 DROP COLUMN c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v74 AS a90 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a91.c2 ) OVER ( ORDER BY ( ( a91.c3 + 2147483647 ) % 18446744073709551615 ) ) ORDER BY 9223372036854775807 ) FROM v0 AS a91 GROUP BY a91.c2 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v92 ( c94 ) AS ( SELECT c94, max ( c94 || c94 ) ORDER BY 18446744073709551615 ) SELECT * FROM v92 AS a93 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a95.c1, a96.c86 ), min ( a96.c86, a95.c2 ) FROM v0 AS a95, v83 AS a96 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v87 AS a97, v83 AS a98 NATURAL JOIN v79 AS a99 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a100, v46 AS a101 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v87 AS a102 GROUP BY a102.c89, a102.c89, count ( a102.c69 ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a103, v87 AS a104 NATURAL JOIN v79 AS a105 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 15: no such module: fts5
+Parse error near line 16: cannot drop column from view "v74"
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a91.c2
+  SELECT ( SELECT min ( a91.c2 ) OVER ( ORDER BY ( ( a91.c3 + 2147483647 ) % 184
+                        ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: table v92 has 2 values for 1 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a95.c2
+  SELECT max ( a95.c1, a96.c86 ), min ( a96.c86, a95.c2 ) FROM v0 AS a95, v83 AS
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v87
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 29
+  SELECT * FROM v0 AS a100, v46 AS a101 ORDER BY 2147483647; 
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v87
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: no such table: v87
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 24: no such column: a91.c2
+  SELECT ( SELECT min ( a91.c2 ) OVER ( ORDER BY ( ( a91.c3 + 2147483647 ) % 184
+                        ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: table v92 has 2 values for 1 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 27: table v92 has 2 values for 1 columns
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 33: no such column: a95.c2
+  SELECT max ( a95.c1, a96.c86 ), min ( a96.c86, a95.c2 ) FROM v0 AS a95, v83 AS
+                                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v87
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v87
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 30
+  SELECT * FROM v0 AS a100, v46 AS a101 ORDER BY 2147483647; 
+                                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 29
+  SELECT * FROM v0 AS a100, v46 AS a101 ORDER BY 2147483647; 
+                                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such table: v87
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such table: v87
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 45: no such table: v87
+ 
+INT: 0 
+Str: 
+Parse error near line 45: no such table: v87
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

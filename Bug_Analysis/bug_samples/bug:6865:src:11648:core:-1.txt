@@ -1,0 +1,336 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3 REAL UNIQUE, c4 UNIQUE, c5 UNIQUE ON CONFLICT IGNORE, c6 UNIQUE ON CONFLICT FAIL, c7 UNIQUE ON CONFLICT REPLACE DEFAULT 18446744073709551488, c8, c9 INTEGER UNIQUE ON CONFLICT FAIL, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 REFERENCES t1, c24 DEFAULT 'v1' DEFAULT 2147483647, PRIMARY KEY ( c19, c5 ) ) WITHOUT ROWID; 
+CREATE INDEX i25 ON v0 ( c1 ); 
+CREATE TABLE v26 ( c27 UNIQUE, c28, c29 UNIQUE ON CONFLICT IGNORE, c30 UNIQUE ON CONFLICT FAIL, c31 UNIQUE ON CONFLICT REPLACE DEFAULT 18446744073709551488, c32, c33 NOT NULL, c34, c35, c36, c37, c38, c39 TEXT DEFAULT x'ABCD', c40, c41, c42, c43 UNIQUE ON CONFLICT IGNORE, c44 UNIQUE ON CONFLICT FAIL, c45 UNIQUE ON CONFLICT REPLACE DEFAULT 18446744073709551488, c46, c47 UNIQUE ON CONFLICT REPLACE DEFAULT 18446744073709551488, c48, c49, c50, c51, c52 UNIQUE ON CONFLICT ABORT, c53, c54 INTEGER UNIQUE ON CONFLICT IGNORE, c55 TEXT UNIQUE ON CONFLICT FAIL DEFAULT 2147483647, c56, PRIMARY KEY ( c32, c40 ), UNIQUE ( c47 ) ); 
+CREATE INDEX i57 ON v26 ( c27 ); 
+CREATE INDEX i58 ON v0 ( c23 ); 
+ATTACH 't2' AS sqlite_master; 
+CREATE TABLE v59 ( c60, c61 TEXT, c62, PRIMARY KEY ( c62 ), CHECK( c62 != c61 ), CHECK( c61 != c62 ), UNIQUE ( c61 ) ); 
+CREATE TABLE v63 ( c64, c65 CHECK( 18446744073709551615 ), c66, c67, CHECK( c64 > 2147483647 ) ); 
+CREATE INDEX i68 ON v59 ( c60 ); 
+ALTER TABLE v59 DROP c60; 
+ALTER TABLE v26 DROP c52; 
+CREATE TABLE v69 ( c70, c71, c72 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i73 ON v26 ( c33 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v59 AS a74 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c76 ) AS ( WITH v63 ( c80 ) AS ( WITH RECURSIVE v81 AS ( WITH v82 AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551488 ) SELECT avg ( a79.c60 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551488 ) SELECT 2147483647 ORDER BY 18446744073709551488 ) SELECT 2147483647 FROM v0 AS a77, v59 AS a78 NATURAL JOIN v59 AS a79 ORDER BY 0 ) SELECT * FROM v59 AS a75 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v63 ( c84 ) AS ( SELECT a83.c38 ORDER BY 18446744073709551488 ) SELECT * FROM v26 AS a83 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a85 ORDER BY max ( NULL, - x'68617265', '12345' ) + 18446744073709551488, min ( a85.c18, avg ( a85.c24 ) ) + NULL >= 111; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a86.c67 IS NULL, a86.c66 FROM v63 AS a86 GROUP BY a86.c66, abs ( a86.c66 ) HAVING count ( * ) >= 18446744073709551488 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v63 AS a87 ORDER BY ( CASE WHEN a87.c67 != 'x' THEN 2147483647 ELSE 0 END ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v59 AS a88 WHERE a88.c60 = CASE WHEN a88.c62 != 'v1' THEN 0 ELSE 2147483647 END > 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a89.c32, count ( a89.c31 ) FROM v26 AS a89 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v69 AS ( SELECT a90.c53, count ( ( NOT ( a90.c33 IS NULL ) ) AND ( NOT ( v69.c70 IS NULL ) ) ) ORDER BY 18446744073709551615 ) SELECT ( SELECT min ( v69.c70 ) OVER ( ORDER BY 0 ) FROM v26 AS a91, v0 AS a92 NATURAL JOIN v63 AS a93 ORDER BY 18446744073709551488 ) FROM v26 AS a90 GROUP BY v69.c72 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a94.c62 || a94.c60 ) FROM v59 AS a94 ORDER BY 111; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: error in index i68 after drop column: no such column: c60
+Parse error near line 11: cannot drop UNIQUE column: "c52"
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v59 AS a74 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+  79 ORDER BY 0 ) SELECT * FROM v59 AS a75 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 30
+  4073709551488 ) SELECT * FROM v26 AS a83 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: misuse of aggregate: avg()
+   '12345' ) + 18446744073709551488, min ( a85.c18, avg ( a85.c24 ) ) + NULL >= 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  VING count ( * ) >= 18446744073709551488 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: v69.c70
+  R BY 18446744073709551615 ) SELECT ( SELECT min ( v69.c70 ) OVER ( ORDER BY 0 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3 REAL UNIQUE, c4 UNIQUE, c5 UNIQUE ON CONFLICT IGNORE, c6 UNIQUE ON CONFLICT FAIL, c7 UNIQUE ON CONFLICT REPLACE DEFAULT 18446744073709551488, c8, c9 INTEGER UNIQUE ON CONFLICT FAIL, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 REFERENCES t1, c24 DEFAULT 'v1' DEFAULT 2147483647, PRIMARY KEY ( c19, c5 ) ) WITHOUT ROWID; 
+; 
+CREATE TABLE v26 ( c27 UNIQUE, c28, c29 UNIQUE ON CONFLICT IGNORE, c30 UNIQUE ON CONFLICT FAIL, c31 UNIQUE ON CONFLICT REPLACE DEFAULT 18446744073709551488, c32, c33 NOT NULL, c34, c35, c36, c37, c38, c39 TEXT DEFAULT x'ABCD', c40, c41, c42, c43 UNIQUE ON CONFLICT IGNORE, c44 UNIQUE ON CONFLICT FAIL, c45 UNIQUE ON CONFLICT REPLACE DEFAULT 18446744073709551488, c46, c47 UNIQUE ON CONFLICT REPLACE DEFAULT 18446744073709551488, c48, c49, c50, c51, c52 UNIQUE ON CONFLICT ABORT, c53, c54 INTEGER UNIQUE ON CONFLICT IGNORE, c55 TEXT UNIQUE ON CONFLICT FAIL DEFAULT 2147483647, c56, PRIMARY KEY ( c32, c40 ), UNIQUE ( c47 ) ); 
+; 
+; 
+ATTACH 't2' AS sqlite_master; 
+CREATE TABLE v59 ( c60, c61 TEXT, c62, PRIMARY KEY ( c62 ), CHECK( c62 != c61 ), CHECK( c61 != c62 ), UNIQUE ( c61 ) ); 
+CREATE TABLE v63 ( c64, c65 CHECK( 18446744073709551615 ), c66, c67, CHECK( c64 > 2147483647 ) ); 
+; 
+ALTER TABLE v59 DROP c60; 
+ALTER TABLE v26 DROP c52; 
+CREATE TABLE v69 ( c70, c71, c72 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v59 AS a74 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c76 ) AS ( WITH v63 ( c80 ) AS ( WITH RECURSIVE v81 AS ( WITH v82 AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551488 ) SELECT avg ( a79.c60 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551488 ) SELECT 2147483647 ORDER BY 18446744073709551488 ) SELECT 2147483647 FROM v0 AS a77, v59 AS a78 NATURAL JOIN v59 AS a79 ORDER BY 0 ) SELECT * FROM v59 AS a75 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v63 ( c84 ) AS ( SELECT a83.c38 ORDER BY 18446744073709551488 ) SELECT * FROM v26 AS a83 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a85 ORDER BY max ( NULL, - x'68617265', '12345' ) + 18446744073709551488, min ( a85.c18, avg ( a85.c24 ) ) + NULL >= 111; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a86.c67 IS NULL, a86.c66 FROM v63 AS a86 GROUP BY a86.c66, abs ( a86.c66 ) HAVING count ( * ) >= 18446744073709551488 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v63 AS a87 ORDER BY ( CASE WHEN a87.c67 != 'x' THEN 2147483647 ELSE 0 END ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v59 AS a88 WHERE a88.c60 = CASE WHEN a88.c62 != 'v1' THEN 0 ELSE 2147483647 END > 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a89.c32, count ( a89.c31 ) FROM v26 AS a89 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v69 AS ( SELECT a90.c53, count ( ( NOT ( a90.c33 IS NULL ) ) AND ( NOT ( v69.c70 IS NULL ) ) ) ORDER BY 18446744073709551615 ) SELECT ( SELECT min ( v69.c70 ) OVER ( ORDER BY 0 ) FROM v26 AS a91, v0 AS a92 NATURAL JOIN v63 AS a93 ORDER BY 18446744073709551488 ) FROM v26 AS a90 GROUP BY v69.c72 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a94.c62 || a94.c60 ) FROM v59 AS a94 ORDER BY 111; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 11: cannot drop UNIQUE column: "c52"
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v59 AS a74 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+  79 ORDER BY 0 ) SELECT * FROM v59 AS a75 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 30
+  4073709551488 ) SELECT * FROM v26 AS a83 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: misuse of aggregate: avg()
+   '12345' ) + 18446744073709551488, min ( a85.c18, avg ( a85.c24 ) ) + NULL >= 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  VING count ( * ) >= 18446744073709551488 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a88.c60
+  SELECT * FROM v59 AS a88 WHERE a88.c60 = CASE WHEN a88.c62 != 'v1' THEN 0 ELSE
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: v69.c70
+  R BY 18446744073709551615 ) SELECT ( SELECT min ( v69.c70 ) OVER ( ORDER BY 0 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a94.c60
+  SELECT max ( a94.c62 || a94.c60 ) FROM v59 AS a94 ORDER BY 111; 
+                          ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v59 AS a74 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v59 AS a74 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+  79 ORDER BY 0 ) SELECT * FROM v59 AS a75 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+  79 ORDER BY 0 ) SELECT * FROM v59 AS a75 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 30
+  4073709551488 ) SELECT * FROM v26 AS a83 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 30
+  4073709551488 ) SELECT * FROM v26 AS a83 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: misuse of aggregate: avg()
+   '12345' ) + 18446744073709551488, min ( a85.c18, avg ( a85.c24 ) ) + NULL >= 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: misuse of aggregate: avg()
+   '12345' ) + 18446744073709551488, min ( a85.c18, avg ( a85.c24 ) ) + NULL >= 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  VING count ( * ) >= 18446744073709551488 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  VING count ( * ) >= 18446744073709551488 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 33: no such column: a88.c60
+  SELECT * FROM v59 AS a88 WHERE a88.c60 = CASE WHEN a88.c62 != 'v1' THEN 0 ELSE
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such column: v69.c70
+  R BY 18446744073709551615 ) SELECT ( SELECT min ( v69.c70 ) OVER ( ORDER BY 0 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: no such column: v69.c70
+  R BY 18446744073709551615 ) SELECT ( SELECT min ( v69.c70 ) OVER ( ORDER BY 0 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such column: a94.c60
+  SELECT max ( a94.c62 || a94.c60 ) FROM v59 AS a94 ORDER BY 111; 
+                          ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

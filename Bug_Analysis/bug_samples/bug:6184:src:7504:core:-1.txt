@@ -1,0 +1,299 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE INDEX i3 ON v0 ( c2 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+CREATE VIRTUAL TABLE v6 USING rtree ( c7, c8, c9 ); 
+INSERT INTO v0 VALUES ( 'x', 18446744073709551615, 18446744073709551615 ); 
+CREATE INDEX i10 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( 9223372036854775807, 9223372036854775807 = 'v1', x'616263' ), ( 3.500000, 9223372036854775807, 100 ), ( 18446744073709551615, 18446744073709551615, 18446744073709551615 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v6 BEGIN DELETE FROM v0 WHERE c1 = c1; END; 
+ALTER TABLE v0 DROP c2; 
+UPDATE v6 SET c8 = 'x' WHERE c2 = 9223372036854775807; 
+CREATE INDEX i11 ON v6 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a12.c9 IS NULL ) ) AND ( NOT ( a12.c8 IS NULL ) ) ) FROM v6 AS a12 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v6 ( c14 ) AS ( SELECT 9223372036854775807 GROUP BY a13.c1 HAVING automatic_index ( * ) >= 9223372036854775807 ORDER BY 100 ) SELECT * FROM v0 AS a13 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a16, v0 AS a17 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c1, count ( ( NOT ( x'b2b2b2' > NULL ) ) AND ( ( a19.c1 IS NULL ) ) ), count ( ( NOT ( a19.c2 IS NULL ) ) AND ( NOT ( a19.c1 IS NULL ) ) ) FROM v0 AS a18 LEFT JOIN v0 AS a19 ON a18.c2 = a19.c2 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a20, v6 AS a21 NATURAL JOIN v6 AS a22 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c26 ) AS ( SELECT a23.c9 + ( SELECT max ( a24.c2 ) FROM v0 AS a30 ORDER BY 100 ), a27.c7 + ( SELECT a25.c2 FROM v0 AS a29 ORDER BY 100 ), a23.c7 + ( SELECT max ( a23.c7 ) FROM v0 AS a28 ORDER BY 18446744073709551615 ) FROM v0 AS a27 ORDER BY 18446744073709551615 ) SELECT a25.c1, max ( a25.c1 || a24.c26 ) FROM v6 AS a23, v0 AS a24 NATURAL JOIN v0 AS a25 ORDER BY 3.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c7, max ( a31.c7 || a31.c9 ) FROM v6 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: table v0 has 2 columns but 3 values were supplied
+Parse error near line 8: table v0 has 2 columns but 3 values were supplied
+Parse error near line 9: cannot create triggers on virtual tables
+Runtime error near line 10: error in index i3 after drop column: no such column: c2
+Parse error near line 11: no such column: c2
+  UPDATE v6 SET c8 = 'x' WHERE c2 = 9223372036854775807; 
+                 error here ---^
+Parse error near line 12: virtual tables may not be indexed
+BEGIN VERI 0
+Parse error near line 14: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 5
+  SELECT * FROM v6 AS a16, v0 AS a17 ORDER BY 2147483647; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+|0|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+; 
+; 
+; 
+CREATE VIRTUAL TABLE v6 USING rtree ( c7, c8, c9 ); 
+INSERT INTO v0 VALUES ( 'x', 18446744073709551615, 18446744073709551615 ); 
+; 
+INSERT INTO v0 VALUES ( 9223372036854775807, 9223372036854775807 = 'v1', x'616263' ), ( 3.500000, 9223372036854775807, 100 ), ( 18446744073709551615, 18446744073709551615, 18446744073709551615 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v6 BEGIN DELETE FROM v0 WHERE c1 = c1; END; 
+ALTER TABLE v0 DROP c2; 
+UPDATE v6 SET c8 = 'x' WHERE c2 = 9223372036854775807; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a12.c9 IS NULL ) ) AND ( NOT ( a12.c8 IS NULL ) ) ) FROM v6 AS a12 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v6 ( c14 ) AS ( SELECT 9223372036854775807 GROUP BY a13.c1 HAVING automatic_index ( * ) >= 9223372036854775807 ORDER BY 100 ) SELECT * FROM v0 AS a13 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a16, v0 AS a17 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c1, count ( ( NOT ( x'b2b2b2' > NULL ) ) AND ( ( a19.c1 IS NULL ) ) ), count ( ( NOT ( a19.c2 IS NULL ) ) AND ( NOT ( a19.c1 IS NULL ) ) ) FROM v0 AS a18 LEFT JOIN v0 AS a19 ON a18.c2 = a19.c2 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a20, v6 AS a21 NATURAL JOIN v6 AS a22 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c26 ) AS ( SELECT a23.c9 + ( SELECT max ( a24.c2 ) FROM v0 AS a30 ORDER BY 100 ), a27.c7 + ( SELECT a25.c2 FROM v0 AS a29 ORDER BY 100 ), a23.c7 + ( SELECT max ( a23.c7 ) FROM v0 AS a28 ORDER BY 18446744073709551615 ) FROM v0 AS a27 ORDER BY 18446744073709551615 ) SELECT a25.c1, max ( a25.c1 || a24.c26 ) FROM v6 AS a23, v0 AS a24 NATURAL JOIN v0 AS a25 ORDER BY 3.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c7, max ( a31.c7 || a31.c9 ) FROM v6 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: table v0 has 2 columns but 3 values were supplied
+Parse error near line 8: table v0 has 2 columns but 3 values were supplied
+Parse error near line 9: cannot create triggers on virtual tables
+Parse error near line 11: no such column: c2
+  UPDATE v6 SET c8 = 'x' WHERE c2 = 9223372036854775807; 
+                 error here ---^
+BEGIN VERI 0
+Parse error near line 14: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v6 AS a16, v0 AS a17 ORDER BY 2147483647; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a19.c2
+  ) ) AND ( ( a19.c1 IS NULL ) ) ), count ( ( NOT ( a19.c2 IS NULL ) ) AND ( NOT
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 14: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 5
+  SELECT * FROM v6 AS a16, v0 AS a17 ORDER BY 2147483647; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v6 AS a16, v0 AS a17 ORDER BY 2147483647; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+|0|0
+ 
+INT: 0 
+Str: 
+Parse error near line 29: no such column: a19.c2
+  ) ) AND ( ( a19.c1 IS NULL ) ) ), count ( ( NOT ( a19.c2 IS NULL ) ) AND ( NOT
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: circular reference: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 38: circular reference: v0
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

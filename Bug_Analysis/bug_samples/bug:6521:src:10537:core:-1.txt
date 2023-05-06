@@ -1,0 +1,312 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9, c10 INTEGER COLLATE NOCASE, c11 INTEGER COLLATE NOCASE, c12, c13, c14 ); 
+CREATE VIEW v15 AS SELECT * FROM v0 AS a16 ORDER BY 18446744073709551615; 
+CREATE TABLE v17 ( c18 INTEGER PRIMARY KEY, c19, c20 UNIQUE ); 
+CREATE TABLE v21 ( c22, c23, c24 ); 
+ALTER TABLE v0 DROP COLUMN c5; 
+CREATE INDEX i25 ON v15 ( c12 ); 
+CREATE INDEX i26 ON v21 ( c23 ); 
+ALTER TABLE v0 DROP COLUMN c7; 
+CREATE VIRTUAL TABLE v27 USING fts5 ( c28, c29 ); 
+CREATE TABLE v30 ( c31 TEXT COLLATE BINARY ), STRICT; 
+CREATE INDEX i32 ON v27 ( c28 ); 
+ALTER TABLE v21 DROP COLUMN c23; 
+CREATE INDEX i33 ON v17 ( c18 ); 
+CREATE INDEX i34 ON v0 ( c10 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a35.c23 ), a35.c22 FROM v21 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a36.c18 || a36.c19 ) FROM v17 AS a36 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.c24, a38.c24 FROM v21 AS a37 RIGHT JOIN v21 AS a38 ON a37.c24 = a38.c24 GROUP BY a37.c24 HAVING a38.c23 > a38.c22 % 18446744073709551615 >= 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 GROUP BY a39.c12, a39.c12 < y ( a39.c9 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a40.c23, max ( a40.c23 || a40.c22 ) FROM v21 AS a40 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c13, count ( a41.c2 ) FROM v0 AS a41 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a42 WHERE count ( a42.c24 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v17 ( c44, c45, c46, c47, c48, c49 ) AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551615 ) SELECT * FROM v27 AS a43 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a50 ORDER BY ( ( hex ( 18446744073709551615 ) ) % 2147483647 ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: views may not be indexed
+Runtime error near line 9: no such module: fts5
+Parse error near line 11: no such table: main.v27
+Runtime error near line 12: error in index i26 after drop column: no such column: c23
+BEGIN VERI 0
+0|
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such function: y
+  LECT * FROM v0 AS a39 GROUP BY a39.c12, a39.c12 < y ( a39.c9 ) ORDER BY 184467
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: misuse of aggregate function count()
+  SELECT * FROM v21 AS a42 WHERE count ( a42.c24 ) ORDER BY 18446744073709551615
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v27
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9, c10 INTEGER COLLATE NOCASE, c11 INTEGER COLLATE NOCASE, c12, c13, c14 ); 
+CREATE VIEW v15 AS SELECT * FROM v0 AS a16 ORDER BY 18446744073709551615; 
+CREATE TABLE v17 ( c18 INTEGER PRIMARY KEY, c19, c20 UNIQUE ); 
+CREATE TABLE v21 ( c22, c23, c24 ); 
+ALTER TABLE v0 DROP COLUMN c5; 
+; 
+; 
+ALTER TABLE v0 DROP COLUMN c7; 
+CREATE VIRTUAL TABLE v27 USING fts5 ( c28, c29 ); 
+CREATE TABLE v30 ( c31 TEXT COLLATE BINARY ), STRICT; 
+; 
+ALTER TABLE v21 DROP COLUMN c23; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a35.c23 ), a35.c22 FROM v21 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a36.c18 || a36.c19 ) FROM v17 AS a36 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.c24, a38.c24 FROM v21 AS a37 RIGHT JOIN v21 AS a38 ON a37.c24 = a38.c24 GROUP BY a37.c24 HAVING a38.c23 > a38.c22 % 18446744073709551615 >= 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 GROUP BY a39.c12, a39.c12 < y ( a39.c9 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a40.c23, max ( a40.c23 || a40.c22 ) FROM v21 AS a40 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c13, count ( a41.c2 ) FROM v0 AS a41 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a42 WHERE count ( a42.c24 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v17 ( c44, c45, c46, c47, c48, c49 ) AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551615 ) SELECT * FROM v27 AS a43 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a50 ORDER BY ( ( hex ( 18446744073709551615 ) ) % 2147483647 ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: no such module: fts5
+BEGIN VERI 0
+Parse error near line 16: no such column: a35.c23
+  SELECT count ( a35.c23 ), a35.c22 FROM v21 AS a35 ORDER BY 1844674407370955161
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a38.c23
+   a38 ON a37.c24 = a38.c24 GROUP BY a37.c24 HAVING a38.c23 > a38.c22 % 18446744
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such function: y
+  LECT * FROM v0 AS a39 GROUP BY a39.c12, a39.c12 < y ( a39.c9 ) ORDER BY 184467
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a40.c23
+  SELECT a40.c23, max ( a40.c23 || a40.c22 ) FROM v21 AS a40 ORDER BY 1844674407
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: misuse of aggregate function count()
+  SELECT * FROM v21 AS a42 WHERE count ( a42.c24 ) ORDER BY 18446744073709551615
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v27
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+0|
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such column: a35.c23
+  SELECT count ( a35.c23 ), a35.c22 FROM v21 AS a35 ORDER BY 1844674407370955161
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+
+ 
+INT: -1 
+Str: 
+
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 22: no such column: a38.c23
+   a38 ON a37.c24 = a38.c24 GROUP BY a37.c24 HAVING a38.c23 > a38.c22 % 18446744
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no such function: y
+  LECT * FROM v0 AS a39 GROUP BY a39.c12, a39.c12 < y ( a39.c9 ) ORDER BY 184467
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 25: no such function: y
+  LECT * FROM v0 AS a39 GROUP BY a39.c12, a39.c12 < y ( a39.c9 ) ORDER BY 184467
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such column: a40.c23
+  SELECT a40.c23, max ( a40.c23 || a40.c22 ) FROM v21 AS a40 ORDER BY 1844674407
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: misuse of aggregate function count()
+  SELECT * FROM v21 AS a42 WHERE count ( a42.c24 ) ORDER BY 18446744073709551615
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: misuse of aggregate function count()
+  SELECT * FROM v21 AS a42 WHERE count ( a42.c24 ) ORDER BY 18446744073709551615
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such table: v27
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no such table: v27
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

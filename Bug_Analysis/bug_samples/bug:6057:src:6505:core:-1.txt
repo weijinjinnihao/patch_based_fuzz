@@ -1,0 +1,298 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1 ), CHECK( c2 != c2 ), CHECK( c2 != c3 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c2 = c1 || c3 WHERE c3 = c1 || c1; END; 
+CREATE TABLE v5 ( c6, c7, c8, c9, PRIMARY KEY ( c6, c8 ) ) WITHOUT ROWID; 
+CREATE INDEX i10 ON v0 ( c2 ); 
+INSERT INTO v5 VALUES ( 100, ( ( c6 + 18446744073709551488 ) % 18446744073709551488 ) != 18446744073709551488, 18446744073709551488, 18446744073709551488 ); 
+CREATE INDEX i11 ON v5 ( c7 ); 
+CREATE VIRTUAL TABLE v12 USING rtree ( c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 ); 
+CREATE INDEX i24 ON v12 ( c15 ); 
+CREATE INDEX i25 ON v12 ( c15 ); 
+ALTER TABLE v5 DROP COLUMN c7; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 100 < a26.c7 FROM v5 AS a26 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY CASE WHEN a27.c3 != 'maggy' THEN 18446744073709551488 ELSE 18446744073709551488 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c6 FROM v5 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c7 FROM v5 AS a29 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a30 NATURAL JOIN v12 AS a31 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a32 ORDER BY a32.c13 COLLATE NOCASE, a32.c16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 WHERE CASE WHEN a33.c2 != 'v1' THEN 9223372036854775807 ELSE 100 END > 18446744073709551488 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a34 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c19, ( + a35.c8 ) y, ( + a35.c9 ) y, ( + a35.c6 ) y, NOT EXISTS ( SELECT NULL FROM v12 AS a37 ORDER BY 100 ), CASE a35.c9 WHEN 18446744073709518848 THEN 100 WHEN 18446744073709518848 THEN 18446744073709518848 WHEN 18446744073709551488 THEN 'x' END, 'v0' FROM v5 AS a35 LEFT JOIN v12 AS a36 ON a35.c9 = a35.c6 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: no such column: c6
+  INSERT INTO v5 VALUES ( 100, ( ( c6 + 18446744073709551488 ) % 184467440737095
+                     error here ---^
+Parse error near line 9: virtual tables may not be indexed
+Parse error near line 10: virtual tables may not be indexed
+Runtime error near line 11: error in index i11 after drop column: no such column: c7
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a28.c6 FROM v5 AS a28 ORDER BY 0; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 15
+  * FROM v5 AS a30 NATURAL JOIN v12 AS a31 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1 ), CHECK( c2 != c2 ), CHECK( c2 != c3 ) ) WITHOUT ROWID; 
+; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c2 = c1 || c3 WHERE c3 = c1 || c1; END; 
+CREATE TABLE v5 ( c6, c7, c8, c9, PRIMARY KEY ( c6, c8 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v5 VALUES ( 100, ( ( c6 + 18446744073709551488 ) % 18446744073709551488 ) != 18446744073709551488, 18446744073709551488, 18446744073709551488 ); 
+; 
+CREATE VIRTUAL TABLE v12 USING rtree ( c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 ); 
+; 
+; 
+ALTER TABLE v5 DROP COLUMN c7; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 100 < a26.c7 FROM v5 AS a26 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY CASE WHEN a27.c3 != 'maggy' THEN 18446744073709551488 ELSE 18446744073709551488 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c6 FROM v5 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c7 FROM v5 AS a29 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a30 NATURAL JOIN v12 AS a31 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a32 ORDER BY a32.c13 COLLATE NOCASE, a32.c16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 WHERE CASE WHEN a33.c2 != 'v1' THEN 9223372036854775807 ELSE 100 END > 18446744073709551488 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a34 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c19, ( + a35.c8 ) y, ( + a35.c9 ) y, ( + a35.c6 ) y, NOT EXISTS ( SELECT NULL FROM v12 AS a37 ORDER BY 100 ), CASE a35.c9 WHEN 18446744073709518848 THEN 100 WHEN 18446744073709518848 THEN 18446744073709518848 WHEN 18446744073709551488 THEN 'x' END, 'v0' FROM v5 AS a35 LEFT JOIN v12 AS a36 ON a35.c9 = a35.c6 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: no such column: c6
+  INSERT INTO v5 VALUES ( 100, ( ( c6 + 18446744073709551488 ) % 184467440737095
+                     error here ---^
+BEGIN VERI 0
+Parse error near line 13: no such column: a26.c7
+  SELECT 100 < a26.c7 FROM v5 AS a26 ORDER BY 10; 
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a28.c6 FROM v5 AS a28 ORDER BY 0; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: a29.c7
+  SELECT a29.c7 FROM v5 AS a29 ORDER BY 18446744073709518848; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 14
+  * FROM v5 AS a30 NATURAL JOIN v12 AS a31 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 13: no such column: a26.c7
+  SELECT 100 < a26.c7 FROM v5 AS a26 ORDER BY 10; 
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a28.c6 FROM v5 AS a28 ORDER BY 0; 
+                          error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a28.c6 FROM v5 AS a28 ORDER BY 0; 
+                          error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 25: no such column: a29.c7
+  SELECT a29.c7 FROM v5 AS a29 ORDER BY 18446744073709518848; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 15
+  * FROM v5 AS a30 NATURAL JOIN v12 AS a31 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 14
+  * FROM v5 AS a30 NATURAL JOIN v12 AS a31 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

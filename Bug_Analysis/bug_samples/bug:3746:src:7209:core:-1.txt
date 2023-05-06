@@ -1,0 +1,308 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709551615; 
+WITH v6 ( c7 ) AS ( SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) UPDATE v0 SET c1 = 'x'; 
+CREATE INDEX i8 ON v4 ( c3 ); 
+CREATE TABLE v9 ( c10 INTEGER PRIMARY KEY, c11 REFERENCES t1 ( c12, c12, c12, c10 ), c12 UNIQUE ); 
+CREATE TABLE v13 ( c14, c15, c16 ); 
+CREATE INDEX i17 ON v9 ( c12 ); 
+CREATE INDEX i18 ON v9 ( c10 ); 
+CREATE TABLE v19 ( c20 INTEGER PRIMARY KEY, c21 INTEGER REFERENCES t1 ON DELETE CASCADE REFERENCES t2, c22 TEXT, FOREIGN KEY ( c20, c21 ) REFERENCES encoding ( c20, c21 ) ON UPDATE CASCADE ); 
+ALTER TABLE v13 DROP COLUMN c15; 
+CREATE INDEX i23 ON v13 ( c16 ); 
+ALTER TABLE v13 DROP COLUMN c16; 
+CREATE INDEX i24 ON v9 ( c11 ); 
+CREATE VIRTUAL TABLE v25 USING fts5 ( c26, c27 ); 
+ALTER TABLE v4 DROP COLUMN c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c22, count ( ( NOT ( a28.c26 IS NULL ) ) AND ( NOT ( a28.c22 IS NULL ) ) ) FROM v25 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( WITH v30 AS ( SELECT 18446744073709551615 y ORDER BY 18446744073709551488 ) SELECT avg ( v0.c3 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551488 ) SELECT * FROM v13 AS a29 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 WHERE a32.c2 = a32.c3 > 18446744071562067968 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c15 FROM v13 AS a33 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 0, 18446744073709551488, 18446744073709551488, 18446744073709551615, 18446744073709551615 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v34 ( c36 ) AS ( WITH v34 AS ( SELECT ( SELECT min ( c36 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615 ) FROM v34 AS a37 GROUP BY c36 ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 9223372036854775807 ) SELECT * FROM v34 AS a35 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a38.c11 IS NULL ) ) AND ( NOT ( a39.c12 IS NULL ) ) ), count ( ( NOT ( a39.c11 IS NULL ) ) AND ( NOT ( a38.c12 IS NULL ) ) ), count ( ( NOT ( a38.c11 IS NULL ) ) AND ( NOT ( a39.c10 IS NULL ) ) ) FROM v9 AS a38 LEFT JOIN v9 AS a39 ON a38.c10 = a38.c10 WHERE a38.c11 < a39.c12 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a40 GROUP BY a40.c16, abs ( a40.c16 ) HAVING CASE WHEN a40.c16 != 'v1' THEN 18446744073709518848 ELSE 18446744073709551488 END > 127 >= 0 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: views may not be indexed
+Parse error near line 5: foreign key on c11 should reference only one column of table t1
+  ABLE v9 ( c10 INTEGER PRIMARY KEY, c11 REFERENCES t1 ( c12, c12, c12, c10 ), c
+                                      error here ---^
+Parse error near line 7: no such table: main.v9
+Parse error near line 8: no such table: main.v9
+Runtime error near line 12: error in index i23 after drop column: no such column: c16
+Parse error near line 13: no such table: main.v9
+Runtime error near line 14: no such module: fts5
+Parse error near line 15: cannot drop column from view "v4"
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v25
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a33.c15
+  SELECT a33.c15 FROM v13 AS a33 ORDER BY 16; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: near "ORDER": syntax error
+  488, 18446744073709551615, 18446744073709551615 ) ORDER BY 1844674407156206796
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such table: v9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709551615; 
+WITH v6 ( c7 ) AS ( SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) UPDATE v0 SET c1 = 'x'; 
+; 
+CREATE TABLE v9 ( c10 INTEGER PRIMARY KEY, c11 REFERENCES t1 ( c12, c12, c12, c10 ), c12 UNIQUE ); 
+CREATE TABLE v13 ( c14, c15, c16 ); 
+; 
+; 
+CREATE TABLE v19 ( c20 INTEGER PRIMARY KEY, c21 INTEGER REFERENCES t1 ON DELETE CASCADE REFERENCES t2, c22 TEXT, FOREIGN KEY ( c20, c21 ) REFERENCES encoding ( c20, c21 ) ON UPDATE CASCADE ); 
+ALTER TABLE v13 DROP COLUMN c15; 
+; 
+ALTER TABLE v13 DROP COLUMN c16; 
+; 
+CREATE VIRTUAL TABLE v25 USING fts5 ( c26, c27 ); 
+ALTER TABLE v4 DROP COLUMN c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c22, count ( ( NOT ( a28.c26 IS NULL ) ) AND ( NOT ( a28.c22 IS NULL ) ) ) FROM v25 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( WITH v30 AS ( SELECT 18446744073709551615 y ORDER BY 18446744073709551488 ) SELECT avg ( v0.c3 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551488 ) SELECT * FROM v13 AS a29 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32 WHERE a32.c2 = a32.c3 > 18446744071562067968 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c15 FROM v13 AS a33 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 0, 18446744073709551488, 18446744073709551488, 18446744073709551615, 18446744073709551615 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v34 ( c36 ) AS ( WITH v34 AS ( SELECT ( SELECT min ( c36 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615 ) FROM v34 AS a37 GROUP BY c36 ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 9223372036854775807 ) SELECT * FROM v34 AS a35 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a38.c11 IS NULL ) ) AND ( NOT ( a39.c12 IS NULL ) ) ), count ( ( NOT ( a39.c11 IS NULL ) ) AND ( NOT ( a38.c12 IS NULL ) ) ), count ( ( NOT ( a38.c11 IS NULL ) ) AND ( NOT ( a39.c10 IS NULL ) ) ) FROM v9 AS a38 LEFT JOIN v9 AS a39 ON a38.c10 = a38.c10 WHERE a38.c11 < a39.c12 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a40 GROUP BY a40.c16, abs ( a40.c16 ) HAVING CASE WHEN a40.c16 != 'v1' THEN 18446744073709518848 ELSE 18446744073709551488 END > 127 >= 0 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: foreign key on c11 should reference only one column of table t1
+  ABLE v9 ( c10 INTEGER PRIMARY KEY, c11 REFERENCES t1 ( c12, c12, c12, c10 ), c
+                                      error here ---^
+Runtime error near line 14: no such module: fts5
+Parse error near line 15: cannot drop column from view "v4"
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v25
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a33.c15
+  SELECT a33.c15 FROM v13 AS a33 ORDER BY 16; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: near "ORDER": syntax error
+  488, 18446744073709551615, 18446744073709551615 ) ORDER BY 1844674407156206796
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such table: v9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no such column: a40.c16
+  ROUP BY a40.c16, abs ( a40.c16 ) HAVING CASE WHEN a40.c16 != 'v1' THEN 1844674
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no such table: v25
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no such table: v25
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such column: a33.c15
+  SELECT a33.c15 FROM v13 AS a33 ORDER BY 16; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 32: no such column: a33.c15
+  SELECT a33.c15 FROM v13 AS a33 ORDER BY 16; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 6662128
+Str: 
+Parse error near line 35: near "ORDER": syntax error
+  488, 18446744073709551615, 18446744073709551615 ) ORDER BY 1844674407156206796
+                                      error here ---^
+ 
+Str: 
+Parse error near line 35: near "ORDER": syntax error
+  488, 18446744073709551615, 18446744073709551615 ) ORDER BY 1844674407156206796
+                                      error here ---^
+ 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no such table: v9
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no such table: v9
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 44: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 44: no such column: a40.c16
+  ROUP BY a40.c16, abs ( a40.c16 ) HAVING CASE WHEN a40.c16 != 'v1' THEN 1844674
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,302 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c1 > 10 ), c4 ); 
+CREATE INDEX i5 ON v0 ( c4 ); 
+INSERT INTO v0 VALUES ( 10, 10, 10, 0 ), ( 10, 18446744073709518848, 8, 8 ); 
+CREATE TABLE v6 ( c7, c8 TEXT, c9, PRIMARY KEY ( c8, c8 ), UNIQUE ( c9 ) ) WITHOUT ROWID; 
+INSERT INTO v6 VALUES ( 18446744073709518848, 18446744073709518848, 10, 10 ), ( 18446744073709551488, 8, 8, 8 ); 
+CREATE INDEX i10 ON v0 ( c2 ); 
+INSERT INTO v6 VALUES ( 10, 10, 18446744071562067968, 10 ); 
+INSERT INTO v6 VALUES ( 10, 10, 10, 18446744073709551488 ); 
+CREATE INDEX i11 ON v6 ( c8 ); 
+CREATE INDEX i12 ON v0 ( c1 ); 
+ALTER TABLE v0 DROP c4; 
+CREATE INDEX i13 ON v6 ( c9 ); 
+CREATE TABLE v14 ( c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46, c47, c48, c49 PRIMARY KEY, CHECK( ( ( c32 + 18446744073709551615 ) % 10 ) != 8 ) ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a50 NATURAL JOIN v0 AS a51 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a52 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v14 ( c54, c55, c56, c57, c58, c59 ) AS ( SELECT 18446744073709551615 y ORDER BY 8 ) SELECT a53.c3 + ( SELECT max ( a61.c21 ) FROM v0 AS a62 ORDER BY 10 ), v14.c42 + ( SELECT CASE WHEN a61.c34 % 10 != 18446744073709551615 THEN a61.c45 END, a61.c19, a61.c19 FROM v14 AS a61 WHERE a61.c45 <= 10 ORDER BY 10 ), a53.c2 + ( SELECT max ( v14.c21 ) FROM v6 AS a60 ORDER BY 0 ) FROM v0 AS a53 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v14 ( c65 ) AS ( SELECT c65 + ( SELECT max ( a68.c9 ) FROM v0 AS a69 ORDER BY 10 ), c65 + ( SELECT c65 FROM v6 AS a68 ORDER BY 18446744073709551488 ), a63.c37 + ( SELECT max ( a63.c30 ) FROM v6 AS a67 ORDER BY 10 ) FROM v6 AS a66 ORDER BY 8 ) SELECT a63.c23, count ( ( NOT ( a63.c40 IS NULL ) ) AND ( NOT ( a63.c43 IS NULL ) ) ), count ( ( NOT ( a63.c17 IS NULL ) ) AND ( NOT ( a64.c3 > NULL ) ) ) FROM v14 AS a63 LEFT JOIN v0 AS a64 ON a63.c27 = a64.c2 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT * FROM v14 AS a71 ORDER BY a70.c7, v0.c3 ) SELECT a70.c7, max ( a70.c8 || a70.c7 ) FROM v6 AS a70 WHERE ( v0.c3 || a70.c8 || a70.c9 ) != 'x' GROUP BY v0.c3 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709518848 IN ( SELECT * FROM v6 AS a74 ORDER BY 0 ) FROM v14 AS a72 NATURAL JOIN v0 AS a73 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a75, v6 AS a76 NATURAL JOIN v6 AS a77 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a78.c3, a78.c2 FROM v0 AS a78 WHERE a78.c2 IS NOT NULL >= 18446744073709518848 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a79 ORDER BY ( a79.c7 || a79.c8 || a79.c8 ) != 'x'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a80 WHERE a80.c4 % 16 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 3: CHECK constraint failed: c1 > 10 (19)
+Parse error near line 5: table v6 has 3 columns but 4 values were supplied
+Parse error near line 7: table v6 has 3 columns but 4 values were supplied
+Parse error near line 8: table v6 has 3 columns but 4 values were supplied
+Runtime error near line 11: error in index i5 after drop column: no such column: c4
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: table v14 has 1 values for 6 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: table v14 has 3 values for 1 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: v0.c3
+  , max ( a70.c8 || a70.c7 ) FROM v6 AS a70 WHERE ( v0.c3 || a70.c8 || a70.c9 ) 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  73709518848 IN ( SELECT * FROM v6 AS a74 ORDER BY 0 ) FROM v14 AS a72 NATURAL 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c1 > 10 ), c4 ); 
+; 
+INSERT INTO v0 VALUES ( 10, 10, 10, 0 ), ( 10, 18446744073709518848, 8, 8 ); 
+CREATE TABLE v6 ( c7, c8 TEXT, c9, PRIMARY KEY ( c8, c8 ), UNIQUE ( c9 ) ) WITHOUT ROWID; 
+INSERT INTO v6 VALUES ( 18446744073709518848, 18446744073709518848, 10, 10 ), ( 18446744073709551488, 8, 8, 8 ); 
+; 
+INSERT INTO v6 VALUES ( 10, 10, 18446744071562067968, 10 ); 
+INSERT INTO v6 VALUES ( 10, 10, 10, 18446744073709551488 ); 
+; 
+; 
+ALTER TABLE v0 DROP c4; 
+; 
+CREATE TABLE v14 ( c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46, c47, c48, c49 PRIMARY KEY, CHECK( ( ( c32 + 18446744073709551615 ) % 10 ) != 8 ) ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a50 NATURAL JOIN v0 AS a51 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a52 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v14 ( c54, c55, c56, c57, c58, c59 ) AS ( SELECT 18446744073709551615 y ORDER BY 8 ) SELECT a53.c3 + ( SELECT max ( a61.c21 ) FROM v0 AS a62 ORDER BY 10 ), v14.c42 + ( SELECT CASE WHEN a61.c34 % 10 != 18446744073709551615 THEN a61.c45 END, a61.c19, a61.c19 FROM v14 AS a61 WHERE a61.c45 <= 10 ORDER BY 10 ), a53.c2 + ( SELECT max ( v14.c21 ) FROM v6 AS a60 ORDER BY 0 ) FROM v0 AS a53 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v14 ( c65 ) AS ( SELECT c65 + ( SELECT max ( a68.c9 ) FROM v0 AS a69 ORDER BY 10 ), c65 + ( SELECT c65 FROM v6 AS a68 ORDER BY 18446744073709551488 ), a63.c37 + ( SELECT max ( a63.c30 ) FROM v6 AS a67 ORDER BY 10 ) FROM v6 AS a66 ORDER BY 8 ) SELECT a63.c23, count ( ( NOT ( a63.c40 IS NULL ) ) AND ( NOT ( a63.c43 IS NULL ) ) ), count ( ( NOT ( a63.c17 IS NULL ) ) AND ( NOT ( a64.c3 > NULL ) ) ) FROM v14 AS a63 LEFT JOIN v0 AS a64 ON a63.c27 = a64.c2 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT * FROM v14 AS a71 ORDER BY a70.c7, v0.c3 ) SELECT a70.c7, max ( a70.c8 || a70.c7 ) FROM v6 AS a70 WHERE ( v0.c3 || a70.c8 || a70.c9 ) != 'x' GROUP BY v0.c3 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709518848 IN ( SELECT * FROM v6 AS a74 ORDER BY 0 ) FROM v14 AS a72 NATURAL JOIN v0 AS a73 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a75, v6 AS a76 NATURAL JOIN v6 AS a77 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a78.c3, a78.c2 FROM v0 AS a78 WHERE a78.c2 IS NOT NULL >= 18446744073709518848 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a79 ORDER BY ( a79.c7 || a79.c8 || a79.c8 ) != 'x'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a80 WHERE a80.c4 % 16 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 3: CHECK constraint failed: c1 > 10 (19)
+Parse error near line 5: table v6 has 3 columns but 4 values were supplied
+Parse error near line 7: table v6 has 3 columns but 4 values were supplied
+Parse error near line 8: table v6 has 3 columns but 4 values were supplied
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: table v14 has 1 values for 6 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: table v14 has 3 values for 1 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: v0.c3
+  , max ( a70.c8 || a70.c7 ) FROM v6 AS a70 WHERE ( v0.c3 || a70.c8 || a70.c9 ) 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  73709518848 IN ( SELECT * FROM v6 AS a74 ORDER BY 0 ) FROM v14 AS a72 NATURAL 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a80.c4
+  SELECT * FROM v0 AS a80 WHERE a80.c4 % 16 ORDER BY 18446744073709518848; 
+                  error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: table v14 has 1 values for 6 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 21: table v14 has 1 values for 6 columns
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: table v14 has 3 values for 1 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 24: table v14 has 3 values for 1 columns
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such column: v0.c3
+  , max ( a70.c8 || a70.c7 ) FROM v6 AS a70 WHERE ( v0.c3 || a70.c8 || a70.c9 ) 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: no such column: v0.c3
+  , max ( a70.c8 || a70.c7 ) FROM v6 AS a70 WHERE ( v0.c3 || a70.c8 || a70.c9 ) 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  73709518848 IN ( SELECT * FROM v6 AS a74 ORDER BY 0 ) FROM v14 AS a72 NATURAL 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  73709518848 IN ( SELECT * FROM v6 AS a74 ORDER BY 0 ) FROM v14 AS a72 NATURAL 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 42: no such column: a80.c4
+  SELECT * FROM v0 AS a80 WHERE a80.c4 % 16 ORDER BY 18446744073709518848; 
+                  error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

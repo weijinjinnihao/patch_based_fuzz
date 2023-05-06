@@ -1,0 +1,301 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2, c3 AS( c4 + c3 - c1 ) UNIQUE ON CONFLICT FAIL, c4 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6, v0 AS a7 NATURAL JOIN v0 AS a8 ORDER BY 8; 
+CREATE INDEX i9 ON v5 ( c10 ); 
+CREATE INDEX i11 ON v0 ( c2 ); 
+CREATE INDEX i12 ON v5 ( c13 ); 
+CREATE TABLE v14 ( c15 INTEGER PRIMARY KEY, c16, c17 UNIQUE ); 
+CREATE TABLE v18 ( c19, c20, c21 ); 
+CREATE INDEX i22 ON v18 ( c19 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v18 DROP COLUMN c20; 
+CREATE VIRTUAL TABLE v23 USING fts5 ( c24, c25 ); 
+CREATE INDEX i26 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c25, count ( ( NOT ( a27.c1 IS NULL ) ) AND ( NOT ( a28.c24 IS NULL ) ) ), count ( ( hex ( 8 ) ) % 8 AND ( NOT ( a28.c24 IS NULL ) ) ) FROM v0 AS a27 LEFT JOIN v23 AS a28 ON a27.c4 = a28.c25 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a29.c21 || a29.c21 ) FROM v18 AS a29 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c25 FROM v23 AS a30 WHERE ( 'x', a30.c24 > 8, 'v0' ) < 18446744073709551488 + a30.c25 - a30.c24 NOT IN ( 'v0', 'v0', 'id.3' ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a31 ORDER BY ( ( a31.c24 + 18446744073709551488 ) % 8 ) < 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c24, count ( a32.c24 ) FROM v23 AS a32 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( WITH v37 AS ( SELECT 8 y ORDER BY 8 ) SELECT avg ( c1 ) FROM ( SELECT * ORDER BY 8 ) AS y ORDER BY 8 ) SELECT * FROM v5 AS a33 JOIN v5 AS a34 USING ( c35 ) WHERE max ( v0.c4 ) = ( c36 ) AND c20 = 8 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 8, 18446744071562067968, 8, 8 ), ( 8, 0, 8, 8 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a38 ORDER BY a38.c4; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a39 ORDER BY 0 IN ( SELECT * FROM v0 AS a40 ORDER BY 0 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c21, a41.c19 FROM v18 AS a41 RIGHT JOIN v18 AS a42 ON a42.c19 = a41.c20 != 4294967295 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: views may not be indexed
+Parse error near line 5: views may not be indexed
+Runtime error near line 9: error in index i11 after drop column: no such column: c2
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: generated column loop on "c3"
+Parse error near line 13: cannot drop UNIQUE column: "c3"
+BEGIN VERI 0
+Parse error near line 15: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: cannot join using column c35 - column not present in both tables
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: near "ORDER": syntax error
+  ( 8, 18446744071562067968, 8, 8 ), ( 8, 0, 8, 8 ) ORDER BY 9223372036854775807
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: generated column loop on "c3"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 4
+   ORDER BY 0 IN ( SELECT * FROM v0 AS a40 ORDER BY 0 ); 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a41.c20
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2, c3 AS( c4 + c3 - c1 ) UNIQUE ON CONFLICT FAIL, c4 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6, v0 AS a7 NATURAL JOIN v0 AS a8 ORDER BY 8; 
+; 
+; 
+; 
+CREATE TABLE v14 ( c15 INTEGER PRIMARY KEY, c16, c17 UNIQUE ); 
+CREATE TABLE v18 ( c19, c20, c21 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v18 DROP COLUMN c20; 
+CREATE VIRTUAL TABLE v23 USING fts5 ( c24, c25 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c25, count ( ( NOT ( a27.c1 IS NULL ) ) AND ( NOT ( a28.c24 IS NULL ) ) ), count ( ( hex ( 8 ) ) % 8 AND ( NOT ( a28.c24 IS NULL ) ) ) FROM v0 AS a27 LEFT JOIN v23 AS a28 ON a27.c4 = a28.c25 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a29.c21 || a29.c21 ) FROM v18 AS a29 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c25 FROM v23 AS a30 WHERE ( 'x', a30.c24 > 8, 'v0' ) < 18446744073709551488 + a30.c25 - a30.c24 NOT IN ( 'v0', 'v0', 'id.3' ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a31 ORDER BY ( ( a31.c24 + 18446744073709551488 ) % 8 ) < 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c24, count ( a32.c24 ) FROM v23 AS a32 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( WITH v37 AS ( SELECT 8 y ORDER BY 8 ) SELECT avg ( c1 ) FROM ( SELECT * ORDER BY 8 ) AS y ORDER BY 8 ) SELECT * FROM v5 AS a33 JOIN v5 AS a34 USING ( c35 ) WHERE max ( v0.c4 ) = ( c36 ) AND c20 = 8 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 8, 18446744071562067968, 8, 8 ), ( 8, 0, 8, 8 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a38 ORDER BY a38.c4; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a39 ORDER BY 0 IN ( SELECT * FROM v0 AS a40 ORDER BY 0 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c21, a41.c19 FROM v18 AS a41 RIGHT JOIN v18 AS a42 ON a42.c19 = a41.c20 != 4294967295 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: cannot drop UNIQUE column: "c3"
+BEGIN VERI 0
+Parse error near line 15: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: near "ORDER": syntax error
+  ( 8, 18446744071562067968, 8, 8 ), ( 8, 0, 8, 8 ) ORDER BY 9223372036854775807
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: generated column loop on "c3"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a41.c20
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such table: v23
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such table: v23
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such table: v23
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no such table: v23
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v23
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v23
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such table: v23
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such table: v23
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: cannot join using column c35 - column not present in both tables
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 81043456
+Str: 
+Parse error near line 33: near "ORDER": syntax error
+  ( 8, 18446744071562067968, 8, 8 ), ( 8, 0, 8, 8 ) ORDER BY 9223372036854775807
+                                      error here ---^
+ 
+Str: 
+Parse error near line 33: near "ORDER": syntax error
+  ( 8, 18446744071562067968, 8, 8 ), ( 8, 0, 8, 8 ) ORDER BY 9223372036854775807
+                                      error here ---^
+ 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: generated column loop on "c3"
+ 
+INT: 0 
+Str: 
+Parse error near line 36: generated column loop on "c3"
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 4
+   ORDER BY 0 IN ( SELECT * FROM v0 AS a40 ORDER BY 0 ); 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such column: a41.c20
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such column: a41.c20
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

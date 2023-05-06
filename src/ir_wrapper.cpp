@@ -396,7 +396,7 @@ bool IRWrapper::remove_stmt_at_idx_and_free(unsigned idx){
         }
         next_stmt->deep_drop(); // next_stmt->deep_drop() will lead to rov_stmt, because next_stmt->left_ is rov_stmt. 
         // rov_stmt->deep_drop();
-        next_stmt = nullptr;
+        // next_stmt = nullptr;
 
     } else { 
         IR* prev_stmt = stmt_list_v[idx-1];

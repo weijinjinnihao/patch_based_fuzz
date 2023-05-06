@@ -1,0 +1,328 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INT, c2 INT ); 
+CREATE INDEX i3 ON v0 ( c1 ); 
+BEGIN; 
+INSERT INTO v0 VALUES ( 0, 2147483647 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+ALTER TABLE v0 ADD COLUMN c6 CHECK( x'b1' ); 
+CREATE INDEX i7 ON v0 ( c6 ); 
+INSERT INTO v0 VALUES ( NULL ), ( 2147483647, 2147483647, 2147483647 ), ( 2147483647, 2147483647, 9223372036854775807 ) ON CONFLICT DO UPDATE SET c1 = c1, c6 = c2, c1 = c6 WHERE c6 IS NOT NULL >= abs ( c2 ); 
+CREATE INDEX i8 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( 2147483647, 2147483647 ); 
+INSERT INTO v0 VALUES ( 2147483647, 9223372036854775807 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a9, v0 AS a10 NATURAL JOIN v0 AS a11 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a12 NATURAL JOIN v0 AS a13 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c17 ) AS ( SELECT * ORDER BY 2147483647 ) SELECT c17, a15.c1 FROM v0 AS a15 LEFT JOIN v0 AS a16 ON ( 'aB%', c17 > 2147483647, 'v1' ) < 9223372036854775807 = a15.c2 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c2, count ( ( NOT ( a18.c1 IS NULL ) ) AND ( NOT ( a18.c1 IS NULL ) ) ) FROM v0 AS a18 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v19 ( c21 ) AS ( SELECT 2147483647 ORDER BY 2147483647 ) SELECT c21, count ( * ) FROM v19 AS a20 GROUP BY c21 HAVING count ( * ) >= 2147483647 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c2, a22.c2, a22.c6 FROM v0 AS a22 WHERE hex ( 2147483647 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 2147483647, 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( c6 + - 127 ) % 0 WHERE c2 > c2 % 2147483647 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: CHECK constraint failed
+Runtime error near line 8: no such column: c6
+Parse error near line 9: all VALUES must have the same number of terms
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+0|2147483647
+2147483647|2147483647
+2147483647|9223372036854775807
+END VERI 0
+BEGIN VERI 0
+0|2147483647
+2147483647|2147483647
+2147483647|9223372036854775807
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no tables specified
+END VERI 0
+BEGIN VERI 0
+2147483647|3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v19 ( c21 ) AS ( SELECT 2147483647 ORDER BY 2147483647 ) SELECT c21, coun
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a22.c6
+  SELECT a22.c2, a22.c2, a22.c6 FROM v0 AS a22 WHERE hex ( 2147483647 ) ORDER BY
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a23 ORDER BY 2147483647, 127; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: c6
+  SELECT ( c6 + - 127 ) % 0 WHERE c2 > c2 % 2147483647 ORDER BY 2147483647; 
+           ^--- error here
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INT, c2 INT ); 
+; 
+BEGIN; 
+INSERT INTO v0 VALUES ( 0, 2147483647 ); 
+; 
+; 
+ALTER TABLE v0 ADD COLUMN c6 CHECK( x'b1' ); 
+; 
+INSERT INTO v0 VALUES ( NULL ), ( 2147483647, 2147483647, 2147483647 ), ( 2147483647, 2147483647, 9223372036854775807 ) ON CONFLICT DO UPDATE SET c1 = c1, c6 = c2, c1 = c6 WHERE c6 IS NOT NULL >= abs ( c2 ); 
+; 
+INSERT INTO v0 VALUES ( 2147483647, 2147483647 ); 
+INSERT INTO v0 VALUES ( 2147483647, 9223372036854775807 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a9, v0 AS a10 NATURAL JOIN v0 AS a11 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a12 NATURAL JOIN v0 AS a13 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c17 ) AS ( SELECT * ORDER BY 2147483647 ) SELECT c17, a15.c1 FROM v0 AS a15 LEFT JOIN v0 AS a16 ON ( 'aB%', c17 > 2147483647, 'v1' ) < 9223372036854775807 = a15.c2 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a18.c2, count ( ( NOT ( a18.c1 IS NULL ) ) AND ( NOT ( a18.c1 IS NULL ) ) ) FROM v0 AS a18 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v19 ( c21 ) AS ( SELECT 2147483647 ORDER BY 2147483647 ) SELECT c21, count ( * ) FROM v19 AS a20 GROUP BY c21 HAVING count ( * ) >= 2147483647 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c2, a22.c2, a22.c6 FROM v0 AS a22 WHERE hex ( 2147483647 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 2147483647, 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( c6 + - 127 ) % 0 WHERE c2 > c2 % 2147483647 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: CHECK constraint failed
+Parse error near line 9: all VALUES must have the same number of terms
+Parse error near line 11: table v0 has 3 columns but 2 values were supplied
+Parse error near line 12: table v0 has 3 columns but 2 values were supplied
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+0|2147483647
+END VERI 0
+BEGIN VERI 0
+0|2147483647
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no tables specified
+END VERI 0
+BEGIN VERI 0
+2147483647|1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v19 ( c21 ) AS ( SELECT 2147483647 ORDER BY 2147483647 ) SELECT c21, coun
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a22.c6
+  SELECT a22.c2, a22.c2, a22.c6 FROM v0 AS a22 WHERE hex ( 2147483647 ) ORDER BY
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a23 ORDER BY 2147483647, 127; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: c6
+  SELECT ( c6 + - 127 ) % 0 WHERE c2 > c2 % 2147483647 ORDER BY 2147483647; 
+           ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+0|2147483647
+2147483647|2147483647
+2147483647|9223372036854775807
+ 
+INT: 2 
+Str: 
+0|2147483647
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+0|2147483647
+2147483647|2147483647
+2147483647|9223372036854775807
+ 
+INT: 2 
+Str: 
+0|2147483647
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+2147483647|3
+ 
+INT: 0 
+Str: 
+2147483647|1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v19 ( c21 ) AS ( SELECT 2147483647 ORDER BY 2147483647 ) SELECT c21, coun
+                                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v19 ( c21 ) AS ( SELECT 2147483647 ORDER BY 2147483647 ) SELECT c21, coun
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no such column: a22.c6
+  SELECT a22.c2, a22.c2, a22.c6 FROM v0 AS a22 WHERE hex ( 2147483647 ) ORDER BY
+                         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 35: no such column: a22.c6
+  SELECT a22.c2, a22.c2, a22.c6 FROM v0 AS a22 WHERE hex ( 2147483647 ) ORDER BY
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a23 ORDER BY 2147483647, 127; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a23 ORDER BY 2147483647, 127; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no such column: c6
+  SELECT ( c6 + - 127 ) % 0 WHERE c2 > c2 % 2147483647 ORDER BY 2147483647; 
+           ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 41: no such column: c6
+  SELECT ( c6 + - 127 ) % 0 WHERE c2 > c2 % 2147483647 ORDER BY 2147483647; 
+           ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

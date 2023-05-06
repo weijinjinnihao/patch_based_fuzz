@@ -1,0 +1,338 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, PRIMARY KEY ( c2 ), CHECK( c2 != c2 ), CHECK( c1 != c2 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c3 = c1 || c1 WHERE c3 = c2 || c2; END; 
+CREATE TABLE v4 ( c5, c6, c7 PRIMARY KEY ON CONFLICT REPLACE ); 
+CREATE INDEX i8 ON v4 ( c5 ); 
+CREATE TABLE v9 ( c10, c11, c12, c13, PRIMARY KEY ( c10, c11 ) ) WITHOUT ROWID; 
+INSERT INTO v9 VALUES ( 0, 0, 18446744073709551615, 0 ); 
+CREATE INDEX i14 ON v4 ( c7 ); 
+ALTER TABLE v4 DROP COLUMN c5; 
+CREATE INDEX i15 ON v4 ( c6 ); 
+CREATE INDEX i16 ON v0 ( c1 ); 
+CREATE INDEX i17 ON v4 ( c7 ); 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 10, 18446744073709551615, 2147483647 ), ( 18446744073709551615, 0, 127 ), ( 0 = 'x', 2147483647, 2147483647 ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c11 + 18446744073709551615, a19.c11 + 16 FROM v9 AS a19 y ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20, v4 AS a21 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a22.c3 ) FROM v0 AS a22 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( c5 + 0 ) % 0 ) < 0 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a23 GROUP BY 100 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v9 ( c26 ) AS ( SELECT 18446744073709551615 ORDER BY 100 ) SELECT a25.c5, a25.c5 FROM v9 AS a24 RIGHT JOIN v4 AS a25 ON c26 = c26 y ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c5, a28.c6 FROM v0 AS a27 LEFT JOIN v4 AS a28 ON a28.c5 = ( 'v1', a28.c5 > 100, 'v1' ) < 100 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 100 ORDER BY 127 ) AS y, v0 AS a29 ON likely ( 16 OR 0 ) OR ( ( ( ( a29.c3 + - 0 ) % 100 ) != 100 + 0 ) % 2147483647 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in index i8 after drop column: no such column: c5
+BEGIN VERI 0
+Parse error near line 13: near "ORDER": syntax error
+  15, 0, 127 ), ( 0 = 'x', 2147483647, 2147483647 ) ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a18 ORDER BY 2147483647; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: near "y": syntax error
+  18446744073709551615, a19.c11 + 16 FROM v9 AS a19 y ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v0 AS a20, v4 AS a21 ORDER BY 2147483647; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: c5
+  SELECT ( ( c5 + 0 ) % 0 ) < 0 ORDER BY 100; 
+             ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v4 AS a23 GROUP BY 100 ORDER BY 0; 
+                                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: near "y": syntax error
+   FROM v9 AS a24 RIGHT JOIN v4 AS a25 ON c26 = c26 y ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: row value misused
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, PRIMARY KEY ( c2 ), CHECK( c2 != c2 ), CHECK( c1 != c2 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c3 = c1 || c1 WHERE c3 = c2 || c2; END; 
+CREATE TABLE v4 ( c5, c6, c7 PRIMARY KEY ON CONFLICT REPLACE ); 
+; 
+CREATE TABLE v9 ( c10, c11, c12, c13, PRIMARY KEY ( c10, c11 ) ) WITHOUT ROWID; 
+INSERT INTO v9 VALUES ( 0, 0, 18446744073709551615, 0 ); 
+; 
+ALTER TABLE v4 DROP COLUMN c5; 
+; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 10, 18446744073709551615, 2147483647 ), ( 18446744073709551615, 0, 127 ), ( 0 = 'x', 2147483647, 2147483647 ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c11 + 18446744073709551615, a19.c11 + 16 FROM v9 AS a19 y ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20, v4 AS a21 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a22.c3 ) FROM v0 AS a22 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( c5 + 0 ) % 0 ) < 0 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a23 GROUP BY 100 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v9 ( c26 ) AS ( SELECT 18446744073709551615 ORDER BY 100 ) SELECT a25.c5, a25.c5 FROM v9 AS a24 RIGHT JOIN v4 AS a25 ON c26 = c26 y ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c5, a28.c6 FROM v0 AS a27 LEFT JOIN v4 AS a28 ON a28.c5 = ( 'v1', a28.c5 > 100, 'v1' ) < 100 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 100 ORDER BY 127 ) AS y, v0 AS a29 ON likely ( 16 OR 0 ) OR ( ( ( ( a29.c3 + - 0 ) % 100 ) != 100 + 0 ) % 2147483647 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 13: near "ORDER": syntax error
+  15, 0, 127 ), ( 0 = 'x', 2147483647, 2147483647 ) ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a18 ORDER BY 2147483647; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: near "y": syntax error
+  18446744073709551615, a19.c11 + 16 FROM v9 AS a19 y ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 5
+  SELECT * FROM v0 AS a20, v4 AS a21 ORDER BY 2147483647; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: c5
+  SELECT ( ( c5 + 0 ) % 0 ) < 0 ORDER BY 100; 
+             ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v4 AS a23 GROUP BY 100 ORDER BY 0; 
+                                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: near "y": syntax error
+   FROM v9 AS a24 RIGHT JOIN v4 AS a25 ON c26 = c26 y ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a28.c5
+  SELECT a28.c5, a28.c6 FROM v0 AS a27 LEFT JOIN v4 AS a28 ON a28.c5 = ( 'v1', a
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 77070016
+Str: 
+Parse error near line 13: near "ORDER": syntax error
+  15, 0, 127 ), ( 0 = 'x', 2147483647, 2147483647 ) ORDER BY 2147483647; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 13: near "ORDER": syntax error
+  15, 0, 127 ), ( 0 = 'x', 2147483647, 2147483647 ) ORDER BY 2147483647; 
+                                      error here ---^
+ 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a18 ORDER BY 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a18 ORDER BY 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: near "y": syntax error
+  18446744073709551615, a19.c11 + 16 FROM v9 AS a19 y ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 19: near "y": syntax error
+  18446744073709551615, a19.c11 + 16 FROM v9 AS a19 y ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v0 AS a20, v4 AS a21 ORDER BY 2147483647; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 5
+  SELECT * FROM v0 AS a20, v4 AS a21 ORDER BY 2147483647; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such column: c5
+  SELECT ( ( c5 + 0 ) % 0 ) < 0 ORDER BY 100; 
+             ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 28: no such column: c5
+  SELECT ( ( c5 + 0 ) % 0 ) < 0 ORDER BY 100; 
+             ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v4 AS a23 GROUP BY 100 ORDER BY 0; 
+                                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v4 AS a23 GROUP BY 100 ORDER BY 0; 
+                                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: near "y": syntax error
+   FROM v9 AS a24 RIGHT JOIN v4 AS a25 ON c26 = c26 y ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: near "y": syntax error
+   FROM v9 AS a24 RIGHT JOIN v4 AS a25 ON c26 = c26 y ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 37: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no such column: a28.c5
+  SELECT a28.c5, a28.c6 FROM v0 AS a27 LEFT JOIN v4 AS a28 ON a28.c5 = ( 'v1', a
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

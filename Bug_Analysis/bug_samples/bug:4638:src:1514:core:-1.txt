@@ -1,0 +1,316 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE INDEX i6 ON v0 ( c2 ); 
+CREATE TABLE v7 ( c8, c9, c10, CHECK( c6 ( 127, ( c10 + 255 ), c8 != 'x' ) > 255 ) ); 
+CREATE TABLE v11 ( c12, c13, c14 CHECK( c13 > 255 ) ); 
+INSERT INTO v0 VALUES ( 255, 255, 255 ); 
+INSERT INTO v7 VALUES ( 50, 255, 255 ); 
+CREATE INDEX i15 ON v11 ( c13 ); 
+CREATE INDEX i16 ON v11 ( c13 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a17, v7 AS a18 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c3, max ( a19.c3 || a19.c1 ) FROM v0 AS a19 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c13, a20.c13 FROM v11 AS a20 WHERE f ( ) == f ( ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 AS ( SELECT 10 y ORDER BY 255 ) SELECT * FROM v11 AS a21 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a22, v11 AS a23 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 ( c26 ) AS ( WITH v11 ( c27, c28, c29, c30, c31, c32 ) AS ( SELECT 255 y ORDER BY ( ( c32 + 127 ) % 255 ) < 10 ) SELECT 50 ORDER BY 255 ) SELECT * FROM v11 AS a25 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v7 AS ( SELECT a34.c9 FROM v7 AS a34 WHERE a34.c8 LIKE 'v0' ORDER BY 255 ) SELECT * FROM v11 AS a33 WHERE a33.c12 LIKE ( ( ( a33.c27 + - 255 ) % 255 ) != 50 + 0 ) % 255 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 AS ( SELECT 255 y ORDER BY 18446744073709551615 ) SELECT ( SELECT min ( ) OVER ( ORDER BY 10 ) ORDER BY 10 ) FROM v35 AS a36 GROUP BY c29 ORDER BY c9 COLLATE nocase; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 ORDER BY ( 255, count ( * ) ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: no such function: c6
+  CREATE TABLE v7 ( c8, c9, c10, CHECK( c6 ( 127, ( c10 + 255 ), c8 != 'x' ) > 2
+                          error here ---^
+Parse error near line 8: no such table: v7
+Runtime error near line 11: error in index i4 after drop column: no such column: c3
+BEGIN VERI 0
+Parse error near line 13: no such table: v7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such function: f
+  T a20.c13, a20.c13 FROM v11 AS a20 WHERE f ( ) == f ( ) ORDER BY 255; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a33.c27
+  SELECT * FROM v11 AS a33 WHERE a33.c12 LIKE ( ( ( a33.c27 + - 255 ) % 255 ) !=
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: min() may not be used as a window function
+  y ORDER BY 18446744073709551615 ) SELECT ( SELECT min ( ) OVER ( ORDER BY 10 )
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: row value misused
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+; 
+; 
+; 
+CREATE TABLE v7 ( c8, c9, c10, CHECK( c6 ( 127, ( c10 + 255 ), c8 != 'x' ) > 255 ) ); 
+CREATE TABLE v11 ( c12, c13, c14 CHECK( c13 > 255 ) ); 
+INSERT INTO v0 VALUES ( 255, 255, 255 ); 
+INSERT INTO v7 VALUES ( 50, 255, 255 ); 
+; 
+; 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a17, v7 AS a18 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c3, max ( a19.c3 || a19.c1 ) FROM v0 AS a19 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c13, a20.c13 FROM v11 AS a20 WHERE f ( ) == f ( ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 AS ( SELECT 10 y ORDER BY 255 ) SELECT * FROM v11 AS a21 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a22, v11 AS a23 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 ( c26 ) AS ( WITH v11 ( c27, c28, c29, c30, c31, c32 ) AS ( SELECT 255 y ORDER BY ( ( c32 + 127 ) % 255 ) < 10 ) SELECT 50 ORDER BY 255 ) SELECT * FROM v11 AS a25 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v7 AS ( SELECT a34.c9 FROM v7 AS a34 WHERE a34.c8 LIKE 'v0' ORDER BY 255 ) SELECT * FROM v11 AS a33 WHERE a33.c12 LIKE ( ( ( a33.c27 + - 255 ) % 255 ) != 50 + 0 ) % 255 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 AS ( SELECT 255 y ORDER BY 18446744073709551615 ) SELECT ( SELECT min ( ) OVER ( ORDER BY 10 ) ORDER BY 10 ) FROM v35 AS a36 GROUP BY c29 ORDER BY c9 COLLATE nocase; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 ORDER BY ( 255, count ( * ) ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: no such function: c6
+  CREATE TABLE v7 ( c8, c9, c10, CHECK( c6 ( 127, ( c10 + 255 ), c8 != 'x' ) > 2
+                          error here ---^
+Parse error near line 8: no such table: v7
+BEGIN VERI 0
+Parse error near line 13: no such table: v7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: a19.c3
+  SELECT a19.c3, max ( a19.c3 || a19.c1 ) FROM v0 AS a19 ORDER BY 255; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such function: f
+  T a20.c13, a20.c13 FROM v11 AS a20 WHERE f ( ) == f ( ) ORDER BY 255; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a33.c27
+  SELECT * FROM v11 AS a33 WHERE a33.c12 LIKE ( ( ( a33.c27 + - 255 ) % 255 ) !=
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: min() may not be used as a window function
+  y ORDER BY 18446744073709551615 ) SELECT ( SELECT min ( ) OVER ( ORDER BY 10 )
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: row value misused
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: no such table: v7
+ 
+INT: 0 
+Str: 
+Parse error near line 13: no such table: v7
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such column: a19.c3
+  SELECT a19.c3, max ( a19.c3 || a19.c1 ) FROM v0 AS a19 ORDER BY 255; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such function: f
+  T a20.c13, a20.c13 FROM v11 AS a20 WHERE f ( ) == f ( ) ORDER BY 255; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 19: no such function: f
+  T a20.c13, a20.c13 FROM v11 AS a20 WHERE f ( ) == f ( ) ORDER BY 255; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such column: a33.c27
+  SELECT * FROM v11 AS a33 WHERE a33.c12 LIKE ( ( ( a33.c27 + - 255 ) % 255 ) !=
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: no such column: a33.c27
+  SELECT * FROM v11 AS a33 WHERE a33.c12 LIKE ( ( ( a33.c27 + - 255 ) % 255 ) !=
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: min() may not be used as a window function
+  y ORDER BY 18446744073709551615 ) SELECT ( SELECT min ( ) OVER ( ORDER BY 10 )
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: min() may not be used as a window function
+  y ORDER BY 18446744073709551615 ) SELECT ( SELECT min ( ) OVER ( ORDER BY 10 )
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 40: row value misused
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

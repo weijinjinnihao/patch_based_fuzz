@@ -1,0 +1,316 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE INDEX i6 ON v0 ( c1 ); 
+CREATE TABLE v7 ( c8, c9, c10, CHECK( c10 > 18446744073709551488 ) ); 
+CREATE TABLE v11 ( c12, c13, c14 CHECK( c14 > 18446744073709551488 ) ); 
+INSERT INTO v11 VALUES ( 18446744073709551488, 18446744073709551488, 0 ); 
+INSERT INTO v7 VALUES ( 18446744073709551488, 18446744073709551488, 0 ); 
+CREATE INDEX i15 ON v7 ( c10 ); 
+CREATE INDEX i16 ON v11 ( c12 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a17, v7 AS a18 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c2, max ( a19.c1 || a19.c2 ) FROM v0 AS a19 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c10, a20.c10 FROM v7 AS a20 WHERE f ( ) == f ( ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 AS ( SELECT 18446744071562067968 y ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a21 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v11 AS a23 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 ( c26 ) AS ( WITH v7 ( c27, c28, c29, c30, c31, c32 ) AS ( SELECT 100 y ORDER BY ( ( a25.c29 + 18446744073709551488 ) % 9223372036854775807 ) < 18446744073709551488 ) SELECT 0 ORDER BY 18446744073709551488 ) SELECT * FROM v7 AS a25 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v11 AS ( SELECT a34.c13 FROM v11 AS a34 WHERE a33.c9 LIKE 'v1' ORDER BY 9223372036854775807 ) SELECT * FROM v7 AS a33 WHERE v11.c13 LIKE ( ( ( a33.c9 + - 18446744073709551615 ) % 100 ) != 0 + 255 ) % 0 ORDER BY 99; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 AS ( SELECT 18446744073709551488 y ORDER BY 255 ) SELECT ( SELECT min ( ) OVER ( ORDER BY 18446744073709551488 ) ORDER BY 18446744073709551488 ) FROM v35 AS a36 GROUP BY c3 ORDER BY c14 COLLATE nocase; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a37 ORDER BY ( 18446744073709551488, count ( * ) ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: CHECK constraint failed: c14 > 18446744073709551488 (19)
+Runtime error near line 8: CHECK constraint failed: c10 > 18446744073709551488 (19)
+Runtime error near line 11: error in index i6 after drop column: no such column: c1
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v7 AS a17, v7 AS a18 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such function: f
+  CT a20.c10, a20.c10 FROM v7 AS a20 WHERE f ( ) == f ( ) ORDER BY 10; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+  44073709551488 ) SELECT * FROM v0 AS a21 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: v11.c13
+  23372036854775807 ) SELECT * FROM v7 AS a33 WHERE v11.c13 LIKE ( ( ( a33.c9 + 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: row value misused
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+; 
+; 
+; 
+CREATE TABLE v7 ( c8, c9, c10, CHECK( c10 > 18446744073709551488 ) ); 
+CREATE TABLE v11 ( c12, c13, c14 CHECK( c14 > 18446744073709551488 ) ); 
+INSERT INTO v11 VALUES ( 18446744073709551488, 18446744073709551488, 0 ); 
+INSERT INTO v7 VALUES ( 18446744073709551488, 18446744073709551488, 0 ); 
+; 
+; 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a17, v7 AS a18 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c2, max ( a19.c1 || a19.c2 ) FROM v0 AS a19 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c10, a20.c10 FROM v7 AS a20 WHERE f ( ) == f ( ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 AS ( SELECT 18446744071562067968 y ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a21 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v11 AS a23 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 ( c26 ) AS ( WITH v7 ( c27, c28, c29, c30, c31, c32 ) AS ( SELECT 100 y ORDER BY ( ( a25.c29 + 18446744073709551488 ) % 9223372036854775807 ) < 18446744073709551488 ) SELECT 0 ORDER BY 18446744073709551488 ) SELECT * FROM v7 AS a25 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v11 AS ( SELECT a34.c13 FROM v11 AS a34 WHERE a33.c9 LIKE 'v1' ORDER BY 9223372036854775807 ) SELECT * FROM v7 AS a33 WHERE v11.c13 LIKE ( ( ( a33.c9 + - 18446744073709551615 ) % 100 ) != 0 + 255 ) % 0 ORDER BY 99; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 AS ( SELECT 18446744073709551488 y ORDER BY 255 ) SELECT ( SELECT min ( ) OVER ( ORDER BY 18446744073709551488 ) ORDER BY 18446744073709551488 ) FROM v35 AS a36 GROUP BY c3 ORDER BY c14 COLLATE nocase; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a37 ORDER BY ( 18446744073709551488, count ( * ) ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: CHECK constraint failed: c14 > 18446744073709551488 (19)
+Runtime error near line 8: CHECK constraint failed: c10 > 18446744073709551488 (19)
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v7 AS a17, v7 AS a18 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: a19.c1
+  SELECT a19.c2, max ( a19.c1 || a19.c2 ) FROM v0 AS a19 ORDER BY 18446744073709
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such function: f
+  CT a20.c10, a20.c10 FROM v7 AS a20 WHERE f ( ) == f ( ) ORDER BY 10; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+  44073709551488 ) SELECT * FROM v0 AS a21 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: v11.c13
+  23372036854775807 ) SELECT * FROM v7 AS a33 WHERE v11.c13 LIKE ( ( ( a33.c9 + 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: row value misused
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v7 AS a17, v7 AS a18 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v7 AS a17, v7 AS a18 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such column: a19.c1
+  SELECT a19.c2, max ( a19.c1 || a19.c2 ) FROM v0 AS a19 ORDER BY 18446744073709
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such function: f
+  CT a20.c10, a20.c10 FROM v7 AS a20 WHERE f ( ) == f ( ) ORDER BY 10; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 19: no such function: f
+  CT a20.c10, a20.c10 FROM v7 AS a20 WHERE f ( ) == f ( ) ORDER BY 10; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+  44073709551488 ) SELECT * FROM v0 AS a21 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 2
+  44073709551488 ) SELECT * FROM v0 AS a21 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such column: v11.c13
+  23372036854775807 ) SELECT * FROM v7 AS a33 WHERE v11.c13 LIKE ( ( ( a33.c9 + 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: no such column: v11.c13
+  23372036854775807 ) SELECT * FROM v7 AS a33 WHERE v11.c13 LIKE ( ( ( a33.c9 + 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 40: row value misused
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

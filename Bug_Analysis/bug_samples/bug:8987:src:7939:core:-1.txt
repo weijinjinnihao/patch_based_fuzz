@@ -1,0 +1,326 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2, c3 ) ) WITHOUT ROWID; 
+ATTACH 'v1' AS sqlite_master; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+CREATE INDEX i6 ON v0 ( c1 ); 
+CREATE TABLE v7 ( c8, c9 CHECK( 18446744073709551615 ), c10, c11, CHECK( c8 > 18446744073709551615 ) ); 
+ALTER TABLE v0 DROP c1; 
+ALTER TABLE v7 DROP c10; 
+CREATE INDEX i12 ON v7 ( c10 ); 
+CREATE VIEW v13 AS SELECT * FROM ( v7 AS a14 ), ( v7 AS a15 ), ( v0 AS a16 ), ( v0 AS a17, v7 AS a18 NATURAL JOIN v0 AS a19 ) WHERE c9 = c1 + 18446744073709551615 AND c3 = c3 + 0 AND c10 = c1 + 0 ORDER BY 0 = 'v0'; 
+CREATE INDEX i20 ON v13 ( c8 ); 
+CREATE TABLE v21 ( c22, c23, c24 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a25 WHERE a25.c10 = 0 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a26 WHERE a26.c8 = a26.c10 != a26.c8 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 0, ( a27.c1 + 0 ), a27.c3 != 'x' ) % 18446744073709551615 ), a27.c2 + ( SELECT max ( a27.c1 ) FROM v7 AS a29 ORDER BY 18446744073709551615 ), a27.c3 + ( SELECT max ( a28.c1 ) FROM v0 AS a28 ORDER BY 18446744073709551488 ) FROM v0 AS a27 ORDER BY 2.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN a30.c8 = 0 THEN 18446744073709551615 ELSE ( a30.c2 + 0 ) / 0 END ) AS y, count ( * ) FROM v13 AS a30 GROUP BY y ( a30.c1 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a31 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v21 ( c33 ) AS ( WITH v0 AS ( SELECT ( SELECT min ( c33 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 0 ) FROM v13 AS a34 GROUP BY c33 ORDER BY 2.000000 ) SELECT 18446744073709551615 ORDER BY 18446744073709551488 ) SELECT * FROM v13 AS a32 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 WHERE ( a36.c2 + 2.000000 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v37 ( c39 ) AS ( WITH v37 ( c40 ) AS ( WITH v41 AS ( WITH v42 AS ( SELECT 18446744073709551615 y ORDER BY 2.000000 ) SELECT avg ( c40 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551488 ) SELECT 0 ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT c39, count ( * ), avg ( c39 ), max ( c39 + c39 * 18446744073709551615 ) FROM v37 AS a38 GROUP BY y ( c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c23 FROM v21 AS a43 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i4 after drop column: no such column: c1
+Parse error near line 9: no such column: c10
+  CREATE INDEX i12 ON v7 ( c10 ); 
+             error here ---^
+Parse error near line 11: views may not be indexed
+BEGIN VERI 0
+Parse error near line 14: no such column: a25.c10
+  SELECT * FROM v7 AS a25 WHERE a25.c10 = 0 ORDER BY 18446744073709551615; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a26.c10
+  SELECT * FROM v7 AS a26 WHERE a26.c8 = a26.c10 != a26.c8 ORDER BY 0; 
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: row value misused
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: ambiguous column name: c9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: ambiguous column name: c9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: ambiguous column name: c9
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  OM v0 AS a36 WHERE ( a36.c2 + 2.000000 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  3709551615 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT c39, count ( * ),
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a43.c23 FROM v21 AS a43 ORDER BY 0; 
+                            error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2, c3 ) ) WITHOUT ROWID; 
+ATTACH 'v1' AS sqlite_master; 
+; 
+; 
+; 
+CREATE TABLE v7 ( c8, c9 CHECK( 18446744073709551615 ), c10, c11, CHECK( c8 > 18446744073709551615 ) ); 
+ALTER TABLE v0 DROP c1; 
+ALTER TABLE v7 DROP c10; 
+; 
+CREATE VIEW v13 AS SELECT * FROM ( v7 AS a14 ), ( v7 AS a15 ), ( v0 AS a16 ), ( v0 AS a17, v7 AS a18 NATURAL JOIN v0 AS a19 ) WHERE c9 = c1 + 18446744073709551615 AND c3 = c3 + 0 AND c10 = c1 + 0 ORDER BY 0 = 'v0'; 
+; 
+CREATE TABLE v21 ( c22, c23, c24 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a25 WHERE a25.c10 = 0 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a26 WHERE a26.c8 = a26.c10 != a26.c8 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 0, ( a27.c1 + 0 ), a27.c3 != 'x' ) % 18446744073709551615 ), a27.c2 + ( SELECT max ( a27.c1 ) FROM v7 AS a29 ORDER BY 18446744073709551615 ), a27.c3 + ( SELECT max ( a28.c1 ) FROM v0 AS a28 ORDER BY 18446744073709551488 ) FROM v0 AS a27 ORDER BY 2.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN a30.c8 = 0 THEN 18446744073709551615 ELSE ( a30.c2 + 0 ) / 0 END ) AS y, count ( * ) FROM v13 AS a30 GROUP BY y ( a30.c1 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a31 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v21 ( c33 ) AS ( WITH v0 AS ( SELECT ( SELECT min ( c33 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 0 ) FROM v13 AS a34 GROUP BY c33 ORDER BY 2.000000 ) SELECT 18446744073709551615 ORDER BY 18446744073709551488 ) SELECT * FROM v13 AS a32 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 WHERE ( a36.c2 + 2.000000 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v37 ( c39 ) AS ( WITH v37 ( c40 ) AS ( WITH v41 AS ( WITH v42 AS ( SELECT 18446744073709551615 y ORDER BY 2.000000 ) SELECT avg ( c40 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551488 ) SELECT 0 ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT c39, count ( * ), avg ( c39 ), max ( c39 + c39 * 18446744073709551615 ) FROM v37 AS a38 GROUP BY y ( c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39, c39 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c23 FROM v21 AS a43 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 14: no such column: a25.c10
+  SELECT * FROM v7 AS a25 WHERE a25.c10 = 0 ORDER BY 18446744073709551615; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a26.c10
+  SELECT * FROM v7 AS a26 WHERE a26.c8 = a26.c10 != a26.c8 ORDER BY 0; 
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such column: a27.c1
+  SELECT ( ( 0, ( a27.c1 + 0 ), a27.c3 != 'x' ) % 18446744073709551615 ), a27.c2
+                  ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: ambiguous column name: c9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: ambiguous column name: c9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: ambiguous column name: c9
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+  OM v0 AS a36 WHERE ( a36.c2 + 2.000000 ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  3709551615 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT c39, count ( * ),
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a43.c23 FROM v21 AS a43 ORDER BY 0; 
+                            error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no such column: a25.c10
+  SELECT * FROM v7 AS a25 WHERE a25.c10 = 0 ORDER BY 18446744073709551615; 
+                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 14: no such column: a25.c10
+  SELECT * FROM v7 AS a25 WHERE a25.c10 = 0 ORDER BY 18446744073709551615; 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no such column: a26.c10
+  SELECT * FROM v7 AS a26 WHERE a26.c8 = a26.c10 != a26.c8 ORDER BY 0; 
+                           error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 17: no such column: a26.c10
+  SELECT * FROM v7 AS a26 WHERE a26.c8 = a26.c10 != a26.c8 ORDER BY 0; 
+                           error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 20: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no such column: a27.c1
+  SELECT ( ( 0, ( a27.c1 + 0 ), a27.c3 != 'x' ) % 18446744073709551615 ), a27.c2
+                  ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: ambiguous column name: c9
+ 
+INT: 0 
+Str: 
+Parse error near line 23: ambiguous column name: c9
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: ambiguous column name: c9
+ 
+INT: 0 
+Str: 
+Parse error near line 26: ambiguous column name: c9
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: ambiguous column name: c9
+ 
+INT: 0 
+Str: 
+Parse error near line 29: ambiguous column name: c9
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  OM v0 AS a36 WHERE ( a36.c2 + 2.000000 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+  OM v0 AS a36 WHERE ( a36.c2 + 2.000000 ) ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  3709551615 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT c39, count ( * ),
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  3709551615 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT c39, count ( * ),
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a43.c23 FROM v21 AS a43 ORDER BY 0; 
+                            error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a43.c23 FROM v21 AS a43 ORDER BY 0; 
+                            error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,308 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 3.500000; 
+CREATE INDEX i7 ON v5 ( c1 ); 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE INDEX i12 ON v0 ( c1 ); 
+CREATE TABLE v13 ( c14, c15 INTEGER PRIMARY KEY, c16 ), STRICT; 
+ALTER TABLE v13 DROP COLUMN c16; 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i17 ON v5 ( c1 ); 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+ALTER TABLE v8 DROP COLUMN c9; 
+CREATE INDEX i21 ON v8 ( c11 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c2, max ( a22.c2 || a22.c1 ) FROM v5 AS a22 ORDER BY 3.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 GROUP BY a23.c1, abs ( a23.c3 ) HAVING count ( * ) >= 3.500000 ORDER BY 3.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c11, a24.c11 FROM v8 AS a24 LEFT JOIN v8 AS a25 ON x'b1' = a25.c9 GROUP BY a25.c10, a25.c10 < a25.c11 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY 3.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c15, a27.c15 != a28.c10 FROM v13 AS a27 RIGHT JOIN v8 AS a28 ON a27.c15 = a27.c16 ORDER BY 3.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v29 AS ( SELECT 3.500000 y ORDER BY 3.500000 ) SELECT c16, count ( * ) FROM v29 AS a30 GROUP BY c14 HAVING count ( * ) >= 3.500000 ORDER BY 3.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a31, v5 AS a32 ORDER BY 3.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c10, count ( a34.c10 ), a34.c10 FROM v8 AS a33 RIGHT JOIN v8 AS a34 ON a34.c11 = a33.c11 y ORDER BY 3.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a35 ORDER BY a35.c11 COLLATE NOCASE; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: views may not be indexed
+Parse error near line 7: missing datatype for v13.c14
+Parse error near line 8: no such table: v13
+Runtime error near line 9: error in index i12 after drop column: no such column: c1
+Parse error near line 10: views may not be indexed
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: cannot drop PRIMARY KEY column: "c9"
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v13
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: c16
+  AS ( SELECT 3.500000 y ORDER BY 3.500000 ) SELECT c16, count ( * ) FROM v29 AS
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v13
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: near "y": syntax error
+   AS a33 RIGHT JOIN v8 AS a34 ON a34.c11 = a33.c11 y ORDER BY 3.500000; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 3.500000; 
+; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+; 
+CREATE TABLE v13 ( c14, c15 INTEGER PRIMARY KEY, c16 ), STRICT; 
+ALTER TABLE v13 DROP COLUMN c16; 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+ALTER TABLE v8 DROP COLUMN c9; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c2, max ( a22.c2 || a22.c1 ) FROM v5 AS a22 ORDER BY 3.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 GROUP BY a23.c1, abs ( a23.c3 ) HAVING count ( * ) >= 3.500000 ORDER BY 3.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c11, a24.c11 FROM v8 AS a24 LEFT JOIN v8 AS a25 ON x'b1' = a25.c9 GROUP BY a25.c10, a25.c10 < a25.c11 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY 3.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c15, a27.c15 != a28.c10 FROM v13 AS a27 RIGHT JOIN v8 AS a28 ON a27.c15 = a27.c16 ORDER BY 3.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v29 AS ( SELECT 3.500000 y ORDER BY 3.500000 ) SELECT c16, count ( * ) FROM v29 AS a30 GROUP BY c14 HAVING count ( * ) >= 3.500000 ORDER BY 3.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a31, v5 AS a32 ORDER BY 3.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c10, count ( a34.c10 ), a34.c10 FROM v8 AS a33 RIGHT JOIN v8 AS a34 ON a34.c11 = a33.c11 y ORDER BY 3.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a35 ORDER BY a35.c11 COLLATE NOCASE; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: missing datatype for v13.c14
+Parse error near line 8: no such table: v13
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: cannot drop PRIMARY KEY column: "c9"
+BEGIN VERI 0
+Parse error near line 15: no such column: a22.c1
+  SELECT a22.c2, max ( a22.c2 || a22.c1 ) FROM v5 AS a22 ORDER BY 3.500000; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: a23.c1
+  SELECT * FROM v0 AS a23 GROUP BY a23.c1, abs ( a23.c3 ) HAVING count ( * ) >= 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v13
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: c16
+  AS ( SELECT 3.500000 y ORDER BY 3.500000 ) SELECT c16, count ( * ) FROM v29 AS
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v13
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: near "y": syntax error
+   AS a33 RIGHT JOIN v8 AS a34 ON a34.c11 = a33.c11 y ORDER BY 3.500000; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such column: a22.c1
+  SELECT a22.c2, max ( a22.c2 || a22.c1 ) FROM v5 AS a22 ORDER BY 3.500000; 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 18: no such column: a23.c1
+  SELECT * FROM v0 AS a23 GROUP BY a23.c1, abs ( a23.c3 ) HAVING count ( * ) >= 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such table: v13
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such table: v13
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such column: c16
+  AS ( SELECT 3.500000 y ORDER BY 3.500000 ) SELECT c16, count ( * ) FROM v29 AS
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: no such column: c16
+  AS ( SELECT 3.500000 y ORDER BY 3.500000 ) SELECT c16, count ( * ) FROM v29 AS
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v13
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v13
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: near "y": syntax error
+   AS a33 RIGHT JOIN v8 AS a34 ON a34.c11 = a33.c11 y ORDER BY 3.500000; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: near "y": syntax error
+   AS a33 RIGHT JOIN v8 AS a34 ON a34.c11 = a33.c11 y ORDER BY 3.500000; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

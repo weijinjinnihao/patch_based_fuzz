@@ -1,0 +1,300 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER, c3, PRIMARY KEY ( c3 ), CHECK( c3 != c2 ), CHECK( c1 != c2 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c3 = NULL; END; 
+CREATE TABLE v6 ( c7, c8, c9, c10, PRIMARY KEY ( c10, c10 ) ) WITHOUT ROWID; 
+CREATE INDEX i11 ON v0 ( c2 ); 
+CREATE INDEX i12 ON v6 ( c7 ); 
+CREATE INDEX i13 ON v6 ( c8 ); 
+INSERT INTO v6 VALUES ( 0, 8, 0, 8 ); 
+ALTER TABLE v6 DROP COLUMN c7; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a14.c7 ) FROM v6 AS a14 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 GROUP BY x'b2b2b2', 8, 39136, 0, 8, 0 HAVING CASE WHEN a15.c2 != 'v0' THEN 8 ELSE 8 END > 0 >= 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17, v0 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c2, a22.c1 FROM v6 AS a21 JOIN v0 AS a22 ON a21.c7 = a21.c8 WHERE a21.c10 IN ( ( ( ( ( a21.c7 + 0 ) % 8 ) == 0 ) % 0 ) ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a23, v0 AS a24 NATURAL JOIN v6 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c7 FROM v6 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v27 AS ( SELECT ( SELECT min ( c8 ) OVER ( ORDER BY 0 IN v27 ) ORDER BY 18446744073709551488 ) FROM v27 AS a29 NATURAL JOIN v27 AS a30 GROUP BY c2 ORDER BY 255 ) SELECT * FROM v27 AS a28 ORDER BY 39136; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a31 ORDER BY count ( ( NOT ( a31.c10 IS NULL ) ) AND ( NOT ( a31.c8 IS NULL ) ) ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: error in index i12 after drop column: no such column: c7
+BEGIN VERI 0
+1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 4th GROUP BY term out of range - should be between 1 and 3
+  CT * FROM v0 AS a15 GROUP BY x'b2b2b2', 8, 39136, 0, 8, 0 HAVING CASE WHEN a15
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 6
+  AS a17, v0 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: circular reference: v27
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: misuse of aggregate: count()
+  SELECT * FROM v6 AS a31 ORDER BY count ( ( NOT ( a31.c10 IS NULL ) ) AND ( NOT
+                     error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER, c3, PRIMARY KEY ( c3 ), CHECK( c3 != c2 ), CHECK( c1 != c2 ) ) WITHOUT ROWID; 
+; 
+; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c3 = NULL; END; 
+CREATE TABLE v6 ( c7, c8, c9, c10, PRIMARY KEY ( c10, c10 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+INSERT INTO v6 VALUES ( 0, 8, 0, 8 ); 
+ALTER TABLE v6 DROP COLUMN c7; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a14.c7 ) FROM v6 AS a14 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 GROUP BY x'b2b2b2', 8, 39136, 0, 8, 0 HAVING CASE WHEN a15.c2 != 'v0' THEN 8 ELSE 8 END > 0 >= 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17, v0 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c2, a22.c1 FROM v6 AS a21 JOIN v0 AS a22 ON a21.c7 = a21.c8 WHERE a21.c10 IN ( ( ( ( ( a21.c7 + 0 ) % 8 ) == 0 ) % 0 ) ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a23, v0 AS a24 NATURAL JOIN v6 AS a25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c7 FROM v6 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v27 AS ( SELECT ( SELECT min ( c8 ) OVER ( ORDER BY 0 IN v27 ) ORDER BY 18446744073709551488 ) FROM v27 AS a29 NATURAL JOIN v27 AS a30 GROUP BY c2 ORDER BY 255 ) SELECT * FROM v27 AS a28 ORDER BY 39136; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a31 ORDER BY count ( ( NOT ( a31.c10 IS NULL ) ) AND ( NOT ( a31.c8 IS NULL ) ) ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 12: no such column: a14.c7
+  SELECT count ( a14.c7 ) FROM v6 AS a14 ORDER BY 18446744073709551615; 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 4th GROUP BY term out of range - should be between 1 and 3
+  CT * FROM v0 AS a15 GROUP BY x'b2b2b2', 8, 39136, 0, 8, 0 HAVING CASE WHEN a15
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 6
+  AS a17, v0 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a21.c7
+  a22 ON a21.c7 = a21.c8 WHERE a21.c10 IN ( ( ( ( ( a21.c7 + 0 ) % 8 ) == 0 ) % 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a26.c7
+  SELECT a26.c7 FROM v6 AS a26 ORDER BY 18446744073709551615; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: circular reference: v27
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: misuse of aggregate: count()
+  SELECT * FROM v6 AS a31 ORDER BY count ( ( NOT ( a31.c10 IS NULL ) ) AND ( NOT
+                     error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+1
+ 
+INT: 0 
+Str: 
+Parse error near line 12: no such column: a14.c7
+  SELECT count ( a14.c7 ) FROM v6 AS a14 ORDER BY 18446744073709551615; 
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 4th GROUP BY term out of range - should be between 1 and 3
+  CT * FROM v0 AS a15 GROUP BY x'b2b2b2', 8, 39136, 0, 8, 0 HAVING CASE WHEN a15
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: 4th GROUP BY term out of range - should be between 1 and 3
+  CT * FROM v0 AS a15 GROUP BY x'b2b2b2', 8, 39136, 0, 8, 0 HAVING CASE WHEN a15
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 6
+  AS a17, v0 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 6
+  AS a17, v0 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 27: no such column: a21.c7
+  a22 ON a21.c7 = a21.c8 WHERE a21.c10 IN ( ( ( ( ( a21.c7 + 0 ) % 8 ) == 0 ) % 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+0
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such column: a26.c7
+  SELECT a26.c7 FROM v6 AS a26 ORDER BY 18446744073709551615; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: circular reference: v27
+ 
+INT: 0 
+Str: 
+Parse error near line 36: circular reference: v27
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: misuse of aggregate: count()
+  SELECT * FROM v6 AS a31 ORDER BY count ( ( NOT ( a31.c10 IS NULL ) ) AND ( NOT
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: misuse of aggregate: count()
+  SELECT * FROM v6 AS a31 ORDER BY count ( ( NOT ( a31.c10 IS NULL ) ) AND ( NOT
+                     error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,294 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 PRIMARY KEY, CHECK( ( ( c3 + 100 ) % 100 ) != 45 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE INDEX i6 ON v0 ( c2 ); 
+CREATE INDEX i7 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i8 ON v0 ( c3 ); 
+DELETE FROM v0 WHERE 45; 
+SELECT 'BEGIN VERI 0'; 
+WITH v9 ( c11 ) AS ( WITH v9 ( c12, c13, c14, c15, c16, c17 ) AS ( SELECT 45 y ORDER BY ( ( c14 + 45 ) % 18446744073709551615 ) < 45 ) SELECT 45 ORDER BY 100 ) SELECT * FROM v9 AS a10 ORDER BY c3, c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( c12 ) GROUP BY count ( ( NOT ( c2 IS NULL ) ) AND ( NOT ( c12 IS NULL ) ) ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v18 AS ( SELECT c12 FROM v18 AS a20 WHERE c2 LIKE 'v1' ORDER BY 45 ) SELECT * FROM v18 AS a19 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v0 AS a23 NATURAL JOIN v0 AS a24 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT a26.c2, count ( a26.c3 ) FROM v0 AS a27 ORDER BY 45 ) FROM v0 AS a26 WHERE a26.c12 < a26.c12 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28, v0 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c3 FROM v0 AS a31 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709551615 IN ( SELECT * FROM v0 AS a33 ORDER BY 45 ) FROM v0 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: error in index i4 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: no such column: c12
+  SELECT count ( c12 ) GROUP BY count ( ( NOT ( c2 IS NULL ) ) AND ( NOT ( c12 I
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: circular reference: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a25 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 PRIMARY KEY, CHECK( ( ( c3 + 100 ) % 100 ) != 45 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c2; 
+; 
+DELETE FROM v0 WHERE 45; 
+SELECT 'BEGIN VERI 0'; 
+WITH v9 ( c11 ) AS ( WITH v9 ( c12, c13, c14, c15, c16, c17 ) AS ( SELECT 45 y ORDER BY ( ( c14 + 45 ) % 18446744073709551615 ) < 45 ) SELECT 45 ORDER BY 100 ) SELECT * FROM v9 AS a10 ORDER BY c3, c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( c12 ) GROUP BY count ( ( NOT ( c2 IS NULL ) ) AND ( NOT ( c12 IS NULL ) ) ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v18 AS ( SELECT c12 FROM v18 AS a20 WHERE c2 LIKE 'v1' ORDER BY 45 ) SELECT * FROM v18 AS a19 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v0 AS a23 NATURAL JOIN v0 AS a24 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT a26.c2, count ( a26.c3 ) FROM v0 AS a27 ORDER BY 45 ) FROM v0 AS a26 WHERE a26.c12 < a26.c12 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28, v0 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 45; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c3 FROM v0 AS a31 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709551615 IN ( SELECT * FROM v0 AS a33 ORDER BY 45 ) FROM v0 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: no such column: c12
+  SELECT count ( c12 ) GROUP BY count ( ( NOT ( c2 IS NULL ) ) AND ( NOT ( c12 I
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: circular reference: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a25 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a26.c2
+  SELECT ( SELECT a26.c2, count ( a26.c3 ) FROM v0 AS a27 ORDER BY 45 ) FROM v0 
+                  ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: no such column: c12
+  SELECT count ( c12 ) GROUP BY count ( ( NOT ( c2 IS NULL ) ) AND ( NOT ( c12 I
+                 ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 13: no such column: c12
+  SELECT count ( c12 ) GROUP BY count ( ( NOT ( c2 IS NULL ) ) AND ( NOT ( c12 I
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: circular reference: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 16: circular reference: v18
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a25 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a25 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such column: a26.c2
+  SELECT ( SELECT a26.c2, count ( a26.c3 ) FROM v0 AS a27 ORDER BY 45 ) FROM v0 
+                  ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

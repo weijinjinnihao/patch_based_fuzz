@@ -1,0 +1,303 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 18446744073709551615; 
+CREATE TABLE v7 ( c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25 ); 
+CREATE INDEX i26 ON v0 ( c2 ); 
+CREATE INDEX i27 ON v5 ( c1 ); 
+CREATE INDEX i28 ON v7 ( c19 ); 
+CREATE TABLE v29 ( c30, c31, c32 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE INDEX i33 ON v29 ( c32 ); 
+ALTER TABLE v29 DROP COLUMN c31; 
+CREATE VIRTUAL TABLE v34 USING fts5 ( c35, c36 ); 
+CREATE TABLE v37 ( c38, c39, c40, c41, c42, c43, c44, c45, c46, c47, c48, c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62, c63, c64 PRIMARY KEY, c65, c66 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v37 AS a67 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a69.c36, a69.c36 FROM v34 AS a68 RIGHT JOIN v34 AS a69 ON a68.c31 = a69.c36 y ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 AS ( SELECT 127 y ORDER BY 18446744073709551615 ) SELECT ( 18446744073709551615, count ( * ) ) FROM v0 AS a70 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a71.c24 + ( SELECT max ( a74.c39 ) FROM v37 AS a74 ORDER BY 18446744073709551615 ), a71.c11 + ( SELECT max ( a73.c56 ) FROM v37 AS a73 ORDER BY 18446744073709551615 ), a71.c16 + ( SELECT max ( a71.c19 ) FROM v0 AS a72 ORDER BY 18446744073709551488 ) FROM v7 AS a71 GROUP BY a71.c20, a71.c11, count ( a71.c19 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a75 WHERE a75.c18 != 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a76.c3 FROM v0 AS a76 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v77 ( c80 ) AS ( WITH v77 AS ( SELECT ( SELECT min ( c80 ) OVER ( ORDER BY 9223372036854775807 ) ORDER BY 18446744073709551615 ) FROM v77 AS a81 GROUP BY c80 ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v77 AS a78, v77 AS a79 WHERE c80 > c80 AND c80 = c80 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v37 AS a82, v37 AS a83 NATURAL JOIN v37 AS a84 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 ( c85 ) AS ( SELECT 18446744073709518848 ORDER BY 18446744073709551615 ) VALUES ( 18446744073709551615, 18446744073709551615, NULL, 18446744073709551615, 127 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: views may not be indexed
+Runtime error near line 9: error in index i4 after drop column: no such column: c3
+Runtime error near line 12: no such module: fts5
+BEGIN VERI 0
+Parse error near line 15: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 29
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: near "y": syntax error
+  AS a68 RIGHT JOIN v34 AS a69 ON a68.c31 = a69.c36 y ORDER BY 18446744073709551
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: row value misused
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: ambiguous column name: c80
+  1615 ) SELECT * FROM v77 AS a78, v77 AS a79 WHERE c80 > c80 AND c80 = c80 ORDE
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: near "ORDER": syntax error
+  44073709551615, NULL, 18446744073709551615, 127 ) ORDER BY 1844674407370955161
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 18446744073709551615; 
+CREATE TABLE v7 ( c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25 ); 
+; 
+; 
+; 
+CREATE TABLE v29 ( c30, c31, c32 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+; 
+ALTER TABLE v29 DROP COLUMN c31; 
+CREATE VIRTUAL TABLE v34 USING fts5 ( c35, c36 ); 
+CREATE TABLE v37 ( c38, c39, c40, c41, c42, c43, c44, c45, c46, c47, c48, c49, c50, c51, c52, c53, c54, c55, c56, c57, c58, c59, c60, c61, c62, c63, c64 PRIMARY KEY, c65, c66 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v37 AS a67 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a69.c36, a69.c36 FROM v34 AS a68 RIGHT JOIN v34 AS a69 ON a68.c31 = a69.c36 y ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 AS ( SELECT 127 y ORDER BY 18446744073709551615 ) SELECT ( 18446744073709551615, count ( * ) ) FROM v0 AS a70 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a71.c24 + ( SELECT max ( a74.c39 ) FROM v37 AS a74 ORDER BY 18446744073709551615 ), a71.c11 + ( SELECT max ( a73.c56 ) FROM v37 AS a73 ORDER BY 18446744073709551615 ), a71.c16 + ( SELECT max ( a71.c19 ) FROM v0 AS a72 ORDER BY 18446744073709551488 ) FROM v7 AS a71 GROUP BY a71.c20, a71.c11, count ( a71.c19 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a75 WHERE a75.c18 != 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a76.c3 FROM v0 AS a76 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v77 ( c80 ) AS ( WITH v77 AS ( SELECT ( SELECT min ( c80 ) OVER ( ORDER BY 9223372036854775807 ) ORDER BY 18446744073709551615 ) FROM v77 AS a81 GROUP BY c80 ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v77 AS a78, v77 AS a79 WHERE c80 > c80 AND c80 = c80 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v37 AS a82, v37 AS a83 NATURAL JOIN v37 AS a84 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v7 ( c85 ) AS ( SELECT 18446744073709518848 ORDER BY 18446744073709551615 ) VALUES ( 18446744073709551615, 18446744073709551615, NULL, 18446744073709551615, 127 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 12: no such module: fts5
+BEGIN VERI 0
+Parse error near line 15: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 29
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: near "y": syntax error
+  AS a68 RIGHT JOIN v34 AS a69 ON a68.c31 = a69.c36 y ORDER BY 18446744073709551
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: row value misused
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: aggregate functions are not allowed in the GROUP BY clause
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a76.c3
+  SELECT a76.c3 FROM v0 AS a76 ORDER BY 18446744073709551615; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: ambiguous column name: c80
+  1615 ) SELECT * FROM v77 AS a78, v77 AS a79 WHERE c80 > c80 AND c80 = c80 ORDE
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: near "ORDER": syntax error
+  44073709551615, NULL, 18446744073709551615, 127 ) ORDER BY 1844674407370955161
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 29
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 29
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: near "y": syntax error
+  AS a68 RIGHT JOIN v34 AS a69 ON a68.c31 = a69.c36 y ORDER BY 18446744073709551
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: near "y": syntax error
+  AS a68 RIGHT JOIN v34 AS a69 ON a68.c31 = a69.c36 y ORDER BY 18446744073709551
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 24: row value misused
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+Str: 
+Parse error near line 27: aggregate functions are not allowed in the GROUP BY clause
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 33: no such column: a76.c3
+  SELECT a76.c3 FROM v0 AS a76 ORDER BY 18446744073709551615; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: ambiguous column name: c80
+  1615 ) SELECT * FROM v77 AS a78, v77 AS a79 WHERE c80 > c80 AND c80 = c80 ORDE
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: ambiguous column name: c80
+  1615 ) SELECT * FROM v77 AS a78, v77 AS a79 WHERE c80 > c80 AND c80 = c80 ORDE
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 29725552
+Str: 
+Parse error near line 42: near "ORDER": syntax error
+  44073709551615, NULL, 18446744073709551615, 127 ) ORDER BY 1844674407370955161
+                                      error here ---^
+ 
+Str: 
+Parse error near line 42: near "ORDER": syntax error
+  44073709551615, NULL, 18446744073709551615, 127 ) ORDER BY 1844674407370955161
+                                      error here ---^
+ 
+Compare_result_int: 
+0
+
+
+

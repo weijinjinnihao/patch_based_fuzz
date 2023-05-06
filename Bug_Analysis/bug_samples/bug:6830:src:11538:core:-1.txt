@@ -1,0 +1,294 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 REAL UNIQUE, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11 REFERENCES t1, c12 DEFAULT '$long' DEFAULT 127, PRIMARY KEY ( c10, c8 ) ) WITHOUT ROWID; 
+CREATE INDEX i13 ON v0 ( c4 ); 
+CREATE INDEX i14 ON v0 ( c10 ); 
+CREATE INDEX i15 ON v0 ( c2 ); 
+CREATE INDEX i16 ON v0 ( c1 ); 
+CREATE TABLE v17 ( c18 UNIQUE, c19, c20 UNIQUE ON CONFLICT IGNORE, c21 UNIQUE ON CONFLICT FAIL, c22 UNIQUE ON CONFLICT REPLACE DEFAULT 127, c23, c24 REFERENCES t1 UNIQUE ON CONFLICT IGNORE, c25, c26, c27, c28, c29, c30 TEXT DEFAULT x'ABCD', c31, c32, c33, c34 UNIQUE ON CONFLICT IGNORE, c35 UNIQUE ON CONFLICT FAIL, c36 UNIQUE ON CONFLICT REPLACE DEFAULT 127, c37, c38 UNIQUE ON CONFLICT REPLACE DEFAULT 127, c39, c40, c41, c42, c43 UNIQUE ON CONFLICT ABORT, c44, c45 INTEGER UNIQUE ON CONFLICT IGNORE, c46 TEXT UNIQUE ON CONFLICT FAIL DEFAULT 127, c47, PRIMARY KEY ( c38, c37 ), UNIQUE ( c25 ) ); 
+ATTACH 'v1' AS sqlite_master; 
+CREATE TABLE v48 ( c49, c50 TEXT, c51, PRIMARY KEY ( c50 ), CHECK( c50 != c50 ), CHECK( c50 != c50 ), UNIQUE ( c51 ) ); 
+CREATE TABLE v52 ( c53, c54 CHECK( 4294967295 ), c55, c56, CHECK( c56 > 16 ) ); 
+ALTER TABLE v0 DROP c2; 
+ALTER TABLE v17 DROP c43; 
+CREATE TABLE v57 ( c58, c59, c60 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i61 ON v48 ( c51 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v48 AS a62 NATURAL JOIN v52 AS a63 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v48 AS a64 ORDER BY count ( * ) >= 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v52 AS a65 WHERE a65.c54 NOT NULL ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v57 AS a66 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a67.c6, count ( ( NOT ( a67.c2 IS NULL ) ) AND ( NOT ( a67.c12 IS NULL ) ) ) FROM v0 AS a67 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ) FROM v0 AS a68 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v57 AS a69, v0 AS a70 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a71.c35, max ( a71.c21 || a71.c44 ) FROM v17 AS a71 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v52 AS a72 NATURAL JOIN v57 AS a73 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * WHERE ( c49 = 127 OR c8 = 0 ) AND c58 IN ( SELECT c59 FROM ( SELECT a74.c4 FROM v0 AS a74 ORDER BY 16 ) AS y WHERE c6 = 0 ORDER BY 127 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: error in index i15 after drop column: no such column: c2
+Parse error near line 11: cannot drop UNIQUE column: "c43"
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: misuse of aggregate: count()
+  SELECT * FROM v48 AS a64 ORDER BY count ( * ) >= 4294967295; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 REAL UNIQUE, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11 REFERENCES t1, c12 DEFAULT '$long' DEFAULT 127, PRIMARY KEY ( c10, c8 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+CREATE TABLE v17 ( c18 UNIQUE, c19, c20 UNIQUE ON CONFLICT IGNORE, c21 UNIQUE ON CONFLICT FAIL, c22 UNIQUE ON CONFLICT REPLACE DEFAULT 127, c23, c24 REFERENCES t1 UNIQUE ON CONFLICT IGNORE, c25, c26, c27, c28, c29, c30 TEXT DEFAULT x'ABCD', c31, c32, c33, c34 UNIQUE ON CONFLICT IGNORE, c35 UNIQUE ON CONFLICT FAIL, c36 UNIQUE ON CONFLICT REPLACE DEFAULT 127, c37, c38 UNIQUE ON CONFLICT REPLACE DEFAULT 127, c39, c40, c41, c42, c43 UNIQUE ON CONFLICT ABORT, c44, c45 INTEGER UNIQUE ON CONFLICT IGNORE, c46 TEXT UNIQUE ON CONFLICT FAIL DEFAULT 127, c47, PRIMARY KEY ( c38, c37 ), UNIQUE ( c25 ) ); 
+ATTACH 'v1' AS sqlite_master; 
+CREATE TABLE v48 ( c49, c50 TEXT, c51, PRIMARY KEY ( c50 ), CHECK( c50 != c50 ), CHECK( c50 != c50 ), UNIQUE ( c51 ) ); 
+CREATE TABLE v52 ( c53, c54 CHECK( 4294967295 ), c55, c56, CHECK( c56 > 16 ) ); 
+ALTER TABLE v0 DROP c2; 
+ALTER TABLE v17 DROP c43; 
+CREATE TABLE v57 ( c58, c59, c60 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v48 AS a62 NATURAL JOIN v52 AS a63 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v48 AS a64 ORDER BY count ( * ) >= 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v52 AS a65 WHERE a65.c54 NOT NULL ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v57 AS a66 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a67.c6, count ( ( NOT ( a67.c2 IS NULL ) ) AND ( NOT ( a67.c12 IS NULL ) ) ) FROM v0 AS a67 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ) FROM v0 AS a68 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v57 AS a69, v0 AS a70 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a71.c35, max ( a71.c21 || a71.c44 ) FROM v17 AS a71 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v52 AS a72 NATURAL JOIN v57 AS a73 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * WHERE ( c49 = 127 OR c8 = 0 ) AND c58 IN ( SELECT c59 FROM ( SELECT a74.c4 FROM v0 AS a74 ORDER BY 16 ) AS y WHERE c6 = 0 ORDER BY 127 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 11: cannot drop UNIQUE column: "c43"
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: misuse of aggregate: count()
+  SELECT * FROM v48 AS a64 ORDER BY count ( * ) >= 4294967295; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a67.c2
+  SELECT a67.c6, count ( ( NOT ( a67.c2 IS NULL ) ) AND ( NOT ( a67.c12 IS NULL 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: misuse of aggregate: count()
+  SELECT * FROM v48 AS a64 ORDER BY count ( * ) >= 4294967295; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 18: misuse of aggregate: count()
+  SELECT * FROM v48 AS a64 ORDER BY count ( * ) >= 4294967295; 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such column: a67.c2
+  SELECT a67.c6, count ( ( NOT ( a67.c2 IS NULL ) ) AND ( NOT ( a67.c12 IS NULL 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

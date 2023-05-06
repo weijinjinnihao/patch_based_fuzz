@@ -1,0 +1,276 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c3 ) ) WITHOUT ROWID; 
+ATTACH 'v0' AS sqlite_master; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE INDEX i6 ON v0 ( c1 ); 
+CREATE TABLE v7 ( c8, c9 CHECK( 127 ), c10, c11, CHECK( c9 > 127 ) ); 
+ALTER TABLE v7 DROP c11; 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i12 ON v7 ( c9 ); 
+CREATE VIEW v13 AS SELECT * FROM ( v7 AS a14 ), ( v7 AS a15 ), ( v7 AS a16 ), ( v7 AS a17 NATURAL JOIN v7 AS a18 ) WHERE c8 = c8 + 127 AND c9 = c8 + 18446744073709551615 AND c9 = c9 + 0 ORDER BY 127; 
+CREATE INDEX i19 ON v7 ( c9 ); 
+CREATE TABLE v20 ( c21, c22, c23 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a24 WHERE a24.c1 = 127 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 WHERE a25.c2 = a25.c2 != a25.c3 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 127, ( a26.c1 + 0 ), a26.c3 != 'v0' ) % 127 ), a26.c3 + ( SELECT max ( a27.c11 ) FROM v13 AS a28 ORDER BY 127 ), a26.c1 + ( SELECT max ( a27.c9 ) FROM v7 AS a27 ORDER BY 18446744073709551488 ) FROM v0 AS a26 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN a29.c3 = 0 THEN 8 ELSE ( a29.c1 + 0 ) / 0 END ) AS y, count ( * ) FROM v0 AS a29 GROUP BY y ( a29.c3 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a30 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v20 ( c32 ) AS ( WITH v13 AS ( SELECT ( SELECT min ( c32 ) OVER ( ORDER BY 127 ) ORDER BY 127 ) FROM v0 AS a33 GROUP BY a33.c2 ORDER BY 255 ) SELECT 127 ORDER BY 127 ) SELECT * FROM v13 AS a31 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a34 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 WHERE ( a35.c3 + 18446744073709551615 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v36 ( c38 ) AS ( WITH v36 ( c39 ) AS ( WITH v40 AS ( WITH v41 AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551615 ) SELECT avg ( c38 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT 127 ORDER BY 127 ) SELECT c38, count ( * ), avg ( c38 ), max ( c38 + c38 * 255 ) FROM v36 AS a37 GROUP BY y ( c38, c38, c38, c38, c38, c38, c38, c38, c38, c38, c38, c38, c38, c38, c38, c38, c38 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a42.c1 FROM v13 AS a42 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in index i4 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 14: ambiguous column name: main.v7.c8
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: ambiguous column name: main.v7.c8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: ambiguous column name: main.v7.c8
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: ambiguous column name: main.v7.c8
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c3 ) ) WITHOUT ROWID; 
+ATTACH 'v0' AS sqlite_master; 
+; 
+; 
+; 
+CREATE TABLE v7 ( c8, c9 CHECK( 127 ), c10, c11, CHECK( c9 > 127 ) ); 
+ALTER TABLE v7 DROP c11; 
+ALTER TABLE v0 DROP c2; 
+; 
+CREATE VIEW v13 AS SELECT * FROM ( v7 AS a14 ), ( v7 AS a15 ), ( v7 AS a16 ), ( v7 AS a17 NATURAL JOIN v7 AS a18 ) WHERE c8 = c8 + 127 AND c9 = c8 + 18446744073709551615 AND c9 = c9 + 0 ORDER BY 127; 
+; 
+CREATE TABLE v20 ( c21, c22, c23 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a24 WHERE a24.c1 = 127 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 WHERE a25.c2 = a25.c2 != a25.c3 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 127, ( a26.c1 + 0 ), a26.c3 != 'v0' ) % 127 ), a26.c3 + ( SELECT max ( a27.c11 ) FROM v13 AS a28 ORDER BY 127 ), a26.c1 + ( SELECT max ( a27.c9 ) FROM v7 AS a27 ORDER BY 18446744073709551488 ) FROM v0 AS a26 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN a29.c3 = 0 THEN 8 ELSE ( a29.c1 + 0 ) / 0 END ) AS y, count ( * ) FROM v0 AS a29 GROUP BY y ( a29.c3 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a30 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v20 ( c32 ) AS ( WITH v13 AS ( SELECT ( SELECT min ( c32 ) OVER ( ORDER BY 127 ) ORDER BY 127 ) FROM v0 AS a33 GROUP BY a33.c2 ORDER BY 255 ) SELECT 127 ORDER BY 127 ) SELECT * FROM v13 AS a31 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a34 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 WHERE ( a35.c3 + 18446744073709551615 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v36 ( c38 ) AS ( WITH v36 ( c39 ) AS ( WITH v40 AS ( WITH v41 AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551615 ) SELECT avg ( c38 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT 127 ORDER BY 127 ) SELECT c38, count ( * ), avg ( c38 ), max ( c38 + c38 * 255 ) FROM v36 AS a37 GROUP BY y ( c38, c38, c38, c38, c38, c38, c38, c38, c38, c38, c38, c38, c38, c38, c38, c38, c38 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a42.c1 FROM v13 AS a42 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 14: ambiguous column name: main.v7.c8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a25.c2
+  SELECT * FROM v0 AS a25 WHERE a25.c2 = a25.c2 != a25.c3 ORDER BY 1844674407370
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: ambiguous column name: main.v7.c8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: ambiguous column name: main.v7.c8
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: ambiguous column name: main.v7.c8
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: ambiguous column name: main.v7.c8
+ 
+INT: 0 
+Str: 
+Parse error near line 14: ambiguous column name: main.v7.c8
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 17: no such column: a25.c2
+  SELECT * FROM v0 AS a25 WHERE a25.c2 = a25.c2 != a25.c3 ORDER BY 1844674407370
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: ambiguous column name: main.v7.c8
+ 
+INT: 0 
+Str: 
+Parse error near line 20: ambiguous column name: main.v7.c8
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: ambiguous column name: main.v7.c8
+ 
+INT: 0 
+Str: 
+Parse error near line 29: ambiguous column name: main.v7.c8
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: ambiguous column name: main.v7.c8
+ 
+INT: 0 
+Str: 
+Parse error near line 41: ambiguous column name: main.v7.c8
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

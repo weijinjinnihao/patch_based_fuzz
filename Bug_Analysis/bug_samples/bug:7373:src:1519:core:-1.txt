@@ -1,0 +1,300 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 UNIQUE ); 
+CREATE INDEX i3 ON v0 ( c1 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE TABLE v5 ( c6, c7, c8 REFERENCES p1 ( c8 ) ); 
+CREATE INDEX i9 ON v5 ( c8 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a10 WHERE ( a10.c8 = 127 OR a10.c8 = 127 ) AND a10.c8 IN ( SELECT a10.c7 FROM ( SELECT * FROM ( SELECT 127 ORDER BY 127 ) AS y, ( SELECT a11.c1, avg ( a10.c6 ) + 127 FROM v0 AS a11 GROUP BY a11.c2 HAVING a10.c8 > a10.c6 % 9223372036854775807 >= 127 ORDER BY 0 ) AS y ON hex ( 10 ) OR 18446744073709551488 ORDER BY 127 ) AS y WHERE a10.c8 = 18446744073709551488 ORDER BY 0 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i12 ON v0 ( c2 ); 
+CREATE INDEX i13 ON v5 ( c6 ); 
+ALTER TABLE v5 DROP COLUMN c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a14 GROUP BY a14.c7 HAVING automatic_index ( * ) >= 255 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a15 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a16 WHERE a16.c7 > ( a16.c7 + - 127 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a17 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 GROUP BY a20.c1, a20.c2 < y ( a20.c2 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c2, count ( a22.c2 ) FROM v0 AS a22 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c8 FROM v5 AS a23 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 7: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+Parse error near line 9: cannot drop UNIQUE column: "c2"
+Runtime error near line 12: error in index i9 after drop column: no such column: c8
+BEGIN VERI 0
+Parse error near line 14: no such function: automatic_index
+  SELECT * FROM v5 AS a14 GROUP BY a14.c7 HAVING automatic_index ( * ) >= 255 OR
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 UNIQUE ); 
+; 
+; 
+CREATE TABLE v5 ( c6, c7, c8 REFERENCES p1 ( c8 ) ); 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a10 WHERE ( a10.c8 = 127 OR a10.c8 = 127 ) AND a10.c8 IN ( SELECT a10.c7 FROM ( SELECT * FROM ( SELECT 127 ORDER BY 127 ) AS y, ( SELECT a11.c1, avg ( a10.c6 ) + 127 FROM v0 AS a11 GROUP BY a11.c2 HAVING a10.c8 > a10.c6 % 9223372036854775807 >= 127 ORDER BY 0 ) AS y ON hex ( 10 ) OR 18446744073709551488 ORDER BY 127 ) AS y WHERE a10.c8 = 18446744073709551488 ORDER BY 0 ) ORDER BY 1; 
+SELECT 'END VERI 0'; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+; 
+ALTER TABLE v5 DROP COLUMN c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a14 GROUP BY a14.c7 HAVING automatic_index ( * ) >= 255 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a15 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a16 WHERE a16.c7 > ( a16.c7 + - 127 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a17 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 GROUP BY a20.c1, a20.c2 < y ( a20.c2 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a21 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c2, count ( a22.c2 ) FROM v0 AS a22 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c8 FROM v5 AS a23 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 7: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+Parse error near line 9: cannot drop UNIQUE column: "c2"
+BEGIN VERI 0
+Parse error near line 14: no such function: automatic_index
+  SELECT * FROM v5 AS a14 GROUP BY a14.c7 HAVING automatic_index ( * ) >= 255 OR
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a23.c8
+  SELECT a23.c8 FROM v5 AS a23 ORDER BY 18446744073709551488; 
+         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 7: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 7: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no such function: automatic_index
+  SELECT * FROM v5 AS a14 GROUP BY a14.c7 HAVING automatic_index ( * ) >= 255 OR
+                                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 14: no such function: automatic_index
+  SELECT * FROM v5 AS a14 GROUP BY a14.c7 HAVING automatic_index ( * ) >= 255 OR
+                                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 10 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 41: no such column: a23.c8
+  SELECT a23.c8 FROM v5 AS a23 ORDER BY 18446744073709551488; 
+         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,312 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE TABLE v5 ( c6 INTEGER PRIMARY KEY, c7 INT, c8 INT ) WITHOUT ROWID; 
+CREATE INDEX i9 ON v5 ( c8 ); 
+CREATE TABLE v10 ( c11, c12, c13 CHECK( c12 > 18446744073709551488 ) ); 
+CREATE INDEX i14 ON v0 ( c1 ); 
+CREATE INDEX i15 ON v5 ( c7 ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v10 ( c18 ) AS ( SELECT 18446744073709551488 ORDER BY 9223372036854775807 ) SELECT c18, c18 FROM v5 AS a16 RIGHT JOIN v5 AS a17 ON a17.c7 = c18 y ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+CREATE INDEX i19 ON v10 ( c11 ); 
+INSERT INTO v10 VALUES ( 9223372036854775807, 16, 18446744073709551488 ); 
+INSERT INTO v0 VALUES ( 16, 18446744073709551488, 18446744073709551488 ); 
+ALTER TABLE v5 DROP COLUMN c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 ORDER BY CASE WHEN a20.c1 != 'v1' THEN 2147483647 ELSE 2147483647 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a21.c13 ) FROM v10 AS a21 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v5 AS a23 NATURAL JOIN v0 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551488, 9223372036854775807, 9223372036854775807 ), ( 18446744073709551488, 18446744073709551488, 18446744073709551488 ), ( 9223372036854775807 = 'v1', 18446744073709551615, 0 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a25 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a26 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT quote ( a27.c7 ), quote ( a27.c8 ), 'x' FROM v5 AS a27 GROUP BY a27.c7, abs ( a27.c8 ) HAVING count ( * ) >= 65536 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c6 FROM v5 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v29 ( c31, c32, c33, c34, c35, c36 ) AS ( SELECT 18446744073709551488 y ORDER BY 2147483647 ) SELECT * FROM v29 AS a30 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a37, v0 AS a38 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 9: near "y": syntax error
+  OM v5 AS a16 RIGHT JOIN v5 AS a17 ON a17.c7 = c18 y ORDER BY 18446744073709551
+                                      error here ---^
+END VERI 0
+Runtime error near line 12: CHECK constraint failed: c12 > 18446744073709551488 (19)
+Runtime error near line 14: error in index i9 after drop column: no such column: c8
+BEGIN VERI 0
+16|1.84467440737096e+19|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a21.c13 ) FROM v10 AS a21 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: near "ORDER": syntax error
+  372036854775807 = 'v1', 18446744073709551615, 0 ) ORDER BY 4294967295; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: table v29 has 1 values for 6 columns
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+; 
+CREATE TABLE v5 ( c6 INTEGER PRIMARY KEY, c7 INT, c8 INT ) WITHOUT ROWID; 
+; 
+CREATE TABLE v10 ( c11, c12, c13 CHECK( c12 > 18446744073709551488 ) ); 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+WITH v10 ( c18 ) AS ( SELECT 18446744073709551488 ORDER BY 9223372036854775807 ) SELECT c18, c18 FROM v5 AS a16 RIGHT JOIN v5 AS a17 ON a17.c7 = c18 y ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+; 
+INSERT INTO v10 VALUES ( 9223372036854775807, 16, 18446744073709551488 ); 
+INSERT INTO v0 VALUES ( 16, 18446744073709551488, 18446744073709551488 ); 
+ALTER TABLE v5 DROP COLUMN c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 ORDER BY CASE WHEN a20.c1 != 'v1' THEN 2147483647 ELSE 2147483647 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a21.c13 ) FROM v10 AS a21 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22, v5 AS a23 NATURAL JOIN v0 AS a24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551488, 9223372036854775807, 9223372036854775807 ), ( 18446744073709551488, 18446744073709551488, 18446744073709551488 ), ( 9223372036854775807 = 'v1', 18446744073709551615, 0 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a25 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a26 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT quote ( a27.c7 ), quote ( a27.c8 ), 'x' FROM v5 AS a27 GROUP BY a27.c7, abs ( a27.c8 ) HAVING count ( * ) >= 65536 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c6 FROM v5 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v29 ( c31, c32, c33, c34, c35, c36 ) AS ( SELECT 18446744073709551488 y ORDER BY 2147483647 ) SELECT * FROM v29 AS a30 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a37, v0 AS a38 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 9: near "y": syntax error
+  OM v5 AS a16 RIGHT JOIN v5 AS a17 ON a17.c7 = c18 y ORDER BY 18446744073709551
+                                      error here ---^
+END VERI 0
+Runtime error near line 12: CHECK constraint failed: c12 > 18446744073709551488 (19)
+BEGIN VERI 0
+16|1.84467440737096e+19|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a21.c13 ) FROM v10 AS a21 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: near "ORDER": syntax error
+  372036854775807 = 'v1', 18446744073709551615, 0 ) ORDER BY 4294967295; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a27.c8
+  SELECT quote ( a27.c7 ), quote ( a27.c8 ), 'x' FROM v5 AS a27 GROUP BY a27.c7,
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: table v29 has 1 values for 6 columns
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 9: near "y": syntax error
+  OM v5 AS a16 RIGHT JOIN v5 AS a17 ON a17.c7 = c18 y ORDER BY 18446744073709551
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 9: near "y": syntax error
+  OM v5 AS a16 RIGHT JOIN v5 AS a17 ON a17.c7 = c18 y ORDER BY 18446744073709551
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+16|1.84467440737096e+19|1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+16|1.84467440737096e+19|1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a21.c13 ) FROM v10 AS a21 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a21.c13 ) FROM v10 AS a21 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 16048576
+Str: 
+Parse error near line 25: near "ORDER": syntax error
+  372036854775807 = 'v1', 18446744073709551615, 0 ) ORDER BY 4294967295; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 25: near "ORDER": syntax error
+  372036854775807 = 'v1', 18446744073709551615, 0 ) ORDER BY 4294967295; 
+                                      error here ---^
+ 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such column: a27.c8
+  SELECT quote ( a27.c7 ), quote ( a27.c8 ), 'x' FROM v5 AS a27 GROUP BY a27.c7,
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: table v29 has 1 values for 6 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 40: table v29 has 1 values for 6 columns
+ 
+INT: 0 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

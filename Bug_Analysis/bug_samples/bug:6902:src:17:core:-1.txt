@@ -1,0 +1,305 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE VIEW v6 AS SELECT * FROM v0 AS a7 ORDER BY 3175546974276630385; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i16 ON v6 ( c2 ); 
+ALTER TABLE v0 ADD COLUMN c17; 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+CREATE INDEX i21 ON v6 ( c1 ); 
+CREATE INDEX i22 ON v6 ( c2 ); 
+ALTER TABLE v12 DROP COLUMN c15; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c11, count ( c2 ) FROM v6 AS a23 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c19, count ( ( NOT ( a24.c19 IS NULL ) ) AND ( NOT ( a24.c20 IS NULL ) ) ) FROM v18 AS a24 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25, v0 AS a26 NATURAL JOIN v6 AS a27 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c1, a29.c3 FROM v6 AS a28 RIGHT JOIN v0 AS a29 ON a29.c2 = c15 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 3175546974276630385 ORDER BY 3175546974276630385 ) AS y, v0 AS a31 ON ( ( hex ( 127 ) ) % 100 ) != 3175546974276630385 OR 100 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a32.c11 IS NULL ) ) AND ( NOT ( a32.c9 IS NULL ) ) ) FROM v8 AS a32 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a33 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c1, count ( a34.c2 ) FROM v0 AS a34 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i4 after drop column: no such column: c2
+Parse error near line 8: views may not be indexed
+Runtime error near line 10: no such module: fts5
+Parse error near line 11: views may not be indexed
+Parse error near line 12: views may not be indexed
+BEGIN VERI 0
+Parse error near line 15: no such column: c11
+  SELECT c11, count ( c2 ) FROM v6 AS a23 ORDER BY 3175546974276630385; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v18
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: ambiguous column name: c1
+  SELECT c1, a29.c3 FROM v6 AS a28 RIGHT JOIN v0 AS a29 ON a29.c2 = c15 ORDER BY
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+  OT ( a32.c9 IS NULL ) ) ) FROM v8 AS a32 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+; 
+CREATE VIEW v6 AS SELECT * FROM v0 AS a7 ORDER BY 3175546974276630385; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+ALTER TABLE v0 ADD COLUMN c17; 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+; 
+; 
+ALTER TABLE v12 DROP COLUMN c15; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c11, count ( c2 ) FROM v6 AS a23 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c19, count ( ( NOT ( a24.c19 IS NULL ) ) AND ( NOT ( a24.c20 IS NULL ) ) ) FROM v18 AS a24 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25, v0 AS a26 NATURAL JOIN v6 AS a27 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c1, a29.c3 FROM v6 AS a28 RIGHT JOIN v0 AS a29 ON a29.c2 = c15 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 3175546974276630385 ORDER BY 3175546974276630385 ) AS y, v0 AS a31 ON ( ( hex ( 127 ) ) % 100 ) != 3175546974276630385 OR 100 ORDER BY 3175546974276630385; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a32.c11 IS NULL ) ) AND ( NOT ( a32.c9 IS NULL ) ) ) FROM v8 AS a32 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a33 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c1, count ( a34.c2 ) FROM v0 AS a34 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: no such module: fts5
+BEGIN VERI 0
+Parse error near line 15: no such column: c11
+  SELECT c11, count ( c2 ) FROM v6 AS a23 ORDER BY 3175546974276630385; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v18
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: ambiguous column name: c1
+  SELECT c1, a29.c3 FROM v6 AS a28 RIGHT JOIN v0 AS a29 ON a29.c2 = c15 ORDER BY
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+  OT ( a32.c9 IS NULL ) ) ) FROM v8 AS a32 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a34.c2
+  SELECT a34.c1, count ( a34.c2 ) FROM v0 AS a34 ORDER BY 127; 
+                         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such column: c11
+  SELECT c11, count ( c2 ) FROM v6 AS a23 ORDER BY 3175546974276630385; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 15: no such column: c11
+  SELECT c11, count ( c2 ) FROM v6 AS a23 ORDER BY 3175546974276630385; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: ambiguous column name: c1
+  SELECT c1, a29.c3 FROM v6 AS a28 RIGHT JOIN v0 AS a29 ON a29.c2 = c15 ORDER BY
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 24: ambiguous column name: c1
+  SELECT c1, a29.c3 FROM v6 AS a28 RIGHT JOIN v0 AS a29 ON a29.c2 = c15 ORDER BY
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+  OT ( a32.c9 IS NULL ) ) ) FROM v8 AS a32 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+  OT ( a32.c9 IS NULL ) ) ) FROM v8 AS a32 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such column: a34.c2
+  SELECT a34.c1, count ( a34.c2 ) FROM v0 AS a34 ORDER BY 127; 
+                         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

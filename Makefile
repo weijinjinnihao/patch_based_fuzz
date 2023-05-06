@@ -11,7 +11,7 @@ MINIMIZER_OBJS := AFL/query-minimizer.o $(COMM_OBJS)
 
 export CC = g++
 ASAN_FLAGS := -fsanitize=address
-export CFLAGS = -std=c++17 -fpermissive -static-libstdc++ -g -O3 $(ASAN_FLAGS)
+export CFLAGS = -std=c++17 -fpermissive -static-libstdc++ -g -O0 $(ASAN_FLAGS)
 LDFLAGS = -ldl
 
 

@@ -1,0 +1,298 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT c3 COLLATE hex FROM v0 AS a5 ORDER BY 18446744073709518848; 
+CREATE VIEW v6 AS WITH v7 ( c9 ) AS ( WITH v10 ( c11 ) AS ( WITH v7 ( c12, c13, c14, c15, c16, c17 ) AS ( SELECT 18446744073709518848 y ORDER BY ( ( c14 + 18446744073709518848 ) % 18446744073709518848 ) < 0 ) SELECT 0 ORDER BY 10 ) SELECT 0 ORDER BY 18446744073709551488 ) SELECT * FROM v7 AS a8 ORDER BY 18446744073709518848; 
+CREATE TABLE v18 ( c19 INTEGER PRIMARY KEY, c20, c21 UNIQUE ); 
+CREATE TABLE IF NOT EXISTS v22 ( c23, c24, c25 ); 
+CREATE INDEX i26 ON v22 ( c24 ); 
+CREATE INDEX i27 ON v22 ( c25 ); 
+CREATE INDEX i28 ON v6 ( c14 ); 
+ALTER TABLE v22 DROP COLUMN c24; 
+ALTER TABLE v22 DROP COLUMN c25; 
+CREATE VIRTUAL TABLE v29 USING fts5 ( c30, c31 ); 
+ALTER TABLE v4 DROP COLUMN c1; 
+CREATE INDEX i32 ON v18 ( c20 ); 
+CREATE INDEX i33 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v34 ( c36 ) AS ( WITH v37 AS ( WITH v34 AS ( SELECT 16 y ORDER BY 18446744073709551615 ) SELECT avg ( c1 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709518848 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v34 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a38 GROUP BY y ( a38.c2 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( WITH v40 ( c42 ) AS ( SELECT 'x' ORDER BY 255 ) SELECT * FROM v40 AS a41 LEFT JOIN ( SELECT count ( * ) AS y, a39.c25 FROM ( v40 AS a43 INNER JOIN v40 AS a44 ON a39.c24 = c42 ) AS y WHERE a39.c25 > 18446744073709551615 GROUP BY c42 ORDER BY 16 ) AS y ON a39.c24 = y ( a39.c23 ) ORDER BY 18446744073709551615 ) ) FROM v22 AS a39 ORDER BY a39.c24 COLLATE NOCASE, a39.c25; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a45, v6 AS a46 WHERE a45.c1 = a45.c1 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v47 ( c49 ) AS ( WITH v50 ( c51 ) AS ( WITH v52 AS ( SELECT ( SELECT min ( c49 ) OVER ( ORDER BY 18446744073709551615 IN v52 ) ORDER BY 0 ) FROM v50 AS a53 GROUP BY c51 ORDER BY 0 ) SELECT 0 ORDER BY 16 ) SELECT 18446744073709551615 ORDER BY 18446744073709518848 ) SELECT * FROM v47 AS a48 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a54 GROUP BY a54.c25, abs ( a54.c24 ) HAVING count ( * ) >= 18446744073709518848 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a55 GROUP BY a55.c30 HAVING a55.c31 > a55.c31 % 18446744073709551615 >= 18446744073709551615 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a56, v29 AS a57 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a58 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: views may not be indexed
+Runtime error near line 9: error in index i26 after drop column: no such column: c24
+Runtime error near line 10: error in index i27 after drop column: no such column: c25
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: cannot drop column from view "v4"
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such function: y
+  SELECT * FROM v0 AS a38 GROUP BY y ( a38.c2 ) ORDER BY 18446744073709551488; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v29
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v29
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such table: v29
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT c3 COLLATE hex FROM v0 AS a5 ORDER BY 18446744073709518848; 
+CREATE VIEW v6 AS WITH v7 ( c9 ) AS ( WITH v10 ( c11 ) AS ( WITH v7 ( c12, c13, c14, c15, c16, c17 ) AS ( SELECT 18446744073709518848 y ORDER BY ( ( c14 + 18446744073709518848 ) % 18446744073709518848 ) < 0 ) SELECT 0 ORDER BY 10 ) SELECT 0 ORDER BY 18446744073709551488 ) SELECT * FROM v7 AS a8 ORDER BY 18446744073709518848; 
+CREATE TABLE v18 ( c19 INTEGER PRIMARY KEY, c20, c21 UNIQUE ); 
+CREATE TABLE IF NOT EXISTS v22 ( c23, c24, c25 ); 
+; 
+; 
+; 
+ALTER TABLE v22 DROP COLUMN c24; 
+ALTER TABLE v22 DROP COLUMN c25; 
+CREATE VIRTUAL TABLE v29 USING fts5 ( c30, c31 ); 
+ALTER TABLE v4 DROP COLUMN c1; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+WITH v34 ( c36 ) AS ( WITH v37 AS ( WITH v34 AS ( SELECT 16 y ORDER BY 18446744073709551615 ) SELECT avg ( c1 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709518848 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v34 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a38 GROUP BY y ( a38.c2 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( WITH v40 ( c42 ) AS ( SELECT 'x' ORDER BY 255 ) SELECT * FROM v40 AS a41 LEFT JOIN ( SELECT count ( * ) AS y, a39.c25 FROM ( v40 AS a43 INNER JOIN v40 AS a44 ON a39.c24 = c42 ) AS y WHERE a39.c25 > 18446744073709551615 GROUP BY c42 ORDER BY 16 ) AS y ON a39.c24 = y ( a39.c23 ) ORDER BY 18446744073709551615 ) ) FROM v22 AS a39 ORDER BY a39.c24 COLLATE NOCASE, a39.c25; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a45, v6 AS a46 WHERE a45.c1 = a45.c1 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v47 ( c49 ) AS ( WITH v50 ( c51 ) AS ( WITH v52 AS ( SELECT ( SELECT min ( c49 ) OVER ( ORDER BY 18446744073709551615 IN v52 ) ORDER BY 0 ) FROM v50 AS a53 GROUP BY c51 ORDER BY 0 ) SELECT 0 ORDER BY 16 ) SELECT 18446744073709551615 ORDER BY 18446744073709518848 ) SELECT * FROM v47 AS a48 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a54 GROUP BY a54.c25, abs ( a54.c24 ) HAVING count ( * ) >= 18446744073709518848 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a55 GROUP BY a55.c30 HAVING a55.c31 > a55.c31 % 18446744073709551615 >= 18446744073709551615 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a56, v29 AS a57 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a58 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: cannot drop column from view "v4"
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such function: y
+  SELECT * FROM v0 AS a38 GROUP BY y ( a38.c2 ) ORDER BY 18446744073709551488; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a54.c25
+  SELECT * FROM v22 AS a54 GROUP BY a54.c25, abs ( a54.c24 ) HAVING count ( * ) 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v29
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v29
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such table: v29
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such function: y
+  SELECT * FROM v0 AS a38 GROUP BY y ( a38.c2 ) ORDER BY 18446744073709551488; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 19: no such function: y
+  SELECT * FROM v0 AS a38 GROUP BY y ( a38.c2 ) ORDER BY 18446744073709551488; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 31: no such column: a54.c25
+  SELECT * FROM v22 AS a54 GROUP BY a54.c25, abs ( a54.c24 ) HAVING count ( * ) 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such table: v29
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such table: v29
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such table: v29
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no such table: v29
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: no such table: v29
+ 
+INT: 0 
+Str: 
+Parse error near line 43: no such table: v29
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

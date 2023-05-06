@@ -1,0 +1,306 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c4 > 16 ), c4 ); 
+INSERT INTO v0 VALUES ( 127, 16, 0, 18446744073709551488 ), ( 18446744073709551488, 16, 16, 16 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE TABLE v6 ( c7, c8, c9, c10, CHECK( c8 > 16 ) ); 
+INSERT INTO v0 VALUES ( 16, 16, 16, 127 ), ( 16, 8, 16, 16 ); 
+CREATE INDEX i11 ON v0 ( c1 ); 
+CREATE INDEX i12 ON v6 ( c8 ); 
+INSERT INTO v6 VALUES ( 0, 9223372036854775807, 16, 0 ); 
+CREATE INDEX i13 ON v6 ( c9 ); 
+INSERT INTO v6 VALUES ( 16, 'v0' ), ( 18446744073709551615, '2GAT123' ), ( ( ( ( ( c8 + - 16 ) % 16 ) != 100 + 0 ) % 1207000000 ), 'x' ); 
+INSERT INTO v0 VALUES ( 16, 10, 18446744073709551488, 16 ); 
+ALTER TABLE v6 DROP c9; 
+SELECT 'BEGIN VERI 0'; 
+WITH v14 ( c16 ) AS ( SELECT 'e' ORDER BY 10 ) SELECT * FROM v14 AS a15 LEFT JOIN ( SELECT count ( * ) AS y, c16 FROM ( v14 AS a17 NATURAL JOIN v14 AS a18 ) AS y WHERE c16 > 16 GROUP BY c16 ORDER BY 4294967295 ) AS y ON c16 = y ( c16 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c10, a20.c9 FROM v6 AS a19 RIGHT JOIN v6 AS a20 ON a20.c7 = a20.c10 > 4294967295 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a21.c2 ) FROM v0 AS a21 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a23 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c9 FROM v6 AS a24 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c2 != 'v0' FROM v0 AS a25 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 GROUP BY y ( a26.c3, a26.c4, a26.c1, a26.c2, a26.c1, a26.c4, a26.c4, a26.c1, a26.c3, a26.c4, a26.c2, a26.c3, a26.c2, a26.c2, a26.c4, a26.c1, a26.c2 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY a27.c1 COLLATE NOCASE; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v28 ( c30 ) AS ( SELECT 0 ORDER BY 16 ) SELECT * FROM v28 AS a29 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: CHECK constraint failed: c4 > 16 (19)
+Runtime error near line 5: CHECK constraint failed: c4 > 16 (19)
+Parse error near line 10: no such column: c8
+  ), ( 18446744073709551615, '2GAT123' ), ( ( ( ( ( c8 + - 16 ) % 16 ) != 100 + 
+                                      error here ---^
+Runtime error near line 11: CHECK constraint failed: c4 > 16 (19)
+Runtime error near line 12: error in index i13 after drop column: no such column: c9
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+16
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such function: y
+  SELECT * FROM v0 AS a26 GROUP BY y ( a26.c3, a26.c4, a26.c1, a26.c2, a26.c1, a
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c4 > 16 ), c4 ); 
+INSERT INTO v0 VALUES ( 127, 16, 0, 18446744073709551488 ), ( 18446744073709551488, 16, 16, 16 ); 
+; 
+CREATE TABLE v6 ( c7, c8, c9, c10, CHECK( c8 > 16 ) ); 
+INSERT INTO v0 VALUES ( 16, 16, 16, 127 ), ( 16, 8, 16, 16 ); 
+; 
+; 
+INSERT INTO v6 VALUES ( 0, 9223372036854775807, 16, 0 ); 
+; 
+INSERT INTO v6 VALUES ( 16, 'v0' ), ( 18446744073709551615, '2GAT123' ), ( ( ( ( ( c8 + - 16 ) % 16 ) != 100 + 0 ) % 1207000000 ), 'x' ); 
+INSERT INTO v0 VALUES ( 16, 10, 18446744073709551488, 16 ); 
+ALTER TABLE v6 DROP c9; 
+SELECT 'BEGIN VERI 0'; 
+WITH v14 ( c16 ) AS ( SELECT 'e' ORDER BY 10 ) SELECT * FROM v14 AS a15 LEFT JOIN ( SELECT count ( * ) AS y, c16 FROM ( v14 AS a17 NATURAL JOIN v14 AS a18 ) AS y WHERE c16 > 16 GROUP BY c16 ORDER BY 4294967295 ) AS y ON c16 = y ( c16 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c10, a20.c9 FROM v6 AS a19 RIGHT JOIN v6 AS a20 ON a20.c7 = a20.c10 > 4294967295 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a21.c2 ) FROM v0 AS a21 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a23 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c9 FROM v6 AS a24 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c2 != 'v0' FROM v0 AS a25 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 GROUP BY y ( a26.c3, a26.c4, a26.c1, a26.c2, a26.c1, a26.c4, a26.c4, a26.c1, a26.c3, a26.c4, a26.c2, a26.c3, a26.c2, a26.c2, a26.c4, a26.c1, a26.c2 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY a27.c1 COLLATE NOCASE; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v28 ( c30 ) AS ( SELECT 0 ORDER BY 16 ) SELECT * FROM v28 AS a29 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: CHECK constraint failed: c4 > 16 (19)
+Runtime error near line 5: CHECK constraint failed: c4 > 16 (19)
+Parse error near line 10: no such column: c8
+  ), ( 18446744073709551615, '2GAT123' ), ( ( ( ( ( c8 + - 16 ) % 16 ) != 100 + 
+                                      error here ---^
+Runtime error near line 11: CHECK constraint failed: c4 > 16 (19)
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a20.c9
+  SELECT a19.c10, a20.c9 FROM v6 AS a19 RIGHT JOIN v6 AS a20 ON a20.c7 = a20.c10
+                  ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a24.c9
+  SELECT a24.c9 FROM v6 AS a24 ORDER BY 9223372036854775807; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such function: y
+  SELECT * FROM v0 AS a26 GROUP BY y ( a26.c3, a26.c4, a26.c1, a26.c2, a26.c1, a
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no such column: a20.c9
+  SELECT a19.c10, a20.c9 FROM v6 AS a19 RIGHT JOIN v6 AS a20 ON a20.c7 = a20.c10
+                  ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+16
+ 
+INT: 0 
+Str: 
+Parse error near line 29: no such column: a24.c9
+  SELECT a24.c9 FROM v6 AS a24 ORDER BY 9223372036854775807; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no such function: y
+  SELECT * FROM v0 AS a26 GROUP BY y ( a26.c3, a26.c4, a26.c1, a26.c2, a26.c1, a
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: no such function: y
+  SELECT * FROM v0 AS a26 GROUP BY y ( a26.c3, a26.c4, a26.c1, a26.c2, a26.c1, a
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,314 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 REFERENCES t1 DEFAULT NULL, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c15 + 18446744073709551488 ) % 18446744073709551488 ) != 0 ) ) WITHOUT ROWID; 
+CREATE INDEX i28 ON v0 ( c23 ); 
+CREATE INDEX i29 ON v0 ( c18 ); 
+ALTER TABLE v0 DROP c23; 
+CREATE INDEX i30 ON v0 ( c3 ); 
+CREATE INDEX i31 ON v0 ( c8 ); 
+CREATE INDEX i32 ON v0 ( c7 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ) FROM v0 AS a33 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( SELECT a34.c3 WHERE a34.c11 = NULL AND a34.c25 >= a34.c1 ORDER BY 0 ) ) FROM v0 AS a34 WHERE a34.c11 = 255 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 WHERE a35.c23 = a35.c15 NOT NULL ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c39 ) AS ( SELECT 'amx' ORDER BY 0 ) SELECT 'x', a37.c4 FROM v0 AS a37 RIGHT JOIN v0 AS a38 ON a38.c24 = a37.c15 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v40 AS ( SELECT hex ( ) y ORDER BY 18446744073709551615 ) SELECT c8 IS NULL, c2 FROM v40 AS a41, v40 AS a42 NATURAL JOIN v40 AS a43 ORDER BY c5 COLLATE nocase; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c24, a44.c2, 'v1' FROM v0 AS a44 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a46.c2, a46.c7 FROM v0 AS a45 LEFT JOIN v0 AS a46 ON a46.c15 = a45.c20 WHERE hex ( 8 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v47 AS ( SELECT c11 FROM v47 AS a49 WHERE c22 LIKE 'x' ORDER BY 0 ) SELECT * FROM v47 AS a48 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 4: error in index i28 after drop column: no such column: c23
+BEGIN VERI 0
+Parse error near line 9: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+  ERE a34.c11 = NULL AND a34.c25 >= a34.c1 ORDER BY 0 ) ) FROM v0 AS a34 WHERE a
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a36 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v0 ( c39 ) AS ( SELECT 'amx' ORDER BY 0 ) SELECT 'x', a37.c4 FROM v0 AS a
+                               error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: wrong number of arguments to function hex()
+  WITH v40 AS ( SELECT hex ( ) y ORDER BY 18446744073709551615 ) SELECT c8 IS NU
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  ECT a44.c24, a44.c2, 'v1' FROM v0 AS a44 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: circular reference: v47
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 REFERENCES t1 DEFAULT NULL, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c15 + 18446744073709551488 ) % 18446744073709551488 ) != 0 ) ) WITHOUT ROWID; 
+; 
+; 
+ALTER TABLE v0 DROP c23; 
+; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ) FROM v0 AS a33 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( SELECT a34.c3 WHERE a34.c11 = NULL AND a34.c25 >= a34.c1 ORDER BY 0 ) ) FROM v0 AS a34 WHERE a34.c11 = 255 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 WHERE a35.c23 = a35.c15 NOT NULL ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c39 ) AS ( SELECT 'amx' ORDER BY 0 ) SELECT 'x', a37.c4 FROM v0 AS a37 RIGHT JOIN v0 AS a38 ON a38.c24 = a37.c15 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v40 AS ( SELECT hex ( ) y ORDER BY 18446744073709551615 ) SELECT c8 IS NULL, c2 FROM v40 AS a41, v40 AS a42 NATURAL JOIN v40 AS a43 ORDER BY c5 COLLATE nocase; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c24, a44.c2, 'v1' FROM v0 AS a44 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a46.c2, a46.c7 FROM v0 AS a45 LEFT JOIN v0 AS a46 ON a46.c15 = a45.c20 WHERE hex ( 8 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v47 AS ( SELECT c11 FROM v47 AS a49 WHERE c22 LIKE 'x' ORDER BY 0 ) SELECT * FROM v47 AS a48 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 9: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+  ERE a34.c11 = NULL AND a34.c25 >= a34.c1 ORDER BY 0 ) ) FROM v0 AS a34 WHERE a
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: a35.c23
+  SELECT * FROM v0 AS a35 WHERE a35.c23 = a35.c15 NOT NULL ORDER BY 8; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 26
+  SELECT * FROM v0 AS a36 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v0 ( c39 ) AS ( SELECT 'amx' ORDER BY 0 ) SELECT 'x', a37.c4 FROM v0 AS a
+                               error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: wrong number of arguments to function hex()
+  WITH v40 AS ( SELECT hex ( ) y ORDER BY 18446744073709551615 ) SELECT c8 IS NU
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  ECT a44.c24, a44.c2, 'v1' FROM v0 AS a44 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: circular reference: v47
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 9: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 9: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+  ERE a34.c11 = NULL AND a34.c25 >= a34.c1 ORDER BY 0 ) ) FROM v0 AS a34 WHERE a
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+  ERE a34.c11 = NULL AND a34.c25 >= a34.c1 ORDER BY 0 ) ) FROM v0 AS a34 WHERE a
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 18: no such column: a35.c23
+  SELECT * FROM v0 AS a35 WHERE a35.c23 = a35.c15 NOT NULL ORDER BY 8; 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a36 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 26
+  SELECT * FROM v0 AS a36 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v0 ( c39 ) AS ( SELECT 'amx' ORDER BY 0 ) SELECT 'x', a37.c4 FROM v0 AS a
+                               error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v0 ( c39 ) AS ( SELECT 'amx' ORDER BY 0 ) SELECT 'x', a37.c4 FROM v0 AS a
+                               error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: wrong number of arguments to function hex()
+  WITH v40 AS ( SELECT hex ( ) y ORDER BY 18446744073709551615 ) SELECT c8 IS NU
+                       ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 27: wrong number of arguments to function hex()
+  WITH v40 AS ( SELECT hex ( ) y ORDER BY 18446744073709551615 ) SELECT c8 IS NU
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  ECT a44.c24, a44.c2, 'v1' FROM v0 AS a44 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  ECT a44.c24, a44.c2, 'v1' FROM v0 AS a44 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: circular reference: v47
+ 
+INT: 0 
+Str: 
+Parse error near line 36: circular reference: v47
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

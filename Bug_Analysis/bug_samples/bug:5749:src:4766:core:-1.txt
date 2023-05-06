@@ -1,0 +1,292 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER DEFAULT 'v0', c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c9 + 0 ) % 0 ) != 0 ) ) WITHOUT ROWID; 
+CREATE INDEX i28 ON v0 ( c22 ); 
+CREATE INDEX i29 ON v0 ( c24 ); 
+CREATE INDEX i30 ON v0 ( c16 ); 
+CREATE INDEX i31 ON v0 ( c19, c1, c13, c27, c15 ); 
+ALTER TABLE v0 DROP c15; 
+CREATE INDEX i32 ON v0 ( c7 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33, v0 AS a34 NATURAL JOIN v0 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 WHERE a37.c18 IS NOT NULL ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c3, count ( ( NOT ( a38.c15 IS NULL ) ) AND ( NOT ( a38.c6 IS NULL ) ) ) FROM v0 AS a38 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 GROUP BY ( ( SELECT * FROM v0 AS a41 WHERE a41.c25 = a41.c1 || a41.c15 ORDER BY 18446744073709551615 ) % 10 ), abs ( a40.c7 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42, v0 AS a43 NATURAL JOIN v0 AS a44 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a45 ORDER BY ( 0, count ( * ) ) != 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: error in index i31 after drop column: no such column: c15
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a36 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 27
+  FROM v0 AS a37 WHERE a37.c18 IS NOT NULL ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 27
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: sub-select returns 27 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 54
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: row value misused
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER DEFAULT 'v0', c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c9 + 0 ) % 0 ) != 0 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c15; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33, v0 AS a34 NATURAL JOIN v0 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 WHERE a37.c18 IS NOT NULL ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c3, count ( ( NOT ( a38.c15 IS NULL ) ) AND ( NOT ( a38.c6 IS NULL ) ) ) FROM v0 AS a38 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a40 GROUP BY ( ( SELECT * FROM v0 AS a41 WHERE a41.c25 = a41.c1 || a41.c15 ORDER BY 18446744073709551615 ) % 10 ), abs ( a40.c7 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42, v0 AS a43 NATURAL JOIN v0 AS a44 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a45 ORDER BY ( 0, count ( * ) ) != 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 26
+  SELECT * FROM v0 AS a36 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 26
+  FROM v0 AS a37 WHERE a37.c18 IS NOT NULL ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a38.c15
+  SELECT a38.c3, count ( ( NOT ( a38.c15 IS NULL ) ) AND ( NOT ( a38.c6 IS NULL 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 26
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a41.c15
+  SELECT * FROM v0 AS a41 WHERE a41.c25 = a41.c1 || a41.c15 ORDER BY 18446744073
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 52
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: row value misused
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a36 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 26
+  SELECT * FROM v0 AS a36 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 27
+  FROM v0 AS a37 WHERE a37.c18 IS NOT NULL ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 26
+  FROM v0 AS a37 WHERE a37.c18 IS NOT NULL ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such column: a38.c15
+  SELECT a38.c3, count ( ( NOT ( a38.c15 IS NULL ) ) AND ( NOT ( a38.c6 IS NULL 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 27
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 26
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 30: sub-select returns 27 columns - expected 1
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no such column: a41.c15
+  SELECT * FROM v0 AS a41 WHERE a41.c25 = a41.c1 || a41.c15 ORDER BY 18446744073
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 54
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 52
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 36: row value misused
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

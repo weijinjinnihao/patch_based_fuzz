@@ -1,0 +1,296 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c3 > 8 ), c4 ); 
+INSERT INTO v0 VALUES ( 8, 8, 8, 8 ), ( 8, 2147483647, 18446744073709551615, 2147483647 ); 
+CREATE TABLE v5 ( c6, c7, c8, c9, CHECK( c8 > c7 = c8 >= 18446744073709551488 ) ); 
+INSERT INTO v0 VALUES ( 8, 18446744073709551488, 18446744073709551615, 16 ), ( 18446744073709551488, 3.000000, 18446744073709551488, 18446744073709551615 ); 
+CREATE INDEX i10 ON v5 ( c6 ); 
+INSERT INTO v5 VALUES ( 255, 3.000000, 18446744073709551615, 8 ); 
+CREATE INDEX i11 ON v0 ( c3 ); 
+CREATE INDEX i12 ON v5 ( c9 ); 
+CREATE INDEX i13 ON v0 ( c1 ); 
+INSERT INTO v5 VALUES ( 18446744073709551488, 0, 18446744073709551488, ( ( c6 + 9223372036854775807 ) > 255 ) ); 
+ALTER TABLE v5 DROP c6; 
+CREATE INDEX i14 ON v5 ( c9 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a15 GROUP BY y ( a15.c9 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a16, v5 AS a17 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 GROUP BY a18.c3 HAVING count ( * ) >= 8 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c8, count ( ( NOT ( a19.c6 IS NULL ) ) AND ( NOT ( a19.c9 IS NULL ) ) ) FROM v5 AS a19 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a20 WHERE a20.c8 IS 8 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v22 AS ( SELECT * FROM v22 AS a24 ORDER BY c9, c7 ) SELECT * FROM v22 AS a23 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c9, max ( a25.c7 || a25.c8 ) FROM v5 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a26, v5 AS a27 WHERE a26.c6 > a26.c9 AND a27.c7 = a26.c9 ORDER BY a27.c8 COLLATE binary; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: CHECK constraint failed: c3 > 8 (19)
+Parse error near line 10: no such column: c6
+  8446744073709551488, 0, 18446744073709551488, ( ( c6 + 9223372036854775807 ) >
+                                      error here ---^
+Runtime error near line 11: error in index i10 after drop column: no such column: c6
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+255|3.0|1.84467440737096e+19|8|255|3.0|1.84467440737096e+19|8
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+255|3.0|1.84467440737096e+19|8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: circular reference: v22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+   max ( a25.c7 || a25.c8 ) FROM v5 AS a25 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c3 > 8 ), c4 ); 
+INSERT INTO v0 VALUES ( 8, 8, 8, 8 ), ( 8, 2147483647, 18446744073709551615, 2147483647 ); 
+CREATE TABLE v5 ( c6, c7, c8, c9, CHECK( c8 > c7 = c8 >= 18446744073709551488 ) ); 
+INSERT INTO v0 VALUES ( 8, 18446744073709551488, 18446744073709551615, 16 ), ( 18446744073709551488, 3.000000, 18446744073709551488, 18446744073709551615 ); 
+; 
+INSERT INTO v5 VALUES ( 255, 3.000000, 18446744073709551615, 8 ); 
+; 
+; 
+; 
+INSERT INTO v5 VALUES ( 18446744073709551488, 0, 18446744073709551488, ( ( c6 + 9223372036854775807 ) > 255 ) ); 
+ALTER TABLE v5 DROP c6; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a15 GROUP BY y ( a15.c9 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a16, v5 AS a17 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a18 GROUP BY a18.c3 HAVING count ( * ) >= 8 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c8, count ( ( NOT ( a19.c6 IS NULL ) ) AND ( NOT ( a19.c9 IS NULL ) ) ) FROM v5 AS a19 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a20 WHERE a20.c8 IS 8 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v22 AS ( SELECT * FROM v22 AS a24 ORDER BY c9, c7 ) SELECT * FROM v22 AS a23 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c9, max ( a25.c7 || a25.c8 ) FROM v5 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a26, v5 AS a27 WHERE a26.c6 > a26.c9 AND a27.c7 = a26.c9 ORDER BY a27.c8 COLLATE binary; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: CHECK constraint failed: c3 > 8 (19)
+Parse error near line 10: no such column: c6
+  8446744073709551488, 0, 18446744073709551488, ( ( c6 + 9223372036854775807 ) >
+                                      error here ---^
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+3.0|1.84467440737096e+19|8|3.0|1.84467440737096e+19|8
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a19.c6
+  SELECT a19.c8, count ( ( NOT ( a19.c6 IS NULL ) ) AND ( NOT ( a19.c9 IS NULL )
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+3.0|1.84467440737096e+19|8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: circular reference: v22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+   max ( a25.c7 || a25.c8 ) FROM v5 AS a25 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a26.c6
+  SELECT * FROM v5 AS a26, v5 AS a27 WHERE a26.c6 > a26.c9 AND a27.c7 = a26.c9 O
+                             error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+255|3.0|1.84467440737096e+19|8|255|3.0|1.84467440737096e+19|8
+ 
+INT: 0 
+Str: 
+3.0|1.84467440737096e+19|8|3.0|1.84467440737096e+19|8
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no such column: a19.c6
+  SELECT a19.c8, count ( ( NOT ( a19.c6 IS NULL ) ) AND ( NOT ( a19.c9 IS NULL )
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+255|3.0|1.84467440737096e+19|8
+ 
+INT: 0 
+Str: 
+3.0|1.84467440737096e+19|8
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: circular reference: v22
+ 
+INT: 0 
+Str: 
+Parse error near line 32: circular reference: v22
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 35: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+   max ( a25.c7 || a25.c8 ) FROM v5 AS a25 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+   max ( a25.c7 || a25.c8 ) FROM v5 AS a25 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 41: no such column: a26.c6
+  SELECT * FROM v5 AS a26, v5 AS a27 WHERE a26.c6 > a26.c9 AND a27.c7 = a26.c9 O
+                             error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

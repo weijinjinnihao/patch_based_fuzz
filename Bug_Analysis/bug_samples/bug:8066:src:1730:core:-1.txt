@@ -1,0 +1,320 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1 ), CHECK( c2 != c1 ), CHECK( c1 != c3 ) ) WITHOUT ROWID; 
+BEGIN; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+UPDATE v0 SET c3 = c3 || c3 WHERE c3 = c1 || c3; 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE INDEX i6 ON v0 ( c3 ); 
+END; 
+CREATE TABLE v7 ( c8, c9, c10, c11 INT, PRIMARY KEY ( c11, c11 ) ) WITHOUT ROWID; 
+CREATE INDEX i12 ON v7 ( c8 ); 
+INSERT INTO v0 VALUES ( 127, 127, 127, 8 ); 
+ALTER TABLE v7 DROP COLUMN c8; 
+CREATE INDEX i13 ON v7 ( c9 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a14.c11, sum ( NULL, NULL ) AS y FROM v7 AS a14 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a15 GROUP BY y ( a15.c8, a15.c10, a15.c11, a15.c8, a15.c10, a15.c11, a15.c11, a15.c9, a15.c10, a15.c10, a15.c9, a15.c9, a15.c11, a15.c11, a15.c9, a15.c8, a15.c9 ) ORDER BY 5.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c9, a16.c2 FROM v0 AS a16 RIGHT JOIN v7 AS a17 ON a17.c9 = 9223372036854775807 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 GROUP BY a20.c1 HAVING automatic_index ( * ) >= 8 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a21 GROUP BY 127 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a22, v0 AS a23 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c10, max ( a24.c10 || a24.c11 ) FROM v7 AS a24 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a25 WHERE a25.c8 > a25.c9 % 18446744073709518848 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 10 IS NOT 127 ) OR NOT ( 4294967295 IS 18446744073709518848 OR ( a26.c8 = 18446744073709551488 ) ) ) IS 127 FROM v7 AS a26 y ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: table v0 has 3 columns but 4 values were supplied
+Runtime error near line 11: error in index i12 after drop column: no such column: c8
+BEGIN VERI 0
+Parse error near line 14: wrong number of arguments to function sum()
+  SELECT a14.c11, sum ( NULL, NULL ) AS y FROM v7 AS a14 ORDER BY 127; 
+                  ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such function: y
+  SELECT * FROM v7 AS a15 GROUP BY y ( a15.c8, a15.c10, a15.c11, a15.c8, a15.c10
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such function: automatic_index
+  SELECT * FROM v0 AS a20 GROUP BY a20.c1 HAVING automatic_index ( * ) >= 8 ORDE
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st GROUP BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: near "y": syntax error
+   18446744073709551488 ) ) ) IS 127 FROM v7 AS a26 y ORDER BY 18446744073709551
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1 ), CHECK( c2 != c1 ), CHECK( c1 != c3 ) ) WITHOUT ROWID; 
+BEGIN; 
+; 
+UPDATE v0 SET c3 = c3 || c3 WHERE c3 = c1 || c3; 
+; 
+; 
+END; 
+CREATE TABLE v7 ( c8, c9, c10, c11 INT, PRIMARY KEY ( c11, c11 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v0 VALUES ( 127, 127, 127, 8 ); 
+ALTER TABLE v7 DROP COLUMN c8; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a14.c11, sum ( NULL, NULL ) AS y FROM v7 AS a14 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a15 GROUP BY y ( a15.c8, a15.c10, a15.c11, a15.c8, a15.c10, a15.c11, a15.c11, a15.c9, a15.c10, a15.c10, a15.c9, a15.c9, a15.c11, a15.c11, a15.c9, a15.c8, a15.c9 ) ORDER BY 5.500000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c9, a16.c2 FROM v0 AS a16 RIGHT JOIN v7 AS a17 ON a17.c9 = 9223372036854775807 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 GROUP BY a20.c1 HAVING automatic_index ( * ) >= 8 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a21 GROUP BY 127 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a22, v0 AS a23 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c10, max ( a24.c10 || a24.c11 ) FROM v7 AS a24 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a25 WHERE a25.c8 > a25.c9 % 18446744073709518848 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 10 IS NOT 127 ) OR NOT ( 4294967295 IS 18446744073709518848 OR ( a26.c8 = 18446744073709551488 ) ) ) IS 127 FROM v7 AS a26 y ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: table v0 has 3 columns but 4 values were supplied
+BEGIN VERI 0
+Parse error near line 14: wrong number of arguments to function sum()
+  SELECT a14.c11, sum ( NULL, NULL ) AS y FROM v7 AS a14 ORDER BY 127; 
+                  ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a15.c8
+  SELECT * FROM v7 AS a15 GROUP BY y ( a15.c8, a15.c10, a15.c11, a15.c8, a15.c10
+                         error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such function: automatic_index
+  SELECT * FROM v0 AS a20 GROUP BY a20.c1 HAVING automatic_index ( * ) >= 8 ORDE
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st GROUP BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a25.c8
+  SELECT * FROM v7 AS a25 WHERE a25.c8 > a25.c9 % 18446744073709518848 ORDER BY 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: near "y": syntax error
+   18446744073709551488 ) ) ) IS 127 FROM v7 AS a26 y ORDER BY 18446744073709551
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: wrong number of arguments to function sum()
+  SELECT a14.c11, sum ( NULL, NULL ) AS y FROM v7 AS a14 ORDER BY 127; 
+                  ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 14: wrong number of arguments to function sum()
+  SELECT a14.c11, sum ( NULL, NULL ) AS y FROM v7 AS a14 ORDER BY 127; 
+                  ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no such function: y
+  SELECT * FROM v7 AS a15 GROUP BY y ( a15.c8, a15.c10, a15.c11, a15.c8, a15.c10
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 17: no such column: a15.c8
+  SELECT * FROM v7 AS a15 GROUP BY y ( a15.c8, a15.c10, a15.c11, a15.c8, a15.c10
+                         error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no such function: automatic_index
+  SELECT * FROM v0 AS a20 GROUP BY a20.c1 HAVING automatic_index ( * ) >= 8 ORDE
+                                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: no such function: automatic_index
+  SELECT * FROM v0 AS a20 GROUP BY a20.c1 HAVING automatic_index ( * ) >= 8 ORDE
+                                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st GROUP BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 29: 1st GROUP BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 38: no such column: a25.c8
+  SELECT * FROM v7 AS a25 WHERE a25.c8 > a25.c9 % 18446744073709518848 ORDER BY 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: near "y": syntax error
+   18446744073709551488 ) ) ) IS 127 FROM v7 AS a26 y ORDER BY 18446744073709551
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: near "y": syntax error
+   18446744073709551488 ) ) ) IS 127 FROM v7 AS a26 y ORDER BY 18446744073709551
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

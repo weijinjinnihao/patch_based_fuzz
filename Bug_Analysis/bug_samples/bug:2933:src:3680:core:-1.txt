@@ -1,0 +1,306 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 18446744073709551615; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c8, c10, c9, c9 ), c10 UNIQUE ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+ALTER TABLE v7 DROP COLUMN c8; 
+CREATE INDEX i15 ON v7 ( c9 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE TABLE v16 ( c17 INTEGER PRIMARY KEY ON CONFLICT REPLACE, c18 DEFAULT - 18446744073709551615, c19 BLOB DEFAULT x'616263', FOREIGN KEY ( c18, c18 ) REFERENCES t2 ( c17, c17 ) ON UPDATE CASCADE ); 
+CREATE INDEX i20 ON v16 ( c18 ); 
+CREATE VIRTUAL TABLE v21 USING fts5 ( c22, c23 ); 
+ALTER TABLE v16 DROP COLUMN c18; 
+CREATE INDEX i24 ON v16 ( c19 ); 
+CREATE INDEX i25 ON v7 ( c9 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a26 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a27, v21 AS a28 NATURAL JOIN v5 AS a29 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v21 ( c31 ) AS ( SELECT 18446744073709551615 ORDER BY 100 ) SELECT * FROM v16 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a32 NATURAL JOIN v7 AS a33 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c23, count ( ( NOT ( a34.c2 IS NULL ) ) AND ( NOT ( a34.c2 IS NULL ) ) ), count ( ( NOT ( a35.c22 IS NULL ) ) AND ( - 18446744073709551615, 'x', 'v0', 18446744073709551615 ) ) FROM v21 AS a34 LEFT JOIN v21 AS a35 ON a34.c2 = a35.c2 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c2 AS y, a36.c2 || a36.c3 AS y FROM v0 AS a36 WHERE + a36.c2 = 'v1' ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c38 ) AS ( SELECT 0 GROUP BY a37.c1 HAVING automatic_index ( * ) >= 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a37 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a39 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: foreign key on c9 should reference only one column of table t1
+   TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c8, c10, c9, c9 ), c10 
+                                      error here ---^
+Parse error near line 6: no such table: v7
+Parse error near line 7: no such table: main.v7
+Runtime error near line 8: error in index i4 after drop column: no such column: c3
+Runtime error near line 11: no such module: fts5
+Runtime error near line 12: error in table v16 after drop column: unknown column "c18" in foreign key definition
+Parse error near line 14: no such table: main.v7
+BEGIN VERI 0
+Parse error near line 16: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v21
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v21
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v21
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such function: automatic_index
+  H v0 ( c38 ) AS ( SELECT 0 GROUP BY a37.c1 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such table: v7
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 18446744073709551615; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c8, c10, c9, c9 ), c10 UNIQUE ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+ALTER TABLE v7 DROP COLUMN c8; 
+; 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE TABLE v16 ( c17 INTEGER PRIMARY KEY ON CONFLICT REPLACE, c18 DEFAULT - 18446744073709551615, c19 BLOB DEFAULT x'616263', FOREIGN KEY ( c18, c18 ) REFERENCES t2 ( c17, c17 ) ON UPDATE CASCADE ); 
+; 
+CREATE VIRTUAL TABLE v21 USING fts5 ( c22, c23 ); 
+ALTER TABLE v16 DROP COLUMN c18; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a26 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a27, v21 AS a28 NATURAL JOIN v5 AS a29 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v21 ( c31 ) AS ( SELECT 18446744073709551615 ORDER BY 100 ) SELECT * FROM v16 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a32 NATURAL JOIN v7 AS a33 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c23, count ( ( NOT ( a34.c2 IS NULL ) ) AND ( NOT ( a34.c2 IS NULL ) ) ), count ( ( NOT ( a35.c22 IS NULL ) ) AND ( - 18446744073709551615, 'x', 'v0', 18446744073709551615 ) ) FROM v21 AS a34 LEFT JOIN v21 AS a35 ON a34.c2 = a35.c2 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c2 AS y, a36.c2 || a36.c3 AS y FROM v0 AS a36 WHERE + a36.c2 = 'v1' ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c38 ) AS ( SELECT 0 GROUP BY a37.c1 HAVING automatic_index ( * ) >= 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a37 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a39 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: foreign key on c9 should reference only one column of table t1
+   TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c8, c10, c9, c9 ), c10 
+                                      error here ---^
+Parse error near line 6: no such table: v7
+Runtime error near line 11: no such module: fts5
+Runtime error near line 12: error in table v16 after drop column: unknown column "c18" in foreign key definition
+BEGIN VERI 0
+Parse error near line 16: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v21
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v21
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v21
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a36.c3
+  SELECT a36.c2 AS y, a36.c2 || a36.c3 AS y FROM v0 AS a36 WHERE + a36.c2 = 'v1'
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such function: automatic_index
+  H v0 ( c38 ) AS ( SELECT 0 GROUP BY a37.c1 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such table: v7
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such table: v7
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such table: v7
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such table: v21
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such table: v21
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no such table: v21
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no such table: v21
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such table: v21
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such table: v21
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 37: no such column: a36.c3
+  SELECT a36.c2 AS y, a36.c2 || a36.c3 AS y FROM v0 AS a36 WHERE + a36.c2 = 'v1'
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such function: automatic_index
+  H v0 ( c38 ) AS ( SELECT 0 GROUP BY a37.c1 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 40: no such function: automatic_index
+  H v0 ( c38 ) AS ( SELECT 0 GROUP BY a37.c1 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: no such table: v7
+ 
+INT: 0 
+Str: 
+Parse error near line 43: no such table: v7
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,299 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 DEFAULT 'v0', c2, c3 AS( c2 + c2 - c2 ) REFERENCES fts5, c4 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE VIEW v6 ( c7, c8, c9, c10, c11 ) AS SELECT * FROM v0 AS a12 ORDER BY 18446744073709551488; 
+CREATE INDEX i13 ON v6 ( c8 ); 
+CREATE VIEW v14 AS SELECT c4, sum ( c1 ) AS y FROM v0 AS a15 NATURAL JOIN v0 AS a16 GROUP BY c2 ORDER BY 18446744073709551488; 
+CREATE TABLE v17 ( c18 INTEGER PRIMARY KEY, c19, c20 UNIQUE ); 
+CREATE INDEX i21 ON v14 ( c3 ); 
+CREATE TABLE v22 ( c23, c24, c25 ); 
+CREATE TABLE v26 ( c27, c28, c29 REFERENCES t1 DEFAULT 18446744073709551488, c30 REAL DEFAULT 18446744073709551615 ); 
+ALTER TABLE v22 DROP COLUMN c25; 
+CREATE VIRTUAL TABLE v31 USING fts5 ( c32, c33 ); 
+CREATE INDEX i34 ON v0 ( c3 ); 
+CREATE INDEX i35 ON v14 ( c4 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a36 NATURAL JOIN v14 AS a37 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c19 FROM v17 AS a38 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a39 ORDER BY count ( * ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a40 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a41, v26 AS a42 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a43.c1 || a43.c2 ) FROM v0 AS a43 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c4, a44.c3 FROM v0 AS a44 RIGHT JOIN v17 AS a45 ON a44.c4 = ( ( ( a45.c18 + 0 ) % 18446744073709551488 ) == 0 ) % 16 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v46 ( c48 ) AS ( SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v46 AS a47 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a49, v0 AS a50 NATURAL JOIN v6 AS a51 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a52 ORDER BY + a52.c3; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: views may not be indexed
+Parse error near line 7: views may not be indexed
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: views may not be indexed
+Runtime error near line 14: error in index i34 after drop column: no such column: c3
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: misuse of aggregate: count()
+  SELECT * FROM v14 AS a39 ORDER BY count ( * ); 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: expected 5 columns for 'v6' but got 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: expected 5 columns for 'v6' but got 4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 DEFAULT 'v0', c2, c3 AS( c2 + c2 - c2 ) REFERENCES fts5, c4 ); 
+; 
+CREATE VIEW v6 ( c7, c8, c9, c10, c11 ) AS SELECT * FROM v0 AS a12 ORDER BY 18446744073709551488; 
+; 
+CREATE VIEW v14 AS SELECT c4, sum ( c1 ) AS y FROM v0 AS a15 NATURAL JOIN v0 AS a16 GROUP BY c2 ORDER BY 18446744073709551488; 
+CREATE TABLE v17 ( c18 INTEGER PRIMARY KEY, c19, c20 UNIQUE ); 
+; 
+CREATE TABLE v22 ( c23, c24, c25 ); 
+CREATE TABLE v26 ( c27, c28, c29 REFERENCES t1 DEFAULT 18446744073709551488, c30 REAL DEFAULT 18446744073709551615 ); 
+ALTER TABLE v22 DROP COLUMN c25; 
+CREATE VIRTUAL TABLE v31 USING fts5 ( c32, c33 ); 
+; 
+; 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a36 NATURAL JOIN v14 AS a37 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c19 FROM v17 AS a38 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a39 ORDER BY count ( * ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a40 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a41, v26 AS a42 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a43.c1 || a43.c2 ) FROM v0 AS a43 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a44.c4, a44.c3 FROM v0 AS a44 RIGHT JOIN v17 AS a45 ON a44.c4 = ( ( ( a45.c18 + 0 ) % 18446744073709551488 ) == 0 ) % 16 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v46 ( c48 ) AS ( SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v46 AS a47 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a49, v0 AS a50 NATURAL JOIN v6 AS a51 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a52 ORDER BY + a52.c3; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 11: no such module: fts5
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: misuse of aggregate: count()
+  SELECT * FROM v14 AS a39 ORDER BY count ( * ); 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: expected 5 columns for 'v6' but got 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a44.c3
+  SELECT a44.c4, a44.c3 FROM v0 AS a44 RIGHT JOIN v17 AS a45 ON a44.c4 = ( ( ( a
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: expected 5 columns for 'v6' but got 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such column: a52.c3
+  SELECT * FROM v0 AS a52 ORDER BY + a52.c3; 
+                       error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: misuse of aggregate: count()
+  SELECT * FROM v14 AS a39 ORDER BY count ( * ); 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 22: misuse of aggregate: count()
+  SELECT * FROM v14 AS a39 ORDER BY count ( * ); 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: expected 5 columns for 'v6' but got 4
+ 
+INT: 0 
+Str: 
+Parse error near line 28: expected 5 columns for 'v6' but got 3
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 34: no such column: a44.c3
+  SELECT a44.c4, a44.c3 FROM v0 AS a44 RIGHT JOIN v17 AS a45 ON a44.c4 = ( ( ( a
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: expected 5 columns for 'v6' but got 4
+ 
+INT: 0 
+Str: 
+Parse error near line 40: expected 5 columns for 'v6' but got 3
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 43: no such column: a52.c3
+  SELECT * FROM v0 AS a52 ORDER BY + a52.c3; 
+                       error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

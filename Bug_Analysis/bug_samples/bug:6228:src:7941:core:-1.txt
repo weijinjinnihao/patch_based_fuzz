@@ -1,0 +1,314 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3 + 10 ) ) WITHOUT ROWID; 
+ATTACH 'x' AS sqlite_master; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+CREATE TABLE v6 ( c7, c8 CHECK( c7 > c9 % 10 >= 2147483647 ), c9, c10, CHECK( c8 > 4294967295 ) ); 
+CREATE INDEX i11 ON v0 ( c1 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i12 ON v6 ( c10 ); 
+CREATE INDEX i13 ON v0 ( c3 ); 
+ALTER TABLE v6 DROP c10; 
+CREATE TABLE v14 ( c15, c16, c17 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v18 AS ( SELECT c2 FROM v18 AS a20 WHERE c1 LIKE 'x' ORDER BY 18446744071562067968 ) SELECT * FROM v18 AS a19 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a21 ORDER BY ( ( a21.c10 + 18446744073709551615 ) % 4294967295 ) != 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a22 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c10, a24.c10 IS NOT NULL FROM v0 AS a23 LEFT JOIN v6 AS a24 ON a23.c2 = y ( a23.c3 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v25 ( c27 ) AS ( WITH v28 ( c29, c30, c31, c32, c33, c34 ) AS ( SELECT 10 y ORDER BY 10 ) SELECT 8 ORDER BY 0 ) SELECT * FROM v25 AS a26 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a35.c16 IS NULL ) ) AND ( NOT ( a35.c16 IS NULL ) ) ) FROM v14 AS a35 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c9, count ( a36.c8 ) FROM v6 AS a36 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a37, v6 AS a38 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a40 WHERE a40.c7 IS NOT NULL >= 4294967295 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: expressions prohibited in PRIMARY KEY and UNIQUE constraints
+Parse error near line 3: no such table: main.v0
+Parse error near line 4: no such table: main.v0
+Parse error near line 6: no such table: main.v0
+Parse error near line 7: no such table: v0
+Parse error near line 9: no such table: main.v0
+Runtime error near line 10: error in index i12 after drop column: no such column: c10
+BEGIN VERI 0
+Parse error near line 13: circular reference: v18
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v6 AS a22 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+   AS ( SELECT 10 y ORDER BY 10 ) SELECT 8 ORDER BY 0 ) SELECT * FROM v25 AS a26
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 4
+  0 WHERE a40.c7 IS NOT NULL >= 4294967295 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3 + 10 ) ) WITHOUT ROWID; 
+ATTACH 'x' AS sqlite_master; 
+; 
+; 
+CREATE TABLE v6 ( c7, c8 CHECK( c7 > c9 % 10 >= 2147483647 ), c9, c10, CHECK( c8 > 4294967295 ) ); 
+; 
+ALTER TABLE v0 DROP c2; 
+; 
+; 
+ALTER TABLE v6 DROP c10; 
+CREATE TABLE v14 ( c15, c16, c17 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v18 AS ( SELECT c2 FROM v18 AS a20 WHERE c1 LIKE 'x' ORDER BY 18446744071562067968 ) SELECT * FROM v18 AS a19 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a21 ORDER BY ( ( a21.c10 + 18446744073709551615 ) % 4294967295 ) != 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a22 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c10, a24.c10 IS NOT NULL FROM v0 AS a23 LEFT JOIN v6 AS a24 ON a23.c2 = y ( a23.c3 ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v25 ( c27 ) AS ( WITH v28 ( c29, c30, c31, c32, c33, c34 ) AS ( SELECT 10 y ORDER BY 10 ) SELECT 8 ORDER BY 0 ) SELECT * FROM v25 AS a26 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a35.c16 IS NULL ) ) AND ( NOT ( a35.c16 IS NULL ) ) ) FROM v14 AS a35 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a36.c9, count ( a36.c8 ) FROM v6 AS a36 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a37, v6 AS a38 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a40 WHERE a40.c7 IS NOT NULL >= 4294967295 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: expressions prohibited in PRIMARY KEY and UNIQUE constraints
+Parse error near line 7: no such table: v0
+BEGIN VERI 0
+Parse error near line 13: circular reference: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: a21.c10
+  SELECT * FROM v6 AS a21 ORDER BY ( ( a21.c10 + 18446744073709551615 ) % 429496
+                         error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v6 AS a22 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+   AS ( SELECT 10 y ORDER BY 10 ) SELECT 8 ORDER BY 0 ) SELECT * FROM v25 AS a26
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 3
+  0 WHERE a40.c7 IS NOT NULL >= 4294967295 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: circular reference: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 13: circular reference: v18
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 16: no such column: a21.c10
+  SELECT * FROM v6 AS a21 ORDER BY ( ( a21.c10 + 18446744073709551615 ) % 429496
+                         error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v6 AS a22 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v6 AS a22 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+   AS ( SELECT 10 y ORDER BY 10 ) SELECT 8 ORDER BY 0 ) SELECT * FROM v25 AS a26
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+   AS ( SELECT 10 y ORDER BY 10 ) SELECT 8 ORDER BY 0 ) SELECT * FROM v25 AS a26
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 4
+  0 WHERE a40.c7 IS NOT NULL >= 4294967295 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 3
+  0 WHERE a40.c7 IS NOT NULL >= 4294967295 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

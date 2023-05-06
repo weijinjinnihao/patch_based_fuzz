@@ -1,0 +1,264 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17 ); 
+CREATE TABLE v18 ( c19, c20, c21 REFERENCES p1 ( c20 ) ); 
+CREATE TABLE v22 ( c23, c24, c25, c26 REFERENCES p1 ( c23 ) ); 
+CREATE INDEX i27 ON v18 ( c20 ); 
+ALTER TABLE v22 DROP COLUMN c23; 
+CREATE INDEX i28 ON v0 ( c8 ); 
+CREATE INDEX i29 ON v0 ( c6 ); 
+ALTER TABLE v18 DROP COLUMN c20; 
+CREATE INDEX i30 ON v0 ( c1 ); 
+CREATE INDEX i31 ON v0 ( c6 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT count ( * ) FROM v0 AS a33, v0 AS a34 WHERE a32.c26 = a32.c26 AND a34.c11 = a33.c15 ORDER BY 10 ), a32.c25, a32.c26, 'v0' FROM v22 AS a32 GROUP BY a32.c26, a32.c26 < a32.c24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a35, v18 AS a36 NATURAL JOIN v22 AS a37 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a38 GROUP BY a38.c25, a38.c25, count ( a38.c24 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT *, 'v0' FROM v0 AS a39 LEFT JOIN v0 AS a40 ON a40.c4 = 10 AND a39.c2 = 10 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a41 GROUP BY a41.c20, a41.c20 < a41.c20 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c19, count ( ( NOT ( a43.c19 IS NULL ) ) AND ( NOT ( a42.c23 IS NULL ) ) ) FROM v22 AS a42 LEFT JOIN v18 AS a43 ON a43.c19 = a43.c20 WHERE a43.c21 != 18446744071562067968 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a44 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a45.c19 FROM v18 AS a45 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a46 GROUP BY a46.c14, abs ( a46.c6 ) HAVING count ( * ) >= 18446744073709551488 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a47, v0 AS a48 NATURAL JOIN v18 AS a49 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in index i27 after drop column: no such column: c20
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a42.c23
+  , count ( ( NOT ( a43.c19 IS NULL ) ) AND ( NOT ( a42.c23 IS NULL ) ) ) FROM v
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17 ); 
+CREATE TABLE v18 ( c19, c20, c21 REFERENCES p1 ( c20 ) ); 
+CREATE TABLE v22 ( c23, c24, c25, c26 REFERENCES p1 ( c23 ) ); 
+; 
+ALTER TABLE v22 DROP COLUMN c23; 
+; 
+; 
+ALTER TABLE v18 DROP COLUMN c20; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT count ( * ) FROM v0 AS a33, v0 AS a34 WHERE a32.c26 = a32.c26 AND a34.c11 = a33.c15 ORDER BY 10 ), a32.c25, a32.c26, 'v0' FROM v22 AS a32 GROUP BY a32.c26, a32.c26 < a32.c24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a35, v18 AS a36 NATURAL JOIN v22 AS a37 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a38 GROUP BY a38.c25, a38.c25, count ( a38.c24 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT *, 'v0' FROM v0 AS a39 LEFT JOIN v0 AS a40 ON a40.c4 = 10 AND a39.c2 = 10 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a41 GROUP BY a41.c20, a41.c20 < a41.c20 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c19, count ( ( NOT ( a43.c19 IS NULL ) ) AND ( NOT ( a42.c23 IS NULL ) ) ) FROM v22 AS a42 LEFT JOIN v18 AS a43 ON a43.c19 = a43.c20 WHERE a43.c21 != 18446744071562067968 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a44 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a45.c19 FROM v18 AS a45 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a46 GROUP BY a46.c14, abs ( a46.c6 ) HAVING count ( * ) >= 18446744073709551488 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a47, v0 AS a48 NATURAL JOIN v18 AS a49 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a41.c20
+  SELECT * FROM v18 AS a41 GROUP BY a41.c20, a41.c20 < a41.c20 ORDER BY 18446744
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a42.c23
+  , count ( ( NOT ( a43.c19 IS NULL ) ) AND ( NOT ( a42.c23 IS NULL ) ) ) FROM v
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 24: no such column: a41.c20
+  SELECT * FROM v18 AS a41 GROUP BY a41.c20, a41.c20 < a41.c20 ORDER BY 18446744
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such column: a42.c23
+  , count ( ( NOT ( a43.c19 IS NULL ) ) AND ( NOT ( a42.c23 IS NULL ) ) ) FROM v
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: no such column: a42.c23
+  , count ( ( NOT ( a43.c19 IS NULL ) ) AND ( NOT ( a42.c23 IS NULL ) ) ) FROM v
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

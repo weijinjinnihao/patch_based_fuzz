@@ -1,0 +1,300 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 UNIQUE ON CONFLICT FAIL, c3 ); 
+CREATE VIEW IF NOT EXISTS v4 AS SELECT ( c1 + 1.000000 ) % 1.000000 COLLATE NOCASE FROM v0 AS a5 ORDER BY 1.000000; 
+CREATE INDEX i6 ON v0 ( c3 ); 
+CREATE VIEW v7 AS SELECT * FROM v0 AS a8 ORDER BY 1.000000; 
+CREATE TABLE v9 ( c10 INTEGER PRIMARY KEY, c11, c12 UNIQUE ); 
+CREATE INDEX i13 ON v9 ( c12 ); 
+CREATE TABLE v14 ( c15, c16, c17 ); 
+CREATE INDEX i18 ON v9 ( c11 ); 
+CREATE INDEX i19 ON v14 ( c16 ); 
+ALTER TABLE v14 DROP COLUMN c15; 
+ALTER TABLE v14 DROP COLUMN c16; 
+CREATE VIRTUAL TABLE v20 USING fts5 ( c21, c22 ); 
+ALTER TABLE v20 DROP COLUMN c21; 
+CREATE INDEX i23 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a24 GROUP BY a24.c16, abs ( a24.c17 ) HAVING count ( * ) >= 18446744073709518848 ORDER BY 1.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a25 GROUP BY 1.000000 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a26, v9 AS a27 NATURAL JOIN v0 AS a28 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 1.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v29 ( c31 ) AS ( SELECT 0 ORDER BY 0 ) SELECT x'616263' FROM v29 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c22 FROM v20 AS a32 ORDER BY 1.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a33, v0 AS a34 NATURAL JOIN v14 AS a35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a36 WHERE a36.c22 != a36.c21 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.c22, max ( a37.c21 || a37.c22 ) FROM v20 AS a37 ORDER BY 1.000000; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 11: error in index i19 after drop column: no such column: c16
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: no such table: v20
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v29 ( c31 ) AS ( SELECT 0 ORDER BY 0 ) SELECT x'616263' FROM v29 AS a30 O
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such table: v20
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 UNIQUE ON CONFLICT FAIL, c3 ); 
+CREATE VIEW IF NOT EXISTS v4 AS SELECT ( c1 + 1.000000 ) % 1.000000 COLLATE NOCASE FROM v0 AS a5 ORDER BY 1.000000; 
+; 
+CREATE VIEW v7 AS SELECT * FROM v0 AS a8 ORDER BY 1.000000; 
+CREATE TABLE v9 ( c10 INTEGER PRIMARY KEY, c11, c12 UNIQUE ); 
+; 
+CREATE TABLE v14 ( c15, c16, c17 ); 
+; 
+; 
+ALTER TABLE v14 DROP COLUMN c15; 
+ALTER TABLE v14 DROP COLUMN c16; 
+CREATE VIRTUAL TABLE v20 USING fts5 ( c21, c22 ); 
+ALTER TABLE v20 DROP COLUMN c21; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a24 GROUP BY a24.c16, abs ( a24.c17 ) HAVING count ( * ) >= 18446744073709518848 ORDER BY 1.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a25 GROUP BY 1.000000 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a26, v9 AS a27 NATURAL JOIN v0 AS a28 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 1.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v29 ( c31 ) AS ( SELECT 0 ORDER BY 0 ) SELECT x'616263' FROM v29 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c22 FROM v20 AS a32 ORDER BY 1.000000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a33, v0 AS a34 NATURAL JOIN v14 AS a35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v20 AS a36 WHERE a36.c22 != a36.c21 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.c22, max ( a37.c21 || a37.c22 ) FROM v20 AS a37 ORDER BY 1.000000; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: no such table: v20
+BEGIN VERI 0
+Parse error near line 16: no such column: a24.c16
+  SELECT * FROM v14 AS a24 GROUP BY a24.c16, abs ( a24.c17 ) HAVING count ( * ) 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v29 ( c31 ) AS ( SELECT 0 ORDER BY 0 ) SELECT x'616263' FROM v29 AS a30 O
+                            error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such table: v20
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 16: no such column: a24.c16
+  SELECT * FROM v14 AS a24 GROUP BY a24.c16, abs ( a24.c17 ) HAVING count ( * ) 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v29 ( c31 ) AS ( SELECT 0 ORDER BY 0 ) SELECT x'616263' FROM v29 AS a30 O
+                            error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v29 ( c31 ) AS ( SELECT 0 ORDER BY 0 ) SELECT x'616263' FROM v29 AS a30 O
+                            error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such table: v20
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such table: v20
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such table: v20
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no such table: v20
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such table: v20
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no such table: v20
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: no such table: v20
+ 
+INT: 0 
+Str: 
+Parse error near line 43: no such table: v20
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

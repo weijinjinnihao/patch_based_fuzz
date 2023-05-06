@@ -1,0 +1,314 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE TABLE v5 ( c6, c7 INTEGER PRIMARY KEY ON CONFLICT ABORT, c8, PRIMARY KEY ( c8, c6 ) ); 
+CREATE VIEW v9 AS WITH v5 ( c11 ) AS ( WITH v5 AS ( SELECT ( SELECT min ( c6 ) OVER ( ORDER BY 18446744071562067968 ) ORDER BY 4294967295 ) FROM v5 AS a12 GROUP BY c7 ORDER BY 18446744071562067968 ) SELECT 4294967295 ORDER BY 100 ) SELECT * FROM v5 AS a10 ORDER BY 100; 
+CREATE TABLE v13 ( c14 INTEGER PRIMARY KEY, c15, c16 UNIQUE ); 
+CREATE TABLE v17 ( c18, c19, c20 ); 
+ALTER TABLE v13 DROP COLUMN c16; 
+CREATE INDEX i21 ON v5 ( c8 ); 
+ALTER TABLE v9 DROP COLUMN c13; 
+CREATE INDEX i22 ON v13 ( c16 ); 
+CREATE VIRTUAL TABLE v23 USING fts5 ( c24, c25 ); 
+CREATE INDEX i26 ON v23 ( c25 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE INDEX i27 ON v13 ( c16 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c2 + 8 FROM v0 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a29 GROUP BY y ( a29.c24 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 ORDER BY a30.c3 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a31 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c3, count ( ( NOT ( a32.c2 IS NULL ) ) AND ( NOT ( a32.c3 IS NULL ) ) ) FROM v0 AS a32 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v33 ( c35 ) AS ( SELECT 8 ORDER BY 100 ) SELECT * FROM v33 AS a34 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a36 GROUP BY 100 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a37 ORDER BY max ( a37.c20 + a37.c20 * 18446744071562067968 ) + 100, min ( a37.c20, avg ( a37.c20 ) ) + 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a38, v17 AS a39 NATURAL JOIN v17 AS a40 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v41 AS ( SELECT * FROM v41 AS a42 ORDER BY c13, c7 ) SELECT c24 COLLATE nocase ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: table "v5" has more than one primary key
+Parse error near line 7: cannot drop UNIQUE column: "c16"
+Parse error near line 8: no such table: main.v5
+Parse error near line 9: cannot drop column from view "v9"
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: no such table: main.v23
+Runtime error near line 13: error in index i4 after drop column: no such column: c3
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v23
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st GROUP BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: misuse of aggregate: avg()
+  20 * 18446744071562067968 ) + 100, min ( a37.c20, avg ( a37.c20 ) ) + 100; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such column: c24
+  ELECT * FROM v41 AS a42 ORDER BY c13, c7 ) SELECT c24 COLLATE nocase ORDER BY 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE TABLE v5 ( c6, c7 INTEGER PRIMARY KEY ON CONFLICT ABORT, c8, PRIMARY KEY ( c8, c6 ) ); 
+CREATE VIEW v9 AS WITH v5 ( c11 ) AS ( WITH v5 AS ( SELECT ( SELECT min ( c6 ) OVER ( ORDER BY 18446744071562067968 ) ORDER BY 4294967295 ) FROM v5 AS a12 GROUP BY c7 ORDER BY 18446744071562067968 ) SELECT 4294967295 ORDER BY 100 ) SELECT * FROM v5 AS a10 ORDER BY 100; 
+CREATE TABLE v13 ( c14 INTEGER PRIMARY KEY, c15, c16 UNIQUE ); 
+CREATE TABLE v17 ( c18, c19, c20 ); 
+ALTER TABLE v13 DROP COLUMN c16; 
+; 
+ALTER TABLE v9 DROP COLUMN c13; 
+; 
+CREATE VIRTUAL TABLE v23 USING fts5 ( c24, c25 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c3; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c2 + 8 FROM v0 AS a28 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a29 GROUP BY y ( a29.c24 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 ORDER BY a30.c3 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a31 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c3, count ( ( NOT ( a32.c2 IS NULL ) ) AND ( NOT ( a32.c3 IS NULL ) ) ) FROM v0 AS a32 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v33 ( c35 ) AS ( SELECT 8 ORDER BY 100 ) SELECT * FROM v33 AS a34 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a36 GROUP BY 100 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a37 ORDER BY max ( a37.c20 + a37.c20 * 18446744071562067968 ) + 100, min ( a37.c20, avg ( a37.c20 ) ) + 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a38, v17 AS a39 NATURAL JOIN v17 AS a40 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v41 AS ( SELECT * FROM v41 AS a42 ORDER BY c13, c7 ) SELECT c24 COLLATE nocase ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: table "v5" has more than one primary key
+Parse error near line 7: cannot drop UNIQUE column: "c16"
+Parse error near line 9: cannot drop column from view "v9"
+Runtime error near line 11: no such module: fts5
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a30.c3
+  SELECT * FROM v0 AS a30 ORDER BY a30.c3 COLLATE binary; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a32.c3
+  SELECT a32.c3, count ( ( NOT ( a32.c2 IS NULL ) ) AND ( NOT ( a32.c3 IS NULL )
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st GROUP BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: misuse of aggregate: avg()
+  20 * 18446744071562067968 ) + 100, min ( a37.c20, avg ( a37.c20 ) ) + 100; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such column: c24
+  ELECT * FROM v41 AS a42 ORDER BY c13, c7 ) SELECT c24 COLLATE nocase ORDER BY 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such table: v23
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such table: v23
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 22: no such column: a30.c3
+  SELECT * FROM v0 AS a30 ORDER BY a30.c3 COLLATE binary; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such column: a32.c3
+  SELECT a32.c3, count ( ( NOT ( a32.c2 IS NULL ) ) AND ( NOT ( a32.c3 IS NULL )
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st GROUP BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st GROUP BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: misuse of aggregate: avg()
+  20 * 18446744071562067968 ) + 100, min ( a37.c20, avg ( a37.c20 ) ) + 100; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: misuse of aggregate: avg()
+  20 * 18446744071562067968 ) + 100, min ( a37.c20, avg ( a37.c20 ) ) + 100; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such table: v23
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no such table: v23
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: no such column: c24
+  ELECT * FROM v41 AS a42 ORDER BY c13, c7 ) SELECT c24 COLLATE nocase ORDER BY 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 43: no such column: c24
+  ELECT * FROM v41 AS a42 ORDER BY c13, c7 ) SELECT c24 COLLATE nocase ORDER BY 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

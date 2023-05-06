@@ -1,0 +1,288 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 UNIQUE ); 
+CREATE INDEX i3 ON v0 ( c2 ); 
+CREATE TABLE v4 ( c5, c6, c7 REFERENCES p1 ( c5 ) ); 
+CREATE TABLE v8 ( c9, c10, c11, c12 REFERENCES p1 ( c12 ) ); 
+CREATE INDEX i13 ON v8 ( c9 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i14 ON v8 ( c10 ); 
+CREATE INDEX i15 ON v0 ( c1 ); 
+CREATE INDEX i16 ON v4 ( c5 ); 
+ALTER TABLE v4 DROP COLUMN c5; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a18 WHERE a18.c12 = CASE WHEN a18.c12 != 'v0' THEN 127 ELSE 127 END > 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v4 ( c20 ) AS ( SELECT 127 ORDER BY 127 ) SELECT ( SELECT min ( a19.c6 ) OVER ( ORDER BY 127 ) ORDER BY 127 ) FROM v4 AS a19 GROUP BY a19.c6 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c5 FROM v4 AS a21 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a22 GROUP BY a22.c10, a22.c12 < a22.c12 ORDER BY 21; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c2 FROM v0 AS a23 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a25 ORDER BY ( 127, count ( * ) ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v0 AS ( SELECT a26.c1 FROM v4 AS a27 WHERE a26.c1 LIKE 'v1' ORDER BY 127 ) SELECT * FROM v0 AS a26 ORDER BY 21; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: cannot drop UNIQUE column: "c2"
+Runtime error near line 10: error in index i16 after drop column: no such column: c5
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: row value misused
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a26.c1
+  WITH RECURSIVE v0 AS ( SELECT a26.c1 FROM v4 AS a27 WHERE a26.c1 LIKE 'v1' ORD
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 PRIMARY KEY, c2 UNIQUE ); 
+; 
+CREATE TABLE v4 ( c5, c6, c7 REFERENCES p1 ( c5 ) ); 
+CREATE TABLE v8 ( c9, c10, c11, c12 REFERENCES p1 ( c12 ) ); 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+; 
+; 
+ALTER TABLE v4 DROP COLUMN c5; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a18 WHERE a18.c12 = CASE WHEN a18.c12 != 'v0' THEN 127 ELSE 127 END > 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v4 ( c20 ) AS ( SELECT 127 ORDER BY 127 ) SELECT ( SELECT min ( a19.c6 ) OVER ( ORDER BY 127 ) ORDER BY 127 ) FROM v4 AS a19 GROUP BY a19.c6 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c5 FROM v4 AS a21 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a22 GROUP BY a22.c10, a22.c12 < a22.c12 ORDER BY 21; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c2 FROM v0 AS a23 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a25 ORDER BY ( 127, count ( * ) ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v0 AS ( SELECT a26.c1 FROM v4 AS a27 WHERE a26.c1 LIKE 'v1' ORDER BY 127 ) SELECT * FROM v0 AS a26 ORDER BY 21; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: cannot drop UNIQUE column: "c2"
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: a21.c5
+  SELECT a21.c5 FROM v4 AS a21 ORDER BY 127; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: row value misused
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a26.c1
+  WITH RECURSIVE v0 AS ( SELECT a26.c1 FROM v4 AS a27 WHERE a26.c1 LIKE 'v1' ORD
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no such column: a21.c5
+  SELECT a21.c5 FROM v4 AS a21 ORDER BY 127; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 33: row value misused
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such column: a26.c1
+  WITH RECURSIVE v0 AS ( SELECT a26.c1 FROM v4 AS a27 WHERE a26.c1 LIKE 'v1' ORD
+                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: no such column: a26.c1
+  WITH RECURSIVE v0 AS ( SELECT a26.c1 FROM v4 AS a27 WHERE a26.c1 LIKE 'v1' ORD
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

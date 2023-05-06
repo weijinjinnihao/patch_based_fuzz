@@ -1,0 +1,348 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c26 + 2147483647 ) % 2147483647 ) != 2147483647 ) ) WITHOUT ROWID; 
+CREATE TABLE v28 ( c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45 TEXT, c46 BLOB, CHECK( coalesce ( c42, c38 ) ) ); 
+CREATE INDEX i47 ON v28 ( c37 ); 
+CREATE INDEX i48 ON v28 ( c36 ); 
+CREATE INDEX i49 ON v28 ( c40 ); 
+CREATE INDEX i50 ON v28 ( c41 ); 
+ALTER TABLE v28 DROP c41; 
+CREATE INDEX i51 ON v28 ( c39 ); 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT a52.c32 FROM v28 AS a53 WHERE v0.c13 LIKE 'f' ORDER BY 4294967295 ) SELECT * FROM v28 AS a52 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a54 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a55.c41 FROM v28 AS a55 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a56.c8, max ( a56.c18 || a56.c4 ) FROM v0 AS a56 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a57.c35 FROM v28 AS a57 WHERE a57.c38 != a57.c41 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a58, v0 AS a59 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c61 ) AS ( SELECT 'v1' ORDER BY 0 ) SELECT * FROM v28 AS a60 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v28 AS a62 GROUP BY y ( a62.c34 ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a63 NATURAL JOIN v0 AS a64 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a65, v28 AS a66 NATURAL JOIN v0 AS a67 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i50 after drop column: no such column: c41
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 18
+  BY 4294967295 ) SELECT * FROM v28 AS a52 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a54 ORDER BY 2147483647; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+  max ( a56.c18 || a56.c4 ) FROM v0 AS a56 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+  FROM v28 AS a57 WHERE a57.c38 != a57.c41 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 54
+  SELECT * FROM v0 AS a58, v0 AS a59 ORDER BY 2147483647; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 18
+  1' ORDER BY 0 ) SELECT * FROM v28 AS a60 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 18
+  * FROM v28 AS a62 GROUP BY y ( a62.c34 ) ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 27
+   * FROM v0 AS a63 NATURAL JOIN v0 AS a64 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 45
+  S a65, v28 AS a66 NATURAL JOIN v0 AS a67 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c26 + 2147483647 ) % 2147483647 ) != 2147483647 ) ) WITHOUT ROWID; 
+CREATE TABLE v28 ( c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45 TEXT, c46 BLOB, CHECK( coalesce ( c42, c38 ) ) ); 
+; 
+; 
+; 
+; 
+ALTER TABLE v28 DROP c41; 
+; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT a52.c32 FROM v28 AS a53 WHERE v0.c13 LIKE 'f' ORDER BY 4294967295 ) SELECT * FROM v28 AS a52 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a54 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a55.c41 FROM v28 AS a55 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a56.c8, max ( a56.c18 || a56.c4 ) FROM v0 AS a56 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a57.c35 FROM v28 AS a57 WHERE a57.c38 != a57.c41 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a58, v0 AS a59 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c61 ) AS ( SELECT 'v1' ORDER BY 0 ) SELECT * FROM v28 AS a60 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v28 AS a62 GROUP BY y ( a62.c34 ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a63 NATURAL JOIN v0 AS a64 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a65, v28 AS a66 NATURAL JOIN v0 AS a67 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 17
+  BY 4294967295 ) SELECT * FROM v28 AS a52 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a54 ORDER BY 2147483647; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: a55.c41
+  SELECT a55.c41 FROM v28 AS a55 ORDER BY 18446744073709518848; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+  max ( a56.c18 || a56.c4 ) FROM v0 AS a56 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a57.c41
+  SELECT a57.c35 FROM v28 AS a57 WHERE a57.c38 != a57.c41 ORDER BY 2147483647; 
+                                    error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 54
+  SELECT * FROM v0 AS a58, v0 AS a59 ORDER BY 2147483647; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 17
+  1' ORDER BY 0 ) SELECT * FROM v28 AS a60 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 17
+  * FROM v28 AS a62 GROUP BY y ( a62.c34 ) ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 27
+   * FROM v0 AS a63 NATURAL JOIN v0 AS a64 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 44
+  S a65, v28 AS a66 NATURAL JOIN v0 AS a67 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 18
+  BY 4294967295 ) SELECT * FROM v28 AS a52 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 17
+  BY 4294967295 ) SELECT * FROM v28 AS a52 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a54 ORDER BY 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v0 AS a54 ORDER BY 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 16: no such column: a55.c41
+  SELECT a55.c41 FROM v28 AS a55 ORDER BY 18446744073709518848; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+  max ( a56.c18 || a56.c4 ) FROM v0 AS a56 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+  max ( a56.c18 || a56.c4 ) FROM v0 AS a56 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+  FROM v28 AS a57 WHERE a57.c38 != a57.c41 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 22: no such column: a57.c41
+  SELECT a57.c35 FROM v28 AS a57 WHERE a57.c38 != a57.c41 ORDER BY 2147483647; 
+                                    error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 54
+  SELECT * FROM v0 AS a58, v0 AS a59 ORDER BY 2147483647; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 54
+  SELECT * FROM v0 AS a58, v0 AS a59 ORDER BY 2147483647; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 18
+  1' ORDER BY 0 ) SELECT * FROM v28 AS a60 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 17
+  1' ORDER BY 0 ) SELECT * FROM v28 AS a60 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 18
+  * FROM v28 AS a62 GROUP BY y ( a62.c34 ) ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 17
+  * FROM v28 AS a62 GROUP BY y ( a62.c34 ) ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 27
+   * FROM v0 AS a63 NATURAL JOIN v0 AS a64 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 27
+   * FROM v0 AS a63 NATURAL JOIN v0 AS a64 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 45
+  S a65, v28 AS a66 NATURAL JOIN v0 AS a67 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 44
+  S a65, v28 AS a66 NATURAL JOIN v0 AS a67 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

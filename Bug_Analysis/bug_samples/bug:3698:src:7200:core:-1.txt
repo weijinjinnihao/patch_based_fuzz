@@ -1,0 +1,300 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE TABLE v4 ( c5 REFERENCES t1 DEFAULT NULL, c6, c7, c8, c9, c10, c11, c12, c13, c14 INTEGER UNIQUE ON CONFLICT FAIL, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, PRIMARY KEY ( c25, c24, c30, c19, c24, c23, c18 ) ) WITHOUT ROWID; 
+CREATE INDEX i39 ON v0 ( c2 ); 
+CREATE TABLE v40 ( c41 TEXT, c42 REAL, c43 INT, PRIMARY KEY ( c41 COLLATE nocase, c41 ) ) WITHOUT ROWID; 
+CREATE VIEW v44 AS SELECT * FROM v0 AS a45 ORDER BY 18446744073709551615; 
+CREATE TABLE v46 ( c47 INTEGER PRIMARY KEY, c48, c49 UNIQUE ); 
+CREATE INDEX i50 ON v46 ( c48 ); 
+CREATE TABLE v51 ( c52, c53, c54 ); 
+CREATE INDEX i55 ON v51 ( c54 ); 
+CREATE INDEX i56 ON v51 ( c52 ); 
+CREATE INDEX i57 ON v46 ( c47 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v40 DROP COLUMN c42; 
+CREATE VIRTUAL TABLE v58 USING fts5 ( c59, c60 ); 
+ALTER TABLE v44 DROP COLUMN c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v44 AS a61 WHERE c47 IS NOT NULL ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v46 AS a62 GROUP BY a62.c49, abs ( a62.c48 ) HAVING CASE WHEN a62.c47 != 'v1' THEN 18446744073709551615 ELSE 18446744073709551615 END > 18446744073709551615 >= 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a63.c1, count ( a63.c3 ) FROM v0 AS a63 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a64 CROSS JOIN v51 AS a65 ON ( a64.c20 = a65.c52 ) WHERE a65.c53 >= ( SELECT a65.c54 FROM v46 AS a66 WHERE a65.c52 IN ( SELECT a64.c28 FROM ( SELECT a64.c8 FROM v44 AS a67 ORDER BY 18446744073709518848 ) AS y WHERE a66.c47 = 100 ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615 ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v46 ( c69 ) AS ( SELECT 18446744073709551615 GROUP BY v46.c48 HAVING automatic_index ( * ) >= 18446744073709518848 ORDER BY 18446744073709551615 ) SELECT * FROM v44 AS a68 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v51 AS a70 GROUP BY a70.c53, abs ( a70.c52 ) HAVING count ( * ) >= 18446744073709551615 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a71 ORDER BY count ( * ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a72.c2 IS NULL ) ) AND ( NOT ( a72.c2 IS NULL ) ) ) FROM v0 AS a72 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v51 AS a73 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 12: error in index i39 after drop column: no such column: c2
+Runtime error near line 14: no such module: fts5
+Parse error near line 15: cannot drop column from view "v44"
+BEGIN VERI 0
+Parse error near line 17: no such column: c47
+  SELECT * FROM v44 AS a61 WHERE c47 IS NOT NULL ORDER BY 18446744073709551615; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 37
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: misuse of aggregate: count()
+  SELECT * FROM v0 AS a71 ORDER BY count ( * ); 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE TABLE v4 ( c5 REFERENCES t1 DEFAULT NULL, c6, c7, c8, c9, c10, c11, c12, c13, c14 INTEGER UNIQUE ON CONFLICT FAIL, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, PRIMARY KEY ( c25, c24, c30, c19, c24, c23, c18 ) ) WITHOUT ROWID; 
+; 
+CREATE TABLE v40 ( c41 TEXT, c42 REAL, c43 INT, PRIMARY KEY ( c41 COLLATE nocase, c41 ) ) WITHOUT ROWID; 
+CREATE VIEW v44 AS SELECT * FROM v0 AS a45 ORDER BY 18446744073709551615; 
+CREATE TABLE v46 ( c47 INTEGER PRIMARY KEY, c48, c49 UNIQUE ); 
+; 
+CREATE TABLE v51 ( c52, c53, c54 ); 
+; 
+; 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v40 DROP COLUMN c42; 
+CREATE VIRTUAL TABLE v58 USING fts5 ( c59, c60 ); 
+ALTER TABLE v44 DROP COLUMN c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v44 AS a61 WHERE c47 IS NOT NULL ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v46 AS a62 GROUP BY a62.c49, abs ( a62.c48 ) HAVING CASE WHEN a62.c47 != 'v1' THEN 18446744073709551615 ELSE 18446744073709551615 END > 18446744073709551615 >= 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a63.c1, count ( a63.c3 ) FROM v0 AS a63 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a64 CROSS JOIN v51 AS a65 ON ( a64.c20 = a65.c52 ) WHERE a65.c53 >= ( SELECT a65.c54 FROM v46 AS a66 WHERE a65.c52 IN ( SELECT a64.c28 FROM ( SELECT a64.c8 FROM v44 AS a67 ORDER BY 18446744073709518848 ) AS y WHERE a66.c47 = 100 ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615 ) ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v46 ( c69 ) AS ( SELECT 18446744073709551615 GROUP BY v46.c48 HAVING automatic_index ( * ) >= 18446744073709518848 ORDER BY 18446744073709551615 ) SELECT * FROM v44 AS a68 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v51 AS a70 GROUP BY a70.c53, abs ( a70.c52 ) HAVING count ( * ) >= 18446744073709551615 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a71 ORDER BY count ( * ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a72.c2 IS NULL ) ) AND ( NOT ( a72.c2 IS NULL ) ) ) FROM v0 AS a72 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v51 AS a73 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 14: no such module: fts5
+Parse error near line 15: cannot drop column from view "v44"
+BEGIN VERI 0
+Parse error near line 17: no such column: c47
+  SELECT * FROM v44 AS a61 WHERE c47 IS NOT NULL ORDER BY 18446744073709551615; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 37
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: misuse of aggregate: count()
+  SELECT * FROM v0 AS a71 ORDER BY count ( * ); 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a72.c2
+  SELECT count ( ( NOT ( a72.c2 IS NULL ) ) AND ( NOT ( a72.c2 IS NULL ) ) ) FRO
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no such column: c47
+  SELECT * FROM v44 AS a61 WHERE c47 IS NOT NULL ORDER BY 18446744073709551615; 
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 17: no such column: c47
+  SELECT * FROM v44 AS a61 WHERE c47 IS NOT NULL ORDER BY 18446744073709551615; 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 37
+ 
+INT: 0 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 37
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 35: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: misuse of aggregate: count()
+  SELECT * FROM v0 AS a71 ORDER BY count ( * ); 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: misuse of aggregate: count()
+  SELECT * FROM v0 AS a71 ORDER BY count ( * ); 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+0
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no such column: a72.c2
+  SELECT count ( ( NOT ( a72.c2 IS NULL ) ) AND ( NOT ( a72.c2 IS NULL ) ) ) FRO
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

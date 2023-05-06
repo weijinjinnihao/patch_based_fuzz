@@ -1,0 +1,337 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 DEFAULT 'one-b', c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 4294967295; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+CREATE INDEX i10 ON v0 ( c1 ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+CREATE INDEX i15 ON v0 ( c3 ); 
+ALTER TABLE v6 DROP COLUMN c9; 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i16 ON v6 ( c7 ); 
+CREATE INDEX i17 ON v4 ( c3 ); 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+ALTER TABLE v11 DROP COLUMN c12; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 4294967295, 'v1' ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a21, v18 AS a22 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c1, max ( a23.c1 || a23.c1 ) FROM v0 AS a23 WHERE a23.c1 > a23.c2 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a25 GROUP BY a25.c3 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a26 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v18 ( c28 ) AS ( SELECT max ( v18.c20 || a27.c1 ) ORDER BY 4294967295 ) SELECT * FROM v4 AS a27 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a29 WHERE a29.c13 = a29.c12 >= 100 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a30 ORDER BY max ( a30.c12 + a30.c13 * 100 ) + 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: cannot drop UNIQUE column: "c9"
+Runtime error near line 8: error in index i10 after drop column: no such column: c1
+Parse error near line 10: views may not be indexed
+Runtime error near line 11: no such module: fts5
+BEGIN VERI 0
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( 4294967295, 'v1' ) ORDER BY 4294967295; 
+                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v18
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a24 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a29.c12
+  SELECT * FROM v11 AS a29 WHERE a29.c13 = a29.c12 >= 100 ORDER BY 0; 
+                             error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no such column: a30.c12
+  SELECT * FROM v11 AS a30 ORDER BY max ( a30.c12 + a30.c13 * 100 ) + 1844674407
+                            error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 DEFAULT 'one-b', c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 4294967295; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+; 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+; 
+ALTER TABLE v6 DROP COLUMN c9; 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+; 
+CREATE VIRTUAL TABLE v18 USING fts5 ( c19, c20 ); 
+ALTER TABLE v11 DROP COLUMN c12; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 4294967295, 'v1' ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a21, v18 AS a22 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c1, max ( a23.c1 || a23.c1 ) FROM v0 AS a23 WHERE a23.c1 > a23.c2 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a25 GROUP BY a25.c3 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a26 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v18 ( c28 ) AS ( SELECT max ( v18.c20 || a27.c1 ) ORDER BY 4294967295 ) SELECT * FROM v4 AS a27 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a29 WHERE a29.c13 = a29.c12 >= 100 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a30 ORDER BY max ( a30.c12 + a30.c13 * 100 ) + 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: cannot drop UNIQUE column: "c9"
+Runtime error near line 11: no such module: fts5
+BEGIN VERI 0
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( 4294967295, 'v1' ) ORDER BY 4294967295; 
+                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a23.c1
+  SELECT a23.c1, max ( a23.c1 || a23.c1 ) FROM v0 AS a23 WHERE a23.c1 > a23.c2 O
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a24 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a29.c12
+  SELECT * FROM v11 AS a29 WHERE a29.c13 = a29.c12 >= 100 ORDER BY 0; 
+                             error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no such column: a30.c12
+  SELECT * FROM v11 AS a30 ORDER BY max ( a30.c12 + a30.c13 * 100 ) + 1844674407
+                            error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 7964560
+Str: 
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( 4294967295, 'v1' ) ORDER BY 4294967295; 
+                error here ---^
+ 
+Str: 
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( 4294967295, 'v1' ) ORDER BY 4294967295; 
+                error here ---^
+ 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no such column: a23.c1
+  SELECT a23.c1, max ( a23.c1 || a23.c1 ) FROM v0 AS a23 WHERE a23.c1 > a23.c2 O
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a24 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a24 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no such column: a29.c12
+  SELECT * FROM v11 AS a29 WHERE a29.c13 = a29.c12 >= 100 ORDER BY 0; 
+                             error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: no such column: a29.c12
+  SELECT * FROM v11 AS a29 WHERE a29.c13 = a29.c12 >= 100 ORDER BY 0; 
+                             error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: no such column: a30.c12
+  SELECT * FROM v11 AS a30 ORDER BY max ( a30.c12 + a30.c13 * 100 ) + 1844674407
+                            error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 44: no such column: a30.c12
+  SELECT * FROM v11 AS a30 ORDER BY max ( a30.c12 + a30.c13 * 100 ) + 1844674407
+                            error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

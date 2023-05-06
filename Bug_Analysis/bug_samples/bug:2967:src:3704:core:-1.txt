@@ -1,0 +1,273 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY max ( c1 + c3 = - 18446744073709551488 ) + 18446744073709551488; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+CREATE INDEX i10 ON v0 ( c2 ); 
+CREATE TABLE v11 ( c12, c13 INTEGER PRIMARY KEY, c14 ); 
+CREATE INDEX i15 ON v4 ( c1 ); 
+ALTER TABLE v6 DROP COLUMN c8; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i16 ON v11 ( c14 ); 
+CREATE INDEX i17 ON v4 ( y ); 
+CREATE INDEX i18 ON v4 ( y ); 
+CREATE VIRTUAL TABLE v19 USING fts5 ( c20, c21 ); 
+ALTER TABLE v4 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 ORDER BY a22.c1 COLLATE NOCASE, a22.c3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( WITH v24 AS ( SELECT 100 y ORDER BY 100 ) SELECT avg ( v0.c1 ) FROM ( SELECT * ORDER BY 100 ) AS y ORDER BY 18446744073709551615 ) SELECT * FROM v4 AS a23 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a25 NATURAL JOIN v4 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a27.c2 ) FROM v0 AS a27 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 ORDER BY a28.c2 % 9223372036854775807 >= 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c21 FROM v19 AS a29 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 GROUP BY a30.c3, a30.c1 < a30.c3 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a31 ORDER BY a31.c14, a31.c14; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a32, v11 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a34 WHERE a34.c9 = a34.c9 >= 18446744073709551488 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: views may not be indexed
+Runtime error near line 8: error in index i10 after drop column: no such column: c2
+Parse error near line 10: views may not be indexed
+Parse error near line 11: views may not be indexed
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: cannot drop column from view "v4"
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v19
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY max ( c1 + c3 = - 18446744073709551488 ) + 18446744073709551488; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+; 
+CREATE TABLE v11 ( c12, c13 INTEGER PRIMARY KEY, c14 ); 
+; 
+ALTER TABLE v6 DROP COLUMN c8; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+; 
+; 
+CREATE VIRTUAL TABLE v19 USING fts5 ( c20, c21 ); 
+ALTER TABLE v4 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a22 ORDER BY a22.c1 COLLATE NOCASE, a22.c3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( WITH v24 AS ( SELECT 100 y ORDER BY 100 ) SELECT avg ( v0.c1 ) FROM ( SELECT * ORDER BY 100 ) AS y ORDER BY 18446744073709551615 ) SELECT * FROM v4 AS a23 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a25 NATURAL JOIN v4 AS a26 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a27.c2 ) FROM v0 AS a27 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 ORDER BY a28.c2 % 9223372036854775807 >= 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c21 FROM v19 AS a29 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 GROUP BY a30.c3, a30.c1 < a30.c3 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a31 ORDER BY a31.c14, a31.c14; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a32, v11 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a34 WHERE a34.c9 = a34.c9 >= 18446744073709551488 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: cannot drop column from view "v4"
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: a27.c2
+  SELECT count ( a27.c2 ) FROM v0 AS a27 ORDER BY 18446744073709551615; 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a28.c2
+  SELECT * FROM v0 AS a28 ORDER BY a28.c2 % 9223372036854775807 >= 100; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such table: v19
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+0
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such column: a27.c2
+  SELECT count ( a27.c2 ) FROM v0 AS a27 ORDER BY 18446744073709551615; 
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 27: no such column: a28.c2
+  SELECT * FROM v0 AS a28 ORDER BY a28.c2 % 9223372036854775807 >= 100; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such table: v19
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no such table: v19
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

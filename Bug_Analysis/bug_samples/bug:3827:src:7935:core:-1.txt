@@ -1,0 +1,300 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c3 ) ) WITHOUT ROWID; 
+ATTACH 'v0' AS sqlite_master; 
+CREATE TABLE v4 ( c5, c6 CHECK( 8 ), c7, c8, CHECK( c8 > 8 ) ); 
+ALTER TABLE v4 DROP c6; 
+CREATE INDEX i9 ON v0 ( c2 ); 
+CREATE INDEX i10 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i11 ON v4 ( c5 ); 
+CREATE INDEX i12 ON v0 ( c1 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT avg ( c1 ) FROM ( WITH v4 ( c15 ) AS ( SELECT 4294967295 ORDER BY 8 ) SELECT * FROM v4 AS a13 RIGHT JOIN v0 AS a14 ON a13.c6 ORDER BY 4294967295 ) AS y ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+CREATE VIEW v16 AS SELECT * FROM ( v4 AS a17 ), ( v4 AS a18, v4 AS a19 NATURAL JOIN v4 AS a20 ), ( v4 AS a21 ), ( v0 AS a22 ) WHERE c6 = c6 + 18446744073709551615 AND c8 = c1 + 18446744073709551615 AND c5 = c5 + 4294967295 ORDER BY 255; 
+CREATE TABLE v23 ( c24, c25, c26 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a27 ORDER BY 18446744073709551488 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a29 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c2, a30.c3 FROM v0 AS a30 WHERE a30.c2 LIKE '2-two' ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c8 FROM v4 AS a31 GROUP BY 18446744071562067968 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a32 NATURAL JOIN v16 AS a33 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a34, v23 AS a35 NATURAL JOIN v0 AS a36 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i9 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: ambiguous column name: c5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: ambiguous column name: c5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 9
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c3 ) ) WITHOUT ROWID; 
+ATTACH 'v0' AS sqlite_master; 
+CREATE TABLE v4 ( c5, c6 CHECK( 8 ), c7, c8, CHECK( c8 > 8 ) ); 
+ALTER TABLE v4 DROP c6; 
+; 
+; 
+ALTER TABLE v0 DROP c2; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT avg ( c1 ) FROM ( WITH v4 ( c15 ) AS ( SELECT 4294967295 ORDER BY 8 ) SELECT * FROM v4 AS a13 RIGHT JOIN v0 AS a14 ON a13.c6 ORDER BY 4294967295 ) AS y ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+CREATE VIEW v16 AS SELECT * FROM ( v4 AS a17 ), ( v4 AS a18, v4 AS a19 NATURAL JOIN v4 AS a20 ), ( v4 AS a21 ), ( v0 AS a22 ) WHERE c6 = c6 + 18446744073709551615 AND c8 = c1 + 18446744073709551615 AND c5 = c5 + 4294967295 ORDER BY 255; 
+CREATE TABLE v23 ( c24, c25, c26 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a27 ORDER BY 18446744073709551488 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a29 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c2, a30.c3 FROM v0 AS a30 WHERE a30.c2 LIKE '2-two' ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c8 FROM v4 AS a31 GROUP BY 18446744071562067968 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a32 NATURAL JOIN v16 AS a33 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a34, v23 AS a35 NATURAL JOIN v0 AS a36 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: ambiguous column name: c5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a30.c2
+  SELECT a30.c2, a30.c3 FROM v0 AS a30 WHERE a30.c2 LIKE '2-two' ORDER BY 255; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: ambiguous column name: c5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 11: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: ambiguous column name: c5
+ 
+INT: 0 
+Str: 
+Parse error near line 31: ambiguous column name: c5
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such column: a30.c2
+  SELECT a30.c2, a30.c3 FROM v0 AS a30 WHERE a30.c2 LIKE '2-two' ORDER BY 255; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: ambiguous column name: c5
+ 
+INT: 0 
+Str: 
+Parse error near line 40: ambiguous column name: c5
+ 
+INT: 0 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 9
+ 
+INT: 0 
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

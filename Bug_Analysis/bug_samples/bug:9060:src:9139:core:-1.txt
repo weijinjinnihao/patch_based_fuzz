@@ -1,0 +1,320 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE TABLE v4 ( c5 REFERENCES t1 DEFAULT NULL, c6, c7, c8, c9, c10, c11, c12, c13, c14 INTEGER UNIQUE ON CONFLICT FAIL, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, PRIMARY KEY ( c27, c8, c37, c8, c22, c20, c27 ) ) WITHOUT ROWID; 
+CREATE INDEX i39 ON v0 ( c3 ); 
+CREATE TABLE v40 ( c41 TEXT, c42 REAL, c43 INT, PRIMARY KEY ( c42 COLLATE nocase, c41 ) ) WITHOUT ROWID; 
+CREATE INDEX i44 ON v0 ( c2 ); 
+UPDATE v4 SET c8 = ( SELECT c3 FROM v0 AS a45 WHERE c37 = 'v0' GROUP BY c1 HAVING ( 127, count ( * ) ) != 9223372036854775807 >= 18446744073709551615 ORDER BY 18446744073709551615 ); 
+CREATE TABLE v46 ( c47 INTEGER PRIMARY KEY, c48, c49 UNIQUE ); 
+CREATE INDEX i50 ON v0 ( c1 ); 
+CREATE INDEX i51 ON v0 ( c3 ); 
+CREATE TABLE v52 ( c53, c54, c55 ); 
+ALTER TABLE v46 DROP COLUMN c49; 
+ALTER TABLE v40 DROP COLUMN c43; 
+CREATE INDEX i56 ON v0 ( c1 ); 
+CREATE VIRTUAL TABLE v57 USING fts5 ( c58, c59 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a61.c42, a61.c43 FROM v40 AS a60 RIGHT JOIN v40 AS a61 ON a61.c43 = a60.c42 WHERE a61.c42 = + y ( a60.c42 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v57 AS a62 GROUP BY y ( a62.c59 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v40 AS a63 GROUP BY a63.c43 HAVING count ( * ) >= 9223372036854775807 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a64 GROUP BY a64.c3, a64.c1 < y ( a64.c1 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a65 GROUP BY a65.c1, abs ( a65.c3 ) HAVING count ( * ) >= 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a66 NATURAL JOIN v46 AS a67 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v52 AS a68 GROUP BY a68.c55 HAVING NULL ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v46 AS a69 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v57 AS a70 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: row value misused
+Parse error near line 11: cannot drop UNIQUE column: "c49"
+Runtime error near line 14: no such module: fts5
+Runtime error near line 15: error in index i50 after drop column: no such column: c1
+BEGIN VERI 0
+Parse error near line 17: no such column: a61.c43
+  SELECT a61.c42, a61.c43 FROM v40 AS a60 RIGHT JOIN v40 AS a61 ON a61.c43 = a60
+                  ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v57
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a63.c43
+  SELECT * FROM v40 AS a63 GROUP BY a63.c43 HAVING count ( * ) >= 92233720368547
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such function: y
+  SELECT * FROM v0 AS a64 GROUP BY a64.c3, a64.c1 < y ( a64.c1 ) ORDER BY 922337
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+   v52 AS a68 GROUP BY a68.c55 HAVING NULL ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such table: v57
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE TABLE v4 ( c5 REFERENCES t1 DEFAULT NULL, c6, c7, c8, c9, c10, c11, c12, c13, c14 INTEGER UNIQUE ON CONFLICT FAIL, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, PRIMARY KEY ( c27, c8, c37, c8, c22, c20, c27 ) ) WITHOUT ROWID; 
+; 
+CREATE TABLE v40 ( c41 TEXT, c42 REAL, c43 INT, PRIMARY KEY ( c42 COLLATE nocase, c41 ) ) WITHOUT ROWID; 
+; 
+UPDATE v4 SET c8 = ( SELECT c3 FROM v0 AS a45 WHERE c37 = 'v0' GROUP BY c1 HAVING ( 127, count ( * ) ) != 9223372036854775807 >= 18446744073709551615 ORDER BY 18446744073709551615 ); 
+CREATE TABLE v46 ( c47 INTEGER PRIMARY KEY, c48, c49 UNIQUE ); 
+; 
+; 
+CREATE TABLE v52 ( c53, c54, c55 ); 
+ALTER TABLE v46 DROP COLUMN c49; 
+ALTER TABLE v40 DROP COLUMN c43; 
+; 
+CREATE VIRTUAL TABLE v57 USING fts5 ( c58, c59 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a61.c42, a61.c43 FROM v40 AS a60 RIGHT JOIN v40 AS a61 ON a61.c43 = a60.c42 WHERE a61.c42 = + y ( a60.c42 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v57 AS a62 GROUP BY y ( a62.c59 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v40 AS a63 GROUP BY a63.c43 HAVING count ( * ) >= 9223372036854775807 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a64 GROUP BY a64.c3, a64.c1 < y ( a64.c1 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a65 GROUP BY a65.c1, abs ( a65.c3 ) HAVING count ( * ) >= 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a66 NATURAL JOIN v46 AS a67 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v52 AS a68 GROUP BY a68.c55 HAVING NULL ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v46 AS a69 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v57 AS a70 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: row value misused
+Parse error near line 11: cannot drop UNIQUE column: "c49"
+Runtime error near line 14: no such module: fts5
+BEGIN VERI 0
+Parse error near line 17: no such column: a61.c43
+  SELECT a61.c42, a61.c43 FROM v40 AS a60 RIGHT JOIN v40 AS a61 ON a61.c43 = a60
+                  ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v57
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a63.c43
+  SELECT * FROM v40 AS a63 GROUP BY a63.c43 HAVING count ( * ) >= 92233720368547
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: a64.c1
+  SELECT * FROM v0 AS a64 GROUP BY a64.c3, a64.c1 < y ( a64.c1 ) ORDER BY 922337
+                             error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a65.c1
+  SELECT * FROM v0 AS a65 GROUP BY a65.c1, abs ( a65.c3 ) HAVING count ( * ) >= 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+   v52 AS a68 GROUP BY a68.c55 HAVING NULL ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such table: v57
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no such column: a61.c43
+  SELECT a61.c42, a61.c43 FROM v40 AS a60 RIGHT JOIN v40 AS a61 ON a61.c43 = a60
+                  ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 17: no such column: a61.c43
+  SELECT a61.c42, a61.c43 FROM v40 AS a60 RIGHT JOIN v40 AS a61 ON a61.c43 = a60
+                  ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no such table: v57
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no such table: v57
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such column: a63.c43
+  SELECT * FROM v40 AS a63 GROUP BY a63.c43 HAVING count ( * ) >= 92233720368547
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 23: no such column: a63.c43
+  SELECT * FROM v40 AS a63 GROUP BY a63.c43 HAVING count ( * ) >= 92233720368547
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no such function: y
+  SELECT * FROM v0 AS a64 GROUP BY a64.c3, a64.c1 < y ( a64.c1 ) ORDER BY 922337
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: no such column: a64.c1
+  SELECT * FROM v0 AS a64 GROUP BY a64.c3, a64.c1 < y ( a64.c1 ) ORDER BY 922337
+                             error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 29: no such column: a65.c1
+  SELECT * FROM v0 AS a65 GROUP BY a65.c1, abs ( a65.c3 ) HAVING count ( * ) >= 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+   v52 AS a68 GROUP BY a68.c55 HAVING NULL ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+   v52 AS a68 GROUP BY a68.c55 HAVING NULL ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no such table: v57
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no such table: v57
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 44: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

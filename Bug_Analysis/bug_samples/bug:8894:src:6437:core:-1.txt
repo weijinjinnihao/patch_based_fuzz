@@ -1,0 +1,319 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 4294967295; 
+CREATE TABLE v6 ( c7 INTEGER UNIQUE, c8, c9 UNIQUE ); 
+CREATE INDEX i10 ON v0 ( c3 ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+CREATE INDEX i15 ON v6 ( c8 ); 
+CREATE TABLE v16 ( c17 PRIMARY KEY, c18, c19 AS( c18 + c19 - c19 ) REFERENCES t0, c20 ) WITHOUT ROWID; 
+CREATE INDEX i21 ON v4 ( c2 ); 
+ALTER TABLE v16 DROP COLUMN c19; 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE INDEX i22 ON v6 ( c8 ); 
+CREATE INDEX i23 ON v0 ( c1 ); 
+CREATE VIRTUAL TABLE v24 USING fts5 ( c25, c26 ); 
+ALTER TABLE v16 DROP COLUMN c18; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c1 FROM v0 AS a27 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c3 * 0 + 18446744073709551615 AS y, count ( * ) AS y FROM v0 AS a28 GROUP BY a28.c3 ORDER BY abs ( a28.c1 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a29 WHERE ( a29.c13 = 0 OR a29.c12 = 18446744073709551615 ) AND a29.c13 IN ( SELECT a30.c12 FROM ( SELECT *, 'v1' FROM v6 AS a32 LEFT JOIN v16 AS a33 ON a33.c18 = 18446744073709551615 AND a31.c25 = 0 ORDER BY 18446744073709551615 ) AS y, v11 AS a30 NATURAL JOIN v24 AS a31 WHERE a29.c13 = 4294967295 ORDER BY 0 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a34 ORDER BY ( ( a34.c7 + - 18446744073709551615 ) % 0 ) != 255 + 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v24 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 ( c37 ) AS ( WITH v38 ( c39 ) AS ( WITH v40 ( c41 ) AS ( WITH v38 AS ( SELECT ( SELECT min ( a36.c13 ) OVER ( ORDER BY 18446744073709551615 IN v38 ) ORDER BY 0 ) FROM v38 AS a42 GROUP BY a36.c14 ORDER BY 55 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT 0 ORDER BY 2147483647 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT * FROM v11 AS a36 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v43 AS ( SELECT 55 y ORDER BY 4294967295 ) SELECT * FROM v43 AS a44 CROSS JOIN v43 AS a45 ON ( c2 = c25 ) WHERE c13 IN ( SELECT c18 FROM v43 AS a46, v43 AS a47 NATURAL JOIN v43 AS a48 WHERE c9 IN ( SELECT c2 FROM ( SELECT c8 FROM v43 AS a49 ORDER BY 18446744073709551488 ) AS y WHERE c14 = 100 ORDER BY 18446744073709551615 ) ORDER BY 4294967295 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v50 AS ( SELECT c2 FROM v50 AS a53 WHERE c7 NOT LIKE 'v0' ORDER BY 18446744073709551615 ) SELECT c13, c2 FROM v50 AS a51 RIGHT JOIN v50 AS a52 ON c8 = ( ( ( c1 + 18446744073709551488 ) % 0 ) == 18446744073709551615 ) % 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a54 NATURAL JOIN v6 AS a55 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: views may not be indexed
+Runtime error near line 10: error in index i10 after drop column: no such column: c3
+Runtime error near line 13: no such module: fts5
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a27.c1 FROM v0 AS a27 ORDER BY 0; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v24
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  2147483647 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT * FROM v11 AS a36
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: c18
+   v43 AS a45 ON ( c2 = c25 ) WHERE c13 IN ( SELECT c18 FROM v43 AS a46, v43 AS 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: circular reference: v50
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 5
+  * FROM v16 AS a54 NATURAL JOIN v6 AS a55 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 4294967295; 
+CREATE TABLE v6 ( c7 INTEGER UNIQUE, c8, c9 UNIQUE ); 
+; 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+; 
+CREATE TABLE v16 ( c17 PRIMARY KEY, c18, c19 AS( c18 + c19 - c19 ) REFERENCES t0, c20 ) WITHOUT ROWID; 
+; 
+ALTER TABLE v16 DROP COLUMN c19; 
+ALTER TABLE v0 DROP COLUMN c3; 
+; 
+; 
+CREATE VIRTUAL TABLE v24 USING fts5 ( c25, c26 ); 
+ALTER TABLE v16 DROP COLUMN c18; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c1 FROM v0 AS a27 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c3 * 0 + 18446744073709551615 AS y, count ( * ) AS y FROM v0 AS a28 GROUP BY a28.c3 ORDER BY abs ( a28.c1 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a29 WHERE ( a29.c13 = 0 OR a29.c12 = 18446744073709551615 ) AND a29.c13 IN ( SELECT a30.c12 FROM ( SELECT *, 'v1' FROM v6 AS a32 LEFT JOIN v16 AS a33 ON a33.c18 = 18446744073709551615 AND a31.c25 = 0 ORDER BY 18446744073709551615 ) AS y, v11 AS a30 NATURAL JOIN v24 AS a31 WHERE a29.c13 = 4294967295 ORDER BY 0 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a34 ORDER BY ( ( a34.c7 + - 18446744073709551615 ) % 0 ) != 255 + 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v24 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v11 ( c37 ) AS ( WITH v38 ( c39 ) AS ( WITH v40 ( c41 ) AS ( WITH v38 AS ( SELECT ( SELECT min ( a36.c13 ) OVER ( ORDER BY 18446744073709551615 IN v38 ) ORDER BY 0 ) FROM v38 AS a42 GROUP BY a36.c14 ORDER BY 55 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT 0 ORDER BY 2147483647 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT * FROM v11 AS a36 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v43 AS ( SELECT 55 y ORDER BY 4294967295 ) SELECT * FROM v43 AS a44 CROSS JOIN v43 AS a45 ON ( c2 = c25 ) WHERE c13 IN ( SELECT c18 FROM v43 AS a46, v43 AS a47 NATURAL JOIN v43 AS a48 WHERE c9 IN ( SELECT c2 FROM ( SELECT c8 FROM v43 AS a49 ORDER BY 18446744073709551488 ) AS y WHERE c14 = 100 ORDER BY 18446744073709551615 ) ORDER BY 4294967295 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v50 AS ( SELECT c2 FROM v50 AS a53 WHERE c7 NOT LIKE 'v0' ORDER BY 18446744073709551615 ) SELECT c13, c2 FROM v50 AS a51 RIGHT JOIN v50 AS a52 ON c8 = ( ( ( c1 + 18446744073709551488 ) % 0 ) == 18446744073709551615 ) % 0 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a54 NATURAL JOIN v6 AS a55 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 13: no such module: fts5
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a27.c1 FROM v0 AS a27 ORDER BY 0; 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: a28.c3
+  SELECT a28.c3 * 0 + 18446744073709551615 AS y, count ( * ) AS y FROM v0 AS a28
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v24
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  2147483647 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT * FROM v11 AS a36
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: c18
+   v43 AS a45 ON ( c2 = c25 ) WHERE c13 IN ( SELECT c18 FROM v43 AS a46, v43 AS 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: circular reference: v50
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 5
+  * FROM v16 AS a54 NATURAL JOIN v6 AS a55 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a27.c1 FROM v0 AS a27 ORDER BY 0; 
+                          error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT a27.c1 FROM v0 AS a27 ORDER BY 0; 
+                          error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 19: no such column: a28.c3
+  SELECT a28.c3 * 0 + 18446744073709551615 AS y, count ( * ) AS y FROM v0 AS a28
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such table: v24
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such table: v24
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such table: v24
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such table: v24
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  2147483647 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT * FROM v11 AS a36
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  2147483647 ) SELECT 18446744073709551615 ORDER BY 0 ) SELECT * FROM v11 AS a36
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such column: c18
+   v43 AS a45 ON ( c2 = c25 ) WHERE c13 IN ( SELECT c18 FROM v43 AS a46, v43 AS 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: no such column: c18
+   v43 AS a45 ON ( c2 = c25 ) WHERE c13 IN ( SELECT c18 FROM v43 AS a46, v43 AS 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: circular reference: v50
+ 
+INT: 0 
+Str: 
+Parse error near line 37: circular reference: v50
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 5
+  * FROM v16 AS a54 NATURAL JOIN v6 AS a55 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 5
+  * FROM v16 AS a54 NATURAL JOIN v6 AS a55 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 43: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

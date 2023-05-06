@@ -1,0 +1,294 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c1 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( TYPEOF ( c1 ) ); 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709551488, 18446744073709551488 ), ( 18446744073709551488, 0, 18446744073709551488 ); 
+CREATE INDEX i6 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i7 ON v0 ( c3 ); 
+CREATE TABLE v8 ( c9, c10, c11 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i12 ON v8 ( c11 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c15 ) AS ( SELECT a14.c15 + ( SELECT max ( a16.c3 ) FROM v8 AS a19 ORDER BY 18446744073709551488 ), a13.c3 + ( SELECT a14.c15 FROM v8 AS a18 ORDER BY 18446744073709551488 ), a16.c3 + ( SELECT max ( a17.c9 ) FROM v8 AS a17 ORDER BY 18446744073709551488 ) FROM v0 AS a16 ORDER BY 18446744073709551488 ) SELECT a13.c1, count ( ( NOT ( a13.c3 IS NULL ) ) AND ( NOT ( a14.c11 IS NULL ) ) ), count ( ( NOT ( a13.c1 IS NULL ) ) AND ( NOT ( a14.c10 > NULL ) ) ) FROM v0 AS a13 LEFT JOIN v8 AS a14 ON a13.c3 = a13.c3 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 ORDER BY ( a20.c2 + - 18446744073709551488 ) % 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c2, a22.c2, a22.c2 FROM v0 AS a22 WHERE a22.c1 < y ( a22.c3 ) GROUP BY 127 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT ( SELECT min ( a25.c1 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 1.250000 ) FROM v0 AS a25 GROUP BY a23.c10 ORDER BY 18446744073709551488 ) SELECT * FROM v8 AS a23 NATURAL JOIN v0 AS a24 USING ( a24.c2 ) WHERE max ( a24.c2 ) = ( a24.c3 ) AND a23.c10 = 0 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 GROUP BY a26.c3 ORDER BY max ( + 0, 'x', 'ghi' ) + 18446744073709551488, min ( a26.c2, avg ( a26.c2 ) ) + NULL >= 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a28 ORDER BY ( a28.c11 || a28.c11 || a28.c9 ) != 'v1'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c31 ) AS ( SELECT 18446744073709551488 GROUP BY a30.c2 HAVING automatic_index ( * ) >= 18446744073709551488 ORDER BY 4294967295 ) SELECT a29.c11, a29.c10 FROM v8 AS a29 RIGHT JOIN v0 AS a30 ON c31 = c31 WHERE a30.c1 > 18446744073709551615 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 4: UNIQUE constraint failed: v0.c3, v0.c1 (19)
+Runtime error near line 6: error in index i4 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 11: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such function: y
+  .c2, a22.c2, a22.c2 FROM v0 AS a22 WHERE a22.c1 < y ( a22.c3 ) GROUP BY 127 OR
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: near ".": syntax error
+   FROM v8 AS a23 NATURAL JOIN v0 AS a24 USING ( a24.c2 ) WHERE max ( a24.c2 ) =
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such function: automatic_index
+  ELECT 18446744073709551488 GROUP BY a30.c2 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c3, c1 ) ) WITHOUT ROWID; 
+; 
+; 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709551488, 18446744073709551488 ), ( 18446744073709551488, 0, 18446744073709551488 ); 
+; 
+ALTER TABLE v0 DROP c2; 
+; 
+CREATE TABLE v8 ( c9, c10, c11 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c15 ) AS ( SELECT a14.c15 + ( SELECT max ( a16.c3 ) FROM v8 AS a19 ORDER BY 18446744073709551488 ), a13.c3 + ( SELECT a14.c15 FROM v8 AS a18 ORDER BY 18446744073709551488 ), a16.c3 + ( SELECT max ( a17.c9 ) FROM v8 AS a17 ORDER BY 18446744073709551488 ) FROM v0 AS a16 ORDER BY 18446744073709551488 ) SELECT a13.c1, count ( ( NOT ( a13.c3 IS NULL ) ) AND ( NOT ( a14.c11 IS NULL ) ) ), count ( ( NOT ( a13.c1 IS NULL ) ) AND ( NOT ( a14.c10 > NULL ) ) ) FROM v0 AS a13 LEFT JOIN v8 AS a14 ON a13.c3 = a13.c3 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 ORDER BY ( a20.c2 + - 18446744073709551488 ) % 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c2, a22.c2, a22.c2 FROM v0 AS a22 WHERE a22.c1 < y ( a22.c3 ) GROUP BY 127 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT ( SELECT min ( a25.c1 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 1.250000 ) FROM v0 AS a25 GROUP BY a23.c10 ORDER BY 18446744073709551488 ) SELECT * FROM v8 AS a23 NATURAL JOIN v0 AS a24 USING ( a24.c2 ) WHERE max ( a24.c2 ) = ( a24.c3 ) AND a23.c10 = 0 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 GROUP BY a26.c3 ORDER BY max ( + 0, 'x', 'ghi' ) + 18446744073709551488, min ( a26.c2, avg ( a26.c2 ) ) + NULL >= 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a28 ORDER BY ( a28.c11 || a28.c11 || a28.c9 ) != 'v1'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c31 ) AS ( SELECT 18446744073709551488 GROUP BY a30.c2 HAVING automatic_index ( * ) >= 18446744073709551488 ORDER BY 4294967295 ) SELECT a29.c11, a29.c10 FROM v8 AS a29 RIGHT JOIN v0 AS a30 ON c31 = c31 WHERE a30.c1 > 18446744073709551615 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 4: UNIQUE constraint failed: v0.c3, v0.c1 (19)
+BEGIN VERI 0
+Parse error near line 11: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a20.c2
+  SELECT * FROM v0 AS a20 ORDER BY ( a20.c2 + - 18446744073709551488 ) % 1844674
+                       error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: a22.c2
+  SELECT a22.c2, a22.c2, a22.c2 FROM v0 AS a22 WHERE a22.c1 < y ( a22.c3 ) GROUP
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: near ".": syntax error
+   FROM v8 AS a23 NATURAL JOIN v0 AS a24 USING ( a24.c2 ) WHERE max ( a24.c2 ) =
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a26.c2
+  ( + 0, 'x', 'ghi' ) + 18446744073709551488, min ( a26.c2, avg ( a26.c2 ) ) + N
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such function: automatic_index
+  ELECT 18446744073709551488 GROUP BY a30.c2 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 11: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 11: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: circular reference: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 14: circular reference: v0
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 17: no such column: a20.c2
+  SELECT * FROM v0 AS a20 ORDER BY ( a20.c2 + - 18446744073709551488 ) % 1844674
+                       error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such function: y
+  .c2, a22.c2, a22.c2 FROM v0 AS a22 WHERE a22.c1 < y ( a22.c3 ) GROUP BY 127 OR
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 23: no such column: a22.c2
+  SELECT a22.c2, a22.c2, a22.c2 FROM v0 AS a22 WHERE a22.c1 < y ( a22.c3 ) GROUP
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: near ".": syntax error
+   FROM v8 AS a23 NATURAL JOIN v0 AS a24 USING ( a24.c2 ) WHERE max ( a24.c2 ) =
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: near ".": syntax error
+   FROM v8 AS a23 NATURAL JOIN v0 AS a24 USING ( a24.c2 ) WHERE max ( a24.c2 ) =
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 29: no such column: a26.c2
+  ( + 0, 'x', 'ghi' ) + 18446744073709551488, min ( a26.c2, avg ( a26.c2 ) ) + N
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no such function: automatic_index
+  ELECT 18446744073709551488 GROUP BY a30.c2 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: no such function: automatic_index
+  ELECT 18446744073709551488 GROUP BY a30.c2 HAVING automatic_index ( * ) >= 184
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

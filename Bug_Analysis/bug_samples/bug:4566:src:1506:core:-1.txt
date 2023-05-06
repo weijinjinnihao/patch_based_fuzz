@@ -1,0 +1,302 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE TABLE v4 ( c5, c6, c7, CHECK( c5 > 4294967295 ) ); 
+CREATE INDEX i8 ON v4 ( c5 ); 
+CREATE INDEX i9 ON v0 ( 4294967295 ); 
+CREATE TABLE v10 ( c11, c12 INT, c13 CHECK( c13 > 10 ) ); 
+INSERT INTO v4 VALUES ( 10, 0, 10 ); 
+INSERT INTO v10 VALUES ( 0, 4294967295, 10 ); 
+CREATE INDEX i14 ON v10 ( c12 ); 
+INSERT INTO v10 VALUES ( 4294967295, 4294967295, 4294967295 ); 
+CREATE INDEX i15 ON v4 ( c5 ); 
+CREATE INDEX i16 ON v10 ( c11 ); 
+ALTER TABLE v10 DROP COLUMN c12; 
+SELECT 'BEGIN VERI 0'; 
+WITH v4 ( c18 ) AS ( WITH v10 ( c19 ) AS ( WITH v20 ( c21 ) AS ( WITH v22 ( c23 ) AS ( WITH v24 ( c25, c26, c27, c28, c29, c30 ) AS ( SELECT 18446744073709551615 y ORDER BY ( ( v4.c7 + 10 ) % 0 ) < 4294967295 ) SELECT 0 ORDER BY 4294967295 ) SELECT 4294967295 ORDER BY 0 ) SELECT 10 ORDER BY 0 ) SELECT 10 ORDER BY 10 ) SELECT * FROM v0 AS a17 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c19, a31.c1 FROM v0 AS a31 NATURAL JOIN v0 AS a32 ON a32.c19 = y ( a32.c19, a31.c3, a31.c5 COLLATE NOCASE ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 GROUP BY a33.c1, abs ( a33.c19 ) HAVING count ( * ) >= 4294967295 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a34 ORDER BY a34.c11 % 4294967295 >= 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 ( c37 ) AS ( WITH v38 ( c39 ) AS ( WITH v35 AS ( SELECT ( SELECT min ( c39 ) OVER ( ORDER BY 10 IN v38 ) ORDER BY 18446744073709551488 ) FROM v35 AS a40 GROUP BY c37 ORDER BY 100 ) SELECT 18446744073709551488 ORDER BY 10 ) SELECT 0 ORDER BY 18446744073709551615 ) SELECT * FROM v35 AS a36 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c12, max ( a41.c12 || a41.c13 ) FROM v10 AS a41 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42, v0 AS a43 NATURAL JOIN v10 AS a44 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v45 ( c47 ) AS ( SELECT 0 GROUP BY c47 HAVING automatic_index ( * ) >= 4294967295 ORDER BY 0 ) SELECT * FROM v45 AS a46 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a48.c3 IS NULL ) ) AND ( NOT ( a48.c3 IS NULL ) ) ) FROM v0 AS a48 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49 ORDER BY ( a49.c3 + 0 ) % count ( a49.c1 ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: CHECK constraint failed: c5 > 4294967295 (19)
+Runtime error near line 7: CHECK constraint failed: c13 > 10 (19)
+Runtime error near line 12: error in index i14 after drop column: no such column: c12
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: a NATURAL join may not have an ON or USING clause
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+4294967295|4294967295|4294967295
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+4294967295|42949672954294967295
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such function: automatic_index
+  ITH v45 ( c47 ) AS ( SELECT 0 GROUP BY c47 HAVING automatic_index ( * ) >= 429
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: misuse of aggregate: count()
+  SELECT * FROM v0 AS a49 ORDER BY ( a49.c3 + 0 ) % count ( a49.c1 ); 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE TABLE v4 ( c5, c6, c7, CHECK( c5 > 4294967295 ) ); 
+; 
+; 
+CREATE TABLE v10 ( c11, c12 INT, c13 CHECK( c13 > 10 ) ); 
+INSERT INTO v4 VALUES ( 10, 0, 10 ); 
+INSERT INTO v10 VALUES ( 0, 4294967295, 10 ); 
+; 
+INSERT INTO v10 VALUES ( 4294967295, 4294967295, 4294967295 ); 
+; 
+; 
+ALTER TABLE v10 DROP COLUMN c12; 
+SELECT 'BEGIN VERI 0'; 
+WITH v4 ( c18 ) AS ( WITH v10 ( c19 ) AS ( WITH v20 ( c21 ) AS ( WITH v22 ( c23 ) AS ( WITH v24 ( c25, c26, c27, c28, c29, c30 ) AS ( SELECT 18446744073709551615 y ORDER BY ( ( v4.c7 + 10 ) % 0 ) < 4294967295 ) SELECT 0 ORDER BY 4294967295 ) SELECT 4294967295 ORDER BY 0 ) SELECT 10 ORDER BY 0 ) SELECT 10 ORDER BY 10 ) SELECT * FROM v0 AS a17 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c19, a31.c1 FROM v0 AS a31 NATURAL JOIN v0 AS a32 ON a32.c19 = y ( a32.c19, a31.c3, a31.c5 COLLATE NOCASE ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 GROUP BY a33.c1, abs ( a33.c19 ) HAVING count ( * ) >= 4294967295 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a34 ORDER BY a34.c11 % 4294967295 >= 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 ( c37 ) AS ( WITH v38 ( c39 ) AS ( WITH v35 AS ( SELECT ( SELECT min ( c39 ) OVER ( ORDER BY 10 IN v38 ) ORDER BY 18446744073709551488 ) FROM v35 AS a40 GROUP BY c37 ORDER BY 100 ) SELECT 18446744073709551488 ORDER BY 10 ) SELECT 0 ORDER BY 18446744073709551615 ) SELECT * FROM v35 AS a36 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c12, max ( a41.c12 || a41.c13 ) FROM v10 AS a41 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a42, v0 AS a43 NATURAL JOIN v10 AS a44 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v45 ( c47 ) AS ( SELECT 0 GROUP BY c47 HAVING automatic_index ( * ) >= 4294967295 ORDER BY 0 ) SELECT * FROM v45 AS a46 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a48.c3 IS NULL ) ) AND ( NOT ( a48.c3 IS NULL ) ) ) FROM v0 AS a48 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a49 ORDER BY ( a49.c3 + 0 ) % count ( a49.c1 ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: CHECK constraint failed: c5 > 4294967295 (19)
+Runtime error near line 7: CHECK constraint failed: c13 > 10 (19)
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: a NATURAL join may not have an ON or USING clause
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+4294967295|4294967295
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: a41.c12
+  SELECT a41.c12, max ( a41.c12 || a41.c13 ) FROM v10 AS a41 ORDER BY 4294967295
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such function: automatic_index
+  ITH v45 ( c47 ) AS ( SELECT 0 GROUP BY c47 HAVING automatic_index ( * ) >= 429
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: misuse of aggregate: count()
+  SELECT * FROM v0 AS a49 ORDER BY ( a49.c3 + 0 ) % count ( a49.c1 ); 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: a NATURAL join may not have an ON or USING clause
+ 
+INT: 0 
+Str: 
+Parse error near line 17: a NATURAL join may not have an ON or USING clause
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+4294967295|4294967295|4294967295
+ 
+INT: 0 
+Str: 
+4294967295|4294967295
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+4294967295|42949672954294967295
+ 
+INT: 0 
+Str: 
+Parse error near line 29: no such column: a41.c12
+  SELECT a41.c12, max ( a41.c12 || a41.c13 ) FROM v10 AS a41 ORDER BY 4294967295
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: no such function: automatic_index
+  ITH v45 ( c47 ) AS ( SELECT 0 GROUP BY c47 HAVING automatic_index ( * ) >= 429
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: no such function: automatic_index
+  ITH v45 ( c47 ) AS ( SELECT 0 GROUP BY c47 HAVING automatic_index ( * ) >= 429
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: misuse of aggregate: count()
+  SELECT * FROM v0 AS a49 ORDER BY ( a49.c3 + 0 ) % count ( a49.c1 ); 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: misuse of aggregate: count()
+  SELECT * FROM v0 AS a49 ORDER BY ( a49.c3 + 0 ) % count ( a49.c1 ); 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,325 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709551488; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8 REFERENCES t1 ( c8, c7, c8, c7 ), c9 UNIQUE ); 
+CREATE INDEX i10 ON v6 ( c7 ); 
+CREATE TABLE v11 ( c12 REFERENCES t1 DEFAULT 18446744073709551488 DEFAULT 18446744073709551488, c13, c14 ); 
+CREATE INDEX i15 ON v11 ( c12 ); 
+CREATE TABLE v16 ( c17 DOUBLE, c18 TEXT COLLATE NOCASE, c19 DOUBLE ); 
+CREATE INDEX i20 ON v6 ( c9 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+ALTER TABLE v6 DROP COLUMN c7; 
+CREATE INDEX i21 ON v16 ( c19 ); 
+CREATE INDEX i22 ON v6 ( c7 ); 
+CREATE VIRTUAL TABLE v23 USING fts5 ( c24, c25 ); 
+ALTER TABLE v11 DROP COLUMN c12; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a26.c2 || a26.c2 ) FROM v4 AS a26 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a27 WHERE a27.c12 = a27.c12 NOT NULL ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a28 GROUP BY a28.c18 HAVING NULL ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551488, 'x', NULL, NULL ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT a29.c17 FROM v23 AS a30 WHERE a29.c18 LIKE 'x' ORDER BY 0 ) SELECT * FROM v16 AS a29 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c1 FROM v4 AS a31 WHERE a31.c1 LIKE 'xxx' ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT quote ( a32.c19 ), quote ( a32.c18 ), 'x' FROM v16 AS a32 WHERE a32.c18 = + a32.c17 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: foreign key on c8 should reference only one column of table t1
+   TABLE v6 ( c7 INTEGER PRIMARY KEY, c8 REFERENCES t1 ( c8, c7, c8, c7 ), c9 UN
+                                      error here ---^
+Parse error near line 4: no such table: main.v6
+Parse error near line 8: no such table: main.v6
+Parse error near line 10: no such table: v6
+Parse error near line 12: no such table: main.v6
+Runtime error near line 13: no such module: fts5
+Runtime error near line 14: error in index i15 after drop column: no such column: c12
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+   max ( a26.c2 || a26.c2 ) FROM v4 AS a26 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: near "ORDER": syntax error
+  VALUES ( 18446744073709551488, 'x', NULL, NULL ) ORDER BY 10; 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a31.c1
+  SELECT a31.c1 FROM v4 AS a31 WHERE a31.c1 LIKE 'xxx' ORDER BY 10; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709551488; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8 REFERENCES t1 ( c8, c7, c8, c7 ), c9 UNIQUE ); 
+; 
+CREATE TABLE v11 ( c12 REFERENCES t1 DEFAULT 18446744073709551488 DEFAULT 18446744073709551488, c13, c14 ); 
+; 
+CREATE TABLE v16 ( c17 DOUBLE, c18 TEXT COLLATE NOCASE, c19 DOUBLE ); 
+; 
+ALTER TABLE v0 DROP COLUMN c1; 
+ALTER TABLE v6 DROP COLUMN c7; 
+; 
+; 
+CREATE VIRTUAL TABLE v23 USING fts5 ( c24, c25 ); 
+ALTER TABLE v11 DROP COLUMN c12; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a26.c2 || a26.c2 ) FROM v4 AS a26 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a27 WHERE a27.c12 = a27.c12 NOT NULL ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a28 GROUP BY a28.c18 HAVING NULL ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 18446744073709551488, 'x', NULL, NULL ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT a29.c17 FROM v23 AS a30 WHERE a29.c18 LIKE 'x' ORDER BY 0 ) SELECT * FROM v16 AS a29 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c1 FROM v4 AS a31 WHERE a31.c1 LIKE 'xxx' ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT quote ( a32.c19 ), quote ( a32.c18 ), 'x' FROM v16 AS a32 WHERE a32.c18 = + a32.c17 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: foreign key on c8 should reference only one column of table t1
+   TABLE v6 ( c7 INTEGER PRIMARY KEY, c8 REFERENCES t1 ( c8, c7, c8, c7 ), c9 UN
+                                      error here ---^
+Parse error near line 10: no such table: v6
+Runtime error near line 13: no such module: fts5
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+   max ( a26.c2 || a26.c2 ) FROM v4 AS a26 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a27.c12
+  SELECT * FROM v11 AS a27 WHERE a27.c12 = a27.c12 NOT NULL ORDER BY 10; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: near "ORDER": syntax error
+  VALUES ( 18446744073709551488, 'x', NULL, NULL ) ORDER BY 10; 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a31.c1
+  SELECT a31.c1 FROM v4 AS a31 WHERE a31.c1 LIKE 'xxx' ORDER BY 10; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+   max ( a26.c2 || a26.c2 ) FROM v4 AS a26 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+   max ( a26.c2 || a26.c2 ) FROM v4 AS a26 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such column: a27.c12
+  SELECT * FROM v11 AS a27 WHERE a27.c12 = a27.c12 NOT NULL ORDER BY 10; 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 38438992
+Str: 
+Parse error near line 31: near "ORDER": syntax error
+  VALUES ( 18446744073709551488, 'x', NULL, NULL ) ORDER BY 10; 
+                                     error here ---^
+ 
+Str: 
+Parse error near line 31: near "ORDER": syntax error
+  VALUES ( 18446744073709551488, 'x', NULL, NULL ) ORDER BY 10; 
+                                     error here ---^
+ 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such column: a31.c1
+  SELECT a31.c1 FROM v4 AS a31 WHERE a31.c1 LIKE 'xxx' ORDER BY 10; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 37: no such column: a31.c1
+  SELECT a31.c1 FROM v4 AS a31 WHERE a31.c1 LIKE 'xxx' ORDER BY 10; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 43: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

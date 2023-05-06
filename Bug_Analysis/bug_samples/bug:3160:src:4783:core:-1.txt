@@ -1,0 +1,292 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16 DEFAULT x'ABCD', c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, PRIMARY KEY ( c27, c1, c1, c24, c12, c26, c14 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c25 = c30 || c17 WHERE c9 = c21 || c7; END; 
+CREATE TABLE v33 ( c34, c35, c36, c37, PRIMARY KEY ( c37, c37 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 255, 127, 10, 127 ); 
+CREATE INDEX i38 ON v33 ( c35 ); 
+CREATE INDEX i39 ON v33 ( c34 ); 
+ALTER TABLE v33 DROP COLUMN c34; 
+CREATE INDEX i40 ON v0 ( c19 ); 
+INSERT OR REPLACE INTO v0 ( c13, c30, c2, c9, c30 ) VALUES ( 127, 0, NULL, 127, 127 ); 
+CREATE INDEX i41 ON v33 ( c34 ); 
+CREATE INDEX i42 ON v0 ( c12 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c37, count ( ( NOT ( a43.c34 IS NULL ) ) AND ( NOT ( a43.c37 IS NULL ) ) ) FROM v33 AS a43 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 10 AS y, 127 AS y ORDER BY c35; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a44 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a45 ORDER BY ( ( a45.c36 + 9223372036854775807 ) % 127 ) == 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a46 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a47, v0 AS a48 NATURAL JOIN v0 AS a49 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c5 COLLATE NOCASE WHERE c35 = c29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50, v33 AS a51 NATURAL JOIN v33 AS a52 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a53 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: table v0 has 32 columns but 4 values were supplied
+Runtime error near line 7: error in index i39 after drop column: no such column: c34
+Runtime error near line 9: NOT NULL constraint failed: v0.c1 (19)
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: c35
+  SELECT 10 AS y, 127 AS y ORDER BY c35; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 36
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: c5
+  SELECT c5 COLLATE NOCASE WHERE c35 = c29 ORDER BY 0; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16 DEFAULT x'ABCD', c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, PRIMARY KEY ( c27, c1, c1, c24, c12, c26, c14 ) ) WITHOUT ROWID; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c25 = c30 || c17 WHERE c9 = c21 || c7; END; 
+CREATE TABLE v33 ( c34, c35, c36, c37, PRIMARY KEY ( c37, c37 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 255, 127, 10, 127 ); 
+; 
+; 
+ALTER TABLE v33 DROP COLUMN c34; 
+; 
+INSERT OR REPLACE INTO v0 ( c13, c30, c2, c9, c30 ) VALUES ( 127, 0, NULL, 127, 127 ); 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c37, count ( ( NOT ( a43.c34 IS NULL ) ) AND ( NOT ( a43.c37 IS NULL ) ) ) FROM v33 AS a43 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 10 AS y, 127 AS y ORDER BY c35; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a44 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a45 ORDER BY ( ( a45.c36 + 9223372036854775807 ) % 127 ) == 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a46 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a47, v0 AS a48 NATURAL JOIN v0 AS a49 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c5 COLLATE NOCASE WHERE c35 = c29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50, v33 AS a51 NATURAL JOIN v33 AS a52 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a53 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: table v0 has 32 columns but 4 values were supplied
+Runtime error near line 9: NOT NULL constraint failed: v0.c1 (19)
+BEGIN VERI 0
+Parse error near line 13: no such column: a43.c34
+  SELECT a43.c37, count ( ( NOT ( a43.c34 IS NULL ) ) AND ( NOT ( a43.c37 IS NUL
+                    error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: c35
+  SELECT 10 AS y, 127 AS y ORDER BY c35; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 35
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: c5
+  SELECT c5 COLLATE NOCASE WHERE c35 = c29 ORDER BY 0; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 13: no such column: a43.c34
+  SELECT a43.c37, count ( ( NOT ( a43.c34 IS NULL ) ) AND ( NOT ( a43.c37 IS NUL
+                    error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such column: c35
+  SELECT 10 AS y, 127 AS y ORDER BY c35; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: no such column: c35
+  SELECT 10 AS y, 127 AS y ORDER BY c35; 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 36
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 35
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such column: c5
+  SELECT c5 COLLATE NOCASE WHERE c35 = c29 ORDER BY 0; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 34: no such column: c5
+  SELECT c5 COLLATE NOCASE WHERE c35 = c29 ORDER BY 0; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

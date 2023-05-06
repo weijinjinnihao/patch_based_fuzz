@@ -1,0 +1,306 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c3 > 10 ), c4 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( 10, 10, 18446744071562067968, 0 ), ( 10, 10, 10, 10 ); 
+CREATE INDEX i6 ON v0 ( c4 ); 
+CREATE TABLE v7 ( c8, c9, c10, c11, CHECK( c8 > 10 ) ); 
+INSERT INTO v7 VALUES ( 18446744073709551488, 10, 16, count ( * ) ), ( 10, 16, 10, 10 ); 
+INSERT INTO v7 VALUES ( 10, 16, 18446744073709551488, 18446744073709551615 ); 
+INSERT INTO v7 VALUES ( c11 || c11, 'v1', 'x', 8, 18446744073709551488 ); 
+CREATE INDEX i12 ON v0 ( c2 ); 
+CREATE INDEX i13 ON v0 ( c2 ); 
+ALTER TABLE v0 DROP c4; 
+CREATE INDEX i14 ON v0 ( c4 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a15.c11, count ( a15.c9 ) FROM v7 AS a15 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a16 WHERE a16.c9 = a16.c10 NOT NULL ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a17 GROUP BY count ( ( NOT ( a17.c9 IS NULL ) ) AND ( NOT ( a17.c9 IS NULL ) ) ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a18 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a19 GROUP BY 16 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c1 * 8 + 0 AS y, count ( * ) AS y FROM v0 AS a20 GROUP BY a20.c4 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c4, max ( a21.c3 || a21.c4 ) FROM v0 AS a21 WHERE ( a21.c1 || a21.c1 || a21.c4 ) != 'v0' ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a22 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 3: CHECK constraint failed: c3 > 10 (19)
+Parse error near line 6: misuse of aggregate: count()
+  RT INTO v7 VALUES ( 18446744073709551488, 10, 16, count ( * ) ), ( 10, 16, 10,
+                                      error here ---^
+Runtime error near line 7: CHECK constraint failed: c8 > 10 (19)
+Parse error near line 8: no such column: c11
+  INSERT INTO v7 VALUES ( c11 || c11, 'v1', 'x', 8, 18446744073709551488 ); 
+                          ^--- error here
+Runtime error near line 11: error in index i6 after drop column: no such column: c4
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st GROUP BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+   * ) AS y FROM v0 AS a20 GROUP BY a20.c4 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c3 > 10 ), c4 ); 
+; 
+INSERT INTO v0 VALUES ( 10, 10, 18446744071562067968, 0 ), ( 10, 10, 10, 10 ); 
+; 
+CREATE TABLE v7 ( c8, c9, c10, c11, CHECK( c8 > 10 ) ); 
+INSERT INTO v7 VALUES ( 18446744073709551488, 10, 16, count ( * ) ), ( 10, 16, 10, 10 ); 
+INSERT INTO v7 VALUES ( 10, 16, 18446744073709551488, 18446744073709551615 ); 
+INSERT INTO v7 VALUES ( c11 || c11, 'v1', 'x', 8, 18446744073709551488 ); 
+; 
+; 
+ALTER TABLE v0 DROP c4; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a15.c11, count ( a15.c9 ) FROM v7 AS a15 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a16 WHERE a16.c9 = a16.c10 NOT NULL ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a17 GROUP BY count ( ( NOT ( a17.c9 IS NULL ) ) AND ( NOT ( a17.c9 IS NULL ) ) ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a18 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a19 GROUP BY 16 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a20.c1 * 8 + 0 AS y, count ( * ) AS y FROM v0 AS a20 GROUP BY a20.c4 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a21.c4, max ( a21.c3 || a21.c4 ) FROM v0 AS a21 WHERE ( a21.c1 || a21.c1 || a21.c4 ) != 'v0' ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a22 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 3: CHECK constraint failed: c3 > 10 (19)
+Parse error near line 6: misuse of aggregate: count()
+  RT INTO v7 VALUES ( 18446744073709551488, 10, 16, count ( * ) ), ( 10, 16, 10,
+                                      error here ---^
+Runtime error near line 7: CHECK constraint failed: c8 > 10 (19)
+Parse error near line 8: no such column: c11
+  INSERT INTO v7 VALUES ( c11 || c11, 'v1', 'x', 8, 18446744073709551488 ); 
+                          ^--- error here
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st GROUP BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+   * ) AS y FROM v0 AS a20 GROUP BY a20.c4 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a21.c4
+  SELECT a21.c4, max ( a21.c3 || a21.c4 ) FROM v0 AS a21 WHERE ( a21.c1 || a21.c
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st GROUP BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st GROUP BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+   * ) AS y FROM v0 AS a20 GROUP BY a20.c4 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+   * ) AS y FROM v0 AS a20 GROUP BY a20.c4 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 38: no such column: a21.c4
+  SELECT a21.c4, max ( a21.c3 || a21.c4 ) FROM v0 AS a21 WHERE ( a21.c1 || a21.c
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,279 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+CREATE VIEW v6 AS SELECT * FROM v0 AS a7 ORDER BY 18446744073709551488; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i16 ON v0 ( c1 ); 
+CREATE INDEX i17 ON v6 ( c2 ); 
+CREATE VIRTUAL TABLE v18 USING fts5; 
+CREATE TABLE v19 ( c20 TEXT COLLATE BINARY ), STRICT; 
+ALTER TABLE v6 DROP COLUMN c3; 
+CREATE INDEX i21 ON v0 ( c1 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT 8 IN ( ) FROM v18 AS a22, v18 AS a23 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a24 GROUP BY 8 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a25, v12 AS a26 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT 10 y ORDER BY 18446744073709551488 ) SELECT c20, v0.c3 FROM v19 AS a27 RIGHT JOIN v18 AS a28 ON a27.c20 = v0.c2 WHERE v0.c1 != c15 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 ORDER BY - hex ( 8 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 ORDER BY 8 IN ( SELECT * FROM v6 AS a31 ORDER BY 18446744073709551488 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a32 ORDER BY x'616263'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a33 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( WITH v35 ( c37 ) AS ( SELECT 'v1' ORDER BY 18446744071562067968 ) SELECT * FROM v35 AS a36 LEFT JOIN ( SELECT count ( * ) AS y, a34.c10 FROM ( v35 AS a38 INNER JOIN v35 AS a39 ON a34.c10 = a34.c10 ) AS y WHERE a34.c37 > 18446744073709551488 GROUP BY a34.c37 ORDER BY 9223372036854775807 ) AS y ON a34.c37 = y ( a34.c10 ) ORDER BY 18446744071562067968 ) ) FROM v18 AS a34 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in index i4 after drop column: no such column: c2
+Parse error near line 9: no such column: c1
+  CREATE INDEX i16 ON v0 ( c1 ); 
+             error here ---^
+Parse error near line 10: views may not be indexed
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: cannot drop column from view "v6"
+Parse error near line 14: no such column: c1
+  CREATE INDEX i21 ON v0 ( c1 ); 
+             error here ---^
+BEGIN VERI 0
+Parse error near line 16: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v18
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v18
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: sub-select returns 2 columns - expected 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such table: v18
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+; 
+CREATE VIEW v6 AS SELECT * FROM v0 AS a7 ORDER BY 18446744073709551488; 
+CREATE TABLE v8 ( c9 INTEGER PRIMARY KEY, c10, c11 UNIQUE ); 
+CREATE TABLE v12 ( c13, c14, c15 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+; 
+CREATE VIRTUAL TABLE v18 USING fts5; 
+CREATE TABLE v19 ( c20 TEXT COLLATE BINARY ), STRICT; 
+ALTER TABLE v6 DROP COLUMN c3; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 8 IN ( ) FROM v18 AS a22, v18 AS a23 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a24 GROUP BY 8 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a25, v12 AS a26 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT 10 y ORDER BY 18446744073709551488 ) SELECT c20, v0.c3 FROM v19 AS a27 RIGHT JOIN v18 AS a28 ON a27.c20 = v0.c2 WHERE v0.c1 != c15 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 ORDER BY - hex ( 8 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 ORDER BY 8 IN ( SELECT * FROM v6 AS a31 ORDER BY 18446744073709551488 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a32 ORDER BY x'616263'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a33 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( WITH v35 ( c37 ) AS ( SELECT 'v1' ORDER BY 18446744071562067968 ) SELECT * FROM v35 AS a36 LEFT JOIN ( SELECT count ( * ) AS y, a34.c10 FROM ( v35 AS a38 INNER JOIN v35 AS a39 ON a34.c10 = a34.c10 ) AS y WHERE a34.c37 > 18446744073709551488 GROUP BY a34.c37 ORDER BY 9223372036854775807 ) AS y ON a34.c37 = y ( a34.c10 ) ORDER BY 18446744071562067968 ) ) FROM v18 AS a34 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: cannot drop column from view "v6"
+BEGIN VERI 0
+Parse error near line 16: no such table: v18
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v18
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v18
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such table: v18
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such table: v18
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 34: sub-select returns 2 columns - expected 1
+ 
+INT: 0 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: no such table: v18
+ 
+INT: 0 
+Str: 
+Parse error near line 43: no such table: v18
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

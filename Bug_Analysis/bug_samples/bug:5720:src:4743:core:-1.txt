@@ -1,0 +1,266 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 TEXT, c2 INTEGER, c3 INT, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c2 + 8 ) % 8 ) != 18446744073709551615 ) ) WITHOUT ROWID; 
+CREATE INDEX i28 ON v0 ( c15 ); 
+CREATE INDEX i29 ON v0 ( c8 ); 
+CREATE INDEX i30 ON v0 ( c15 ); 
+CREATE INDEX i31 ON v0 ( c25, c21, c1, c25, c9, c24, c12, c18, c5, c4 ); 
+ALTER TABLE v0 DROP c12; 
+CREATE INDEX i32 ON v0 ( c8 ); 
+ATTACH ( hex ( 18446744073709551488 ) ) AS sqlite_master; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 WHERE ( a33.c10 = 18446744073709551488 OR a33.c26 = 16 ) AND a33.c6 IN ( SELECT a33.c12 FROM ( SELECT *, 'v1' FROM v0 AS a34, v0 AS a35 ORDER BY 18446744073709551615 ) AS y WHERE a33.c15 = 18446744073709551488 ORDER BY 18446744073709551615 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36, v0 AS a37 NATURAL JOIN v0 AS a38 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 WHERE a39.c5 IS NOT NULL >= abs ( a39.c20 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a40.c10, a40.c1 FROM v0 AS a40 RIGHT JOIN v0 AS a41 ON a40.c13 = a41.c12 WHERE a40.c12 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( 2147483647, count ( * ) ) FROM v0 AS a42 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43, v0 AS a44 NATURAL JOIN v0 AS a45 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a46 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a47 ORDER BY a47.c4 COLLATE nocase; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 GROUP BY a48.c12 HAVING NULL ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c50, c51, c52, c53, c54, c55 ) AS ( SELECT 18446744073709551615 y ORDER BY ( ( a49.c55 + 0 ) % 8 ) < 10 ) SELECT * FROM v0 AS a49 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: error in index i31 after drop column: no such column: c12
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 27
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 54
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: row value misused
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 27
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: table v0 has 1 values for 6 columns
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 TEXT, c2 INTEGER, c3 INT, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27 PRIMARY KEY, CHECK( ( ( c2 + 8 ) % 8 ) != 18446744073709551615 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c12; 
+; 
+ATTACH ( hex ( 18446744073709551488 ) ) AS sqlite_master; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 WHERE ( a33.c10 = 18446744073709551488 OR a33.c26 = 16 ) AND a33.c6 IN ( SELECT a33.c12 FROM ( SELECT *, 'v1' FROM v0 AS a34, v0 AS a35 ORDER BY 18446744073709551615 ) AS y WHERE a33.c15 = 18446744073709551488 ORDER BY 18446744073709551615 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36, v0 AS a37 NATURAL JOIN v0 AS a38 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 WHERE a39.c5 IS NOT NULL >= abs ( a39.c20 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a40.c10, a40.c1 FROM v0 AS a40 RIGHT JOIN v0 AS a41 ON a40.c13 = a41.c12 WHERE a40.c12 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( 2147483647, count ( * ) ) FROM v0 AS a42 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43, v0 AS a44 NATURAL JOIN v0 AS a45 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a46 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a47 ORDER BY a47.c4 COLLATE nocase; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 GROUP BY a48.c12 HAVING NULL ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c50, c51, c52, c53, c54, c55 ) AS ( SELECT 18446744073709551615 y ORDER BY ( ( a49.c55 + 0 ) % 8 ) < 10 ) SELECT * FROM v0 AS a49 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 10: no such column: a33.c12
+  09551488 OR a33.c26 = 16 ) AND a33.c6 IN ( SELECT a33.c12 FROM ( SELECT *, 'v1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 52
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: a40.c12
+  0 RIGHT JOIN v0 AS a41 ON a40.c13 = a41.c12 WHERE a40.c12 ORDER BY 8; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: row value misused
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 26
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: table v0 has 1 values for 6 columns
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 27
+ 
+INT: 0 
+Str: 
+Parse error near line 10: no such column: a33.c12
+  09551488 OR a33.c26 = 16 ) AND a33.c6 IN ( SELECT a33.c12 FROM ( SELECT *, 'v1
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 54
+ 
+INT: 0 
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 52
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such column: a40.c12
+  0 RIGHT JOIN v0 AS a41 ON a40.c13 = a41.c12 WHERE a40.c12 ORDER BY 8; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 22: row value misused
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 27
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 26
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: table v0 has 1 values for 6 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 37: table v0 has 1 values for 6 columns
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

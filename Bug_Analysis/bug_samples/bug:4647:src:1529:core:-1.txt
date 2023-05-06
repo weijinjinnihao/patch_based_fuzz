@@ -1,0 +1,286 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 PRIMARY KEY NOT NULL, c2 NOT NULL ); 
+CREATE INDEX i3 ON v0 ( c2 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE TABLE v5 ( c6, c7, c8 REFERENCES p1 ( c8 ) ); 
+CREATE TABLE v9 ( c10, c11, c12, c13 REFERENCES p1 ( c11 ) ); 
+CREATE INDEX i14 ON v0 ( c1 ); 
+CREATE TABLE v15 ( c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29 BLOB DEFAULT x'616263', c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46, c47, c48, c49, c50, c51, c52, c53, c54 TEXT UNIQUE NOT NULL ); 
+CREATE INDEX i55 ON v9 ( c10 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v9 DROP COLUMN c13; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a56 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a57.c1 IS NULL ) ) AND ( NOT ( a57.c1 IS NULL ) ) ) FROM v0 AS a57 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a58 GROUP BY x'616263', 'v0', a58.c54 = + a58.c36 HAVING count ( * ) >= 0 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v15 AS ( SELECT a59.c51 FROM v15 AS a60 WHERE a60.c47 NOT LIKE 'pear' ORDER BY 16 ) SELECT * FROM v15 AS a59 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v61 ( c63 ) AS ( WITH v64 ( c65 ) AS ( WITH v66 ( c67 ) AS ( WITH v68 AS ( SELECT ( SELECT min ( c63 ) OVER ( ORDER BY 18446744071562067968 IN v66 ) ORDER BY 16 ) FROM v64 AS a69 GROUP BY c63 ORDER BY 18446744073709551488 ) SELECT 16 ORDER BY 18446744073709551488 ) SELECT 16 ORDER BY 18446744071562067968 ) SELECT 18446744071562067968 ORDER BY 18446744071562067968 ) SELECT * FROM v61 AS a62 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a70.c10, max ( a70.c13 || a70.c13 ) FROM v9 AS a70 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a71 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a72 WHERE a72.c1 > ( a72.c2 + - 16 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 AS ( SELECT 16 y ORDER BY 16 ) SELECT * FROM v5 AS a73 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: error in index i3 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: circular reference: v15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a70.c13
+  SELECT a70.c10, max ( a70.c13 || a70.c13 ) FROM v9 AS a70 ORDER BY 18446744071
+                        ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 PRIMARY KEY NOT NULL, c2 NOT NULL ); 
+; 
+; 
+CREATE TABLE v5 ( c6, c7, c8 REFERENCES p1 ( c8 ) ); 
+CREATE TABLE v9 ( c10, c11, c12, c13 REFERENCES p1 ( c11 ) ); 
+; 
+CREATE TABLE v15 ( c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29 BLOB DEFAULT x'616263', c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46, c47, c48, c49, c50, c51, c52, c53, c54 TEXT UNIQUE NOT NULL ); 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v9 DROP COLUMN c13; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a56 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a57.c1 IS NULL ) ) AND ( NOT ( a57.c1 IS NULL ) ) ) FROM v0 AS a57 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a58 GROUP BY x'616263', 'v0', a58.c54 = + a58.c36 HAVING count ( * ) >= 0 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v15 AS ( SELECT a59.c51 FROM v15 AS a60 WHERE a60.c47 NOT LIKE 'pear' ORDER BY 16 ) SELECT * FROM v15 AS a59 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v61 ( c63 ) AS ( WITH v64 ( c65 ) AS ( WITH v66 ( c67 ) AS ( WITH v68 AS ( SELECT ( SELECT min ( c63 ) OVER ( ORDER BY 18446744071562067968 IN v66 ) ORDER BY 16 ) FROM v64 AS a69 GROUP BY c63 ORDER BY 18446744073709551488 ) SELECT 16 ORDER BY 18446744073709551488 ) SELECT 16 ORDER BY 18446744071562067968 ) SELECT 18446744071562067968 ORDER BY 18446744071562067968 ) SELECT * FROM v61 AS a62 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a70.c10, max ( a70.c13 || a70.c13 ) FROM v9 AS a70 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a71 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a72 WHERE a72.c1 > ( a72.c2 + - 16 ) ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v5 AS ( SELECT 16 y ORDER BY 16 ) SELECT * FROM v5 AS a73 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: circular reference: v15
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a70.c13
+  SELECT a70.c10, max ( a70.c13 || a70.c13 ) FROM v9 AS a70 ORDER BY 18446744071
+                        ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a72.c2
+  SELECT * FROM v0 AS a72 WHERE a72.c1 > ( a72.c2 + - 16 ) ORDER BY 16; 
+                             error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: circular reference: v15
+ 
+INT: 0 
+Str: 
+Parse error near line 24: circular reference: v15
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such column: a70.c13
+  SELECT a70.c10, max ( a70.c13 || a70.c13 ) FROM v9 AS a70 ORDER BY 18446744071
+                        ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 30: no such column: a70.c13
+  SELECT a70.c10, max ( a70.c13 || a70.c13 ) FROM v9 AS a70 ORDER BY 18446744071
+                        ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such column: a72.c2
+  SELECT * FROM v0 AS a72 WHERE a72.c1 > ( a72.c2 + - 16 ) ORDER BY 16; 
+                             error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

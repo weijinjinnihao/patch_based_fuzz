@@ -1,0 +1,322 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE TABLE v5 ( c6, c7, c8, CHECK( c8 > 127 ) ); 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c10 < 127 ) ); 
+INSERT INTO v0 VALUES ( ( hex ( 18446744073709551615 ) ) % 16, ( 127 ) ); 
+CREATE INDEX i13 ON v9 ( c11 ); 
+CREATE INDEX i14 ON v9 ( c12 ); 
+INSERT INTO v9 VALUES ( 8, 127, 18446744073709551615 ); 
+CREATE INDEX i15 ON v5 ( c7 ); 
+INSERT INTO v9 VALUES ( 8, 127, 9223372036854775807 ); 
+CREATE INDEX i16 ON v5 ( c6 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( count ( c12 ), 'v1' ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a17 NATURAL JOIN v5 AS a18 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT * FROM v9 AS a20 JOIN v9 AS a21 USING ( a19.c11, a21.c12, a21.c12, a20.c12, a20.c12, a20.c10, a21.c12, a21.c10 ) WHERE a20.c10 = a19.c12 >= 18446744073709551615 ORDER BY 8 ) SELECT * FROM v9 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN c8 != 'v1' THEN 127 ELSE 127 END ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( - 18446744073709551615 IS NULL ) ) AND ( NOT ( a23.c3 IS NULL ) ) ), a23.c2 FROM v0 AS a22 LEFT JOIN v0 AS a23 ON a22.c3 = a22.c1 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a24 WHERE a24.c12 = a24.c12 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a25, v0 AS a26 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c1, a29.c11 FROM v0 AS a28, v9 AS a29 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v5 AS a30 ), ( v9 AS a31 NATURAL JOIN v0 AS a32 ), ( v5 AS a33 ), ( v5 AS a34 ) WHERE a30.c6 = a32.c2 + 127 AND a32.c2 = a32.c3 + 8 AND a33.c8 = a32.c1 + 16 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: table v0 has 3 columns but 2 values were supplied
+Runtime error near line 12: error in index i4 after drop column: no such column: c3
+BEGIN VERI 0
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c12 ), 'v1' ) ORDER BY 127; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+   * FROM v5 AS a17 NATURAL JOIN v5 AS a18 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: near ".": syntax error
+  SELECT * FROM v9 AS a20 JOIN v9 AS a21 USING ( a19.c11, a21.c12, a21.c12, a20.
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: c8
+  SELECT ( CASE WHEN c8 != 'v1' THEN 127 ELSE 127 END ) ORDER BY 8; 
+                     ^--- error here
+END VERI 0
+BEGIN VERI 0
+0|
+END VERI 0
+BEGIN VERI 0
+8|127|1.84467440737096e+19
+8|127|9223372036854775807
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: ambiguous column name: main.v5.c6
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+; 
+CREATE TABLE v5 ( c6, c7, c8, CHECK( c8 > 127 ) ); 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c10 < 127 ) ); 
+INSERT INTO v0 VALUES ( ( hex ( 18446744073709551615 ) ) % 16, ( 127 ) ); 
+; 
+; 
+INSERT INTO v9 VALUES ( 8, 127, 18446744073709551615 ); 
+; 
+INSERT INTO v9 VALUES ( 8, 127, 9223372036854775807 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( count ( c12 ), 'v1' ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a17 NATURAL JOIN v5 AS a18 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT * FROM v9 AS a20 JOIN v9 AS a21 USING ( a19.c11, a21.c12, a21.c12, a20.c12, a20.c12, a20.c10, a21.c12, a21.c10 ) WHERE a20.c10 = a19.c12 >= 18446744073709551615 ORDER BY 8 ) SELECT * FROM v9 AS a19 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN c8 != 'v1' THEN 127 ELSE 127 END ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( - 18446744073709551615 IS NULL ) ) AND ( NOT ( a23.c3 IS NULL ) ) ), a23.c2 FROM v0 AS a22 LEFT JOIN v0 AS a23 ON a22.c3 = a22.c1 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a24 WHERE a24.c12 = a24.c12 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a25, v0 AS a26 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c1, a29.c11 FROM v0 AS a28, v9 AS a29 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v5 AS a30 ), ( v9 AS a31 NATURAL JOIN v0 AS a32 ), ( v5 AS a33 ), ( v5 AS a34 ) WHERE a30.c6 = a32.c2 + 127 AND a32.c2 = a32.c3 + 8 AND a33.c8 = a32.c1 + 16 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: table v0 has 3 columns but 2 values were supplied
+BEGIN VERI 0
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c12 ), 'v1' ) ORDER BY 127; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+   * FROM v5 AS a17 NATURAL JOIN v5 AS a18 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: near ".": syntax error
+  SELECT * FROM v9 AS a20 JOIN v9 AS a21 USING ( a19.c11, a21.c12, a21.c12, a20.
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: c8
+  SELECT ( CASE WHEN c8 != 'v1' THEN 127 ELSE 127 END ) ORDER BY 8; 
+                     ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: a23.c3
+   ( - 18446744073709551615 IS NULL ) ) AND ( NOT ( a23.c3 IS NULL ) ) ), a23.c2
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+8|127|1.84467440737096e+19
+8|127|9223372036854775807
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: ambiguous column name: main.v5.c6
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 18375808
+Str: 
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c12 ), 'v1' ) ORDER BY 127; 
+                   error here ---^
+ 
+Str: 
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c12 ), 'v1' ) ORDER BY 127; 
+                   error here ---^
+ 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+   * FROM v5 AS a17 NATURAL JOIN v5 AS a18 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+   * FROM v5 AS a17 NATURAL JOIN v5 AS a18 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: near ".": syntax error
+  SELECT * FROM v9 AS a20 JOIN v9 AS a21 USING ( a19.c11, a21.c12, a21.c12, a20.
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: near ".": syntax error
+  SELECT * FROM v9 AS a20 JOIN v9 AS a21 USING ( a19.c11, a21.c12, a21.c12, a20.
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such column: c8
+  SELECT ( CASE WHEN c8 != 'v1' THEN 127 ELSE 127 END ) ORDER BY 8; 
+                     ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 23: no such column: c8
+  SELECT ( CASE WHEN c8 != 'v1' THEN 127 ELSE 127 END ) ORDER BY 8; 
+                     ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+0|
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such column: a23.c3
+   ( - 18446744073709551615 IS NULL ) ) AND ( NOT ( a23.c3 IS NULL ) ) ), a23.c2
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+8|127|1.84467440737096e+19
+8|127|9223372036854775807
+ 
+INT: 1 
+Str: 
+8|127|1.84467440737096e+19
+8|127|9223372036854775807
+ 
+INT: 1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: ambiguous column name: main.v5.c6
+ 
+INT: 0 
+Str: 
+Parse error near line 41: ambiguous column name: main.v5.c6
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

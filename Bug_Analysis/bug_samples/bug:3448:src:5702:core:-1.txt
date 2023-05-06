@@ -1,0 +1,304 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE INDEX i3 ON v0 ( c1 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE TABLE v5 ( c6, c7, c8, c9, c10, c11, c12 REFERENCES t1 DEFAULT NULL, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25 INTEGER PRIMARY KEY, c26 ); 
+CREATE INDEX i27 ON v5 ( c26 ); 
+CREATE TABLE v28 ( c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42 PRIMARY KEY ON CONFLICT REPLACE, c43, c44, c45 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v46 USING rtree ( c47, c48, c49, c50, c51, c52, c53, c54, c55 ); 
+CREATE TABLE v56 ( c57, c58, c59, c60, c61, c62, c63, c64, c65, c66, c67, c68, c69, c70, c71, c72, c73 TEXT UNIQUE NOT NULL ); 
+INSERT INTO v5 VALUES ( 18446744071562067968, 'Item1' ), ( 18446744071562067968, 'one-a' ), ( 18446744071562067968, 'x' ); 
+CREATE INDEX i74 ON v46 ( c53 ); 
+CREATE TABLE v75 ( c76 DEFAULT x'ABCD' DEFAULT 18446744071562067968, c77 NOT NULL DEFAULT 127, c78 NOT NULL ON CONFLICT REPLACE DEFAULT 18446744071562067968, c79 NOT NULL ON CONFLICT IGNORE DEFAULT 18446744071562067968, c80 NOT NULL ON CONFLICT ABORT DEFAULT 18446744071562067968 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v0 BEGIN DELETE FROM v5; END; 
+ALTER TABLE v5 DROP COLUMN c26; 
+INSERT INTO v75 VALUES ( 18446744073709551488, 18446744071562067968 ), ( 18446744071562067968, 18446744071562067968 ), ( 18446744071562067968, 255 ), ( c80 != 'v0', 'X' ), ( 255, 18446744071562067968 ); 
+CREATE INDEX i81 ON v46 ( c11 ); 
+UPDATE v5 SET c23 = 'x' WHERE c8 = 255; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a82.c77 FROM v75 AS a82 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT CASE WHEN a83.c76 % 18446744071562067968 != 4 THEN a83.c79 END, a83.c77, a83.c76 FROM v75 AS a83 WHERE a83.c78 <= 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a84 WHERE a84.c25 = - 18446744073709551488 ORDER BY 4; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c61 COLLATE binary ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v56 AS a85 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a86.c17, count ( ( NOT ( a86.c23 IS NULL ) ) AND ( NOT ( a86.c23 IS NULL ) ) ) FROM v5 AS a86 ORDER BY 4; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v28 AS a87 WHERE a87.c37 IS NOT NULL >= 18446744071562067968 ORDER BY 4; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a88.c14, max ( a88.c7 || a88.c26 ) FROM v5 AS a88 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: table v5 has 21 columns but 2 values were supplied
+Parse error near line 10: virtual tables may not be indexed
+Runtime error near line 13: error in index i27 after drop column: no such column: c26
+Parse error near line 14: no such column: c80
+  4071562067968 ), ( 18446744071562067968, 255 ), ( c80 != 'v0', 'X' ), ( 255, 1
+                                      error here ---^
+Parse error near line 15: virtual tables may not be indexed
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: c61
+  SELECT c61 COLLATE binary ORDER BY 18446744073709551615; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 17
+  SELECT * FROM v56 AS a85 ORDER BY 2147483647; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+; 
+; 
+CREATE TABLE v5 ( c6, c7, c8, c9, c10, c11, c12 REFERENCES t1 DEFAULT NULL, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25 INTEGER PRIMARY KEY, c26 ); 
+; 
+CREATE TABLE v28 ( c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42 PRIMARY KEY ON CONFLICT REPLACE, c43, c44, c45 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v46 USING rtree ( c47, c48, c49, c50, c51, c52, c53, c54, c55 ); 
+CREATE TABLE v56 ( c57, c58, c59, c60, c61, c62, c63, c64, c65, c66, c67, c68, c69, c70, c71, c72, c73 TEXT UNIQUE NOT NULL ); 
+INSERT INTO v5 VALUES ( 18446744071562067968, 'Item1' ), ( 18446744071562067968, 'one-a' ), ( 18446744071562067968, 'x' ); 
+; 
+CREATE TABLE v75 ( c76 DEFAULT x'ABCD' DEFAULT 18446744071562067968, c77 NOT NULL DEFAULT 127, c78 NOT NULL ON CONFLICT REPLACE DEFAULT 18446744071562067968, c79 NOT NULL ON CONFLICT IGNORE DEFAULT 18446744071562067968, c80 NOT NULL ON CONFLICT ABORT DEFAULT 18446744071562067968 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v0 BEGIN DELETE FROM v5; END; 
+ALTER TABLE v5 DROP COLUMN c26; 
+INSERT INTO v75 VALUES ( 18446744073709551488, 18446744071562067968 ), ( 18446744071562067968, 18446744071562067968 ), ( 18446744071562067968, 255 ), ( c80 != 'v0', 'X' ), ( 255, 18446744071562067968 ); 
+; 
+UPDATE v5 SET c23 = 'x' WHERE c8 = 255; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a82.c77 FROM v75 AS a82 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT CASE WHEN a83.c76 % 18446744071562067968 != 4 THEN a83.c79 END, a83.c77, a83.c76 FROM v75 AS a83 WHERE a83.c78 <= 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a84 WHERE a84.c25 = - 18446744073709551488 ORDER BY 4; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c61 COLLATE binary ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v56 AS a85 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a86.c17, count ( ( NOT ( a86.c23 IS NULL ) ) AND ( NOT ( a86.c23 IS NULL ) ) ) FROM v5 AS a86 ORDER BY 4; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v28 AS a87 WHERE a87.c37 IS NOT NULL >= 18446744071562067968 ORDER BY 4; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a88.c14, max ( a88.c7 || a88.c26 ) FROM v5 AS a88 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 9: table v5 has 21 columns but 2 values were supplied
+Parse error near line 14: no such column: c80
+  4071562067968 ), ( 18446744071562067968, 255 ), ( c80 != 'v0', 'X' ), ( 255, 1
+                                      error here ---^
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: c61
+  SELECT c61 COLLATE binary ORDER BY 18446744073709551615; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 17
+  SELECT * FROM v56 AS a85 ORDER BY 2147483647; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 45: no such column: a88.c26
+  SELECT a88.c14, max ( a88.c7 || a88.c26 ) FROM v5 AS a88 ORDER BY 184467440715
+                    error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such column: c61
+  SELECT c61 COLLATE binary ORDER BY 18446744073709551615; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 33: no such column: c61
+  SELECT c61 COLLATE binary ORDER BY 18446744073709551615; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 17
+  SELECT * FROM v56 AS a85 ORDER BY 2147483647; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 17
+  SELECT * FROM v56 AS a85 ORDER BY 2147483647; 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 45: no such column: a88.c26
+  SELECT a88.c14, max ( a88.c7 || a88.c26 ) FROM v5 AS a88 ORDER BY 184467440715
+                    error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,314 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 16; 
+WITH v6 ( c7 ) AS ( SELECT 9223372036854775807 ORDER BY 16 ) UPDATE v0 SET c1 = 'x1'; 
+CREATE INDEX i8 ON v4 ( c2 ); 
+CREATE TABLE v9 ( c10 INTEGER PRIMARY KEY, c11 REFERENCES t1 ( c12, c10, c12, c11 ), c12 UNIQUE ); 
+CREATE TABLE v13 ( c14, c15, c16 ); 
+CREATE INDEX i17 ON v13 ( c16 ); 
+CREATE INDEX i18 ON v13 ( c15 ); 
+CREATE TABLE v19 ( c20 INTEGER PRIMARY KEY, c21 INTEGER REFERENCES t1 ON DELETE CASCADE REFERENCES t2, c22 TEXT, FOREIGN KEY ( c20, c21 ) REFERENCES t0 ); 
+ALTER TABLE v13 DROP COLUMN c15; 
+CREATE INDEX i23 ON v19 ( c21 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i24 ON v4 ( c2 ); 
+CREATE VIRTUAL TABLE v25 USING fts5 ( c26, c27 ); 
+ALTER TABLE v19 DROP COLUMN c22; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c14, count ( ( NOT ( a28.c15 IS NULL ) ) AND ( NOT ( a28.c14 IS NULL ) ) ) FROM v13 AS a28 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v19 AS ( WITH v30 AS ( SELECT 16 y ORDER BY 9223372036854775807 ) SELECT avg ( v19.c21 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 16 ) SELECT * FROM v9 AS a29 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a32 WHERE a32.c21 = a32.c21 > 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c1 FROM v0 AS a33 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 16, 0, 16, 18446744073709551488, 9223372036854775807 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v34 ( c36 ) AS ( WITH v34 AS ( SELECT ( SELECT min ( c36 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615 ) FROM v34 AS a37 GROUP BY c36 ORDER BY 18446744073709551615 ) SELECT 16 ORDER BY 18446744073709551615 ) SELECT * FROM v34 AS a35 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a39.c14 IS NULL ) ) AND ( NOT ( a39.c14 IS NULL ) ) ), count ( ( NOT ( a38.c15 IS NULL ) ) AND ( NOT ( a38.c14 IS NULL ) ) ), count ( ( NOT ( a39.c15 IS NULL ) ) AND ( NOT ( a39.c16 IS NULL ) ) ) FROM v13 AS a38 LEFT JOIN v13 AS a39 ON a38.c15 = a38.c15 WHERE a38.c14 < a39.c15 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a40 GROUP BY a40.c14, abs ( a40.c14 ) HAVING CASE WHEN a40.c15 != 'v1' THEN 16 ELSE 0 END > 18446744073709551615 >= 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: views may not be indexed
+Parse error near line 5: foreign key on c11 should reference only one column of table t1
+  ABLE v9 ( c10 INTEGER PRIMARY KEY, c11 REFERENCES t1 ( c12, c10, c12, c11 ), c
+                                      error here ---^
+Runtime error near line 10: error in index i18 after drop column: no such column: c15
+Parse error near line 13: views may not be indexed
+Runtime error near line 14: no such module: fts5
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v9
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a33.c1
+  SELECT a33.c1 FROM v0 AS a33 ORDER BY 16; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: near "ORDER": syntax error
+  , 16, 18446744073709551488, 9223372036854775807 ) ORDER BY 9223372036854775807
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+0|0|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 16; 
+WITH v6 ( c7 ) AS ( SELECT 9223372036854775807 ORDER BY 16 ) UPDATE v0 SET c1 = 'x1'; 
+; 
+CREATE TABLE v9 ( c10 INTEGER PRIMARY KEY, c11 REFERENCES t1 ( c12, c10, c12, c11 ), c12 UNIQUE ); 
+CREATE TABLE v13 ( c14, c15, c16 ); 
+; 
+; 
+CREATE TABLE v19 ( c20 INTEGER PRIMARY KEY, c21 INTEGER REFERENCES t1 ON DELETE CASCADE REFERENCES t2, c22 TEXT, FOREIGN KEY ( c20, c21 ) REFERENCES t0 ); 
+ALTER TABLE v13 DROP COLUMN c15; 
+; 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+CREATE VIRTUAL TABLE v25 USING fts5 ( c26, c27 ); 
+ALTER TABLE v19 DROP COLUMN c22; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c14, count ( ( NOT ( a28.c15 IS NULL ) ) AND ( NOT ( a28.c14 IS NULL ) ) ) FROM v13 AS a28 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v19 AS ( WITH v30 AS ( SELECT 16 y ORDER BY 9223372036854775807 ) SELECT avg ( v19.c21 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 16 ) SELECT * FROM v9 AS a29 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a32 WHERE a32.c21 = a32.c21 > 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c1 FROM v0 AS a33 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 16, 0, 16, 18446744073709551488, 9223372036854775807 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v34 ( c36 ) AS ( WITH v34 AS ( SELECT ( SELECT min ( c36 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 18446744073709551615 ) FROM v34 AS a37 GROUP BY c36 ORDER BY 18446744073709551615 ) SELECT 16 ORDER BY 18446744073709551615 ) SELECT * FROM v34 AS a35 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a39.c14 IS NULL ) ) AND ( NOT ( a39.c14 IS NULL ) ) ), count ( ( NOT ( a38.c15 IS NULL ) ) AND ( NOT ( a38.c14 IS NULL ) ) ), count ( ( NOT ( a39.c15 IS NULL ) ) AND ( NOT ( a39.c16 IS NULL ) ) ) FROM v13 AS a38 LEFT JOIN v13 AS a39 ON a38.c15 = a38.c15 WHERE a38.c14 < a39.c15 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a40 GROUP BY a40.c14, abs ( a40.c14 ) HAVING CASE WHEN a40.c15 != 'v1' THEN 16 ELSE 0 END > 18446744073709551615 >= 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: foreign key on c11 should reference only one column of table t1
+  ABLE v9 ( c10 INTEGER PRIMARY KEY, c11 REFERENCES t1 ( c12, c10, c12, c11 ), c
+                                      error here ---^
+Runtime error near line 14: no such module: fts5
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such column: a28.c15
+  SELECT a28.c14, count ( ( NOT ( a28.c15 IS NULL ) ) AND ( NOT ( a28.c14 IS NUL
+                    error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v9
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a33.c1
+  SELECT a33.c1 FROM v0 AS a33 ORDER BY 16; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: near "ORDER": syntax error
+  , 16, 18446744073709551488, 9223372036854775807 ) ORDER BY 9223372036854775807
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: a38.c15
+  ND ( NOT ( a39.c14 IS NULL ) ) ), count ( ( NOT ( a38.c15 IS NULL ) ) AND ( NO
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no such column: a40.c15
+  ROUP BY a40.c14, abs ( a40.c14 ) HAVING CASE WHEN a40.c15 != 'v1' THEN 16 ELSE
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no such column: a28.c15
+  SELECT a28.c14, count ( ( NOT ( a28.c15 IS NULL ) ) AND ( NOT ( a28.c14 IS NUL
+                    error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such table: v9
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no such table: v9
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such column: a33.c1
+  SELECT a33.c1 FROM v0 AS a33 ORDER BY 16; 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 32: no such column: a33.c1
+  SELECT a33.c1 FROM v0 AS a33 ORDER BY 16; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 49072624
+Str: 
+Parse error near line 35: near "ORDER": syntax error
+  , 16, 18446744073709551488, 9223372036854775807 ) ORDER BY 9223372036854775807
+                                      error here ---^
+ 
+Str: 
+Parse error near line 35: near "ORDER": syntax error
+  , 16, 18446744073709551488, 9223372036854775807 ) ORDER BY 9223372036854775807
+                                      error here ---^
+ 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+0|0|0
+ 
+INT: 0 
+Str: 
+Parse error near line 41: no such column: a38.c15
+  ND ( NOT ( a39.c14 IS NULL ) ) ), count ( ( NOT ( a38.c15 IS NULL ) ) AND ( NO
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 44: no such column: a40.c15
+  ROUP BY a40.c14, abs ( a40.c14 ) HAVING CASE WHEN a40.c15 != 'v1' THEN 16 ELSE
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

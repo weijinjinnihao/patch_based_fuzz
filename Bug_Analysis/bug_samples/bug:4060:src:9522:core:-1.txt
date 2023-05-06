@@ -1,0 +1,299 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT c1 COLLATE hex FROM v0 AS a5 ORDER BY 18446744073709518848; 
+CREATE INDEX i6 ON v4 ( c1 ); 
+CREATE INDEX i7 ON v0 ( c3 ); 
+CREATE VIEW v8 AS WITH v4 ( c10 ) AS ( WITH v0 ( c11 ) AS ( WITH v12 AS ( SELECT 18446744073709518848 y ORDER BY 18446744073709518848 ) SELECT c10 + 18446744073709551615, c10 + 0 FROM v12 AS a13 y GROUP BY y ( c1 ) ORDER BY 18446744073709518848 ) SELECT 18446744073709551488 ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a9 ORDER BY 18446744073709551488; 
+CREATE INDEX i14 ON v8 ( y ); 
+CREATE TABLE v15 ( c16 INTEGER PRIMARY KEY, c17, c18 UNIQUE ); 
+CREATE INDEX i19 ON v8 ( y ); 
+CREATE INDEX i20 ON v15 ( c17 ); 
+CREATE TABLE v21 ( c22, c23 INTEGER CHECK( c24 != 18446744073709551488 ), c24 ); 
+ALTER TABLE v15 DROP COLUMN c17; 
+ALTER TABLE v4 DROP COLUMN c1; 
+CREATE VIRTUAL TABLE v25 USING fts5 ( c26, c27 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c24, a29.c17 FROM v21 AS a28 LEFT JOIN v15 AS a29 ON - x'68617265' ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a30, v25 AS a31 NATURAL JOIN v8 AS a32 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a34, v25 AS a35 NATURAL JOIN v8 AS a36 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.y, max ( a37.c26 || a37.y ) FROM v25 AS a37 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a38 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a40.c26 FROM v21 AS a39 RIGHT JOIN v25 AS a40 ON a39.c24 = a40.c27 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c18, count ( ( NOT ( a41.c18 IS NULL ) ) AND ( NOT ( a41.c18 IS NULL ) ) ) FROM v15 AS a41 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v42 ( c44 ) AS ( WITH v45 AS ( SELECT ( SELECT min ( c44 ) OVER ( ORDER BY 10 ) ORDER BY c44 ) FROM v45 AS a46 GROUP BY c44 ORDER BY 18446744073709518848 ) SELECT 18446744073709518848 ORDER BY 127 ) SELECT * FROM v42 AS a43 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v47 ( c49, c50, c51, c52, c53, c54 ) AS ( SELECT 18446744073709518848 y ORDER BY 127 ) SELECT * FROM v47 AS a48 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: views may not be indexed
+Parse error near line 5: near "y": syntax error
+  0 + 18446744073709551615, c10 + 0 FROM v12 AS a13 y GROUP BY y ( c1 ) ORDER BY
+                                      error here ---^
+Parse error near line 6: no such table: main.v8
+Parse error near line 8: no such table: main.v8
+Runtime error near line 11: error in index i20 after drop column: no such column: c17
+Parse error near line 12: cannot drop column from view "v4"
+Runtime error near line 13: no such module: fts5
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v25
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: table v47 has 1 values for 6 columns
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT c1 COLLATE hex FROM v0 AS a5 ORDER BY 18446744073709518848; 
+; 
+; 
+CREATE VIEW v8 AS WITH v4 ( c10 ) AS ( WITH v0 ( c11 ) AS ( WITH v12 AS ( SELECT 18446744073709518848 y ORDER BY 18446744073709518848 ) SELECT c10 + 18446744073709551615, c10 + 0 FROM v12 AS a13 y GROUP BY y ( c1 ) ORDER BY 18446744073709518848 ) SELECT 18446744073709551488 ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a9 ORDER BY 18446744073709551488; 
+; 
+CREATE TABLE v15 ( c16 INTEGER PRIMARY KEY, c17, c18 UNIQUE ); 
+; 
+; 
+CREATE TABLE v21 ( c22, c23 INTEGER CHECK( c24 != 18446744073709551488 ), c24 ); 
+ALTER TABLE v15 DROP COLUMN c17; 
+ALTER TABLE v4 DROP COLUMN c1; 
+CREATE VIRTUAL TABLE v25 USING fts5 ( c26, c27 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c24, a29.c17 FROM v21 AS a28 LEFT JOIN v15 AS a29 ON - x'68617265' ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a30, v25 AS a31 NATURAL JOIN v8 AS a32 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a34, v25 AS a35 NATURAL JOIN v8 AS a36 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a37.y, max ( a37.c26 || a37.y ) FROM v25 AS a37 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a38 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a40.c26 FROM v21 AS a39 RIGHT JOIN v25 AS a40 ON a39.c24 = a40.c27 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c18, count ( ( NOT ( a41.c18 IS NULL ) ) AND ( NOT ( a41.c18 IS NULL ) ) ) FROM v15 AS a41 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v42 ( c44 ) AS ( WITH v45 AS ( SELECT ( SELECT min ( c44 ) OVER ( ORDER BY 10 ) ORDER BY c44 ) FROM v45 AS a46 GROUP BY c44 ORDER BY 18446744073709518848 ) SELECT 18446744073709518848 ORDER BY 127 ) SELECT * FROM v42 AS a43 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v47 ( c49, c50, c51, c52, c53, c54 ) AS ( SELECT 18446744073709518848 y ORDER BY 127 ) SELECT * FROM v47 AS a48 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: near "y": syntax error
+  0 + 18446744073709551615, c10 + 0 FROM v12 AS a13 y GROUP BY y ( c1 ) ORDER BY
+                                      error here ---^
+Parse error near line 12: cannot drop column from view "v4"
+Runtime error near line 13: no such module: fts5
+BEGIN VERI 0
+Parse error near line 16: no such column: a29.c17
+  SELECT a28.c24, a29.c17 FROM v21 AS a28 LEFT JOIN v15 AS a29 ON - x'68617265' 
+                  ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v8
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such table: v25
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: table v47 has 1 values for 6 columns
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such column: a29.c17
+  SELECT a28.c24, a29.c17 FROM v21 AS a28 LEFT JOIN v15 AS a29 ON - x'68617265' 
+                  ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such table: v25
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such table: v25
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such table: v8
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such table: v8
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no such table: v25
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such table: v25
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such table: v25
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such table: v25
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such table: v25
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such table: v25
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: table v47 has 1 values for 6 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 43: table v47 has 1 values for 6 columns
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

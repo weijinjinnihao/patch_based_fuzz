@@ -1,0 +1,306 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+CREATE INDEX i6 ON v0 ( c2 ); 
+CREATE VIEW v7 AS SELECT * FROM v0 AS a8 ORDER BY 18446744073709518848; 
+CREATE TABLE v9 ( c10 CHECK( c10 != 18446744073709518848 ), c11, c12 COLLATE NOCASE ); 
+CREATE INDEX i13 ON v0 ( c2 ); 
+CREATE TABLE v14 ( c15 INTEGER PRIMARY KEY, c16, c17 UNIQUE ON CONFLICT FAIL ); 
+CREATE INDEX i18 ON v14 ( c16 ); 
+CREATE TABLE v19 ( c20, c21, c22 ); 
+ALTER TABLE v7 DROP COLUMN c1; 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE VIRTUAL TABLE v23 USING fts5 ( c24, c25 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a26 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c2, sum ( NULL, NULL ) AS y FROM v7 AS a27 GROUP BY a27.c1 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a28.c24 ) OVER ( ORDER BY 18446744073709518848 ) ORDER BY 2147483647 ) FROM v23 AS a28 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a29 WHERE a29.c1 = a29.c3 || a29.c3 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( 18446744073709518848, count ( * ) ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c12, a32.c17 FROM v9 AS a30 RIGHT JOIN v7 AS a31 ON a31.c3, v14 AS a32 WHERE a32.c17 = 255 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a33, v19 AS a34 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 AS ( SELECT 9223372036854775807 y ORDER BY 18446744073709518848 ) SELECT c3 % 18446744073709518848, c3 / 16, c2, printf ( 'v1', c12 ) FROM v35 AS a36 ORDER BY ( c12 || c25 || c24 ) != 'V345FMP'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 11: cannot drop column from view "v7"
+Runtime error near line 12: error in index i5 after drop column: no such column: c1
+Runtime error near line 13: no such module: fts5
+Runtime error near line 14: error in index i5 after drop column: no such column: c1
+BEGIN VERI 0
+Parse error near line 16: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: wrong number of arguments to function sum()
+  SELECT a27.c2, sum ( NULL, NULL ) AS y FROM v7 AS a27 GROUP BY a27.c1 ORDER BY
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: row value misused
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: c3
+  54775807 y ORDER BY 18446744073709518848 ) SELECT c3 % 18446744073709518848, c
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+; 
+; 
+CREATE VIEW v7 AS SELECT * FROM v0 AS a8 ORDER BY 18446744073709518848; 
+CREATE TABLE v9 ( c10 CHECK( c10 != 18446744073709518848 ), c11, c12 COLLATE NOCASE ); 
+; 
+CREATE TABLE v14 ( c15 INTEGER PRIMARY KEY, c16, c17 UNIQUE ON CONFLICT FAIL ); 
+; 
+CREATE TABLE v19 ( c20, c21, c22 ); 
+ALTER TABLE v7 DROP COLUMN c1; 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE VIRTUAL TABLE v23 USING fts5 ( c24, c25 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v23 AS a26 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c2, sum ( NULL, NULL ) AS y FROM v7 AS a27 GROUP BY a27.c1 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a28.c24 ) OVER ( ORDER BY 18446744073709518848 ) ORDER BY 2147483647 ) FROM v23 AS a28 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a29 WHERE a29.c1 = a29.c3 || a29.c3 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( 18446744073709518848, count ( * ) ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c12, a32.c17 FROM v9 AS a30 RIGHT JOIN v7 AS a31 ON a31.c3, v14 AS a32 WHERE a32.c17 = 255 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a33, v19 AS a34 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v35 AS ( SELECT 9223372036854775807 y ORDER BY 18446744073709518848 ) SELECT c3 % 18446744073709518848, c3 / 16, c2, printf ( 'v1', c12 ) FROM v35 AS a36 ORDER BY ( c12 || c25 || c24 ) != 'V345FMP'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 11: cannot drop column from view "v7"
+Runtime error near line 13: no such module: fts5
+Parse error near line 14: no such column: "c1"
+  ALTER TABLE v0 DROP COLUMN c1; 
+               error here ---^
+BEGIN VERI 0
+Parse error near line 16: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: wrong number of arguments to function sum()
+  SELECT a27.c2, sum ( NULL, NULL ) AS y FROM v7 AS a27 GROUP BY a27.c1 ORDER BY
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v23
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a29.c1
+  SELECT * FROM v7 AS a29 WHERE a29.c1 = a29.c3 || a29.c3 ORDER BY 16; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: row value misused
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: c3
+  54775807 y ORDER BY 18446744073709518848 ) SELECT c3 % 18446744073709518848, c
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such table: v23
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such table: v23
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: wrong number of arguments to function sum()
+  SELECT a27.c2, sum ( NULL, NULL ) AS y FROM v7 AS a27 GROUP BY a27.c1 ORDER BY
+                 ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 19: wrong number of arguments to function sum()
+  SELECT a27.c2, sum ( NULL, NULL ) AS y FROM v7 AS a27 GROUP BY a27.c1 ORDER BY
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such table: v23
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such table: v23
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such column: a29.c1
+  SELECT * FROM v7 AS a29 WHERE a29.c1 = a29.c3 || a29.c3 ORDER BY 16; 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 31: row value misused
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such column: c3
+  54775807 y ORDER BY 18446744073709518848 ) SELECT c3 % 18446744073709518848, c
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 40: no such column: c3
+  54775807 y ORDER BY 18446744073709518848 ) SELECT c3 % 18446744073709518848, c
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 43: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

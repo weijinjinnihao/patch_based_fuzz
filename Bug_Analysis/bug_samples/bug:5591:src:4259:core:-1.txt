@@ -1,0 +1,1671 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( 5.2e6, '%t2%', 'x' ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 'v0', 'xyz%dabc' ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( NULL, 'v0', 'x' ); 
+CREATE INDEX i5 ON v0 ( c2 ); 
+INSERT INTO v0 VALUES ( 'v1', 'x', 'v1' ); 
+INSERT INTO v0 VALUES ( x'616263', 'v1', 'x' ); 
+CREATE TABLE v6 ( c7, c8, c9 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( NULL, 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( 'v0', 'one-b', 'v0' ); 
+INSERT INTO v6 VALUES ( x'68617265', 'v0', '?k<D Q' ); 
+INSERT INTO v6 VALUES ( 8, 'x', 'ghi' ); 
+INSERT INTO v0 VALUES ( - 100, 'v1', 've' ); 
+CREATE TABLE v10 ( c11, c12, c13 COLLATE NOCASE ); 
+INSERT INTO v10 SELECT * FROM v10 AS a14 ORDER BY 18446744073709551615; 
+INSERT INTO v0 SELECT * FROM v0 AS a15 ORDER BY 18446744073709551615; 
+INSERT INTO v6 SELECT * FROM v6 AS a16 ORDER BY 0; 
+INSERT INTO v6 SELECT * FROM v10 AS a17 ORDER BY 0; 
+INSERT INTO v6 SELECT * FROM v0 AS a18 ORDER BY 5.2e6; 
+INSERT INTO v10 SELECT * FROM v6 AS a19 ORDER BY 5.2e6; 
+CREATE INDEX i20 ON v0 ( c1 ); 
+CREATE INDEX i21 ON v6 ( c9 ); 
+CREATE INDEX i22 ON v10 ( c11 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a25, v10 AS a26 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a27, v0 AS a28 NATURAL JOIN v0 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 ( c32 ) AS ( WITH v33 ( c34 ) AS ( WITH v35 AS ( SELECT ( SELECT min ( c32 ) OVER ( ORDER BY 8 ) ORDER BY 8 ) FROM v35 AS a36 GROUP BY c32 ORDER BY 5.2e6 ) SELECT 8 ORDER BY 5.2e6 ) SELECT 8 ORDER BY 5.2e6 ) SELECT * FROM v30 AS a31 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 8 ORDER BY 0 ) AS y, v0 AS a37 ON a37.c2 = a37.c2 || a37.c1 OR 8 WHERE hex ( 0 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c11 FROM v10 AS a38 GROUP BY 18446744073709551488 ORDER BY 5.2e6; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a39, v10 AS a40 NATURAL JOIN v10 AS a41 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a42 NATURAL JOIN v6 AS a43 ORDER BY 5.2e6; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a44, v10 AS a45 NATURAL JOIN v6 AS a46 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v6 SELECT * FROM v6 AS a16 ORDER BY 0; 
+                                    error here ---^
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v6 SELECT * FROM v10 AS a17 ORDER BY 0; 
+                                     error here ---^
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a23 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v10 AS a24 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v10 AS a25, v10 AS a26 ORDER BY 0; 
+                                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 6
+  AS a27, v0 AS a28 NATURAL JOIN v0 AS a29 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  RDER BY 5.2e6 ) SELECT * FROM v30 AS a31 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM ( SELECT 8 ORDER BY 0 ) AS y, v0 AS a37 ON a37.c2 = a37.c2 || a3
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 6
+   a39, v10 AS a40 NATURAL JOIN v10 AS a41 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+hare|v0|?k<D Q|hare|v0|?k<D Q
+hare|v0|?k<D Q|8|x|ghi
+hare|v0|?k<D Q|5200000|%t2%|x
+hare|v0|?k<D Q|1.84467440737096e+19|v0|xyz%dabc
+hare|v0|?k<D Q||v0|x
+hare|v0|?k<D Q|v1|x|v1
+hare|v0|?k<D Q|abc|v1|x
+hare|v0|?k<D Q||x|v0
+hare|v0|?k<D Q|v0|one-b|v0
+hare|v0|?k<D Q|-100|v1|ve
+hare|v0|?k<D Q|5200000|%t2%|x
+hare|v0|?k<D Q|1.84467440737096e+19|v0|xyz%dabc
+hare|v0|?k<D Q||v0|x
+hare|v0|?k<D Q|v1|x|v1
+hare|v0|?k<D Q|abc|v1|x
+hare|v0|?k<D Q||x|v0
+hare|v0|?k<D Q|v0|one-b|v0
+hare|v0|?k<D Q|-100|v1|ve
+8|x|ghi|hare|v0|?k<D Q
+8|x|ghi|8|x|ghi
+8|x|ghi|5200000|%t2%|x
+8|x|ghi|1.84467440737096e+19|v0|xyz%dabc
+8|x|ghi||v0|x
+8|x|ghi|v1|x|v1
+8|x|ghi|abc|v1|x
+8|x|ghi||x|v0
+8|x|ghi|v0|one-b|v0
+8|x|ghi|-100|v1|ve
+8|x|ghi|5200000|%t2%|x
+8|x|ghi|1.84467440737096e+19|v0|xyz%dabc
+8|x|ghi||v0|x
+8|x|ghi|v1|x|v1
+8|x|ghi|abc|v1|x
+8|x|ghi||x|v0
+8|x|ghi|v0|one-b|v0
+8|x|ghi|-100|v1|ve
+5200000|%t2%|x|hare|v0|?k<D Q
+5200000|%t2%|x|8|x|ghi
+5200000|%t2%|x|5200000|%t2%|x
+5200000|%t2%|x|1.84467440737096e+19|v0|xyz%dabc
+5200000|%t2%|x||v0|x
+5200000|%t2%|x|v1|x|v1
+5200000|%t2%|x|abc|v1|x
+5200000|%t2%|x||x|v0
+5200000|%t2%|x|v0|one-b|v0
+5200000|%t2%|x|-100|v1|ve
+5200000|%t2%|x|5200000|%t2%|x
+5200000|%t2%|x|1.84467440737096e+19|v0|xyz%dabc
+5200000|%t2%|x||v0|x
+5200000|%t2%|x|v1|x|v1
+5200000|%t2%|x|abc|v1|x
+5200000|%t2%|x||x|v0
+5200000|%t2%|x|v0|one-b|v0
+5200000|%t2%|x|-100|v1|ve
+1.84467440737096e+19|v0|xyz%dabc|hare|v0|?k<D Q
+1.84467440737096e+19|v0|xyz%dabc|8|x|ghi
+1.84467440737096e+19|v0|xyz%dabc|5200000|%t2%|x
+1.84467440737096e+19|v0|xyz%dabc|1.84467440737096e+19|v0|xyz%dabc
+1.84467440737096e+19|v0|xyz%dabc||v0|x
+1.84467440737096e+19|v0|xyz%dabc|v1|x|v1
+1.84467440737096e+19|v0|xyz%dabc|abc|v1|x
+1.84467440737096e+19|v0|xyz%dabc||x|v0
+1.84467440737096e+19|v0|xyz%dabc|v0|one-b|v0
+1.84467440737096e+19|v0|xyz%dabc|-100|v1|ve
+1.84467440737096e+19|v0|xyz%dabc|5200000|%t2%|x
+1.84467440737096e+19|v0|xyz%dabc|1.84467440737096e+19|v0|xyz%dabc
+1.84467440737096e+19|v0|xyz%dabc||v0|x
+1.84467440737096e+19|v0|xyz%dabc|v1|x|v1
+1.84467440737096e+19|v0|xyz%dabc|abc|v1|x
+1.84467440737096e+19|v0|xyz%dabc||x|v0
+1.84467440737096e+19|v0|xyz%dabc|v0|one-b|v0
+1.84467440737096e+19|v0|xyz%dabc|-100|v1|ve
+|v0|x|hare|v0|?k<D Q
+|v0|x|8|x|ghi
+|v0|x|5200000|%t2%|x
+|v0|x|1.84467440737096e+19|v0|xyz%dabc
+|v0|x||v0|x
+|v0|x|v1|x|v1
+|v0|x|abc|v1|x
+|v0|x||x|v0
+|v0|x|v0|one-b|v0
+|v0|x|-100|v1|ve
+|v0|x|5200000|%t2%|x
+|v0|x|1.84467440737096e+19|v0|xyz%dabc
+|v0|x||v0|x
+|v0|x|v1|x|v1
+|v0|x|abc|v1|x
+|v0|x||x|v0
+|v0|x|v0|one-b|v0
+|v0|x|-100|v1|ve
+v1|x|v1|hare|v0|?k<D Q
+v1|x|v1|8|x|ghi
+v1|x|v1|5200000|%t2%|x
+v1|x|v1|1.84467440737096e+19|v0|xyz%dabc
+v1|x|v1||v0|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|v1|x
+v1|x|v1||x|v0
+v1|x|v1|v0|one-b|v0
+v1|x|v1|-100|v1|ve
+v1|x|v1|5200000|%t2%|x
+v1|x|v1|1.84467440737096e+19|v0|xyz%dabc
+v1|x|v1||v0|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|v1|x
+v1|x|v1||x|v0
+v1|x|v1|v0|one-b|v0
+v1|x|v1|-100|v1|ve
+abc|v1|x|hare|v0|?k<D Q
+abc|v1|x|8|x|ghi
+abc|v1|x|5200000|%t2%|x
+abc|v1|x|1.84467440737096e+19|v0|xyz%dabc
+abc|v1|x||v0|x
+abc|v1|x|v1|x|v1
+abc|v1|x|abc|v1|x
+abc|v1|x||x|v0
+abc|v1|x|v0|one-b|v0
+abc|v1|x|-100|v1|ve
+abc|v1|x|5200000|%t2%|x
+abc|v1|x|1.84467440737096e+19|v0|xyz%dabc
+abc|v1|x||v0|x
+abc|v1|x|v1|x|v1
+abc|v1|x|abc|v1|x
+abc|v1|x||x|v0
+abc|v1|x|v0|one-b|v0
+abc|v1|x|-100|v1|ve
+|x|v0|hare|v0|?k<D Q
+|x|v0|8|x|ghi
+|x|v0|5200000|%t2%|x
+|x|v0|1.84467440737096e+19|v0|xyz%dabc
+|x|v0||v0|x
+|x|v0|v1|x|v1
+|x|v0|abc|v1|x
+|x|v0||x|v0
+|x|v0|v0|one-b|v0
+|x|v0|-100|v1|ve
+|x|v0|5200000|%t2%|x
+|x|v0|1.84467440737096e+19|v0|xyz%dabc
+|x|v0||v0|x
+|x|v0|v1|x|v1
+|x|v0|abc|v1|x
+|x|v0||x|v0
+|x|v0|v0|one-b|v0
+|x|v0|-100|v1|ve
+v0|one-b|v0|hare|v0|?k<D Q
+v0|one-b|v0|8|x|ghi
+v0|one-b|v0|5200000|%t2%|x
+v0|one-b|v0|1.84467440737096e+19|v0|xyz%dabc
+v0|one-b|v0||v0|x
+v0|one-b|v0|v1|x|v1
+v0|one-b|v0|abc|v1|x
+v0|one-b|v0||x|v0
+v0|one-b|v0|v0|one-b|v0
+v0|one-b|v0|-100|v1|ve
+v0|one-b|v0|5200000|%t2%|x
+v0|one-b|v0|1.84467440737096e+19|v0|xyz%dabc
+v0|one-b|v0||v0|x
+v0|one-b|v0|v1|x|v1
+v0|one-b|v0|abc|v1|x
+v0|one-b|v0||x|v0
+v0|one-b|v0|v0|one-b|v0
+v0|one-b|v0|-100|v1|ve
+-100|v1|ve|hare|v0|?k<D Q
+-100|v1|ve|8|x|ghi
+-100|v1|ve|5200000|%t2%|x
+-100|v1|ve|1.84467440737096e+19|v0|xyz%dabc
+-100|v1|ve||v0|x
+-100|v1|ve|v1|x|v1
+-100|v1|ve|abc|v1|x
+-100|v1|ve||x|v0
+-100|v1|ve|v0|one-b|v0
+-100|v1|ve|-100|v1|ve
+-100|v1|ve|5200000|%t2%|x
+-100|v1|ve|1.84467440737096e+19|v0|xyz%dabc
+-100|v1|ve||v0|x
+-100|v1|ve|v1|x|v1
+-100|v1|ve|abc|v1|x
+-100|v1|ve||x|v0
+-100|v1|ve|v0|one-b|v0
+-100|v1|ve|-100|v1|ve
+5200000|%t2%|x|hare|v0|?k<D Q
+5200000|%t2%|x|8|x|ghi
+5200000|%t2%|x|5200000|%t2%|x
+5200000|%t2%|x|1.84467440737096e+19|v0|xyz%dabc
+5200000|%t2%|x||v0|x
+5200000|%t2%|x|v1|x|v1
+5200000|%t2%|x|abc|v1|x
+5200000|%t2%|x||x|v0
+5200000|%t2%|x|v0|one-b|v0
+5200000|%t2%|x|-100|v1|ve
+5200000|%t2%|x|5200000|%t2%|x
+5200000|%t2%|x|1.84467440737096e+19|v0|xyz%dabc
+5200000|%t2%|x||v0|x
+5200000|%t2%|x|v1|x|v1
+5200000|%t2%|x|abc|v1|x
+5200000|%t2%|x||x|v0
+5200000|%t2%|x|v0|one-b|v0
+5200000|%t2%|x|-100|v1|ve
+1.84467440737096e+19|v0|xyz%dabc|hare|v0|?k<D Q
+1.84467440737096e+19|v0|xyz%dabc|8|x|ghi
+1.84467440737096e+19|v0|xyz%dabc|5200000|%t2%|x
+1.84467440737096e+19|v0|xyz%dabc|1.84467440737096e+19|v0|xyz%dabc
+1.84467440737096e+19|v0|xyz%dabc||v0|x
+1.84467440737096e+19|v0|xyz%dabc|v1|x|v1
+1.84467440737096e+19|v0|xyz%dabc|abc|v1|x
+1.84467440737096e+19|v0|xyz%dabc||x|v0
+1.84467440737096e+19|v0|xyz%dabc|v0|one-b|v0
+1.84467440737096e+19|v0|xyz%dabc|-100|v1|ve
+1.84467440737096e+19|v0|xyz%dabc|5200000|%t2%|x
+1.84467440737096e+19|v0|xyz%dabc|1.84467440737096e+19|v0|xyz%dabc
+1.84467440737096e+19|v0|xyz%dabc||v0|x
+1.84467440737096e+19|v0|xyz%dabc|v1|x|v1
+1.84467440737096e+19|v0|xyz%dabc|abc|v1|x
+1.84467440737096e+19|v0|xyz%dabc||x|v0
+1.84467440737096e+19|v0|xyz%dabc|v0|one-b|v0
+1.84467440737096e+19|v0|xyz%dabc|-100|v1|ve
+|v0|x|hare|v0|?k<D Q
+|v0|x|8|x|ghi
+|v0|x|5200000|%t2%|x
+|v0|x|1.84467440737096e+19|v0|xyz%dabc
+|v0|x||v0|x
+|v0|x|v1|x|v1
+|v0|x|abc|v1|x
+|v0|x||x|v0
+|v0|x|v0|one-b|v0
+|v0|x|-100|v1|ve
+|v0|x|5200000|%t2%|x
+|v0|x|1.84467440737096e+19|v0|xyz%dabc
+|v0|x||v0|x
+|v0|x|v1|x|v1
+|v0|x|abc|v1|x
+|v0|x||x|v0
+|v0|x|v0|one-b|v0
+|v0|x|-100|v1|ve
+v1|x|v1|hare|v0|?k<D Q
+v1|x|v1|8|x|ghi
+v1|x|v1|5200000|%t2%|x
+v1|x|v1|1.84467440737096e+19|v0|xyz%dabc
+v1|x|v1||v0|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|v1|x
+v1|x|v1||x|v0
+v1|x|v1|v0|one-b|v0
+v1|x|v1|-100|v1|ve
+v1|x|v1|5200000|%t2%|x
+v1|x|v1|1.84467440737096e+19|v0|xyz%dabc
+v1|x|v1||v0|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|v1|x
+v1|x|v1||x|v0
+v1|x|v1|v0|one-b|v0
+v1|x|v1|-100|v1|ve
+abc|v1|x|hare|v0|?k<D Q
+abc|v1|x|8|x|ghi
+abc|v1|x|5200000|%t2%|x
+abc|v1|x|1.84467440737096e+19|v0|xyz%dabc
+abc|v1|x||v0|x
+abc|v1|x|v1|x|v1
+abc|v1|x|abc|v1|x
+abc|v1|x||x|v0
+abc|v1|x|v0|one-b|v0
+abc|v1|x|-100|v1|ve
+abc|v1|x|5200000|%t2%|x
+abc|v1|x|1.84467440737096e+19|v0|xyz%dabc
+abc|v1|x||v0|x
+abc|v1|x|v1|x|v1
+abc|v1|x|abc|v1|x
+abc|v1|x||x|v0
+abc|v1|x|v0|one-b|v0
+abc|v1|x|-100|v1|ve
+|x|v0|hare|v0|?k<D Q
+|x|v0|8|x|ghi
+|x|v0|5200000|%t2%|x
+|x|v0|1.84467440737096e+19|v0|xyz%dabc
+|x|v0||v0|x
+|x|v0|v1|x|v1
+|x|v0|abc|v1|x
+|x|v0||x|v0
+|x|v0|v0|one-b|v0
+|x|v0|-100|v1|ve
+|x|v0|5200000|%t2%|x
+|x|v0|1.84467440737096e+19|v0|xyz%dabc
+|x|v0||v0|x
+|x|v0|v1|x|v1
+|x|v0|abc|v1|x
+|x|v0||x|v0
+|x|v0|v0|one-b|v0
+|x|v0|-100|v1|ve
+v0|one-b|v0|hare|v0|?k<D Q
+v0|one-b|v0|8|x|ghi
+v0|one-b|v0|5200000|%t2%|x
+v0|one-b|v0|1.84467440737096e+19|v0|xyz%dabc
+v0|one-b|v0||v0|x
+v0|one-b|v0|v1|x|v1
+v0|one-b|v0|abc|v1|x
+v0|one-b|v0||x|v0
+v0|one-b|v0|v0|one-b|v0
+v0|one-b|v0|-100|v1|ve
+v0|one-b|v0|5200000|%t2%|x
+v0|one-b|v0|1.84467440737096e+19|v0|xyz%dabc
+v0|one-b|v0||v0|x
+v0|one-b|v0|v1|x|v1
+v0|one-b|v0|abc|v1|x
+v0|one-b|v0||x|v0
+v0|one-b|v0|v0|one-b|v0
+v0|one-b|v0|-100|v1|ve
+-100|v1|ve|hare|v0|?k<D Q
+-100|v1|ve|8|x|ghi
+-100|v1|ve|5200000|%t2%|x
+-100|v1|ve|1.84467440737096e+19|v0|xyz%dabc
+-100|v1|ve||v0|x
+-100|v1|ve|v1|x|v1
+-100|v1|ve|abc|v1|x
+-100|v1|ve||x|v0
+-100|v1|ve|v0|one-b|v0
+-100|v1|ve|-100|v1|ve
+-100|v1|ve|5200000|%t2%|x
+-100|v1|ve|1.84467440737096e+19|v0|xyz%dabc
+-100|v1|ve||v0|x
+-100|v1|ve|v1|x|v1
+-100|v1|ve|abc|v1|x
+-100|v1|ve||x|v0
+-100|v1|ve|v0|one-b|v0
+-100|v1|ve|-100|v1|ve
+END VERI 0
+BEGIN VERI 0
+Parse error near line 53: 1st ORDER BY term out of range - should be between 1 and 9
+  S a44, v10 AS a45 NATURAL JOIN v6 AS a46 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( 5.2e6, '%t2%', 'x' ); 
+INSERT INTO v0 VALUES ( 18446744073709551615, 'v0', 'xyz%dabc' ); 
+; 
+INSERT INTO v0 VALUES ( NULL, 'v0', 'x' ); 
+; 
+INSERT INTO v0 VALUES ( 'v1', 'x', 'v1' ); 
+INSERT INTO v0 VALUES ( x'616263', 'v1', 'x' ); 
+CREATE TABLE v6 ( c7, c8, c9 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( NULL, 'x', 'v0' ); 
+INSERT INTO v0 VALUES ( 'v0', 'one-b', 'v0' ); 
+INSERT INTO v6 VALUES ( x'68617265', 'v0', '?k<D Q' ); 
+INSERT INTO v6 VALUES ( 8, 'x', 'ghi' ); 
+INSERT INTO v0 VALUES ( - 100, 'v1', 've' ); 
+CREATE TABLE v10 ( c11, c12, c13 COLLATE NOCASE ); 
+INSERT INTO v10 SELECT * FROM v10 AS a14 ORDER BY 18446744073709551615; 
+INSERT INTO v0 SELECT * FROM v0 AS a15 ORDER BY 18446744073709551615; 
+INSERT INTO v6 SELECT * FROM v6 AS a16 ORDER BY 0; 
+INSERT INTO v6 SELECT * FROM v10 AS a17 ORDER BY 0; 
+INSERT INTO v6 SELECT * FROM v0 AS a18 ORDER BY 5.2e6; 
+INSERT INTO v10 SELECT * FROM v6 AS a19 ORDER BY 5.2e6; 
+; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a24 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a25, v10 AS a26 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a27, v0 AS a28 NATURAL JOIN v0 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 ( c32 ) AS ( WITH v33 ( c34 ) AS ( WITH v35 AS ( SELECT ( SELECT min ( c32 ) OVER ( ORDER BY 8 ) ORDER BY 8 ) FROM v35 AS a36 GROUP BY c32 ORDER BY 5.2e6 ) SELECT 8 ORDER BY 5.2e6 ) SELECT 8 ORDER BY 5.2e6 ) SELECT * FROM v30 AS a31 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT 8 ORDER BY 0 ) AS y, v0 AS a37 ON a37.c2 = a37.c2 || a37.c1 OR 8 WHERE hex ( 0 ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a38.c11 FROM v10 AS a38 GROUP BY 18446744073709551488 ORDER BY 5.2e6; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a39, v10 AS a40 NATURAL JOIN v10 AS a41 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a42 NATURAL JOIN v6 AS a43 ORDER BY 5.2e6; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a44, v10 AS a45 NATURAL JOIN v6 AS a46 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v6 SELECT * FROM v6 AS a16 ORDER BY 0; 
+                                    error here ---^
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 3
+  INSERT INTO v6 SELECT * FROM v10 AS a17 ORDER BY 0; 
+                                     error here ---^
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a23 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v10 AS a24 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v10 AS a25, v10 AS a26 ORDER BY 0; 
+                                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 6
+  AS a27, v0 AS a28 NATURAL JOIN v0 AS a29 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  RDER BY 5.2e6 ) SELECT * FROM v30 AS a31 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM ( SELECT 8 ORDER BY 0 ) AS y, v0 AS a37 ON a37.c2 = a37.c2 || a3
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+hare
+END VERI 0
+BEGIN VERI 0
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 6
+   a39, v10 AS a40 NATURAL JOIN v10 AS a41 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+hare|v0|?k<D Q|hare|v0|?k<D Q
+hare|v0|?k<D Q|8|x|ghi
+hare|v0|?k<D Q|5200000|%t2%|x
+hare|v0|?k<D Q|1.84467440737096e+19|v0|xyz%dabc
+hare|v0|?k<D Q||v0|x
+hare|v0|?k<D Q|v1|x|v1
+hare|v0|?k<D Q|abc|v1|x
+hare|v0|?k<D Q||x|v0
+hare|v0|?k<D Q|v0|one-b|v0
+hare|v0|?k<D Q|-100|v1|ve
+hare|v0|?k<D Q|5200000|%t2%|x
+hare|v0|?k<D Q|1.84467440737096e+19|v0|xyz%dabc
+hare|v0|?k<D Q||v0|x
+hare|v0|?k<D Q|v1|x|v1
+hare|v0|?k<D Q|abc|v1|x
+hare|v0|?k<D Q||x|v0
+hare|v0|?k<D Q|v0|one-b|v0
+hare|v0|?k<D Q|-100|v1|ve
+8|x|ghi|hare|v0|?k<D Q
+8|x|ghi|8|x|ghi
+8|x|ghi|5200000|%t2%|x
+8|x|ghi|1.84467440737096e+19|v0|xyz%dabc
+8|x|ghi||v0|x
+8|x|ghi|v1|x|v1
+8|x|ghi|abc|v1|x
+8|x|ghi||x|v0
+8|x|ghi|v0|one-b|v0
+8|x|ghi|-100|v1|ve
+8|x|ghi|5200000|%t2%|x
+8|x|ghi|1.84467440737096e+19|v0|xyz%dabc
+8|x|ghi||v0|x
+8|x|ghi|v1|x|v1
+8|x|ghi|abc|v1|x
+8|x|ghi||x|v0
+8|x|ghi|v0|one-b|v0
+8|x|ghi|-100|v1|ve
+5200000|%t2%|x|hare|v0|?k<D Q
+5200000|%t2%|x|8|x|ghi
+5200000|%t2%|x|5200000|%t2%|x
+5200000|%t2%|x|1.84467440737096e+19|v0|xyz%dabc
+5200000|%t2%|x||v0|x
+5200000|%t2%|x|v1|x|v1
+5200000|%t2%|x|abc|v1|x
+5200000|%t2%|x||x|v0
+5200000|%t2%|x|v0|one-b|v0
+5200000|%t2%|x|-100|v1|ve
+5200000|%t2%|x|5200000|%t2%|x
+5200000|%t2%|x|1.84467440737096e+19|v0|xyz%dabc
+5200000|%t2%|x||v0|x
+5200000|%t2%|x|v1|x|v1
+5200000|%t2%|x|abc|v1|x
+5200000|%t2%|x||x|v0
+5200000|%t2%|x|v0|one-b|v0
+5200000|%t2%|x|-100|v1|ve
+1.84467440737096e+19|v0|xyz%dabc|hare|v0|?k<D Q
+1.84467440737096e+19|v0|xyz%dabc|8|x|ghi
+1.84467440737096e+19|v0|xyz%dabc|5200000|%t2%|x
+1.84467440737096e+19|v0|xyz%dabc|1.84467440737096e+19|v0|xyz%dabc
+1.84467440737096e+19|v0|xyz%dabc||v0|x
+1.84467440737096e+19|v0|xyz%dabc|v1|x|v1
+1.84467440737096e+19|v0|xyz%dabc|abc|v1|x
+1.84467440737096e+19|v0|xyz%dabc||x|v0
+1.84467440737096e+19|v0|xyz%dabc|v0|one-b|v0
+1.84467440737096e+19|v0|xyz%dabc|-100|v1|ve
+1.84467440737096e+19|v0|xyz%dabc|5200000|%t2%|x
+1.84467440737096e+19|v0|xyz%dabc|1.84467440737096e+19|v0|xyz%dabc
+1.84467440737096e+19|v0|xyz%dabc||v0|x
+1.84467440737096e+19|v0|xyz%dabc|v1|x|v1
+1.84467440737096e+19|v0|xyz%dabc|abc|v1|x
+1.84467440737096e+19|v0|xyz%dabc||x|v0
+1.84467440737096e+19|v0|xyz%dabc|v0|one-b|v0
+1.84467440737096e+19|v0|xyz%dabc|-100|v1|ve
+|v0|x|hare|v0|?k<D Q
+|v0|x|8|x|ghi
+|v0|x|5200000|%t2%|x
+|v0|x|1.84467440737096e+19|v0|xyz%dabc
+|v0|x||v0|x
+|v0|x|v1|x|v1
+|v0|x|abc|v1|x
+|v0|x||x|v0
+|v0|x|v0|one-b|v0
+|v0|x|-100|v1|ve
+|v0|x|5200000|%t2%|x
+|v0|x|1.84467440737096e+19|v0|xyz%dabc
+|v0|x||v0|x
+|v0|x|v1|x|v1
+|v0|x|abc|v1|x
+|v0|x||x|v0
+|v0|x|v0|one-b|v0
+|v0|x|-100|v1|ve
+v1|x|v1|hare|v0|?k<D Q
+v1|x|v1|8|x|ghi
+v1|x|v1|5200000|%t2%|x
+v1|x|v1|1.84467440737096e+19|v0|xyz%dabc
+v1|x|v1||v0|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|v1|x
+v1|x|v1||x|v0
+v1|x|v1|v0|one-b|v0
+v1|x|v1|-100|v1|ve
+v1|x|v1|5200000|%t2%|x
+v1|x|v1|1.84467440737096e+19|v0|xyz%dabc
+v1|x|v1||v0|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|v1|x
+v1|x|v1||x|v0
+v1|x|v1|v0|one-b|v0
+v1|x|v1|-100|v1|ve
+abc|v1|x|hare|v0|?k<D Q
+abc|v1|x|8|x|ghi
+abc|v1|x|5200000|%t2%|x
+abc|v1|x|1.84467440737096e+19|v0|xyz%dabc
+abc|v1|x||v0|x
+abc|v1|x|v1|x|v1
+abc|v1|x|abc|v1|x
+abc|v1|x||x|v0
+abc|v1|x|v0|one-b|v0
+abc|v1|x|-100|v1|ve
+abc|v1|x|5200000|%t2%|x
+abc|v1|x|1.84467440737096e+19|v0|xyz%dabc
+abc|v1|x||v0|x
+abc|v1|x|v1|x|v1
+abc|v1|x|abc|v1|x
+abc|v1|x||x|v0
+abc|v1|x|v0|one-b|v0
+abc|v1|x|-100|v1|ve
+|x|v0|hare|v0|?k<D Q
+|x|v0|8|x|ghi
+|x|v0|5200000|%t2%|x
+|x|v0|1.84467440737096e+19|v0|xyz%dabc
+|x|v0||v0|x
+|x|v0|v1|x|v1
+|x|v0|abc|v1|x
+|x|v0||x|v0
+|x|v0|v0|one-b|v0
+|x|v0|-100|v1|ve
+|x|v0|5200000|%t2%|x
+|x|v0|1.84467440737096e+19|v0|xyz%dabc
+|x|v0||v0|x
+|x|v0|v1|x|v1
+|x|v0|abc|v1|x
+|x|v0||x|v0
+|x|v0|v0|one-b|v0
+|x|v0|-100|v1|ve
+v0|one-b|v0|hare|v0|?k<D Q
+v0|one-b|v0|8|x|ghi
+v0|one-b|v0|5200000|%t2%|x
+v0|one-b|v0|1.84467440737096e+19|v0|xyz%dabc
+v0|one-b|v0||v0|x
+v0|one-b|v0|v1|x|v1
+v0|one-b|v0|abc|v1|x
+v0|one-b|v0||x|v0
+v0|one-b|v0|v0|one-b|v0
+v0|one-b|v0|-100|v1|ve
+v0|one-b|v0|5200000|%t2%|x
+v0|one-b|v0|1.84467440737096e+19|v0|xyz%dabc
+v0|one-b|v0||v0|x
+v0|one-b|v0|v1|x|v1
+v0|one-b|v0|abc|v1|x
+v0|one-b|v0||x|v0
+v0|one-b|v0|v0|one-b|v0
+v0|one-b|v0|-100|v1|ve
+-100|v1|ve|hare|v0|?k<D Q
+-100|v1|ve|8|x|ghi
+-100|v1|ve|5200000|%t2%|x
+-100|v1|ve|1.84467440737096e+19|v0|xyz%dabc
+-100|v1|ve||v0|x
+-100|v1|ve|v1|x|v1
+-100|v1|ve|abc|v1|x
+-100|v1|ve||x|v0
+-100|v1|ve|v0|one-b|v0
+-100|v1|ve|-100|v1|ve
+-100|v1|ve|5200000|%t2%|x
+-100|v1|ve|1.84467440737096e+19|v0|xyz%dabc
+-100|v1|ve||v0|x
+-100|v1|ve|v1|x|v1
+-100|v1|ve|abc|v1|x
+-100|v1|ve||x|v0
+-100|v1|ve|v0|one-b|v0
+-100|v1|ve|-100|v1|ve
+5200000|%t2%|x|hare|v0|?k<D Q
+5200000|%t2%|x|8|x|ghi
+5200000|%t2%|x|5200000|%t2%|x
+5200000|%t2%|x|1.84467440737096e+19|v0|xyz%dabc
+5200000|%t2%|x||v0|x
+5200000|%t2%|x|v1|x|v1
+5200000|%t2%|x|abc|v1|x
+5200000|%t2%|x||x|v0
+5200000|%t2%|x|v0|one-b|v0
+5200000|%t2%|x|-100|v1|ve
+5200000|%t2%|x|5200000|%t2%|x
+5200000|%t2%|x|1.84467440737096e+19|v0|xyz%dabc
+5200000|%t2%|x||v0|x
+5200000|%t2%|x|v1|x|v1
+5200000|%t2%|x|abc|v1|x
+5200000|%t2%|x||x|v0
+5200000|%t2%|x|v0|one-b|v0
+5200000|%t2%|x|-100|v1|ve
+1.84467440737096e+19|v0|xyz%dabc|hare|v0|?k<D Q
+1.84467440737096e+19|v0|xyz%dabc|8|x|ghi
+1.84467440737096e+19|v0|xyz%dabc|5200000|%t2%|x
+1.84467440737096e+19|v0|xyz%dabc|1.84467440737096e+19|v0|xyz%dabc
+1.84467440737096e+19|v0|xyz%dabc||v0|x
+1.84467440737096e+19|v0|xyz%dabc|v1|x|v1
+1.84467440737096e+19|v0|xyz%dabc|abc|v1|x
+1.84467440737096e+19|v0|xyz%dabc||x|v0
+1.84467440737096e+19|v0|xyz%dabc|v0|one-b|v0
+1.84467440737096e+19|v0|xyz%dabc|-100|v1|ve
+1.84467440737096e+19|v0|xyz%dabc|5200000|%t2%|x
+1.84467440737096e+19|v0|xyz%dabc|1.84467440737096e+19|v0|xyz%dabc
+1.84467440737096e+19|v0|xyz%dabc||v0|x
+1.84467440737096e+19|v0|xyz%dabc|v1|x|v1
+1.84467440737096e+19|v0|xyz%dabc|abc|v1|x
+1.84467440737096e+19|v0|xyz%dabc||x|v0
+1.84467440737096e+19|v0|xyz%dabc|v0|one-b|v0
+1.84467440737096e+19|v0|xyz%dabc|-100|v1|ve
+|v0|x|hare|v0|?k<D Q
+|v0|x|8|x|ghi
+|v0|x|5200000|%t2%|x
+|v0|x|1.84467440737096e+19|v0|xyz%dabc
+|v0|x||v0|x
+|v0|x|v1|x|v1
+|v0|x|abc|v1|x
+|v0|x||x|v0
+|v0|x|v0|one-b|v0
+|v0|x|-100|v1|ve
+|v0|x|5200000|%t2%|x
+|v0|x|1.84467440737096e+19|v0|xyz%dabc
+|v0|x||v0|x
+|v0|x|v1|x|v1
+|v0|x|abc|v1|x
+|v0|x||x|v0
+|v0|x|v0|one-b|v0
+|v0|x|-100|v1|ve
+v1|x|v1|hare|v0|?k<D Q
+v1|x|v1|8|x|ghi
+v1|x|v1|5200000|%t2%|x
+v1|x|v1|1.84467440737096e+19|v0|xyz%dabc
+v1|x|v1||v0|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|v1|x
+v1|x|v1||x|v0
+v1|x|v1|v0|one-b|v0
+v1|x|v1|-100|v1|ve
+v1|x|v1|5200000|%t2%|x
+v1|x|v1|1.84467440737096e+19|v0|xyz%dabc
+v1|x|v1||v0|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|v1|x
+v1|x|v1||x|v0
+v1|x|v1|v0|one-b|v0
+v1|x|v1|-100|v1|ve
+abc|v1|x|hare|v0|?k<D Q
+abc|v1|x|8|x|ghi
+abc|v1|x|5200000|%t2%|x
+abc|v1|x|1.84467440737096e+19|v0|xyz%dabc
+abc|v1|x||v0|x
+abc|v1|x|v1|x|v1
+abc|v1|x|abc|v1|x
+abc|v1|x||x|v0
+abc|v1|x|v0|one-b|v0
+abc|v1|x|-100|v1|ve
+abc|v1|x|5200000|%t2%|x
+abc|v1|x|1.84467440737096e+19|v0|xyz%dabc
+abc|v1|x||v0|x
+abc|v1|x|v1|x|v1
+abc|v1|x|abc|v1|x
+abc|v1|x||x|v0
+abc|v1|x|v0|one-b|v0
+abc|v1|x|-100|v1|ve
+|x|v0|hare|v0|?k<D Q
+|x|v0|8|x|ghi
+|x|v0|5200000|%t2%|x
+|x|v0|1.84467440737096e+19|v0|xyz%dabc
+|x|v0||v0|x
+|x|v0|v1|x|v1
+|x|v0|abc|v1|x
+|x|v0||x|v0
+|x|v0|v0|one-b|v0
+|x|v0|-100|v1|ve
+|x|v0|5200000|%t2%|x
+|x|v0|1.84467440737096e+19|v0|xyz%dabc
+|x|v0||v0|x
+|x|v0|v1|x|v1
+|x|v0|abc|v1|x
+|x|v0||x|v0
+|x|v0|v0|one-b|v0
+|x|v0|-100|v1|ve
+v0|one-b|v0|hare|v0|?k<D Q
+v0|one-b|v0|8|x|ghi
+v0|one-b|v0|5200000|%t2%|x
+v0|one-b|v0|1.84467440737096e+19|v0|xyz%dabc
+v0|one-b|v0||v0|x
+v0|one-b|v0|v1|x|v1
+v0|one-b|v0|abc|v1|x
+v0|one-b|v0||x|v0
+v0|one-b|v0|v0|one-b|v0
+v0|one-b|v0|-100|v1|ve
+v0|one-b|v0|5200000|%t2%|x
+v0|one-b|v0|1.84467440737096e+19|v0|xyz%dabc
+v0|one-b|v0||v0|x
+v0|one-b|v0|v1|x|v1
+v0|one-b|v0|abc|v1|x
+v0|one-b|v0||x|v0
+v0|one-b|v0|v0|one-b|v0
+v0|one-b|v0|-100|v1|ve
+-100|v1|ve|hare|v0|?k<D Q
+-100|v1|ve|8|x|ghi
+-100|v1|ve|5200000|%t2%|x
+-100|v1|ve|1.84467440737096e+19|v0|xyz%dabc
+-100|v1|ve||v0|x
+-100|v1|ve|v1|x|v1
+-100|v1|ve|abc|v1|x
+-100|v1|ve||x|v0
+-100|v1|ve|v0|one-b|v0
+-100|v1|ve|-100|v1|ve
+-100|v1|ve|5200000|%t2%|x
+-100|v1|ve|1.84467440737096e+19|v0|xyz%dabc
+-100|v1|ve||v0|x
+-100|v1|ve|v1|x|v1
+-100|v1|ve|abc|v1|x
+-100|v1|ve||x|v0
+-100|v1|ve|v0|one-b|v0
+-100|v1|ve|-100|v1|ve
+END VERI 0
+BEGIN VERI 0
+Parse error near line 53: 1st ORDER BY term out of range - should be between 1 and 9
+  S a44, v10 AS a45 NATURAL JOIN v6 AS a46 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a23 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a23 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v10 AS a24 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v10 AS a24 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v10 AS a25, v10 AS a26 ORDER BY 0; 
+                                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+  SELECT * FROM v10 AS a25, v10 AS a26 ORDER BY 0; 
+                                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 6
+  AS a27, v0 AS a28 NATURAL JOIN v0 AS a29 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 6
+  AS a27, v0 AS a28 NATURAL JOIN v0 AS a29 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  RDER BY 5.2e6 ) SELECT * FROM v30 AS a31 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+  RDER BY 5.2e6 ) SELECT * FROM v30 AS a31 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM ( SELECT 8 ORDER BY 0 ) AS y, v0 AS a37 ON a37.c2 = a37.c2 || a3
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM ( SELECT 8 ORDER BY 0 ) AS y, v0 AS a37 ON a37.c2 = a37.c2 || a3
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+hare
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 6
+   a39, v10 AS a40 NATURAL JOIN v10 AS a41 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 47: 1st ORDER BY term out of range - should be between 1 and 6
+   a39, v10 AS a40 NATURAL JOIN v10 AS a41 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: -1
+Str: 
+hare|v0|?k<D Q|hare|v0|?k<D Q
+hare|v0|?k<D Q|8|x|ghi
+hare|v0|?k<D Q|5200000|%t2%|x
+hare|v0|?k<D Q|1.84467440737096e+19|v0|xyz%dabc
+hare|v0|?k<D Q||v0|x
+hare|v0|?k<D Q|v1|x|v1
+hare|v0|?k<D Q|abc|v1|x
+hare|v0|?k<D Q||x|v0
+hare|v0|?k<D Q|v0|one-b|v0
+hare|v0|?k<D Q|-100|v1|ve
+hare|v0|?k<D Q|5200000|%t2%|x
+hare|v0|?k<D Q|1.84467440737096e+19|v0|xyz%dabc
+hare|v0|?k<D Q||v0|x
+hare|v0|?k<D Q|v1|x|v1
+hare|v0|?k<D Q|abc|v1|x
+hare|v0|?k<D Q||x|v0
+hare|v0|?k<D Q|v0|one-b|v0
+hare|v0|?k<D Q|-100|v1|ve
+8|x|ghi|hare|v0|?k<D Q
+8|x|ghi|8|x|ghi
+8|x|ghi|5200000|%t2%|x
+8|x|ghi|1.84467440737096e+19|v0|xyz%dabc
+8|x|ghi||v0|x
+8|x|ghi|v1|x|v1
+8|x|ghi|abc|v1|x
+8|x|ghi||x|v0
+8|x|ghi|v0|one-b|v0
+8|x|ghi|-100|v1|ve
+8|x|ghi|5200000|%t2%|x
+8|x|ghi|1.84467440737096e+19|v0|xyz%dabc
+8|x|ghi||v0|x
+8|x|ghi|v1|x|v1
+8|x|ghi|abc|v1|x
+8|x|ghi||x|v0
+8|x|ghi|v0|one-b|v0
+8|x|ghi|-100|v1|ve
+5200000|%t2%|x|hare|v0|?k<D Q
+5200000|%t2%|x|8|x|ghi
+5200000|%t2%|x|5200000|%t2%|x
+5200000|%t2%|x|1.84467440737096e+19|v0|xyz%dabc
+5200000|%t2%|x||v0|x
+5200000|%t2%|x|v1|x|v1
+5200000|%t2%|x|abc|v1|x
+5200000|%t2%|x||x|v0
+5200000|%t2%|x|v0|one-b|v0
+5200000|%t2%|x|-100|v1|ve
+5200000|%t2%|x|5200000|%t2%|x
+5200000|%t2%|x|1.84467440737096e+19|v0|xyz%dabc
+5200000|%t2%|x||v0|x
+5200000|%t2%|x|v1|x|v1
+5200000|%t2%|x|abc|v1|x
+5200000|%t2%|x||x|v0
+5200000|%t2%|x|v0|one-b|v0
+5200000|%t2%|x|-100|v1|ve
+1.84467440737096e+19|v0|xyz%dabc|hare|v0|?k<D Q
+1.84467440737096e+19|v0|xyz%dabc|8|x|ghi
+1.84467440737096e+19|v0|xyz%dabc|5200000|%t2%|x
+1.84467440737096e+19|v0|xyz%dabc|1.84467440737096e+19|v0|xyz%dabc
+1.84467440737096e+19|v0|xyz%dabc||v0|x
+1.84467440737096e+19|v0|xyz%dabc|v1|x|v1
+1.84467440737096e+19|v0|xyz%dabc|abc|v1|x
+1.84467440737096e+19|v0|xyz%dabc||x|v0
+1.84467440737096e+19|v0|xyz%dabc|v0|one-b|v0
+1.84467440737096e+19|v0|xyz%dabc|-100|v1|ve
+1.84467440737096e+19|v0|xyz%dabc|5200000|%t2%|x
+1.84467440737096e+19|v0|xyz%dabc|1.84467440737096e+19|v0|xyz%dabc
+1.84467440737096e+19|v0|xyz%dabc||v0|x
+1.84467440737096e+19|v0|xyz%dabc|v1|x|v1
+1.84467440737096e+19|v0|xyz%dabc|abc|v1|x
+1.84467440737096e+19|v0|xyz%dabc||x|v0
+1.84467440737096e+19|v0|xyz%dabc|v0|one-b|v0
+1.84467440737096e+19|v0|xyz%dabc|-100|v1|ve
+|v0|x|hare|v0|?k<D Q
+|v0|x|8|x|ghi
+|v0|x|5200000|%t2%|x
+|v0|x|1.84467440737096e+19|v0|xyz%dabc
+|v0|x||v0|x
+|v0|x|v1|x|v1
+|v0|x|abc|v1|x
+|v0|x||x|v0
+|v0|x|v0|one-b|v0
+|v0|x|-100|v1|ve
+|v0|x|5200000|%t2%|x
+|v0|x|1.84467440737096e+19|v0|xyz%dabc
+|v0|x||v0|x
+|v0|x|v1|x|v1
+|v0|x|abc|v1|x
+|v0|x||x|v0
+|v0|x|v0|one-b|v0
+|v0|x|-100|v1|ve
+v1|x|v1|hare|v0|?k<D Q
+v1|x|v1|8|x|ghi
+v1|x|v1|5200000|%t2%|x
+v1|x|v1|1.84467440737096e+19|v0|xyz%dabc
+v1|x|v1||v0|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|v1|x
+v1|x|v1||x|v0
+v1|x|v1|v0|one-b|v0
+v1|x|v1|-100|v1|ve
+v1|x|v1|5200000|%t2%|x
+v1|x|v1|1.84467440737096e+19|v0|xyz%dabc
+v1|x|v1||v0|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|v1|x
+v1|x|v1||x|v0
+v1|x|v1|v0|one-b|v0
+v1|x|v1|-100|v1|ve
+abc|v1|x|hare|v0|?k<D Q
+abc|v1|x|8|x|ghi
+abc|v1|x|5200000|%t2%|x
+abc|v1|x|1.84467440737096e+19|v0|xyz%dabc
+abc|v1|x||v0|x
+abc|v1|x|v1|x|v1
+abc|v1|x|abc|v1|x
+abc|v1|x||x|v0
+abc|v1|x|v0|one-b|v0
+abc|v1|x|-100|v1|ve
+abc|v1|x|5200000|%t2%|x
+abc|v1|x|1.84467440737096e+19|v0|xyz%dabc
+abc|v1|x||v0|x
+abc|v1|x|v1|x|v1
+abc|v1|x|abc|v1|x
+abc|v1|x||x|v0
+abc|v1|x|v0|one-b|v0
+abc|v1|x|-100|v1|ve
+|x|v0|hare|v0|?k<D Q
+|x|v0|8|x|ghi
+|x|v0|5200000|%t2%|x
+|x|v0|1.84467440737096e+19|v0|xyz%dabc
+|x|v0||v0|x
+|x|v0|v1|x|v1
+|x|v0|abc|v1|x
+|x|v0||x|v0
+|x|v0|v0|one-b|v0
+|x|v0|-100|v1|ve
+|x|v0|5200000|%t2%|x
+|x|v0|1.84467440737096e+19|v0|xyz%dabc
+|x|v0||v0|x
+|x|v0|v1|x|v1
+|x|v0|abc|v1|x
+|x|v0||x|v0
+|x|v0|v0|one-b|v0
+|x|v0|-100|v1|ve
+v0|one-b|v0|hare|v0|?k<D Q
+v0|one-b|v0|8|x|ghi
+v0|one-b|v0|5200000|%t2%|x
+v0|one-b|v0|1.84467440737096e+19|v0|xyz%dabc
+v0|one-b|v0||v0|x
+v0|one-b|v0|v1|x|v1
+v0|one-b|v0|abc|v1|x
+v0|one-b|v0||x|v0
+v0|one-b|v0|v0|one-b|v0
+v0|one-b|v0|-100|v1|ve
+v0|one-b|v0|5200000|%t2%|x
+v0|one-b|v0|1.84467440737096e+19|v0|xyz%dabc
+v0|one-b|v0||v0|x
+v0|one-b|v0|v1|x|v1
+v0|one-b|v0|abc|v1|x
+v0|one-b|v0||x|v0
+v0|one-b|v0|v0|one-b|v0
+v0|one-b|v0|-100|v1|ve
+-100|v1|ve|hare|v0|?k<D Q
+-100|v1|ve|8|x|ghi
+-100|v1|ve|5200000|%t2%|x
+-100|v1|ve|1.84467440737096e+19|v0|xyz%dabc
+-100|v1|ve||v0|x
+-100|v1|ve|v1|x|v1
+-100|v1|ve|abc|v1|x
+-100|v1|ve||x|v0
+-100|v1|ve|v0|one-b|v0
+-100|v1|ve|-100|v1|ve
+-100|v1|ve|5200000|%t2%|x
+-100|v1|ve|1.84467440737096e+19|v0|xyz%dabc
+-100|v1|ve||v0|x
+-100|v1|ve|v1|x|v1
+-100|v1|ve|abc|v1|x
+-100|v1|ve||x|v0
+-100|v1|ve|v0|one-b|v0
+-100|v1|ve|-100|v1|ve
+5200000|%t2%|x|hare|v0|?k<D Q
+5200000|%t2%|x|8|x|ghi
+5200000|%t2%|x|5200000|%t2%|x
+5200000|%t2%|x|1.84467440737096e+19|v0|xyz%dabc
+5200000|%t2%|x||v0|x
+5200000|%t2%|x|v1|x|v1
+5200000|%t2%|x|abc|v1|x
+5200000|%t2%|x||x|v0
+5200000|%t2%|x|v0|one-b|v0
+5200000|%t2%|x|-100|v1|ve
+5200000|%t2%|x|5200000|%t2%|x
+5200000|%t2%|x|1.84467440737096e+19|v0|xyz%dabc
+5200000|%t2%|x||v0|x
+5200000|%t2%|x|v1|x|v1
+5200000|%t2%|x|abc|v1|x
+5200000|%t2%|x||x|v0
+5200000|%t2%|x|v0|one-b|v0
+5200000|%t2%|x|-100|v1|ve
+1.84467440737096e+19|v0|xyz%dabc|hare|v0|?k<D Q
+1.84467440737096e+19|v0|xyz%dabc|8|x|ghi
+1.84467440737096e+19|v0|xyz%dabc|5200000|%t2%|x
+1.84467440737096e+19|v0|xyz%dabc|1.84467440737096e+19|v0|xyz%dabc
+1.84467440737096e+19|v0|xyz%dabc||v0|x
+1.84467440737096e+19|v0|xyz%dabc|v1|x|v1
+1.84467440737096e+19|v0|xyz%dabc|abc|v1|x
+1.84467440737096e+19|v0|xyz%dabc||x|v0
+1.84467440737096e+19|v0|xyz%dabc|v0|one-b|v0
+1.84467440737096e+19|v0|xyz%dabc|-100|v1|ve
+1.84467440737096e+19|v0|xyz%dabc|5200000|%t2%|x
+1.84467440737096e+19|v0|xyz%dabc|1.84467440737096e+19|v0|xyz%dabc
+1.84467440737096e+19|v0|xyz%dabc||v0|x
+1.84467440737096e+19|v0|xyz%dabc|v1|x|v1
+1.84467440737096e+19|v0|xyz%dabc|abc|v1|x
+1.84467440737096e+19|v0|xyz%dabc||x|v0
+1.84467440737096e+19|v0|xyz%dabc|v0|one-b|v0
+1.84467440737096e+19|v0|xyz%dabc|-100|v1|ve
+|v0|x|hare|v0|?k<D Q
+|v0|x|8|x|ghi
+|v0|x|5200000|%t2%|x
+|v0|x|1.84467440737096e+19|v0|xyz%dabc
+|v0|x||v0|x
+|v0|x|v1|x|v1
+|v0|x|abc|v1|x
+|v0|x||x|v0
+|v0|x|v0|one-b|v0
+|v0|x|-100|v1|ve
+|v0|x|5200000|%t2%|x
+|v0|x|1.84467440737096e+19|v0|xyz%dabc
+|v0|x||v0|x
+|v0|x|v1|x|v1
+|v0|x|abc|v1|x
+|v0|x||x|v0
+|v0|x|v0|one-b|v0
+|v0|x|-100|v1|ve
+v1|x|v1|hare|v0|?k<D Q
+v1|x|v1|8|x|ghi
+v1|x|v1|5200000|%t2%|x
+v1|x|v1|1.84467440737096e+19|v0|xyz%dabc
+v1|x|v1||v0|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|v1|x
+v1|x|v1||x|v0
+v1|x|v1|v0|one-b|v0
+v1|x|v1|-100|v1|ve
+v1|x|v1|5200000|%t2%|x
+v1|x|v1|1.84467440737096e+19|v0|xyz%dabc
+v1|x|v1||v0|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|v1|x
+v1|x|v1||x|v0
+v1|x|v1|v0|one-b|v0
+v1|x|v1|-100|v1|ve
+abc|v1|x|hare|v0|?k<D Q
+abc|v1|x|8|x|ghi
+abc|v1|x|5200000|%t2%|x
+abc|v1|x|1.84467440737096e+19|v0|xyz%dabc
+abc|v1|x||v0|x
+abc|v1|x|v1|x|v1
+abc|v1|x|abc|v1|x
+abc|v1|x||x|v0
+abc|v1|x|v0|one-b|v0
+abc|v1|x|-100|v1|ve
+abc|v1|x|5200000|%t2%|x
+abc|v1|x|1.84467440737096e+19|v0|xyz%dabc
+abc|v1|x||v0|x
+abc|v1|x|v1|x|v1
+abc|v1|x|abc|v1|x
+abc|v1|x||x|v0
+abc|v1|x|v0|one-b|v0
+abc|v1|x|-100|v1|ve
+|x|v0|hare|v0|?k<D Q
+|x|v0|8|x|ghi
+|x|v0|5200000|%t2%|x
+|x|v0|1.84467440737096e+19|v0|xyz%dabc
+|x|v0||v0|x
+|x|v0|v1|x|v1
+|x|v0|abc|v1|x
+|x|v0||x|v0
+|x|v0|v0|one-b|v0
+|x|v0|-100|v1|ve
+|x|v0|5200000|%t2%|x
+|x|v0|1.84467440737096e+19|v0|xyz%dabc
+|x|v0||v0|x
+|x|v0|v1|x|v1
+|x|v0|abc|v1|x
+|x|v0||x|v0
+|x|v0|v0|one-b|v0
+|x|v0|-100|v1|ve
+v0|one-b|v0|hare|v0|?k<D Q
+v0|one-b|v0|8|x|ghi
+v0|one-b|v0|5200000|%t2%|x
+v0|one-b|v0|1.84467440737096e+19|v0|xyz%dabc
+v0|one-b|v0||v0|x
+v0|one-b|v0|v1|x|v1
+v0|one-b|v0|abc|v1|x
+v0|one-b|v0||x|v0
+v0|one-b|v0|v0|one-b|v0
+v0|one-b|v0|-100|v1|ve
+v0|one-b|v0|5200000|%t2%|x
+v0|one-b|v0|1.84467440737096e+19|v0|xyz%dabc
+v0|one-b|v0||v0|x
+v0|one-b|v0|v1|x|v1
+v0|one-b|v0|abc|v1|x
+v0|one-b|v0||x|v0
+v0|one-b|v0|v0|one-b|v0
+v0|one-b|v0|-100|v1|ve
+-100|v1|ve|hare|v0|?k<D Q
+-100|v1|ve|8|x|ghi
+-100|v1|ve|5200000|%t2%|x
+-100|v1|ve|1.84467440737096e+19|v0|xyz%dabc
+-100|v1|ve||v0|x
+-100|v1|ve|v1|x|v1
+-100|v1|ve|abc|v1|x
+-100|v1|ve||x|v0
+-100|v1|ve|v0|one-b|v0
+-100|v1|ve|-100|v1|ve
+-100|v1|ve|5200000|%t2%|x
+-100|v1|ve|1.84467440737096e+19|v0|xyz%dabc
+-100|v1|ve||v0|x
+-100|v1|ve|v1|x|v1
+-100|v1|ve|abc|v1|x
+-100|v1|ve||x|v0
+-100|v1|ve|v0|one-b|v0
+-100|v1|ve|-100|v1|ve
+ 
+Str: 
+hare|v0|?k<D Q|hare|v0|?k<D Q
+hare|v0|?k<D Q|8|x|ghi
+hare|v0|?k<D Q|5200000|%t2%|x
+hare|v0|?k<D Q|1.84467440737096e+19|v0|xyz%dabc
+hare|v0|?k<D Q||v0|x
+hare|v0|?k<D Q|v1|x|v1
+hare|v0|?k<D Q|abc|v1|x
+hare|v0|?k<D Q||x|v0
+hare|v0|?k<D Q|v0|one-b|v0
+hare|v0|?k<D Q|-100|v1|ve
+hare|v0|?k<D Q|5200000|%t2%|x
+hare|v0|?k<D Q|1.84467440737096e+19|v0|xyz%dabc
+hare|v0|?k<D Q||v0|x
+hare|v0|?k<D Q|v1|x|v1
+hare|v0|?k<D Q|abc|v1|x
+hare|v0|?k<D Q||x|v0
+hare|v0|?k<D Q|v0|one-b|v0
+hare|v0|?k<D Q|-100|v1|ve
+8|x|ghi|hare|v0|?k<D Q
+8|x|ghi|8|x|ghi
+8|x|ghi|5200000|%t2%|x
+8|x|ghi|1.84467440737096e+19|v0|xyz%dabc
+8|x|ghi||v0|x
+8|x|ghi|v1|x|v1
+8|x|ghi|abc|v1|x
+8|x|ghi||x|v0
+8|x|ghi|v0|one-b|v0
+8|x|ghi|-100|v1|ve
+8|x|ghi|5200000|%t2%|x
+8|x|ghi|1.84467440737096e+19|v0|xyz%dabc
+8|x|ghi||v0|x
+8|x|ghi|v1|x|v1
+8|x|ghi|abc|v1|x
+8|x|ghi||x|v0
+8|x|ghi|v0|one-b|v0
+8|x|ghi|-100|v1|ve
+5200000|%t2%|x|hare|v0|?k<D Q
+5200000|%t2%|x|8|x|ghi
+5200000|%t2%|x|5200000|%t2%|x
+5200000|%t2%|x|1.84467440737096e+19|v0|xyz%dabc
+5200000|%t2%|x||v0|x
+5200000|%t2%|x|v1|x|v1
+5200000|%t2%|x|abc|v1|x
+5200000|%t2%|x||x|v0
+5200000|%t2%|x|v0|one-b|v0
+5200000|%t2%|x|-100|v1|ve
+5200000|%t2%|x|5200000|%t2%|x
+5200000|%t2%|x|1.84467440737096e+19|v0|xyz%dabc
+5200000|%t2%|x||v0|x
+5200000|%t2%|x|v1|x|v1
+5200000|%t2%|x|abc|v1|x
+5200000|%t2%|x||x|v0
+5200000|%t2%|x|v0|one-b|v0
+5200000|%t2%|x|-100|v1|ve
+1.84467440737096e+19|v0|xyz%dabc|hare|v0|?k<D Q
+1.84467440737096e+19|v0|xyz%dabc|8|x|ghi
+1.84467440737096e+19|v0|xyz%dabc|5200000|%t2%|x
+1.84467440737096e+19|v0|xyz%dabc|1.84467440737096e+19|v0|xyz%dabc
+1.84467440737096e+19|v0|xyz%dabc||v0|x
+1.84467440737096e+19|v0|xyz%dabc|v1|x|v1
+1.84467440737096e+19|v0|xyz%dabc|abc|v1|x
+1.84467440737096e+19|v0|xyz%dabc||x|v0
+1.84467440737096e+19|v0|xyz%dabc|v0|one-b|v0
+1.84467440737096e+19|v0|xyz%dabc|-100|v1|ve
+1.84467440737096e+19|v0|xyz%dabc|5200000|%t2%|x
+1.84467440737096e+19|v0|xyz%dabc|1.84467440737096e+19|v0|xyz%dabc
+1.84467440737096e+19|v0|xyz%dabc||v0|x
+1.84467440737096e+19|v0|xyz%dabc|v1|x|v1
+1.84467440737096e+19|v0|xyz%dabc|abc|v1|x
+1.84467440737096e+19|v0|xyz%dabc||x|v0
+1.84467440737096e+19|v0|xyz%dabc|v0|one-b|v0
+1.84467440737096e+19|v0|xyz%dabc|-100|v1|ve
+|v0|x|hare|v0|?k<D Q
+|v0|x|8|x|ghi
+|v0|x|5200000|%t2%|x
+|v0|x|1.84467440737096e+19|v0|xyz%dabc
+|v0|x||v0|x
+|v0|x|v1|x|v1
+|v0|x|abc|v1|x
+|v0|x||x|v0
+|v0|x|v0|one-b|v0
+|v0|x|-100|v1|ve
+|v0|x|5200000|%t2%|x
+|v0|x|1.84467440737096e+19|v0|xyz%dabc
+|v0|x||v0|x
+|v0|x|v1|x|v1
+|v0|x|abc|v1|x
+|v0|x||x|v0
+|v0|x|v0|one-b|v0
+|v0|x|-100|v1|ve
+v1|x|v1|hare|v0|?k<D Q
+v1|x|v1|8|x|ghi
+v1|x|v1|5200000|%t2%|x
+v1|x|v1|1.84467440737096e+19|v0|xyz%dabc
+v1|x|v1||v0|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|v1|x
+v1|x|v1||x|v0
+v1|x|v1|v0|one-b|v0
+v1|x|v1|-100|v1|ve
+v1|x|v1|5200000|%t2%|x
+v1|x|v1|1.84467440737096e+19|v0|xyz%dabc
+v1|x|v1||v0|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|v1|x
+v1|x|v1||x|v0
+v1|x|v1|v0|one-b|v0
+v1|x|v1|-100|v1|ve
+abc|v1|x|hare|v0|?k<D Q
+abc|v1|x|8|x|ghi
+abc|v1|x|5200000|%t2%|x
+abc|v1|x|1.84467440737096e+19|v0|xyz%dabc
+abc|v1|x||v0|x
+abc|v1|x|v1|x|v1
+abc|v1|x|abc|v1|x
+abc|v1|x||x|v0
+abc|v1|x|v0|one-b|v0
+abc|v1|x|-100|v1|ve
+abc|v1|x|5200000|%t2%|x
+abc|v1|x|1.84467440737096e+19|v0|xyz%dabc
+abc|v1|x||v0|x
+abc|v1|x|v1|x|v1
+abc|v1|x|abc|v1|x
+abc|v1|x||x|v0
+abc|v1|x|v0|one-b|v0
+abc|v1|x|-100|v1|ve
+|x|v0|hare|v0|?k<D Q
+|x|v0|8|x|ghi
+|x|v0|5200000|%t2%|x
+|x|v0|1.84467440737096e+19|v0|xyz%dabc
+|x|v0||v0|x
+|x|v0|v1|x|v1
+|x|v0|abc|v1|x
+|x|v0||x|v0
+|x|v0|v0|one-b|v0
+|x|v0|-100|v1|ve
+|x|v0|5200000|%t2%|x
+|x|v0|1.84467440737096e+19|v0|xyz%dabc
+|x|v0||v0|x
+|x|v0|v1|x|v1
+|x|v0|abc|v1|x
+|x|v0||x|v0
+|x|v0|v0|one-b|v0
+|x|v0|-100|v1|ve
+v0|one-b|v0|hare|v0|?k<D Q
+v0|one-b|v0|8|x|ghi
+v0|one-b|v0|5200000|%t2%|x
+v0|one-b|v0|1.84467440737096e+19|v0|xyz%dabc
+v0|one-b|v0||v0|x
+v0|one-b|v0|v1|x|v1
+v0|one-b|v0|abc|v1|x
+v0|one-b|v0||x|v0
+v0|one-b|v0|v0|one-b|v0
+v0|one-b|v0|-100|v1|ve
+v0|one-b|v0|5200000|%t2%|x
+v0|one-b|v0|1.84467440737096e+19|v0|xyz%dabc
+v0|one-b|v0||v0|x
+v0|one-b|v0|v1|x|v1
+v0|one-b|v0|abc|v1|x
+v0|one-b|v0||x|v0
+v0|one-b|v0|v0|one-b|v0
+v0|one-b|v0|-100|v1|ve
+-100|v1|ve|hare|v0|?k<D Q
+-100|v1|ve|8|x|ghi
+-100|v1|ve|5200000|%t2%|x
+-100|v1|ve|1.84467440737096e+19|v0|xyz%dabc
+-100|v1|ve||v0|x
+-100|v1|ve|v1|x|v1
+-100|v1|ve|abc|v1|x
+-100|v1|ve||x|v0
+-100|v1|ve|v0|one-b|v0
+-100|v1|ve|-100|v1|ve
+-100|v1|ve|5200000|%t2%|x
+-100|v1|ve|1.84467440737096e+19|v0|xyz%dabc
+-100|v1|ve||v0|x
+-100|v1|ve|v1|x|v1
+-100|v1|ve|abc|v1|x
+-100|v1|ve||x|v0
+-100|v1|ve|v0|one-b|v0
+-100|v1|ve|-100|v1|ve
+5200000|%t2%|x|hare|v0|?k<D Q
+5200000|%t2%|x|8|x|ghi
+5200000|%t2%|x|5200000|%t2%|x
+5200000|%t2%|x|1.84467440737096e+19|v0|xyz%dabc
+5200000|%t2%|x||v0|x
+5200000|%t2%|x|v1|x|v1
+5200000|%t2%|x|abc|v1|x
+5200000|%t2%|x||x|v0
+5200000|%t2%|x|v0|one-b|v0
+5200000|%t2%|x|-100|v1|ve
+5200000|%t2%|x|5200000|%t2%|x
+5200000|%t2%|x|1.84467440737096e+19|v0|xyz%dabc
+5200000|%t2%|x||v0|x
+5200000|%t2%|x|v1|x|v1
+5200000|%t2%|x|abc|v1|x
+5200000|%t2%|x||x|v0
+5200000|%t2%|x|v0|one-b|v0
+5200000|%t2%|x|-100|v1|ve
+1.84467440737096e+19|v0|xyz%dabc|hare|v0|?k<D Q
+1.84467440737096e+19|v0|xyz%dabc|8|x|ghi
+1.84467440737096e+19|v0|xyz%dabc|5200000|%t2%|x
+1.84467440737096e+19|v0|xyz%dabc|1.84467440737096e+19|v0|xyz%dabc
+1.84467440737096e+19|v0|xyz%dabc||v0|x
+1.84467440737096e+19|v0|xyz%dabc|v1|x|v1
+1.84467440737096e+19|v0|xyz%dabc|abc|v1|x
+1.84467440737096e+19|v0|xyz%dabc||x|v0
+1.84467440737096e+19|v0|xyz%dabc|v0|one-b|v0
+1.84467440737096e+19|v0|xyz%dabc|-100|v1|ve
+1.84467440737096e+19|v0|xyz%dabc|5200000|%t2%|x
+1.84467440737096e+19|v0|xyz%dabc|1.84467440737096e+19|v0|xyz%dabc
+1.84467440737096e+19|v0|xyz%dabc||v0|x
+1.84467440737096e+19|v0|xyz%dabc|v1|x|v1
+1.84467440737096e+19|v0|xyz%dabc|abc|v1|x
+1.84467440737096e+19|v0|xyz%dabc||x|v0
+1.84467440737096e+19|v0|xyz%dabc|v0|one-b|v0
+1.84467440737096e+19|v0|xyz%dabc|-100|v1|ve
+|v0|x|hare|v0|?k<D Q
+|v0|x|8|x|ghi
+|v0|x|5200000|%t2%|x
+|v0|x|1.84467440737096e+19|v0|xyz%dabc
+|v0|x||v0|x
+|v0|x|v1|x|v1
+|v0|x|abc|v1|x
+|v0|x||x|v0
+|v0|x|v0|one-b|v0
+|v0|x|-100|v1|ve
+|v0|x|5200000|%t2%|x
+|v0|x|1.84467440737096e+19|v0|xyz%dabc
+|v0|x||v0|x
+|v0|x|v1|x|v1
+|v0|x|abc|v1|x
+|v0|x||x|v0
+|v0|x|v0|one-b|v0
+|v0|x|-100|v1|ve
+v1|x|v1|hare|v0|?k<D Q
+v1|x|v1|8|x|ghi
+v1|x|v1|5200000|%t2%|x
+v1|x|v1|1.84467440737096e+19|v0|xyz%dabc
+v1|x|v1||v0|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|v1|x
+v1|x|v1||x|v0
+v1|x|v1|v0|one-b|v0
+v1|x|v1|-100|v1|ve
+v1|x|v1|5200000|%t2%|x
+v1|x|v1|1.84467440737096e+19|v0|xyz%dabc
+v1|x|v1||v0|x
+v1|x|v1|v1|x|v1
+v1|x|v1|abc|v1|x
+v1|x|v1||x|v0
+v1|x|v1|v0|one-b|v0
+v1|x|v1|-100|v1|ve
+abc|v1|x|hare|v0|?k<D Q
+abc|v1|x|8|x|ghi
+abc|v1|x|5200000|%t2%|x
+abc|v1|x|1.84467440737096e+19|v0|xyz%dabc
+abc|v1|x||v0|x
+abc|v1|x|v1|x|v1
+abc|v1|x|abc|v1|x
+abc|v1|x||x|v0
+abc|v1|x|v0|one-b|v0
+abc|v1|x|-100|v1|ve
+abc|v1|x|5200000|%t2%|x
+abc|v1|x|1.84467440737096e+19|v0|xyz%dabc
+abc|v1|x||v0|x
+abc|v1|x|v1|x|v1
+abc|v1|x|abc|v1|x
+abc|v1|x||x|v0
+abc|v1|x|v0|one-b|v0
+abc|v1|x|-100|v1|ve
+|x|v0|hare|v0|?k<D Q
+|x|v0|8|x|ghi
+|x|v0|5200000|%t2%|x
+|x|v0|1.84467440737096e+19|v0|xyz%dabc
+|x|v0||v0|x
+|x|v0|v1|x|v1
+|x|v0|abc|v1|x
+|x|v0||x|v0
+|x|v0|v0|one-b|v0
+|x|v0|-100|v1|ve
+|x|v0|5200000|%t2%|x
+|x|v0|1.84467440737096e+19|v0|xyz%dabc
+|x|v0||v0|x
+|x|v0|v1|x|v1
+|x|v0|abc|v1|x
+|x|v0||x|v0
+|x|v0|v0|one-b|v0
+|x|v0|-100|v1|ve
+v0|one-b|v0|hare|v0|?k<D Q
+v0|one-b|v0|8|x|ghi
+v0|one-b|v0|5200000|%t2%|x
+v0|one-b|v0|1.84467440737096e+19|v0|xyz%dabc
+v0|one-b|v0||v0|x
+v0|one-b|v0|v1|x|v1
+v0|one-b|v0|abc|v1|x
+v0|one-b|v0||x|v0
+v0|one-b|v0|v0|one-b|v0
+v0|one-b|v0|-100|v1|ve
+v0|one-b|v0|5200000|%t2%|x
+v0|one-b|v0|1.84467440737096e+19|v0|xyz%dabc
+v0|one-b|v0||v0|x
+v0|one-b|v0|v1|x|v1
+v0|one-b|v0|abc|v1|x
+v0|one-b|v0||x|v0
+v0|one-b|v0|v0|one-b|v0
+v0|one-b|v0|-100|v1|ve
+-100|v1|ve|hare|v0|?k<D Q
+-100|v1|ve|8|x|ghi
+-100|v1|ve|5200000|%t2%|x
+-100|v1|ve|1.84467440737096e+19|v0|xyz%dabc
+-100|v1|ve||v0|x
+-100|v1|ve|v1|x|v1
+-100|v1|ve|abc|v1|x
+-100|v1|ve||x|v0
+-100|v1|ve|v0|one-b|v0
+-100|v1|ve|-100|v1|ve
+-100|v1|ve|5200000|%t2%|x
+-100|v1|ve|1.84467440737096e+19|v0|xyz%dabc
+-100|v1|ve||v0|x
+-100|v1|ve|v1|x|v1
+-100|v1|ve|abc|v1|x
+-100|v1|ve||x|v0
+-100|v1|ve|v0|one-b|v0
+-100|v1|ve|-100|v1|ve
+ 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 53: 1st ORDER BY term out of range - should be between 1 and 9
+  S a44, v10 AS a45 NATURAL JOIN v6 AS a46 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 53: 1st ORDER BY term out of range - should be between 1 and 9
+  S a44, v10 AS a45 NATURAL JOIN v6 AS a46 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

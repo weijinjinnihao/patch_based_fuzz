@@ -1,0 +1,314 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE TABLE v5 ( c6, c7, c8, CHECK( c6 > 18446744073709518848 ) ); 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c12 < 18446744073709518848 ) ); 
+INSERT INTO v5 VALUES ( 18446744073709518848, 18446744073709518848, 100 ); 
+CREATE INDEX i13 ON v0 ( c3 ); 
+CREATE INDEX i14 ON v9 ( c11 ); 
+INSERT INTO v5 VALUES ( 18446744073709518848, 18446744073709518848, 127 ); 
+CREATE TABLE v15 ( c16 UNIQUE ON CONFLICT FAIL, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38 INTEGER CHECK( x'b1' ), c39, c40, c41, c42, c43, c44, c45, c46, c47, c48 UNIQUE, c49, PRIMARY KEY ( c39, c28 ) ); 
+INSERT INTO v5 VALUES ( 18446744073709518848, 18446744073709518848, 31 ); 
+CREATE INDEX i50 ON v15 ( c19 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( count ( c1 ), 'x' ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a51 NATURAL JOIN v0 AS a52 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v15 AS ( SELECT * FROM v15 AS a54 JOIN v0 AS a55 USING ( a53.c3, a55.c2, a55.c2, a53.c3, a55.c2, a54.c39, a53.c1, a55.c3 ) WHERE a55.c3 = a54.c45 >= 8 ORDER BY 18446744073709518848 ) SELECT * FROM v0 AS a53 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN c3 != 'v1' THEN 10 ELSE 18446744073709518848 END ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( - 18446744073709518848 IS NULL ) ) AND ( NOT ( a57.c3 IS NULL ) ) ), a56.c8 FROM v5 AS a56 LEFT JOIN v0 AS a57 ON a56.c6 = a56.c8 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a58 WHERE a58.c12 = a58.c11 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a59, v5 AS a60 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a61 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a63.c49, a62.c2 FROM v0 AS a62, v15 AS a63 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v9 AS a64 ), ( v15 AS a65 NATURAL JOIN v9 AS a66 ), ( v0 AS a67 ), ( v0 AS a68 ) WHERE a65.c34 = a66.c11 + 18446744073709518848 AND a65.c34 = a68.c1 + 18446744073709518848 AND a65.c26 = a66.c11 + 10 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c6 > 18446744073709518848 (19)
+Runtime error near line 8: CHECK constraint failed: c6 > 18446744073709518848 (19)
+Runtime error near line 10: CHECK constraint failed: c6 > 18446744073709518848 (19)
+Runtime error near line 12: error in index i13 after drop column: no such column: c3
+BEGIN VERI 0
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c1 ), 'x' ) ORDER BY 18446744073709518848; 
+                 error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: near ".": syntax error
+  ELECT * FROM v15 AS a54 JOIN v0 AS a55 USING ( a53.c3, a55.c2, a55.c2, a53.c3,
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: c3
+  SELECT ( CASE WHEN c3 != 'v1' THEN 10 ELSE 18446744073709518848 END ) ORDER BY
+                     ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 34
+  SELECT * FROM v15 AS a61 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: ambiguous column name: main.v0.c1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+; 
+CREATE TABLE v5 ( c6, c7, c8, CHECK( c6 > 18446744073709518848 ) ); 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c12 < 18446744073709518848 ) ); 
+INSERT INTO v5 VALUES ( 18446744073709518848, 18446744073709518848, 100 ); 
+; 
+; 
+INSERT INTO v5 VALUES ( 18446744073709518848, 18446744073709518848, 127 ); 
+CREATE TABLE v15 ( c16 UNIQUE ON CONFLICT FAIL, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38 INTEGER CHECK( x'b1' ), c39, c40, c41, c42, c43, c44, c45, c46, c47, c48 UNIQUE, c49, PRIMARY KEY ( c39, c28 ) ); 
+INSERT INTO v5 VALUES ( 18446744073709518848, 18446744073709518848, 31 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c3; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( count ( c1 ), 'x' ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a51 NATURAL JOIN v0 AS a52 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v15 AS ( SELECT * FROM v15 AS a54 JOIN v0 AS a55 USING ( a53.c3, a55.c2, a55.c2, a53.c3, a55.c2, a54.c39, a53.c1, a55.c3 ) WHERE a55.c3 = a54.c45 >= 8 ORDER BY 18446744073709518848 ) SELECT * FROM v0 AS a53 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN c3 != 'v1' THEN 10 ELSE 18446744073709518848 END ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( - 18446744073709518848 IS NULL ) ) AND ( NOT ( a57.c3 IS NULL ) ) ), a56.c8 FROM v5 AS a56 LEFT JOIN v0 AS a57 ON a56.c6 = a56.c8 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a58 WHERE a58.c12 = a58.c11 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a59, v5 AS a60 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a61 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a63.c49, a62.c2 FROM v0 AS a62, v15 AS a63 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v9 AS a64 ), ( v15 AS a65 NATURAL JOIN v9 AS a66 ), ( v0 AS a67 ), ( v0 AS a68 ) WHERE a65.c34 = a66.c11 + 18446744073709518848 AND a65.c34 = a68.c1 + 18446744073709518848 AND a65.c26 = a66.c11 + 10 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c6 > 18446744073709518848 (19)
+Runtime error near line 8: CHECK constraint failed: c6 > 18446744073709518848 (19)
+Runtime error near line 10: CHECK constraint failed: c6 > 18446744073709518848 (19)
+BEGIN VERI 0
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c1 ), 'x' ) ORDER BY 18446744073709518848; 
+                 error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: near ".": syntax error
+  ELECT * FROM v15 AS a54 JOIN v0 AS a55 USING ( a53.c3, a55.c2, a55.c2, a53.c3,
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such column: c3
+  SELECT ( CASE WHEN c3 != 'v1' THEN 10 ELSE 18446744073709518848 END ) ORDER BY
+                     ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: a57.c3
+   ( - 18446744073709518848 IS NULL ) ) AND ( NOT ( a57.c3 IS NULL ) ) ), a56.c8
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 34
+  SELECT * FROM v15 AS a61 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: ambiguous column name: main.v0.c1
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 18375568
+Str: 
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c1 ), 'x' ) ORDER BY 18446744073709518848; 
+                 error here ---^
+ 
+Str: 
+Parse error near line 14: near "ORDER": syntax error
+  VALUES ( count ( c1 ), 'x' ) ORDER BY 18446744073709518848; 
+                 error here ---^
+ 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: near ".": syntax error
+  ELECT * FROM v15 AS a54 JOIN v0 AS a55 USING ( a53.c3, a55.c2, a55.c2, a53.c3,
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 20: near ".": syntax error
+  ELECT * FROM v15 AS a54 JOIN v0 AS a55 USING ( a53.c3, a55.c2, a55.c2, a53.c3,
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such column: c3
+  SELECT ( CASE WHEN c3 != 'v1' THEN 10 ELSE 18446744073709518848 END ) ORDER BY
+                     ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 23: no such column: c3
+  SELECT ( CASE WHEN c3 != 'v1' THEN 10 ELSE 18446744073709518848 END ) ORDER BY
+                     ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such column: a57.c3
+   ( - 18446744073709518848 IS NULL ) ) AND ( NOT ( a57.c3 IS NULL ) ) ), a56.c8
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 34
+  SELECT * FROM v15 AS a61 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 34
+  SELECT * FROM v15 AS a61 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: ambiguous column name: main.v0.c1
+ 
+INT: 0 
+Str: 
+Parse error near line 41: ambiguous column name: main.v0.c1
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

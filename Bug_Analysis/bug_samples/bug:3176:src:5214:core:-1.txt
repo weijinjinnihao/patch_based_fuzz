@@ -1,0 +1,326 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c2 ) ) WITHOUT ROWID; 
+ATTACH 'x' AS sqlite_master; 
+CREATE INDEX i4 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( 100, 2147483647, 2147483647 ), ( 4294967295, 2147483647, 2147483647 ); 
+CREATE TABLE v5 ( c6 TEXT, c7 INTEGER, c8 INT, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32 PRIMARY KEY, CHECK( ( ( c6 + 4294967295 ) > 8 ) != 2147483647 ) ); 
+ALTER TABLE v0 DROP c3; 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i33 ON v5 ( c26 ); 
+CREATE TABLE v34 ( c35, c36, c37 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i38 ON v0 ( c3 ); 
+CREATE INDEX i39 ON v5 ( c20 ); 
+CREATE INDEX i40 ON v34 ( c35 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( WITH v0 ( c43 ) AS ( SELECT 'c1' ORDER BY 18446744073709551488 ) SELECT * FROM v5 AS a42 LEFT JOIN ( SELECT count ( * ) AS y, v0.c1 FROM ( v5 AS a44 INNER JOIN v34 AS a45 ON a45.c35 = a42.c20 ) AS y WHERE a41.c22 > 4294967295 GROUP BY c43 ORDER BY 4294967295 ) AS y ON a42.c11 = y ( a41.c11 ) ORDER BY 4294967295 ) ) FROM v5 AS a41 WHERE a41.c23 NOT NULL ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a46.c11 ) FROM v5 AS a46 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a47, v0 AS a48 NATURAL JOIN v34 AS a49 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v50 ( c52 ) AS ( SELECT c2, max ( c2 || c37 ) ORDER BY 100 ) SELECT * FROM ( SELECT 2147483647 ORDER BY 8 ) AS y, v50 AS a51 ON ( hex ( 4294967295 ) ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c8, a53.c22 FROM v5 AS a53 JOIN v0 AS a54 ON a53.c30 = a54.c2 WHERE a54.c3 IN ( 2147483647, 4294967295, 2147483647 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a55 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a56 WHERE hex ( 0 ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a57 GROUP BY 2147483647 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a58.c6, count ( ( NOT ( a58.c24 IS NULL ) ) AND ( NOT ( a58.c10 IS ( '10000 500', a58.c31 > 4294967295, 'v0' ) ) ) ) FROM v5 AS a58 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v34 AS a59 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 6: error in index i4 after drop column: no such column: c3
+Parse error near line 7: cannot drop PRIMARY KEY column: "c2"
+BEGIN VERI 0
+Parse error near line 14: no such column: a42.c20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a46.c11 ) FROM v5 AS a46 ORDER BY 2147483647; 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: table v50 has 2 values for 1 columns
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+100|2147483647|2147483647
+4294967295|2147483647|2147483647
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v5 AS a56 WHERE hex ( 0 ) ORDER BY 2147483647; 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  ECT * FROM v0 AS a57 GROUP BY 2147483647 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: row value misused
+  , count ( ( NOT ( a58.c24 IS NULL ) ) AND ( NOT ( a58.c10 IS ( '10000 500', a5
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v34 AS a59 ORDER BY 2147483647; 
+                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c2 ) ) WITHOUT ROWID; 
+ATTACH 'x' AS sqlite_master; 
+; 
+INSERT INTO v0 VALUES ( 100, 2147483647, 2147483647 ), ( 4294967295, 2147483647, 2147483647 ); 
+CREATE TABLE v5 ( c6 TEXT, c7 INTEGER, c8 INT, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32 PRIMARY KEY, CHECK( ( ( c6 + 4294967295 ) > 8 ) != 2147483647 ) ); 
+ALTER TABLE v0 DROP c3; 
+ALTER TABLE v0 DROP c2; 
+; 
+CREATE TABLE v34 ( c35, c36, c37 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( WITH v0 ( c43 ) AS ( SELECT 'c1' ORDER BY 18446744073709551488 ) SELECT * FROM v5 AS a42 LEFT JOIN ( SELECT count ( * ) AS y, v0.c1 FROM ( v5 AS a44 INNER JOIN v34 AS a45 ON a45.c35 = a42.c20 ) AS y WHERE a41.c22 > 4294967295 GROUP BY c43 ORDER BY 4294967295 ) AS y ON a42.c11 = y ( a41.c11 ) ORDER BY 4294967295 ) ) FROM v5 AS a41 WHERE a41.c23 NOT NULL ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a46.c11 ) FROM v5 AS a46 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a47, v0 AS a48 NATURAL JOIN v34 AS a49 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v50 ( c52 ) AS ( SELECT c2, max ( c2 || c37 ) ORDER BY 100 ) SELECT * FROM ( SELECT 2147483647 ORDER BY 8 ) AS y, v50 AS a51 ON ( hex ( 4294967295 ) ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c8, a53.c22 FROM v5 AS a53 JOIN v0 AS a54 ON a53.c30 = a54.c2 WHERE a54.c3 IN ( 2147483647, 4294967295, 2147483647 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a55 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a56 WHERE hex ( 0 ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a57 GROUP BY 2147483647 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a58.c6, count ( ( NOT ( a58.c24 IS NULL ) ) AND ( NOT ( a58.c10 IS ( '10000 500', a58.c31 > 4294967295, 'v0' ) ) ) ) FROM v5 AS a58 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v34 AS a59 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: cannot drop PRIMARY KEY column: "c2"
+BEGIN VERI 0
+Parse error near line 14: no such column: a42.c20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a46.c11 ) FROM v5 AS a46 ORDER BY 2147483647; 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: table v50 has 2 values for 1 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: a54.c3
+  5 AS a53 JOIN v0 AS a54 ON a53.c30 = a54.c2 WHERE a54.c3 IN ( 2147483647, 4294
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+100|2147483647
+4294967295|2147483647
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v5 AS a56 WHERE hex ( 0 ) ORDER BY 2147483647; 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+  ECT * FROM v0 AS a57 GROUP BY 2147483647 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: row value misused
+  , count ( ( NOT ( a58.c24 IS NULL ) ) AND ( NOT ( a58.c10 IS ( '10000 500', a5
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v34 AS a59 ORDER BY 2147483647; 
+                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no such column: a42.c20
+ 
+INT: 0 
+Str: 
+Parse error near line 14: no such column: a42.c20
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a46.c11 ) FROM v5 AS a46 ORDER BY 2147483647; 
+                                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a46.c11 ) FROM v5 AS a46 ORDER BY 2147483647; 
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: table v50 has 2 values for 1 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 23: table v50 has 2 values for 1 columns
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 26: no such column: a54.c3
+  5 AS a53 JOIN v0 AS a54 ON a53.c30 = a54.c2 WHERE a54.c3 IN ( 2147483647, 4294
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+100|2147483647|2147483647
+4294967295|2147483647|2147483647
+ 
+INT: 1 
+Str: 
+100|2147483647
+4294967295|2147483647
+ 
+INT: 1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v5 AS a56 WHERE hex ( 0 ) ORDER BY 2147483647; 
+                                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 27
+  SELECT * FROM v5 AS a56 WHERE hex ( 0 ) ORDER BY 2147483647; 
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+  ECT * FROM v0 AS a57 GROUP BY 2147483647 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+  ECT * FROM v0 AS a57 GROUP BY 2147483647 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: row value misused
+  , count ( ( NOT ( a58.c24 IS NULL ) ) AND ( NOT ( a58.c10 IS ( '10000 500', a5
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: row value misused
+  , count ( ( NOT ( a58.c24 IS NULL ) ) AND ( NOT ( a58.c10 IS ( '10000 500', a5
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v34 AS a59 ORDER BY 2147483647; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v34 AS a59 ORDER BY 2147483647; 
+                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

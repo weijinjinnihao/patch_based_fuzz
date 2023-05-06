@@ -1,0 +1,284 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13 INTEGER DEFAULT 'v1', PRIMARY KEY ( c4, c2 ) ) WITHOUT ROWID; 
+CREATE INDEX i14 ON v0 ( c13 ); 
+CREATE INDEX i15 ON v0 ( c3 ); 
+INSERT INTO v0 VALUES ( 8, 8, 8 ), ( 8, 8, 18446744073709518848 ); 
+ALTER TABLE v0 DROP c13; 
+CREATE INDEX i16 ON v0 ( c7 ); 
+CREATE TABLE v17 ( c18, c19, c20 PRIMARY KEY ) WITHOUT ROWID; 
+CREATE INDEX i21 ON v17 ( c18 ); 
+CREATE INDEX i22 ON v0 ( c7 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c12 FROM v0 AS a23 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c9, count ( a24.c8 ) FROM v0 AS a24 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v25 ( c27, c28, c29, c30, c31, c32 ) AS ( SELECT 18446744073709551488 y ORDER BY 8 ) SELECT * FROM v25 AS a26 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a33 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c18 AS y, a34.c20 || a34.c19 AS y FROM v17 AS a34 WHERE + a34.c19 = 'x3' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 GROUP BY a35.c6, a35.c10 < a35.c7 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a36, v17 AS a37 NATURAL JOIN v0 AS a38 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 ORDER BY ( ( a39.c13 + 0 ) % 18446744073709518848 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a40 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: table v0 has 13 columns but 3 values were supplied
+Runtime error near line 5: error in index i14 after drop column: no such column: c13
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: table v25 has 1 values for 6 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+  y FROM v17 AS a34 WHERE + a34.c19 = 'x3' ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v17 AS a40 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13 INTEGER DEFAULT 'v1', PRIMARY KEY ( c4, c2 ) ) WITHOUT ROWID; 
+; 
+; 
+INSERT INTO v0 VALUES ( 8, 8, 8 ), ( 8, 8, 18446744073709518848 ); 
+ALTER TABLE v0 DROP c13; 
+; 
+CREATE TABLE v17 ( c18, c19, c20 PRIMARY KEY ) WITHOUT ROWID; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c12 FROM v0 AS a23 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c9, count ( a24.c8 ) FROM v0 AS a24 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v25 ( c27, c28, c29, c30, c31, c32 ) AS ( SELECT 18446744073709551488 y ORDER BY 8 ) SELECT * FROM v25 AS a26 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a33 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a34.c18 AS y, a34.c20 || a34.c19 AS y FROM v17 AS a34 WHERE + a34.c19 = 'x3' ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 GROUP BY a35.c6, a35.c10 < a35.c7 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a36, v17 AS a37 NATURAL JOIN v0 AS a38 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a39 ORDER BY ( ( a39.c13 + 0 ) % 18446744073709518848 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a40 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: table v0 has 13 columns but 3 values were supplied
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: table v25 has 1 values for 6 columns
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+  y FROM v17 AS a34 WHERE + a34.c19 = 'x3' ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a39.c13
+  SELECT * FROM v0 AS a39 ORDER BY ( ( a39.c13 + 0 ) % 18446744073709518848 ); 
+                         error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v17 AS a40 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: table v25 has 1 values for 6 columns
+ 
+INT: 0 
+Str: 
+Parse error near line 20: table v25 has 1 values for 6 columns
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+  y FROM v17 AS a34 WHERE + a34.c19 = 'x3' ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 2
+  y FROM v17 AS a34 WHERE + a34.c19 = 'x3' ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 35: no such column: a39.c13
+  SELECT * FROM v0 AS a39 ORDER BY ( ( a39.c13 + 0 ) % 18446744073709518848 ); 
+                         error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v17 AS a40 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v17 AS a40 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,313 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE TABLE v4 ( c5 PRIMARY KEY ON CONFLICT ABORT ); 
+CREATE INDEX i6 ON v0 ( c2 ); 
+CREATE INDEX i7 ON v4 ( c5 ); 
+CREATE INDEX i8 ON v0 ( c1 ); 
+CREATE TABLE v9 ( c10 INTEGER PRIMARY KEY, c11, c12 UNIQUE ); 
+CREATE TABLE v13 ( c14, c15 INTEGER, c16 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v9 DROP COLUMN c11; 
+CREATE VIRTUAL TABLE v17 USING fts5 ( c18, c19 ); 
+CREATE INDEX i20 ON v17 ( c18 ); 
+CREATE INDEX i21 ON v13 ( c16 ); 
+ALTER TABLE v9 DROP COLUMN c11; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a22 WHERE a22.c18 > a22.c18 % 0 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a23, v13 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a25 ORDER BY 9223372036854775807 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a26 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a27 NATURAL JOIN v13 AS a28 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a30 ORDER BY a30.c11, a30.c10 || a30.c12 || a30.c10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a31 ORDER BY max ( a31.c5 + a31.c5 * 0 ) + 0, min ( a31.c5, avg ( a31.c5 ) ) + NULL >= 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c3, count ( ( NOT ( a32.c2 IS NULL ) ) AND ( NOT ( a32.c3 IS NULL ) ) ) FROM v0 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a33, v17 AS a34 NATURAL JOIN v0 AS a35 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in index i6 after drop column: no such column: c2
+Runtime error near line 10: no such module: fts5
+Parse error near line 11: no such table: main.v17
+Parse error near line 13: no such column: "c11"
+  ALTER TABLE v9 DROP COLUMN c11; 
+               error here ---^
+BEGIN VERI 0
+Parse error near line 15: no such table: v17
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM v4 AS a29 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a30.c11
+  SELECT * FROM v9 AS a30 ORDER BY a30.c11, a30.c10 || a30.c12 || a30.c10; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: misuse of aggregate: avg()
+  BY max ( a31.c5 + a31.c5 * 0 ) + 0, min ( a31.c5, avg ( a31.c5 ) ) + NULL >= 1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v17
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE TABLE v4 ( c5 PRIMARY KEY ON CONFLICT ABORT ); 
+; 
+; 
+; 
+CREATE TABLE v9 ( c10 INTEGER PRIMARY KEY, c11, c12 UNIQUE ); 
+CREATE TABLE v13 ( c14, c15 INTEGER, c16 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+ALTER TABLE v9 DROP COLUMN c11; 
+CREATE VIRTUAL TABLE v17 USING fts5 ( c18, c19 ); 
+; 
+; 
+ALTER TABLE v9 DROP COLUMN c11; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a22 WHERE a22.c18 > a22.c18 % 0 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a23, v13 AS a24 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a25 ORDER BY 9223372036854775807 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a26 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a27 NATURAL JOIN v13 AS a28 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a30 ORDER BY a30.c11, a30.c10 || a30.c12 || a30.c10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a31 ORDER BY max ( a31.c5 + a31.c5 * 0 ) + 0, min ( a31.c5, avg ( a31.c5 ) ) + NULL >= 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c3, count ( ( NOT ( a32.c2 IS NULL ) ) AND ( NOT ( a32.c3 IS NULL ) ) ) FROM v0 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a33, v17 AS a34 NATURAL JOIN v0 AS a35 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 10: no such module: fts5
+Parse error near line 13: no such column: "c11"
+  ALTER TABLE v9 DROP COLUMN c11; 
+               error here ---^
+BEGIN VERI 0
+Parse error near line 15: no such table: v17
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM v4 AS a29 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a30.c11
+  SELECT * FROM v9 AS a30 ORDER BY a30.c11, a30.c10 || a30.c12 || a30.c10; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: misuse of aggregate: avg()
+  BY max ( a31.c5 + a31.c5 * 0 ) + 0, min ( a31.c5, avg ( a31.c5 ) ) + NULL >= 1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a32.c2
+  SELECT a32.c3, count ( ( NOT ( a32.c2 IS NULL ) ) AND ( NOT ( a32.c3 IS NULL )
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such table: v17
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM v4 AS a29 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM v4 AS a29 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such column: a30.c11
+  SELECT * FROM v9 AS a30 ORDER BY a30.c11, a30.c10 || a30.c12 || a30.c10; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: no such column: a30.c11
+  SELECT * FROM v9 AS a30 ORDER BY a30.c11, a30.c10 || a30.c12 || a30.c10; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: misuse of aggregate: avg()
+  BY max ( a31.c5 + a31.c5 * 0 ) + 0, min ( a31.c5, avg ( a31.c5 ) ) + NULL >= 1
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: misuse of aggregate: avg()
+  BY max ( a31.c5 + a31.c5 * 0 ) + 0, min ( a31.c5, avg ( a31.c5 ) ) + NULL >= 1
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such column: a32.c2
+  SELECT a32.c3, count ( ( NOT ( a32.c2 IS NULL ) ) AND ( NOT ( a32.c3 IS NULL )
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such table: v17
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

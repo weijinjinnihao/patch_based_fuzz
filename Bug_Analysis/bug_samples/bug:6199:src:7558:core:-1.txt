@@ -1,0 +1,283 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12 INT, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, PRIMARY KEY ( c1, c18, c28, c3, c25, c28, c18 ) ) WITHOUT ROWID; 
+CREATE INDEX i31 ON v0 ( c11 ); 
+CREATE TEMP TRIGGER tri1 INSERT ON v0 BEGIN UPDATE v0 SET c23 = c6 || c3 WHERE c27 = c4 || c29; END; 
+CREATE TABLE v32 ( c33, c34, c35, c36, PRIMARY KEY ( c35, c33 ) ) WITHOUT ROWID; 
+CREATE INDEX i37 ON v0 ( c11 ); 
+INSERT INTO v0 VALUES ( 18446744073709518848, 18446744073709518848, 18446744073709551615, 18446744073709551488 ); 
+CREATE INDEX i38 ON v32 ( c34 ); 
+CREATE INDEX i39 ON v32 ( c35 ); 
+ALTER TABLE v32 DROP COLUMN c34; 
+INSERT OR REPLACE INTO v32 ( c35, c34, c35, c36, c33 ) VALUES ( 18446744073709551615, 18446744073709518848, NULL, 255, 18446744073709518848 ); 
+CREATE INDEX i40 ON v0 ( c29 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v32 AS a41 GROUP BY a41.c33, a41.c36 < a41.c36 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v32 AS a42 ORDER BY NULL; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43, v32 AS a44 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a45.c28, a46.c7 FROM v0 AS a45 LEFT JOIN v0 AS a46 ON a45.c2 = a45.c15 GROUP BY a46.c21 HAVING count ( * ) >= 2147483647 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a47 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c36, c29, ( SELECT a48.c35 FROM v32 AS a49 WHERE a48.c33 = a48.c36 ORDER BY 18446744073709518848 ), 'v0' FROM ( SELECT count ( * ) AS y, a48.c33 AS y FROM v32 AS a48 GROUP BY 18446744073709551615 ORDER BY 18446744073709518848 ) AS y ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a50.c30, sum ( a50.c13 ) FROM v0 AS a50 GROUP BY a50.c19 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v32 AS a51 WHERE count ( * ) >= 18446744073709518848 = 'v1' != a51.c36 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a52.c35 || a52.c33 ) FROM v32 AS a52 ORDER BY 2147483647 COLLATE binary, 10 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a53 WHERE hex ( 18446744073709551615 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: table v0 has 30 columns but 4 values were supplied
+Runtime error near line 9: error in index i38 after drop column: no such column: c34
+BEGIN VERI 0
+1.84467440737095e+19|1.84467440737095e+19|1.84467440737096e+19|255
+END VERI 0
+BEGIN VERI 0
+1.84467440737095e+19|1.84467440737095e+19|1.84467440737096e+19|255
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: c36
+  SELECT c36, c29, ( SELECT a48.c35 FROM v32 AS a49 WHERE a48.c33 = a48.c36 ORDE
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: misuse of aggregate function count()
+  SELECT * FROM v32 AS a51 WHERE count ( * ) >= 18446744073709518848 = 'v1' != a
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+  x ( a52.c35 || a52.c33 ) FROM v32 AS a52 ORDER BY 2147483647 COLLATE binary, 1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12 INT, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, PRIMARY KEY ( c1, c18, c28, c3, c25, c28, c18 ) ) WITHOUT ROWID; 
+; 
+CREATE TEMP TRIGGER tri1 INSERT ON v0 BEGIN UPDATE v0 SET c23 = c6 || c3 WHERE c27 = c4 || c29; END; 
+CREATE TABLE v32 ( c33, c34, c35, c36, PRIMARY KEY ( c35, c33 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v0 VALUES ( 18446744073709518848, 18446744073709518848, 18446744073709551615, 18446744073709551488 ); 
+; 
+; 
+ALTER TABLE v32 DROP COLUMN c34; 
+INSERT OR REPLACE INTO v32 ( c35, c34, c35, c36, c33 ) VALUES ( 18446744073709551615, 18446744073709518848, NULL, 255, 18446744073709518848 ); 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v32 AS a41 GROUP BY a41.c33, a41.c36 < a41.c36 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v32 AS a42 ORDER BY NULL; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43, v32 AS a44 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a45.c28, a46.c7 FROM v0 AS a45 LEFT JOIN v0 AS a46 ON a45.c2 = a45.c15 GROUP BY a46.c21 HAVING count ( * ) >= 2147483647 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a47 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c36, c29, ( SELECT a48.c35 FROM v32 AS a49 WHERE a48.c33 = a48.c36 ORDER BY 18446744073709518848 ), 'v0' FROM ( SELECT count ( * ) AS y, a48.c33 AS y FROM v32 AS a48 GROUP BY 18446744073709551615 ORDER BY 18446744073709518848 ) AS y ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a50.c30, sum ( a50.c13 ) FROM v0 AS a50 GROUP BY a50.c19 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v32 AS a51 WHERE count ( * ) >= 18446744073709518848 = 'v1' != a51.c36 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a52.c35 || a52.c33 ) FROM v32 AS a52 ORDER BY 2147483647 COLLATE binary, 10 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a53 WHERE hex ( 18446744073709551615 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: table v0 has 30 columns but 4 values were supplied
+Parse error near line 10: table v32 has no column named c34
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: c36
+  SELECT c36, c29, ( SELECT a48.c35 FROM v32 AS a49 WHERE a48.c33 = a48.c36 ORDE
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: misuse of aggregate function count()
+  SELECT * FROM v32 AS a51 WHERE count ( * ) >= 18446744073709518848 = 'v1' != a
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+  x ( a52.c35 || a52.c33 ) FROM v32 AS a52 ORDER BY 2147483647 COLLATE binary, 1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+1.84467440737095e+19|1.84467440737095e+19|1.84467440737096e+19|255
+ 
+INT: 0 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+1.84467440737095e+19|1.84467440737095e+19|1.84467440737096e+19|255
+ 
+INT: 0 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such column: c36
+  SELECT c36, c29, ( SELECT a48.c35 FROM v32 AS a49 WHERE a48.c33 = a48.c36 ORDE
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 28: no such column: c36
+  SELECT c36, c29, ( SELECT a48.c35 FROM v32 AS a49 WHERE a48.c33 = a48.c36 ORDE
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: misuse of aggregate function count()
+  SELECT * FROM v32 AS a51 WHERE count ( * ) >= 18446744073709518848 = 'v1' != a
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: misuse of aggregate function count()
+  SELECT * FROM v32 AS a51 WHERE count ( * ) >= 18446744073709518848 = 'v1' != a
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+  x ( a52.c35 || a52.c33 ) FROM v32 AS a52 ORDER BY 2147483647 COLLATE binary, 1
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+  x ( a52.c35 || a52.c33 ) FROM v32 AS a52 ORDER BY 2147483647 COLLATE binary, 1
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

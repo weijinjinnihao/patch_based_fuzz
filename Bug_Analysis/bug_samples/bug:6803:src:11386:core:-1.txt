@@ -1,0 +1,323 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE VIRTUAL TABLE IF NOT EXISTS v3 USING rtree ( c4, c5, c6 ); 
+INSERT INTO v3 VALUES ( 16, 'x' ), ( 0, 16, hex ( 16 ) ), ( 16, 'v1' ); 
+CREATE INDEX i7 ON v0 ( c2 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+BEGIN; 
+CREATE INDEX i8 ON v3 ( c1 ); 
+INSERT INTO v3 ( c4, c6, c5, c5, c4, c4, c1, c6, c6, c5, c4 ) SELECT * FROM v0 AS a9 ORDER BY 16; 
+INSERT INTO v3 VALUES ( 16, 16, 18446744073709551488 ), ( 16, 18446744073709551488, 16 ), ( 18446744073709551488, 16, 16 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v3 BEGIN DELETE FROM v0 WHERE c4 = c1; END; 
+ALTER TABLE v3 ADD COLUMN c10 TEXT CHECK( c37 ( ( ( ( c5 + 18446744071562067968 ) % 18446744071562067968 ) == 16 ) % 18446744071562067968 ) != 16 ) DEFAULT 16; 
+CREATE INDEX i11 ON v0 ( c2 ); 
+UPDATE v3 SET c1 = 'v1' WHERE c5 = 16; 
+CREATE INDEX i12 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a13 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a14.c2, count ( ( NOT ( a14.c1 IS NULL ) ) AND ( NOT ( a14.c2 IS NULL ) ) ) FROM v0 AS a14 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a15.c1 = + a16.c1, a15.c5 FROM v3 AS a15 LEFT JOIN v3 AS a16 ON a16.c1 = a16.c6 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c18, c19, c20, c21, c22, c23 ) AS ( SELECT 18446744073709551488 y ORDER BY ( ( c19 + 16 ) % 16 ) < 2147483647 ) SELECT * FROM v3 AS a17 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a24.c2 IS NULL ) ) AND ( NOT ( a24.c2 IS NULL ) ) ) FROM v0 AS a24 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT a26.c2 FROM v0 AS a26 WHERE a25.c2 NOT LIKE 'x' ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a25 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a27 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c1, max ( a28.c2 || a28.c2 ) FROM v0 AS a28 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: all VALUES must have the same number of terms
+Runtime error near line 5: error in index i7 after drop column: no such column: c2
+Parse error near line 7: virtual tables may not be indexed
+Parse error near line 8: table v3 has no column named c1
+Runtime error near line 9: rtree constraint failed: v3.(c5<=c6) (19)
+Parse error near line 10: cannot create triggers on virtual tables
+Parse error near line 11: virtual tables may not be altered
+Parse error near line 13: no such column: c1
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a15.c1
+  SELECT a15.c1 = + a16.c1, a15.c5 FROM v3 AS a15 LEFT JOIN v3 AS a16 ON a16.c1 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 2
+   * FROM v0 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE VIRTUAL TABLE IF NOT EXISTS v3 USING rtree ( c4, c5, c6 ); 
+INSERT INTO v3 VALUES ( 16, 'x' ), ( 0, 16, hex ( 16 ) ), ( 16, 'v1' ); 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+BEGIN; 
+; 
+INSERT INTO v3 ( c4, c6, c5, c5, c4, c4, c1, c6, c6, c5, c4 ) SELECT * FROM v0 AS a9 ORDER BY 16; 
+INSERT INTO v3 VALUES ( 16, 16, 18446744073709551488 ), ( 16, 18446744073709551488, 16 ), ( 18446744073709551488, 16, 16 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v3 BEGIN DELETE FROM v0 WHERE c4 = c1; END; 
+ALTER TABLE v3 ADD COLUMN c10 TEXT CHECK( c37 ( ( ( ( c5 + 18446744071562067968 ) % 18446744071562067968 ) == 16 ) % 18446744071562067968 ) != 16 ) DEFAULT 16; 
+; 
+UPDATE v3 SET c1 = 'v1' WHERE c5 = 16; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a13 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a14.c2, count ( ( NOT ( a14.c1 IS NULL ) ) AND ( NOT ( a14.c2 IS NULL ) ) ) FROM v0 AS a14 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a15.c1 = + a16.c1, a15.c5 FROM v3 AS a15 LEFT JOIN v3 AS a16 ON a16.c1 = a16.c6 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c18, c19, c20, c21, c22, c23 ) AS ( SELECT 18446744073709551488 y ORDER BY ( ( c19 + 16 ) % 16 ) < 2147483647 ) SELECT * FROM v3 AS a17 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a24.c2 IS NULL ) ) AND ( NOT ( a24.c2 IS NULL ) ) ) FROM v0 AS a24 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 AS ( SELECT a26.c2 FROM v0 AS a26 WHERE a25.c2 NOT LIKE 'x' ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a25 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a27 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c1, max ( a28.c2 || a28.c2 ) FROM v0 AS a28 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: all VALUES must have the same number of terms
+Parse error near line 8: table v3 has no column named c1
+Runtime error near line 9: rtree constraint failed: v3.(c5<=c6) (19)
+Parse error near line 10: cannot create triggers on virtual tables
+Parse error near line 11: virtual tables may not be altered
+Parse error near line 13: no such column: c1
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: a14.c2
+  SELECT a14.c2, count ( ( NOT ( a14.c1 IS NULL ) ) AND ( NOT ( a14.c2 IS NULL )
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a15.c1
+  SELECT a15.c1 = + a16.c1, a15.c5 FROM v3 AS a15 LEFT JOIN v3 AS a16 ON a16.c1 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a24.c2
+  SELECT count ( ( NOT ( a24.c2 IS NULL ) ) AND ( NOT ( a24.c2 IS NULL ) ) ) FRO
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: circular reference: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a28.c2
+  SELECT a28.c1, max ( a28.c2 || a28.c2 ) FROM v0 AS a28 ORDER BY 16; 
+                       ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+   * FROM v0 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such column: a14.c2
+  SELECT a14.c2, count ( ( NOT ( a14.c1 IS NULL ) ) AND ( NOT ( a14.c2 IS NULL )
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such column: a15.c1
+  SELECT a15.c1 = + a16.c1, a15.c5 FROM v3 AS a15 LEFT JOIN v3 AS a16 ON a16.c1 
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 22: no such column: a15.c1
+  SELECT a15.c1 = + a16.c1, a15.c5 FROM v3 AS a15 LEFT JOIN v3 AS a16 ON a16.c1 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such column: a24.c2
+  SELECT count ( ( NOT ( a24.c2 IS NULL ) ) AND ( NOT ( a24.c2 IS NULL ) ) ) FRO
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: circular reference: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 31: circular reference: v0
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no such column: a28.c2
+  SELECT a28.c1, max ( a28.c2 || a28.c2 ) FROM v0 AS a28 ORDER BY 16; 
+                       ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 2
+   * FROM v0 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 1
+   * FROM v0 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

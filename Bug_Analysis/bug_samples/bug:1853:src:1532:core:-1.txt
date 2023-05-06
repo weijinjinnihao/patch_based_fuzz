@@ -1,0 +1,270 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 TEXT, c2 INTEGER, c3 INT, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25 ); 
+CREATE TABLE v26 ( c27, c28, c29 REFERENCES p1 ( c27 ) ); 
+CREATE TABLE v30 ( c31, c32, c33, c34 REFERENCES p1 ( c32 ) ); 
+CREATE INDEX i35 ON v0 ( c20 ); 
+ALTER TABLE v30 DROP COLUMN c32; 
+CREATE INDEX i36 ON v26 ( c29 ); 
+CREATE INDEX i37 ON v26 ( c28 ); 
+ALTER TABLE v26 DROP COLUMN c28; 
+CREATE INDEX i38 ON v30 ( c33 ); 
+CREATE INDEX i39 ON v0 ( c8 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT count ( * ) FROM v30 AS a41, v26 AS a42 WHERE a40.c27 = a42.c29 AND a41.c31 = a42.c28 ORDER BY 8 ), a40.c28, a40.c28, '?k<D Q' FROM v26 AS a40 GROUP BY a40.c28, a40.c28 < a40.c29 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43, v26 AS a44 NATURAL JOIN v26 AS a45 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a46 GROUP BY a46.c27, a46.c28, count ( a46.c28 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT *, 'first' FROM v30 AS a47 LEFT JOIN v26 AS a48 ON a47.c32 = 8 AND a47.c31 = 10 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a49 GROUP BY a49.c29, a49.c29 < a49.c27 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a51.c27, count ( ( NOT ( a50.c28 IS NULL ) ) AND ( NOT ( a51.c28 IS NULL ) ) ) FROM v26 AS a50 LEFT JOIN v26 AS a51 ON a50.c29 = a50.c27 WHERE a51.c29 != 8 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a52 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c34 FROM v30 AS a53 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a54 GROUP BY a54.c23, abs ( a54.c17 ) HAVING count ( * ) >= 18446744073709518848 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a55, v0 AS a56 NATURAL JOIN v26 AS a57 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in index i37 after drop column: no such column: c28
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: a47.c32
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 TEXT, c2 INTEGER, c3 INT, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25 ); 
+CREATE TABLE v26 ( c27, c28, c29 REFERENCES p1 ( c27 ) ); 
+CREATE TABLE v30 ( c31, c32, c33, c34 REFERENCES p1 ( c32 ) ); 
+; 
+ALTER TABLE v30 DROP COLUMN c32; 
+; 
+; 
+ALTER TABLE v26 DROP COLUMN c28; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT count ( * ) FROM v30 AS a41, v26 AS a42 WHERE a40.c27 = a42.c29 AND a41.c31 = a42.c28 ORDER BY 8 ), a40.c28, a40.c28, '?k<D Q' FROM v26 AS a40 GROUP BY a40.c28, a40.c28 < a40.c29 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a43, v26 AS a44 NATURAL JOIN v26 AS a45 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a46 GROUP BY a46.c27, a46.c28, count ( a46.c28 ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT *, 'first' FROM v30 AS a47 LEFT JOIN v26 AS a48 ON a47.c32 = 8 AND a47.c31 = 10 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a49 GROUP BY a49.c29, a49.c29 < a49.c27 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a51.c27, count ( ( NOT ( a50.c28 IS NULL ) ) AND ( NOT ( a51.c28 IS NULL ) ) ) FROM v26 AS a50 LEFT JOIN v26 AS a51 ON a50.c29 = a50.c27 WHERE a51.c29 != 8 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a52 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c34 FROM v30 AS a53 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a54 GROUP BY a54.c23, abs ( a54.c17 ) HAVING count ( * ) >= 18446744073709518848 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a55, v0 AS a56 NATURAL JOIN v26 AS a57 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 12: no such column: a42.c28
+   v26 AS a42 WHERE a40.c27 = a42.c29 AND a41.c31 = a42.c28 ORDER BY 8 ), a40.c2
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: a47.c32
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a50.c28
+  SELECT a51.c27, count ( ( NOT ( a50.c28 IS NULL ) ) AND ( NOT ( a51.c28 IS NUL
+                    error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 12: no such column: a42.c28
+   v26 AS a42 WHERE a40.c27 = a42.c29 AND a41.c31 = a42.c28 ORDER BY 8 ), a40.c2
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such column: a47.c32
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no such column: a47.c32
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such column: a50.c28
+  SELECT a51.c27, count ( ( NOT ( a50.c28 IS NULL ) ) AND ( NOT ( a51.c28 IS NUL
+                    error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

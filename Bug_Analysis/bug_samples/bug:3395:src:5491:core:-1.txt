@@ -1,0 +1,296 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2 + 8 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c1 ); 
+ATTACH 'v0' AS sqlite_master; 
+CREATE TABLE v5 ( c6, c7 CHECK( 987 ), c8, c9, CHECK( c8 > 8 ) ); 
+CREATE INDEX i10 ON v5 ( c6 ); 
+CREATE INDEX i11 ON v5 ( c7 ); 
+CREATE TABLE v12 ( c13, c14 INTEGER UNIQUE ON CONFLICT FAIL, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46 INTEGER, c47, c48 DEFAULT 8 DEFAULT 100, c49, c50, c51, c52 INTEGER PRIMARY KEY, c53 ); 
+CREATE INDEX i54 ON v12 ( c17 ); 
+CREATE INDEX i55 ON v0 ( c2 ); 
+ALTER TABLE v5 DROP c6; 
+CREATE TABLE v56 ( c57, c58, c59 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a60.c33 FROM v12 AS a60 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a61 WHERE ( CASE WHEN a61.c6 != 'v0' THEN 8 ELSE 987 END ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v56 AS a62 GROUP BY a62.c58 HAVING automatic_index ( * ) >= 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v56 AS a63 WHERE a63.c59 = a63.c57 NOT NULL ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v56 AS a64 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a65, v0 AS a66 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a67, v56 AS a68 NATURAL JOIN v12 AS a69 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v70 AS ( SELECT 8 y ORDER BY 0 ) SELECT * FROM v70 AS a71 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a72, v5 AS a73 NATURAL JOIN v56 AS a74 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: expressions prohibited in PRIMARY KEY and UNIQUE constraints
+Parse error near line 2: no such table: main.v0
+Parse error near line 9: no such table: main.v0
+Runtime error near line 10: error in index i10 after drop column: no such column: c6
+BEGIN VERI 0
+Parse error near line 13: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such function: automatic_index
+  SELECT * FROM v56 AS a62 GROUP BY a62.c58 HAVING automatic_index ( * ) >= 1844
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH RECURSIVE v70 AS ( SELECT 8 y ORDER BY 0 ) SELECT * FROM v70 AS a71 ORDER
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c2 + 8 ) ) WITHOUT ROWID; 
+; 
+ATTACH 'v0' AS sqlite_master; 
+CREATE TABLE v5 ( c6, c7 CHECK( 987 ), c8, c9, CHECK( c8 > 8 ) ); 
+; 
+; 
+CREATE TABLE v12 ( c13, c14 INTEGER UNIQUE ON CONFLICT FAIL, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46 INTEGER, c47, c48 DEFAULT 8 DEFAULT 100, c49, c50, c51, c52 INTEGER PRIMARY KEY, c53 ); 
+; 
+; 
+ALTER TABLE v5 DROP c6; 
+CREATE TABLE v56 ( c57, c58, c59 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a60.c33 FROM v12 AS a60 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a61 WHERE ( CASE WHEN a61.c6 != 'v0' THEN 8 ELSE 987 END ) ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v56 AS a62 GROUP BY a62.c58 HAVING automatic_index ( * ) >= 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v56 AS a63 WHERE a63.c59 = a63.c57 NOT NULL ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v56 AS a64 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a65, v0 AS a66 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a67, v56 AS a68 NATURAL JOIN v12 AS a69 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v70 AS ( SELECT 8 y ORDER BY 0 ) SELECT * FROM v70 AS a71 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a72, v5 AS a73 NATURAL JOIN v56 AS a74 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: expressions prohibited in PRIMARY KEY and UNIQUE constraints
+BEGIN VERI 0
+Parse error near line 13: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: a61.c6
+  SELECT * FROM v5 AS a61 WHERE ( CASE WHEN a61.c6 != 'v0' THEN 8 ELSE 987 END )
+                              error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such function: automatic_index
+  SELECT * FROM v56 AS a62 GROUP BY a62.c58 HAVING automatic_index ( * ) >= 1844
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH RECURSIVE v70 AS ( SELECT 8 y ORDER BY 0 ) SELECT * FROM v70 AS a71 ORDER
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 13: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such column: a61.c6
+  SELECT * FROM v5 AS a61 WHERE ( CASE WHEN a61.c6 != 'v0' THEN 8 ELSE 987 END )
+                              error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such function: automatic_index
+  SELECT * FROM v56 AS a62 GROUP BY a62.c58 HAVING automatic_index ( * ) >= 1844
+                                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 22: no such function: automatic_index
+  SELECT * FROM v56 AS a62 GROUP BY a62.c58 HAVING automatic_index ( * ) >= 1844
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH RECURSIVE v70 AS ( SELECT 8 y ORDER BY 0 ) SELECT * FROM v70 AS a71 ORDER
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH RECURSIVE v70 AS ( SELECT 8 y ORDER BY 0 ) SELECT * FROM v70 AS a71 ORDER
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

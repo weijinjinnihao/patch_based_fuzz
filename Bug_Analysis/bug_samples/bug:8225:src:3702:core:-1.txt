@@ -1,0 +1,314 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 ( c5, c6, c7, c8, c9, c10 ) AS SELECT * FROM v0 AS a11 ORDER BY 127; 
+CREATE INDEX i12 ON v0 ( c2 ); 
+CREATE INDEX i13 ON v4 ( c1 ); 
+CREATE INDEX i14 ON v0 ( c2 ); 
+CREATE TABLE v15 ( c16 INTEGER PRIMARY KEY, c17, c18 UNIQUE ); 
+CREATE TABLE v19 ( c20, c21 INTEGER PRIMARY KEY, c22 ); 
+CREATE INDEX i23 ON v19 ( c20 ); 
+ALTER TABLE v19 DROP COLUMN c20; 
+ALTER TABLE v19 DROP COLUMN c20; 
+CREATE INDEX i24 ON v4 ( c10 ); 
+CREATE VIRTUAL TABLE v25 USING fts5 ( c26, c27 ); 
+ALTER TABLE v15 DROP COLUMN c18; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c26, sum ( a28.c26 ) AS y FROM v25 AS a28 GROUP BY a28.c26 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a29 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c27 FROM v25 AS a30 WHERE 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a31 GROUP BY a31.c18, a31.c16 < a31.c17 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a32 ORDER BY 127 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( a33.c20, a33.c22 ), max ( a34.c17, a33.c21 ) FROM v19 AS a33, v15 AS a34 ON x ( a34.c18 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v15 AS ( SELECT 255 y ORDER BY 127 ) SELECT * FROM v19 AS a35 WHERE ( v15.c18 = 127 OR a35.c20 = 127 ) AND v15.c18 IS ( SELECT a35.c22 FROM ( SELECT a36.c17 FROM v15 AS a36 ORDER BY 255 ) AS y WHERE a35.c21 = 127 ORDER BY 0 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a37.c26 ) OVER ( ORDER BY 127 IN v25 ) ORDER BY 255 ) FROM v25 AS a37 GROUP BY y ( a37.c26 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( c27, avg ( c27 ) ) + 255 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: views may not be indexed
+Runtime error near line 9: error in index i23 after drop column: no such column: c20
+Runtime error near line 10: error in index i23 after drop column: no such column: c20
+Parse error near line 11: views may not be indexed
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: cannot drop UNIQUE column: "c18"
+BEGIN VERI 0
+Parse error near line 15: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such function: x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: v15.c18
+  y ORDER BY 127 ) SELECT * FROM v19 AS a35 WHERE ( v15.c18 = 127 OR a35.c20 = 1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: c27
+  SELECT min ( c27, avg ( c27 ) ) + 255 ORDER BY 127; 
+               ^--- error here
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 ( c5, c6, c7, c8, c9, c10 ) AS SELECT * FROM v0 AS a11 ORDER BY 127; 
+; 
+; 
+; 
+CREATE TABLE v15 ( c16 INTEGER PRIMARY KEY, c17, c18 UNIQUE ); 
+CREATE TABLE v19 ( c20, c21 INTEGER PRIMARY KEY, c22 ); 
+; 
+ALTER TABLE v19 DROP COLUMN c20; 
+ALTER TABLE v19 DROP COLUMN c20; 
+; 
+CREATE VIRTUAL TABLE v25 USING fts5 ( c26, c27 ); 
+ALTER TABLE v15 DROP COLUMN c18; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c26, sum ( a28.c26 ) AS y FROM v25 AS a28 GROUP BY a28.c26 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a29 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c27 FROM v25 AS a30 WHERE 127 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a31 GROUP BY a31.c18, a31.c16 < a31.c17 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v19 AS a32 ORDER BY 127 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( a33.c20, a33.c22 ), max ( a34.c17, a33.c21 ) FROM v19 AS a33, v15 AS a34 ON x ( a34.c18 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v15 AS ( SELECT 255 y ORDER BY 127 ) SELECT * FROM v19 AS a35 WHERE ( v15.c18 = 127 OR a35.c20 = 127 ) AND v15.c18 IS ( SELECT a35.c22 FROM ( SELECT a36.c17 FROM v15 AS a36 ORDER BY 255 ) AS y WHERE a35.c21 = 127 ORDER BY 0 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a37.c26 ) OVER ( ORDER BY 127 IN v25 ) ORDER BY 255 ) FROM v25 AS a37 GROUP BY y ( a37.c26 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( c27, avg ( c27 ) ) + 255 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: no such column: "c20"
+  ALTER TABLE v19 DROP COLUMN c20; 
+                error here ---^
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: cannot drop UNIQUE column: "c18"
+BEGIN VERI 0
+Parse error near line 15: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a33.c20
+  SELECT min ( a33.c20, a33.c22 ), max ( a34.c17, a33.c21 ) FROM v19 AS a33, v15
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: v15.c18
+  y ORDER BY 127 ) SELECT * FROM v19 AS a35 WHERE ( v15.c18 = 127 OR a35.c20 = 1
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v25
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: c27
+  SELECT min ( c27, avg ( c27 ) ) + 255 ORDER BY 127; 
+               ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such table: v25
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such table: v25
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such table: v25
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no such table: v25
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 30: no such function: x
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no such column: a33.c20
+  SELECT min ( a33.c20, a33.c22 ), max ( a34.c17, a33.c21 ) FROM v19 AS a33, v15
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such column: v15.c18
+  y ORDER BY 127 ) SELECT * FROM v19 AS a35 WHERE ( v15.c18 = 127 OR a35.c20 = 1
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: no such column: v15.c18
+  y ORDER BY 127 ) SELECT * FROM v19 AS a35 WHERE ( v15.c18 = 127 OR a35.c20 = 1
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v25
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v25
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such column: c27
+  SELECT min ( c27, avg ( c27 ) ) + 255 ORDER BY 127; 
+               ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 42: no such column: c27
+  SELECT min ( c27, avg ( c27 ) ) + 255 ORDER BY 127; 
+               ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

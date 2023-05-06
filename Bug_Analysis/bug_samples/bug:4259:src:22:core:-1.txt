@@ -1,0 +1,294 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c3 > 8 ), c4 ); 
+INSERT INTO v0 VALUES ( 8, 255, 16, 8 ), ( 18446744073709551615, 255, 8, 16 ); 
+CREATE TABLE v5 ( c6 INTEGER DEFAULT NULL ) STRICT; 
+CREATE INDEX i7 ON v0 ( c3 ); 
+CREATE INDEX i8 ON v5 ( c6 ); 
+CREATE INDEX i9 ON v0 ( c3 ); 
+INSERT INTO v5 VALUES ( 8, 16, 0, 255 ), ( 100, 8, 0, 16 ); 
+INSERT INTO v5 VALUES ( 10, 8, 8, 18446744073709551615 ); 
+CREATE INDEX i10 ON v0 ( c4 ); 
+INSERT INTO v0 VALUES ( 0, 18446744073709551615, 16, 0 ); 
+CREATE INDEX i11 ON v5 ( c6 ); 
+ALTER TABLE v0 DROP c4; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a12 WHERE count ( * ) >= 10 = 've' ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a13 WHERE a13.c2 = 'three' ORDER BY a13.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 2147483647, x'b1' ), ( 0, 8 ), ( 18446744071562067968, 16 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a15 NATURAL JOIN v5 AS a16 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17, v5 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a20 CROSS JOIN v0 AS a21 ON ( a20.c6 = a20.c6 ) WHERE a21.c1 >= ( SELECT a22.c6 FROM v5 AS a22 WHERE a20.c6 IN ( SELECT a22.c6, a24.c4 NOT NULL FROM v0 AS a23 RIGHT JOIN v0 AS a24 ON a23.c1 = a23.c3 ORDER BY 16 ) ORDER BY 16 ) ORDER BY - hex ( 18446744073709551488 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c6, count ( a25.c6 ) FROM v5 AS a25 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a26 GROUP BY a26.c6 HAVING a26.c6 > a26.c6 % 18446744073709551488 >= 0 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a27.c3 ) FROM v0 AS a27 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: CHECK constraint failed: c3 > 8 (19)
+Parse error near line 7: table v5 has 1 columns but 4 values were supplied
+Parse error near line 8: table v5 has 1 columns but 4 values were supplied
+Runtime error near line 12: error in index i10 after drop column: no such column: c4
+BEGIN VERI 0
+Parse error near line 14: misuse of aggregate function count()
+  SELECT * FROM v5 AS a12 WHERE count ( * ) >= 10 = 've' ORDER BY 8; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: near "ORDER": syntax error
+  , x'b1' ), ( 0, 8 ), ( 18446744071562067968, 16 ) ORDER BY 1844674407370955161
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 CHECK( c3 > 8 ), c4 ); 
+INSERT INTO v0 VALUES ( 8, 255, 16, 8 ), ( 18446744073709551615, 255, 8, 16 ); 
+CREATE TABLE v5 ( c6 INTEGER DEFAULT NULL ) STRICT; 
+; 
+; 
+; 
+INSERT INTO v5 VALUES ( 8, 16, 0, 255 ), ( 100, 8, 0, 16 ); 
+INSERT INTO v5 VALUES ( 10, 8, 8, 18446744073709551615 ); 
+; 
+INSERT INTO v0 VALUES ( 0, 18446744073709551615, 16, 0 ); 
+; 
+ALTER TABLE v0 DROP c4; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a12 WHERE count ( * ) >= 10 = 've' ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a13 WHERE a13.c2 = 'three' ORDER BY a13.c1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a14 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 2147483647, x'b1' ), ( 0, 8 ), ( 18446744071562067968, 16 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a15 NATURAL JOIN v5 AS a16 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a17, v5 AS a18 NATURAL JOIN v0 AS a19 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a20 CROSS JOIN v0 AS a21 ON ( a20.c6 = a20.c6 ) WHERE a21.c1 >= ( SELECT a22.c6 FROM v5 AS a22 WHERE a20.c6 IN ( SELECT a22.c6, a24.c4 NOT NULL FROM v0 AS a23 RIGHT JOIN v0 AS a24 ON a23.c1 = a23.c3 ORDER BY 16 ) ORDER BY 16 ) ORDER BY - hex ( 18446744073709551488 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a25.c6, count ( a25.c6 ) FROM v5 AS a25 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a26 GROUP BY a26.c6 HAVING a26.c6 > a26.c6 % 18446744073709551488 >= 0 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a27.c3 ) FROM v0 AS a27 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 2: CHECK constraint failed: c3 > 8 (19)
+Parse error near line 7: table v5 has 1 columns but 4 values were supplied
+Parse error near line 8: table v5 has 1 columns but 4 values were supplied
+BEGIN VERI 0
+Parse error near line 14: misuse of aggregate function count()
+  SELECT * FROM v5 AS a12 WHERE count ( * ) >= 10 = 've' ORDER BY 8; 
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: near "ORDER": syntax error
+  , x'b1' ), ( 0, 8 ), ( 18446744071562067968, 16 ) ORDER BY 1844674407370955161
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a24.c4
+  6 FROM v5 AS a22 WHERE a20.c6 IN ( SELECT a22.c6, a24.c4 NOT NULL FROM v0 AS a
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: misuse of aggregate function count()
+  SELECT * FROM v5 AS a12 WHERE count ( * ) >= 10 = 've' ORDER BY 8; 
+                  error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 14: misuse of aggregate function count()
+  SELECT * FROM v5 AS a12 WHERE count ( * ) >= 10 = 've' ORDER BY 8; 
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 73724176
+Str: 
+Parse error near line 23: near "ORDER": syntax error
+  , x'b1' ), ( 0, 8 ), ( 18446744071562067968, 16 ) ORDER BY 1844674407370955161
+                                      error here ---^
+ 
+Str: 
+Parse error near line 23: near "ORDER": syntax error
+  , x'b1' ), ( 0, 8 ), ( 18446744071562067968, 16 ) ORDER BY 1844674407370955161
+                                      error here ---^
+ 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such column: a24.c4
+  6 FROM v5 AS a22 WHERE a20.c6 IN ( SELECT a22.c6, a24.c4 NOT NULL FROM v0 AS a
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 38: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,309 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 ( c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29 ) AS SELECT * FROM v0 AS a30 WHERE c1 IS NOT NULL ORDER BY 18446744073709551488; 
+CREATE INDEX i31 ON v0 ( c2 ); 
+CREATE INDEX i32 ON v0 ( c3 ); 
+CREATE TABLE v33 ( c34 INTEGER PRIMARY KEY, c35, c36 UNIQUE ); 
+CREATE TABLE v37 ( c38, c39 INTEGER PRIMARY KEY, c40 ); 
+CREATE INDEX i41 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i42 ON v4 ( c28 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE VIRTUAL TABLE v43 USING fts5 ( c44, c45 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i46 ON v33 ( c35 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( a47.c38 ), min ( a47.c40 ), max ( a47.c39 ), max ( a47.c38 ), sum ( a47.c38 ), sum ( a47.c40 ), avg ( a47.c39 ), avg ( a47.c39 ) FROM v37 AS a47 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 WHERE ( a48.c3 = ( ( a48.c1 + 18446744073709551488 ) % 18446744073709551488 ) != 18446744073709551488 ) AND a48.c2 IS ( SELECT a48.c2 FROM ( SELECT a51.c35 FROM v33 AS a51 ORDER BY 18446744073709551615 ) AS y, v43 AS a49 NATURAL JOIN v33 AS a50 WHERE a48.c2 = 2147483647 ORDER BY 18446744073709551615 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v43 AS a52 WHERE a52.c45 > ( a52.c1 + - 2147483647 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v53 AS ( SELECT * FROM v53 AS a54 JOIN v53 AS a55 USING ( c35, c40, c26, c3, c1, c45, c45, c44 ) WHERE c1 = c40 >= 18446744073709551488 ORDER BY 0 ) SELECT c35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a56 ORDER BY 0, 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a57, v33 AS a58 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a59.c38 + ( SELECT max ( a59.c38 ) FROM v0 AS a62 ORDER BY 2147483647 ), a59.c40 + ( SELECT max ( a61.c13 || a59.c38 ) FROM v4 AS a61 ORDER BY 18446744073709518848 ), a59.c39 + ( SELECT max ( a60.c2 ) FROM v0 AS a60 ORDER BY 100 ) FROM v37 AS a59 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a63 ORDER BY a63.c2 + 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a64 WHERE a64.c35 = a64.c34 != a64.c34 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a65 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in view v4 after drop column: no such column: c1
+Parse error near line 9: views may not be indexed
+Runtime error near line 10: error in view v4 after drop column: no such column: c1
+Runtime error near line 11: no such module: fts5
+Runtime error near line 12: error in index i31 after drop column: no such column: c2
+BEGIN VERI 0
+|||||||
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v43
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v43
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: c35
+  = c40 >= 18446744073709551488 ORDER BY 0 ) SELECT c35 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a56 ORDER BY 0, 100; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+   ( SELECT max ( a59.c38 ) FROM v0 AS a62 ORDER BY 2147483647 ), a59.c40 + ( SE
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: expected 25 columns for 'v4' but got 3
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 ( c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29 ) AS SELECT * FROM v0 AS a30 WHERE c1 IS NOT NULL ORDER BY 18446744073709551488; 
+; 
+; 
+CREATE TABLE v33 ( c34 INTEGER PRIMARY KEY, c35, c36 UNIQUE ); 
+CREATE TABLE v37 ( c38, c39 INTEGER PRIMARY KEY, c40 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE VIRTUAL TABLE v43 USING fts5 ( c44, c45 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( a47.c38 ), min ( a47.c40 ), max ( a47.c39 ), max ( a47.c38 ), sum ( a47.c38 ), sum ( a47.c40 ), avg ( a47.c39 ), avg ( a47.c39 ) FROM v37 AS a47 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 WHERE ( a48.c3 = ( ( a48.c1 + 18446744073709551488 ) % 18446744073709551488 ) != 18446744073709551488 ) AND a48.c2 IS ( SELECT a48.c2 FROM ( SELECT a51.c35 FROM v33 AS a51 ORDER BY 18446744073709551615 ) AS y, v43 AS a49 NATURAL JOIN v33 AS a50 WHERE a48.c2 = 2147483647 ORDER BY 18446744073709551615 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v43 AS a52 WHERE a52.c45 > ( a52.c1 + - 2147483647 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v53 AS ( SELECT * FROM v53 AS a54 JOIN v53 AS a55 USING ( c35, c40, c26, c3, c1, c45, c45, c44 ) WHERE c1 = c40 >= 18446744073709551488 ORDER BY 0 ) SELECT c35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a56 ORDER BY 0, 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a57, v33 AS a58 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a59.c38 + ( SELECT max ( a59.c38 ) FROM v0 AS a62 ORDER BY 2147483647 ), a59.c40 + ( SELECT max ( a61.c13 || a59.c38 ) FROM v4 AS a61 ORDER BY 18446744073709518848 ), a59.c39 + ( SELECT max ( a60.c2 ) FROM v0 AS a60 ORDER BY 100 ) FROM v37 AS a59 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a63 ORDER BY a63.c2 + 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a64 WHERE a64.c35 = a64.c34 != a64.c34 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a65 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in view v4 after drop column: no such column: c1
+Runtime error near line 10: error in view v4 after drop column: no such column: c1
+Runtime error near line 11: no such module: fts5
+BEGIN VERI 0
+|||||||
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v43
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v43
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such column: c35
+  = c40 >= 18446744073709551488 ORDER BY 0 ) SELECT c35 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a56 ORDER BY 0, 100; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+   ( SELECT max ( a59.c38 ) FROM v0 AS a62 ORDER BY 2147483647 ), a59.c40 + ( SE
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a63.c2
+  SELECT * FROM v0 AS a63 ORDER BY a63.c2 + 100; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: expected 25 columns for 'v4' but got 2
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+|||||||
+ 
+INT: 0 
+Str: 
+|||||||
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such table: v43
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such table: v43
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such table: v43
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no such table: v43
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such column: c35
+  = c40 >= 18446744073709551488 ORDER BY 0 ) SELECT c35 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: no such column: c35
+  = c40 >= 18446744073709551488 ORDER BY 0 ) SELECT c35 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v0 AS a56 ORDER BY 0, 100; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a56 ORDER BY 0, 100; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+   ( SELECT max ( a59.c38 ) FROM v0 AS a62 ORDER BY 2147483647 ), a59.c40 + ( SE
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 1
+   ( SELECT max ( a59.c38 ) FROM v0 AS a62 ORDER BY 2147483647 ), a59.c40 + ( SE
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 36: no such column: a63.c2
+  SELECT * FROM v0 AS a63 ORDER BY a63.c2 + 100; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: expected 25 columns for 'v4' but got 3
+ 
+INT: 0 
+Str: 
+Parse error near line 42: expected 25 columns for 'v4' but got 2
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

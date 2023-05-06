@@ -1,0 +1,290 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709551615; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+CREATE INDEX i10 ON v0 ( c2 ); 
+CREATE TABLE v11 ( c12 TEXT, c13, c14 ); 
+CREATE INDEX i15 ON v11 ( c14 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+CREATE INDEX i16 ON v11 ( c13 ); 
+ALTER TABLE v11 DROP COLUMN c14; 
+CREATE INDEX i17 ON v0 ( c1 ); 
+CREATE INDEX i18 ON v6 ( c9 ); 
+CREATE VIRTUAL TABLE v19 USING fts5 ( c20, c21 ); 
+CREATE TABLE v22 ( c23 REFERENCES t1 DEFAULT NULL, c24, c25, c26, c27, c28, c29, c30, c31, c32 INTEGER UNIQUE ON CONFLICT FAIL, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46, c47, c48, c49, c50, c51, c52, c53, c54, c55, c56, c57 PRIMARY KEY, CHECK( ( ( c25 + 18446744073709551615 ) % 18446744073709551615 ) != 18446744073709551615 ) ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a58.c46 IS NULL ) ) AND ( NOT ( a58.c52 IS NULL ) ) ) FROM v22 AS a58 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a59.c12, count ( a59.c14 ) FROM v11 AS a59 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v22 ( c61 ) AS ( WITH v0 ( c62 ) AS ( WITH v63 ( c64, c65, c66, c67, c68, c69 ) AS ( SELECT 18446744073709551615 y ORDER BY ( ( c62 + 18446744073709551615 ) % 127 ) < 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT 8 ORDER BY 18446744073709551615 ) SELECT * FROM v19 AS a60 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a70.c44 ) FROM v22 AS a70 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a71.c8 IS NULL ) ) AND ( NOT ( a71.c9 IS NULL ) ) ) FROM v6 AS a71 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a72, v0 AS a73 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a74 ORDER BY a74.c53 + 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: error in index i15 after drop column: no such column: c14
+Runtime error near line 12: no such module: fts5
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a70.c44 ) FROM v22 AS a70 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no tables specified
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709551615; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+; 
+CREATE TABLE v11 ( c12 TEXT, c13, c14 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c3; 
+; 
+ALTER TABLE v11 DROP COLUMN c14; 
+; 
+; 
+CREATE VIRTUAL TABLE v19 USING fts5 ( c20, c21 ); 
+CREATE TABLE v22 ( c23 REFERENCES t1 DEFAULT NULL, c24, c25, c26, c27, c28, c29, c30, c31, c32 INTEGER UNIQUE ON CONFLICT FAIL, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46, c47, c48, c49, c50, c51, c52, c53, c54, c55, c56, c57 PRIMARY KEY, CHECK( ( ( c25 + 18446744073709551615 ) % 18446744073709551615 ) != 18446744073709551615 ) ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a58.c46 IS NULL ) ) AND ( NOT ( a58.c52 IS NULL ) ) ) FROM v22 AS a58 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a59.c12, count ( a59.c14 ) FROM v11 AS a59 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v22 ( c61 ) AS ( WITH v0 ( c62 ) AS ( WITH v63 ( c64, c65, c66, c67, c68, c69 ) AS ( SELECT 18446744073709551615 y ORDER BY ( ( c62 + 18446744073709551615 ) % 127 ) < 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT 8 ORDER BY 18446744073709551615 ) SELECT * FROM v19 AS a60 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a70.c44 ) FROM v22 AS a70 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a71.c8 IS NULL ) ) AND ( NOT ( a71.c9 IS NULL ) ) ) FROM v6 AS a71 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a72, v0 AS a73 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a74 ORDER BY a74.c53 + 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 12: no such module: fts5
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: a59.c14
+  SELECT a59.c12, count ( a59.c14 ) FROM v11 AS a59 ORDER BY 1844674407370955161
+                          ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a70.c44 ) FROM v22 AS a70 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no tables specified
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such column: a59.c14
+  SELECT a59.c12, count ( a59.c14 ) FROM v11 AS a59 ORDER BY 1844674407370955161
+                          ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such table: v19
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no such table: v19
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a70.c44 ) FROM v22 AS a70 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT count ( a70.c44 ) FROM v22 AS a70 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

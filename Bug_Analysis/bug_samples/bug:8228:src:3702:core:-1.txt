@@ -1,0 +1,302 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 ( c5, c6, c7, c8, c9, c10 ) AS SELECT * FROM v0 AS a11 ORDER BY 255; 
+CREATE INDEX i12 ON v0 ( c2 ); 
+CREATE INDEX i13 ON v0 ( c1 ); 
+CREATE INDEX i14 ON v4 ( c5 ); 
+CREATE TABLE v15 ( c16 INTEGER PRIMARY KEY, c17, c18 UNIQUE ); 
+CREATE TABLE v19 ( c20, c21 INTEGER PRIMARY KEY, c22 ); 
+ALTER TABLE v4 DROP COLUMN c1; 
+ALTER TABLE v19 DROP COLUMN c22; 
+CREATE INDEX i23 ON v4 ( c2 ); 
+CREATE VIRTUAL TABLE v24 USING fts5 ( c25, c26 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c2, sum ( a27.c3 ) AS y FROM v0 AS a27 GROUP BY a27.c1 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c18 FROM v15 AS a29 WHERE 18446744073709551615 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v24 AS a30 GROUP BY a30.c9, a30.c25 < a30.c25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a31 ORDER BY 255 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( a32.c18, a33.c26 ), max ( a33.c26, a32.c17 ) FROM v15 AS a32, v24 AS a33 ON x ( a32.c18 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v4 AS ( SELECT 18446744073709551615 y ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a34 WHERE ( a34.c2 = 18446744073709551615 OR a34.c3 = 18446744073709551615 ) AND a34.c1 IS ( SELECT a34.c2 FROM ( SELECT v4.c6 FROM v0 AS a35 ORDER BY 255 ) AS y WHERE v4.c9 = 18446744073709551615 ORDER BY 18446744073709551615 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a36.c21 ) OVER ( ORDER BY 18446744073709551615 IN v19 ) ORDER BY 255 ) FROM v19 AS a36 GROUP BY y ( a36.c20 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( c8, avg ( c3 ) ) + 255 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: views may not be indexed
+Parse error near line 8: cannot drop column from view "v4"
+Parse error near line 10: views may not be indexed
+Runtime error near line 11: no such module: fts5
+Runtime error near line 12: error in index i13 after drop column: no such column: c1
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such table: v24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: v4.c6
+  615 ) AND a34.c1 IS ( SELECT a34.c2 FROM ( SELECT v4.c6 FROM v0 AS a35 ORDER B
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: c8
+  SELECT min ( c8, avg ( c3 ) ) + 255 ORDER BY 16; 
+               ^--- error here
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 ( c5, c6, c7, c8, c9, c10 ) AS SELECT * FROM v0 AS a11 ORDER BY 255; 
+; 
+; 
+; 
+CREATE TABLE v15 ( c16 INTEGER PRIMARY KEY, c17, c18 UNIQUE ); 
+CREATE TABLE v19 ( c20, c21 INTEGER PRIMARY KEY, c22 ); 
+ALTER TABLE v4 DROP COLUMN c1; 
+ALTER TABLE v19 DROP COLUMN c22; 
+; 
+CREATE VIRTUAL TABLE v24 USING fts5 ( c25, c26 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c2, sum ( a27.c3 ) AS y FROM v0 AS a27 GROUP BY a27.c1 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a28 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c18 FROM v15 AS a29 WHERE 18446744073709551615 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v24 AS a30 GROUP BY a30.c9, a30.c25 < a30.c25 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a31 ORDER BY 255 COLLATE hex; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( a32.c18, a33.c26 ), max ( a33.c26, a32.c17 ) FROM v15 AS a32, v24 AS a33 ON x ( a32.c18 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v4 AS ( SELECT 18446744073709551615 y ORDER BY 18446744073709551615 ) SELECT * FROM v0 AS a34 WHERE ( a34.c2 = 18446744073709551615 OR a34.c3 = 18446744073709551615 ) AND a34.c1 IS ( SELECT a34.c2 FROM ( SELECT v4.c6 FROM v0 AS a35 ORDER BY 255 ) AS y WHERE v4.c9 = 18446744073709551615 ORDER BY 18446744073709551615 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( a36.c21 ) OVER ( ORDER BY 18446744073709551615 IN v19 ) ORDER BY 255 ) FROM v19 AS a36 GROUP BY y ( a36.c20 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT min ( c8, avg ( c3 ) ) + 255 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop column from view "v4"
+Runtime error near line 11: no such module: fts5
+BEGIN VERI 0
+Parse error near line 14: no such column: a27.c1
+  7.c2, sum ( a27.c3 ) AS y FROM v0 AS a27 GROUP BY a27.c1 ORDER BY 184467440737
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: no such table: v24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such table: v24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a34.c1
+  3709551615 OR a34.c3 = 18446744073709551615 ) AND a34.c1 IS ( SELECT a34.c2 FR
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: no such column: c8
+  SELECT min ( c8, avg ( c3 ) ) + 255 ORDER BY 16; 
+               ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 14: no such column: a27.c1
+  7.c2, sum ( a27.c3 ) AS y FROM v0 AS a27 GROUP BY a27.c1 ORDER BY 184467440737
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: no such table: v24
+ 
+INT: 0 
+Str: 
+Parse error near line 23: no such table: v24
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: no such table: v24
+ 
+INT: 0 
+Str: 
+Parse error near line 29: no such table: v24
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such column: v4.c6
+  615 ) AND a34.c1 IS ( SELECT a34.c2 FROM ( SELECT v4.c6 FROM v0 AS a35 ORDER B
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 32: no such column: a34.c1
+  3709551615 OR a34.c3 = 18446744073709551615 ) AND a34.c1 IS ( SELECT a34.c2 FR
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 38: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: no such column: c8
+  SELECT min ( c8, avg ( c3 ) ) + 255 ORDER BY 16; 
+               ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 41: no such column: c8
+  SELECT min ( c8, avg ( c3 ) ) + 255 ORDER BY 16; 
+               ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

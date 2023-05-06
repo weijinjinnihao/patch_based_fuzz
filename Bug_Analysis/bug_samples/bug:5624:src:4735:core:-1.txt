@@ -1,0 +1,322 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13 INTEGER DEFAULT 't2', c14 PRIMARY KEY, CHECK( ( ( c14 + 0 ) % 0 ) != 0 ) ) WITHOUT ROWID; 
+CREATE TABLE v15 ( c16 TEXT, c17 ); 
+CREATE INDEX i18 ON v0 ( c1 ); 
+CREATE INDEX i19 ON v15 ( c16 ); 
+CREATE INDEX i20 ON v0 ( c7 ); 
+CREATE INDEX i21 ON v15 ( c17 ); 
+ALTER TABLE v15 DROP c17; 
+CREATE INDEX i22 ON v0 ( c6 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c16, max ( a23.c16 || a23.c16 ) FROM v15 AS a23 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v24 AS ( SELECT ( SELECT min ( c16 ) OVER ( ORDER BY 0 ) ORDER BY 0 ) FROM v24 AS a26 GROUP BY c16 ORDER BY 0 ) SELECT c2 + ( SELECT max ( c16 ) FROM v24 AS a29 ORDER BY 0 ), c16 + ( SELECT max ( c9 ) FROM v24 AS a28 ORDER BY 0 ), c13 + ( SELECT max ( c16 ) FROM v24 AS a27 ORDER BY 0 ) FROM v24 AS a25 y ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 WHERE a30.c4 = a30.c10 || a30.c5 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a31, v15 AS a32 NATURAL JOIN v15 AS a33 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34, v15 AS a35 NATURAL JOIN v15 AS a36 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a37.c1 IS NULL ) ) AND ( NOT ( a37.c2 IS NULL ) ) ) FROM v0 AS a37 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a38, v15 AS a39 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a40 GROUP BY x'616263', 'bbb', a40.c17 = + a40.c16 HAVING count ( * ) >= 9223372036854775807 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c17, max ( a41.c16 || a41.c17 ) FROM v15 AS a41 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v42 AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551615 ) VALUES ( NULL, 'wvu' ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i21 after drop column: no such column: c17
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+  x ( a23.c16 || a23.c16 ) FROM v15 AS a23 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: near "y": syntax error
+  16 ) FROM v24 AS a27 ORDER BY 0 ) FROM v24 AS a25 y ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 14
+   AS a30 WHERE a30.c4 = a30.c10 || a30.c5 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 4
+   a31, v15 AS a32 NATURAL JOIN v15 AS a33 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+  OT ( a37.c2 IS NULL ) ) ) FROM v0 AS a37 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+  x ( a41.c16 || a41.c17 ) FROM v15 AS a41 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: near "ORDER": syntax error
+   BY 18446744073709551615 ) VALUES ( NULL, 'wvu' ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11, c12, c13 INTEGER DEFAULT 't2', c14 PRIMARY KEY, CHECK( ( ( c14 + 0 ) % 0 ) != 0 ) ) WITHOUT ROWID; 
+CREATE TABLE v15 ( c16 TEXT, c17 ); 
+; 
+; 
+; 
+; 
+ALTER TABLE v15 DROP c17; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c16, max ( a23.c16 || a23.c16 ) FROM v15 AS a23 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v24 AS ( SELECT ( SELECT min ( c16 ) OVER ( ORDER BY 0 ) ORDER BY 0 ) FROM v24 AS a26 GROUP BY c16 ORDER BY 0 ) SELECT c2 + ( SELECT max ( c16 ) FROM v24 AS a29 ORDER BY 0 ), c16 + ( SELECT max ( c9 ) FROM v24 AS a28 ORDER BY 0 ), c13 + ( SELECT max ( c16 ) FROM v24 AS a27 ORDER BY 0 ) FROM v24 AS a25 y ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a30 WHERE a30.c4 = a30.c10 || a30.c5 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a31, v15 AS a32 NATURAL JOIN v15 AS a33 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a34, v15 AS a35 NATURAL JOIN v15 AS a36 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a37.c1 IS NULL ) ) AND ( NOT ( a37.c2 IS NULL ) ) ) FROM v0 AS a37 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a38, v15 AS a39 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a40 GROUP BY x'616263', 'bbb', a40.c17 = + a40.c16 HAVING count ( * ) >= 9223372036854775807 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a41.c17, max ( a41.c16 || a41.c17 ) FROM v15 AS a41 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v42 AS ( SELECT 18446744073709551488 y ORDER BY 18446744073709551615 ) VALUES ( NULL, 'wvu' ) ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+  x ( a23.c16 || a23.c16 ) FROM v15 AS a23 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: near "y": syntax error
+  16 ) FROM v24 AS a27 ORDER BY 0 ) FROM v24 AS a25 y ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 14
+   AS a30 WHERE a30.c4 = a30.c10 || a30.c5 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+   a31, v15 AS a32 NATURAL JOIN v15 AS a33 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+  OT ( a37.c2 IS NULL ) ) ) FROM v0 AS a37 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a40.c17
+  LECT * FROM v15 AS a40 GROUP BY x'616263', 'bbb', a40.c17 = + a40.c16 HAVING c
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a41.c17
+  SELECT a41.c17, max ( a41.c16 || a41.c17 ) FROM v15 AS a41 ORDER BY 0; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: near "ORDER": syntax error
+   BY 18446744073709551615 ) VALUES ( NULL, 'wvu' ) ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+  x ( a23.c16 || a23.c16 ) FROM v15 AS a23 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+  x ( a23.c16 || a23.c16 ) FROM v15 AS a23 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: near "y": syntax error
+  16 ) FROM v24 AS a27 ORDER BY 0 ) FROM v24 AS a25 y ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 13: near "y": syntax error
+  16 ) FROM v24 AS a27 ORDER BY 0 ) FROM v24 AS a25 y ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 14
+   AS a30 WHERE a30.c4 = a30.c10 || a30.c5 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 14
+   AS a30 WHERE a30.c4 = a30.c10 || a30.c5 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 4
+   a31, v15 AS a32 NATURAL JOIN v15 AS a33 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 2
+   a31, v15 AS a32 NATURAL JOIN v15 AS a33 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+  OT ( a37.c2 IS NULL ) ) ) FROM v0 AS a37 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+  OT ( a37.c2 IS NULL ) ) ) FROM v0 AS a37 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 31: no such column: a40.c17
+  LECT * FROM v15 AS a40 GROUP BY x'616263', 'bbb', a40.c17 = + a40.c16 HAVING c
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+  x ( a41.c16 || a41.c17 ) FROM v15 AS a41 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: no such column: a41.c17
+  SELECT a41.c17, max ( a41.c16 || a41.c17 ) FROM v15 AS a41 ORDER BY 0; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 23491360
+Str: 
+Parse error near line 37: near "ORDER": syntax error
+   BY 18446744073709551615 ) VALUES ( NULL, 'wvu' ) ORDER BY 0; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 37: near "ORDER": syntax error
+   BY 18446744073709551615 ) VALUES ( NULL, 'wvu' ) ORDER BY 0; 
+                                      error here ---^
+ 
+Compare_result_int: 
+0
+
+
+

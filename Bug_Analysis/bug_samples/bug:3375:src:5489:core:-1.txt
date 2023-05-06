@@ -1,0 +1,282 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c3 ) ) WITHOUT ROWID; 
+CREATE INDEX i4 ON v0 ( c2 ); 
+ATTACH 'v1' AS sqlite_master; 
+CREATE TABLE v5 ( c6 INTEGER PRIMARY KEY ON CONFLICT REPLACE, c7 UNIQUE ON CONFLICT IGNORE, c8 UNIQUE ON CONFLICT FAIL ); 
+ALTER TABLE v0 DROP c1; 
+CREATE INDEX i9 ON v0 ( c2 ); 
+CREATE INDEX i10 ON v0 ( c2 ); 
+ALTER TABLE v0 DROP c2; 
+CREATE INDEX i11 ON v5 ( c6 ); 
+CREATE VIEW v12 AS SELECT * FROM ( v5 AS a13 ), ( v0 AS a14 ), ( v5 AS a15 ), ( v0 AS a16 ) WHERE c2 = c7 + 255 AND c7 = c3 + 255 AND c8 = c1 + 18446744073709551615 ORDER BY 255; 
+CREATE INDEX i17 ON v5 ( c7 ); 
+CREATE TABLE v18 ( c19, c20, c21 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a22 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a23 WHERE a23.c6 = 18446744073709551488 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c5, count ( ( NOT ( a24.c7 IS NULL ) ) AND ( NOT ( a24.c5 IS NULL ) ) ) FROM v12 AS a24 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a25 GROUP BY y ( a25.c5 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( SELECT a27.c19 WHERE a27.c20 = NULL AND a27.c21 >= a27.c20 ORDER BY 18446744073709551488 ) ) FROM v18 AS a27 WHERE ( CASE WHEN a27.c21 != 'count.test cases for NOT INDEXED' THEN 0 ELSE 18446744073709518848 END ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a28, v12 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a30 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 WHERE ( CASE WHEN a31.c2 != 'V345FMP' THEN 18446744073709551488 ELSE 18446744073709551615 END ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a32, v0 AS a33 NATURAL JOIN v18 AS a34 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: cannot drop PRIMARY KEY column: "c1"
+Runtime error near line 8: error in index i4 after drop column: no such column: c2
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: ambiguous column name: main.v0.c1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: ambiguous column name: main.v0.c1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: ambiguous column name: main.v0.c1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: ambiguous column name: main.v0.c1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c3 ) ) WITHOUT ROWID; 
+; 
+ATTACH 'v1' AS sqlite_master; 
+CREATE TABLE v5 ( c6 INTEGER PRIMARY KEY ON CONFLICT REPLACE, c7 UNIQUE ON CONFLICT IGNORE, c8 UNIQUE ON CONFLICT FAIL ); 
+ALTER TABLE v0 DROP c1; 
+; 
+; 
+ALTER TABLE v0 DROP c2; 
+; 
+CREATE VIEW v12 AS SELECT * FROM ( v5 AS a13 ), ( v0 AS a14 ), ( v5 AS a15 ), ( v0 AS a16 ) WHERE c2 = c7 + 255 AND c7 = c3 + 255 AND c8 = c1 + 18446744073709551615 ORDER BY 255; 
+; 
+CREATE TABLE v18 ( c19, c20, c21 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a22 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a23 WHERE a23.c6 = 18446744073709551488 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c5, count ( ( NOT ( a24.c7 IS NULL ) ) AND ( NOT ( a24.c5 IS NULL ) ) ) FROM v12 AS a24 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a25 GROUP BY y ( a25.c5 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( SELECT a27.c19 WHERE a27.c20 = NULL AND a27.c21 >= a27.c20 ORDER BY 18446744073709551488 ) ) FROM v18 AS a27 WHERE ( CASE WHEN a27.c21 != 'count.test cases for NOT INDEXED' THEN 0 ELSE 18446744073709518848 END ) ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a28, v12 AS a29 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a30 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a31 WHERE ( CASE WHEN a31.c2 != 'V345FMP' THEN 18446744073709551488 ELSE 18446744073709551615 END ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a32, v0 AS a33 NATURAL JOIN v18 AS a34 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: cannot drop PRIMARY KEY column: "c1"
+BEGIN VERI 0
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: ambiguous column name: main.v0.c1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: ambiguous column name: main.v0.c1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: ambiguous column name: main.v0.c1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: ambiguous column name: main.v0.c1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such column: a31.c2
+  SELECT * FROM v0 AS a31 WHERE ( CASE WHEN a31.c2 != 'V345FMP' THEN 18446744073
+                              error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 14: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: ambiguous column name: main.v0.c1
+ 
+INT: 0 
+Str: 
+Parse error near line 17: ambiguous column name: main.v0.c1
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: ambiguous column name: main.v0.c1
+ 
+INT: 0 
+Str: 
+Parse error near line 20: ambiguous column name: main.v0.c1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: ambiguous column name: main.v0.c1
+ 
+INT: 0 
+Str: 
+Parse error near line 23: ambiguous column name: main.v0.c1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: ambiguous column name: main.v0.c1
+ 
+INT: 0 
+Str: 
+Parse error near line 32: ambiguous column name: main.v0.c1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 38: no such column: a31.c2
+  SELECT * FROM v0 AS a31 WHERE ( CASE WHEN a31.c2 != 'V345FMP' THEN 18446744073
+                              error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

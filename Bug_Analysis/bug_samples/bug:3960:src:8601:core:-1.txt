@@ -1,0 +1,287 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c2 ); 
+CREATE VIEW v5 AS WITH v6 ( c9 ) AS ( WITH v10 ( c11, c12, c13, c14, c15, c16 ) AS ( SELECT 18446744073709551615 y ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v6 AS a7 NATURAL JOIN v6 AS a8 ORDER BY 18446744073709551615; 
+CREATE TABLE v17 ( c18 INTEGER PRIMARY KEY, c19, c20 UNIQUE ); 
+CREATE INDEX i21 ON v17 ( c20 ); 
+CREATE TABLE v22 ( c23, c24, c25 ); 
+CREATE INDEX i26 ON v22 ( c25 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i27 ON v0 ( c2 ); 
+ALTER TABLE v5 DROP COLUMN c3; 
+CREATE INDEX i28 ON v5 ( c13 ); 
+CREATE VIRTUAL TABLE v29 USING fts5 ( c30, c31 ); 
+ALTER TABLE v17 DROP COLUMN c20; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a32 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a34, v0 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a36 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a37 WHERE ( CASE WHEN a37.c20 != '|' THEN 18446744073709551488 ELSE 4294967295 END ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a38 WHERE a38.c31 = CASE WHEN a38.c31 != 'v0' THEN 18446744073709551615 ELSE 9223372036854775807 END > 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a39.c2 IS NULL ) ) AND ( NOT ( a39.c2 IS NULL ) ) ) FROM v0 AS a39 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a40 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 8: error in index i4 after drop column: no such column: c2
+Parse error near line 10: cannot drop column from view "v5"
+Parse error near line 11: views may not be indexed
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: cannot drop UNIQUE column: "c20"
+BEGIN VERI 0
+Parse error near line 15: no such table: v29
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v29
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v29
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v29
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS WITH v6 ( c9 ) AS ( WITH v10 ( c11, c12, c13, c14, c15, c16 ) AS ( SELECT 18446744073709551615 y ORDER BY 18446744073709551615 ) SELECT 18446744073709551615 ORDER BY 18446744073709551615 ) SELECT * FROM v6 AS a7 NATURAL JOIN v6 AS a8 ORDER BY 18446744073709551615; 
+CREATE TABLE v17 ( c18 INTEGER PRIMARY KEY, c19, c20 UNIQUE ); 
+; 
+CREATE TABLE v22 ( c23, c24, c25 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+ALTER TABLE v5 DROP COLUMN c3; 
+; 
+CREATE VIRTUAL TABLE v29 USING fts5 ( c30, c31 ); 
+ALTER TABLE v17 DROP COLUMN c20; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a32 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a33 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a34, v0 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a36 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a37 WHERE ( CASE WHEN a37.c20 != '|' THEN 18446744073709551488 ELSE 4294967295 END ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a38 WHERE a38.c31 = CASE WHEN a38.c31 != 'v0' THEN 18446744073709551615 ELSE 9223372036854775807 END > 18446744073709551615 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a39.c2 IS NULL ) ) AND ( NOT ( a39.c2 IS NULL ) ) ) FROM v0 AS a39 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v29 AS a40 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: cannot drop column from view "v5"
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: cannot drop UNIQUE column: "c20"
+BEGIN VERI 0
+Parse error near line 15: no such table: v29
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v29
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v29
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a39.c2
+  SELECT count ( ( NOT ( a39.c2 IS NULL ) ) AND ( NOT ( a39.c2 IS NULL ) ) ) FRO
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v29
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such table: v29
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such table: v29
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such table: v29
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such table: v29
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such table: v29
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such table: v29
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such column: a39.c2
+  SELECT count ( ( NOT ( a39.c2 IS NULL ) ) AND ( NOT ( a39.c2 IS NULL ) ) ) FRO
+                         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such table: v29
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such table: v29
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

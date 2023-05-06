@@ -1,0 +1,291 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1 + 16 ) ) WITHOUT ROWID; 
+ATTACH 'Al' AS sqlite_master; 
+CREATE TABLE v4 ( c5, c6, c7 PRIMARY KEY ON CONFLICT FAIL ) WITHOUT ROWID; 
+CREATE TABLE v8 ( c9, c10 CHECK( c12 > c9 % 16 >= 16 ), c11, c12, CHECK( c10 > 8 ) ); 
+CREATE INDEX i13 ON v8 ( c11 ); 
+CREATE INDEX i14 ON v4 ( c7 ); 
+CREATE INDEX i15 ON v0 ( c3 ); 
+ALTER TABLE v4 DROP c7; 
+CREATE INDEX i16 ON v8 ( c11 ); 
+ALTER TABLE v8 DROP c11; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c11, count ( ( NOT ( a17.c11 IS NULL ) ) AND ( NOT ( a17.c9 IS NULL ) ) ) FROM v8 AS a17 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN a18.c5 = 16 THEN 16 ELSE ( a18.c6 + 18446744073709551488 ) / 18446744073709551615 END ) AS y, count ( * ) FROM v4 AS a18 GROUP BY a18.c5 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c7, count ( a19.c5 ) FROM v4 AS a19 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a20, v4 AS a21 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c1, max ( a22.c1 || a22.c1 ) FROM v0 AS a22 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c11 FROM v8 AS a23 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c5 FROM v4 AS a24 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a25 GROUP BY a25.c9 HAVING count ( * ) >= 8 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a26 NATURAL JOIN v0 AS a27 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a28.c2 IS NULL ) ) AND ( NOT ( a28.c3 IS NULL ) ) ) FROM v0 AS a28 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: expressions prohibited in PRIMARY KEY and UNIQUE constraints
+Parse error near line 7: no such table: main.v0
+Parse error near line 8: cannot drop PRIMARY KEY column: "c7"
+Runtime error near line 10: error in index i13 after drop column: no such column: c11
+BEGIN VERI 0
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1 + 16 ) ) WITHOUT ROWID; 
+ATTACH 'Al' AS sqlite_master; 
+CREATE TABLE v4 ( c5, c6, c7 PRIMARY KEY ON CONFLICT FAIL ) WITHOUT ROWID; 
+CREATE TABLE v8 ( c9, c10 CHECK( c12 > c9 % 16 >= 16 ), c11, c12, CHECK( c10 > 8 ) ); 
+; 
+; 
+; 
+ALTER TABLE v4 DROP c7; 
+; 
+ALTER TABLE v8 DROP c11; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c11, count ( ( NOT ( a17.c11 IS NULL ) ) AND ( NOT ( a17.c9 IS NULL ) ) ) FROM v8 AS a17 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( CASE WHEN a18.c5 = 16 THEN 16 ELSE ( a18.c6 + 18446744073709551488 ) / 18446744073709551615 END ) AS y, count ( * ) FROM v4 AS a18 GROUP BY a18.c5 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c7, count ( a19.c5 ) FROM v4 AS a19 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a20, v4 AS a21 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c1, max ( a22.c1 || a22.c1 ) FROM v0 AS a22 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c11 FROM v8 AS a23 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c5 FROM v4 AS a24 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a25 GROUP BY a25.c9 HAVING count ( * ) >= 8 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v8 AS a26 NATURAL JOIN v0 AS a27 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a28.c2 IS NULL ) ) AND ( NOT ( a28.c3 IS NULL ) ) ) FROM v0 AS a28 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 1: expressions prohibited in PRIMARY KEY and UNIQUE constraints
+Parse error near line 8: cannot drop PRIMARY KEY column: "c7"
+BEGIN VERI 0
+Parse error near line 12: no such column: a17.c11
+  SELECT a17.c11, count ( ( NOT ( a17.c11 IS NULL ) ) AND ( NOT ( a17.c9 IS NULL
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a23.c11
+  SELECT a23.c11 FROM v8 AS a23 ORDER BY 16; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such table: v0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 12: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 12: no such column: a17.c11
+  SELECT a17.c11, count ( ( NOT ( a17.c11 IS NULL ) ) AND ( NOT ( a17.c9 IS NULL
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such column: a23.c11
+  SELECT a23.c11 FROM v8 AS a23 ORDER BY 16; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v0
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: no such table: v0
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such table: v0
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

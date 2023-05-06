@@ -1,0 +1,310 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE TABLE v4 ( c5, c6, c7, CHECK( c5 > 18446744073709551488 ) ); 
+CREATE INDEX i8 ON v0 ( c1 ); 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c12 > 18446744073709551488 ) ); 
+INSERT INTO v4 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709551488 ); 
+CREATE INDEX i13 ON v9 ( c10 ); 
+INSERT INTO v4 VALUES ( 18446744073709551615, 18446744073709551488, 0 ); 
+CREATE INDEX i14 ON v9 ( c11 ); 
+INSERT INTO v4 VALUES ( 16, 18446744073709551488, 18446744073709551615 ); 
+ALTER TABLE v9 DROP COLUMN c10; 
+CREATE INDEX i15 ON v4 ( c5 ); 
+CREATE INDEX i16 ON v0 ( c3 ); 
+CREATE TABLE v17 ( c18, c19 INTEGER UNIQUE ON CONFLICT FAIL, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46, c47, c48, PRIMARY KEY ( c36, c22, c35, c41, c27, c39, c27 ) ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709551615 - ( c11 + c12 ) WHERE CASE WHEN c6 != 'v1' THEN 18446744073709551488 ELSE 18446744073709551488 END > 18446744073709551488 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a49.c33, max ( a49.c31 || a49.c26 ) FROM v17 AS a49 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a50.c1 FROM v0 AS a50 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a51.c12 FROM v9 AS a51 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c10, a53.c11 FROM v9 AS a52, v9 AS a53 ON a52.c10 = a52.c11 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v17 ( c55 ) AS ( SELECT a56.c29 + ( SELECT max ( a56.c20 ) FROM v17 AS a59 ORDER BY 18446744073709551615 ), a56.c33 + ( SELECT a56.c42 FROM v4 AS a58 ORDER BY 18446744073709551488 ), c55 + ( SELECT max ( a57.c11 ) FROM v9 AS a57 ORDER BY 18446744073709551488 ) FROM v17 AS a56 ORDER BY 18446744073709551615 ) SELECT ( SELECT min ( c55 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 0 ) FROM v4 AS a54 GROUP BY c55 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a60.c10 || a60.c11 ) FROM v9 AS a60 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a61 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v9 AS ( SELECT hex ( ) y ORDER BY 18446744073709551615 ) SELECT a63.c11, a63.c11 FROM v0 AS a62 RIGHT JOIN v9 AS a63 ON a62.c1 = a63.c10 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a64.c11, sum ( a64.c10 ) FROM v9 AS a64 GROUP BY a64.c12 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c5 > 18446744073709551488 (19)
+Runtime error near line 7: CHECK constraint failed: c5 > 18446744073709551488 (19)
+Runtime error near line 9: CHECK constraint failed: c5 > 18446744073709551488 (19)
+Runtime error near line 10: error in index i13 after drop column: no such column: c10
+BEGIN VERI 0
+Parse error near line 15: no such column: c11
+  SELECT 18446744073709551615 - ( c11 + c12 ) WHERE CASE WHEN c6 != 'v1' THEN 18
+                    error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: c55
+  R BY 18446744073709551615 ) SELECT ( SELECT min ( c55 ) OVER ( ORDER BY 184467
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: wrong number of arguments to function hex()
+  WITH v9 AS ( SELECT hex ( ) y ORDER BY 18446744073709551615 ) SELECT a63.c11, 
+                      ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER PRIMARY KEY, c3 ) WITHOUT ROWID; 
+CREATE TABLE v4 ( c5, c6, c7, CHECK( c5 > 18446744073709551488 ) ); 
+; 
+CREATE TABLE v9 ( c10, c11, c12 CHECK( c12 > 18446744073709551488 ) ); 
+INSERT INTO v4 VALUES ( 18446744073709551615, 18446744073709551615, 18446744073709551488 ); 
+; 
+INSERT INTO v4 VALUES ( 18446744073709551615, 18446744073709551488, 0 ); 
+; 
+INSERT INTO v4 VALUES ( 16, 18446744073709551488, 18446744073709551615 ); 
+ALTER TABLE v9 DROP COLUMN c10; 
+; 
+; 
+CREATE TABLE v17 ( c18, c19 INTEGER UNIQUE ON CONFLICT FAIL, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44, c45, c46, c47, c48, PRIMARY KEY ( c36, c22, c35, c41, c27, c39, c27 ) ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709551615 - ( c11 + c12 ) WHERE CASE WHEN c6 != 'v1' THEN 18446744073709551488 ELSE 18446744073709551488 END > 18446744073709551488 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a49.c33, max ( a49.c31 || a49.c26 ) FROM v17 AS a49 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a50.c1 FROM v0 AS a50 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a51.c12 FROM v9 AS a51 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a53.c10, a53.c11 FROM v9 AS a52, v9 AS a53 ON a52.c10 = a52.c11 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v17 ( c55 ) AS ( SELECT a56.c29 + ( SELECT max ( a56.c20 ) FROM v17 AS a59 ORDER BY 18446744073709551615 ), a56.c33 + ( SELECT a56.c42 FROM v4 AS a58 ORDER BY 18446744073709551488 ), c55 + ( SELECT max ( a57.c11 ) FROM v9 AS a57 ORDER BY 18446744073709551488 ) FROM v17 AS a56 ORDER BY 18446744073709551615 ) SELECT ( SELECT min ( c55 ) OVER ( ORDER BY 18446744073709551615 ) ORDER BY 0 ) FROM v4 AS a54 GROUP BY c55 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a60.c10 || a60.c11 ) FROM v9 AS a60 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a61 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v9 AS ( SELECT hex ( ) y ORDER BY 18446744073709551615 ) SELECT a63.c11, a63.c11 FROM v0 AS a62 RIGHT JOIN v9 AS a63 ON a62.c1 = a63.c10 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a64.c11, sum ( a64.c10 ) FROM v9 AS a64 GROUP BY a64.c12 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: CHECK constraint failed: c5 > 18446744073709551488 (19)
+Runtime error near line 7: CHECK constraint failed: c5 > 18446744073709551488 (19)
+Runtime error near line 9: CHECK constraint failed: c5 > 18446744073709551488 (19)
+BEGIN VERI 0
+Parse error near line 15: no such column: c11
+  SELECT 18446744073709551615 - ( c11 + c12 ) WHERE CASE WHEN c6 != 'v1' THEN 18
+                    error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a53.c10
+  SELECT a53.c10, a53.c11 FROM v9 AS a52, v9 AS a53 ON a52.c10 = a52.c11 ORDER B
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: c55
+  R BY 18446744073709551615 ) SELECT ( SELECT min ( c55 ) OVER ( ORDER BY 184467
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such column: a60.c10
+  SELECT max ( a60.c10 || a60.c11 ) FROM v9 AS a60 ORDER BY 18446744073709551615
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: wrong number of arguments to function hex()
+  WITH v9 AS ( SELECT hex ( ) y ORDER BY 18446744073709551615 ) SELECT a63.c11, 
+                      ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a64.c10
+  SELECT a64.c11, sum ( a64.c10 ) FROM v9 AS a64 GROUP BY a64.c12 ORDER BY 18446
+                        ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such column: c11
+  SELECT 18446744073709551615 - ( c11 + c12 ) WHERE CASE WHEN c6 != 'v1' THEN 18
+                    error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: no such column: c11
+  SELECT 18446744073709551615 - ( c11 + c12 ) WHERE CASE WHEN c6 != 'v1' THEN 18
+                    error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 27: no such column: a53.c10
+  SELECT a53.c10, a53.c11 FROM v9 AS a52, v9 AS a53 ON a52.c10 = a52.c11 ORDER B
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: no such column: c55
+  R BY 18446744073709551615 ) SELECT ( SELECT min ( c55 ) OVER ( ORDER BY 184467
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: no such column: c55
+  R BY 18446744073709551615 ) SELECT ( SELECT min ( c55 ) OVER ( ORDER BY 184467
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+
+ 
+INT: -1 
+Str: 
+Parse error near line 33: no such column: a60.c10
+  SELECT max ( a60.c10 || a60.c11 ) FROM v9 AS a60 ORDER BY 18446744073709551615
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: wrong number of arguments to function hex()
+  WITH v9 AS ( SELECT hex ( ) y ORDER BY 18446744073709551615 ) SELECT a63.c11, 
+                      ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 39: wrong number of arguments to function hex()
+  WITH v9 AS ( SELECT hex ( ) y ORDER BY 18446744073709551615 ) SELECT a63.c11, 
+                      ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 42: no such column: a64.c10
+  SELECT a64.c11, sum ( a64.c10 ) FROM v9 AS a64 GROUP BY a64.c12 ORDER BY 18446
+                        ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

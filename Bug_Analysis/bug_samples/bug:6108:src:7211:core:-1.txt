@@ -1,0 +1,324 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c3 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 18446744071562067968; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c8, c9, c8, c8 ), c10 UNIQUE DEFAULT 0 ); 
+CREATE INDEX i11 ON v7 ( c10 ); 
+CREATE TABLE v12 ( c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28 DEFAULT x'ABCD', c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, FOREIGN KEY ( c18, c34, c27, c21, c27, c20, c28, c30, c28, c29, c34, c14 ) REFERENCES t4 ); 
+CREATE TABLE v41 ( c42 INTEGER PRIMARY KEY, c43 INTEGER REFERENCES t1 ON DELETE CASCADE REFERENCES t2, c44 TEXT, FOREIGN KEY ( c44, c44 ) REFERENCES encoding ( c42, c44 ) ON UPDATE CASCADE ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+ALTER TABLE v41 DROP COLUMN c43; 
+CREATE INDEX i45 ON v0 ( c2 ); 
+CREATE INDEX i46 ON v41 ( c44 ); 
+CREATE INDEX i47 ON v7 ( c10 ); 
+CREATE VIRTUAL TABLE v48 USING fts5 ( c49, c50 ); 
+ALTER TABLE v41 DROP COLUMN c44; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a51, v12 AS a52 NATURAL JOIN v7 AS a53 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a54 NATURAL JOIN v48 AS a55 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a56, v48 AS a57 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a58 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a59.c1, count ( a59.c2 ) FROM v0 AS a59 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a60 NATURAL JOIN v12 AS a61 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a62 NATURAL JOIN v0 AS a63 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a64.c14, count ( ( NOT ( a64.c32 IS NULL ) ) AND ( NOT ( a64.c18 IS NULL ) ) ) FROM v12 AS a64 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a65.c3 % 9223372036854775807, a65.c2 / 0, a65.c2, printf ( 'v1', a65.c2 ) FROM v5 AS a65 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT *, 'x' FROM v5 AS a66 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: foreign key on c9 should reference only one column of table t1
+   TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c8, c9, c8, c8 ), c10 U
+                                      error here ---^
+Parse error near line 5: no such table: main.v7
+Runtime error near line 8: error in index i4 after drop column: no such column: c3
+Parse error near line 12: no such table: main.v7
+Runtime error near line 13: no such module: fts5
+Runtime error near line 14: error in table v41 after drop column: unknown column "c44" in foreign key definition
+BEGIN VERI 0
+Parse error near line 16: no such table: v7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v48
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v48
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v5 AS a58 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 31
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+   * FROM v0 AS a62 NATURAL JOIN v0 AS a63 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT *, 'x' FROM v5 AS a66 ORDER BY 0; 
+                          error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 18446744071562067968; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c8, c9, c8, c8 ), c10 UNIQUE DEFAULT 0 ); 
+; 
+CREATE TABLE v12 ( c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28 DEFAULT x'ABCD', c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, FOREIGN KEY ( c18, c34, c27, c21, c27, c20, c28, c30, c28, c29, c34, c14 ) REFERENCES t4 ); 
+CREATE TABLE v41 ( c42 INTEGER PRIMARY KEY, c43 INTEGER REFERENCES t1 ON DELETE CASCADE REFERENCES t2, c44 TEXT, FOREIGN KEY ( c44, c44 ) REFERENCES encoding ( c42, c44 ) ON UPDATE CASCADE ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+ALTER TABLE v41 DROP COLUMN c43; 
+; 
+; 
+; 
+CREATE VIRTUAL TABLE v48 USING fts5 ( c49, c50 ); 
+ALTER TABLE v41 DROP COLUMN c44; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a51, v12 AS a52 NATURAL JOIN v7 AS a53 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a54 NATURAL JOIN v48 AS a55 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v41 AS a56, v48 AS a57 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a58 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a59.c1, count ( a59.c2 ) FROM v0 AS a59 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a60 NATURAL JOIN v12 AS a61 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a62 NATURAL JOIN v0 AS a63 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a64.c14, count ( ( NOT ( a64.c32 IS NULL ) ) AND ( NOT ( a64.c18 IS NULL ) ) ) FROM v12 AS a64 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a65.c3 % 9223372036854775807, a65.c2 / 0, a65.c2, printf ( 'v1', a65.c2 ) FROM v5 AS a65 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT *, 'x' FROM v5 AS a66 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: foreign key on c9 should reference only one column of table t1
+   TABLE v7 ( c8 INTEGER PRIMARY KEY, c9 REFERENCES t1 ( c8, c9, c8, c8 ), c10 U
+                                      error here ---^
+Runtime error near line 13: no such module: fts5
+Runtime error near line 14: error in table v41 after drop column: unknown column "c44" in foreign key definition
+BEGIN VERI 0
+Parse error near line 16: no such table: v7
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v48
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v48
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v5 AS a58 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 30
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+   * FROM v0 AS a62 NATURAL JOIN v0 AS a63 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such column: a65.c3
+  SELECT a65.c3 % 9223372036854775807, a65.c2 / 0, a65.c2, printf ( 'v1', a65.c2
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT *, 'x' FROM v5 AS a66 ORDER BY 0; 
+                          error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such table: v7
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such table: v7
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such table: v48
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such table: v48
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such table: v48
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such table: v48
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v5 AS a58 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v5 AS a58 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 31
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 30
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 3
+   * FROM v0 AS a62 NATURAL JOIN v0 AS a63 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 2
+   * FROM v0 AS a62 NATURAL JOIN v0 AS a63 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+|0
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 40: no such column: a65.c3
+  SELECT a65.c3 % 9223372036854775807, a65.c2 / 0, a65.c2, printf ( 'v1', a65.c2
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT *, 'x' FROM v5 AS a66 ORDER BY 0; 
+                          error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT *, 'x' FROM v5 AS a66 ORDER BY 0; 
+                          error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

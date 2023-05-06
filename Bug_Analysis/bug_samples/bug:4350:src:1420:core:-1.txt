@@ -1,0 +1,292 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709551615; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+CREATE TABLE v10 ( c11, c12, c13 ); 
+CREATE INDEX i14 ON v10 ( c12 ); 
+CREATE INDEX i15 ON v6 ( c9 ); 
+CREATE INDEX i16 ON v4 ( c1 ); 
+ALTER TABLE v4 DROP COLUMN c1; 
+ALTER TABLE v10 DROP COLUMN c12; 
+CREATE INDEX i17 ON v0 ( c3 ); 
+CREATE TABLE v18 ( c19 COLLATE nocase PRIMARY KEY ); 
+CREATE INDEX i20 ON v4 ( c1 ); 
+ALTER TABLE v18 DROP COLUMN c19; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a21 WHERE a21.c12 != 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a22 WHERE a22.c9 = a22.c7 >= 9223372036854775807 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 GROUP BY a23.c2 HAVING a23.c1 > a23.c1 % 18446744071562067968 >= 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a24.c19 ) FROM v18 AS a24 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 WHERE a25.c2 != 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a26, v0 AS a27 NATURAL JOIN v0 AS a28 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a29 ORDER BY max ( a29.c19 + a29.c19 * 18446744071562067968 ) + 18446744071562067968, min ( a29.c19, avg ( a29.c19 ) ) + NULL >= 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a30 WHERE a30.c19 = 18446744071562067968 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: views may not be indexed
+Parse error near line 8: cannot drop column from view "v4"
+Runtime error near line 9: error in index i14 after drop column: no such column: c12
+Parse error near line 12: views may not be indexed
+Parse error near line 13: cannot drop PRIMARY KEY column: "c19"
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: misuse of aggregate: avg()
+  62067968 ) + 18446744071562067968, min ( a29.c19, avg ( a29.c19 ) ) + NULL >= 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+  a30 WHERE a30.c19 = 18446744071562067968 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709551615; 
+CREATE TABLE v6 ( c7 INTEGER PRIMARY KEY, c8, c9 UNIQUE ); 
+CREATE TABLE v10 ( c11, c12, c13 ); 
+; 
+; 
+; 
+ALTER TABLE v4 DROP COLUMN c1; 
+ALTER TABLE v10 DROP COLUMN c12; 
+; 
+CREATE TABLE v18 ( c19 COLLATE nocase PRIMARY KEY ); 
+; 
+ALTER TABLE v18 DROP COLUMN c19; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a21 WHERE a21.c12 != 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a22 WHERE a22.c9 = a22.c7 >= 9223372036854775807 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 GROUP BY a23.c2 HAVING a23.c1 > a23.c1 % 18446744071562067968 >= 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a24.c19 ) FROM v18 AS a24 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a25 WHERE a25.c2 != 18446744071562067968 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a26, v0 AS a27 NATURAL JOIN v0 AS a28 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a29 ORDER BY max ( a29.c19 + a29.c19 * 18446744071562067968 ) + 18446744071562067968, min ( a29.c19, avg ( a29.c19 ) ) + NULL >= 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v18 AS a30 WHERE a30.c19 = 18446744071562067968 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop column from view "v4"
+Parse error near line 13: cannot drop PRIMARY KEY column: "c19"
+BEGIN VERI 0
+Parse error near line 15: no such column: a21.c12
+  SELECT * FROM v10 AS a21 WHERE a21.c12 != 18446744071562067968 ORDER BY 184467
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: misuse of aggregate: avg()
+  62067968 ) + 18446744071562067968, min ( a29.c19, avg ( a29.c19 ) ) + NULL >= 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+  a30 WHERE a30.c19 = 18446744071562067968 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 15: no such column: a21.c12
+  SELECT * FROM v10 AS a21 WHERE a21.c12 != 18446744071562067968 ORDER BY 184467
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: misuse of aggregate: avg()
+  62067968 ) + 18446744071562067968, min ( a29.c19, avg ( a29.c19 ) ) + NULL >= 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: misuse of aggregate: avg()
+  62067968 ) + 18446744071562067968, min ( a29.c19, avg ( a29.c19 ) ) + NULL >= 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+  a30 WHERE a30.c19 = 18446744071562067968 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 1
+  a30 WHERE a30.c19 = 18446744071562067968 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

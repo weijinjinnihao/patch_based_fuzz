@@ -1,0 +1,313 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT c3 COLLATE hex FROM v0 AS a5 ORDER BY 100; 
+CREATE VIEW v6 AS WITH v7 ( c11 ) AS ( WITH v7 AS ( SELECT ( SELECT min ( c11 ) OVER ( ORDER BY 100 IN v7 ) ORDER BY 100 ) FROM v7 AS a12 GROUP BY c2 ORDER BY 100 ) SELECT 100 ORDER BY 100 ) SELECT * FROM v7 AS a8, v7 AS a9 NATURAL JOIN v7 AS a10 ORDER BY 100; 
+CREATE INDEX i13 ON v0 ( c1 ); 
+CREATE INDEX i14 ON v6 ( c1 ); 
+CREATE TABLE v15 ( c16 INTEGER PRIMARY KEY, c17, c18 UNIQUE ); 
+CREATE INDEX i19 ON v15 ( c16 ) WHERE c16 = CASE WHEN c17 != 'x' THEN 0 ELSE 18446744073709551615 END > 18446744073709551488; 
+CREATE TABLE v20 ( c21, c22, c23 ); 
+CREATE TABLE v24 ( c25 UNIQUE ON CONFLICT FAIL ); 
+ALTER TABLE v20 DROP COLUMN c21; 
+ALTER TABLE v15 DROP COLUMN c18; 
+CREATE VIRTUAL TABLE v26 USING fts5 ( c27, c28 ); 
+CREATE INDEX i29 ON v20 ( c21 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i30 ON v26 ( c27 ); 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v6 ( c32 ) AS ( SELECT 8 ORDER BY 0 ) SELECT * FROM v15 AS a31 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a33 ORDER BY count ( ( NOT ( a33.c18 IS NULL ) ) AND ( NOT ( a33.c18 IS NULL ) ) ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a34, v15 AS a35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT abs ( a37.c1 ), a37.c2 FROM v15 AS a36 RIGHT JOIN v0 AS a37 ON a37.c1 = y ( a36.c18 ) WHERE ( a37.c3 + 18446744073709551615 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c1, count ( c25 ) WHERE c2 ORDER BY ( ( c25 + - 100 ) % 0 ) != 18446744073709551615 + 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a38.c23 ) FROM v20 AS a38 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v24 AS a39 WHERE a39.c25 = a39.c25 > 0 GROUP BY x'616263', 'x', a39.c25 = + a39.c25 HAVING count ( * ) >= 18446744073709551615 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v24 AS a40 NATURAL JOIN v20 AS a41 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a42 WHERE a42.c17 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c22, sum ( a43.c23 ) AS y FROM v20 AS a43 WHERE a43.c22 > 100 GROUP BY a43.c21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: views may not be indexed
+Parse error near line 11: cannot drop UNIQUE column: "c18"
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: no such column: c21
+  CREATE INDEX i29 ON v20 ( c21 ); 
+              error here ---^
+Runtime error near line 14: error in index i13 after drop column: no such column: c1
+Parse error near line 15: no such table: main.v26
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v26
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such function: y
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: c1
+  SELECT c1, count ( c25 ) WHERE c2 ORDER BY ( ( c25 + - 100 ) % 0 ) != 18446744
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no such column: a43.c21
+  AS y FROM v20 AS a43 WHERE a43.c22 > 100 GROUP BY a43.c21 ORDER BY 18446744073
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT c3 COLLATE hex FROM v0 AS a5 ORDER BY 100; 
+CREATE VIEW v6 AS WITH v7 ( c11 ) AS ( WITH v7 AS ( SELECT ( SELECT min ( c11 ) OVER ( ORDER BY 100 IN v7 ) ORDER BY 100 ) FROM v7 AS a12 GROUP BY c2 ORDER BY 100 ) SELECT 100 ORDER BY 100 ) SELECT * FROM v7 AS a8, v7 AS a9 NATURAL JOIN v7 AS a10 ORDER BY 100; 
+; 
+; 
+CREATE TABLE v15 ( c16 INTEGER PRIMARY KEY, c17, c18 UNIQUE ); 
+; 
+CREATE TABLE v20 ( c21, c22, c23 ); 
+CREATE TABLE v24 ( c25 UNIQUE ON CONFLICT FAIL ); 
+ALTER TABLE v20 DROP COLUMN c21; 
+ALTER TABLE v15 DROP COLUMN c18; 
+CREATE VIRTUAL TABLE v26 USING fts5 ( c27, c28 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v6 ( c32 ) AS ( SELECT 8 ORDER BY 0 ) SELECT * FROM v15 AS a31 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v26 AS a33 ORDER BY count ( ( NOT ( a33.c18 IS NULL ) ) AND ( NOT ( a33.c18 IS NULL ) ) ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v6 AS a34, v15 AS a35 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT abs ( a37.c1 ), a37.c2 FROM v15 AS a36 RIGHT JOIN v0 AS a37 ON a37.c1 = y ( a36.c18 ) WHERE ( a37.c3 + 18446744073709551615 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c1, count ( c25 ) WHERE c2 ORDER BY ( ( c25 + - 100 ) % 0 ) != 18446744073709551615 + 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a38.c23 ) FROM v20 AS a38 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v24 AS a39 WHERE a39.c25 = a39.c25 > 0 GROUP BY x'616263', 'x', a39.c25 = + a39.c25 HAVING count ( * ) >= 18446744073709551615 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v24 AS a40 NATURAL JOIN v20 AS a41 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v15 AS a42 WHERE a42.c17 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c22, sum ( a43.c23 ) AS y FROM v20 AS a43 WHERE a43.c22 > 100 GROUP BY a43.c21 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 11: cannot drop UNIQUE column: "c18"
+Runtime error near line 12: no such module: fts5
+BEGIN VERI 0
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: no such table: v26
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: a37.c1
+  SELECT abs ( a37.c1 ), a37.c2 FROM v15 AS a36 RIGHT JOIN v0 AS a37 ON a37.c1 =
+               ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: no such column: c1
+  SELECT c1, count ( c25 ) WHERE c2 ORDER BY ( ( c25 + - 100 ) % 0 ) != 18446744
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: no such column: a43.c21
+  AS y FROM v20 AS a43 WHERE a43.c22 > 100 GROUP BY a43.c21 ORDER BY 18446744073
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 17: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: no such table: v26
+ 
+INT: 0 
+Str: 
+Parse error near line 20: no such table: v26
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 26: no such function: y
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no such column: a37.c1
+  SELECT abs ( a37.c1 ), a37.c2 FROM v15 AS a36 RIGHT JOIN v0 AS a37 ON a37.c1 =
+               ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: no such column: c1
+  SELECT c1, count ( c25 ) WHERE c2 ORDER BY ( ( c25 + - 100 ) % 0 ) != 18446744
+         ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 29: no such column: c1
+  SELECT c1, count ( c25 ) WHERE c2 ORDER BY ( ( c25 + - 100 ) % 0 ) != 18446744
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: no such column: a43.c21
+  AS y FROM v20 AS a43 WHERE a43.c22 > 100 GROUP BY a43.c21 ORDER BY 18446744073
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 44: no such column: a43.c21
+  AS y FROM v20 AS a43 WHERE a43.c22 > 100 GROUP BY a43.c21 ORDER BY 18446744073
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

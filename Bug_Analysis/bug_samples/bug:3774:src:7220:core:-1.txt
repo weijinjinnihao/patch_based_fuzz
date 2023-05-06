@@ -1,0 +1,302 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8 UNIQUE ON CONFLICT FAIL, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42 PRIMARY KEY ON CONFLICT FAIL, CHECK( ( ( c2 + 8 ) % 8 ) != 18446744073709551488 ) ) WITHOUT ROWID; 
+CREATE INDEX i43 ON v0 ( c9 ); 
+CREATE INDEX i44 ON v0 ( c13 ); 
+CREATE INDEX i45 ON v0 ( c18 ); 
+ALTER TABLE v0 DROP c13; 
+CREATE INDEX i46 ON v0 ( c26 ); 
+CREATE INDEX i47 ON v0 ( c30 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 ORDER BY max ( a48.c26 + a48.c4 * 9.900000 ) + 18446744073709551488, min ( a48.c12, avg ( a48.c26 ) ) + NULL >= 9.900000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a49.c17, max ( a49.c24 || a49.c22 ) FROM v0 AS a49 ORDER BY 9.900000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 9.900000 ), ( 8 ) ORDER BY 9.900000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 ORDER BY 9.900000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a51, v0 AS a52 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 9.900000 IN ( SELECT a53.c38, a53.c15 FROM v0 AS a53 ORDER BY 2147483647 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a54 WHERE ( a54.c18 = 18446744073709551488 OR a54.c4 = ( 4294967295, count ( * ) ) != 4294967295 ) AND a54.c30 IN ( SELECT * FROM v0 AS a55 WHERE ( CASE WHEN a54.c16 != 'v0' THEN 18446744073709551488 ELSE 18446744073709551488 END ) ORDER BY 18446744073709551488 ) GROUP BY a54.c32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a56 GROUP BY a56.c10 HAVING count ( * ) >= 8 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a57 NATURAL JOIN v0 AS a58 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a59 WHERE a59.c6 > a59.c13 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: error in index i44 after drop column: no such column: c13
+BEGIN VERI 0
+Parse error near line 9: misuse of aggregate: avg()
+  9.900000 ) + 18446744073709551488, min ( a48.c12, avg ( a48.c26 ) ) + NULL >= 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: near "ORDER": syntax error
+  VALUES ( 9.900000 ), ( 8 ) ORDER BY 9.900000; 
+               error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 84
+  SELECT * FROM v0 AS a51, v0 AS a52 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+  ( SELECT a53.c38, a53.c15 FROM v0 AS a53 ORDER BY 2147483647 ) ORDER BY 184467
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: row value misused
+   AS a54 WHERE ( a54.c18 = 18446744073709551488 OR a54.c4 = ( 4294967295, count
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 42
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8 UNIQUE ON CONFLICT FAIL, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42 PRIMARY KEY ON CONFLICT FAIL, CHECK( ( ( c2 + 8 ) % 8 ) != 18446744073709551488 ) ) WITHOUT ROWID; 
+; 
+; 
+; 
+ALTER TABLE v0 DROP c13; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a48 ORDER BY max ( a48.c26 + a48.c4 * 9.900000 ) + 18446744073709551488, min ( a48.c12, avg ( a48.c26 ) ) + NULL >= 9.900000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a49.c17, max ( a49.c24 || a49.c22 ) FROM v0 AS a49 ORDER BY 9.900000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( 9.900000 ), ( 8 ) ORDER BY 9.900000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50 ORDER BY 9.900000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a51, v0 AS a52 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 9.900000 IN ( SELECT a53.c38, a53.c15 FROM v0 AS a53 ORDER BY 2147483647 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a54 WHERE ( a54.c18 = 18446744073709551488 OR a54.c4 = ( 4294967295, count ( * ) ) != 4294967295 ) AND a54.c30 IN ( SELECT * FROM v0 AS a55 WHERE ( CASE WHEN a54.c16 != 'v0' THEN 18446744073709551488 ELSE 18446744073709551488 END ) ORDER BY 18446744073709551488 ) GROUP BY a54.c32 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a56 GROUP BY a56.c10 HAVING count ( * ) >= 8 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a57 NATURAL JOIN v0 AS a58 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a59 WHERE a59.c6 > a59.c13 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 9: misuse of aggregate: avg()
+  9.900000 ) + 18446744073709551488, min ( a48.c12, avg ( a48.c26 ) ) + NULL >= 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 15: near "ORDER": syntax error
+  VALUES ( 9.900000 ), ( 8 ) ORDER BY 9.900000; 
+               error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 82
+  SELECT * FROM v0 AS a51, v0 AS a52 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+  ( SELECT a53.c38, a53.c15 FROM v0 AS a53 ORDER BY 2147483647 ) ORDER BY 184467
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: row value misused
+   AS a54 WHERE ( a54.c18 = 18446744073709551488 OR a54.c4 = ( 4294967295, count
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such column: a59.c13
+  SELECT * FROM v0 AS a59 WHERE a59.c6 > a59.c13 ORDER BY 127; 
+                           error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 9: misuse of aggregate: avg()
+  9.900000 ) + 18446744073709551488, min ( a48.c12, avg ( a48.c26 ) ) + NULL >= 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 9: misuse of aggregate: avg()
+  9.900000 ) + 18446744073709551488, min ( a48.c12, avg ( a48.c26 ) ) + NULL >= 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+|
+ 
+INT: 0 
+Str: 
+|
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 55050928
+Str: 
+Parse error near line 15: near "ORDER": syntax error
+  VALUES ( 9.900000 ), ( 8 ) ORDER BY 9.900000; 
+               error here ---^
+ 
+Str: 
+Parse error near line 15: near "ORDER": syntax error
+  VALUES ( 9.900000 ), ( 8 ) ORDER BY 9.900000; 
+               error here ---^
+ 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 84
+  SELECT * FROM v0 AS a51, v0 AS a52 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 21: 1st ORDER BY term out of range - should be between 1 and 82
+  SELECT * FROM v0 AS a51, v0 AS a52 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+  ( SELECT a53.c38, a53.c15 FROM v0 AS a53 ORDER BY 2147483647 ) ORDER BY 184467
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 2
+  ( SELECT a53.c38, a53.c15 FROM v0 AS a53 ORDER BY 2147483647 ) ORDER BY 184467
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: row value misused
+   AS a54 WHERE ( a54.c18 = 18446744073709551488 OR a54.c4 = ( 4294967295, count
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: row value misused
+   AS a54 WHERE ( a54.c18 = 18446744073709551488 OR a54.c4 = ( 4294967295, count
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 42
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such column: a59.c13
+  SELECT * FROM v0 AS a59 WHERE a59.c6 > a59.c13 ORDER BY 127; 
+                           error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

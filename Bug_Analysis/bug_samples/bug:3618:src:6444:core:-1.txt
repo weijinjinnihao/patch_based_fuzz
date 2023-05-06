@@ -1,0 +1,309 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 DEFAULT 'v0', c2, c3 AS( c3 + c4 - c3 ) REFERENCES fts5, c4 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 1.250000; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9, c10 UNIQUE ); 
+CREATE INDEX i11 ON v5 ( c1 ); 
+CREATE INDEX i12 ON v0 ( c1 ); 
+CREATE TABLE v13 ( c14, c15, c16 ); 
+ALTER TABLE v5 DROP COLUMN c2; 
+ALTER TABLE v5 DROP COLUMN c2; 
+CREATE VIRTUAL TABLE v17 USING fts5 ( c18, c19 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i20 ON v13 ( c14 ); 
+CREATE INDEX i21 ON v0 ( c1 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a22 ORDER BY ( ( hex ( 1.250000 ) ) % 1.250000 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v23 ( c26 ) AS ( SELECT 1.250000 ORDER BY 1.250000 ) SELECT c26, c26 FROM v23 AS a24 RIGHT JOIN v23 AS a25 ON c26 = c26 y ORDER BY 1.250000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a27 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v28 ( c29 ) AS ( WITH v30 ( c31, c32, c33, c34, c35, c36 ) AS ( SELECT 0 y ORDER BY 8 ) SELECT 8 ORDER BY 1.250000 ) SELECT 8 AS y, 8 AS y ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a37 WHERE a37.c3 = CASE WHEN a37.c1 != 'v1' THEN 1.250000 ELSE 8 END > 1.250000 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a38 WHERE a38.c14 = - 0 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 1.250000 IN ( SELECT * FROM v13 AS a41 ORDER BY 8 ) FROM v17 AS a39 NATURAL JOIN v0 AS a40 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c3, count ( a42.c2 ) FROM v0 AS a42, v5 AS a43 WHERE a43.c1 = a42.c1 GROUP BY a43.c1 ORDER BY a43.c3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a45.c2 ), a45.c3 FROM v17 AS a44 LEFT JOIN v0 AS a45 ON a44.c19 = a44.c18 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a46 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: views may not be indexed
+Parse error near line 7: cannot drop column from view "v5"
+Parse error near line 8: cannot drop column from view "v5"
+Runtime error near line 9: no such module: fts5
+Runtime error near line 10: error in index i12 after drop column: no such column: c1
+BEGIN VERI 0
+Parse error near line 14: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: near "y": syntax error
+  ROM v23 AS a24 RIGHT JOIN v23 AS a25 ON c26 = c26 y ORDER BY 1.250000; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: generated column loop on "c3"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 4
+  'v1' THEN 1.250000 ELSE 8 END > 1.250000 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: generated column loop on "c3"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 DEFAULT 'v0', c2, c3 AS( c3 + c4 - c3 ) REFERENCES fts5, c4 ); 
+CREATE VIEW v5 AS SELECT * FROM v0 AS a6 ORDER BY 1.250000; 
+CREATE TABLE v7 ( c8 INTEGER PRIMARY KEY, c9, c10 UNIQUE ); 
+; 
+; 
+CREATE TABLE v13 ( c14, c15, c16 ); 
+ALTER TABLE v5 DROP COLUMN c2; 
+ALTER TABLE v5 DROP COLUMN c2; 
+CREATE VIRTUAL TABLE v17 USING fts5 ( c18, c19 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v17 AS a22 ORDER BY ( ( hex ( 1.250000 ) ) % 1.250000 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v23 ( c26 ) AS ( SELECT 1.250000 ORDER BY 1.250000 ) SELECT c26, c26 FROM v23 AS a24 RIGHT JOIN v23 AS a25 ON c26 = c26 y ORDER BY 1.250000; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a27 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v28 ( c29 ) AS ( WITH v30 ( c31, c32, c33, c34, c35, c36 ) AS ( SELECT 0 y ORDER BY 8 ) SELECT 8 ORDER BY 1.250000 ) SELECT 8 AS y, 8 AS y ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a37 WHERE a37.c3 = CASE WHEN a37.c1 != 'v1' THEN 1.250000 ELSE 8 END > 1.250000 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v13 AS a38 WHERE a38.c14 = - 0 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 1.250000 IN ( SELECT * FROM v13 AS a41 ORDER BY 8 ) FROM v17 AS a39 NATURAL JOIN v0 AS a40 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a43.c3, count ( a42.c2 ) FROM v0 AS a42, v5 AS a43 WHERE a43.c1 = a42.c1 GROUP BY a43.c1 ORDER BY a43.c3; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a45.c2 ), a45.c3 FROM v17 AS a44 LEFT JOIN v0 AS a45 ON a44.c19 = a44.c18 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a46 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: cannot drop column from view "v5"
+Parse error near line 8: cannot drop column from view "v5"
+Runtime error near line 9: no such module: fts5
+BEGIN VERI 0
+Parse error near line 14: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: near "y": syntax error
+  ROM v23 AS a24 RIGHT JOIN v23 AS a25 ON c26 = c26 y ORDER BY 1.250000; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: generated column loop on "c3"
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no such column: a37.c1
+  SELECT * FROM v5 AS a37 WHERE a37.c3 = CASE WHEN a37.c1 != 'v1' THEN 1.250000 
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a43.c1
+   count ( a42.c2 ) FROM v0 AS a42, v5 AS a43 WHERE a43.c1 = a42.c1 GROUP BY a43
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no such table: v17
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 14: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: near "y": syntax error
+  ROM v23 AS a24 RIGHT JOIN v23 AS a25 ON c26 = c26 y ORDER BY 1.250000; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 17: near "y": syntax error
+  ROM v23 AS a24 RIGHT JOIN v23 AS a25 ON c26 = c26 y ORDER BY 1.250000; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: generated column loop on "c3"
+ 
+INT: 0 
+Str: 
+Parse error near line 20: generated column loop on "c3"
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 23: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 4
+  'v1' THEN 1.250000 ELSE 8 END > 1.250000 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 26: no such column: a37.c1
+  SELECT * FROM v5 AS a37 WHERE a37.c3 = CASE WHEN a37.c1 != 'v1' THEN 1.250000 
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 29: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 32: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 35: generated column loop on "c3"
+ 
+INT: 0 
+Str: 
+Parse error near line 35: no such column: a43.c1
+   count ( a42.c2 ) FROM v0 AS a42, v5 AS a43 WHERE a43.c1 = a42.c1 GROUP BY a43
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no such table: v17
+ 
+INT: 0 
+Str: 
+Parse error near line 38: no such table: v17
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

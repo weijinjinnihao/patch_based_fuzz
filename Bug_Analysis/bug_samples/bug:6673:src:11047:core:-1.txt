@@ -1,0 +1,306 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS WITH v0 ( c8 ) AS ( WITH v0 AS ( SELECT ( SELECT min ( c8 ) OVER ( ORDER BY c2 || c1 || c8 ) ORDER BY 18446744073709551615 ) FROM v0 AS a9 GROUP BY c8 ORDER BY 18446744073709551615 ) SELECT 4294967295 ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a5, v0 AS a6 NATURAL JOIN v0 AS a7 ORDER BY 18446744073709551615; 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12, c13 UNIQUE ); 
+CREATE INDEX i14 ON v4 ( c9 ); 
+CREATE INDEX i15 ON v4 ( y ); 
+CREATE TABLE v16 ( c17, c18, c19 ); 
+ALTER TABLE v16 DROP COLUMN c19; 
+CREATE INDEX i20 ON v10 ( c12 ); 
+CREATE INDEX i21 ON v10 ( c13 ); 
+ALTER TABLE v16 DROP COLUMN c19; 
+CREATE VIRTUAL TABLE v22 USING fts5 ( c23, c24 ); 
+CREATE INDEX i25 ON v10 ( c12 ); 
+ALTER TABLE v10 DROP COLUMN c12; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY ( a26.c2 || a26.c2 || a26.c2 ) != 'goodbye'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a27 WHERE a27.c24 != a27.c24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( NULL, 'aaa' ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a28, v0 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c24, count ( a31.c23 ) FROM v22 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a32 WHERE a32.c12 = - 0 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v33 AS ( WITH v33 AS ( SELECT 255 y ORDER BY 18446744073709551615 ) SELECT avg ( c2 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551615 ) SELECT * FROM v33 AS a34 WHERE ( c24 = 4294967295 OR c2 = 10 ) AND c17 IN ( SELECT c1 FROM ( SELECT *, 'v0' FROM v33 AS a37 LEFT JOIN v33 AS a38 ON c17 = 0 AND c1 = 18446744073709551488 ORDER BY 18446744073709551488 ) AS y, v33 AS a35 NATURAL JOIN v33 AS a36 WHERE y = 18446744073709551615 ORDER BY 127 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c23 FROM v22 AS a39 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a40, v0 AS a41 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a42 WHERE a42.c19 < a42.c19 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: views may not be indexed
+Parse error near line 5: views may not be indexed
+Parse error near line 10: no such column: "c19"
+  ALTER TABLE v16 DROP COLUMN c19; 
+                error here ---^
+Runtime error near line 11: no such module: fts5
+Runtime error near line 13: error in index i20 after drop column: no such column: c12
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: near "ORDER": syntax error
+  VALUES ( NULL, 'aaa' ) ORDER BY 18446744073709551615; 
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v22
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a42.c19
+  SELECT * FROM v16 AS a42 WHERE a42.c19 < a42.c19 ORDER BY 127; 
+                   error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS WITH v0 ( c8 ) AS ( WITH v0 AS ( SELECT ( SELECT min ( c8 ) OVER ( ORDER BY c2 || c1 || c8 ) ORDER BY 18446744073709551615 ) FROM v0 AS a9 GROUP BY c8 ORDER BY 18446744073709551615 ) SELECT 4294967295 ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a5, v0 AS a6 NATURAL JOIN v0 AS a7 ORDER BY 18446744073709551615; 
+CREATE TABLE v10 ( c11 INTEGER PRIMARY KEY, c12, c13 UNIQUE ); 
+; 
+; 
+CREATE TABLE v16 ( c17, c18, c19 ); 
+ALTER TABLE v16 DROP COLUMN c19; 
+; 
+; 
+ALTER TABLE v16 DROP COLUMN c19; 
+CREATE VIRTUAL TABLE v22 USING fts5 ( c23, c24 ); 
+; 
+ALTER TABLE v10 DROP COLUMN c12; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY ( a26.c2 || a26.c2 || a26.c2 ) != 'goodbye'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a27 WHERE a27.c24 != a27.c24 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+VALUES ( NULL, 'aaa' ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v22 AS a28, v0 AS a29 NATURAL JOIN v0 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a31.c24, count ( a31.c23 ) FROM v22 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a32 WHERE a32.c12 = - 0 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v33 AS ( WITH v33 AS ( SELECT 255 y ORDER BY 18446744073709551615 ) SELECT avg ( c2 ) FROM ( SELECT * ORDER BY x'616263' ) AS y ORDER BY 18446744073709551615 ) SELECT * FROM v33 AS a34 WHERE ( c24 = 4294967295 OR c2 = 10 ) AND c17 IN ( SELECT c1 FROM ( SELECT *, 'v0' FROM v33 AS a37 LEFT JOIN v33 AS a38 ON c17 = 0 AND c1 = 18446744073709551488 ORDER BY 18446744073709551488 ) AS y, v33 AS a35 NATURAL JOIN v33 AS a36 WHERE y = 18446744073709551615 ORDER BY 127 ) ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a39.c23 FROM v22 AS a39 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a40, v0 AS a41 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a42 WHERE a42.c19 < a42.c19 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: no such column: "c19"
+  ALTER TABLE v16 DROP COLUMN c19; 
+                error here ---^
+Runtime error near line 11: no such module: fts5
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such table: v22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: near "ORDER": syntax error
+  VALUES ( NULL, 'aaa' ) ORDER BY 18446744073709551615; 
+                         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such table: v22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a32.c12
+  SELECT * FROM v10 AS a32 WHERE a32.c12 = - 0 ORDER BY 18446744073709551615; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no such table: v22
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a42.c19
+  SELECT * FROM v16 AS a42 WHERE a42.c19 < a42.c19 ORDER BY 127; 
+                   error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: no such table: v22
+ 
+INT: 0 
+Str: 
+Parse error near line 18: no such table: v22
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 54338800
+Str: 
+Parse error near line 21: near "ORDER": syntax error
+  VALUES ( NULL, 'aaa' ) ORDER BY 18446744073709551615; 
+                         ^--- error here
+ 
+Str: 
+Parse error near line 21: near "ORDER": syntax error
+  VALUES ( NULL, 'aaa' ) ORDER BY 18446744073709551615; 
+                         ^--- error here
+ 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v22
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v22
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: no such table: v22
+ 
+INT: 0 
+Str: 
+Parse error near line 27: no such table: v22
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 30: no such column: a32.c12
+  SELECT * FROM v10 AS a32 WHERE a32.c12 = - 0 ORDER BY 18446744073709551615; 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no such table: v22
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no such table: v22
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 5
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no such column: a42.c19
+  SELECT * FROM v16 AS a42 WHERE a42.c19 < a42.c19 ORDER BY 127; 
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 42: no such column: a42.c19
+  SELECT * FROM v16 AS a42 WHERE a42.c19 < a42.c19 ORDER BY 127; 
+                   error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

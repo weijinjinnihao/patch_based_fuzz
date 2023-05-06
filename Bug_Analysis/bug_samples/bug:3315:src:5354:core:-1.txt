@@ -1,0 +1,725 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( x'616263', 'v0', 'v1' ); 
+INSERT INTO v0 VALUES ( 4294967295, 'v0', 'v0' ); 
+INSERT INTO v0 VALUES ( 'v0', count ( ( NOT ( c3 IS NULL ) ) AND ( NOT ( c2 IS NULL ) ) ), 'v1' ); 
+INSERT INTO v0 VALUES ( '10000 500', 'v1', 'x' ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+INSERT INTO v0 VALUES ( x'616263', 'v0', 'x' ); 
+CREATE TABLE v5 ( c6, c7, c8 COLLATE NOCASE ); 
+CREATE INDEX i9 ON v5 ( c7 ); 
+INSERT INTO v0 VALUES ( NULL, 'v0', 'x' ); 
+INSERT INTO v5 VALUES ( 'jim', 'v0', 'ab*' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'Al', 'x' ); 
+INSERT INTO v5 VALUES ( 4294967295, 'text', 'x' ); 
+ALTER TABLE v0 DROP c1; 
+INSERT INTO v5 VALUES ( - 4294967295, 'v1', 'v1' ); 
+CREATE INDEX i10 ON v5 ( c8 ); 
+CREATE TABLE v11 ( c12, c13, c14 COLLATE NOCASE ); 
+INSERT INTO v11 SELECT * FROM v11 AS a15 ORDER BY c12 COLLATE NOCASE; 
+INSERT INTO v0 SELECT * FROM v5 AS a16 ORDER BY 4294967295; 
+CREATE INDEX i17 ON v5 ( c6 ); 
+INSERT INTO v0 SELECT * FROM v5 AS a18 ORDER BY 4294967295; 
+INSERT INTO v11 SELECT * FROM v5 AS a19 ORDER BY 4294967295; 
+INSERT INTO v11 SELECT * FROM v11 AS a20 ORDER BY 4294967295; 
+INSERT INTO v0 SELECT * FROM v11 AS a21 ORDER BY 4294967295; 
+CREATE INDEX i22 ON v11 ( c14 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c13, a23.c3 FROM v0 AS a23 RIGHT JOIN v11 AS a24 ON a23.c1 = a23.c1 GROUP BY a23.c3 HAVING count ( * ) >= 4294967295 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c13, a25.c14 FROM v11 AS a25 RIGHT JOIN v11 AS a26 ON a26.c12 = a26.c14 WHERE a26.c12 != a26.c14 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a27, v0 AS a28 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a29, v11 AS a30 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a31 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a32 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a33.c3 ) FROM v0 AS a33 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a34 ORDER BY ( 2147483647, count ( * ) ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: misuse of aggregate function count()
+  INSERT INTO v0 VALUES ( 'v0', count ( ( NOT ( c3 IS NULL ) ) AND ( NOT ( c2 IS
+                  error here ---^
+Runtime error near line 14: error in index i4 after drop column: no such column: c1
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+v0|
+text|
+v1|
+v0|
+text|
+v1|
+END VERI 0
+BEGIN VERI 0
+jim|v0|ab*|abc|v0|v1
+jim|v0|ab*|4294967295|v0|v0
+jim|v0|ab*|10000 500|v1|x
+jim|v0|ab*|abc|v0|x
+jim|v0|ab*||v0|x
+jim|v0|ab*|hare|Al|x
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+4294967295|text|x|abc|v0|v1
+4294967295|text|x|4294967295|v0|v0
+4294967295|text|x|10000 500|v1|x
+4294967295|text|x|abc|v0|x
+4294967295|text|x||v0|x
+4294967295|text|x|hare|Al|x
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+-4294967295|v1|v1|abc|v0|v1
+-4294967295|v1|v1|4294967295|v0|v0
+-4294967295|v1|v1|10000 500|v1|x
+-4294967295|v1|v1|abc|v0|x
+-4294967295|v1|v1||v0|x
+-4294967295|v1|v1|hare|Al|x
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+jim|v0|ab*|abc|v0|v1
+jim|v0|ab*|4294967295|v0|v0
+jim|v0|ab*|10000 500|v1|x
+jim|v0|ab*|abc|v0|x
+jim|v0|ab*||v0|x
+jim|v0|ab*|hare|Al|x
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+4294967295|text|x|abc|v0|v1
+4294967295|text|x|4294967295|v0|v0
+4294967295|text|x|10000 500|v1|x
+4294967295|text|x|abc|v0|x
+4294967295|text|x||v0|x
+4294967295|text|x|hare|Al|x
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+-4294967295|v1|v1|abc|v0|v1
+-4294967295|v1|v1|4294967295|v0|v0
+-4294967295|v1|v1|10000 500|v1|x
+-4294967295|v1|v1|abc|v0|x
+-4294967295|v1|v1||v0|x
+-4294967295|v1|v1|hare|Al|x
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no tables specified
+END VERI 0
+BEGIN VERI 0
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+BEGIN VERI 0
+jim|v0|ab*
+4294967295|text|x
+-4294967295|v1|v1
+jim|v0|ab*
+4294967295|text|x
+-4294967295|v1|v1
+END VERI 0
+BEGIN VERI 0
+jim|v0|ab*
+4294967295|text|x
+-4294967295|v1|v1
+jim|v0|ab*
+4294967295|text|x
+-4294967295|v1|v1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 51: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 54: row value misused
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 COLLATE NOCASE ); 
+INSERT INTO v0 VALUES ( x'616263', 'v0', 'v1' ); 
+INSERT INTO v0 VALUES ( 4294967295, 'v0', 'v0' ); 
+INSERT INTO v0 VALUES ( 'v0', count ( ( NOT ( c3 IS NULL ) ) AND ( NOT ( c2 IS NULL ) ) ), 'v1' ); 
+INSERT INTO v0 VALUES ( '10000 500', 'v1', 'x' ); 
+; 
+INSERT INTO v0 VALUES ( x'616263', 'v0', 'x' ); 
+CREATE TABLE v5 ( c6, c7, c8 COLLATE NOCASE ); 
+; 
+INSERT INTO v0 VALUES ( NULL, 'v0', 'x' ); 
+INSERT INTO v5 VALUES ( 'jim', 'v0', 'ab*' ); 
+INSERT INTO v0 VALUES ( x'68617265', 'Al', 'x' ); 
+INSERT INTO v5 VALUES ( 4294967295, 'text', 'x' ); 
+ALTER TABLE v0 DROP c1; 
+INSERT INTO v5 VALUES ( - 4294967295, 'v1', 'v1' ); 
+; 
+CREATE TABLE v11 ( c12, c13, c14 COLLATE NOCASE ); 
+INSERT INTO v11 SELECT * FROM v11 AS a15 ORDER BY c12 COLLATE NOCASE; 
+INSERT INTO v0 SELECT * FROM v5 AS a16 ORDER BY 4294967295; 
+; 
+INSERT INTO v0 SELECT * FROM v5 AS a18 ORDER BY 4294967295; 
+INSERT INTO v11 SELECT * FROM v5 AS a19 ORDER BY 4294967295; 
+INSERT INTO v11 SELECT * FROM v11 AS a20 ORDER BY 4294967295; 
+INSERT INTO v0 SELECT * FROM v11 AS a21 ORDER BY 4294967295; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a24.c13, a23.c3 FROM v0 AS a23 RIGHT JOIN v11 AS a24 ON a23.c1 = a23.c1 GROUP BY a23.c3 HAVING count ( * ) >= 4294967295 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a26.c13, a25.c14 FROM v11 AS a25 RIGHT JOIN v11 AS a26 ON a26.c12 = a26.c14 WHERE a26.c12 != a26.c14 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a27, v0 AS a28 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a29, v11 AS a30 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a31 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a32 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a33.c3 ) FROM v0 AS a33 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a34 ORDER BY ( 2147483647, count ( * ) ); 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: misuse of aggregate function count()
+  INSERT INTO v0 VALUES ( 'v0', count ( ( NOT ( c3 IS NULL ) ) AND ( NOT ( c2 IS
+                  error here ---^
+Parse error near line 19: table v0 has 2 columns but 3 values were supplied
+Parse error near line 21: table v0 has 2 columns but 3 values were supplied
+Parse error near line 24: table v0 has 2 columns but 3 values were supplied
+BEGIN VERI 0
+Parse error near line 27: no such column: a23.c1
+END VERI 0
+BEGIN VERI 0
+v0|
+text|
+v1|
+v0|
+text|
+v1|
+END VERI 0
+BEGIN VERI 0
+jim|v0|ab*|v0|v1
+jim|v0|ab*|v0|v0
+jim|v0|ab*|v1|x
+jim|v0|ab*|v0|x
+jim|v0|ab*|v0|x
+jim|v0|ab*|Al|x
+4294967295|text|x|v0|v1
+4294967295|text|x|v0|v0
+4294967295|text|x|v1|x
+4294967295|text|x|v0|x
+4294967295|text|x|v0|x
+4294967295|text|x|Al|x
+-4294967295|v1|v1|v0|v1
+-4294967295|v1|v1|v0|v0
+-4294967295|v1|v1|v1|x
+-4294967295|v1|v1|v0|x
+-4294967295|v1|v1|v0|x
+-4294967295|v1|v1|Al|x
+jim|v0|ab*|v0|v1
+jim|v0|ab*|v0|v0
+jim|v0|ab*|v1|x
+jim|v0|ab*|v0|x
+jim|v0|ab*|v0|x
+jim|v0|ab*|Al|x
+4294967295|text|x|v0|v1
+4294967295|text|x|v0|v0
+4294967295|text|x|v1|x
+4294967295|text|x|v0|x
+4294967295|text|x|v0|x
+4294967295|text|x|Al|x
+-4294967295|v1|v1|v0|v1
+-4294967295|v1|v1|v0|v0
+-4294967295|v1|v1|v1|x
+-4294967295|v1|v1|v0|x
+-4294967295|v1|v1|v0|x
+-4294967295|v1|v1|Al|x
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: no tables specified
+END VERI 0
+BEGIN VERI 0
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no tables specified
+END VERI 0
+BEGIN VERI 0
+jim|v0|ab*
+4294967295|text|x
+-4294967295|v1|v1
+jim|v0|ab*
+4294967295|text|x
+-4294967295|v1|v1
+END VERI 0
+BEGIN VERI 0
+jim|v0|ab*
+4294967295|text|x
+-4294967295|v1|v1
+jim|v0|ab*
+4294967295|text|x
+-4294967295|v1|v1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 51: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 54: row value misused
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 27: no such column: a23.c1
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+v0|
+text|
+v1|
+v0|
+text|
+v1|
+ 
+INT: 5 
+Str: 
+v0|
+text|
+v1|
+v0|
+text|
+v1|
+ 
+INT: 5 
+
+
+Result NUM: 2 
+RESULT FLAGS: -1
+Str: 
+jim|v0|ab*|abc|v0|v1
+jim|v0|ab*|4294967295|v0|v0
+jim|v0|ab*|10000 500|v1|x
+jim|v0|ab*|abc|v0|x
+jim|v0|ab*||v0|x
+jim|v0|ab*|hare|Al|x
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+4294967295|text|x|abc|v0|v1
+4294967295|text|x|4294967295|v0|v0
+4294967295|text|x|10000 500|v1|x
+4294967295|text|x|abc|v0|x
+4294967295|text|x||v0|x
+4294967295|text|x|hare|Al|x
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+-4294967295|v1|v1|abc|v0|v1
+-4294967295|v1|v1|4294967295|v0|v0
+-4294967295|v1|v1|10000 500|v1|x
+-4294967295|v1|v1|abc|v0|x
+-4294967295|v1|v1||v0|x
+-4294967295|v1|v1|hare|Al|x
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+jim|v0|ab*|abc|v0|v1
+jim|v0|ab*|4294967295|v0|v0
+jim|v0|ab*|10000 500|v1|x
+jim|v0|ab*|abc|v0|x
+jim|v0|ab*||v0|x
+jim|v0|ab*|hare|Al|x
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+4294967295|text|x|abc|v0|v1
+4294967295|text|x|4294967295|v0|v0
+4294967295|text|x|10000 500|v1|x
+4294967295|text|x|abc|v0|x
+4294967295|text|x||v0|x
+4294967295|text|x|hare|Al|x
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+-4294967295|v1|v1|abc|v0|v1
+-4294967295|v1|v1|4294967295|v0|v0
+-4294967295|v1|v1|10000 500|v1|x
+-4294967295|v1|v1|abc|v0|x
+-4294967295|v1|v1||v0|x
+-4294967295|v1|v1|hare|Al|x
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+ 
+Str: 
+jim|v0|ab*|v0|v1
+jim|v0|ab*|v0|v0
+jim|v0|ab*|v1|x
+jim|v0|ab*|v0|x
+jim|v0|ab*|v0|x
+jim|v0|ab*|Al|x
+4294967295|text|x|v0|v1
+4294967295|text|x|v0|v0
+4294967295|text|x|v1|x
+4294967295|text|x|v0|x
+4294967295|text|x|v0|x
+4294967295|text|x|Al|x
+-4294967295|v1|v1|v0|v1
+-4294967295|v1|v1|v0|v0
+-4294967295|v1|v1|v1|x
+-4294967295|v1|v1|v0|x
+-4294967295|v1|v1|v0|x
+-4294967295|v1|v1|Al|x
+jim|v0|ab*|v0|v1
+jim|v0|ab*|v0|v0
+jim|v0|ab*|v1|x
+jim|v0|ab*|v0|x
+jim|v0|ab*|v0|x
+jim|v0|ab*|Al|x
+4294967295|text|x|v0|v1
+4294967295|text|x|v0|v0
+4294967295|text|x|v1|x
+4294967295|text|x|v0|x
+4294967295|text|x|v0|x
+4294967295|text|x|Al|x
+-4294967295|v1|v1|v0|v1
+-4294967295|v1|v1|v0|v0
+-4294967295|v1|v1|v1|x
+-4294967295|v1|v1|v0|x
+-4294967295|v1|v1|v0|x
+-4294967295|v1|v1|Al|x
+ 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 36: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+ 
+INT: 17 
+Str: 
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+jim|v0|ab*|jim|v0|ab*
+jim|v0|ab*|4294967295|text|x
+jim|v0|ab*|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+4294967295|text|x|jim|v0|ab*
+4294967295|text|x|4294967295|text|x
+4294967295|text|x|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+-4294967295|v1|v1|jim|v0|ab*
+-4294967295|v1|v1|4294967295|text|x
+-4294967295|v1|v1|-4294967295|v1|v1
+ 
+INT: 17 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+jim|v0|ab*
+4294967295|text|x
+-4294967295|v1|v1
+jim|v0|ab*
+4294967295|text|x
+-4294967295|v1|v1
+ 
+INT: 5 
+Str: 
+jim|v0|ab*
+4294967295|text|x
+-4294967295|v1|v1
+jim|v0|ab*
+4294967295|text|x
+-4294967295|v1|v1
+ 
+INT: 5 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+jim|v0|ab*
+4294967295|text|x
+-4294967295|v1|v1
+jim|v0|ab*
+4294967295|text|x
+-4294967295|v1|v1
+ 
+INT: 5 
+Str: 
+jim|v0|ab*
+4294967295|text|x
+-4294967295|v1|v1
+jim|v0|ab*
+4294967295|text|x
+-4294967295|v1|v1
+ 
+INT: 5 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 51: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 51: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 54: row value misused
+ 
+INT: 0 
+Str: 
+Parse error near line 54: row value misused
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

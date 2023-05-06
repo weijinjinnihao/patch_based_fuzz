@@ -1,0 +1,303 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709551488; 
+CREATE INDEX i6 ON v4 ( c1 ); 
+CREATE TABLE v7 ( c8 INTEGER REFERENCES t1 ( c8 ) ); 
+CREATE TABLE v9 ( c10, c11, c12 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE INDEX i13 ON v0 ( c2 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i14 ON v4 ( c3 ); 
+CREATE INDEX i15 ON v7 ( c8 ); 
+CREATE VIRTUAL TABLE v16 USING fts5 ( c17, c18 ); 
+CREATE INDEX i19 ON v4 ( c2 ); 
+ALTER TABLE v9 DROP COLUMN c11; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 GROUP BY a20.c3 HAVING automatic_index ( * ) >= 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v16 AS ( SELECT ( SELECT min ( a21.c2 ) OVER ( ORDER BY min ( v16.c18, avg ( v16.c18 ) ) + NULL >= 18446744073709551488 ) ORDER BY 18446744073709551488 ) FROM v4 AS a22 GROUP BY a21.c3 ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a21 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c2 FROM v4 AS a23 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a24 WHERE count ( * ) >= 8 = 'three-a' != a24.c18 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v25 ( c27 ) AS ( WITH v28 ( c29 ) AS ( WITH v28 ( c30 ) AS ( WITH v31 ( c32, c33, c34, c35, c36, c37 ) AS ( SELECT 16 y ORDER BY ( ( c36 + 18446744073709551488 ) % 16 ) < 18446744073709551488 ) SELECT 255 ORDER BY 18446744073709551488 ) SELECT 8 ORDER BY 18446744073709551488 ) SELECT 0 ORDER BY 8 ) SELECT * FROM v25 AS a26 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a38 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v7 AS a39 ), ( v9 AS a40 NATURAL JOIN v7 AS a41 ), v0 AS a42, ( v16 AS a43 NATURAL JOIN v16 AS a44 ) WHERE a44.c18 = a41.c8 + 18446744073709551488 AND a39.c8 = a42.c1 + 16 AND a44.c18 = a44.c18 + 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a45, v7 AS a46 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v47 ( c49 ) AS ( SELECT c49 + ( SELECT max ( c49 ) FROM v47 AS a53 ORDER BY 6 ), c49 + ( SELECT c49 FROM v47 AS a52 ORDER BY 255 ), c49 + ( SELECT max ( c49 ) FROM v47 AS a51 ORDER BY 18446744073709551615 ) FROM v47 AS a50 ORDER BY 18446744073709551488 ) SELECT * FROM v47 AS a48 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a54 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: views may not be indexed
+Runtime error near line 8: error in index i13 after drop column: no such column: c2
+Parse error near line 9: views may not be indexed
+Runtime error near line 11: no such module: fts5
+Parse error near line 12: views may not be indexed
+BEGIN VERI 0
+Parse error near line 15: no such function: automatic_index
+  SELECT * FROM v0 AS a20 GROUP BY a20.c3 HAVING automatic_index ( * ) >= 184467
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v16
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v16
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v4 AS a45, v7 AS a46 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: circular reference: v47
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 18446744073709551488; 
+; 
+CREATE TABLE v7 ( c8 INTEGER REFERENCES t1 ( c8 ) ); 
+CREATE TABLE v9 ( c10, c11, c12 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+; 
+CREATE VIRTUAL TABLE v16 USING fts5 ( c17, c18 ); 
+; 
+ALTER TABLE v9 DROP COLUMN c11; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 GROUP BY a20.c3 HAVING automatic_index ( * ) >= 18446744073709551488 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v16 AS ( SELECT ( SELECT min ( a21.c2 ) OVER ( ORDER BY min ( v16.c18, avg ( v16.c18 ) ) + NULL >= 18446744073709551488 ) ORDER BY 18446744073709551488 ) FROM v4 AS a22 GROUP BY a21.c3 ORDER BY 18446744073709551488 ) SELECT * FROM v0 AS a21 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c2 FROM v4 AS a23 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v16 AS a24 WHERE count ( * ) >= 8 = 'three-a' != a24.c18 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v25 ( c27 ) AS ( WITH v28 ( c29 ) AS ( WITH v28 ( c30 ) AS ( WITH v31 ( c32, c33, c34, c35, c36, c37 ) AS ( SELECT 16 y ORDER BY ( ( c36 + 18446744073709551488 ) % 16 ) < 18446744073709551488 ) SELECT 255 ORDER BY 18446744073709551488 ) SELECT 8 ORDER BY 18446744073709551488 ) SELECT 0 ORDER BY 8 ) SELECT * FROM v25 AS a26 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a38 ORDER BY 10; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( v7 AS a39 ), ( v9 AS a40 NATURAL JOIN v7 AS a41 ), v0 AS a42, ( v16 AS a43 NATURAL JOIN v16 AS a44 ) WHERE a44.c18 = a41.c8 + 18446744073709551488 AND a39.c8 = a42.c1 + 16 AND a44.c18 = a44.c18 + 18446744073709551488 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v4 AS a45, v7 AS a46 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v47 ( c49 ) AS ( SELECT c49 + ( SELECT max ( c49 ) FROM v47 AS a53 ORDER BY 6 ), c49 + ( SELECT c49 FROM v47 AS a52 ORDER BY 255 ), c49 + ( SELECT max ( c49 ) FROM v47 AS a51 ORDER BY 18446744073709551615 ) FROM v47 AS a50 ORDER BY 18446744073709551488 ) SELECT * FROM v47 AS a48 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v7 AS a54 ORDER BY 8; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 11: no such module: fts5
+BEGIN VERI 0
+Parse error near line 15: no such function: automatic_index
+  SELECT * FROM v0 AS a20 GROUP BY a20.c3 HAVING automatic_index ( * ) >= 184467
+                                   error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: a23.c2
+  SELECT a23.c2 FROM v4 AS a23 ORDER BY 18446744073709551488; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v16
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: no such table: v16
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v4 AS a45, v7 AS a46 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: circular reference: v47
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such function: automatic_index
+  SELECT * FROM v0 AS a20 GROUP BY a20.c3 HAVING automatic_index ( * ) >= 184467
+                                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 15: no such function: automatic_index
+  SELECT * FROM v0 AS a20 GROUP BY a20.c3 HAVING automatic_index ( * ) >= 184467
+                                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 21: no such column: a23.c2
+  SELECT a23.c2 FROM v4 AS a23 ORDER BY 18446744073709551488; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v16
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v16
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: no such table: v16
+ 
+INT: 0 
+Str: 
+Parse error near line 33: no such table: v16
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 3
+  SELECT * FROM v4 AS a45, v7 AS a46 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v4 AS a45, v7 AS a46 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 39: circular reference: v47
+ 
+INT: 0 
+Str: 
+Parse error near line 39: circular reference: v47
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

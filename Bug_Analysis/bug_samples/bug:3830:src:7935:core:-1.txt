@@ -1,0 +1,288 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c2 ) ) WITHOUT ROWID; 
+ATTACH 'v1' AS sqlite_master; 
+CREATE TABLE v4 ( c5, c6 CHECK( 127 ), c7, c8, CHECK( c7 > 127 ) ); 
+ALTER TABLE v0 DROP c1; 
+CREATE INDEX i9 ON v0 ( c3 ); 
+CREATE INDEX i10 ON v4 ( c5 ); 
+ALTER TABLE v0 DROP c3; 
+CREATE INDEX i11 ON v4 ( c6 ); 
+CREATE INDEX i12 ON v4 ( c5 ); 
+CREATE INDEX i13 ON v0 ( c3 ); 
+CREATE VIEW v14 AS SELECT * FROM ( v4 AS a15 ), ( v0 AS a16, v0 AS a17 NATURAL JOIN v4 AS a18 ), ( v4 AS a19 ), ( v4 AS a20 ) WHERE c6 = c1 + c5 = c5 + 127 AND c8 = c2 + 127 ORDER BY 18446744073709551488; 
+CREATE TABLE v21 ( c22, c23, c24 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a25 ORDER BY 9223372036854775807 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a26 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a27 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c24, a28.c23 FROM v21 AS a28 WHERE a28.c24 LIKE 'ten' ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c3 FROM v0 AS a29 GROUP BY 18446744073709551488 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a30 NATURAL JOIN v14 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32, v4 AS a33 NATURAL JOIN v4 AS a34 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: cannot drop PRIMARY KEY column: "c1"
+Runtime error near line 7: error in index i9 after drop column: no such column: c3
+BEGIN VERI 0
+Parse error near line 14: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: ambiguous column name: main.v4.c5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: ambiguous column name: main.v4.c5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: ambiguous column name: main.v4.c5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: ambiguous column name: main.v4.c5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c2 ) ) WITHOUT ROWID; 
+ATTACH 'v1' AS sqlite_master; 
+CREATE TABLE v4 ( c5, c6 CHECK( 127 ), c7, c8, CHECK( c7 > 127 ) ); 
+ALTER TABLE v0 DROP c1; 
+; 
+; 
+ALTER TABLE v0 DROP c3; 
+; 
+; 
+; 
+CREATE VIEW v14 AS SELECT * FROM ( v4 AS a15 ), ( v0 AS a16, v0 AS a17 NATURAL JOIN v4 AS a18 ), ( v4 AS a19 ), ( v4 AS a20 ) WHERE c6 = c1 + c5 = c5 + 127 AND c8 = c2 + 127 ORDER BY 18446744073709551488; 
+CREATE TABLE v21 ( c22, c23, c24 PRIMARY KEY ) WITHOUT ROWID; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a25 ORDER BY 9223372036854775807 COLLATE binary; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a26 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a27 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c24, a28.c23 FROM v21 AS a28 WHERE a28.c24 LIKE 'ten' ORDER BY 8; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a29.c3 FROM v0 AS a29 GROUP BY 18446744073709551488 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v14 AS a30 NATURAL JOIN v14 AS a31 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a32, v4 AS a33 NATURAL JOIN v4 AS a34 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: cannot drop PRIMARY KEY column: "c1"
+BEGIN VERI 0
+Parse error near line 14: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: ambiguous column name: main.v4.c5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: ambiguous column name: main.v4.c5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 29: ambiguous column name: main.v4.c5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a29.c3
+  SELECT a29.c3 FROM v0 AS a29 GROUP BY 18446744073709551488 ORDER BY 127; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: ambiguous column name: main.v4.c5
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 14: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 17: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: ambiguous column name: main.v4.c5
+ 
+INT: 0 
+Str: 
+Parse error near line 20: ambiguous column name: main.v4.c5
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: ambiguous column name: main.v4.c5
+ 
+INT: 0 
+Str: 
+Parse error near line 23: ambiguous column name: main.v4.c5
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 26: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 29: ambiguous column name: main.v4.c5
+ 
+INT: 0 
+Str: 
+Parse error near line 29: ambiguous column name: main.v4.c5
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 32: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 35: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 35: no such column: a29.c3
+  SELECT a29.c3 FROM v0 AS a29 GROUP BY 18446744073709551488 ORDER BY 127; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: ambiguous column name: main.v4.c5
+ 
+INT: 0 
+Str: 
+Parse error near line 38: ambiguous column name: main.v4.c5
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

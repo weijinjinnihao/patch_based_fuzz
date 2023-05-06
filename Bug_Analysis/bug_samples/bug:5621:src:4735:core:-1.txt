@@ -1,0 +1,288 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5 BLOB, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40 INTEGER PRIMARY KEY, c41 ); 
+CREATE TABLE v42 ( c43 TEXT, c44 ); 
+CREATE INDEX i45 ON v42 ( c44 ); 
+CREATE INDEX i46 ON v42 ( c43 ); 
+CREATE INDEX i47 ON v42 ( c44 ); 
+CREATE INDEX i48 ON v0 ( c40 ); 
+ALTER TABLE v42 DROP c43; 
+CREATE INDEX i49 ON v42 ( c43 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a50.c44, max ( a50.c44 || a50.c44 ) FROM v42 AS a50 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v51 AS ( SELECT ( SELECT min ( c44 ) OVER ( ORDER BY 18446744073709551488 ) ORDER BY 18446744073709551488 ) FROM v51 AS a53 GROUP BY c6 ORDER BY 255 ) SELECT c1 + ( SELECT max ( c43 ) FROM v51 AS a56 ORDER BY 9223372036854775807 ), c43 + ( SELECT max ( c43 ) FROM v51 AS a55 ORDER BY 255 ), c21 + ( SELECT max ( c43 ) FROM v51 AS a54 ORDER BY 18446744073709551488 ) FROM v51 AS a52 y ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a57 WHERE a57.c44 = a57.c43 || a57.c44 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a58, v42 AS a59 NATURAL JOIN v42 AS a60 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a61, v0 AS a62 NATURAL JOIN v42 AS a63 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a64.c44 IS NULL ) ) AND ( NOT ( a64.c44 IS NULL ) ) ) FROM v42 AS a64 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a65, v0 AS a66 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a67 GROUP BY x'616263', 'aaabbb', a67.c44 = + a67.c43 HAVING count ( * ) >= 0 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a68.c44, max ( a68.c43 || a68.c43 ) FROM v42 AS a68 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v69 AS ( SELECT 255 y ORDER BY 18446744073709551488 ) VALUES ( NULL, 'v0' ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i46 after drop column: no such column: c43
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: near "y": syntax error
+  4 ORDER BY 18446744073709551488 ) FROM v51 AS a52 y ORDER BY 18446744073709551
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 82
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: near "ORDER": syntax error
+  R BY 18446744073709551488 ) VALUES ( NULL, 'v0' ) ORDER BY 255; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2 INTEGER UNIQUE ON CONFLICT FAIL, c3, c4, c5 BLOB, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29, c30, c31, c32, c33, c34, c35, c36, c37, c38, c39, c40 INTEGER PRIMARY KEY, c41 ); 
+CREATE TABLE v42 ( c43 TEXT, c44 ); 
+; 
+; 
+; 
+; 
+ALTER TABLE v42 DROP c43; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a50.c44, max ( a50.c44 || a50.c44 ) FROM v42 AS a50 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v51 AS ( SELECT ( SELECT min ( c44 ) OVER ( ORDER BY 18446744073709551488 ) ORDER BY 18446744073709551488 ) FROM v51 AS a53 GROUP BY c6 ORDER BY 255 ) SELECT c1 + ( SELECT max ( c43 ) FROM v51 AS a56 ORDER BY 9223372036854775807 ), c43 + ( SELECT max ( c43 ) FROM v51 AS a55 ORDER BY 255 ), c21 + ( SELECT max ( c43 ) FROM v51 AS a54 ORDER BY 18446744073709551488 ) FROM v51 AS a52 y ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a57 WHERE a57.c44 = a57.c43 || a57.c44 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a58, v42 AS a59 NATURAL JOIN v42 AS a60 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a61, v0 AS a62 NATURAL JOIN v42 AS a63 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a64.c44 IS NULL ) ) AND ( NOT ( a64.c44 IS NULL ) ) ) FROM v42 AS a64 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a65, v0 AS a66 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a67 GROUP BY x'616263', 'aaabbb', a67.c44 = + a67.c43 HAVING count ( * ) >= 0 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a68.c44, max ( a68.c43 || a68.c43 ) FROM v42 AS a68 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v69 AS ( SELECT 255 y ORDER BY 18446744073709551488 ) VALUES ( NULL, 'v0' ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 13: near "y": syntax error
+  4 ORDER BY 18446744073709551488 ) FROM v51 AS a52 y ORDER BY 18446744073709551
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such column: a57.c43
+  SELECT * FROM v42 AS a57 WHERE a57.c44 = a57.c43 || a57.c44 ORDER BY 255; 
+                             error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 82
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a68.c43
+  SELECT a68.c44, max ( a68.c43 || a68.c43 ) FROM v42 AS a68 ORDER BY 9223372036
+                        ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: near "ORDER": syntax error
+  R BY 18446744073709551488 ) VALUES ( NULL, 'v0' ) ORDER BY 255; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 10: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: near "y": syntax error
+  4 ORDER BY 18446744073709551488 ) FROM v51 AS a52 y ORDER BY 18446744073709551
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 13: near "y": syntax error
+  4 ORDER BY 18446744073709551488 ) FROM v51 AS a52 y ORDER BY 18446744073709551
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such column: a57.c43
+  SELECT * FROM v42 AS a57 WHERE a57.c44 = a57.c43 || a57.c44 ORDER BY 255; 
+                             error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+0
+ 
+INT: 0 
+Str: 
+0
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 82
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 82
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such column: a68.c43
+  SELECT a68.c44, max ( a68.c43 || a68.c43 ) FROM v42 AS a68 ORDER BY 9223372036
+                        ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 41974288
+Str: 
+Parse error near line 37: near "ORDER": syntax error
+  R BY 18446744073709551488 ) VALUES ( NULL, 'v0' ) ORDER BY 255; 
+                                      error here ---^
+ 
+Str: 
+Parse error near line 37: near "ORDER": syntax error
+  R BY 18446744073709551488 ) VALUES ( NULL, 'v0' ) ORDER BY 255; 
+                                      error here ---^
+ 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,295 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4, c5, c6, c7, c8, c9, c10 REFERENCES t1 DEFAULT NULL, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 INTEGER PRIMARY KEY, c24 ); 
+CREATE TABLE v25 ( c26 INTEGER, c27 TEXT, c28 BLOB, PRIMARY KEY ( c28 ), CHECK( c28 != c28 ) ); 
+CREATE INDEX i29 ON v3 ( c8 ); 
+CREATE TABLE v30 ( c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44 PRIMARY KEY ON CONFLICT REPLACE, c45, c46, c47 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v48 USING rtree ( c49, c50, c51, c52, c53, c54, c55, c56, c57 ); 
+INSERT INTO v25 VALUES ( 18446744073709518848, 'x' ), ( 100, 'v1' ), ( 18446744073709518848, 'm' ); 
+CREATE TABLE v58 ( c59 DEFAULT x'ABCD' DEFAULT 18446744073709518848, c60 NOT NULL DEFAULT 18446744073709518848, c61 NOT NULL ON CONFLICT REPLACE DEFAULT 100, c62 NOT NULL ON CONFLICT IGNORE DEFAULT 18446744073709518848, c63 NOT NULL ON CONFLICT ABORT DEFAULT 100 ); 
+CREATE INDEX i64 ON v25 ( c26 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v25 BEGIN DELETE FROM v0; END; 
+CREATE INDEX i65 ON v30 ( c46 ); 
+ALTER TABLE v25 DROP c26; 
+UPDATE v25 SET c26 = 'x' WHERE c27 = 18446744073709518848; 
+CREATE INDEX i66 ON v3 ( c23 ); 
+CREATE INDEX i67 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( ) OVER ( ORDER BY 18446744073709518848 ) ORDER BY 100 ) FROM v25 AS a68 GROUP BY y ( a68.c26 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a69.c59 IS NULL ) ) AND ( NOT ( a69.c63 IS NULL ) ) ) FROM v58 AS a69 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v70 AS ( SELECT * FROM v70 AS a72 ORDER BY c40, c61 ) SELECT * FROM v70 AS a71 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a73 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 AS ( SELECT 18446744073709518848 y ORDER BY 18446744073709518848 ) SELECT * FROM v0 AS a74 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a75 NATURAL JOIN v3 AS a76 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a77.c27, max ( a77.c27 || a77.c26 ) FROM v25 AS a77 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v48 ( c79, c80, c81, c82, c83, c84 ) AS ( SELECT 8 y ORDER BY 18446744073709518848 ) SELECT * FROM v3 AS a78 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a85 ORDER BY max ( a85.c1 + a85.c1 * 18446744073709518848 ) + 8, min ( a85.c1, avg ( a85.c2 ) ) + 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: table v25 has 3 columns but 2 values were supplied
+Runtime error near line 12: error in index i64 after drop column: no such column: c26
+BEGIN VERI 0
+Parse error near line 17: min() may not be used as a window function
+  SELECT ( SELECT min ( ) OVER ( ORDER BY 18446744073709518848 ) ORDER BY 100 ) 
+                  ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: circular reference: v70
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: misuse of aggregate: avg()
+  85.c1 * 18446744073709518848 ) + 8, min ( a85.c1, avg ( a85.c2 ) ) + 100; 
+                                      error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE TABLE v3 ( c4, c5, c6, c7, c8, c9, c10 REFERENCES t1 DEFAULT NULL, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23 INTEGER PRIMARY KEY, c24 ); 
+CREATE TABLE v25 ( c26 INTEGER, c27 TEXT, c28 BLOB, PRIMARY KEY ( c28 ), CHECK( c28 != c28 ) ); 
+; 
+CREATE TABLE v30 ( c31, c32, c33, c34, c35, c36, c37, c38, c39, c40, c41, c42, c43, c44 PRIMARY KEY ON CONFLICT REPLACE, c45, c46, c47 TEXT UNIQUE NOT NULL ); 
+CREATE VIRTUAL TABLE v48 USING rtree ( c49, c50, c51, c52, c53, c54, c55, c56, c57 ); 
+INSERT INTO v25 VALUES ( 18446744073709518848, 'x' ), ( 100, 'v1' ), ( 18446744073709518848, 'm' ); 
+CREATE TABLE v58 ( c59 DEFAULT x'ABCD' DEFAULT 18446744073709518848, c60 NOT NULL DEFAULT 18446744073709518848, c61 NOT NULL ON CONFLICT REPLACE DEFAULT 100, c62 NOT NULL ON CONFLICT IGNORE DEFAULT 18446744073709518848, c63 NOT NULL ON CONFLICT ABORT DEFAULT 100 ); 
+; 
+CREATE TRIGGER r1 AFTER UPDATE ON v25 BEGIN DELETE FROM v0; END; 
+; 
+ALTER TABLE v25 DROP c26; 
+UPDATE v25 SET c26 = 'x' WHERE c27 = 18446744073709518848; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( ) OVER ( ORDER BY 18446744073709518848 ) ORDER BY 100 ) FROM v25 AS a68 GROUP BY y ( a68.c26 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a69.c59 IS NULL ) ) AND ( NOT ( a69.c63 IS NULL ) ) ) FROM v58 AS a69 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v70 AS ( SELECT * FROM v70 AS a72 ORDER BY c40, c61 ) SELECT * FROM v70 AS a71 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a73 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v30 AS ( SELECT 18446744073709518848 y ORDER BY 18446744073709518848 ) SELECT * FROM v0 AS a74 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a75 NATURAL JOIN v3 AS a76 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a77.c27, max ( a77.c27 || a77.c26 ) FROM v25 AS a77 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v48 ( c79, c80, c81, c82, c83, c84 ) AS ( SELECT 8 y ORDER BY 18446744073709518848 ) SELECT * FROM v3 AS a78 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a85 ORDER BY max ( a85.c1 + a85.c1 * 18446744073709518848 ) + 8, min ( a85.c1, avg ( a85.c2 ) ) + 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 7: table v25 has 3 columns but 2 values were supplied
+Parse error near line 13: no such column: c26
+BEGIN VERI 0
+Parse error near line 17: min() may not be used as a window function
+  SELECT ( SELECT min ( ) OVER ( ORDER BY 18446744073709518848 ) ORDER BY 100 ) 
+                  ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 23: circular reference: v70
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 35: no such column: a77.c26
+  SELECT a77.c27, max ( a77.c27 || a77.c26 ) FROM v25 AS a77 ORDER BY 1844674407
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no tables specified
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 44: misuse of aggregate: avg()
+  85.c1 * 18446744073709518848 ) + 8, min ( a85.c1, avg ( a85.c2 ) ) + 100; 
+                                      error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: min() may not be used as a window function
+  SELECT ( SELECT min ( ) OVER ( ORDER BY 18446744073709518848 ) ORDER BY 100 ) 
+                  ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 17: min() may not be used as a window function
+  SELECT ( SELECT min ( ) OVER ( ORDER BY 18446744073709518848 ) ORDER BY 100 ) 
+                  ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 20: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 23: circular reference: v70
+ 
+INT: 0 
+Str: 
+Parse error near line 23: circular reference: v70
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+|
+ 
+INT: 0 
+Str: 
+Parse error near line 35: no such column: a77.c26
+  SELECT a77.c27, max ( a77.c27 || a77.c26 ) FROM v25 AS a77 ORDER BY 1844674407
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 38: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 44: misuse of aggregate: avg()
+  85.c1 * 18446744073709518848 ) + 8, min ( a85.c1, avg ( a85.c2 ) ) + 100; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 44: misuse of aggregate: avg()
+  85.c1 * 18446744073709518848 ) + 8, min ( a85.c1, avg ( a85.c2 ) ) + 100; 
+                                      error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

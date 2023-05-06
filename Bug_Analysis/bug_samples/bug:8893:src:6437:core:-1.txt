@@ -1,0 +1,290 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 INTEGER NOT NULL ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 255; 
+CREATE TABLE v6 ( c7 INTEGER UNIQUE, c8, c9 UNIQUE ); 
+CREATE INDEX i10 ON v0 ( c1 ); 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+CREATE INDEX i15 ON v4 ( c3 ); 
+CREATE TABLE v16 ( c17 PRIMARY KEY, c18, c19 AS( c19 + c19 - c17 ) REFERENCES t0, c20 ) WITHOUT ROWID; 
+CREATE INDEX i21 ON v6 ( c7 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+ALTER TABLE v6 DROP COLUMN c7; 
+CREATE INDEX i22 ON v0 ( c1 ); 
+CREATE INDEX i23 ON v11 ( c12 ); 
+CREATE VIRTUAL TABLE v24 USING fts5 ( c25, c26 ); 
+ALTER TABLE v11 DROP COLUMN c12; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c26 FROM v24 AS a27 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c2 * 255 + 255 AS y, count ( * ) AS y FROM v0 AS a28 GROUP BY a28.c3 ORDER BY abs ( a28.c2 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a29 WHERE ( a29.c13 = 4294967295 OR a29.c12 = 4294967295 ) AND a29.c14 IN ( SELECT a31.c17 FROM ( SELECT *, 'x' FROM v11 AS a32 LEFT JOIN v6 AS a33 ON a29.c14 = 4294967295 AND a33.c9 = 4294967295 ORDER BY 16 ) AS y, v0 AS a30 NATURAL JOIN v16 AS a31 WHERE a29.c12 = 4294967295 ORDER BY 4294967295 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a34 ORDER BY ( ( a34.c12 + - 255 ) % 4294967295 ) != 127 + 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c37 ) AS ( WITH v38 ( c39 ) AS ( WITH v40 ( c41 ) AS ( WITH v38 AS ( SELECT ( SELECT min ( c41 ) OVER ( ORDER BY 18446744073709551615 IN v38 ) ORDER BY 255 ) FROM v40 AS a42 GROUP BY c39 ORDER BY 0 ) SELECT 4294967295 ORDER BY 18446744071562067968 ) SELECT 4294967295 ORDER BY 255 ) SELECT 16 ORDER BY 255 ) SELECT * FROM v11 AS a36 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v43 AS ( SELECT 18446744073709551488 y ORDER BY 255 ) SELECT * FROM v43 AS a44 CROSS JOIN v43 AS a45 ON ( c13 = c18 ) WHERE c26 IN ( SELECT c8 FROM v43 AS a46, v43 AS a47 NATURAL JOIN v43 AS a48 WHERE c12 IN ( SELECT c9 FROM ( SELECT c2 FROM v43 AS a49 ORDER BY 18446744071562067968 ) AS y WHERE c26 = 18446744073709551488 ORDER BY 4294967295 ) ORDER BY 255 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v50 AS ( SELECT c8 FROM v50 AS a53 WHERE c17 NOT LIKE 'x' ORDER BY 18446744073709551488 ) SELECT c25, c3 FROM v50 AS a51 RIGHT JOIN v50 AS a52 ON c26 = ( ( ( c26 + 4294967295 ) % 9223372036854775807 ) == 255 ) % 18446744073709551488 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v24 AS a54 NATURAL JOIN v24 AS a55 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: views may not be indexed
+Runtime error near line 9: error in index i10 after drop column: no such column: c1
+Parse error near line 10: cannot drop UNIQUE column: "c7"
+Runtime error near line 13: no such module: fts5
+Runtime error near line 14: error in index i23 after drop column: no such column: c12
+BEGIN VERI 0
+Parse error near line 16: no such table: v24
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: circular reference: v50
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no tables specified
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 INTEGER NOT NULL ); 
+CREATE VIEW v4 AS SELECT * FROM v0 AS a5 ORDER BY 255; 
+CREATE TABLE v6 ( c7 INTEGER UNIQUE, c8, c9 UNIQUE ); 
+; 
+CREATE TABLE v11 ( c12, c13, c14 ); 
+; 
+CREATE TABLE v16 ( c17 PRIMARY KEY, c18, c19 AS( c19 + c19 - c17 ) REFERENCES t0, c20 ) WITHOUT ROWID; 
+; 
+ALTER TABLE v0 DROP COLUMN c1; 
+ALTER TABLE v6 DROP COLUMN c7; 
+; 
+; 
+CREATE VIRTUAL TABLE v24 USING fts5 ( c25, c26 ); 
+ALTER TABLE v11 DROP COLUMN c12; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a27.c26 FROM v24 AS a27 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c2 * 255 + 255 AS y, count ( * ) AS y FROM v0 AS a28 GROUP BY a28.c3 ORDER BY abs ( a28.c2 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a29 WHERE ( a29.c13 = 4294967295 OR a29.c12 = 4294967295 ) AND a29.c14 IN ( SELECT a31.c17 FROM ( SELECT *, 'x' FROM v11 AS a32 LEFT JOIN v6 AS a33 ON a29.c14 = 4294967295 AND a33.c9 = 4294967295 ORDER BY 16 ) AS y, v0 AS a30 NATURAL JOIN v16 AS a31 WHERE a29.c12 = 4294967295 ORDER BY 4294967295 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a34 ORDER BY ( ( a34.c12 + - 255 ) % 4294967295 ) != 127 + 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a35 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c37 ) AS ( WITH v38 ( c39 ) AS ( WITH v40 ( c41 ) AS ( WITH v38 AS ( SELECT ( SELECT min ( c41 ) OVER ( ORDER BY 18446744073709551615 IN v38 ) ORDER BY 255 ) FROM v40 AS a42 GROUP BY c39 ORDER BY 0 ) SELECT 4294967295 ORDER BY 18446744071562067968 ) SELECT 4294967295 ORDER BY 255 ) SELECT 16 ORDER BY 255 ) SELECT * FROM v11 AS a36 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v43 AS ( SELECT 18446744073709551488 y ORDER BY 255 ) SELECT * FROM v43 AS a44 CROSS JOIN v43 AS a45 ON ( c13 = c18 ) WHERE c26 IN ( SELECT c8 FROM v43 AS a46, v43 AS a47 NATURAL JOIN v43 AS a48 WHERE c12 IN ( SELECT c9 FROM ( SELECT c2 FROM v43 AS a49 ORDER BY 18446744071562067968 ) AS y WHERE c26 = 18446744073709551488 ORDER BY 4294967295 ) ORDER BY 255 ) ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v50 AS ( SELECT c8 FROM v50 AS a53 WHERE c17 NOT LIKE 'x' ORDER BY 18446744073709551488 ) SELECT c25, c3 FROM v50 AS a51 RIGHT JOIN v50 AS a52 ON c26 = ( ( ( c26 + 4294967295 ) % 9223372036854775807 ) == 255 ) % 18446744073709551488 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v24 AS a54 NATURAL JOIN v24 AS a55 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: cannot drop UNIQUE column: "c7"
+Runtime error near line 13: no such module: fts5
+BEGIN VERI 0
+Parse error near line 16: no such table: v24
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a29.c12
+  * FROM v11 AS a29 WHERE ( a29.c13 = 4294967295 OR a29.c12 = 4294967295 ) AND a
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: a34.c12
+  SELECT * FROM v11 AS a34 ORDER BY ( ( a34.c12 + - 255 ) % 4294967295 ) != 127 
+                          error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: circular reference: v50
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v24
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no tables specified
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such table: v24
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such table: v24
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such column: a29.c12
+  * FROM v11 AS a29 WHERE ( a29.c13 = 4294967295 OR a29.c12 = 4294967295 ) AND a
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 25: no such column: a34.c12
+  SELECT * FROM v11 AS a34 ORDER BY ( ( a34.c12 + - 255 ) % 4294967295 ) != 127 
+                          error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: circular reference: v50
+ 
+INT: 0 
+Str: 
+Parse error near line 37: circular reference: v50
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: no such table: v24
+ 
+INT: 0 
+Str: 
+Parse error near line 40: no such table: v24
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 43: no tables specified
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

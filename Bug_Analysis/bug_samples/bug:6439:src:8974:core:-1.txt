@@ -1,0 +1,315 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE INDEX i3 ON v0 ( c2 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE VIRTUAL TABLE v5 USING rtree ( c6, c7, c8 ); 
+INSERT INTO v5 VALUES ( 0, 'hill' ), ( 0, 100, hex ( 0 ) ), ( 0, 'X' ); 
+CREATE INDEX i9 ON v5 ( c6 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+BEGIN; 
+INSERT INTO v5 VALUES ( 0, 18446744073709551488, 16 ), ( 18446744073709551488, 0, 18446744073709551488 ), ( 0, 18446744073709551488, 0 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v0 BEGIN DELETE FROM v0 WHERE c2 = c8; END; 
+ALTER TABLE v5 RENAME TO v10; 
+CREATE INDEX i11 ON v10 ( c2 ); 
+CREATE INDEX i12 ON v10 ( c8 ); 
+UPDATE v10 SET c8 = 'v0' WHERE c6 = 18446744073709551615; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a13, v10 AS a14 NATURAL JOIN v10 AS a15 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v16 AS ( WITH v16 AS ( SELECT 0 y ORDER BY 18446744071562067968 ) SELECT avg ( c2 ) FROM ( SELECT * ORDER BY 16 ) AS y ORDER BY 0 ) SELECT * FROM v16 AS a17 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c1, ( ( a19.c1 + 127 ) % 0 ) == 9223372036854775807 FROM v10 AS a18 LEFT JOIN v0 AS a19 ON a18.c8 = a18.c2 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT * FROM v0 AS a21 GROUP BY 0 ORDER BY 127 ) AS y, v0 AS a20 ON a20.c1 = a20.c1 || a20.c1 OR 4294967295 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT quote ( a22.c1 ), max ( a22.c2 || a22.c1 ), 'one' FROM v0 AS a22 GROUP BY a22.c1, abs ( a22.c2 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c24 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v0 AS a23 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 18446744073709551488 IS - 18446744073709551488 ) OR NOT ( 2147483647 IS 0 OR ( a26.c2 = 0 ) ) ) IS 18446744071562067968 FROM v10 AS a26 GROUP BY a26.c2, a26.c2 < a26.c7 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a28.c7 || a28.c2 ) FROM v10 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: all VALUES must have the same number of terms
+Parse error near line 6: virtual tables may not be indexed
+Runtime error near line 7: error in index i3 after drop column: no such column: c2
+Runtime error near line 9: rtree constraint failed: v5.(c7<=c8) (19)
+Runtime error near line 11: error in trigger r1: no such column: c8
+Parse error near line 12: no such table: main.v10
+Parse error near line 13: no such table: main.v10
+Parse error near line 14: no such table: v10
+BEGIN VERI 0
+Parse error near line 16: no such table: v10
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v10
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v0 ( c24 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v0 AS a23 ORDER BY 18
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v10
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v10
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a27 ORDER BY 2147483647; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such table: v10
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+; 
+; 
+CREATE VIRTUAL TABLE v5 USING rtree ( c6, c7, c8 ); 
+INSERT INTO v5 VALUES ( 0, 'hill' ), ( 0, 100, hex ( 0 ) ), ( 0, 'X' ); 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+BEGIN; 
+INSERT INTO v5 VALUES ( 0, 18446744073709551488, 16 ), ( 18446744073709551488, 0, 18446744073709551488 ), ( 0, 18446744073709551488, 0 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v0 BEGIN DELETE FROM v0 WHERE c2 = c8; END; 
+ALTER TABLE v5 RENAME TO v10; 
+; 
+; 
+UPDATE v10 SET c8 = 'v0' WHERE c6 = 18446744073709551615; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a13, v10 AS a14 NATURAL JOIN v10 AS a15 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v16 AS ( WITH v16 AS ( SELECT 0 y ORDER BY 18446744071562067968 ) SELECT avg ( c2 ) FROM ( SELECT * ORDER BY 16 ) AS y ORDER BY 0 ) SELECT * FROM v16 AS a17 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a19.c1, ( ( a19.c1 + 127 ) % 0 ) == 9223372036854775807 FROM v10 AS a18 LEFT JOIN v0 AS a19 ON a18.c8 = a18.c2 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM ( SELECT * FROM v0 AS a21 GROUP BY 0 ORDER BY 127 ) AS y, v0 AS a20 ON a20.c1 = a20.c1 || a20.c1 OR 4294967295 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT quote ( a22.c1 ), max ( a22.c2 || a22.c1 ), 'one' FROM v0 AS a22 GROUP BY a22.c1, abs ( a22.c2 ) ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v0 ( c24 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v0 AS a23 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( ( 18446744073709551488 IS - 18446744073709551488 ) OR NOT ( 2147483647 IS 0 OR ( a26.c2 = 0 ) ) ) IS 18446744071562067968 FROM v10 AS a26 GROUP BY a26.c2, a26.c2 < a26.c7 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT max ( a28.c7 || a28.c2 ) FROM v10 AS a28 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 5: all VALUES must have the same number of terms
+Runtime error near line 9: rtree constraint failed: v5.(c7<=c8) (19)
+Runtime error near line 11: error in trigger r1: no such column: c2
+Parse error near line 14: no such table: v10
+BEGIN VERI 0
+Parse error near line 16: no such table: v10
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such table: v10
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a22.c2
+  SELECT quote ( a22.c1 ), max ( a22.c2 || a22.c1 ), 'one' FROM v0 AS a22 GROUP 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v0 ( c24 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v0 AS a23 ORDER BY 18
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v10
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v10
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM v0 AS a27 ORDER BY 2147483647; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: no such table: v10
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such table: v10
+ 
+INT: 0 
+Str: 
+Parse error near line 16: no such table: v10
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: no such table: v10
+ 
+INT: 0 
+Str: 
+Parse error near line 22: no such table: v10
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 28: no such column: a22.c2
+  SELECT quote ( a22.c1 ), max ( a22.c2 || a22.c1 ), 'one' FROM v0 AS a22 GROUP 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v0 ( c24 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v0 AS a23 ORDER BY 18
+                           error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v0 ( c24 ) AS ( SELECT 0 ORDER BY 0 ) SELECT * FROM v0 AS a23 ORDER BY 18
+                           error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such table: v10
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such table: v10
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: no such table: v10
+ 
+INT: 0 
+Str: 
+Parse error near line 37: no such table: v10
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+  SELECT * FROM v0 AS a27 ORDER BY 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 1
+  SELECT * FROM v0 AS a27 ORDER BY 2147483647; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: no such table: v10
+ 
+INT: 0 
+Str: 
+Parse error near line 43: no such table: v10
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

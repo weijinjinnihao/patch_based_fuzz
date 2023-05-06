@@ -1,0 +1,278 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11 DEFAULT 'x' DEFAULT 18446744073709551488, c12, c13, c14, c15, c16, c17 TEXT DEFAULT 'v0' DEFAULT 18446744073709551488, c18, c19 PRIMARY KEY ON CONFLICT REPLACE, c20, c21, c22 TEXT UNIQUE NOT NULL ); 
+CREATE INDEX i23 ON v0 ( c9 ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c4 = c18 || c1 WHERE c4 = c18 || c16; END; 
+CREATE INDEX i24 ON v0 ( c21 ); 
+CREATE TABLE v25 ( c26, c27, c28, c29, PRIMARY KEY ( c29, c26 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709551488, 18446744073709551488, 18446744073709551488 ); 
+CREATE INDEX i30 ON v25 ( c26 ); 
+CREATE INDEX i31 ON v25 ( c28 ); 
+INSERT INTO v0 VALUES ( - 18446744073709551488, 'v0', 'v1', 10 ); 
+CREATE INDEX i32 ON v25 ( c28 ); 
+ALTER TABLE v25 DROP COLUMN c28; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33, v25 AS a34 NATURAL JOIN v25 AS a35 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a37.c26 IS NULL ) ) AND ( NOT ( a37.c28 IS NULL ) ) ) FROM v25 AS a37 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a38 ORDER BY a38.c3, a38.c7, a38.c9; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a39.c9 IS NULL ) ) AND ( NOT ( a39.c4 IS NULL ) ) ) FROM v0 AS a39 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a40.c28 FROM v25 AS a40 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a41, v25 AS a42 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v25 AS ( SELECT a44.c4 FROM v0 AS a44 WHERE a44.c8 LIKE 'two' ORDER BY 255 ) SELECT * FROM v0 AS a43 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a45.c21, a45.c14 FROM v0 AS a45 WHERE a45.c1 LIKE '1.10' ORDER BY + a45.c14; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a46, v25 AS a47 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: table v0 has 22 columns but 4 values were supplied
+Parse error near line 9: table v0 has 22 columns but 4 values were supplied
+Runtime error near line 11: error in index i31 after drop column: no such column: c28
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 22
+  SELECT * FROM v0 AS a36 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 8
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c11 DEFAULT 'x' DEFAULT 18446744073709551488, c12, c13, c14, c15, c16, c17 TEXT DEFAULT 'v0' DEFAULT 18446744073709551488, c18, c19 PRIMARY KEY ON CONFLICT REPLACE, c20, c21, c22 TEXT UNIQUE NOT NULL ); 
+; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v0 SET c4 = c18 || c1 WHERE c4 = c18 || c16; END; 
+; 
+CREATE TABLE v25 ( c26, c27, c28, c29, PRIMARY KEY ( c29, c26 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 18446744073709551488, 18446744073709551488, 18446744073709551488, 18446744073709551488 ); 
+; 
+; 
+INSERT INTO v0 VALUES ( - 18446744073709551488, 'v0', 'v1', 10 ); 
+; 
+ALTER TABLE v25 DROP COLUMN c28; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33, v25 AS a34 NATURAL JOIN v25 AS a35 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a36 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a37.c26 IS NULL ) ) AND ( NOT ( a37.c28 IS NULL ) ) ) FROM v25 AS a37 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a38 ORDER BY a38.c3, a38.c7, a38.c9; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( ( NOT ( a39.c9 IS NULL ) ) AND ( NOT ( a39.c4 IS NULL ) ) ) FROM v0 AS a39 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a40.c28 FROM v25 AS a40 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a41, v25 AS a42 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v25 AS ( SELECT a44.c4 FROM v0 AS a44 WHERE a44.c8 LIKE 'two' ORDER BY 255 ) SELECT * FROM v0 AS a43 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a45.c21, a45.c14 FROM v0 AS a45 WHERE a45.c1 LIKE '1.10' ORDER BY + a45.c14; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v25 AS a46, v25 AS a47 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 6: table v0 has 22 columns but 4 values were supplied
+Parse error near line 9: table v0 has 22 columns but 4 values were supplied
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 22
+  SELECT * FROM v0 AS a36 ORDER BY 0; 
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such column: a37.c28
+  T count ( ( NOT ( a37.c26 IS NULL ) ) AND ( NOT ( a37.c28 IS NULL ) ) ) FROM v
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a40.c28
+  SELECT a40.c28 FROM v25 AS a40 ORDER BY 18446744073709551488; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 22
+  SELECT * FROM v0 AS a36 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: 1st ORDER BY term out of range - should be between 1 and 22
+  SELECT * FROM v0 AS a36 ORDER BY 0; 
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such column: a37.c28
+  T count ( ( NOT ( a37.c26 IS NULL ) ) AND ( NOT ( a37.c28 IS NULL ) ) ) FROM v
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 28: no such column: a40.c28
+  SELECT a40.c28 FROM v25 AS a40 ORDER BY 18446744073709551488; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 8
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

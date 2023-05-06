@@ -1,0 +1,247 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 UNIQUE, c2, c3 UNIQUE ON CONFLICT IGNORE, c4 CHECK( c13 != 100 ), c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22 UNIQUE, c23, PRIMARY KEY ( c13, c23 ) ); 
+CREATE INDEX i24 ON v0 ( c5 ); 
+CREATE INDEX i25 ON v0 ( c9 ); 
+CREATE INDEX i26 ON v0 ( c16 ); 
+CREATE TABLE v27 ( c28, c29, c30, c31, PRIMARY KEY ( c29, c28 ) ) WITHOUT ROWID; 
+CREATE INDEX i32 ON v0 ( c18 ); 
+INSERT INTO v27 VALUES ( 100, 16, 18446744073709551615, 0 ); 
+CREATE VIEW v33 AS SELECT * FROM v0 AS a34 WHERE ( c13 = 0 OR c23 = 18446744073709551615 ) AND c22 IN ( SELECT c8 FROM ( SELECT *, 'v1' FROM v0 AS a35 LEFT JOIN v27 AS a36 ORDER BY 100 ) AS y WHERE c8 = 0 ORDER BY 100 ) ORDER BY 18446744073709551615; 
+ALTER TABLE v0 DROP COLUMN c9; 
+INSERT INTO v27 VALUES ( 100, 'v0' ), ( 100, 'x' ), ( 2.000000, count ( * ) ); 
+CREATE INDEX i37 ON v0 ( c10 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a38 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v39 ( c41 ) AS ( SELECT c30 + ( SELECT max ( c30 ) FROM v39 AS a45 ORDER BY 18446744073709551615 ), c30 + ( SELECT c21 FROM v39 AS a44 ORDER BY 0 ), c27 + ( SELECT max ( c29 ) FROM v39 AS a43 ORDER BY 100 ) FROM v39 AS a42 ORDER BY 18446744073709551615 ) SELECT * FROM v39 AS a40 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a46.c29 FROM v27 AS a46 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a47.c15, max ( a47.c16 || a47.c9 ) FROM v0 AS a47 WHERE ( a47.c8 || a47.c3 || a47.c7 ) != 'v0' GROUP BY a47.c22 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a48 ORDER BY count ( ( NOT ( a48.c30 IS NULL ) ) AND ( NOT ( a48.c29 IS NULL ) ) ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a49 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50, v27 AS a51 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a52 WHERE NOT NULL >= 100 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a53 ORDER BY a53.c30, a53.c30; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a54, v0 AS a55 NATURAL JOIN v33 AS a56 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: error in index i25 after drop column: no such column: c9
+Parse error near line 10: misuse of aggregate: count()
+  7 VALUES ( 100, 'v0' ), ( 100, 'x' ), ( 2.000000, count ( * ) ); 
+                                      error here ---^
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v27 AS a38 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: circular reference: v39
+END VERI 0
+BEGIN VERI 0
+16
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 28
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 28
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 UNIQUE, c2, c3 UNIQUE ON CONFLICT IGNORE, c4 CHECK( c13 != 100 ), c5, c6, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22 UNIQUE, c23, PRIMARY KEY ( c13, c23 ) ); 
+; 
+; 
+; 
+CREATE TABLE v27 ( c28, c29, c30, c31, PRIMARY KEY ( c29, c28 ) ) WITHOUT ROWID; 
+; 
+INSERT INTO v27 VALUES ( 100, 16, 18446744073709551615, 0 ); 
+CREATE VIEW v33 AS SELECT * FROM v0 AS a34 WHERE ( c13 = 0 OR c23 = 18446744073709551615 ) AND c22 IN ( SELECT c8 FROM ( SELECT *, 'v1' FROM v0 AS a35 LEFT JOIN v27 AS a36 ORDER BY 100 ) AS y WHERE c8 = 0 ORDER BY 100 ) ORDER BY 18446744073709551615; 
+ALTER TABLE v0 DROP COLUMN c9; 
+INSERT INTO v27 VALUES ( 100, 'v0' ), ( 100, 'x' ), ( 2.000000, count ( * ) ); 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a38 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v39 ( c41 ) AS ( SELECT c30 + ( SELECT max ( c30 ) FROM v39 AS a45 ORDER BY 18446744073709551615 ), c30 + ( SELECT c21 FROM v39 AS a44 ORDER BY 0 ), c27 + ( SELECT max ( c29 ) FROM v39 AS a43 ORDER BY 100 ) FROM v39 AS a42 ORDER BY 18446744073709551615 ) SELECT * FROM v39 AS a40 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a46.c29 FROM v27 AS a46 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a47.c15, max ( a47.c16 || a47.c9 ) FROM v0 AS a47 WHERE ( a47.c8 || a47.c3 || a47.c7 ) != 'v0' GROUP BY a47.c22 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a48 ORDER BY count ( ( NOT ( a48.c30 IS NULL ) ) AND ( NOT ( a48.c29 IS NULL ) ) ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a49 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a50, v27 AS a51 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a52 WHERE NOT NULL >= 100 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a53 ORDER BY a53.c30, a53.c30; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v27 AS a54, v0 AS a55 NATURAL JOIN v33 AS a56 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: misuse of aggregate: count()
+  7 VALUES ( 100, 'v0' ), ( 100, 'x' ), ( 2.000000, count ( * ) ); 
+                                      error here ---^
+BEGIN VERI 0
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v27 AS a38 ORDER BY 0; 
+                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: circular reference: v39
+END VERI 0
+BEGIN VERI 0
+16
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: no such column: a47.c9
+  SELECT a47.c15, max ( a47.c16 || a47.c9 ) FROM v0 AS a47 WHERE ( a47.c8 || a47
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 27
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 27
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: 1st ORDER BY term out of range - should be between 1 and 27
+END VERI 0
+BEGIN VERI 0
+100|16|1.84467440737096e+19|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 27
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v27 AS a38 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 13: 1st ORDER BY term out of range - should be between 1 and 4
+  SELECT * FROM v27 AS a38 ORDER BY 0; 
+                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: circular reference: v39
+ 
+INT: 0 
+Str: 
+Parse error near line 16: circular reference: v39
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+16
+ 
+INT: 0 
+Str: 
+16
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 22: no such column: a47.c9
+  SELECT a47.c15, max ( a47.c16 || a47.c9 ) FROM v0 AS a47 WHERE ( a47.c8 || a47
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 28
+ 
+INT: 0 
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 27
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 28
+ 
+INT: 0 
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 27
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

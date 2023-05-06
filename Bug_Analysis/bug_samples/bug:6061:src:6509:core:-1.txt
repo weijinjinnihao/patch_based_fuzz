@@ -1,0 +1,296 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1 ), CHECK( c2 != c1 ), CHECK( c3 != c3 ) ) WITHOUT ROWID; 
+CREATE TABLE v4 ( c5, c6, c7 CHECK( x'68617265' ), c8 ); 
+CREATE INDEX i9 ON v0 ( c3 ); 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v4 SET c3 = count ( * ) FROM v0 AS a10 c1 WHERE c3 = c6 || c7; END; 
+CREATE TABLE v11 ( c12, c13, c14, c15, PRIMARY KEY ( c12, c13 ) ) WITHOUT ROWID; 
+CREATE INDEX i16 ON v0 ( c3 ); 
+CREATE INDEX i17 ON v0 ( c1 ); 
+INSERT INTO v11 VALUES ( 18446744073709551488, 18446744073709551488, 18446744073709551488, 18446744073709551615 ); 
+INSERT INTO v0 SELECT c15, c7 NOT NULL FROM v4 AS a18 RIGHT JOIN v11 AS a19 ON c14 = c3 ORDER BY 18446744073709551488; 
+CREATE INDEX i20 ON v11 ( c14 ); 
+CREATE INDEX i21 ON v4 ( c8 ); 
+ALTER TABLE v4 DROP COLUMN c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c8, udf ( ) FROM ( SELECT a22.c8, a22.c8 FROM v4 AS a22 ORDER BY 18446744073709551488 ) AS y ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c14 + ( SELECT max ( a23.c13 ) FROM v0 AS a26 ORDER BY 18446744073709551488 ), a23.c15 + ( SELECT CASE WHEN a25.c12 % 18446744073709551615 != 12.010000 THEN a23.c14 END, a24.c3, a23.c12 FROM v11 AS a25 WHERE a25.c14 <= 18446744073709551488 ORDER BY 18446744073709551488 ), a23.c12 + ( SELECT max ( a23.c12 ) FROM v0 AS a24 ORDER BY 18446744073709551488 ) FROM v11 AS a23 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 WHERE a27.c3 = CASE WHEN a27.c3 != 'mad' THEN 18446744073709518848 ELSE 18446744073709551615 END > 18446744073709551488 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c1 FROM v0 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29, v4 AS a30 WHERE a30.c7 > a29.c1 AND a30.c7 = a30.c5 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c15, count ( ( NOT ( a31.c12 IS NULL ) ) AND ( NOT ( a31.c15 IS NULL ) ) ), count ( ( NOT ( a32.c12 IS NULL ) ) AND ( NOT ( a32.c14 > NULL ) ) ) FROM v11 AS a31 LEFT JOIN v11 AS a32 ON a31.c14 = a32.c14 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c8 FROM v4 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a34, v4 AS a35 NATURAL JOIN v11 AS a36 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: near "c1": syntax error
+  GIN UPDATE v4 SET c3 = count ( * ) FROM v0 AS a10 c1 WHERE c3 = c6 || c7; END;
+                                      error here ---^
+Parse error near line 9: no such column: c3
+Runtime error near line 12: error in index i21 after drop column: no such column: c8
+BEGIN VERI 0
+Parse error near line 14: no such function: udf
+  SELECT c8, udf ( ) FROM ( SELECT a22.c8, a22.c8 FROM v4 AS a22 ORDER BY 184467
+             ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a24.c3
+  446744073709551615 != 12.010000 THEN a23.c14 END, a24.c3, a23.c12 FROM v11 AS 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 7
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1|0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1 ), CHECK( c2 != c1 ), CHECK( c3 != c3 ) ) WITHOUT ROWID; 
+CREATE TABLE v4 ( c5, c6, c7 CHECK( x'68617265' ), c8 ); 
+; 
+CREATE TEMP TRIGGER tri1 AFTER INSERT ON v0 BEGIN UPDATE v4 SET c3 = count ( * ) FROM v0 AS a10 c1 WHERE c3 = c6 || c7; END; 
+CREATE TABLE v11 ( c12, c13, c14, c15, PRIMARY KEY ( c12, c13 ) ) WITHOUT ROWID; 
+; 
+; 
+INSERT INTO v11 VALUES ( 18446744073709551488, 18446744073709551488, 18446744073709551488, 18446744073709551615 ); 
+INSERT INTO v0 SELECT c15, c7 NOT NULL FROM v4 AS a18 RIGHT JOIN v11 AS a19 ON c14 = c3 ORDER BY 18446744073709551488; 
+; 
+; 
+ALTER TABLE v4 DROP COLUMN c8; 
+SELECT 'BEGIN VERI 0'; 
+SELECT c8, udf ( ) FROM ( SELECT a22.c8, a22.c8 FROM v4 AS a22 ORDER BY 18446744073709551488 ) AS y ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a23.c14 + ( SELECT max ( a23.c13 ) FROM v0 AS a26 ORDER BY 18446744073709551488 ), a23.c15 + ( SELECT CASE WHEN a25.c12 % 18446744073709551615 != 12.010000 THEN a23.c14 END, a24.c3, a23.c12 FROM v11 AS a25 WHERE a25.c14 <= 18446744073709551488 ORDER BY 18446744073709551488 ), a23.c12 + ( SELECT max ( a23.c12 ) FROM v0 AS a24 ORDER BY 18446744073709551488 ) FROM v11 AS a23 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a27 WHERE a27.c3 = CASE WHEN a27.c3 != 'mad' THEN 18446744073709518848 ELSE 18446744073709551615 END > 18446744073709551488 ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a28.c1 FROM v0 AS a28 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29, v4 AS a30 WHERE a30.c7 > a29.c1 AND a30.c7 = a30.c5 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c15, count ( ( NOT ( a31.c12 IS NULL ) ) AND ( NOT ( a31.c15 IS NULL ) ) ), count ( ( NOT ( a32.c12 IS NULL ) ) AND ( NOT ( a32.c14 > NULL ) ) ) FROM v11 AS a31 LEFT JOIN v11 AS a32 ON a31.c14 = a32.c14 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a33.c8 FROM v4 AS a33 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v11 AS a34, v4 AS a35 NATURAL JOIN v11 AS a36 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a37 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 4: near "c1": syntax error
+  GIN UPDATE v4 SET c3 = count ( * ) FROM v0 AS a10 c1 WHERE c3 = c6 || c7; END;
+                                      error here ---^
+Parse error near line 9: no such column: c3
+BEGIN VERI 0
+Parse error near line 14: no such column: a22.c8
+  SELECT c8, udf ( ) FROM ( SELECT a22.c8, a22.c8 FROM v4 AS a22 ORDER BY 184467
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 17: no such column: a24.c3
+  446744073709551615 != 12.010000 THEN a23.c14 END, a24.c3, a23.c12 FROM v11 AS 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+1.84467440737096e+19|1|0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 32: no such column: a33.c8
+  SELECT a33.c8 FROM v4 AS a33 ORDER BY 18446744073709551488; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 38: no tables specified
+END VERI 0
+BEGIN VERI 0
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 14: no such function: udf
+  SELECT c8, udf ( ) FROM ( SELECT a22.c8, a22.c8 FROM v4 AS a22 ORDER BY 184467
+             ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 14: no such column: a22.c8
+  SELECT c8, udf ( ) FROM ( SELECT a22.c8, a22.c8 FROM v4 AS a22 ORDER BY 184467
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 17: no such column: a24.c3
+  446744073709551615 != 12.010000 THEN a23.c14 END, a24.c3, a23.c12 FROM v11 AS 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 17: no such column: a24.c3
+  446744073709551615 != 12.010000 THEN a23.c14 END, a24.c3, a23.c12 FROM v11 AS 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 7
+ 
+INT: 0 
+Str: 
+Parse error near line 26: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+1.84467440737096e+19|1|0
+ 
+INT: 0 
+Str: 
+1.84467440737096e+19|1|0
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 32: no such column: a33.c8
+  SELECT a33.c8 FROM v4 AS a33 ORDER BY 18446744073709551488; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 38: no tables specified
+ 
+INT: 0 
+Str: 
+Parse error near line 38: no tables specified
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 41: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

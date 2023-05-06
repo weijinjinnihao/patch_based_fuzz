@@ -1,0 +1,335 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6 INTEGER, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29 ); 
+CREATE INDEX i30 ON v0 ( c1 ); 
+CREATE VIEW v31 AS SELECT * FROM v0 AS a32 WHERE c28 = 2147483647 ORDER BY 127; 
+CREATE TABLE v33 ( c34 INTEGER PRIMARY KEY, c35, c36 UNIQUE ); 
+CREATE INDEX i37 ON v33 ( c35 ); 
+CREATE TABLE v38 ( c39, c40, c41 ); 
+ALTER TABLE v33 DROP COLUMN c35; 
+ALTER TABLE v31 DROP COLUMN c10; 
+CREATE VIRTUAL TABLE v42 USING fts5 ( c43, c44 ); 
+CREATE INDEX i45 ON v38 ( c40 ); 
+CREATE INDEX i46 ON v33 ( c34 ); 
+ALTER TABLE v42 DROP COLUMN c43; 
+CREATE INDEX i47 ON v42 ( c44 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT a48.c10, max ( a48.c10 || a48.c10 ) FROM v31 AS a48 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a49, v31 AS a50 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a51.c43 FROM v42 AS a51 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a52 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v53 ( c55 ) AS ( SELECT 2147483647 ORDER BY 2147483647 ) SELECT * FROM v53 AS a54 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v38 AS a56 WHERE a56.c40 = a56.c39 != a56.c39 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v38 AS a57 WHERE count ( a57.c40 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a58 WHERE ( a58.c4 = 0 OR a58.c15 = 127 ) AND a58.c11 IN ( SELECT a58.c18 FROM ( SELECT a59.c8 FROM v0 AS a59 ORDER BY 2147483647 ) AS y WHERE a58.c27 = 9223372036854775807 ORDER BY 0 ) GROUP BY a58.c24, abs ( a58.c24 ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a60 WHERE a60.c35 = + a60.c35 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a61, v0 AS a62 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 7: error in index i37 after drop column: no such column: c35
+Parse error near line 8: cannot drop column from view "v31"
+Runtime error near line 9: no such module: fts5
+Parse error near line 12: no such table: v42
+Parse error near line 13: no such table: main.v42
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 29
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 29
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v42
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v42
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v53 ( c55 ) AS ( SELECT 2147483647 ORDER BY 2147483647 ) SELECT * FROM v5
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  S a56 WHERE a56.c40 = a56.c39 != a56.c39 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: misuse of aggregate function count()
+  SELECT * FROM v38 AS a57 WHERE count ( a57.c40 ) ORDER BY 127; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+  .c18 FROM ( SELECT a59.c8 FROM v0 AS a59 ORDER BY 2147483647 ) AS y WHERE a58.
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 58
+  SELECT * FROM v0 AS a61, v0 AS a62 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, c4, c5, c6 INTEGER, c7, c8, c9, c10, c11, c12, c13, c14, c15, c16, c17, c18, c19, c20, c21, c22, c23, c24, c25, c26, c27, c28, c29 ); 
+; 
+CREATE VIEW v31 AS SELECT * FROM v0 AS a32 WHERE c28 = 2147483647 ORDER BY 127; 
+CREATE TABLE v33 ( c34 INTEGER PRIMARY KEY, c35, c36 UNIQUE ); 
+; 
+CREATE TABLE v38 ( c39, c40, c41 ); 
+ALTER TABLE v33 DROP COLUMN c35; 
+ALTER TABLE v31 DROP COLUMN c10; 
+CREATE VIRTUAL TABLE v42 USING fts5 ( c43, c44 ); 
+; 
+; 
+ALTER TABLE v42 DROP COLUMN c43; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a48.c10, max ( a48.c10 || a48.c10 ) FROM v31 AS a48 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v31 AS a49, v31 AS a50 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a51.c43 FROM v42 AS a51 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v42 AS a52 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v53 ( c55 ) AS ( SELECT 2147483647 ORDER BY 2147483647 ) SELECT * FROM v53 AS a54 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v38 AS a56 WHERE a56.c40 = a56.c39 != a56.c39 ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v38 AS a57 WHERE count ( a57.c40 ) ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a58 WHERE ( a58.c4 = 0 OR a58.c15 = 127 ) AND a58.c11 IN ( SELECT a58.c18 FROM ( SELECT a59.c8 FROM v0 AS a59 ORDER BY 2147483647 ) AS y WHERE a58.c27 = 9223372036854775807 ORDER BY 0 ) GROUP BY a58.c24, abs ( a58.c24 ) ORDER BY 2147483647; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v33 AS a60 WHERE a60.c35 = + a60.c35 ORDER BY 127; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a61, v0 AS a62 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 8: cannot drop column from view "v31"
+Runtime error near line 9: no such module: fts5
+Parse error near line 12: no such table: v42
+BEGIN VERI 0
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 29
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 29
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such table: v42
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: no such table: v42
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v53 ( c55 ) AS ( SELECT 2147483647 ORDER BY 2147483647 ) SELECT * FROM v5
+                                     error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  S a56 WHERE a56.c40 = a56.c39 != a56.c39 ORDER BY 2147483647; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: misuse of aggregate function count()
+  SELECT * FROM v38 AS a57 WHERE count ( a57.c40 ) ORDER BY 127; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+  .c18 FROM ( SELECT a59.c8 FROM v0 AS a59 ORDER BY 2147483647 ) AS y WHERE a58.
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 39: no such column: a60.c35
+  SELECT * FROM v33 AS a60 WHERE a60.c35 = + a60.c35 ORDER BY 127; 
+                   error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 58
+  SELECT * FROM v0 AS a61, v0 AS a62 ORDER BY 0; 
+                                error here ---^
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 29
+ 
+INT: 0 
+Str: 
+Parse error near line 15: 1st ORDER BY term out of range - should be between 1 and 29
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 29
+ 
+INT: 0 
+Str: 
+Parse error near line 18: 1st ORDER BY term out of range - should be between 1 and 29
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such table: v42
+ 
+INT: 0 
+Str: 
+Parse error near line 21: no such table: v42
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: no such table: v42
+ 
+INT: 0 
+Str: 
+Parse error near line 24: no such table: v42
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v53 ( c55 ) AS ( SELECT 2147483647 ORDER BY 2147483647 ) SELECT * FROM v5
+                                     error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 1
+  WITH v53 ( c55 ) AS ( SELECT 2147483647 ORDER BY 2147483647 ) SELECT * FROM v5
+                                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  S a56 WHERE a56.c40 = a56.c39 != a56.c39 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 30: 1st ORDER BY term out of range - should be between 1 and 3
+  S a56 WHERE a56.c40 = a56.c39 != a56.c39 ORDER BY 2147483647; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: misuse of aggregate function count()
+  SELECT * FROM v38 AS a57 WHERE count ( a57.c40 ) ORDER BY 127; 
+                   error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 33: misuse of aggregate function count()
+  SELECT * FROM v38 AS a57 WHERE count ( a57.c40 ) ORDER BY 127; 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+  .c18 FROM ( SELECT a59.c8 FROM v0 AS a59 ORDER BY 2147483647 ) AS y WHERE a58.
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 1
+  .c18 FROM ( SELECT a59.c8 FROM v0 AS a59 ORDER BY 2147483647 ) AS y WHERE a58.
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 39: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 39: no such column: a60.c35
+  SELECT * FROM v33 AS a60 WHERE a60.c35 = + a60.c35 ORDER BY 127; 
+                   error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 58
+  SELECT * FROM v0 AS a61, v0 AS a62 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 42: 1st ORDER BY term out of range - should be between 1 and 58
+  SELECT * FROM v0 AS a61, v0 AS a62 ORDER BY 0; 
+                                error here ---^
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,350 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c2 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 255, 255, 255 ), ( 255, 18446744073709551488, 255 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE INDEX i5 ON v0 ( c3 ); 
+ALTER TABLE v0 DROP c3; 
+CREATE INDEX i6 ON v0 ( c2 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a7 GROUP BY y ( a7.c3 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+CREATE INDEX i8 ON v0 ( c2 ); 
+CREATE INDEX i9 ON v0 ( c3 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a10, v0 AS a11 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a12 GROUP BY a12.c2, a12.c1 < y ( a12.c2 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a13, v0 AS a14 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16 WHERE a16.c1 = ( a16.c2 + 255 ) % count ( a16.c3 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c2, count ( ( NOT ( a17.c2 IS NULL ) ) AND ( NOT ( a17.c3 IS NULL ) ) ), count ( ( NOT ( a17.c2 IS NULL ) ) AND ( NOT ( a17.c3 IS NULL ) ) ) FROM v0 AS a17 LEFT JOIN v0 AS a18 ON a17.c3 = a17.c3 WHERE count ( * ) >= 18446744073709551488 = 'v1' ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a19.c3 ) FROM v0 AS a19 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 NATURAL JOIN v0 AS a21 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c1 FROM v0 AS a22 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 5: error in index i5 after drop column: no such column: c3
+BEGIN VERI 0
+Parse error near line 8: no such function: y
+  SELECT * FROM v0 AS a7 GROUP BY y ( a7.c3 ) ORDER BY 18446744073709551488; 
+                    error here ---^
+END VERI 0
+BEGIN VERI 0
+255|255|255|255|255|255
+255|255|255|255|1.84467440737096e+19|255
+255|1.84467440737096e+19|255|255|255|255
+255|1.84467440737096e+19|255|255|1.84467440737096e+19|255
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such function: y
+  SELECT * FROM v0 AS a12 GROUP BY a12.c2, a12.c1 < y ( a12.c2 ) ORDER BY 184467
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 6
+END VERI 0
+BEGIN VERI 0
+255|255|255
+255|1.84467440737096e+19|255
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: misuse of aggregate function count()
+   FROM v0 AS a16 WHERE a16.c1 = ( a16.c2 + 255 ) % count ( a16.c3 ) ORDER BY 18
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+2
+END VERI 0
+BEGIN VERI 0
+255|255|255
+255|1.84467440737096e+19|255
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3, PRIMARY KEY ( c1, c2 ) ) WITHOUT ROWID; 
+INSERT INTO v0 VALUES ( 255, 255, 255 ), ( 255, 18446744073709551488, 255 ); 
+; 
+; 
+ALTER TABLE v0 DROP c3; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a7 GROUP BY y ( a7.c3 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a10, v0 AS a11 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a12 GROUP BY a12.c2, a12.c1 < y ( a12.c2 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a13, v0 AS a14 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a15 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a16 WHERE a16.c1 = ( a16.c2 + 255 ) % count ( a16.c3 ) ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a17.c2, count ( ( NOT ( a17.c2 IS NULL ) ) AND ( NOT ( a17.c3 IS NULL ) ) ), count ( ( NOT ( a17.c2 IS NULL ) ) AND ( NOT ( a17.c3 IS NULL ) ) ) FROM v0 AS a17 LEFT JOIN v0 AS a18 ON a17.c3 = a17.c3 WHERE count ( * ) >= 18446744073709551488 = 'v1' ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a19.c3 ) FROM v0 AS a19 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a20 NATURAL JOIN v0 AS a21 ORDER BY 18446744071562067968; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a22.c1 FROM v0 AS a22 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a23 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+BEGIN VERI 0
+Parse error near line 8: no such column: a7.c3
+  SELECT * FROM v0 AS a7 GROUP BY y ( a7.c3 ) ORDER BY 18446744073709551488; 
+                        error here ---^
+END VERI 0
+BEGIN VERI 0
+255|255|255|255
+255|255|255|1.84467440737096e+19
+255|1.84467440737096e+19|255|255
+255|1.84467440737096e+19|255|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 16: no such function: y
+  SELECT * FROM v0 AS a12 GROUP BY a12.c2, a12.c1 < y ( a12.c2 ) ORDER BY 184467
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+255|255
+255|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: a16.c3
+   AS a16 WHERE a16.c1 = ( a16.c2 + 255 ) % count ( a16.c3 ) ORDER BY 1844674407
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such column: a17.c3
+  2, count ( ( NOT ( a17.c2 IS NULL ) ) AND ( NOT ( a17.c3 IS NULL ) ) ), count 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: no such column: a19.c3
+  SELECT count ( a19.c3 ) FROM v0 AS a19 ORDER BY 18446744073709551488; 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+255|255
+255|1.84467440737096e+19
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 8: no such function: y
+  SELECT * FROM v0 AS a7 GROUP BY y ( a7.c3 ) ORDER BY 18446744073709551488; 
+                    error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 8: no such column: a7.c3
+  SELECT * FROM v0 AS a7 GROUP BY y ( a7.c3 ) ORDER BY 18446744073709551488; 
+                        error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+255|255|255|255|255|255
+255|255|255|255|1.84467440737096e+19|255
+255|1.84467440737096e+19|255|255|255|255
+255|1.84467440737096e+19|255|255|1.84467440737096e+19|255
+ 
+INT: 3 
+Str: 
+255|255|255|255
+255|255|255|1.84467440737096e+19
+255|1.84467440737096e+19|255|255
+255|1.84467440737096e+19|255|1.84467440737096e+19
+ 
+INT: 3 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 16: no such function: y
+  SELECT * FROM v0 AS a12 GROUP BY a12.c2, a12.c1 < y ( a12.c2 ) ORDER BY 184467
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 16: no such function: y
+  SELECT * FROM v0 AS a12 GROUP BY a12.c2, a12.c1 < y ( a12.c2 ) ORDER BY 184467
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 6
+ 
+INT: 0 
+Str: 
+Parse error near line 19: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+255|255|255
+255|1.84467440737096e+19|255
+ 
+INT: 1 
+Str: 
+255|255
+255|1.84467440737096e+19
+ 
+INT: 1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: misuse of aggregate function count()
+   FROM v0 AS a16 WHERE a16.c1 = ( a16.c2 + 255 ) % count ( a16.c3 ) ORDER BY 18
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 25: no such column: a16.c3
+   AS a16 WHERE a16.c1 = ( a16.c2 + 255 ) % count ( a16.c3 ) ORDER BY 1844674407
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 0
+Str: 
+Parse error near line 28: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such column: a17.c3
+  2, count ( ( NOT ( a17.c2 IS NULL ) ) AND ( NOT ( a17.c3 IS NULL ) ) ), count 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+2
+ 
+INT: 0 
+Str: 
+Parse error near line 31: no such column: a19.c3
+  SELECT count ( a19.c3 ) FROM v0 AS a19 ORDER BY 18446744073709551488; 
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+255|255|255
+255|1.84467440737096e+19|255
+ 
+INT: 1 
+Str: 
+255|255
+255|1.84467440737096e+19
+ 
+INT: 1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 37: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 10 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 40: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+

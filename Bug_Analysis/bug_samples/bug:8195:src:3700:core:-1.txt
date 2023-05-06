@@ -1,0 +1,329 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE TABLE v5 ( c6 CHECK( c7 != 0 ), c7, c8 CHECK( c6 > 0 ), c9 ); 
+CREATE INDEX i10 ON v5 ( c6 ); 
+CREATE INDEX i11 ON v0 ( c3 ); 
+CREATE TABLE v12 ( c13 INTEGER PRIMARY KEY, c14, c15 UNIQUE ); 
+CREATE TABLE v16 ( c17, c18 INTEGER DEFAULT NULL, c19 ); 
+CREATE INDEX i20 ON v5 ( c6 ); 
+ALTER TABLE v0 DROP COLUMN c3; 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE VIRTUAL TABLE v21 USING fts5 ( c22, c23 ); 
+CREATE INDEX i24 ON v12 ( c14 ); 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY ( ( a26.c3 + - 0 ) % 18446744073709551488 ) != 0 + 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT + c15 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a27 WHERE ( a27.c6 = 0 OR a27.c9 = 18446744073709551488 ) AND a27.c7 IN ( SELECT ( SELECT min ( a27.c9 ) OVER ( ORDER BY 8 ) ORDER BY 0 ) FROM v16 AS a28, v16 AS a29 ORDER BY a29.c17 = a28.c19 || a28.c18 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c3, count ( a30.c2 ) FROM v0 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a31.c1 ) FROM v0 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a32 GROUP BY a32.c6 HAVING a32.c9 > a32.c6 % 0 >= 18446744073709551488 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a33 WHERE a33.c8 || a33.c7 IN v5 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a34 ORDER BY 'v0'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c2, count ( a35.c1 ) FROM v0 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 9: error in index i11 after drop column: no such column: c3
+Runtime error near line 10: error in index i4 after drop column: no such column: c1
+Runtime error near line 11: no such module: fts5
+Runtime error near line 13: error in index i4 after drop column: no such column: c1
+BEGIN VERI 0
+Parse error near line 15: no such table: v21
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: c15
+  SELECT + c15 ORDER BY 0; 
+           ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+  ELECT min ( a27.c9 ) OVER ( ORDER BY 8 ) ORDER BY 0 ) FROM v16 AS a28, v16 AS 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+   a30.c3, count ( a30.c2 ) FROM v0 AS a30 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 4
+  M v5 AS a33 WHERE a33.c8 || a33.c7 IN v5 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+|0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+CREATE TABLE v5 ( c6 CHECK( c7 != 0 ), c7, c8 CHECK( c6 > 0 ), c9 ); 
+; 
+; 
+CREATE TABLE v12 ( c13 INTEGER PRIMARY KEY, c14, c15 UNIQUE ); 
+CREATE TABLE v16 ( c17, c18 INTEGER DEFAULT NULL, c19 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c3; 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE VIRTUAL TABLE v21 USING fts5 ( c22, c23 ); 
+; 
+ALTER TABLE v0 DROP COLUMN c1; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v21 AS a25 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a26 ORDER BY ( ( a26.c3 + - 0 ) % 18446744073709551488 ) != 0 + 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT + c15 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a27 WHERE ( a27.c6 = 0 OR a27.c9 = 18446744073709551488 ) AND a27.c7 IN ( SELECT ( SELECT min ( a27.c9 ) OVER ( ORDER BY 8 ) ORDER BY 0 ) FROM v16 AS a28, v16 AS a29 ORDER BY a29.c17 = a28.c19 || a28.c18 ) ORDER BY 18446744073709518848; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c3, count ( a30.c2 ) FROM v0 AS a30 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT count ( a31.c1 ) FROM v0 AS a31 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a32 GROUP BY a32.c6 HAVING a32.c9 > a32.c6 % 0 >= 18446744073709551488 ORDER BY 16; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a33 WHERE a33.c8 || a33.c7 IN v5 ORDER BY 0; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v5 AS a34 ORDER BY 'v0'; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a35.c2, count ( a35.c1 ) FROM v0 AS a35 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Runtime error near line 11: no such module: fts5
+Parse error near line 13: no such column: "c1"
+  ALTER TABLE v0 DROP COLUMN c1; 
+               error here ---^
+BEGIN VERI 0
+Parse error near line 15: no such table: v21
+END VERI 0
+BEGIN VERI 0
+Parse error near line 18: no such column: a26.c3
+  SELECT * FROM v0 AS a26 ORDER BY ( ( a26.c3 + - 0 ) % 18446744073709551488 ) !
+                         error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 21: no such column: c15
+  SELECT + c15 ORDER BY 0; 
+           ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+  ELECT min ( a27.c9 ) OVER ( ORDER BY 8 ) ORDER BY 0 ) FROM v16 AS a28, v16 AS 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 27: no such column: a30.c3
+  SELECT a30.c3, count ( a30.c2 ) FROM v0 AS a30 ORDER BY 0; 
+         ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 30: no such column: a31.c1
+  SELECT count ( a31.c1 ) FROM v0 AS a31 ORDER BY 18446744073709551615; 
+                 ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 4
+END VERI 0
+BEGIN VERI 0
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 4
+  M v5 AS a33 WHERE a33.c8 || a33.c7 IN v5 ORDER BY 0; 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 42: no such column: a35.c1
+  SELECT a35.c2, count ( a35.c1 ) FROM v0 AS a35 ORDER BY 18446744073709551615; 
+                         ^--- error here
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 15: no such table: v21
+ 
+INT: 0 
+Str: 
+Parse error near line 15: no such table: v21
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 18: no such column: a26.c3
+  SELECT * FROM v0 AS a26 ORDER BY ( ( a26.c3 + - 0 ) % 18446744073709551488 ) !
+                         error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 21: no such column: c15
+  SELECT + c15 ORDER BY 0; 
+           ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 21: no such column: c15
+  SELECT + c15 ORDER BY 0; 
+           ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+  ELECT min ( a27.c9 ) OVER ( ORDER BY 8 ) ORDER BY 0 ) FROM v16 AS a28, v16 AS 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 24: 1st ORDER BY term out of range - should be between 1 and 1
+  ELECT min ( a27.c9 ) OVER ( ORDER BY 8 ) ORDER BY 0 ) FROM v16 AS a28, v16 AS 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 27: 1st ORDER BY term out of range - should be between 1 and 2
+   a30.c3, count ( a30.c2 ) FROM v0 AS a30 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 27: no such column: a30.c3
+  SELECT a30.c3, count ( a30.c2 ) FROM v0 AS a30 ORDER BY 0; 
+         ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 5 
+RESULT FLAGS: 0
+Str: 
+0
+ 
+INT: 0 
+Str: 
+Parse error near line 30: no such column: a31.c1
+  SELECT count ( a31.c1 ) FROM v0 AS a31 ORDER BY 18446744073709551615; 
+                 ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+Str: 
+Parse error near line 33: 1st ORDER BY term out of range - should be between 1 and 4
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 4
+  M v5 AS a33 WHERE a33.c8 || a33.c7 IN v5 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 36: 1st ORDER BY term out of range - should be between 1 and 4
+  M v5 AS a33 WHERE a33.c8 || a33.c7 IN v5 ORDER BY 0; 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 0
+Str: 
+|0
+ 
+INT: 0 
+Str: 
+Parse error near line 42: no such column: a35.c1
+  SELECT a35.c2, count ( a35.c1 ) FROM v0 AS a35 ORDER BY 18446744073709551615; 
+                         ^--- error here
+ 
+INT: 2 
+Compare_result_int: 
+0
+
+
+

@@ -1,0 +1,293 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+CREATE INDEX i4 ON v0 ( c1 ); 
+CREATE INDEX i5 ON v0 ( c1 ); 
+CREATE INDEX i6 ON v0 ( c1 ); 
+CREATE INDEX i7 ON v0 ( c3 ); 
+CREATE VIEW v8 AS SELECT c3 COLLATE hex FROM v0 AS a9 ORDER BY 18446744073709551488; 
+CREATE VIEW v10 AS SELECT * FROM v0 AS a11 ORDER BY 18446744073709551488; 
+CREATE TABLE v12 ( c13 INTEGER PRIMARY KEY, c14, c15 UNIQUE ); 
+CREATE TABLE v16 ( c17, c18, c19 ); 
+ALTER TABLE v12 DROP c13; 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE VIRTUAL TABLE v20 USING fts5 ( c21, c22 ); 
+ALTER TABLE v8 DROP COLUMN c1; 
+CREATE INDEX i23 ON v10 ( c1 ); 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a24 WHERE a24.c15 = + a24.c14 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a25, v20 AS a26 NATURAL JOIN v20 AS a27 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709518848 FROM v16 AS a28 WHERE ( a28.c17 IS 10 ) BETWEEN ( ( ( a28.c19 + - 18446744073709551615 ) % 18446744073709551488 ) != 10 + 18446744073709551488 ) % 10 AND ( 0, count ( * ) ) != 10 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 WHERE a29.c1 = a29.c1 % 4294967295 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c1, count ( a30.c1 ) FROM v8 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a31 GROUP BY y ( c2 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c21, max ( a32.c1 || a32.c22 ) FROM v20 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 GROUP BY a33.c1, a33.c2 < a33.c2 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a34 WHERE ( a34.c15 || a34.c15 || a34.c14 ) != 'v0' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a35 NATURAL JOIN v12 AS a36 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: cannot drop PRIMARY KEY column: "c13"
+Runtime error near line 11: error in index i4 after drop column: no such column: c1
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: cannot drop column from view "v8"
+Parse error near line 14: views may not be indexed
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: row value misused
+  LECT 18446744073709518848 FROM v16 AS a28 WHERE ( a28.c17 IS 10 ) BETWEEN ( ( 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v20
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1, c2, c3 ); 
+; 
+; 
+; 
+; 
+CREATE VIEW v8 AS SELECT c3 COLLATE hex FROM v0 AS a9 ORDER BY 18446744073709551488; 
+CREATE VIEW v10 AS SELECT * FROM v0 AS a11 ORDER BY 18446744073709551488; 
+CREATE TABLE v12 ( c13 INTEGER PRIMARY KEY, c14, c15 UNIQUE ); 
+CREATE TABLE v16 ( c17, c18, c19 ); 
+ALTER TABLE v12 DROP c13; 
+ALTER TABLE v0 DROP COLUMN c1; 
+CREATE VIRTUAL TABLE v20 USING fts5 ( c21, c22 ); 
+ALTER TABLE v8 DROP COLUMN c1; 
+; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a24 WHERE a24.c15 = + a24.c14 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a25, v20 AS a26 NATURAL JOIN v20 AS a27 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT 18446744073709518848 FROM v16 AS a28 WHERE ( a28.c17 IS 10 ) BETWEEN ( ( ( a28.c19 + - 18446744073709551615 ) % 18446744073709551488 ) != 10 + 18446744073709551488 ) % 10 AND ( 0, count ( * ) ) != 10 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a29 WHERE a29.c1 = a29.c1 % 4294967295 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a30.c1, count ( a30.c1 ) FROM v8 AS a30 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a31 GROUP BY y ( c2 ) ORDER BY 255; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT a32.c21, max ( a32.c1 || a32.c22 ) FROM v20 AS a32 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v0 AS a33 GROUP BY a33.c1, a33.c2 < a33.c2 ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v12 AS a34 WHERE ( a34.c15 || a34.c15 || a34.c14 ) != 'v0' ORDER BY 18446744073709551488; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v10 AS a35 NATURAL JOIN v12 AS a36 ORDER BY 18446744073709551615; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 10: cannot drop PRIMARY KEY column: "c13"
+Runtime error near line 12: no such module: fts5
+Parse error near line 13: cannot drop column from view "v8"
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: no such table: v20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: row value misused
+  LECT 18446744073709518848 FROM v16 AS a28 WHERE ( a28.c17 IS 10 ) BETWEEN ( ( 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such column: a29.c1
+  SELECT * FROM v0 AS a29 WHERE a29.c1 = a29.c1 % 4294967295 ORDER BY 1844674407
+                  error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 28: no such collation sequence: hex
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such table: v20
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such column: a33.c1
+  SELECT * FROM v0 AS a33 GROUP BY a33.c1, a33.c2 < a33.c2 ORDER BY 184467440737
+                     error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: no such table: v20
+ 
+INT: 0 
+Str: 
+Parse error near line 19: no such table: v20
+ 
+INT: 0 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: row value misused
+  LECT 18446744073709518848 FROM v16 AS a28 WHERE ( a28.c17 IS 10 ) BETWEEN ( ( 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 22: row value misused
+  LECT 18446744073709518848 FROM v16 AS a28 WHERE ( a28.c17 IS 10 ) BETWEEN ( ( 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 3 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 25: no such column: a29.c1
+  SELECT * FROM v0 AS a29 WHERE a29.c1 = a29.c1 % 4294967295 ORDER BY 1844674407
+                  error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 28: no such collation sequence: hex
+ 
+INT: 0 
+Str: 
+Parse error near line 28: no such collation sequence: hex
+ 
+INT: 0 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 31: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such table: v20
+ 
+INT: 0 
+Str: 
+Parse error near line 34: no such table: v20
+ 
+INT: 0 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 37: no such column: a33.c1
+  SELECT * FROM v0 AS a33 GROUP BY a33.c1, a33.c2 < a33.c2 ORDER BY 184467440737
+                     error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 8 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+Compare_result_int: 
+0
+
+
+

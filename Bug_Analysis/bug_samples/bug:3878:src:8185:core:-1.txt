@@ -1,0 +1,308 @@
+Multiple execution of SQLite: 
+Query: 0: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE VIRTUAL TABLE v3 USING rtree ( c4, c5, c6 ); 
+INSERT INTO v3 VALUES ( 18446744073709551488, 'v0' ), ( 255, 'v1' ), ( 10, 'DEF' ); 
+CREATE INDEX i7 ON v0 ( c2 ); 
+ALTER TABLE v0 DROP COLUMN c2; 
+CREATE INDEX i8 ON v3 ( c2 ); 
+BEGIN; 
+INSERT INTO v3 VALUES ( 255, 255, 255 ), ( 255, 100, 18446744073709551488 ), ( 255, 4294967295, 100 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v0 BEGIN DELETE FROM v0 WHERE c1 = c2; END; 
+ALTER TABLE v0 RENAME TO v9; 
+CREATE INDEX i10 ON v9 ( c1 ); 
+CREATE INDEX i11 ON v9 ( c1 ); 
+CREATE INDEX i12 ON v3 ( c2 ); 
+UPDATE v9 SET c2 = 'v0' WHERE c1 = 4294967295; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a13 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( ) OVER ( ORDER BY 4294967295 ) ORDER BY 4294967295 ) FROM v3 AS a14 GROUP BY y ( a14.c6 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v9 ( c16 ) AS ( SELECT 9223372036854775807 ORDER BY 255 ) SELECT c16, max ( c16 || a15.c1 ) FROM v9 AS a15 WHERE ( c16 || c16 || a15.c2 ) != 'v0' ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a17 GROUP BY a17.c1, a17.c2 < a17.c1 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a18 ORDER BY CASE WHEN a18.c6 != 'x' THEN 4294967295 ELSE 255 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v19 ( c21 ) AS ( SELECT 'v0' ORDER BY 4294967295 ) SELECT * FROM v19 AS a20 ORDER BY ( c21 + 127 ) % count ( c21 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a22 WHERE a22.c4 = a22.c2 || a22.c4 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a23 NATURAL JOIN v9 AS a24 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a25 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a26 WHERE a26.c6 = - 18446744073709551488 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: table v3 has 3 columns but 2 values were supplied
+Runtime error near line 5: error in index i7 after drop column: no such column: c2
+Parse error near line 6: virtual tables may not be indexed
+Runtime error near line 8: UNIQUE constraint failed: v3.c4 (19)
+Parse error near line 13: virtual tables may not be indexed
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: min() may not be used as a window function
+  SELECT ( SELECT min ( ) OVER ( ORDER BY 4294967295 ) ORDER BY 4294967295 ) FRO
+                  ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: misuse of aggregate: count()
+  SELECT * FROM v19 AS a20 ORDER BY ( c21 + 127 ) % count ( c21 ); 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a22.c2
+  SELECT * FROM v3 AS a22 WHERE a22.c4 = a22.c2 || a22.c4 ORDER BY 100; 
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+Query: 1: 
+CREATE TABLE v0 ( c1 INTEGER PRIMARY KEY, c2 ); 
+CREATE VIRTUAL TABLE v3 USING rtree ( c4, c5, c6 ); 
+INSERT INTO v3 VALUES ( 18446744073709551488, 'v0' ), ( 255, 'v1' ), ( 10, 'DEF' ); 
+; 
+ALTER TABLE v0 DROP COLUMN c2; 
+; 
+BEGIN; 
+INSERT INTO v3 VALUES ( 255, 255, 255 ), ( 255, 100, 18446744073709551488 ), ( 255, 4294967295, 100 ); 
+CREATE TRIGGER r1 AFTER UPDATE ON v0 BEGIN DELETE FROM v0 WHERE c1 = c2; END; 
+ALTER TABLE v0 RENAME TO v9; 
+; 
+; 
+; 
+UPDATE v9 SET c2 = 'v0' WHERE c1 = 4294967295; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a13 ORDER BY 1; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT ( SELECT min ( ) OVER ( ORDER BY 4294967295 ) ORDER BY 4294967295 ) FROM v3 AS a14 GROUP BY y ( a14.c6 ) ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH RECURSIVE v9 ( c16 ) AS ( SELECT 9223372036854775807 ORDER BY 255 ) SELECT c16, max ( c16 || a15.c1 ) FROM v9 AS a15 WHERE ( c16 || c16 || a15.c2 ) != 'v0' ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a17 GROUP BY a17.c1, a17.c2 < a17.c1 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a18 ORDER BY CASE WHEN a18.c6 != 'x' THEN 4294967295 ELSE 255 END; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+WITH v19 ( c21 ) AS ( SELECT 'v0' ORDER BY 4294967295 ) SELECT * FROM v19 AS a20 ORDER BY ( c21 + 127 ) % count ( c21 ); 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a22 WHERE a22.c4 = a22.c2 || a22.c4 ORDER BY 100; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a23 NATURAL JOIN v9 AS a24 ORDER BY 9223372036854775807; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v9 AS a25 ORDER BY 4294967295; 
+SELECT 'END VERI 0'; 
+SELECT 'BEGIN VERI 0'; 
+SELECT * FROM v3 AS a26 WHERE a26.c6 = - 18446744073709551488 ORDER BY 255; 
+SELECT 'END VERI 0'; 
+
+Result string: 
+Parse error near line 3: table v3 has 3 columns but 2 values were supplied
+Runtime error near line 8: UNIQUE constraint failed: v3.c4 (19)
+Runtime error near line 10: error in trigger r1: no such column: c2
+Parse error near line 14: no such table: v9
+BEGIN VERI 0
+Parse error near line 16: no such table: v9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 19: min() may not be used as a window function
+  SELECT ( SELECT min ( ) OVER ( ORDER BY 4294967295 ) ORDER BY 4294967295 ) FRO
+                  ^--- error here
+END VERI 0
+BEGIN VERI 0
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+END VERI 0
+BEGIN VERI 0
+Parse error near line 25: no such table: v9
+END VERI 0
+BEGIN VERI 0
+END VERI 0
+BEGIN VERI 0
+Parse error near line 31: misuse of aggregate: count()
+  SELECT * FROM v19 AS a20 ORDER BY ( c21 + 127 ) % count ( c21 ); 
+                                      error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 34: no such column: a22.c2
+  SELECT * FROM v3 AS a22 WHERE a22.c4 = a22.c2 || a22.c4 ORDER BY 100; 
+                           error here ---^
+END VERI 0
+BEGIN VERI 0
+Parse error near line 37: no such table: v9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 40: no such table: v9
+END VERI 0
+BEGIN VERI 0
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 3
+END VERI 0
+
+
+Final_res: 0
+Detailed result: 
+
+
+Result NUM: 0 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 16: no such table: v9
+ 
+INT: 0 
+
+
+Result NUM: 1 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 19: min() may not be used as a window function
+  SELECT ( SELECT min ( ) OVER ( ORDER BY 4294967295 ) ORDER BY 4294967295 ) FRO
+                  ^--- error here
+ 
+INT: 2 
+Str: 
+Parse error near line 19: min() may not be used as a window function
+  SELECT ( SELECT min ( ) OVER ( ORDER BY 4294967295 ) ORDER BY 4294967295 ) FRO
+                  ^--- error here
+ 
+INT: 2 
+
+
+Result NUM: 2 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+Str: 
+Parse error near line 22: 1st ORDER BY term out of range - should be between 1 and 1
+ 
+INT: 0 
+
+
+Result NUM: 3 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 25: 1st ORDER BY term out of range - should be between 1 and 2
+ 
+INT: 0 
+Str: 
+Parse error near line 25: no such table: v9
+ 
+INT: 0 
+
+
+Result NUM: 4 
+RESULT FLAGS: 1
+Str: 
+ 
+INT: -1 
+Str: 
+ 
+INT: -1 
+
+
+Result NUM: 5 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 31: misuse of aggregate: count()
+  SELECT * FROM v19 AS a20 ORDER BY ( c21 + 127 ) % count ( c21 ); 
+                                      error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 31: misuse of aggregate: count()
+  SELECT * FROM v19 AS a20 ORDER BY ( c21 + 127 ) % count ( c21 ); 
+                                      error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 6 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 34: no such column: a22.c2
+  SELECT * FROM v3 AS a22 WHERE a22.c4 = a22.c2 || a22.c4 ORDER BY 100; 
+                           error here ---^
+ 
+INT: 2 
+Str: 
+Parse error near line 34: no such column: a22.c2
+  SELECT * FROM v3 AS a22 WHERE a22.c4 = a22.c2 || a22.c4 ORDER BY 100; 
+                           error here ---^
+ 
+INT: 2 
+
+
+Result NUM: 7 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 37: no such table: v9
+ 
+INT: 0 
+
+
+Result NUM: 8 
+RESULT FLAGS: 0
+Str: 
+ 
+INT: -1 
+Str: 
+Parse error near line 40: no such table: v9
+ 
+INT: 0 
+
+
+Result NUM: 9 
+RESULT FLAGS: 1
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Str: 
+Parse error near line 43: 1st ORDER BY term out of range - should be between 1 and 3
+ 
+INT: 0 
+Compare_result_int: 
+0
+
+
+
